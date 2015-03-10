@@ -71,7 +71,6 @@ ALTER TABLE `#__menu_types` ENGINE=InnoDB;
 ALTER TABLE `#__modules` ENGINE=InnoDB;
 ALTER TABLE `#__modules_menu` ENGINE=InnoDB;
 ALTER TABLE `#__overrider` ENGINE=InnoDB;
-ALTER TABLE `#__redirect_links` ENGINE=InnoDB;
 ALTER TABLE `#__schemas` ENGINE=InnoDB;
 ALTER TABLE `#__session` ENGINE=InnoDB;
 ALTER TABLE `#__template_styles` ENGINE=InnoDB;
