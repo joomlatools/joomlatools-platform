@@ -20,7 +20,6 @@ UPDATE `#__extensions` SET protected = 0 WHERE
 `name` = 'com_search' OR
 `name` = 'mod_articles_archive' OR
 `name` = 'mod_articles_latest' OR
-`name` = 'mod_banners' OR
 `name` = 'mod_feed' OR
 `name` = 'mod_footer' OR
 `name` = 'mod_users_latest' OR
@@ -38,9 +37,6 @@ DELETE FROM `#__extensions` WHERE `extension_id` = 800;
 
 ALTER TABLE `#__assets` ENGINE=InnoDB;
 ALTER TABLE `#__associations` ENGINE=InnoDB;
-ALTER TABLE `#__banners` ENGINE=InnoDB;
-ALTER TABLE `#__banner_clients` ENGINE=InnoDB;
-ALTER TABLE `#__banner_tracks` ENGINE=InnoDB;
 ALTER TABLE `#__categories` ENGINE=InnoDB;
 ALTER TABLE `#__content` ENGINE=InnoDB;
 ALTER TABLE `#__content_frontpage` ENGINE=InnoDB;
@@ -97,11 +93,6 @@ ALTER TABLE `#__weblinks` ADD COLUMN `version` int(10) unsigned NOT NULL DEFAULT
 ALTER TABLE `#__weblinks` ADD COLUMN `images` text NOT NULL;
 ALTER TABLE `#__contact_details` ADD COLUMN `version` int(10) unsigned NOT NULL DEFAULT '1';
 ALTER TABLE `#__contact_details` ADD COLUMN `hits` int(10) unsigned NOT NULL DEFAULT '0';
-ALTER TABLE `#__banners` ADD COLUMN `created_by` int(10) unsigned NOT NULL DEFAULT '0';
-ALTER TABLE `#__banners` ADD COLUMN `created_by_alias` varchar(255) NOT NULL DEFAULT '';
-ALTER TABLE `#__banners` ADD COLUMN `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00';
-ALTER TABLE `#__banners` ADD COLUMN `modified_by` int(10) unsigned NOT NULL DEFAULT '0';
-ALTER TABLE `#__banners` ADD COLUMN `version` int(10) unsigned NOT NULL DEFAULT '1';
 ALTER TABLE `#__categories` ADD COLUMN `version` int(10) unsigned NOT NULL DEFAULT '1';
 UPDATE  `#__assets` SET name=REPLACE( name, 'com_user.notes.category','com_users.category'  );
 UPDATE  `#__categories` SET extension=REPLACE( extension, 'com_user.notes.category','com_users.category'  );
