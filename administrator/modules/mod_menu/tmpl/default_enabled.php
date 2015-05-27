@@ -40,12 +40,6 @@ if ($user->authorise('core.manage', 'com_cache'))
 	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_PURGE_EXPIRED_CACHE'), 'index.php?option=com_cache&view=purge', 'class:purge'));
 }
 
-if ($user->authorise('core.admin'))
-{
-	$menu->addSeparator();
-	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_SYSTEM_INFORMATION'), 'index.php?option=com_admin&view=sysinfo', 'class:info'));
-}
-
 $menu->getParent();
 
 /*
