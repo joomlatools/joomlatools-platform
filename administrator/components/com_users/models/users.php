@@ -185,7 +185,6 @@ class UsersModelUsers extends JModelList
 				$userIds[] = (int) $item->id;
 				$item->group_count = 0;
 				$item->group_names = '';
-				$item->note_count = 0;
 			}
 
 			// Get the counts from the database only for the users in the list.
