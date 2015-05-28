@@ -43,11 +43,6 @@ class LanguagesHelper
 			'index.php?option=com_languages&view=languages',
 			$vName == 'languages'
 		);
-		JHtmlSidebar::addEntry(
-			JText::_('COM_LANGUAGES_SUBMENU_OVERRIDES'),
-			'index.php?option=com_languages&view=overrides',
-			$vName == 'overrides'
-		);
 	}
 
 	/**
@@ -66,67 +61,5 @@ class LanguagesHelper
 		$result = JHelperContent::getActions('com_languages');
 
 		return $result;
-	}
-
-	/**
-	 * Method for parsing ini files
-	 *
-	 * @param   string  $filename Path and name of the ini file to parse
-	 *
-	 * @return  array   Array of strings found in the file, the array indices will be the keys. On failure an empty array will be returned
-	 *
-	 * @since   2.5
-	 */
-	public static function parseFile($filename)
-	{
-		if (!is_file($filename))
-		{
-			return array();
-		}
-
-		$contents = file_get_contents($filename);
-		$contents = str_replace('_QQ_', '"\""', $contents);
-		$strings  = @parse_ini_string($contents);
-
-		if ($strings === false)
-		{
-			return array();
-		}
-
-		return $strings;
-	}
-
-	/**
-	 * Filter method for language keys.
-	 * This method will be called by JForm while filtering the form data.
-	 *
-	 * @param   	string	$value	The language key to filter
-	 *
-	 * @return  string	The filtered language key
-	 *
-	 * @since		2.5
-	 */
-	public static function filterKey($value)
-	{
-		$filter = JFilterInput::getInstance(null, null, 1, 1);
-
-		return strtoupper($filter->clean($value, 'cmd'));
-	}
-
-	/**
-	 * Filter method for language strings.
-	 * This method will be called by JForm while filtering the form data.
-	 *
-	 * @param   	string	$value	The language string to filter
-	 *
-	 * @return  string	The filtered language string
-	 *
-	 * @since		2.5
-	 */
-	public static function filterText($value)
-	{
-		$filter = JFilterInput::getInstance(null, null, 1, 1);
-
-		return $filter->clean($value);
 	}
 }
