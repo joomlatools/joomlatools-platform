@@ -910,25 +910,6 @@
 			<value>0</value>
 		</row>
 		<row>
-			<value>45</value>
-			<value>Latest Users</value>
-			<value>module</value>
-			<value>mod_users_latest</value>
-			<value></value>
-			<value>0</value>
-			<value>1</value>
-			<value>1</value>
-			<value>0</value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value>0</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0</value>
-			<value>0</value>
-		</row>
-		<row>
 			<value>46</value>
 			<value>Web Links</value>
 			<value>module</value>
