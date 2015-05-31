@@ -221,7 +221,7 @@ class InstallationModelFtp extends JModelBase
 		}
 
 		// Verify valid root path, part two
-		$checkValue = file_get_contents(JPATH_ROOT . '/libraries/cms/version/version.php');
+		$checkValue = file_get_contents(JPATH_LIBRARIES . '/cms/version/version.php');
 		if ($buffer !== $checkValue)
 		{
 			$ftp->quit();
