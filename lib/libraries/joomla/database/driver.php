@@ -390,7 +390,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 		// Initialise object variables.
 		$this->_database = (isset($options['database'])) ? $options['database'] : '';
 
-		$this->tablePrefix = (isset($options['prefix'])) ? $options['prefix'] : 'jos_';
+		$this->tablePrefix = (isset($options['prefix'])) ? $options['prefix'] : '';
 		$this->count = 0;
 		$this->errorNum = 0;
 		$this->log = array();

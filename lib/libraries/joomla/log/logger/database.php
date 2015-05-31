@@ -95,7 +95,7 @@ class JLogLoggerDatabase extends JLogLogger
 			$this->user = (empty($this->options['db_user'])) ? 'root' : $this->options['db_user'];
 			$this->password = (empty($this->options['db_pass'])) ? '' : $this->options['db_pass'];
 			$this->database = (empty($this->options['db_database'])) ? 'logging' : $this->options['db_database'];
-			$this->prefix = (empty($this->options['db_prefix'])) ? 'jos_' : $this->options['db_prefix'];
+			$this->prefix = (empty($this->options['db_prefix'])) ? '' : $this->options['db_prefix'];
 		}
 
 		// The table name is independent of how we arrived at the connection object.
