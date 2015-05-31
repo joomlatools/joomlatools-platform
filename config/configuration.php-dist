@@ -5,10 +5,6 @@
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  *
  * -------------------------------------------------------------------------
- * THIS SHOULD ONLY BE USED AS A LAST RESORT WHEN THE WEB INSTALLER FAILS
- *
- * If you are installing Joomla! manually i.e. not using the web browser installer
- * then rename this file to configuration.php e.g.
  *
  * UNIX -> mv configuration.php-dist configuration.php
  * Windows -> rename configuration.php-dist configuration.php
@@ -35,7 +31,6 @@ class JConfig {
 	public $user = '';							// DB username
 	public $password = '';						// DB password
 	public $db = '';							// DB database name
-	public $dbprefix = 'jos_';					// Do not change unless you need to!
 
 	/* Server Settings */
 	public $secret = 'FBVtggIk5lAzEU9H'; 		// Change this to something more secure
