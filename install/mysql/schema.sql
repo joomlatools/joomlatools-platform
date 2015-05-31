@@ -5,10 +5,10 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__assets`
+-- Table structure for table `assets`
 --
 
-CREATE TABLE IF NOT EXISTS `#__assets` (
+CREATE TABLE IF NOT EXISTS `assets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `parent_id` int(11) NOT NULL DEFAULT 0 COMMENT 'Nested set parent.',
   `lft` int(11) NOT NULL DEFAULT 0 COMMENT 'Nested set lft.',
@@ -27,10 +27,10 @@ CREATE TABLE IF NOT EXISTS `#__assets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__associations`
+-- Table structure for table `associations`
 --
 
-CREATE TABLE IF NOT EXISTS `#__associations` (
+CREATE TABLE IF NOT EXISTS `associations` (
   `id` int(11) NOT NULL COMMENT 'A reference to the associated item.',
   `context` varchar(50) NOT NULL COMMENT 'The context of the associated item.',
   `key` char(32) NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
@@ -41,12 +41,12 @@ CREATE TABLE IF NOT EXISTS `#__associations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__categories`
+-- Table structure for table `categories`
 --
 
-CREATE TABLE IF NOT EXISTS `#__categories` (
+CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
+  `asset_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the assets table.',
   `parent_id` int(10) unsigned NOT NULL DEFAULT 0,
   `lft` int(11) NOT NULL DEFAULT 0,
   `rgt` int(11) NOT NULL DEFAULT 0,
@@ -85,12 +85,12 @@ CREATE TABLE IF NOT EXISTS `#__categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__content`
+-- Table structure for table `content`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content` (
+CREATE TABLE IF NOT EXISTS `content` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
+  `asset_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the assets table.',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `introtext` mediumtext NOT NULL,
@@ -133,10 +133,10 @@ CREATE TABLE IF NOT EXISTS `#__content` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__content_frontpage`
+-- Table structure for table `content_frontpage`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content_frontpage` (
+CREATE TABLE IF NOT EXISTS `content_frontpage` (
   `content_id` int(11) NOT NULL DEFAULT 0,
   `ordering` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`content_id`)
@@ -145,10 +145,10 @@ CREATE TABLE IF NOT EXISTS `#__content_frontpage` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__content_types`
+-- Table structure for table `content_types`
 --
 
-CREATE TABLE IF NOT EXISTS `#__content_types` (
+CREATE TABLE IF NOT EXISTS `content_types` (
   `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_title` varchar(255) NOT NULL DEFAULT '',
   `type_alias` varchar(255) NOT NULL DEFAULT '',
@@ -165,10 +165,10 @@ CREATE TABLE IF NOT EXISTS `#__content_types` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__contentitem_tag_map`
+-- Table structure for table `contentitem_tag_map`
 --
 
-CREATE TABLE IF NOT EXISTS `#__contentitem_tag_map` (
+CREATE TABLE IF NOT EXISTS `contentitem_tag_map` (
   `type_alias` varchar(255) NOT NULL DEFAULT '',
   `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
@@ -186,10 +186,10 @@ CREATE TABLE IF NOT EXISTS `#__contentitem_tag_map` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__extensions`
+-- Table structure for table `extensions`
 --
 
-CREATE TABLE IF NOT EXISTS `#__extensions` (
+CREATE TABLE IF NOT EXISTS `extensions` (
   `extension_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `type` varchar(20) NOT NULL,
@@ -216,10 +216,10 @@ CREATE TABLE IF NOT EXISTS `#__extensions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_filters`
+-- Table structure for table `finder_filters`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_filters` (
+CREATE TABLE IF NOT EXISTS `finder_filters` (
   `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
@@ -240,10 +240,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_filters` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links`
+-- Table structure for table `finder_links`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links` (
+CREATE TABLE IF NOT EXISTS `finder_links` (
   `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL,
   `route` varchar(255) NOT NULL,
@@ -275,10 +275,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms0`
+-- Table structure for table `finder_links_terms0`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms0` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms0` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -290,10 +290,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms0` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms1`
+-- Table structure for table `finder_links_terms1`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms1` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms1` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -305,10 +305,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms1` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms2`
+-- Table structure for table `finder_links_terms2`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms2` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms2` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -320,10 +320,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms2` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms3`
+-- Table structure for table `finder_links_terms3`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms3` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms3` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -335,10 +335,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms3` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms4`
+-- Table structure for table `finder_links_terms4`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms4` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms4` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -350,10 +350,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms4` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms5`
+-- Table structure for table `finder_links_terms5`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms5` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms5` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -365,10 +365,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms5` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms6`
+-- Table structure for table `finder_links_terms6`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms6` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms6` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -380,10 +380,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms6` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms7`
+-- Table structure for table `finder_links_terms7`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms7` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms7` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -395,10 +395,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms7` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms8`
+-- Table structure for table `finder_links_terms8`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms8` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms8` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -410,10 +410,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms8` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_terms9`
+-- Table structure for table `finder_links_terms9`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_terms9` (
+CREATE TABLE IF NOT EXISTS `finder_links_terms9` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -425,10 +425,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_terms9` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_termsa`
+-- Table structure for table `finder_links_termsa`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_termsa` (
+CREATE TABLE IF NOT EXISTS `finder_links_termsa` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -440,10 +440,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_termsa` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_termsb`
+-- Table structure for table `finder_links_termsb`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_termsb` (
+CREATE TABLE IF NOT EXISTS `finder_links_termsb` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -455,10 +455,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_termsb` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_termsc`
+-- Table structure for table `finder_links_termsc`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_termsc` (
+CREATE TABLE IF NOT EXISTS `finder_links_termsc` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -470,10 +470,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_termsc` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_termsd`
+-- Table structure for table `finder_links_termsd`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_termsd` (
+CREATE TABLE IF NOT EXISTS `finder_links_termsd` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -485,10 +485,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_termsd` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_termse`
+-- Table structure for table `finder_links_termse`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_termse` (
+CREATE TABLE IF NOT EXISTS `finder_links_termse` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -500,10 +500,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_termse` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_links_termsf`
+-- Table structure for table `finder_links_termsf`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_links_termsf` (
+CREATE TABLE IF NOT EXISTS `finder_links_termsf` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -515,10 +515,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_links_termsf` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_taxonomy`
+-- Table structure for table `finder_taxonomy`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_taxonomy` (
+CREATE TABLE IF NOT EXISTS `finder_taxonomy` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT 0,
   `title` varchar(255) NOT NULL,
@@ -537,10 +537,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_taxonomy` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_taxonomy_map`
+-- Table structure for table `finder_taxonomy_map`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_taxonomy_map` (
+CREATE TABLE IF NOT EXISTS `finder_taxonomy_map` (
   `link_id` int(10) unsigned NOT NULL,
   `node_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`link_id`,`node_id`),
@@ -551,10 +551,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_taxonomy_map` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_terms`
+-- Table structure for table `finder_terms`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_terms` (
+CREATE TABLE IF NOT EXISTS `finder_terms` (
   `term_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
@@ -574,10 +574,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_terms` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_terms_common`
+-- Table structure for table `finder_terms_common`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_terms_common` (
+CREATE TABLE IF NOT EXISTS `finder_terms_common` (
   `term` varchar(75) NOT NULL,
   `language` varchar(3) NOT NULL,
   KEY `idx_word_lang` (`term`,`language`),
@@ -587,10 +587,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_terms_common` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_tokens`
+-- Table structure for table `finder_tokens`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_tokens` (
+CREATE TABLE IF NOT EXISTS `finder_tokens` (
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
   `common` tinyint(1) unsigned NOT NULL DEFAULT 0,
@@ -605,10 +605,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_tokens_aggregate`
+-- Table structure for table `finder_tokens_aggregate`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_tokens_aggregate` (
+CREATE TABLE IF NOT EXISTS `finder_tokens_aggregate` (
   `term_id` int(10) unsigned NOT NULL,
   `map_suffix` char(1) NOT NULL,
   `term` varchar(75) NOT NULL,
@@ -627,10 +627,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_tokens_aggregate` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__finder_types`
+-- Table structure for table `finder_types`
 --
 
-CREATE TABLE IF NOT EXISTS `#__finder_types` (
+CREATE TABLE IF NOT EXISTS `finder_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `mime` varchar(100) NOT NULL,
@@ -641,10 +641,10 @@ CREATE TABLE IF NOT EXISTS `#__finder_types` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__languages`
+-- Table structure for table `languages`
 --
 
-CREATE TABLE IF NOT EXISTS `#__languages` (
+CREATE TABLE IF NOT EXISTS `languages` (
   `lang_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `lang_code` char(7) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -670,12 +670,12 @@ CREATE TABLE IF NOT EXISTS `#__languages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__menu`
+-- Table structure for table `menu`
 --
 
-CREATE TABLE IF NOT EXISTS `#__menu` (
+CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
+  `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to menu_types.menutype',
   `title` varchar(255) NOT NULL COMMENT 'The display title of the menu item.',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'The SEF alias of the menu item.',
   `note` varchar(255) NOT NULL DEFAULT '',
@@ -685,8 +685,8 @@ CREATE TABLE IF NOT EXISTS `#__menu` (
   `published` tinyint(4) NOT NULL DEFAULT 0 COMMENT 'The published state of the menu link.',
   `parent_id` int(10) unsigned NOT NULL DEFAULT 1 COMMENT 'The parent menu item in the menu tree.',
   `level` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'The relative level in the tree.',
-  `component_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to #__extensions.id',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to #__users.id',
+  `component_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to extensions.id',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to users.id',
   `checked_out_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'The time the menu item was checked out.',
   `browserNav` tinyint(4) NOT NULL DEFAULT 0 COMMENT 'The click behaviour of the link.',
   `access` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'The access level required to view the menu item.',
@@ -711,10 +711,10 @@ CREATE TABLE IF NOT EXISTS `#__menu` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__menu_types`
+-- Table structure for table `menu_types`
 --
 
-CREATE TABLE IF NOT EXISTS `#__menu_types` (
+CREATE TABLE IF NOT EXISTS `menu_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `menutype` varchar(24) NOT NULL,
   `title` varchar(48) NOT NULL,
@@ -727,12 +727,12 @@ CREATE TABLE IF NOT EXISTS `#__menu_types` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__modules`
+-- Table structure for table `modules`
 --
 
-CREATE TABLE IF NOT EXISTS `#__modules` (
+CREATE TABLE IF NOT EXISTS `modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the #__assets table.',
+  `asset_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'FK to the assets table.',
   `title` varchar(100) NOT NULL DEFAULT '',
   `note` varchar(255) NOT NULL DEFAULT '',
   `content` text NOT NULL,
@@ -757,10 +757,10 @@ CREATE TABLE IF NOT EXISTS `#__modules` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__modules_menu`
+-- Table structure for table `modules_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `#__modules_menu` (
+CREATE TABLE IF NOT EXISTS `modules_menu` (
   `moduleid` int(11) NOT NULL DEFAULT 0,
   `menuid` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`moduleid`,`menuid`)
@@ -770,10 +770,10 @@ CREATE TABLE IF NOT EXISTS `#__modules_menu` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__schemas`
+-- Table structure for table `schemas`
 --
 
-CREATE TABLE IF NOT EXISTS `#__schemas` (
+CREATE TABLE IF NOT EXISTS `schemas` (
   `extension_id` int(11) NOT NULL,
   `version_id` varchar(20) NOT NULL,
   PRIMARY KEY (`extension_id`,`version_id`)
@@ -782,10 +782,10 @@ CREATE TABLE IF NOT EXISTS `#__schemas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__session`
+-- Table structure for table `session`
 --
 
-CREATE TABLE IF NOT EXISTS `#__session` (
+CREATE TABLE IF NOT EXISTS `session` (
   `session_id` varchar(200) NOT NULL DEFAULT '',
   `client_id` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `guest` tinyint(4) unsigned DEFAULT 1,
@@ -801,10 +801,10 @@ CREATE TABLE IF NOT EXISTS `#__session` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__tags`
+-- Table structure for table `tags`
 --
 
-CREATE TABLE IF NOT EXISTS `#__tags` (
+CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT 0,
   `lft` int(11) NOT NULL DEFAULT 0,
@@ -849,10 +849,10 @@ CREATE TABLE IF NOT EXISTS `#__tags` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__template_styles`
+-- Table structure for table `template_styles`
 --
 
-CREATE TABLE IF NOT EXISTS `#__template_styles` (
+CREATE TABLE IF NOT EXISTS `template_styles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `template` varchar(50) NOT NULL DEFAULT '',
   `client_id` tinyint(1) unsigned NOT NULL DEFAULT 0,
@@ -867,10 +867,10 @@ CREATE TABLE IF NOT EXISTS `#__template_styles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__ucm_base`
+-- Table structure for table `ucm_base`
 --
 
-CREATE TABLE IF NOT EXISTS `#__ucm_base` (
+CREATE TABLE IF NOT EXISTS `ucm_base` (
   `ucm_id` int(10) unsigned NOT NULL,
   `ucm_item_id` int(10) NOT NULL,
   `ucm_type_id` int(11) NOT NULL,
@@ -884,10 +884,10 @@ CREATE TABLE IF NOT EXISTS `#__ucm_base` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__ucm_content`
+-- Table structure for table `ucm_content`
 --
 
-CREATE TABLE IF NOT EXISTS `#__ucm_content` (
+CREATE TABLE IF NOT EXISTS `ucm_content` (
   `core_content_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `core_type_alias` varchar(255) NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
   `core_title` varchar(255) NOT NULL,
@@ -909,7 +909,7 @@ CREATE TABLE IF NOT EXISTS `#__ucm_content` (
   `core_publish_up` datetime NOT NULL,
   `core_publish_down` datetime NOT NULL,
   `core_content_item_id` int(10) unsigned COMMENT 'ID from the individual type table',
-  `asset_id` int(10) unsigned COMMENT 'FK to the #__assets table.',
+  `asset_id` int(10) unsigned COMMENT 'FK to the assets table.',
   `core_images` text NOT NULL,
   `core_urls` text NOT NULL,
   `core_hits` int(10) unsigned NOT NULL DEFAULT 0,
@@ -938,10 +938,10 @@ CREATE TABLE IF NOT EXISTS `#__ucm_content` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__ucm_history`
+-- Table structure for table `ucm_history`
 --
 
-CREATE TABLE IF NOT EXISTS `#__ucm_history` (
+CREATE TABLE IF NOT EXISTS `ucm_history` (
   `version_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ucm_item_id` int(10) unsigned NOT NULL,
   `ucm_type_id` int(10) unsigned NOT NULL,
@@ -961,10 +961,10 @@ CREATE TABLE IF NOT EXISTS `#__ucm_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__usergroups`
+-- Table structure for table `usergroups`
 --
 
-CREATE TABLE IF NOT EXISTS `#__usergroups` (
+CREATE TABLE IF NOT EXISTS `usergroups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `parent_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Adjacency List Reference Id',
   `lft` int(11) NOT NULL DEFAULT 0 COMMENT 'Nested set lft.',
@@ -980,10 +980,10 @@ CREATE TABLE IF NOT EXISTS `#__usergroups` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__users`
+-- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `#__users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `username` varchar(150) NOT NULL DEFAULT '',
@@ -1008,10 +1008,10 @@ CREATE TABLE IF NOT EXISTS `#__users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__user_keys`
+-- Table structure for table `user_keys`
 --
 
-CREATE TABLE IF NOT EXISTS `#__user_keys` (
+CREATE TABLE IF NOT EXISTS `user_keys` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
@@ -1029,10 +1029,10 @@ CREATE TABLE IF NOT EXISTS `#__user_keys` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__user_profiles`
+-- Table structure for table `user_profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `#__user_profiles` (
+CREATE TABLE IF NOT EXISTS `user_profiles` (
   `user_id` int(11) NOT NULL,
   `profile_key` varchar(100) NOT NULL,
   `profile_value` text NOT NULL,
@@ -1043,22 +1043,22 @@ CREATE TABLE IF NOT EXISTS `#__user_profiles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__user_usergroup_map`
+-- Table structure for table `user_usergroup_map`
 --
 
-CREATE TABLE IF NOT EXISTS `#__user_usergroup_map` (
-  `user_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Foreign Key to #__users.id',
-  `group_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Foreign Key to #__usergroups.id',
+CREATE TABLE IF NOT EXISTS `user_usergroup_map` (
+  `user_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Foreign Key to users.id',
+  `group_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Foreign Key to usergroups.id',
   PRIMARY KEY (`user_id`,`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `#__viewlevels`
+-- Table structure for table `viewlevels`
 --
 
-CREATE TABLE IF NOT EXISTS `#__viewlevels` (
+CREATE TABLE IF NOT EXISTS `viewlevels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `title` varchar(100) NOT NULL DEFAULT '',
   `ordering` int(11) NOT NULL DEFAULT 0,
