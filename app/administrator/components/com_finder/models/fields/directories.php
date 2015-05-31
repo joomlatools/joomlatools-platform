@@ -46,15 +46,9 @@ class JFormFieldDirectories extends JFormFieldList
 			JPATH_ADMINISTRATOR,
 			JPATH_LIBRARIES,
 			JPATH_PLUGINS,
-			JPATH_SITE . '/cache',
-			JPATH_SITE . '/components',
-			JPATH_SITE . '/includes',
-			JPATH_SITE . '/language',
-			JPATH_SITE . '/modules',
+			JPATH_SITE,
 			JPATH_THEMES,
-			JFactory::getApplication()->get('log_path'),
-			JFactory::getApplication()->get('tmp_path')
-		);
+        );
 
 		// Get the base directories.
 		jimport('joomla.filesystem.folder');
