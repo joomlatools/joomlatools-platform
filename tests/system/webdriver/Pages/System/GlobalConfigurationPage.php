@@ -79,7 +79,6 @@ class GlobalConfigurationPage extends AdminEditPage
 			array('label' => 'Error Reporting', 'id' => 'jform_error_reporting', 'type' => 'select', 'tab' => 'page-server'),
 			array('label' => 'Force SSL', 'id' => 'jform_force_ssl', 'type' => 'select', 'tab' => 'page-server'),
 			array('label' => 'Server Time Zone', 'id' => 'jform_offset', 'type' => 'select', 'tab' => 'page-server'),
-			array('label' => 'Enable FTP', 'id' => 'jform_ftp_enable', 'type' => 'fieldset', 'tab' => 'page-server'),
 			array('label' => 'Enable Proxy', 'id' => 'jform_proxy_enable', 'type' => 'fieldset', 'tab' => 'page-server'),
 			array('label' => 'Database Type', 'id' => 'jform_dbtype', 'type' => 'select', 'tab' => 'page-server'),
 			array('label' => 'Host', 'id' => 'jform_host', 'type' => 'input', 'tab' => 'page-server'),
