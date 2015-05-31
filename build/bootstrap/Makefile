@@ -1,6 +1,6 @@
 #
 # This makefile builds Bootstrap customized for Joomla.
-# 
+#
 # Step 1: make bootstrap-js
 # Step 2: make bootstrap-css
 #
@@ -12,8 +12,8 @@
 #   https://github.com/joomla/joomla-cms/pull/1166
 #
 
-BOOTSTRAP_LESS = ../../media/jui/less/bootstrap.less
-BOOTSTRAP_RESPONSIVE_LESS = ../../media/jui/less/responsive.less
+BOOTSTRAP_LESS = ../../web/media/jui/less/bootstrap.less
+BOOTSTRAP_RESPONSIVE_LESS = ../../web/media/jui/less/responsive.less
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔\033[39m
 HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
