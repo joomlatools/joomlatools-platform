@@ -76,7 +76,6 @@ class GlobalConfigurationPage extends AdminEditPage
 			array('label' => 'Cache Time', 'id' => 'jform_cachetime', 'type' => 'input', 'tab' => 'page-system'),
 			array('label' => 'Session Lifetime', 'id' => 'jform_lifetime', 'type' => 'input', 'tab' => 'page-system'),
 			array('label' => 'Session Handler', 'id' => 'jform_session_handler', 'type' => 'select', 'tab' => 'page-system'),
-			array('label' => 'Path to Temp Folder', 'id' => 'jform_tmp_path', 'type' => 'input', 'tab' => 'page-server'),
 			array('label' => 'Gzip Page Compression', 'id' => 'jform_gzip', 'type' => 'fieldset', 'tab' => 'page-server'),
 			array('label' => 'Error Reporting', 'id' => 'jform_error_reporting', 'type' => 'select', 'tab' => 'page-server'),
 			array('label' => 'Force SSL', 'id' => 'jform_force_ssl', 'type' => 'select', 'tab' => 'page-server'),
