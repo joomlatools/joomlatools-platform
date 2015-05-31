@@ -68,7 +68,6 @@ class GlobalConfigurationPage extends AdminEditPage
 			array('label' => 'Include Site Name in Page Titles', 'id' => 'jform_sitename_pagetitles', 'type' => 'select', 'tab' => 'page-site'),
 			array('label' => 'Cookie Domain', 'id' => 'jform_cookie_domain', 'type' => 'input', 'tab' => 'page-site'),
 			array('label' => 'Cookie Path', 'id' => 'jform_cookie_path', 'type' => 'input', 'tab' => 'page-site'),
-			array('label' => 'Path to Log Folder', 'id' => 'jform_log_path', 'type' => 'input', 'tab' => 'page-system'),
 			array('label' => 'Debug System', 'id' => 'jform_debug', 'type' => 'fieldset', 'tab' => 'page-system'),
 			array('label' => 'Debug Language', 'id' => 'jform_debug_lang', 'type' => 'fieldset', 'tab' => 'page-system'),
 			array('label' => 'Cache', 'id' => 'jform_caching', 'type' => 'select', 'tab' => 'page-system'),

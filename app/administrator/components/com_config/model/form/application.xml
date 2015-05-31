@@ -848,15 +848,7 @@
 	<fieldset
 		name="system"
 		label="CONFIG_SYSTEM_SETTINGS_LABEL">
-
-		<field
-			name="log_path"
-			type="text"
-			label="COM_CONFIG_FIELD_LOG_PATH_LABEL"
-			description="COM_CONFIG_FIELD_LOG_PATH_DESC"
-			required="true"
-			filter="string"
-			size="50" />
+        
 	</fieldset>
 
 	<fieldset
