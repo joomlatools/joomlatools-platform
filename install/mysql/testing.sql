@@ -1,6 +1,3 @@
-#
-# IMPORTANT - THIS FILE MUST BE SAVED WITH UTF-8 ENCODING ONLY. BEWARE IF EDITING!
-#
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -600,6 +597,31 @@ INSERT IGNORE INTO `#__modules_menu` (`moduleid`, `menuid`) VALUES
 (95, 0),
 (97, 0);
 
+--
+-- Dumping data for table `#__users`
+--
+
+NSERT INTO `#__users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `requireReset`)
+VALUES
+  (952,'User','user','user@example.com','931d334de664be1135bed97fd9bb7b62:ZzvicSTnh9dr1Ln36G3MgkC9WSa9J4PW',0,0,'2013-07-24 09:23:03','0000-00-00 00:00:00','','{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}','0000-00-00 00:00:00',0,0),
+	(953,'Manager','manager','manager@example.com','e0f025cc620a663e172c8b25911e5c4e:44wqdHQWhDPcrRg5koGsWJ9Zlhr9WC5x',0,0,'2013-07-24 10:53:59','0000-00-00 00:00:00','','{\"admin_style\":\"\",\"admin_language\":\"\",\"language\":\"\",\"editor\":\"\",\"helpsite\":\"\",\"timezone\":\"\"}','0000-00-00 00:00:00',0,0);
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Dumping data for table `#__usergroups`
+--
+
+INSERT INTO `#__user_usergroup_map` (`user_id`, `group_id`)
+VALUES
+	(952,2),
+	(953,6);
+
+
+-- --------------------------------------------------------
+
 INSERT IGNORE INTO `#__usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 (1, 0, 1, 22, 'Public'),
 (2, 1, 8, 19, 'Registered'),
@@ -613,6 +635,8 @@ INSERT IGNORE INTO `#__usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VA
 (12, 2, 17, 18, 'Customer Group (Example)'),
 (13, 1, 2, 3, 'Guest');
 
+-- --------------------------------------------------------
+
 INSERT IGNORE INTO `#__tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `created_by_alias`, `modified_user_id`, `modified_time`, `images`, `urls`, `hits`, `language`, `version`, `publish_up`, `publish_down`) VALUES
 (1, 0, 0, 9, 0, '', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 0, '2011-01-01 00:00:01', '', 0, '0000-00-00 00:00:00', '', '', 0, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (2, 1, 1, 2, 1, 'red', 'Red', 'red', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"tag_layout":"","tag_link_class":"label label-info","image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '', '', '{"author":"","robots":""}', 716, '2013-10-15 14:52:40', '', 0, '0000-00-00 00:00:00', '', '', 2, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -620,14 +644,19 @@ INSERT IGNORE INTO `#__tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, 
 (4, 1, 5, 8, 1, 'green', 'Green', 'green', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"tag_layout":"","tag_link_class":"label label-info","image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '', '', '{"author":"","robots":""}', 716, '2013-10-15 14:53:14', '', 0, '0000-00-00 00:00:00', '', '', 0, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (5, 4, 6, 7, 2, 'green/lime', 'Lime', 'lime', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"tag_layout":"","tag_link_class":"label label-info","image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '', '', '{"author":"","robots":""}', 716, '2013-10-15 14:53:36', '', 0, '0000-00-00 00:00:00', '', '', 0, '*', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
+-- --------------------------------------------------------
+
 INSERT INTO `#__ucm_base` (`ucm_id`, `ucm_item_id`, `ucm_type_id`, `ucm_language_id`) VALUES
 (1, 24, 1, 0),
 (3, 71, 1, 0);
+
+-- --------------------------------------------------------
 
 INSERT INTO `#__ucm_content` (`core_content_id`, `core_type_alias`, `core_title`, `core_alias`, `core_body`, `core_state`, `core_checked_out_time`, `core_checked_out_user_id`, `core_access`, `core_params`, `core_featured`, `core_metadata`, `core_created_user_id`, `core_created_by_alias`, `core_created_time`, `core_modified_user_id`, `core_modified_time`, `core_language`, `core_publish_up`, `core_publish_down`, `core_content_item_id`, `asset_id`, `core_images`, `core_urls`, `core_hits`, `core_version`, `core_ordering`, `core_metakey`, `core_metadesc`, `core_catid`, `core_xreference`, `core_type_id`) VALUES
 (1, 'com_content.article', 'Joomla! Testing', 'joomla', '<p>Thanks for helping us to test Joomla!</p>\r\n<p>We''re getting ready for the release of Joomla and we appreciate you helping us find and fix problems as we work.</p>\r\n<p>If you haven''t done testing before here are some tips.</p>\r\n<ul>\r\n<li>Don''t delete the installation folder when you finish installing! While we''re working we turn that security feature off to make it easier to test.</li>\r\n<li>Go to global configuration and set Error Reporting to Development (that''s on the server tab) and enable both debugging and language debugging (those are on the system tab). Don''t worry when you see ** around words --that means Joomla translation is doing its job.</li>\r\n</ul>\r\n<p>How to test</p>\r\n<ul>\r\n<li>First, do the things you normally do and see if you spot any problems.</li>\r\n<li>Look at all of the front end views and record any problems</li>\r\n<li>Look at all the back end views and report any problems</li>\r\n<li>See more ideas below</li>\r\n</ul>\r\n<p>What to look for</p>\r\n<ul>\r\n<li>Any error messages that say things like Fatal Error or Strict or similar things that indicate that something is not working correctly.</li>\r\n<li>Untranslated strings. You will know these because they look like this: ?STRING_HERE?</li>\r\n<li>Problems of rendering--items not aligned correctly, missing or wrong images, pages that just don''t look right.</li>\r\n<li>Unexpected behavior--anything that is working differently than it did in 2.5.</li>\r\n</ul>\r\n<p>Report problems</p>\r\n<p>If you find a problem please report it to the <a href="http://joomlacode.org/gf/project/joomla/tracker/?action=TrackerItemBrowse&amp;tracker_id=8103" target="_blank">CMS Issue Tracker</a>. You will need to register for a joomlacode.org account if you don''t have one.</p>\r\n<p>More Testing Ideas</p>\r\n<ul>\r\n<li>Pick one module or view and test all of the parameters.</li>\r\n<li>Install an extension and see if anything breaks (report to the developer unless you are positive it is a core bug).</li>\r\n<li>Turn on caching with different options</li>\r\n<li>Try different session options</li>\r\n<li>Install a language and test all the layouts.</li>\r\n<li>Try different environments (like different servers which may have different version of PHP) or try you have IIS with MySQLi. With millions of users Joomla needs to be ready for unusual environments.</li>\r\n<li>Try with SEF URLS on or off and also with Apache rewrite on or off (if you are on Apache).</li>\r\n<li>Try different combinations of browsers (Chrome, IE, FireFox, Opera to start) and operating systems (Mac, Windows, Linux).</li>\r\n<li>Yes grammar and spelling errors are bugs too -- just keep in mind that we use British spelling.</li>\r\n<li>Visit the <a href="http://joomlacode.org/gf/project/joomla/tracker/?action=TrackerItemBrowse&amp;tracker_id=8549" target="_blank">Feature Tracker</a> and test a new feature.</li>\r\n</ul>\r\n<p>Testing changes</p>\r\n<p>You can also help Joomla by testing bug fixes and new features.  A useful tool is the <a href="https://github.com/mbabker/patchtester/releases" target="_blank">patchtester component</a> which helps to simplify and automate the process.  Report your feedbak on the <span style="line-height: 1.3em;"> </span><a style="line-height: 1.3em;" href="http://joomlacode.org/gf/project/joomla/tracker/?action=TrackerItemBrowse&amp;tracker_id=8103" target="_blank">CMS Issue Tracker</a>. If you enjoy helping Joomla this way, you may want to join the <a href="http://docs.joomla.org/Bug_Squad" target="_blank">Joomla Bug Squad</a>.</p>\r\n<p> </p>', 1, '', 0, 1, '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":""}', 1, '{"robots":"","author":"","rights":"","xreference":""}', 716, '', '2011-01-01 00:00:01', 0, '2013-10-15 14:57:20', '*', '2011-01-01 00:00:01', '0000-00-00 00:00:00', 24, 180, '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', 59, 3, 2, '', '', 19, '', 1),
 (3, 'com_content.article', 'Similar Tags', 'similar-tags', '<p>The similar tags modules shows a list of items which have the same or a similar set of tags.</p>\r\n<p>{loadmodule tags_similar,Similar Tags}</p>', 1, '', 0, 1, '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 0, '{"robots":"","author":"","rights":"","xreference":""}', 371, '', '2013-10-31 00:14:17', 371, '2013-10-31 00:39:09', '*', '2013-10-31 00:14:17', '0000-00-00 00:00:00', 71, 179, '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', 3, 4, 0, '', '', 64, '', 1);
 
+-- --------------------------------------------------------
 
 UPDATE `#__extensions` SET `params`='{"allowUserRegistration":"1","new_usertype":"2","guest_usergroup":"13","sendpassword":"1","useractivation":"1","mail_to_admin":"0","captcha":"","frontend_userparams":"1","site_language":"0","change_login_name":"0","reset_count":"10","reset_time":"1","mailSubjectPrefix":"","mailBodySuffix":"","save_history":"1","history_limit":5}' WHERE extension_id=25;
 

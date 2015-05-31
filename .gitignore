@@ -7,6 +7,7 @@
 
 # Local System Files (i.e. cache, logs, etc.) #
 /config/configuration.php
+/administrator/cache
 /cache
 /logs
 /tmp
