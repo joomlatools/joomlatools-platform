@@ -6,11 +6,11 @@
 .idea
 
 # Local System Files (i.e. cache, logs, etc.) #
+/config/configuration.php
 /administrator/cache
 /cache
 /logs
 /tmp
-/configuration.php
 /.htaccess
 /web.config
 
@@ -21,8 +21,4 @@
 
 # phpDocumentor Logs #
 phpdoc-*
-
-# Patch Tester
-administrator/components/com_patchtester/
-components/com_patchtester/
 

@@ -60,7 +60,7 @@ if (!defined('JPATH_CACHE'))
 }
 if (!defined('JPATH_CONFIGURATION'))
 {
-	define('JPATH_CONFIGURATION', JPATH_BASE);
+	define('JPATH_CONFIGURATION', JPATH_ROOT . '/config');
 }
 if (!defined('JPATH_SITE'))
 {
