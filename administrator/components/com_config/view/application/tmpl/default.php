@@ -52,9 +52,6 @@ JHtml::_('formbehavior.chosen', 'select');
 				<li><a href="#page-server" data-toggle="tab"><?php echo JText::_('COM_CONFIG_SERVER'); ?></a></li>
 				<li><a href="#page-permissions" data-toggle="tab"><?php echo JText::_('COM_CONFIG_PERMISSIONS'); ?></a></li>
 				<li><a href="#page-filters" data-toggle="tab"><?php echo JText::_('COM_CONFIG_TEXT_FILTERS'); ?></a></li>
-				<?php if ($this->ftp) : ?>
-					<li><a href="#page-ftp" data-toggle="tab"><?php echo JText::_('COM_CONFIG_FTP_SETTINGS'); ?></a></li>
-				<?php endif; ?>
 			</ul>
 			<div id="config-document" class="tab-content">
 				<div id="page-site" class="tab-pane active">
@@ -84,7 +81,6 @@ JHtml::_('formbehavior.chosen', 'select');
 						<div class="span6">
 							<?php echo $this->loadTemplate('server'); ?>
 							<?php echo $this->loadTemplate('locale'); ?>
-							<?php echo $this->loadTemplate('ftp'); ?>
 							<?php echo $this->loadTemplate('proxy'); ?>
 						</div>
 						<div class="span6">
@@ -103,11 +99,6 @@ JHtml::_('formbehavior.chosen', 'select');
 						<?php echo $this->loadTemplate('filters'); ?>
 					</div>
 				</div>
-				<?php if ($this->ftp) : ?>
-					<div id="page-ftp" class="tab-pane">
-						<?php echo $this->loadTemplate('ftplogin'); ?>
-					</div>
-				<?php endif; ?>
 				<input type="hidden" name="task" value="" />
 				<?php echo JHtml::_('form.token'); ?>
 			</div>
