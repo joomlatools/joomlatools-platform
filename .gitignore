@@ -7,12 +7,11 @@
 
 # Local System Files (i.e. cache, logs, etc.) #
 /config/configuration.php
-/administrator/cache
+/web/.htaccess
+/web/web.config
 /cache
 /logs
 /tmp
-/.htaccess
-/web.config
 
 # Test Related Files #
 /phpunit.xml

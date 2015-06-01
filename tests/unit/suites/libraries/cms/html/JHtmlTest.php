@@ -331,11 +331,11 @@ class JHtmlTest extends TestCase
 		rmdir(JPATH_THEMES . '/' . $template);
 
 		// We create the file that JHtml::image will look for.
-		if (!is_dir(dirname(JPATH_ROOT . '/media/' . $urlpath . 'images/' . $urlfilename)))
+		if (!is_dir(dirname(JPATH_WEB . '/media/' . $urlpath . 'images/' . $urlfilename)))
 		{
-			mkdir(dirname(JPATH_ROOT . '/media/' . $urlpath . 'images/' . $urlfilename), 0777, true);
+			mkdir(dirname(JPATH_WEB . '/media/' . $urlpath . 'images/' . $urlfilename), 0777, true);
 		}
-		file_put_contents(JPATH_ROOT . '/media/' . $urlpath . 'images/' . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/' . $urlpath . 'images/' . $urlfilename, 'test');
 
 		// We do a test for the case that the image is in the media directory.
 		$this->assertThat(
@@ -350,16 +350,16 @@ class JHtmlTest extends TestCase
 			'JHtml::image failed when we should get it from the media directory in path only mode'
 		);
 
-		unlink(JPATH_ROOT . '/media/' . $urlpath . 'images/' . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $urlpath . 'images');
-		rmdir(JPATH_ROOT . '/media/' . $urlpath);
+		unlink(JPATH_WEB . '/media/' . $urlpath . 'images/' . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $urlpath . 'images');
+		rmdir(JPATH_WEB . '/media/' . $urlpath);
 
 		// We create the file that JHtml::image will look for.
-		if (!is_dir(dirname(JPATH_ROOT . '/media/system/images/' . $urlfilename)))
+		if (!is_dir(dirname(JPATH_WEB . '/media/system/images/' . $urlfilename)))
 		{
-			mkdir(dirname(JPATH_ROOT . '/media/system/images/' . $urlfilename), 0777, true);
+			mkdir(dirname(JPATH_WEB . '/media/system/images/' . $urlfilename), 0777, true);
 		}
-		file_put_contents(JPATH_ROOT . '/media/system/images/' . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/system/images/' . $urlfilename, 'test');
 
 		$this->assertThat(
 			JHtml::image($urlpath . $urlfilename, 'My Alt Text', null, true),
@@ -373,7 +373,7 @@ class JHtmlTest extends TestCase
 			'JHtml::image failed when we should get it from the media directory in path only mode'
 		);
 
-		unlink(JPATH_ROOT . '/media/system/images/' . $urlfilename);
+		unlink(JPATH_WEB . '/media/system/images/' . $urlfilename);
 
 		$this->assertThat(
 			JHtml::image($urlpath . $urlfilename, 'My Alt Text', null, true),
@@ -392,8 +392,8 @@ class JHtmlTest extends TestCase
 		$urlpath = 'path1/';
 		$urlfilename = 'image1.jpg';
 
-		mkdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/images/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/images/' . $urlpath . $urlfilename, 'test');
+		mkdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/images/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/' . $extension . '/' . $element . '/images/' . $urlpath . $urlfilename, 'test');
 
 		$this->assertThat(
 			JHtml::image($extension . '/' . $element . '/' . $urlpath . $urlfilename, 'My Alt Text', null, true),
@@ -411,14 +411,14 @@ class JHtmlTest extends TestCase
 		);
 
 		// We remove the file from the media directory.
-		unlink(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/images/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/images/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/images');
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element);
-		rmdir(JPATH_ROOT . '/media/' . $extension);
+		unlink(JPATH_WEB . '/media/' . $extension . '/' . $element . '/images/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/images/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/images');
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element);
+		rmdir(JPATH_WEB . '/media/' . $extension);
 
-		mkdir(JPATH_ROOT . '/media/' . $extension . '/images/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/' . $extension . '/images/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		mkdir(JPATH_WEB . '/media/' . $extension . '/images/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/' . $extension . '/images/' . $element . '/' . $urlpath . $urlfilename, 'test');
 
 		$this->assertThat(
 			JHtml::image($extension . '/' . $element . '/' . $urlpath . $urlfilename, 'My Alt Text', null, true),
@@ -433,14 +433,14 @@ class JHtmlTest extends TestCase
 			$this->equalTo(JUri::base(true) . '/media/' . $extension . '/images/' . $element . '/' . $urlpath . $urlfilename)
 		);
 
-		unlink(JPATH_ROOT . '/media/' . $extension . '/images/' . $element . '/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/images/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/images/' . $element);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/images');
-		rmdir(JPATH_ROOT . '/media/' . $extension);
+		unlink(JPATH_WEB . '/media/' . $extension . '/images/' . $element . '/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/images/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/images/' . $element);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/images');
+		rmdir(JPATH_WEB . '/media/' . $extension);
 
-		mkdir(JPATH_ROOT . '/media/system/images/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/system/images/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		mkdir(JPATH_WEB . '/media/system/images/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/system/images/' . $element . '/' . $urlpath . $urlfilename, 'test');
 
 		$this->assertThat(
 			JHtml::image($extension . '/' . $element . '/' . $urlpath . $urlfilename, 'My Alt Text', null, true),
@@ -457,9 +457,9 @@ class JHtmlTest extends TestCase
 			$this->equalTo(JUri::base(true) . '/media/system/images/' . $element . '/' . $urlpath . $urlfilename)
 		);
 
-		unlink(JPATH_ROOT . '/media/system/images/' . $element . '/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/system/images/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/system/images/' . $element);
+		unlink(JPATH_WEB . '/media/system/images/' . $element . '/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/system/images/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/system/images/' . $element);
 
 		$this->assertThat(
 			JHtml::image($extension . '/' . $element . '/' . $urlpath . $urlfilename, 'My Alt Text', null, true),
@@ -624,11 +624,11 @@ class JHtmlTest extends TestCase
 		rmdir(JPATH_THEMES . '/' . $template);
 
 		// We create the file that JHtml::script will look for.
-		if (!is_dir(dirname(JPATH_ROOT . '/media/' . $urlpath . 'js/' . $urlfilename)))
+		if (!is_dir(dirname(JPATH_WEB . '/media/' . $urlpath . 'js/' . $urlfilename)))
 		{
-			mkdir(dirname(JPATH_ROOT . '/media/' . $urlpath . 'js/' . $urlfilename), 0777, true);
+			mkdir(dirname(JPATH_WEB . '/media/' . $urlpath . 'js/' . $urlfilename), 0777, true);
 		}
-		file_put_contents(JPATH_ROOT . '/media/' . $urlpath . 'js/' . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/' . $urlpath . 'js/' . $urlfilename, 'test');
 
 		// We do a test for the case that the js is in the media directory.
 		JHtml::script($urlpath . $urlfilename, false, true);
@@ -646,16 +646,16 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_scripts = array();
-		unlink(JPATH_ROOT . '/media/' . $urlpath . 'js/' . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $urlpath . 'js');
-		rmdir(JPATH_ROOT . '/media/' . $urlpath);
+		unlink(JPATH_WEB . '/media/' . $urlpath . 'js/' . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $urlpath . 'js');
+		rmdir(JPATH_WEB . '/media/' . $urlpath);
 
 		// We create the file that JHtml::script will look for.
-		if (!is_dir(dirname(JPATH_ROOT . '/media/system/js/' . $urlfilename)))
+		if (!is_dir(dirname(JPATH_WEB . '/media/system/js/' . $urlfilename)))
 		{
-			mkdir(dirname(JPATH_ROOT . '/media/system/js/' . $urlfilename), 0777, true);
+			mkdir(dirname(JPATH_WEB . '/media/system/js/' . $urlfilename), 0777, true);
 		}
-		file_put_contents(JPATH_ROOT . '/media/system/js/' . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/system/js/' . $urlfilename, 'test');
 
 		// We do a test for the case that the js is in the media directory.
 		JHtml::script($urlpath . $urlfilename, false, true);
@@ -673,7 +673,7 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_scripts = array();
-		unlink(JPATH_ROOT . '/media/system/js/' . $urlfilename);
+		unlink(JPATH_WEB . '/media/system/js/' . $urlfilename);
 
 		// We do a test for the case that the js is in the media directory.
 		JHtml::script($urlpath . $urlfilename, false, true);
@@ -695,9 +695,9 @@ class JHtmlTest extends TestCase
 		$urlpath = 'path1/';
 		$urlfilename = 'script1.js';
 
-		mkdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/js/' . $urlpath, 0777, true);
+		mkdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/js/' . $urlpath, 0777, true);
 
-		file_put_contents(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/js/' . $urlpath . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/' . $extension . '/' . $element . '/js/' . $urlpath . $urlfilename, 'test');
 
 		JHtml::script($extension . '/' . $element . '/' . $urlpath . $urlfilename, false, true);
 		$this->assertArrayHasKey(
@@ -713,14 +713,14 @@ class JHtmlTest extends TestCase
 
 		// We remove the file from the media directory
 		JFactory::$document->_scripts = array();
-		unlink(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/js/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/js/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/js');
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element);
-		rmdir(JPATH_ROOT . '/media/' . $extension);
+		unlink(JPATH_WEB . '/media/' . $extension . '/' . $element . '/js/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/js/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/js');
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element);
+		rmdir(JPATH_WEB . '/media/' . $extension);
 
-		mkdir(JPATH_ROOT . '/media/' . $extension . '/js/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/' . $extension . '/js/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		mkdir(JPATH_WEB . '/media/' . $extension . '/js/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/' . $extension . '/js/' . $element . '/' . $urlpath . $urlfilename, 'test');
 		JHtml::script($extension . '/' . $element . '/' . $urlpath . $urlfilename, false, true);
 
 		$this->assertArrayHasKey(
@@ -736,14 +736,14 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_scripts = array();
-		unlink(JPATH_ROOT . '/media/' . $extension . '/js/' . $element . '/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/js/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/js/' . $element);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/js');
-		rmdir(JPATH_ROOT . '/media/' . $extension);
+		unlink(JPATH_WEB . '/media/' . $extension . '/js/' . $element . '/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/js/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB. '/media/' . $extension . '/js/' . $element);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/js');
+		rmdir(JPATH_WEB . '/media/' . $extension);
 
-		mkdir(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		mkdir(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename, 'test');
 
 		JHtml::script($extension . '/' . $element . '/' . $urlpath . $urlfilename, false, true);
 		$this->assertArrayHasKey(
@@ -758,9 +758,9 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_scripts = array();
-		unlink(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/system/js/' . $element);
+		unlink(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/system/js/' . $element);
 
 		JHtml::script($extension . '/' . $element . '/' . $urlpath . $urlfilename, false, true);
 
@@ -776,11 +776,11 @@ class JHtmlTest extends TestCase
 			'Line:' . __LINE__ . ' JHtml::script failed in URL only mode when it should come from the media directory'
 		);
 
-		mkdir(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename, 'test');
-		file_put_contents(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser.js', 'test');
-		file_put_contents(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser_0.js', 'test');
-		file_put_contents(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser_0_0.js', 'test');
+		mkdir(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser.js', 'test');
+		file_put_contents(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser_0.js', 'test');
+		file_put_contents(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser_0_0.js', 'test');
 		JBrowser::getInstance()->setBrowser('mybrowser');
 
 		JHtml::script($extension . '/' . $element . '/' . $urlpath . $urlfilename, false, true);
@@ -817,16 +817,16 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_scripts = array();
-		unlink(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename);
-		unlink(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser.js');
-		unlink(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser_0.js');
-		unlink(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser_0_0.js');
-		rmdir(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/system/js/' . $element);
+		unlink(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename);
+		unlink(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser.js');
+		unlink(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser_0.js');
+		unlink(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . 'script1_mybrowser_0_0.js');
+		rmdir(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/system/js/' . $element);
 
-		mkdir(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename, 'test');
-		file_put_contents(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . 'script1-uncompressed.js', 'test');
+		mkdir(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . 'script1-uncompressed.js', 'test');
 
 		JFactory::getConfig()->set('debug', 1);
 		JFactory::$document->_scripts = array();
@@ -923,10 +923,10 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_scripts = array();
-		unlink(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename);
-		unlink(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath . 'script1-uncompressed.js');
-		rmdir(JPATH_ROOT . '/media/system/js/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/system/js/' . $element);
+		unlink(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . $urlfilename);
+		unlink(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath . 'script1-uncompressed.js');
+		rmdir(JPATH_WEB . '/media/system/js/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/system/js/' . $element);
 
 		$_SERVER['HTTP_HOST'] = $http_host;
 		$_SERVER['SCRIPT_NAME'] = $script_name;
@@ -1009,11 +1009,11 @@ class JHtmlTest extends TestCase
 		rmdir(JPATH_THEMES . '/' . $template);
 
 		// We create the file that JHtml::script will look for
-		if (!is_dir(dirname(JPATH_ROOT . '/media/' . $urlpath . 'css/' . $urlfilename)))
+		if (!is_dir(dirname(JPATH_WEB . '/media/' . $urlpath . 'css/' . $urlfilename)))
 		{
-			mkdir(dirname(JPATH_ROOT . '/media/' . $urlpath . 'css/' . $urlfilename), 0777, true);
+			mkdir(dirname(JPATH_WEB . '/media/' . $urlpath . 'css/' . $urlfilename), 0777, true);
 		}
-		file_put_contents(JPATH_ROOT . '/media/' . $urlpath . 'css/' . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/' . $urlpath . 'css/' . $urlfilename, 'test');
 
 		// We do a test for the case that the css is in the media directory.
 		JHtml::stylesheet($urlpath . $urlfilename, array(), true);
@@ -1030,16 +1030,16 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_styleSheets = array();
-		unlink(JPATH_ROOT . '/media/' . $urlpath . 'css/' . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $urlpath . 'css');
-		rmdir(JPATH_ROOT . '/media/' . $urlpath);
+		unlink(JPATH_WEB . '/media/' . $urlpath . 'css/' . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $urlpath . 'css');
+		rmdir(JPATH_WEB . '/media/' . $urlpath);
 
 		// We create the file that JHtml::script will look for.
-		if (!is_dir(dirname(JPATH_ROOT . '/media/system/css/' . $urlfilename)))
+		if (!is_dir(dirname(JPATH_WEB . '/media/system/css/' . $urlfilename)))
 		{
-			mkdir(dirname(JPATH_ROOT . '/media/system/css/' . $urlfilename), 0777, true);
+			mkdir(dirname(JPATH_WEB . '/media/system/css/' . $urlfilename), 0777, true);
 		}
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $urlfilename, 'test');
 
 		// We do a test for the case that the css is in the media directory.
 		JHtml::stylesheet($urlpath . $urlfilename, array(), true);
@@ -1057,7 +1057,7 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_styleSheets = array();
-		unlink(JPATH_ROOT . '/media/system/css/' . $urlfilename);
+		unlink(JPATH_WEB . '/media/system/css/' . $urlfilename);
 
 		// We do a test for the case that the css is in the media directory.
 		JHtml::stylesheet($urlpath . $urlfilename, array(), true);
@@ -1079,8 +1079,8 @@ class JHtmlTest extends TestCase
 		$urlpath = 'path1/';
 		$urlfilename = 'style1.css';
 
-		mkdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/css/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/css/' . $urlpath . $urlfilename, 'test');
+		mkdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/css/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/' . $extension . '/' . $element . '/css/' . $urlpath . $urlfilename, 'test');
 		JHtml::stylesheet($extension . '/' . $element . '/' . $urlpath . $urlfilename, array(), true);
 
 		$this->assertArrayHasKey(
@@ -1097,14 +1097,14 @@ class JHtmlTest extends TestCase
 
 		// We remove the file from the media directory
 		JFactory::$document->_styleSheets = array();
-		unlink(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/css/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/css/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element . '/css');
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/' . $element);
-		rmdir(JPATH_ROOT . '/media/' . $extension);
+		unlink(JPATH_WEB . '/media/' . $extension . '/' . $element . '/css/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/css/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element . '/css');
+		rmdir(JPATH_WEB . '/media/' . $extension . '/' . $element);
+		rmdir(JPATH_WEB . '/media/' . $extension);
 
-		mkdir(JPATH_ROOT . '/media/' . $extension . '/css/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/' . $extension . '/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		mkdir(JPATH_WEB . '/media/' . $extension . '/css/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/' . $extension . '/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
 		JHtml::stylesheet($extension . '/' . $element . '/' . $urlpath . $urlfilename, array(), true);
 
 		$this->assertArrayHasKey(
@@ -1120,17 +1120,17 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_styleSheets = array();
-		unlink(JPATH_ROOT . '/media/' . $extension . '/css/' . $element . '/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/css/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/css/' . $element);
-		rmdir(JPATH_ROOT . '/media/' . $extension . '/css');
-		rmdir(JPATH_ROOT . '/media/' . $extension);
+		unlink(JPATH_WEB . '/media/' . $extension . '/css/' . $element . '/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/css/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/css/' . $element);
+		rmdir(JPATH_WEB . '/media/' . $extension . '/css');
+		rmdir(JPATH_WEB . '/media/' . $extension);
 
-		if (!is_dir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath))
+		if (!is_dir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath))
 		{
-			mkdir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath, 0777, true);
+			mkdir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath, 0777, true);
 		}
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
 
 		JHtml::stylesheet($extension . '/' . $element . '/' . $urlpath . $urlfilename, array(), true);
 
@@ -1147,9 +1147,9 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_styleSheets = array();
-		unlink(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/system/css/' . $element);
+		unlink(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/system/css/' . $element);
 
 		JHtml::stylesheet($extension . '/' . $element . '/' . $urlpath . $urlfilename, array(), true);
 
@@ -1165,14 +1165,14 @@ class JHtmlTest extends TestCase
 			'Line:' . __LINE__ . ' JHtml::script failed in URL only mode when it should come from the media directory'
 		);
 
-		if (!is_dir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath))
+		if (!is_dir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath))
 		{
-			mkdir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath, 0777, true);
+			mkdir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath, 0777, true);
 		}
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser.css', 'test');
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser_0.css', 'test');
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser_0_0.css', 'test');
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser.css', 'test');
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser_0.css', 'test');
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser_0_0.css', 'test');
 		JBrowser::getInstance()->setBrowser('mybrowser');
 
 		JHtml::stylesheet($extension . '/' . $element . '/' . $urlpath . $urlfilename, array(), true);
@@ -1208,16 +1208,16 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_styleSheets = array();
-		unlink(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename);
-		unlink(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser.css');
-		unlink(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser_0.css');
-		unlink(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser_0_0.css');
-		rmdir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/system/css/' . $element);
+		unlink(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename);
+		unlink(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser.css');
+		unlink(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser_0.css');
+		unlink(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . 'style1_mybrowser_0_0.css');
+		rmdir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/system/css/' . $element);
 
-		mkdir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . 'style1-uncompressed.css', 'test');
+		mkdir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . 'style1-uncompressed.css', 'test');
 
 		JFactory::getConfig()->set('debug', 1);
 		JFactory::$document->_styleSheets = array();
@@ -1308,13 +1308,13 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_styleSheets = array();
-		unlink(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename);
-		unlink(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . 'style1-uncompressed.css');
-		rmdir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/system/css/' . $element);
+		unlink(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename);
+		unlink(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . 'style1-uncompressed.css');
+		rmdir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/system/css/' . $element);
 
-		mkdir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath, 0777, true);
-		file_put_contents(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
+		mkdir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath, 0777, true);
+		file_put_contents(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename, 'test');
 
 		JHtml::stylesheet($extension . '/' . $element . '/' . $urlpath . $urlfilename, array('media' => 'print, screen'), true);
 
@@ -1331,9 +1331,9 @@ class JHtmlTest extends TestCase
 		);
 
 		JFactory::$document->_styleSheets = array();
-		unlink(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename);
-		rmdir(JPATH_ROOT . '/media/system/css/' . $element . '/' . $urlpath);
-		rmdir(JPATH_ROOT . '/media/system/css/' . $element);
+		unlink(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath . $urlfilename);
+		rmdir(JPATH_WEB . '/media/system/css/' . $element . '/' . $urlpath);
+		rmdir(JPATH_WEB . '/media/system/css/' . $element);
 
 		$_SERVER['HTTP_HOST'] = $http_host;
 		$_SERVER['SCRIPT_NAME'] = $script_name;
@@ -1629,7 +1629,7 @@ class JHtmlTest extends TestCase
 				);
 
 				$this->assertFileExists(
-					JPATH_ROOT . $xml->img['src'],
+					JPATH_WEB . $xml->img['src'],
 					'Line:' . __LINE__ . ' The calendar image source should point to an existent file'
 				);
 
