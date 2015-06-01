@@ -51,12 +51,6 @@ JLoader::setup();
 // Import the base Joomla Platform libraries.
 JLoader::import('joomla.factory');
 
-// Check if the JsonSerializable interface exists already
-if (!interface_exists('JsonSerializable'))
-{
-	JLoader::register('JsonSerializable', __DIR__ . '/compat/jsonserializable.php');
-}
-
 // Register classes that don't follow one file per class naming conventions.
 JLoader::register('JText', JPATH_PLATFORM . '/joomla/language/text.php');
 JLoader::register('JRoute', JPATH_PLATFORM . '/joomla/application/route.php');

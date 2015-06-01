@@ -65,12 +65,6 @@ JLoader::import('joomla.factory');
 JLoader::register('JText', JPATH_PLATFORM . '/joomla/language/text.php');
 JLoader::register('JRoute', JPATH_PLATFORM . '/joomla/application/route.php');
 
-// Check if the JsonSerializable interface exists already
-if (!interface_exists('JsonSerializable'))
-{
-	JLoader::register('JsonSerializable', __DIR__ . '/compat/jsonserializable.php');
-}
-
 // Add deprecated constants
 // @deprecated 4.0
 define('JPATH_ISWIN', IS_WIN);

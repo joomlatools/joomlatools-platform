@@ -11,8 +11,8 @@
 /cache
 /logs
 /tmp
-/.htaccess
-/web.config
+/vendor
+composer.lock
 
 # Test Related Files #
 /phpunit.xml
