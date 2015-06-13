@@ -537,17 +537,6 @@
 		label="CONFIG_SERVER_SETTINGS_LABEL">
 
 		<field
-			name="gzip"
-			type="radio"
-			class="btn-group btn-group-yesno"
-			default="0"
-			label="COM_CONFIG_FIELD_GZIP_COMPRESSION_LABEL"
-			description="COM_CONFIG_FIELD_GZIP_COMPRESSION_DESC"
-			filter="integer">
-			<option value="1">JYES</option>
-			<option value="0">JNO</option>
-		</field>
-		<field
 			name="force_ssl"
 			type="list"
 			default="-1"

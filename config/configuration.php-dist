@@ -34,7 +34,6 @@ class JConfig {
 
 	/* Server Settings */
 	public $secret = 'FBVtggIk5lAzEU9H'; 		// Change this to something more secure
-	public $gzip = '0';
 	public $tmp_path = '/tmp';
 	public $log_path = '/var/logs';
 	public $live_site = ''; 					// Optional, Full url to Joomla install.
