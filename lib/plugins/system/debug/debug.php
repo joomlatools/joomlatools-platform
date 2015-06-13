@@ -117,7 +117,6 @@ class PlgSystemDebug extends JPlugin
 		// Only if debugging or language debug is enabled.
 		if (JDEBUG || $this->debugLang)
 		{
-			JFactory::getConfig()->set('gzip', 0);
 			ob_start();
 			ob_implicit_flush(false);
 		}
