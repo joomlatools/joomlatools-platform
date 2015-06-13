@@ -13,10 +13,9 @@
     }
   ],
   "require": {
-    "php": ">=5.4",
+    "php": ">=5.5",
     "joomla/application": "~1.2",
     "joomla/registry": "~1.2",
-    "ircmaxell/password-compat": "1.*",
     "phpmailer/phpmailer": "5.2.9"
   },
   "require-dev": {
