@@ -75,12 +75,10 @@ switch ($config->error_reporting)
 		break;
 }
 
-
+define('JDEBUG', $config->debug);
 
 // System profiler
-if ($config->debug)
-{
-    define('JDEBUG', 1);
+if ($config->debug) {
     JProfiler::getInstance('Application')->mark('afterLoad');
 }
 
