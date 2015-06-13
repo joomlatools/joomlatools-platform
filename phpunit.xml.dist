@@ -4,8 +4,6 @@
 	<php>
 		<const name="JTEST_DATABASE_MYSQL_DSN" value="host=localhost;dbname=joomla_ut;user=utuser;pass=ut1234" />
 		<const name="JTEST_DATABASE_MYSQLI_DSN" value="host=localhost;dbname=joomla_ut;user=utuser;pass=ut1234" />
-		<const name="JTEST_DATABASE_POSTGRESQL_DSN" value="host=localhost;port=5432;dbname=joomla_ut;user=utuser;pass=ut1234" />
-		<const name="JTEST_DATABASE_SQLSRV_DSN" value="host=localhost;dbname=joomla_ut;user=utuser;pass=ut1234" />
 	</php>
 	-->
 
@@ -38,13 +36,13 @@
 	</logging>
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="true">
-			<directory suffix=".php">libraries/cms</directory>
-			<directory suffix=".php">libraries/joomla</directory>
-			<directory suffix=".php">libraries/legacy</directory>
-			<directory suffix=".php">administrator/components/com_finder/helpers/indexer</directory>
-			<file>administrator/includes/helper.php</file>
-			<file>libraries/loader.php</file>
-			<file>libraries/platform.php</file>
+			<directory suffix=".php">lib/libraries/cms</directory>
+			<directory suffix=".php">lib/libraries/joomla</directory>
+			<directory suffix=".php">lib/libraries/legacy</directory>
+			<directory suffix=".php">app/administrator/components/com_finder/helpers/indexer</directory>
+			<file>app/administrator/includes/helper.php</file>
+			<file>lib/libraries/loader.php</file>
+			<file>lib/libraries/platform.php</file>
 		</whitelist>
 	</filter>
 </phpunit>
