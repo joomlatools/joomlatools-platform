@@ -547,21 +547,6 @@
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
-
-		<field
-			name="error_reporting"
-			type="list"
-			default="default"
-			label="COM_CONFIG_FIELD_ERROR_REPORTING_LABEL"
-			description="COM_CONFIG_FIELD_ERROR_REPORTING_DESC"
-			filter="cmd">
-			<option value="default">COM_CONFIG_FIELD_VALUE_SYSTEM_DEFAULT</option>
-			<option value="none">COM_CONFIG_FIELD_VALUE_NONE</option>
-			<option value="simple">COM_CONFIG_FIELD_VALUE_SIMPLE</option>
-			<option value="maximum">COM_CONFIG_FIELD_VALUE_MAXIMUM</option>
-			<option value="development">COM_CONFIG_FIELD_VALUE_DEVELOPMENT</option>
-		</field>
-
 		<field
 			name="force_ssl"
 			type="list"
@@ -785,7 +770,7 @@
 	<fieldset
 		name="system"
 		label="CONFIG_SYSTEM_SETTINGS_LABEL">
-        
+
 	</fieldset>
 
 	<fieldset
