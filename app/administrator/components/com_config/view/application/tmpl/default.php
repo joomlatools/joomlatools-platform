@@ -81,7 +81,6 @@ JHtml::_('formbehavior.chosen', 'select');
 						<div class="span6">
 							<?php echo $this->loadTemplate('server'); ?>
 							<?php echo $this->loadTemplate('locale'); ?>
-							<?php echo $this->loadTemplate('proxy'); ?>
 						</div>
 						<div class="span6">
 							<?php echo $this->loadTemplate('database'); ?>
