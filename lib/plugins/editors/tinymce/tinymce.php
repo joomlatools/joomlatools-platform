@@ -21,7 +21,7 @@ class PlgEditorTinymce extends JPlugin
 	/**
 	 * Base path for editor files
 	 */
-	protected $_basePath = 'media/editors/tinymce';
+	protected $_basePath = 'media/plg_editors_tinymce';
 
 	/**
 	 * Load the language file on instantiation.
@@ -66,11 +66,11 @@ class PlgEditorTinymce extends JPlugin
 
 		if ($langMode)
 		{
-			if (file_exists(JPATH_WEB . "/media/editors/tinymce/langs/" . $language->getTag() . ".js"))
+			if (file_exists(JPATH_WEB . "/media/plg_editors_tinymce/tinymce/langs/" . $language->getTag() . ".js"))
 			{
 				$langPrefix = $language->getTag();
 			}
-			elseif (file_exists(JPATH_WEB . "/media/editors/tinymce/langs/" . substr($language->getTag(), 0, strpos($language->getTag(), '-')) . ".js"))
+			elseif (file_exists(JPATH_WEB . "/media/plg_editors_tinymce/langs/" . substr($language->getTag(), 0, strpos($language->getTag(), '-')) . ".js"))
 			{
 				$langPrefix = substr($language->getTag(), 0, strpos($language->getTag(), '-'));
 			}
@@ -435,10 +435,10 @@ class PlgEditorTinymce extends JPlugin
 			$toolbar4_add[] = 'template';
 
 			// Note this check for the template_list.js file will be removed in Joomla 4.0
-			if (is_file(JPATH_WEB . "/media/editors/tinymce/templates/template_list.js"))
+			if (is_file(JPATH_WEB . "/media/plg_editors_tinymce/templates/template_list.js"))
 			{
 				// If using the legacy file we need to include and input the files the new way
-				$str = file_get_contents(JPATH_WEB . "/media/editors/tinymce/templates/template_list.js");
+				$str = file_get_contents(JPATH_WEB . "/media/plg_editors_tinymce/templates/template_list.js");
 
 				// Find from one [ to the last ]
 				preg_match_all('/\[.*\]/', $str, $matches);
