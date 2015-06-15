@@ -243,9 +243,6 @@ class GlobalConfigurationPage extends AdminEditPage
 				$select = 'Editor - None';
 				break;
 
-			case 'CODEMIRROR':
-				$select = 'Editor - CodeMirror';
-
 			case 'TINYMCE':
 			case 'TINY':
 			default:
