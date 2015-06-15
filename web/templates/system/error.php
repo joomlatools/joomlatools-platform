@@ -31,7 +31,7 @@ $this->direction = $doc->direction;
 		<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/error_rtl.css" type="text/css" />
 	<?php endif; ?>
 	<?php if ($app->get('debug_lang', '0') == '1' || $app->get('debug', '0') == '1') : ?>
-		<link rel="stylesheet" href="<?php echo $this->baseurl ?>/media/cms/css/debug.css" type="text/css" />
+		<link rel="stylesheet" href="<?php echo $this->baseurl ?>/media/system/css/debug.css" type="text/css" />
 	<?php endif; ?>
 </head>
 <body>

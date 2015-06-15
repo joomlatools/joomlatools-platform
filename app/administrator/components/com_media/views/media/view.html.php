@@ -39,11 +39,11 @@ class MediaViewMedia extends JViewLegacy
 
 		JHtml::_('behavior.framework', true);
 
-		JHtml::_('script', 'media/mediamanager.js', true, true);
+		JHtml::_('script', 'com_media/mediamanager.js', true, true);
 		/*
-		JHtml::_('stylesheet', 'media/mediamanager.css', array(), true);
+		JHtml::_('stylesheet', 'com_media/mediamanager.css', array(), true);
 		if ($lang->isRTL()) :
-			JHtml::_('stylesheet', 'media/mediamanager_rtl.css', array(), true);
+			JHtml::_('stylesheet', 'com_media/mediamanager_rtl.css', array(), true);
 		endif;
 		*/
 		JHtml::_('behavior.modal');
