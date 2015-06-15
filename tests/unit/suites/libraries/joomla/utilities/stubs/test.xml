@@ -1366,25 +1366,6 @@
 			<value>0</value>
 		</row>
 		<row>
-			<value>74</value>
-			<value>Editor - CodeMirror</value>
-			<value>plugin</value>
-			<value>codemirror</value>
-			<value>editors</value>
-			<value>0</value>
-			<value>1</value>
-			<value>1</value>
-			<value>0</value>
-			<value></value>
-			<value>{&quot;linenumbers&quot;:&quot;0&quot;,&quot;tabmode&quot;:&quot;indent&quot;}</value>
-			<value></value>
-			<value></value>
-			<value>0</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0</value>
-			<value>0</value>
-		</row>
-		<row>
 			<value>75</value>
 			<value>Editor - None</value>
 			<value>plugin</value>

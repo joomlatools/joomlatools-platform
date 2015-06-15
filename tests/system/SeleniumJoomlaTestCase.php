@@ -586,9 +586,6 @@ class SeleniumJoomlaTestCase extends PHPUnit_Extensions_SeleniumTestCase
 				$select = 'label=Editor - None';
 				break;
 
-			case 'CODEMIRROR':
-				$select = 'label=Editor - CodeMirror';
-
 			case 'TINYMCE':
 			case 'TINY':
 			default:
