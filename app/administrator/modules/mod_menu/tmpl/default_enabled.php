@@ -27,12 +27,6 @@ if ($user->authorise('core.admin'))
 	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_CONFIGURATION'), 'index.php?option=com_config', 'class:config'));
 }
 
-if ($user->authorise('core.manage', 'com_checkin'))
-{
-	$menu->addSeparator();
-	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_GLOBAL_CHECKIN'), 'index.php?option=com_checkin', 'class:checkin'));
-}
-
 $menu->getParent();
 
 /*

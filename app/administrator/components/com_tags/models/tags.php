@@ -267,7 +267,7 @@ class TagsModelTags extends JModelList
 						}
 
 						// Check if this is the user having previously checked out the row.
-						if ($table->checked_out > 0 && $table->checked_out != $user->get('id') && !$user->authorise('core.admin', 'com_checkin'))
+						if ($table->checked_out > 0 && $table->checked_out != $user->get('id'))
 						{
 							$this->setError(JText::_('JLIB_APPLICATION_ERROR_CHECKIN_USER_MISMATCH'));
 							return false;

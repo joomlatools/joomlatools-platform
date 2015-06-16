@@ -118,7 +118,7 @@ $assoc		= JLanguageAssociations::isEnabled();
 					$orderkey   = array_search($item->id, $this->ordering[$item->parent_id]);
 					$canCreate  = $user->authorise('core.create',     'com_menus');
 					$canEdit    = $user->authorise('core.edit',       'com_menus');
-					$canCheckin = $user->authorise('core.manage',     'com_checkin') || $item->checked_out == $user->get('id')|| $item->checked_out == 0;
+					$canCheckin = $item->checked_out == $user->get('id')|| $item->checked_out == 0;
 					$canChange  = $user->authorise('core.edit.state', 'com_menus') && $canCheckin;
 					// Get the parents of item for sorting
 					if ($item->level > 1)

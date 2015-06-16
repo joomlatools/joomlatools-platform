@@ -115,7 +115,7 @@ $assoc		= JLanguageAssociations::isEnabled();
 					$ordering   = ($listOrder == 'a.ordering');
 					$canCreate  = $user->authorise('core.create',     'com_content.category.'.$item->catid);
 					$canEdit    = $user->authorise('core.edit',       'com_content.article.'.$item->id);
-					$canCheckin = $user->authorise('core.manage',     'com_checkin') || $item->checked_out == $userId || $item->checked_out == 0;
+					$canCheckin = $item->checked_out == $userId || $item->checked_out == 0;
 					$canEditOwn = $user->authorise('core.edit.own',   'com_content.article.'.$item->id) && $item->created_by == $userId;
 					$canChange  = $user->authorise('core.edit.state', 'com_content.article.'.$item->id) && $canCheckin;
 					?>
