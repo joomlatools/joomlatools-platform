@@ -30,16 +30,6 @@
 			<value>{}</value>
 		</row>
 		<row>
-			<value>4</value>
-			<value>1</value>
-			<value>6</value>
-			<value>7</value>
-			<value>1</value>
-			<value>com_cache</value>
-			<value>com_cache</value>
-			<value>{&quot;core.admin&quot;:{&quot;7&quot;:1},&quot;core.manage&quot;:{&quot;7&quot;:1}}</value>
-		</row>
-		<row>
 			<value>6</value>
 			<value>1</value>
 			<value>10</value>
@@ -315,25 +305,6 @@
 			<value>Admin</value>
 			<value>component</value>
 			<value>com_admin</value>
-			<value></value>
-			<value>1</value>
-			<value>1</value>
-			<value>1</value>
-			<value>0</value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value>0</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0</value>
-			<value>0</value>
-		</row>
-		<row>
-			<value>5</value>
-			<value>Cache Manager</value>
-			<value>component</value>
-			<value>com_cache</value>
 			<value></value>
 			<value>1</value>
 			<value>1</value>
