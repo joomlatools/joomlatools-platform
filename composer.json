@@ -1,9 +1,9 @@
 {
-  "name": "nooku/joomla-distro",
+  "name": "joomlatools/joomla-platform",
   "type": "project",
   "description": "Joomla based web platform for building modern, scalable and maintainable software-as-a-service apps",
   "keywords": ["joomla", "platform", "php"],
-  "homepage": "https://github.com/nooku/joomla-distro",
+  "homepage": "https://github.com/joomlatools/joomla-platform",
   "license": "GPL-2.0+",
   "authors": [
     {
@@ -16,6 +16,7 @@
     "php": ">=5.5",
     "joomla/application": "~1.2",
     "joomla/registry": "~1.2",
+    "joomla/string": "~1.0",
     "phpmailer/phpmailer": "5.2.9"
   },
   "require-dev": {
