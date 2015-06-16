@@ -130,8 +130,7 @@ class JHelperMediaTest extends TestCaseDatabase
 	 */
 	public function testCountFiles()
 	{
-		$countFiles = $this->object->countFiles(JPATH_LIBRARIES . '/phputf8');
-		$this->assertSame(array(2, 3), $countFiles);
+
 	}
 
 	/**
