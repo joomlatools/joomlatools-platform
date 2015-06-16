@@ -60,16 +60,6 @@
 			<value>{}</value>
 		</row>
 		<row>
-			<value>10</value>
-			<value>1</value>
-			<value>36</value>
-			<value>37</value>
-			<value>1</value>
-			<value>com_installer</value>
-			<value>com_installer</value>
-			<value>{&quot;core.admin&quot;:{&quot;7&quot;:1},&quot;core.manage&quot;:{&quot;7&quot;:1},&quot;core.create&quot;:[],&quot;core.delete&quot;:[],&quot;core.edit.state&quot;:[]}</value>
-		</row>
-		<row>
 			<value>11</value>
 			<value>1</value>
 			<value>38</value>
@@ -343,25 +333,6 @@
 			<value>Control Panel</value>
 			<value>component</value>
 			<value>com_cpanel</value>
-			<value></value>
-			<value>1</value>
-			<value>1</value>
-			<value>1</value>
-			<value>0</value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value>0</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0</value>
-			<value>0</value>
-		</row>
-		<row>
-			<value>10</value>
-			<value>Installation Manager</value>
-			<value>component</value>
-			<value>com_installer</value>
 			<value></value>
 			<value>1</value>
 			<value>1</value>

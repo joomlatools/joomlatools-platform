@@ -222,25 +222,14 @@ if ($components)
 /*
  * Extensions Submenu
  */
-$im = $user->authorise('core.manage', 'com_installer');
 $mm = $user->authorise('core.manage', 'com_modules');
 $pm = $user->authorise('core.manage', 'com_plugins');
 $tm = $user->authorise('core.manage', 'com_templates');
 $lm = $user->authorise('core.manage', 'com_languages');
 
-if ($im || $mm || $pm || $tm || $lm)
+if ($mm || $pm || $tm || $lm)
 {
 	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_EXTENSIONS_EXTENSIONS'), '#'), true);
-
-	if ($im)
-	{
-		$menu->addChild(new JMenuNode(JText::_('MOD_MENU_EXTENSIONS_EXTENSION_MANAGER'), 'index.php?option=com_installer', 'class:install'));
-	}
-
-	if ($im && ($mm || $pm || $tm || $lm))
-	{
-		$menu->addSeparator();
-	}
 
 	if ($mm)
 	{

@@ -67,13 +67,6 @@ class JHtmlIconsTest extends TestCase
 				'text' => JText::_('MOD_QUICKICON_ADD_NEW_ARTICLE'),
 			),
 			array(
-				'link' => JRoute::_('index.php?option=com_installer'),
-				'image' => 'puzzle',
-				'icon' => 'header/icon-48-extension.png',
-				'text' => JText::_('MOD_QUICKICON_EXTENSION_MANAGER'),
-				'access' => false
-			),
-			array(
 				'link' => JRoute::_('index.php?option=com_templates'),
 				'image' => 'eye',
 				'icon' => 'header/icon-48-themes.png',

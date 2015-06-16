@@ -54,7 +54,6 @@ if ($components)
 /**
  * Extensions Submenu
 **/
-$im = $user->authorise('core.manage', 'com_installer');
 $mm = $user->authorise('core.manage', 'com_modules');
 $pm = $user->authorise('core.manage', 'com_plugins');
 $tm = $user->authorise('core.manage', 'com_templates');
