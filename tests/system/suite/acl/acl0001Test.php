@@ -22,8 +22,6 @@ class Acl0001Test extends SeleniumJoomlaTestCase
 
 		$this->assertTrue($this->isElementPresent("//ul[@id='menu-com-menus-menus']"), 'Menus should be visible');
 
-		$this->assertTrue($this->isElementPresent("//a[@href='index.php?option=com_installer']"), 'Extensions should be visible');
-
 		$this->assertTrue($this->isElementPresent("//ul[@id='menu-com-menus-menus']"), 'Menu Manager should not be visible');
 
 		$this->assertTrue($this->isElementPresent("//a[@href='index.php?option=com_modules']"), 'Module Manager should not be visible');

@@ -110,7 +110,6 @@ abstract class AdminPage
 			'Links'					=> 'administrator/index.php?option=com_weblinks',
 			'Weblinks Categories'	=> 'administrator/index.php?option=com_categories&extension=com_weblinks',
 			'Extensions'			=> 'administrator/index.php#',
-			'Extension Manager'		=> 'administrator/index.php?option=com_installer',
 			'Module Manager'		=> 'administrator/index.php?option=com_modules',
 			'Plugin Manager'		=> 'administrator/index.php?option=com_plugins',
 			'Template Manager'		=> 'administrator/index.php?option=com_templates',
