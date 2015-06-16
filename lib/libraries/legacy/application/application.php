@@ -9,6 +9,8 @@
 
 defined('JPATH_PLATFORM') or die;
 
+use \Joomla\String\StringHelper;
+
 JLog::add('JApplication is deprecated.', JLog::WARNING, 'deprecated');
 
 /**
@@ -389,9 +391,7 @@ class JApplication extends JApplicationBase
 		{
 			$document = JFactory::getDocument();
 
-			jimport('phputf8.utils.ascii');
-
-			if (($this->client->engine == JApplicationWebClient::TRIDENT) && !utf8_is_ascii($url))
+			if (($this->client->engine == JApplicationWebClient::TRIDENT) && !StringHelper::is_ascii($url))
 			{
 				// MSIE type browser and/or server cause issues when url contains utf8 character,so use a javascript redirect method
 				echo '<html><head><meta http-equiv="content-type" content="text/html; charset=' . $document->getCharset() . '" />'

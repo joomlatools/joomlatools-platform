@@ -12,3 +12,7 @@ JLoader::registerAlias('JRegistryFormatINI',  '\\Joomla\\Registry\\Format\\Ini')
 JLoader::registerAlias('JRegistryFormatJSON', '\\Joomla\\Registry\\Format\\Json');
 JLoader::registerAlias('JRegistryFormatPHP',  '\\Joomla\\Registry\\Format\\Php');
 JLoader::registerAlias('JRegistryFormatXML',  '\\Joomla\\Registry\\Format\\Xml');
+
+JLoader::registerAlias('JString',           '\\Joomla\\String\\StringHelper');
+JLoader::registerAlias('JStringNormalise',  '\\Joomla\\String\\StringNormalise');
+JLoader::registerAlias('JStringInflector',  '\\Joomla\\String\\StringInflector');
