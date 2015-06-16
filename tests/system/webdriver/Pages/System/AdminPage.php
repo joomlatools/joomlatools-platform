@@ -70,7 +70,6 @@ abstract class AdminPage
 			'System' 				=> 'administrator/index.php#',
 			'Control Panel' 		=> 'administrator/index.php',
 			'Global Configuration'	=> 'administrator/index.php?option=com_config',
-			'Global Checkin' 		=> 'administrator/index.php?option=com_checkin',
 			'Users'					=> 'administrator/index.php#',
 			'User Manager'			=> 'administrator/index.php?option=com_users&view=users',
 			'Add New User'			=> 'administrator/index.php?option=com_users&task=user.add',
