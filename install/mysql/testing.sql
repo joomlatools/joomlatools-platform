@@ -14,7 +14,6 @@ INSERT IGNORE INTO `assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `
 (1, 0, 1, 437, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
 (2, 1, 2, 3, 1, 'com_admin', 'com_admin', '{}'),
 (4, 1, 12, 13, 1, 'com_cache', 'com_cache', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
-(5, 1, 14, 15, 1, 'com_checkin', 'com_checkin', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 (6, 1, 16, 17, 1, 'com_config', 'com_config', '{}'),
 (8, 1, 88, 303, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
 (9, 1, 304, 305, 1, 'com_cpanel', 'com_cpanel', '{}'),
