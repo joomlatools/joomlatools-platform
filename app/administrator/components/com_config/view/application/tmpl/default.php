@@ -69,7 +69,6 @@ JHtml::_('formbehavior.chosen', 'select');
 				<div id="page-system" class="tab-pane">
 					<div class="row-fluid">
 						<div class="span12">
-							<?php echo $this->loadTemplate('system'); ?>
 							<?php echo $this->loadTemplate('debug'); ?>
 							<?php echo $this->loadTemplate('cache'); ?>
 							<?php echo $this->loadTemplate('session'); ?>

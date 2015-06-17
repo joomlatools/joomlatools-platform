@@ -693,19 +693,8 @@ final class JApplicationSite extends JApplicationCms
 				$template = $this->getTemplate(true);
 				$file     = $this->input->get('tmpl', 'index');
 
-				if (!$this->get('offline') && ($file == 'offline'))
-				{
-					$this->set('themeFile', 'index.php');
-				}
 
-				if ($this->get('offline') && !JFactory::getUser()->authorise('core.login.offline'))
-				{
-					$this->setUserState('users.login.form.data', array('return' => JUri::getInstance()->toString()));
-					$this->set('themeFile', 'offline.php');
-					$this->setHeader('Status', '503 Service Temporarily Unavailable', 'true');
-				}
-
-				if (!is_dir(JPATH_THEMES . '/' . $template->template) && !$this->get('offline'))
+				if (!is_dir(JPATH_THEMES . '/' . $template->template))
 				{
 					$this->set('themeFile', 'component.php');
 				}
