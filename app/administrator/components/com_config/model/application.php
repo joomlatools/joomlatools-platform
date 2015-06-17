@@ -181,12 +181,6 @@ class ConfigModelApplication extends ConfigModelForm
 		 * Perform miscellaneous options based on configuration settings/changes.
 		 */
 
-		// Escape the offline message if present.
-		if (isset($data['offline_message']))
-		{
-			$data['offline_message'] = JFilterOutput::ampReplace($data['offline_message']);
-		}
-
 		// Purge the database session table if we are changing to the database handler.
 		if ($prev['session_handler'] != 'database' && $data['session_handler'] == 'database')
 		{

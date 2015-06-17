@@ -44,10 +44,6 @@ class GlobalConfigurationPage extends AdminEditPage
 	 */
 	public $inputFields = array(
 			array('label' => 'Site Name', 'id' => 'jform_sitename', 'type' => 'input', 'tab' => 'page-site'),
-			array('label' => 'Site Offline', 'id' => 'jform_offline', 'type' => 'fieldset', 'tab' => 'page-site'),
-			array('label' => 'Offline Message', 'id' => 'jform_display_offline_message', 'type' => 'select', 'tab' => 'page-site'),
-			array('label' => 'Custom Message', 'id' => 'jform_offline_message', 'type' => 'textarea', 'tab' => 'page-site'),
-			array('label' => 'Offline Image', 'id' => 'jform_offline_image', 'type' => 'input', 'tab' => 'page-site'),
 			array('label' => 'Mouse-over edit icons for', 'id' => 'jform_frontediting', 'type' => 'select', 'tab' => 'page-site'),
 			array('label' => 'Default Editor', 'id' => 'jform_editor', 'type' => 'select', 'tab' => 'page-site'),
 			array('label' => 'Default Captcha', 'id' => 'jform_captcha', 'type' => 'select', 'tab' => 'page-site'),
@@ -89,7 +85,7 @@ class GlobalConfigurationPage extends AdminEditPage
 			array('label' => 'From Name', 'id' => 'jform_fromname', 'type' => 'input', 'tab' => 'page-server'),
 			);
 
-	public $permissions = array('core.login.site', 'core.login.admin', 'core.login.offline', 'core.admin', 'core.manage', 'core.create', 'core.delete', 'core.edit', 'core.edit.state', 'core.edit.own');
+	public $permissions = array('core.login.site', 'core.login.admin', 'core.admin', 'core.manage', 'core.create', 'core.delete', 'core.edit', 'core.edit.state', 'core.edit.own');
 
 
 

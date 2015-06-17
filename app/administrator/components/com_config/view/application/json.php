@@ -48,7 +48,6 @@ class ConfigViewApplicationJson extends ConfigViewCmsJson
 		// Required data
 		$requiredData = array(
 			"sitename"            => null,
-			"offline"             => null,
 			"access"              => null,
 			"list_limit"          => null,
 			"MetaDesc"            => null,

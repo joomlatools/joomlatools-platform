@@ -64,7 +64,7 @@
 				value="0">JNO</option>
 		</field>
 
-	</fieldset>	
+	</fieldset>
 
 	<fieldset
 		name="site"
@@ -78,20 +78,6 @@
 			required="true"
 			filter="string"
 			size="50" />
-
-		<field
-			name="offline"
-			type="radio"
-			default="0"
-			label="COM_CONFIG_FIELD_SITE_OFFLINE_LABEL"
-			description="COM_CONFIG_FIELD_SITE_OFFLINE_DESC"
-			class="btn-group"
-			filter="integer">
-			<option
-				value="1">JYES</option>
-			<option
-				value="0">JNO</option>
-		</field>
 
 		<field
 			name="access"
@@ -126,7 +112,7 @@
 			<option
 				value="100">J100</option>
 		</field>
-		
+
 	</fieldset>
 
 	<fieldset>
