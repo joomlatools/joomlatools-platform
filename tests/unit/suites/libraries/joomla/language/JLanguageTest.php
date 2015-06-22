@@ -1047,7 +1047,7 @@ class JLanguageTest extends PHPUnit_Framework_TestCase
 	{
 		// Key doesn't exist, returns false
 		$this->assertFalse(
-			$this->object->hasKey('com_admin.key')
+			$this->object->hasKey('com_users.key')
 		);
 
 		// Remove the following lines when you implement this test.

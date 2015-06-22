@@ -135,13 +135,13 @@ class JApplicationAdministrator extends JApplicationCms
 
 		if ($user->get('requireReset', 0) === '1')
 		{
-			if ($this->input->getCmd('option') != 'com_admin' && $this->input->getCmd('view') != 'profile' && $this->input->getCmd('layout') != 'edit')
+			if ($this->input->getCmd('option') != 'com_users' && $this->input->getCmd('view') != 'profile' && $this->input->getCmd('layout') != 'edit')
 			{
 				if ($this->input->getCmd('task') != 'profile.save')
 				{
 					// Redirect to the profile edit page
 					$this->enqueueMessage(JText::_('JGLOBAL_PASSWORD_RESET_REQUIRED'), 'notice');
-					$this->redirect(JRoute::_('index.php?option=com_admin&task=profile.edit&id=' . $user->id, false));
+					$this->redirect(JRoute::_('index.php?option=com_users&task=profile.edit&id=' . $user->id, false));
 				}
 			}
 		}

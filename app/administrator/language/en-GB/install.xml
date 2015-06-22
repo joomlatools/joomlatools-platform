@@ -11,8 +11,6 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description>en-GB administrator language</description>
 	<files>
-		<filename>en-GB.com_admin.ini</filename>
-		<filename>en-GB.com_admin.sys.ini</filename>
 		<filename>en-GB.com_categories.ini</filename>
 		<filename>en-GB.com_categories.sys.ini</filename>
 		<filename>en-GB.com_config.ini</filename>

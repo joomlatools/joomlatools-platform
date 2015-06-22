@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_admin
+ * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,10 +13,10 @@ defined('_JEXEC') or die;
  * View class to allow users edit their own profile.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_admin
+ * @subpackage  com_users
  * @since       1.6
  */
-class AdminViewProfile extends JViewLegacy
+class UsersViewProfile extends JViewLegacy
 {
 	protected $form;
 
@@ -56,11 +56,11 @@ class AdminViewProfile extends JViewLegacy
 	{
 		JFactory::getApplication()->input->set('hidemainmenu', 1);
 
-		JToolbarHelper::title(JText::_('COM_ADMIN_VIEW_PROFILE_TITLE'), 'user user-profile');
+		JToolbarHelper::title(JText::_('COM_USERS_VIEW_PROFILE_TITLE'), 'user user-profile');
 		JToolbarHelper::apply('profile.apply');
 		JToolbarHelper::save('profile.save');
 		JToolbarHelper::cancel('profile.cancel', 'JTOOLBAR_CLOSE');
 		JToolbarHelper::divider();
-		JToolbarHelper::help('JHELP_ADMIN_USER_PROFILE_EDIT');
+		JToolbarHelper::help('JHELP_USERS_USER_PROFILE_EDIT');
 	}
 }

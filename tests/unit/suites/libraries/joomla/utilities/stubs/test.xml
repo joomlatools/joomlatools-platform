@@ -20,16 +20,6 @@
 			<value>{&quot;core.login.site&quot;:{&quot;6&quot;:1,&quot;2&quot;:1},&quot;core.login.admin&quot;:{&quot;6&quot;:1},&quot;core.admin&quot;:{&quot;8&quot;:1},&quot;core.manage&quot;:{&quot;7&quot;:1,&quot;10&quot;:1},&quot;core.create&quot;:{&quot;6&quot;:1},&quot;core.delete&quot;:{&quot;6&quot;:1},&quot;core.edit&quot;:{&quot;6&quot;:1},&quot;core.edit.state&quot;:{&quot;6&quot;:1}}</value>
 		</row>
 		<row>
-			<value>2</value>
-			<value>1</value>
-			<value>2</value>
-			<value>3</value>
-			<value>1</value>
-			<value>com_admin</value>
-			<value>com_admin</value>
-			<value>{}</value>
-		</row>
-		<row>
 			<value>6</value>
 			<value>1</value>
 			<value>10</value>
@@ -290,25 +280,6 @@
 		<column>checked_out_time</column>
 		<column>ordering</column>
 		<column>state</column>
-		<row>
-			<value>3</value>
-			<value>Admin</value>
-			<value>component</value>
-			<value>com_admin</value>
-			<value></value>
-			<value>1</value>
-			<value>1</value>
-			<value>1</value>
-			<value>0</value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value>0</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0</value>
-			<value>0</value>
-		</row>
 		<row>
 			<value>6</value>
 			<value>Categories</value>

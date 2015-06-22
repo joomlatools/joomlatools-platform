@@ -13,12 +13,6 @@ defined('JPATH_PLATFORM') or die;
  * Each object represents one query, which is one line from a DDL SQL query.
  * This class is used to check the site's database to see if the DDL query has been run.
  * If not, it provides the ability to fix the database by re-running the DDL query.
- * The queries are parsed from the update files in the folder
- * administrator/components/com_admin/sql/updates/<database>.
- * These updates are run automatically if the site was updated using com_installer.
- * However, it is possible that the program files could be updated without udpating
- * the database (for example, if a user just copies the new files over the top of an
- * existing installation).
  *
  * This is an abstract class. We need to extend it for each database and add a
  * buildCheckQuery() method that creates the query to check that a DDL query has been run.

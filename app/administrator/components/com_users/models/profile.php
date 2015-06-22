@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_admin
+ * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -15,10 +15,10 @@ require_once JPATH_ADMINISTRATOR . '/components/com_users/models/user.php';
  * User model.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_admin
+ * @subpackage  com_users
  * @since       1.6
  */
-class AdminModelProfile extends UsersModelUser
+class UsersModelProfile extends UsersModelUser
 {
 	/**
 	 * Method to get the record form.
@@ -33,7 +33,7 @@ class AdminModelProfile extends UsersModelUser
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_admin.profile', 'profile', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('com_users.profile', 'profile', array('control' => 'jform', 'load_data' => $loadData));
 
 		if (empty($form))
 		{
@@ -56,7 +56,7 @@ class AdminModelProfile extends UsersModelUser
 		{
 			$form->setFieldAttribute('username', 'required', 'false');
 			$form->setFieldAttribute('username', 'readonly', 'true');
-			$form->setFieldAttribute('username', 'description', 'COM_ADMIN_USER_FIELD_NOCHANGE_USERNAME_DESC');
+			$form->setFieldAttribute('username', 'description', 'COM_USERS_USER_FIELD_NOCHANGE_USERNAME_DESC');
 		}
 
 		// If the user needs to change their password, mark the password fields as required
@@ -89,7 +89,7 @@ class AdminModelProfile extends UsersModelUser
 		// Load the users plugins.
 		JPluginHelper::importPlugin('user');
 
-		$this->preprocessData('com_admin.profile', $data);
+		$this->preprocessData('com_users.profile', $data);
 
 		return $data;
 	}
