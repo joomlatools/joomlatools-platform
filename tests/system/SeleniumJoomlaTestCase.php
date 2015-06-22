@@ -81,7 +81,7 @@ class SeleniumJoomlaTestCase extends PHPUnit_Extensions_SeleniumTestCase
 		if (!$this->isElementPresent("mod-login-username"))
 		{
 			$this->gotoAdmin();
-			$this->click("//li/a[contains(@href, 'option=com_login&task=logout')]");
+			$this->click("//li/a[contains(@href, 'option=com_users&task=session.logout')]");
 			$this->waitForPageToLoad("30000");
 		}
 		$this->type("mod-login-username", $username);
@@ -100,7 +100,7 @@ class SeleniumJoomlaTestCase extends PHPUnit_Extensions_SeleniumTestCase
 	function doAdminLogout()
 	{
 		$this->jPrint ( "Logging out of back end.\n");
-		$this->click("//li/a[contains(@href, 'option=com_login&task=logout')]");
+		$this->click("//li/a[contains(@href, 'option=com_users&task=session.logout')]");
 		$this->waitForPageToLoad("30000");
 	}
 

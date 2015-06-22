@@ -70,16 +70,6 @@
 			<value>{&quot;core.admin&quot;:{&quot;7&quot;:1},&quot;core.manage&quot;:[],&quot;core.create&quot;:[],&quot;core.delete&quot;:[],&quot;core.edit&quot;:[],&quot;core.edit.state&quot;:[]}</value>
 		</row>
 		<row>
-			<value>12</value>
-			<value>1</value>
-			<value>40</value>
-			<value>41</value>
-			<value>1</value>
-			<value>com_login</value>
-			<value>com_login</value>
-			<value>{}</value>
-		</row>
-		<row>
 			<value>15</value>
 			<value>1</value>
 			<value>46</value>
@@ -359,25 +349,6 @@
 			<value>0</value>
 			<value></value>
 			<value>{&quot;administrator&quot;:&quot;en-GB&quot;,&quot;site&quot;:&quot;en-GB&quot;}</value>
-			<value></value>
-			<value></value>
-			<value>0</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0</value>
-			<value>0</value>
-		</row>
-		<row>
-			<value>12</value>
-			<value>Login</value>
-			<value>component</value>
-			<value>com_login</value>
-			<value></value>
-			<value>1</value>
-			<value>1</value>
-			<value>1</value>
-			<value>0</value>
-			<value></value>
-			<value></value>
 			<value></value>
 			<value></value>
 			<value>0</value>

@@ -47,7 +47,7 @@ abstract class ModLoginHelper
 		$uri    = JUri::getInstance();
 		$return = 'index.php' . $uri->toString(array('query'));
 
-		if ($return != 'index.php?option=com_login')
+		if ($return != 'index.php?option=com_users')
 		{
 			return base64_encode($return);
 		}

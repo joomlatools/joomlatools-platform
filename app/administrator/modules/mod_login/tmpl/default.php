@@ -72,8 +72,8 @@ JHtml::_('formbehavior.chosen');
 				</div>
 			</div>
 		</div>
-		<input type="hidden" name="option" value="com_login"/>
-		<input type="hidden" name="task" value="login"/>
+		<input type="hidden" name="option" value="com_users"/>
+		<input type="hidden" name="task" value="session.login"/>
 		<input type="hidden" name="return" value="<?php echo $return; ?>"/>
 		<?php echo JHtml::_('form.token'); ?>
 	</fieldset>

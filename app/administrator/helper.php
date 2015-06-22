@@ -35,12 +35,14 @@ class JAdministratorHelper
 
 		if ($user->get('guest') || !$user->authorise('core.login.admin'))
 		{
-			$option = 'com_login';
+			$option = 'com_users';
+            $app->input->set('view', 'login');
 		}
 
 		if (empty($option))
 		{
 			$option = 'com_cpanel';
+            $app->input->set('view', 'cpanel');
 		}
 
 		$app->input->set('option', $option);

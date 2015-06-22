@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_login
+ * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -15,7 +15,7 @@ JHtml::_('behavior.noframes');
 // If you want to use a completely different login module change the value of name
 // in your layout override.
 
-$loginmodule = LoginModelLogin::getLoginModule('mod_login');
+$loginmodule = UsersModelLogin::getLoginModule('mod_login');
 echo JModuleHelper::renderModule($loginmodule, array('style' => 'rounded', 'id' => 'section-box'));
 
 

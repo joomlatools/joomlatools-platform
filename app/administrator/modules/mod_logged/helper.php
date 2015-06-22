@@ -54,7 +54,7 @@ abstract class ModLoggedHelper
 			if ($user->authorise('core.manage', 'com_users'))
 			{
 				$results[$k]->editLink   = JRoute::_('index.php?option=com_users&task=user.edit&id=' . $result->id);
-				$results[$k]->logoutLink = JRoute::_('index.php?option=com_login&task=logout&uid=' . $result->id . '&' . JSession::getFormToken() . '=1');
+				$results[$k]->logoutLink = JRoute::_('index.php?option=com_users&task=session.logout&uid=' . $result->id . '&' . JSession::getFormToken() . '=1');
 			}
 
 			if ($params->get('name', 1) == 0)
