@@ -717,25 +717,7 @@
 			<value>0</value>
 			<value>0</value>
 		</row>
-		<row>
-			<value>37</value>
-			<value>Login</value>
-			<value>module</value>
-			<value>mod_login</value>
-			<value></value>
-			<value>0</value>
-			<value>1</value>
-			<value>1</value>
-			<value>0</value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value></value>
-			<value>0</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0</value>
-			<value>0</value>
-		</row>
+
 		<row>
 			<value>38</value>
 			<value>Menu</value>
@@ -1951,24 +1933,7 @@ moduleclass_sfx=_menu
 			<value>0</value>
 			<value></value>
 		</row>
-		<row>
-			<value>2</value>
-			<value>Login</value>
-			<value></value>
-			<value>1</value>
-			<value>login</value>
-			<value>0</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>0000-00-00 00:00:00</value>
-			<value>1</value>
-			<value>mod_login</value>
-			<value>1</value>
-			<value>1</value>
-			<value></value>
-			<value>1</value>
-			<value></value>
-		</row>
+
 		<row>
 			<value>3</value>
 			<value>Popular Articles</value>
