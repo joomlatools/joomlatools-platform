@@ -13,36 +13,37 @@
  * database.
  */
 class JConfig {
-	/* Site Settings */
-	public $sitename = 'Joomla!';				// Name of Joomla site
-	public $editor = 'tinymce';
+	/* Site */
+	public $sitename = 'Joomla!';			// Name of Joomla site
+	public $editor   = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '20';
+
+	/* User */
 	public $root_user = '42';
-	public $access = '1';
+	public $access    = '1';
 
-	/* Database Settings */
-	public $dbtype = 'mysql';					// Normally mysql
-	public $host = 'localhost';					// This is normally set to localhost
-	public $user = '';							// DB username
-	public $password = '';						// DB password
-	public $db = '';							// DB database name
+	/* Database */
+	public $dbtype = 'mysqli';				// Normally mysqli
+	public $host = 'localhost';			    // This is normally set to localhost
+	public $user = '';						// DB username
+	public $password = '';					// DB password
+	public $db = '';						// DB database name
 
-	/* Server Settings */
-	public $secret = 'FBVtggIk5lAzEU9H'; 		// Change this to something more secure
+	/* Server */
+	public $secret   = ''; 		            // Change this to something more secure
 	public $tmp_path = '/tmp';
 	public $log_path = '/var/logs';
-	public $live_site = ''; 					// Optional, Full url to Joomla install.
-	public $force_ssl = 0;						// Force areas of the site to be SSL ONLY.  0 = None, 1 = Administrator, 2 = Both Site and Administrator
+	public $force_ssl = 0;					// Force areas of the site to be SSL ONLY.  0 = None, 1 = Administrator, 2 = Both Site and Administrator
 
-	/* Locale Settings */
+	/* Locale */
 	public $offset = 'UTC';
 
-	/* Session settings */
-	public $lifetime = '15';					// Session time
+	/* Session */
+	public $lifetime        = '15';			// Session time
 	public $session_handler = 'database';
 
-	/* Mail Settings */
+	/* Mail */
 	public $mailer = 'mail';
 	public $mailfrom = '';
 	public $fromname = '';
@@ -52,16 +53,16 @@ class JConfig {
 	public $smtppass = '';
 	public $smtphost = 'localhost';
 
-	/* Cache Settings */
+	/* Cache */
 	public $caching = '0';
 	public $cachetime = '15';
 	public $cache_handler = 'file';
 
-	/* Debug Settings */
+	/* Debug */
 	public $debug = '0';
 	public $debug_lang = '0';
 
-	/* Meta Settings */
+	/* Meta */
 	public $MetaDesc = 'Joomla! - the dynamic portal engine and content management system';
 	public $MetaKeys = 'joomla, Joomla';
 	public $MetaTitle = '1';
@@ -69,13 +70,13 @@ class JConfig {
 	public $MetaVersion = '0';
 	public $robots = '';
 
-	/* SEO Settings */
+	/* SEO */
 	public $sef = '1';
 	public $sef_rewrite = '0';
 	public $sef_suffix = '0';
 	public $unicodeslugs = '0';
 
-	/* Feed Settings */
+	/* Feed */
 	public $feed_limit = 10;
 	public $feed_email = 'author';
 }
