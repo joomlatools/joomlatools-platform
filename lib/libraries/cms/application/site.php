@@ -181,11 +181,11 @@ final class JApplicationSite extends JApplicationCms
 		// Add version number or not based on global configuration
 		if ($this->get('MetaVersion', 0))
 		{
-			$document->setGenerator('Joomla! - Open Source Content Management  - Version ' . JVERSION);
+			$document->setGenerator('Joomla Platform - Open Source Web Platform  - Version ' . JVERSION);
 		}
 		else
 		{
-			$document->setGenerator('Joomla! - Open Source Content Management');
+			$document->setGenerator('Joomla Platform - Open Source Web Platform');
 		}
 
 		$contents = JComponentHelper::renderComponent($component);
