@@ -47,47 +47,11 @@ JHtml::_('formbehavior.chosen', 'select');
 		<!-- Begin Content -->
 		<div class="span10">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#page-site" data-toggle="tab"><?php echo JText::_('JSITE'); ?></a></li>
-				<li><a href="#page-system" data-toggle="tab"><?php echo JText::_('COM_CONFIG_SYSTEM'); ?></a></li>
-				<li><a href="#page-server" data-toggle="tab"><?php echo JText::_('COM_CONFIG_SERVER'); ?></a></li>
-				<li><a href="#page-permissions" data-toggle="tab"><?php echo JText::_('COM_CONFIG_PERMISSIONS'); ?></a></li>
+				<li class="active"><a href="#page-permissions" data-toggle="tab"><?php echo JText::_('COM_CONFIG_PERMISSIONS'); ?></a></li>
 				<li><a href="#page-filters" data-toggle="tab"><?php echo JText::_('COM_CONFIG_TEXT_FILTERS'); ?></a></li>
 			</ul>
 			<div id="config-document" class="tab-content">
-				<div id="page-site" class="tab-pane active">
-					<div class="row-fluid">
-						<div class="span6">
-							<?php echo $this->loadTemplate('site'); ?>
-							<?php echo $this->loadTemplate('metadata'); ?>
-						</div>
-						<div class="span6">
-							<?php echo $this->loadTemplate('seo'); ?>
-							<?php echo $this->loadTemplate('cookie'); ?>
-						</div>
-					</div>
-				</div>
-				<div id="page-system" class="tab-pane">
-					<div class="row-fluid">
-						<div class="span12">
-							<?php echo $this->loadTemplate('debug'); ?>
-							<?php echo $this->loadTemplate('cache'); ?>
-							<?php echo $this->loadTemplate('session'); ?>
-						</div>
-					</div>
-				</div>
-				<div id="page-server" class="tab-pane">
-					<div class="row-fluid">
-						<div class="span6">
-							<?php echo $this->loadTemplate('server'); ?>
-							<?php echo $this->loadTemplate('locale'); ?>
-						</div>
-						<div class="span6">
-							<?php echo $this->loadTemplate('database'); ?>
-							<?php echo $this->loadTemplate('mail'); ?>
-						</div>
-					</div>
-				</div>
-				<div id="page-permissions" class="tab-pane">
+				<div id="page-permissions" class="tab-pane active">
 					<div class="row-fluid">
 						<?php echo $this->loadTemplate('permissions'); ?>
 					</div>
