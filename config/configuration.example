@@ -12,7 +12,7 @@
  * Now edit this file and configure the parameters for your site and
  * database.
  */
-class JConfig {
+class JConfig
 	/* Site */
 	public $sitename = 'Joomla!';			// Name of Joomla site
 	public $editor   = 'tinymce';
@@ -61,14 +61,6 @@ class JConfig {
 	/* Debug */
 	public $debug = '0';
 	public $debug_lang = '0';
-
-	/* Meta */
-	public $MetaDesc = 'Joomla! - the dynamic portal engine and content management system';
-	public $MetaKeys = 'joomla, Joomla';
-	public $MetaTitle = '1';
-	public $MetaAuthor = '1';
-	public $MetaVersion = '0';
-	public $robots = '';
 
 	/* SEO */
 	public $sef = '1';
