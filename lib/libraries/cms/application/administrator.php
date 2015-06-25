@@ -367,22 +367,6 @@ class JApplicationAdministrator extends JApplicationCms
 
 		$this->set('themeFile', $file . '.php');
 
-		// Safety check for when configuration.php root_user is in use.
-		$config = JFactory::getConfig();
-		$rootUser = $config->get('root_user');
-
-		if (property_exists('JConfig', 'root_user')
-			&& (JFactory::getUser()->get('username') == $rootUser || JFactory::getUser()->id === (string) $rootUser))
-		{
-			$this->enqueueMessage(
-				JText::sprintf(
-					'JWARNING_REMOVE_ROOT_USER',
-					'index.php?option=com_config&task=application.removeroot&' . JSession::getFormToken() . '=1'
-				),
-				'notice'
-			);
-		}
-
 		parent::render();
 	}
 
