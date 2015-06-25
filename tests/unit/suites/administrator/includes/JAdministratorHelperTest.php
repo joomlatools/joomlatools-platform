@@ -58,12 +58,12 @@ class JAdministratorHelperTest extends TestCase
 			->method('authorise');
 
 		$this->assertEquals(
-			'com_login',
+			'com_users',
 			JAdministratorHelper::findOption()
 		);
 
 		$this->assertEquals(
-			'com_login',
+			'com_users',
 			JFactory::$application->input->get('option')
 		);
 	}
@@ -83,12 +83,12 @@ class JAdministratorHelperTest extends TestCase
 			->will($this->returnValue(false));
 
 		$this->assertEquals(
-			'com_login',
+			'com_users',
 			JAdministratorHelper::findOption()
 		);
 
 		$this->assertEquals(
-			'com_login',
+			'com_users',
 			JFactory::$application->input->get('option')
 		);
 	}

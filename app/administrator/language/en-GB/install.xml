@@ -25,8 +25,6 @@
 		<filename>en-GB.com_finder.sys.ini</filename>
 		<filename>en-GB.com_languages.ini</filename>
 		<filename>en-GB.com_languages.sys.ini</filename>
-		<filename>en-GB.com_login.ini</filename>
-		<filename>en-GB.com_login.sys.ini</filename>
 		<filename>en-GB.com_media.ini</filename>
 		<filename>en-GB.com_media.sys.ini</filename>
 		<filename>en-GB.com_menus.ini</filename>
@@ -52,8 +50,6 @@
 		<filename>en-GB.mod_latest.sys.ini</filename>
 		<filename>en-GB.mod_logged.ini</filename>
 		<filename>en-GB.mod_logged.sys.ini</filename>
-		<filename>en-GB.mod_login.ini</filename>
-		<filename>en-GB.mod_login.sys.ini</filename>
 		<filename>en-GB.mod_menu.ini</filename>
 		<filename>en-GB.mod_menu.sys.ini</filename>
 		<filename>en-GB.mod_multilangstatus.ini</filename>

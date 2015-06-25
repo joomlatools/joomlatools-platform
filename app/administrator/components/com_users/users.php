@@ -10,9 +10,15 @@
 defined('_JEXEC') or die;
 JHtml::_('behavior.tabstate');
 
-if (!JFactory::getUser()->authorise('core.manage', 'com_users'))
+$input = JFactory::getApplication()->input;
+$task  = $input->get('task');
+$view  = $input->get('view');
+
+if ($view != 'login' && !in_array($task, array('session.login', 'session.logout')))
 {
-	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+    if (!JFactory::getUser()->authorise('core.manage', 'com_users')) {
+        return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+    }
 }
 
 JLoader::register('UsersHelper', __DIR__ . '/helpers/users.php');

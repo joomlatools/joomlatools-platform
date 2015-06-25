@@ -37,7 +37,7 @@ class User0002Test extends SeleniumJoomlaTestCase
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
         array_push($this->verificationErrors, $this->getTraceFiles($e));
     }
-    $this->click("//li/a[contains(@href, 'option=com_login&task=logout')]");
+    $this->click("//li/a[contains(@href, 'option=com_users&task=session.logout')]");
     $this->waitForPageToLoad("30000");
     $this->jPrint("Go to home page.\n");
     $this->click("link=Go to site home page.");
@@ -79,7 +79,7 @@ class User0002Test extends SeleniumJoomlaTestCase
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
     	array_push($this->verificationErrors, $this->getTraceFiles($e));
     }
-    $this->click("//li/a[contains(@href, 'option=com_login&task=logout')]");
+    $this->click("//li/a[contains(@href, 'option=com_users&task=session.logout')]");
     $this->waitForPageToLoad("30000");
     $this->countErrors();
 	$this->deleteAllVisibleCookies();

@@ -50,7 +50,7 @@ if ($task == 'edit' || $task == 'editA' || $input->getInt('hidemainmenu'))
 }
 else
 {
-	$logoutLink = JRoute::_('index.php?option=com_login&task=logout&' . JSession::getFormToken() . '=1');
+	$logoutLink = JRoute::_('index.php?option=com_users&task=session.logout&' . JSession::getFormToken() . '=1');
 }
 
 if ($params->get('show_logout', 1))
