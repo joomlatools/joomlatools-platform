@@ -61,12 +61,9 @@ class ConfigViewApplicationHtml extends ConfigViewCmsHtml
 		// Get the params for com_media.
 		$mediaParams = JComponentHelper::getParams('com_media');
 
-		// Load settings for the FTP layer.
-		$ftp = JClientHelper::setCredentialsFromRequest('ftp');
-
 		$this->form = &$form;
 		$this->data = &$data;
-		$this->ftp = &$ftp;
+
 		$this->usersParams = &$usersParams;
 		$this->mediaParams = &$mediaParams;
 
