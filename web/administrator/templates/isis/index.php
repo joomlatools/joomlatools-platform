@@ -151,7 +151,7 @@ $stickyToolbar = $this->params->get('stickyToolbar', '1');
 							</li>
 							<li class="divider"></li>
 							<li class="">
-								<a href="<?php echo JRoute::_('index.php?option=com_login&task=logout&' . JSession::getFormToken() . '=1'); ?>"><?php echo JText::_('TPL_ISIS_LOGOUT'); ?></a>
+								<a href="<?php echo JRoute::_('index.php?option=com_users&task=session.logout&' . JSession::getFormToken() . '=1'); ?>"><?php echo JText::_('TPL_ISIS_LOGOUT'); ?></a>
 							</li>
 						</ul>
 					</li>

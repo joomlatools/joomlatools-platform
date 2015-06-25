@@ -36,7 +36,7 @@ class UsersController extends JControllerLegacy
 			case 'groups':
 			case 'group':
 			case 'levels':
-			case 'level':
+            case 'level' :
 				return $canDo->get('core.admin');
 				break;
 
