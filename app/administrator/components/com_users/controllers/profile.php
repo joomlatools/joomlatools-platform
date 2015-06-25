@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_admin
+ * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,10 +13,10 @@ defined('_JEXEC') or die;
  * User profile controller class.
  *
  * @package     Joomla.Administrator
- * @subpackage  com_admin
+ * @subpackage  com_users
  * @since       1.6
  */
-class AdminControllerProfile extends JControllerForm
+class UsersControllerProfile extends JControllerForm
 {
 	/**
 	 * Method to check if you can edit a record.
@@ -47,7 +47,7 @@ class AdminControllerProfile extends JControllerForm
 	 */
 	public function save($key = null, $urlVar = null)
 	{
-		$this->setRedirect(JRoute::_('index.php?option=com_admin&view=profile&layout=edit&id=' . JFactory::getUser()->id, false));
+		$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile&layout=edit&id=' . JFactory::getUser()->id, false));
 
 		$return = parent::save();
 

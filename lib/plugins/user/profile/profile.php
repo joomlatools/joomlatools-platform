@@ -61,7 +61,7 @@ class PlgUserProfile extends JPlugin
 	public function onContentPrepareData($context, $data)
 	{
 		// Check we are manipulating a valid form.
-		if (!in_array($context, array('com_users.profile', 'com_users.user', 'com_users.registration', 'com_admin.profile')))
+		if (!in_array($context, array('com_users.profile', 'com_users.user', 'com_users.registration')))
 		{
 			return true;
 		}
@@ -214,7 +214,7 @@ class PlgUserProfile extends JPlugin
 		// Check we are manipulating a valid form.
 		$name = $form->getName();
 
-		if (!in_array($name, array('com_admin.profile', 'com_users.user', 'com_users.profile', 'com_users.registration')))
+		if (!in_array($name, array('com_users.user', 'com_users.profile', 'com_users.registration')))
 		{
 			return true;
 		}
@@ -241,7 +241,7 @@ class PlgUserProfile extends JPlugin
 		// Change fields description when displayed in front-end or back-end profile editing
 		$app = JFactory::getApplication();
 
-		if ($app->isSite() || $name == 'com_users.user' || $name == 'com_admin.profile')
+		if ($app->isSite() || $name == 'com_users.user' || $name == 'com_users.profile')
 		{
 			$form->setFieldAttribute('address1', 'description', 'PLG_USER_PROFILE_FILL_FIELD_DESC_SITE', 'profile');
 			$form->setFieldAttribute('address2', 'description', 'PLG_USER_PROFILE_FILL_FIELD_DESC_SITE', 'profile');
@@ -318,7 +318,7 @@ class PlgUserProfile extends JPlugin
 				}
 			}
 			// Case profile in site or admin
-			elseif ($name == 'com_users.profile' || $name == 'com_admin.profile')
+			elseif ($name == 'com_users.profile')
 			{
 				// Toggle whether the field is required.
 				if ($this->params->get('profile-require_' . $field, 1) > 0)
