@@ -249,28 +249,6 @@ class JTableUser extends JTable
 			return false;
 		}
 
-		// Check for root_user != username
-		$config = JFactory::getConfig();
-		$rootUser = $config->get('root_user');
-
-		if (!is_numeric($rootUser))
-		{
-			$query->clear()
-				->select($this->_db->quoteName('id'))
-				->from($this->_db->quoteName('#__users'))
-				->where($this->_db->quoteName('username') . ' = ' . $this->_db->quote($rootUser));
-			$this->_db->setQuery($query);
-			$xid = (int) $this->_db->loadResult();
-
-			if ($rootUser == $this->username && (!$xid || $xid && $xid != (int) $this->id)
-				|| $xid && $xid == (int) $this->id && $rootUser != $this->username)
-			{
-				$this->setError(JText::_('JLIB_DATABASE_ERROR_USERNAME_CANNOT_CHANGE'));
-
-				return false;
-			}
-		}
-
 		return true;
 	}
 

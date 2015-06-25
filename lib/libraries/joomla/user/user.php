@@ -342,32 +342,16 @@ class JUser extends JObject
 		{
 			$this->isRoot = false;
 
-			// Check for the configuration file failsafe.
-			$config = JFactory::getConfig();
-			$rootUser = $config->get('root_user');
+            // Get all groups against which the user is mapped.
+            $identities = $this->getAuthorisedGroups();
+            array_unshift($identities, $this->id * -1);
 
-			// The root_user variable can be a numeric user ID or a username.
-			if (is_numeric($rootUser) && $this->id > 0 && $this->id == $rootUser)
-			{
-				$this->isRoot = true;
-			}
-			elseif ($this->username && $this->username == $rootUser)
-			{
-				$this->isRoot = true;
-			}
-			else
-			{
-				// Get all groups against which the user is mapped.
-				$identities = $this->getAuthorisedGroups();
-				array_unshift($identities, $this->id * -1);
+            if (JAccess::getAssetRules(1)->allow('core.admin', $identities))
+            {
+                $this->isRoot = true;
 
-				if (JAccess::getAssetRules(1)->allow('core.admin', $identities))
-				{
-					$this->isRoot = true;
-
-					return true;
-				}
-			}
+                return true;
+            }
 		}
 
 		return $this->isRoot ? true : JAccess::check($this->id, $action, $assetname);

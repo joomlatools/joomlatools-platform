@@ -20,7 +20,6 @@ class JConfig
 	public $list_limit = '20';
 
 	/* User */
-	public $root_user = '42';
 	public $access    = '1';
 
 	/* Database */
