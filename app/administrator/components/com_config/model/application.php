@@ -134,8 +134,6 @@ class ConfigModelApplication extends ConfigModelForm
 
 				return false;
 			}
-
-			unset($data['rules']);
 		}
 
 		// Save the text filters
@@ -166,128 +164,35 @@ class ConfigModelApplication extends ConfigModelForm
 
 				return false;
 			}
-
-			unset($data['filters']);
 		}
-
-		// Get the previous configuration.
-		$prev = new JConfig;
-		$prev = JArrayHelper::fromObject($prev);
-
-		// Merge the new data in. We do this to preserve values that were not in the form.
-		$data = array_merge($prev, $data);
-
-		/*
-		 * Perform miscellaneous options based on configuration settings/changes.
-		 */
-
-		// Purge the database session table if we are changing to the database handler.
-		if ($prev['session_handler'] != 'database' && $data['session_handler'] == 'database')
-		{
-			$table = JTable::getInstance('session');
-			$table->purge(-1);
-		}
-
-		if (empty($data['cache_handler']))
-		{
-			$data['caching'] = 0;
-		}
-
-		// Give a warning if the cache-folder can not be opened
-		$path = JPATH_SITE.'/cache';
-		if ($data['caching'] > 0 && $data['cache_handler'] == 'file' && @opendir($path) == false)
-		{
-			JLog::add(JText::sprintf('COM_CONFIG_ERROR_CACHE_PATH_NOTWRITABLE', $path), JLog::WARNING, 'jerror');
-			$data['caching'] = 0;
-		}
-
-		// Clean the cache if disabled but previously enabled.
-		if (!$data['caching'] && $prev['caching'])
-		{
-			$cache = JFactory::getCache();
-			$cache->clean();
-		}
-
-		// Create the new configuration object.
-		$config = new JRegistry('config');
-		$config->loadArray($data);
 
 		// Clear cache of com_config component.
 		$this->cleanCache('_system', 0);
 		$this->cleanCache('_system', 1);
-
-		// Write the configuration file.
-		return $this->writeConfigFile($config);
 	}
 
-	/**
-	 * Method to unset the root_user value from configuration data.
-	 *
-	 * This method will load the global configuration data straight from
-	 * JConfig and remove the root_user value for security, then save the configuration.
-	 *
-	 * @return	boolean  True on success, false on failure.
-	 *
-	 * @since	1.6
-	 */
-	public function removeroot()
-	{
-		// Get the previous configuration.
-		$prev = new JConfig;
-		$prev = JArrayHelper::fromObject($prev);
+    /**
+     * Method to unset the root_user value from configuration data.
+     *
+     * This method will load the global configuration data straight from
+     * JConfig and remove the root_user value for security, then save the configuration.
+     *
+     * @return	boolean  True on success, false on failure.
+     *
+     * @since	1.6
+     */
+    public function removeroot()
+    {
+        // Get the previous configuration.
+        $prev = new JConfig;
+        $prev = JArrayHelper::fromObject($prev);
 
-		// Create the new configuration object, and unset the root_user property
-		$config = new JRegistry('config');
-		unset($prev['root_user']);
-		$config->loadArray($prev);
+        // Create the new configuration object, and unset the root_user property
+        $config = new JRegistry('config');
+        unset($prev['root_user']);
+        $config->loadArray($prev);
 
-		// Write the configuration file.
-		return $this->writeConfigFile($config);
-	}
-
-	/**
-	 * Method to write the configuration to a file.
-	 *
-	 * @param   JRegistry  $config  A JRegistry object containing all global config data.
-	 *
-	 * @return	boolean  True on success, false on failure.
-	 *
-	 * @since	2.5.4
-	 * @throws  RuntimeException
-	 */
-	private function writeConfigFile(JRegistry $config)
-	{
-		jimport('joomla.filesystem.path');
-		jimport('joomla.filesystem.file');
-
-		// Set the configuration file path.
-		$file = JPATH_CONFIGURATION . '/configuration.php';
-
-		// Get the new FTP credentials.
-		$ftp = JClientHelper::getCredentials('ftp', true);
-
-		$app = JFactory::getApplication();
-
-		// Attempt to make the file writeable if using FTP.
-		if (!$ftp['enabled'] && JPath::isOwner($file) && !JPath::setPermissions($file, '0644'))
-		{
-			$app->enqueueMessage(JText::_('COM_CONFIG_ERROR_CONFIGURATION_PHP_NOTWRITABLE'), 'notice');
-		}
-
-		// Attempt to write the configuration file as a PHP class named JConfig.
-		$configuration = $config->toString('PHP', array('class' => 'JConfig', 'closingtag' => false));
-
-		if (!JFile::write($file, $configuration))
-		{
-			throw new RuntimeException(JText::_('COM_CONFIG_ERROR_WRITE_FAILED'));
-		}
-
-		// Attempt to make the file unwriteable if using FTP.
-		if (!$ftp['enabled'] && JPath::isOwner($file) && !JPath::setPermissions($file, '0444'))
-		{
-			$app->enqueueMessage(JText::_('COM_CONFIG_ERROR_CONFIGURATION_PHP_NOTUNWRITABLE'), 'notice');
-		}
-
-		return true;
-	}
+        // Write the configuration file.
+        return $this->writeConfigFile($config);
+    }
 }
