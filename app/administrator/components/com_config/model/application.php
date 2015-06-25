@@ -63,14 +63,6 @@ class ConfigModelApplication extends ConfigModelForm
 
 		// Get the text filter data
 		$params = JComponentHelper::getParams('com_config');
-		$data['filters'] = JArrayHelper::fromObject($params->get('filters'));
-
-		// If no filter data found, get from com_content (update of 1.6/1.7 site)
-		if (empty($data['filters']))
-		{
-			$contentParams = JComponentHelper::getParams('com_content');
-			$data['filters'] = JArrayHelper::fromObject($contentParams->get('filters'));
-		}
 
 		// Check for data in the session.
 		$temp = JFactory::getApplication()->getUserState('com_config.config.global.data');
@@ -131,36 +123,6 @@ class ConfigModelApplication extends ConfigModelForm
 			else
 			{
 				$app->enqueueMessage(JText::_('COM_CONFIG_ERROR_ROOT_ASSET_NOT_FOUND'), 'error');
-
-				return false;
-			}
-		}
-
-		// Save the text filters
-		if (isset($data['filters']))
-		{
-			$registry = new JRegistry;
-			$registry->loadArray(array('filters' => $data['filters']));
-
-			$extension = JTable::getInstance('extension');
-
-			// Get extension_id
-			$extension_id = $extension->find(array('name' => 'com_config'));
-
-			if ($extension->load((int) $extension_id))
-			{
-				$extension->params = (string) $registry;
-
-				if (!$extension->check() || !$extension->store())
-				{
-					$app->enqueueMessage(JText::_('SOME_ERROR_CODE'), 'error');
-
-					return;
-				}
-			}
-			else
-			{
-				$app->enqueueMessage(JText::_('COM_CONFIG_ERROR_CONFIG_EXTENSION_NOT_FOUND'), 'error');
 
 				return false;
 			}
