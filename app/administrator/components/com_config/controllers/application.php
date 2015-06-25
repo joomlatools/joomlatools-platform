@@ -64,21 +64,4 @@ class ConfigControllerApplication extends JControllerLegacy
 
 		return $controller->execute();
 	}
-
-	/**
-	 * Method to remove the root property from the configuration.
-	 *
-	 * @return  bool  True on success, false on failure.
-	 *
-	 * @since   1.5
-	 * @deprecated  4.0  Use ConfigControllerApplicationRemoveroot instead.
-	 */
-	public function removeroot()
-	{
-		JLog::add('ConfigControllerApplication is deprecated. Use ConfigControllerApplicationRemoveroot instead.', JLog::WARNING, 'deprecated');
-
-		$controller = new ConfigControllerApplicationRemoveroot;
-
-		return $controller->execute();
-	}
 }
