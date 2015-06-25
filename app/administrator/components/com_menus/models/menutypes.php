@@ -354,7 +354,7 @@ class MenusModelMenutypes extends JModelLegacy
 
 		// Get the template layouts
 		// TODO: This should only search one template -- the current template for this item (default of specified)
-		$folders = JFolder::folders(JPATH_SITE . '/templates', '', false, true);
+		$folders = JFolder::folders(JPATH_WEB . '/templates', '', false, true);
 
 		// Array to hold association between template file names and templates
 		$templateName = array();
