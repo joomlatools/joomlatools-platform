@@ -48,17 +48,11 @@ JHtml::_('formbehavior.chosen', 'select');
 		<div class="span10">
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#page-permissions" data-toggle="tab"><?php echo JText::_('COM_CONFIG_PERMISSIONS'); ?></a></li>
-				<li><a href="#page-filters" data-toggle="tab"><?php echo JText::_('COM_CONFIG_TEXT_FILTERS'); ?></a></li>
 			</ul>
 			<div id="config-document" class="tab-content">
 				<div id="page-permissions" class="tab-pane active">
 					<div class="row-fluid">
 						<?php echo $this->loadTemplate('permissions'); ?>
-					</div>
-				</div>
-				<div id="page-filters" class="tab-pane">
-					<div class="row-fluid">
-						<?php echo $this->loadTemplate('filters'); ?>
 					</div>
 				</div>
 				<input type="hidden" name="task" value="" />
