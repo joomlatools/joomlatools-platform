@@ -170,29 +170,4 @@ class ConfigModelApplication extends ConfigModelForm
 		$this->cleanCache('_system', 0);
 		$this->cleanCache('_system', 1);
 	}
-
-    /**
-     * Method to unset the root_user value from configuration data.
-     *
-     * This method will load the global configuration data straight from
-     * JConfig and remove the root_user value for security, then save the configuration.
-     *
-     * @return	boolean  True on success, false on failure.
-     *
-     * @since	1.6
-     */
-    public function removeroot()
-    {
-        // Get the previous configuration.
-        $prev = new JConfig;
-        $prev = JArrayHelper::fromObject($prev);
-
-        // Create the new configuration object, and unset the root_user property
-        $config = new JRegistry('config');
-        unset($prev['root_user']);
-        $config->loadArray($prev);
-
-        // Write the configuration file.
-        return $this->writeConfigFile($config);
-    }
 }
