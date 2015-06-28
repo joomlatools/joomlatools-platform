@@ -5,14 +5,12 @@
 .DS_Store
 .idea
 
-# Local System Files (i.e. cache, logs, etc.) #
+# Joomla #
 /config/configuration.php
 /administrator/cache
 /cache
 /logs
 /tmp
-/vendor
-composer.lock
 
 # Test Related Files #
 /phpunit.xml
@@ -22,3 +20,19 @@ composer.lock
 # phpDocumentor Logs #
 phpdoc-*
 
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# Vagrant
+bin
+.vagrant
+
+# Node Package Manager
+node_modules
+
+# Vendor (e.g. Composer)
+vendor/*
+!vendor/.gitkeep
+composer.lock
