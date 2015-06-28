@@ -36,6 +36,7 @@ Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for addition
 
 * PHP >= 5.5
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+* Mbstring PHP Extension
 
 ## Installation
 
