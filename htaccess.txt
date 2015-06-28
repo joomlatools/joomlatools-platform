@@ -1,0 +1,34 @@
+
+##
+# READ THIS COMPLETELY IF YOU CHOOSE TO USE THIS FILE!
+#
+# The line just below this section: 'Options +FollowSymLinks' may cause problems
+# with some server configurations.  It is required for use of mod_rewrite, but may already
+# be set by your server administrator in a way that dissallows changing it in
+# your .htaccess file.  If using it causes your server to error out, comment it out (add # to
+# beginning of line), reload your site in your browser and test your sef url's.  If they work,
+# it has been set by your server administrator and you do not need it set here.
+##
+
+## Can be commented out if causes errors, see notes above.
+Options +FollowSymLinks
+
+## Mod_rewrite in use.
+
+RewriteEngine On
+
+## Begin - Change document root
+#
+# If you are using shared hosting and/or you are not allowed to change your server Apacge vhost
+# configuration directly use following rewrites to change the web root or document root to /web.
+#
+# In the below lines you should replace the following string:
+#
+# domain-name.com - Type your own domain name
+#
+## End - Change document root
+
+RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.domain-name.com$
+RewriteCond %{REQUEST_URI} !web/
+RewriteRule (.*) /web/$1 [L]

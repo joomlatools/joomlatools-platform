@@ -47,14 +47,6 @@ RewriteRule .* index.php [F]
 #
 ## End - Custom redirects
 
-##
-# Uncomment following line if your webserver's URL
-# is not directly related to physical file paths.
-# Update Your Joomla! Directory (just / for root).
-##
-
-# RewriteBase /
-
 ## Begin - Joomla! core SEF Section.
 #
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
