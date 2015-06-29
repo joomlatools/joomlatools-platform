@@ -48,6 +48,7 @@ Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for addition
   * `JOOMLA_DB_PASS` - Database password
   * `JOOMLA_DB_HOST` - Database host
   * `JOOMLA_ENV` - Set to environment (`development`, `staging`, `production`)
+  * `JOOMLA_KEY` - A 32 character random string
 4. Set your site vhost document root to `/path/to/site/web/` 
 5. Access Joomla administrator at `http://example.com/administrator`
 
