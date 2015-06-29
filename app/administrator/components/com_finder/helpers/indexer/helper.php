@@ -447,7 +447,7 @@ class FinderIndexerHelper
 			// exceptions when they encounter serious errors.
 			if (in_array(false, $results))
 			{
-				throw new Exception($dispatcher->getError(), 500);
+				throw new Exception($dispatcher->getError());
 			}
 		}
 		catch (Exception $e)

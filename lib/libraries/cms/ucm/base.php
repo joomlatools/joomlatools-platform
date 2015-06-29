@@ -84,7 +84,7 @@ class JUcmBase implements JUcm
 		}
 		catch (RuntimeException $e)
 		{
-			throw new Exception($e->getMessage(), 500);
+			throw new Exception($e->getMessage());
 		}
 
 		try
@@ -93,7 +93,7 @@ class JUcmBase implements JUcm
 		}
 		catch (RuntimeException $e)
 		{
-			throw new Exception($e->getMessage(), 500);
+			throw new Exception($e->getMessage());
 		}
 
 		return true;

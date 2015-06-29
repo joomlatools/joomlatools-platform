@@ -394,7 +394,7 @@ class JInstaller extends JAdapter
 
 		if ($debug)
 		{
-			throw new RuntimeException('Installation unexpectedly terminated: ' . $msg, 500);
+			throw new RuntimeException('Installation unexpectedly terminated: ' . $msg);
 		}
 
 		return $retval;

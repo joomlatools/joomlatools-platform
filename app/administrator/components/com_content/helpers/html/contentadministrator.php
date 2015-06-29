@@ -61,7 +61,7 @@ abstract class JHtmlContentAdministrator
 			}
 			catch (RuntimeException $e)
 			{
-				throw new Exception($e->getMessage(), 500);
+				throw new Exception($e->getMessage());
 			}
 
 			if ($items)

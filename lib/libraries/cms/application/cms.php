@@ -322,7 +322,7 @@ class JApplicationCms extends JApplicationWeb
 
 			if (!class_exists($classname))
 			{
-				throw new RuntimeException(JText::sprintf('JLIB_APPLICATION_ERROR_APPLICATION_LOAD', $name), 500);
+				throw new RuntimeException(JText::sprintf('JLIB_APPLICATION_ERROR_APPLICATION_LOAD', $name));
 			}
 
 			static::$instances[$name] = new $classname;
