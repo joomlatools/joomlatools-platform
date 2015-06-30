@@ -21,8 +21,6 @@
 		<filename>en-GB.com_contenthistory.sys.ini</filename>
 		<filename>en-GB.com_cpanel.ini</filename>
 		<filename>en-GB.com_cpanel.sys.ini</filename>
-		<filename>en-GB.com_finder.ini</filename>
-		<filename>en-GB.com_finder.sys.ini</filename>
 		<filename>en-GB.com_languages.ini</filename>
 		<filename>en-GB.com_languages.sys.ini</filename>
 		<filename>en-GB.com_media.ini</filename>
@@ -74,8 +72,6 @@
 		<filename>en-GB.plg_authentication_ldap.sys.ini</filename>
 		<filename>en-GB.plg_content_emailcloak.ini</filename>
 		<filename>en-GB.plg_content_emailcloak.sys.ini</filename>
-		<filename>en-GB.plg_content_finder.ini</filename>
-		<filename>en-GB.plg_content_finder.sys.ini</filename>
 		<filename>en-GB.plg_content_joomla.ini</filename>
 		<filename>en-GB.plg_content_joomla.sys.ini</filename>
 		<filename>en-GB.plg_content_loadmodule.ini</filename>
