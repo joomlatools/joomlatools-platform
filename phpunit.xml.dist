@@ -39,7 +39,6 @@
 			<directory suffix=".php">lib/libraries/cms</directory>
 			<directory suffix=".php">lib/libraries/joomla</directory>
 			<directory suffix=".php">lib/libraries/legacy</directory>
-			<directory suffix=".php">app/administrator/components/com_finder/helpers/indexer</directory>
 			<file>app/administrator/includes/helper.php</file>
 			<file>lib/libraries/loader.php</file>
 			<file>lib/libraries/platform.php</file>

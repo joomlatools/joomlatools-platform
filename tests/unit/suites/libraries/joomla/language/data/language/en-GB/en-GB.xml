@@ -11,7 +11,6 @@
     <description>en-GB site language</description>
     <files>
         <filename>en-GB.com_content.ini</filename>
-        <filename>en-GB.com_finder.ini</filename>
         <filename>en-GB.com_media.ini</filename>
         <filename>en-GB.com_search.ini</filename>
         <filename>en-GB.com_users.ini</filename>
@@ -41,8 +40,6 @@
         <filename>en-GB.mod_custom.sys.ini</filename>
         <filename>en-GB.mod_feed.ini</filename>
         <filename>en-GB.mod_feed.sys.ini</filename>
-        <filename>en-GB.mod_finder.ini</filename>
-        <filename>en-GB.mod_finder.sys.ini</filename>
         <filename>en-GB.mod_languages.ini</filename>
         <filename>en-GB.mod_languages.sys.ini</filename>
         <filename>en-GB.mod_login.ini</filename>

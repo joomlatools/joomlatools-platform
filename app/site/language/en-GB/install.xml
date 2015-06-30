@@ -12,14 +12,12 @@
 	<description>en-GB site language</description>
 	<files>
 		<filename>en-GB.com_content.ini</filename>
-		<filename>en-GB.com_finder.ini</filename>
 		<filename>en-GB.com_media.ini</filename>
 		<filename>en-GB.com_newsfeeds.ini</filename>
 		<filename>en-GB.com_search.ini</filename>
 		<filename>en-GB.com_tags.ini</filename>
 		<filename>en-GB.com_users.ini</filename>
 		<filename>en-GB.files_joomla.sys.ini</filename>
-		<filename>en-GB.finder_cli.ini</filename>
 		<filename>en-GB.ini</filename>
 		<filename>en-GB.lib_idna_convert.sys.ini</filename>
 		<filename>en-GB.lib_joomla.ini</filename>
@@ -45,8 +43,6 @@
 		<filename>en-GB.mod_custom.sys.ini</filename>
 		<filename>en-GB.mod_feed.ini</filename>
 		<filename>en-GB.mod_feed.sys.ini</filename>
-		<filename>en-GB.mod_finder.ini</filename>
-		<filename>en-GB.mod_finder.sys.ini</filename>
 		<filename>en-GB.mod_languages.ini</filename>
 		<filename>en-GB.mod_languages.sys.ini</filename>
 		<filename>en-GB.mod_login.ini</filename>
