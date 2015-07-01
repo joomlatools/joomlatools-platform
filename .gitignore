@@ -6,7 +6,6 @@
 .idea
 
 # Joomla #
-/config/configuration.php
 /administrator/cache
 /cache
 /logs
