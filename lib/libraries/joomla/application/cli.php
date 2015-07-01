@@ -294,7 +294,7 @@ class JApplicationCli extends JApplicationBase
 		// Instantiate variables.
 		$config = array();
 
-		if (empty($file) && defined('JPATH_BASE'))
+		if (empty($file) && defined('JPATH_CONFIGURATION'))
 		{
 			$file = JPATH_CONFIGURATION . '/configuration.php';
 
