@@ -489,13 +489,13 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		$eid = $row->extension_id;
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// We will copy the manifest file to its appropriate place.
 		if (!$this->parent->copyManifest())
@@ -889,13 +889,13 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		 */
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// Update an entry to the extension table
 		if ($eid)
@@ -1153,13 +1153,13 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		$db->execute();
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $row->element, 'type' => 'component', 'client_id' => 1, 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $row->element, 'type' => 'component', 'client_id' => 1, 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// Now we need to delete the installation directories. This is the final step in uninstalling the component.
 		if (trim($row->element))
@@ -1824,13 +1824,13 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		 */
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// And now we run the postflight
 		ob_start();

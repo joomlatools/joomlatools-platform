@@ -264,13 +264,13 @@ class JInstallerAdapterLanguage extends JAdapterInstance
 		}
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $this->get('tag'), 'type' => 'language', 'client_id' => '', 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $this->get('tag'), 'type' => 'language', 'client_id' => '', 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		return $row->get('extension_id');
 	}
@@ -374,13 +374,13 @@ class JInstallerAdapterLanguage extends JAdapterInstance
 		 */
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $this->get('tag'), 'type' => 'language', 'client_id' => $clientId));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $this->get('tag'), 'type' => 'language', 'client_id' => $clientId));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// Update an entry to the extension table
 		$row = JTable::getInstance('extension');
