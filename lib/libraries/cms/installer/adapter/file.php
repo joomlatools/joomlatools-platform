@@ -560,7 +560,7 @@ class JInstallerAdapterFile extends JAdapterInstance
 
 			// Remove the schema version
 			$query = $db->getQuery(true)
-				->delete('#__schemas')
+				->delete($db->quoteName('#__schemas'))
 				->where('extension_id = ' . $row->extension_id);
 			$db->setQuery($query);
 			$db->execute();
