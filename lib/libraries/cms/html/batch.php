@@ -142,17 +142,24 @@ abstract class JHtmlBatch
 	 */
 	public static function tag()
 	{
-		JHtml::_('bootstrap.tooltip', '.modalTooltip', array('container' => '.modal-body'));
+		$result = '';
 
-		// Create the batch selector to tag items on a selection list.
-		return
-			'<label id="batch-tag-lbl" for="batch-tag-id" class="modalTooltip"'
-			. ' title="' . JHtml::tooltipText('JLIB_HTML_BATCH_TAG_LABEL', 'JLIB_HTML_BATCH_TAG_LABEL_DESC') . '">'
-			. JText::_('JLIB_HTML_BATCH_TAG_LABEL')
-			. '</label>'
-			. '<select name="batch[tag]" class="inputbox" id="batch-tag-id">'
-			. '<option value="">' . JText::_('JLIB_HTML_BATCH_TAG_NOCHANGE') . '</option>'
-			. JHtml::_('select.options', JHtml::_('tag.tags', array('filter.published' => array(1))), 'value', 'text')
-			. '</select>';
+        if(JComponentHelper::isEnabled('com_tags'))
+        {
+            JHtml::_('bootstrap.tooltip', '.modalTooltip', array('container' => '.modal-body'));
+
+            // Create the batch selector to tag items on a selection list.
+            $result =
+                '<label id="batch-tag-lbl" for="batch-tag-id" class="modalTooltip"'
+                . ' title="' . JHtml::tooltipText('JLIB_HTML_BATCH_TAG_LABEL', 'JLIB_HTML_BATCH_TAG_LABEL_DESC') . '">'
+                . JText::_('JLIB_HTML_BATCH_TAG_LABEL')
+                . '</label>'
+                . '<select name="batch[tag]" class="inputbox" id="batch-tag-id">'
+                . '<option value="">' . JText::_('JLIB_HTML_BATCH_TAG_NOCHANGE') . '</option>'
+                . JHtml::_('select.options', JHtml::_('tag.tags', array('filter.published' => array(1))), 'value', 'text')
+                . '</select>';
+        }
+
+        return $result;
 	}
 }
