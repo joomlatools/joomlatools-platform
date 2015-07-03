@@ -60,162 +60,145 @@ class JHelperMedia
 	 */
 	public function canUpload($file, $component = 'com_media')
 	{
-		$app    = JFactory::getApplication();
-		$params = JComponentHelper::getParams($component);
+        if(JComponentHelper::isEnabled($component))
+        {
+            $app    = JFactory::getApplication();
+            $params = JComponentHelper::getParams($component);
 
-		if (empty($file['name']))
-		{
-			$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_UPLOAD_INPUT'), 'notice');
+            if (empty($file['name'])) {
+                $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_UPLOAD_INPUT'), 'notice');
 
-			return false;
-		}
+                return false;
+            }
 
-		jimport('joomla.filesystem.file');
+            jimport('joomla.filesystem.file');
 
-		if (str_replace(' ', '', $file['name']) != $file['name'] || $file['name'] !== JFile::makeSafe($file['name']))
-		{
-			$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILENAME'), 'notice');
+            if (str_replace(' ', '', $file['name']) != $file['name'] || $file['name'] !== JFile::makeSafe($file['name'])) {
+                $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILENAME'), 'notice');
 
-			return false;
-		}
+                return false;
+            }
 
-		$filetypes = explode('.', $file['name']);
+            $filetypes = explode('.', $file['name']);
 
-		if (count($filetypes) < 2)
-		{
-			// There seems to be no extension
-			$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETYPE'), 'notice');
+            if (count($filetypes) < 2) {
+                // There seems to be no extension
+                $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETYPE'), 'notice');
 
-			return false;
-		}
+                return false;
+            }
 
-		array_shift($filetypes);
+            array_shift($filetypes);
 
-		// Media file names should never have executable extensions buried in them.
-		$executable = array(
-			'php', 'js', 'exe', 'phtml', 'java', 'perl', 'py', 'asp','dll', 'go', 'ade', 'adp', 'bat', 'chm', 'cmd', 'com', 'cpl', 'hta', 'ins', 'isp',
-			'jse', 'lib', 'mde', 'msc', 'msp', 'mst', 'pif', 'scr', 'sct', 'shb', 'sys', 'vb', 'vbe', 'vbs', 'vxd', 'wsc', 'wsf', 'wsh'
-		);
+            // Media file names should never have executable extensions buried in them.
+            $executable = array(
+                'php', 'js', 'exe', 'phtml', 'java', 'perl', 'py', 'asp', 'dll', 'go', 'ade', 'adp', 'bat', 'chm', 'cmd', 'com', 'cpl', 'hta', 'ins', 'isp',
+                'jse', 'lib', 'mde', 'msc', 'msp', 'mst', 'pif', 'scr', 'sct', 'shb', 'sys', 'vb', 'vbe', 'vbs', 'vxd', 'wsc', 'wsf', 'wsh'
+            );
 
-		$check = array_intersect($filetypes, $executable);
+            $check = array_intersect($filetypes, $executable);
 
-		if (!empty($check))
-		{
-			$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETYPE'), 'notice');
-			return false;
-		}
+            if (!empty($check)) {
+                $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETYPE'), 'notice');
 
-		$filetype = array_pop($filetypes);
-		$allowable = explode(',', $params->get('upload_extensions'));
-		$ignored   = explode(',', $params->get('ignore_extensions'));
+                return false;
+            }
 
-		if ($filetype == '' || $filetype == false || (!in_array($filetype, $allowable) && !in_array($filetype, $ignored)))
-		{
-			$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETYPE'), 'notice');
+            $filetype  = array_pop($filetypes);
+            $allowable = explode(',', $params->get('upload_extensions'));
+            $ignored   = explode(',', $params->get('ignore_extensions'));
 
-			return false;
-		}
+            if ($filetype == '' || $filetype == false || (!in_array($filetype, $allowable) && !in_array($filetype, $ignored))) {
+                $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETYPE'), 'notice');
 
-		$maxSize = (int) ($params->get('upload_maxsize', 0) * 1024 * 1024);
+                return false;
+            }
 
-		if ($maxSize > 0 && (int) $file['size'] > $maxSize)
-		{
-			$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETOOLARGE'), 'notice');
+            $maxSize = (int)($params->get('upload_maxsize', 0) * 1024 * 1024);
 
-			return false;
-		}
+            if ($maxSize > 0 && (int)$file['size'] > $maxSize) {
+                $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETOOLARGE'), 'notice');
 
-		if ($params->get('restrict_uploads', 1))
-		{
-			$images = explode(',', $params->get('image_extensions'));
+                return false;
+            }
 
-			if (in_array($filetype, $images))
-			{
-				// If it is an image run it through getimagesize
-				// If tmp_name is empty, then the file was bigger than the PHP limit
-				if (!empty($file['tmp_name']))
-				{
-					if (($imginfo = getimagesize($file['tmp_name'])) === false)
-					{
-						$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNINVALID_IMG'), 'notice');
+            if ($params->get('restrict_uploads', 1)) {
+                $images = explode(',', $params->get('image_extensions'));
 
-						return false;
-					}
-				}
-				else
-				{
-					$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETOOLARGE'), 'notice');
+                if (in_array($filetype, $images)) {
+                    // If it is an image run it through getimagesize
+                    // If tmp_name is empty, then the file was bigger than the PHP limit
+                    if (!empty($file['tmp_name'])) {
+                        if (($imginfo = getimagesize($file['tmp_name'])) === false) {
+                            $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNINVALID_IMG'), 'notice');
 
-					return false;
-				}
-			}
-			elseif (!in_array($filetype, $ignored))
-			{
-				// If it's not an image, and we're not ignoring it
-				$allowed_mime = explode(',', $params->get('upload_mime'));
-				$illegal_mime = explode(',', $params->get('upload_mime_illegal'));
+                            return false;
+                        }
+                    } else {
+                        $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNFILETOOLARGE'), 'notice');
 
-				if (function_exists('finfo_open') && $params->get('check_mime', 1))
-				{
-					// We have fileinfo
-					$finfo = finfo_open(FILEINFO_MIME);
-					$type  = finfo_file($finfo, $file['tmp_name']);
+                        return false;
+                    }
+                } elseif (!in_array($filetype, $ignored)) {
+                    // If it's not an image, and we're not ignoring it
+                    $allowed_mime = explode(',', $params->get('upload_mime'));
+                    $illegal_mime = explode(',', $params->get('upload_mime_illegal'));
 
-					if (strlen($type) && !in_array($type, $allowed_mime) && in_array($type, $illegal_mime))
-					{
-						$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNINVALID_MIME'), 'notice');
+                    if (function_exists('finfo_open') && $params->get('check_mime', 1)) {
+                        // We have fileinfo
+                        $finfo = finfo_open(FILEINFO_MIME);
+                        $type  = finfo_file($finfo, $file['tmp_name']);
 
-						return false;
-					}
+                        if (strlen($type) && !in_array($type, $allowed_mime) && in_array($type, $illegal_mime)) {
+                            $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNINVALID_MIME'), 'notice');
 
-					finfo_close($finfo);
-				}
-				elseif (function_exists('mime_content_type') && $params->get('check_mime', 1))
-				{
-					// We have mime magic.
-					$type = mime_content_type($file['tmp_name']);
+                            return false;
+                        }
 
-					if (strlen($type) && !in_array($type, $allowed_mime) && in_array($type, $illegal_mime))
-					{
-						$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNINVALID_MIME'), 'notice');
+                        finfo_close($finfo);
+                    } elseif (function_exists('mime_content_type') && $params->get('check_mime', 1)) {
+                        // We have mime magic.
+                        $type = mime_content_type($file['tmp_name']);
 
-						return false;
-					}
-				}
-				elseif (!JFactory::getUser()->authorise('core.manage', $component))
-				{
-					$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNNOTADMIN'), 'notice');
+                        if (strlen($type) && !in_array($type, $allowed_mime) && in_array($type, $illegal_mime)) {
+                            $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNINVALID_MIME'), 'notice');
 
-					return false;
-				}
-			}
-		}
+                            return false;
+                        }
+                    } elseif (!JFactory::getUser()->authorise('core.manage', $component)) {
+                        $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNNOTADMIN'), 'notice');
 
-		$xss_check = file_get_contents($file['tmp_name'], false, null, -1, 256);
+                        return false;
+                    }
+                }
+            }
 
-		$html_tags = array(
-			'abbr', 'acronym', 'address', 'applet', 'area', 'audioscope', 'base', 'basefont', 'bdo', 'bgsound', 'big', 'blackface', 'blink',
-			'blockquote', 'body', 'bq', 'br', 'button', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'comment', 'custom', 'dd', 'del',
-			'dfn', 'dir', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'fn', 'font', 'form', 'frame', 'frameset', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-			'head', 'hr', 'html', 'iframe', 'ilayer', 'img', 'input', 'ins', 'isindex', 'keygen', 'kbd', 'label', 'layer', 'legend', 'li', 'limittext',
-			'link', 'listing', 'map', 'marquee', 'menu', 'meta', 'multicol', 'nobr', 'noembed', 'noframes', 'noscript', 'nosmartquotes', 'object',
-			'ol', 'optgroup', 'option', 'param', 'plaintext', 'pre', 'rt', 'ruby', 's', 'samp', 'script', 'select', 'server', 'shadow', 'sidebar',
-			'small', 'spacer', 'span', 'strike', 'strong', 'style', 'sub', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'title',
-			'tr', 'tt', 'ul', 'var', 'wbr', 'xml', 'xmp', '!DOCTYPE', '!--'
-		);
+            $xss_check = file_get_contents($file['tmp_name'], false, null, -1, 256);
 
-		foreach ($html_tags as $tag)
-		{
-			// A tag is '<tagname ', so we need to add < and a space or '<tagname>'
-			if (stristr($xss_check, '<' . $tag . ' ') || stristr($xss_check, '<' . $tag . '>'))
-			{
-				$app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNIEXSS'), 'notice');
+            $html_tags = array(
+                'abbr', 'acronym', 'address', 'applet', 'area', 'audioscope', 'base', 'basefont', 'bdo', 'bgsound', 'big', 'blackface', 'blink',
+                'blockquote', 'body', 'bq', 'br', 'button', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'comment', 'custom', 'dd', 'del',
+                'dfn', 'dir', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'fn', 'font', 'form', 'frame', 'frameset', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                'head', 'hr', 'html', 'iframe', 'ilayer', 'img', 'input', 'ins', 'isindex', 'keygen', 'kbd', 'label', 'layer', 'legend', 'li', 'limittext',
+                'link', 'listing', 'map', 'marquee', 'menu', 'meta', 'multicol', 'nobr', 'noembed', 'noframes', 'noscript', 'nosmartquotes', 'object',
+                'ol', 'optgroup', 'option', 'param', 'plaintext', 'pre', 'rt', 'ruby', 's', 'samp', 'script', 'select', 'server', 'shadow', 'sidebar',
+                'small', 'spacer', 'span', 'strike', 'strong', 'style', 'sub', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'title',
+                'tr', 'tt', 'ul', 'var', 'wbr', 'xml', 'xmp', '!DOCTYPE', '!--'
+            );
 
-				return false;
-			}
-		}
+            foreach ($html_tags as $tag) {
+                // A tag is '<tagname ', so we need to add < and a space or '<tagname>'
+                if (stristr($xss_check, '<' . $tag . ' ') || stristr($xss_check, '<' . $tag . '>')) {
+                    $app->enqueueMessage(JText::_('JLIB_MEDIA_ERROR_WARNIEXSS'), 'notice');
 
-		return true;
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
 	}
 
 	/**

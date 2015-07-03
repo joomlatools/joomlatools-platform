@@ -23,8 +23,6 @@
 		<filename>en-GB.com_cpanel.sys.ini</filename>
 		<filename>en-GB.com_languages.ini</filename>
 		<filename>en-GB.com_languages.sys.ini</filename>
-		<filename>en-GB.com_media.ini</filename>
-		<filename>en-GB.com_media.sys.ini</filename>
 		<filename>en-GB.com_menus.ini</filename>
 		<filename>en-GB.com_menus.sys.ini</filename>
 		<filename>en-GB.com_modules.ini</filename>
@@ -86,8 +84,6 @@
 		<filename>en-GB.plg_editors_tinymce.sys.ini</filename>
 		<filename>en-GB.plg_editors-xtd_article.ini</filename>
 		<filename>en-GB.plg_editors-xtd_article.sys.ini</filename>
-		<filename>en-GB.plg_editors-xtd_image.ini</filename>
-		<filename>en-GB.plg_editors-xtd_image.sys.ini</filename>
 		<filename>en-GB.plg_editors-xtd_pagebreak.ini</filename>
 		<filename>en-GB.plg_editors-xtd_pagebreak.sys.ini</filename>
 		<filename>en-GB.plg_editors-xtd_readmore.ini</filename>

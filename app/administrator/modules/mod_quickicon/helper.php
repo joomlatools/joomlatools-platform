@@ -76,14 +76,6 @@ abstract class ModQuickIconHelper
 						'group' => 'MOD_QUICKICON_CONTENT'
 					),
 					array(
-						'link' => JRoute::_('index.php?option=com_media'),
-						'image' => 'pictures',
-						'icon' => 'header/icon-48-media.png',
-						'text' => JText::_('MOD_QUICKICON_MEDIA_MANAGER'),
-						'access' => array('core.manage', 'com_media'),
-						'group' => 'MOD_QUICKICON_CONTENT'
-					),
-					array(
 						'link' => JRoute::_('index.php?option=com_menus'),
 						'image' => 'list-view',
 						'icon' => 'header/icon-48-menumgr.png',

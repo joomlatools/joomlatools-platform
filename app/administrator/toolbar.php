@@ -162,10 +162,13 @@ abstract class JToolbarHelper
 	 */
 	public static function media_manager($directory = '', $alt = 'JTOOLBAR_UPLOAD')
 	{
-		$bar = JToolbar::getInstance('toolbar');
+		if(JComponentHelper::isEnabled('com_media'))
+        {
+            $bar = JToolbar::getInstance('toolbar');
 
-		// Add an upload button.
-		$bar->appendButton('Popup', 'upload', $alt, 'index.php?option=com_media&tmpl=component&task=popupUpload&folder=' . $directory, 800, 520);
+            // Add an upload button.
+            $bar->appendButton('Popup', 'upload', $alt, 'index.php?option=com_media&tmpl=component&task=popupUpload&folder=' . $directory, 800, 520);
+        }
 	}
 
 	/**
