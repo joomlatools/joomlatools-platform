@@ -12,7 +12,6 @@
 	<description>en-GB site language</description>
 	<files>
 		<filename>en-GB.com_content.ini</filename>
-		<filename>en-GB.com_media.ini</filename>
 		<filename>en-GB.com_newsfeeds.ini</filename>
 		<filename>en-GB.com_search.ini</filename>
 		<filename>en-GB.com_tags.ini</filename>
