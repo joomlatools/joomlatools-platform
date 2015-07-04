@@ -221,16 +221,6 @@ INSERT IGNORE INTO `content_frontpage` (`content_id`, `ordering`) VALUES
 (35, 4),
 (50, 3);
 
-INSERT INTO `contentitem_tag_map` (`type_alias`, `core_content_id`, `content_item_id`, `tag_id`, `tag_date`, `type_id`) VALUES
-('com_content.article', 1, 24, 2, '2013-10-15 14:57:21', 1),
-('com_content.article', 1, 24, 3, '2013-10-15 14:57:21', 1),
-('com_content.article', 1, 24, 4, '2013-10-15 14:57:21', 1),
-('com_content.article', 1, 24, 5, '2013-10-15 14:57:21', 1),
-('com_content.article', 2, 71, 2, '2013-10-15 14:58:28', 1),
-('com_content.article', 2, 71, 3, '2013-10-15 14:58:28', 1),
-('com_content.article', 2, 71, 4, '2013-10-15 14:58:28', 1);
-
-
 INSERT IGNORE INTO `menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
 (1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 275, 0, '*', 0),
 (201, 'usermenu', 'Your Profile', 'your-profile', '', 'your-profile', 'index.php?option=com_users&view=profile', 'component', 1, 1, 1, 25, 0, '0000-00-00 00:00:00', 0, 2, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 95, 96, 0, '*', 0),

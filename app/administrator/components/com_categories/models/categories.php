@@ -253,7 +253,7 @@ class CategoriesModelCategories extends JModelList
 		{
 			$query->where($db->quoteName('tagmap.tag_id') . ' = ' . (int) $tagId)
 				->join(
-					'LEFT', $db->quoteName('#__contentitem_tag_map', 'tagmap')
+					'LEFT', $db->quoteName('#__tags_map', 'tagmap')
 					. ' ON ' . $db->quoteName('tagmap.content_item_id') . ' = ' . $db->quoteName('a.id')
 					. ' AND ' . $db->quoteName('tagmap.type_alias') . ' = ' . $db->quote($extension . '.category')
 				);
