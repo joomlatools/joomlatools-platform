@@ -190,7 +190,7 @@ abstract class JModelAdmin extends JModelForm
 		{
 			$typeAlias = $this->type->type_alias;
 		}
-		$this->tagsObserver = $this->table->getObserverOfClass('JTableObserverTags');
+		$this->tagsObserver = $this->table->getObserverOfClass('TagsTableObserverTags');
 
 		if (!empty($commands['category_id']))
 		{
@@ -592,9 +592,9 @@ abstract class JModelAdmin extends JModelForm
 				$tags = array($value);
 
 				/**
-				 * @var  JTableObserverTags  $tagsObserver
+				 * @var  TagsTableObserverTags  $tagsObserver
 				 */
-				$tagsObserver = $table->getObserverOfClass('JTableObserverTags');
+				$tagsObserver = $table->getObserverOfClass('TagsTableObserverTags');
 				$result = $tagsObserver->setNewTags($tags, false);
 
 				if (!$result)
@@ -1150,7 +1150,7 @@ abstract class JModelAdmin extends JModelForm
 		$tableClassName = get_class($table);
 		$contentType = new JUcmType;
 		$type = $contentType->getTypeByTable($tableClassName);
-		$tagsObserver = $table->getObserverOfClass('JTableObserverTags');
+		$tagsObserver = $table->getObserverOfClass('TagsTableObserverTags');
 		$conditions = array();
 
 		if (empty($pks))

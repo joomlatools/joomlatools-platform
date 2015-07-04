@@ -30,7 +30,10 @@ class JTableContent extends JTable
 	{
 		parent::__construct('#__content', 'id', $db);
 
-		JTableObserverTags::createObserver($this, array('typeAlias' => 'com_content.article'));
+		if(JComponentHelper::isEnabled('com_tags')) {
+            TagsTableObserverTags::createObserver($this, array('typeAlias' => 'com_content.article'));
+        }
+
 		JTableObserverContenthistory::createObserver($this, array('typeAlias' => 'com_content.article'));
 	}
 
