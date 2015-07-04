@@ -201,12 +201,6 @@ class CategoriesModelCategory extends JModelAdmin
 			{
 				$result->modified_time = null;
 			}
-
-			if (!empty($result->id))
-			{
-				$result->tags = new JHelperTags;
-				$result->tags->getTagIds($result->id, $result->extension . '.category');
-			}
 		}
 
 		$assoc = $this->getAssoc();
@@ -444,11 +438,6 @@ class CategoriesModelCategory extends JModelAdmin
 		$pk = (!empty($data['id'])) ? $data['id'] : (int) $this->getState($this->getName() . '.id');
 		$isNew = true;
 
-		if ((!empty($data['tags']) && $data['tags'][0] != ''))
-		{
-			$table->newTags = $data['tags'];
-		}
-
 		// Include the content plugins for the on save events.
 		JPluginHelper::importPlugin('content');
 
@@ -678,47 +667,6 @@ class CategoriesModelCategory extends JModelAdmin
 		return true;
 	}
 
-	protected function batchTag($value, $pks, $contexts)
-	{
-		// Set the variables
-		$user = JFactory::getUser();
-		$table = $this->getTable();
-
-		foreach ($pks as $pk)
-		{
-			if ($user->authorise('core.edit', $contexts[$pk]))
-			{
-				$table->reset();
-				$table->load($pk);
-				$tags = array($value);
-
-				/**
-				 * @var  JTableObserverTags  $tagsObserver
-				 */
-				$tagsObserver = $table->getObserverOfClass('JTableObserverTags');
-				$result = $tagsObserver->setNewTags($tags, false);
-
-				if (!$result)
-				{
-					$this->setError($table->getError());
-
-					return false;
-				}
-			}
-			else
-			{
-				$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_EDIT'));
-
-				return false;
-			}
-		}
-
-		// Clean the cache
-		$this->cleanCache();
-
-		return true;
-	}
-
 	/**
 	 * Batch copy categories to a new category.
 	 *
@@ -878,8 +826,6 @@ class CategoriesModelCategory extends JModelAdmin
 			$this->table->title = $title;
 			$this->table->alias = $alias;
 
-			parent::createTagsHelper($this->tagsObserver, $this->type, $pk, $this->typeAlias, $this->table);
-
 			// Store the row.
 			if (!$this->table->store())
 			{
@@ -1026,8 +972,6 @@ class CategoriesModelCategory extends JModelAdmin
 					return false;
 				}
 			}
-
-			parent::createTagsHelper($this->tagsObserver, $this->type, $pk, $this->typeAlias, $this->table);
 
 			// Store the row.
 			if (!$this->table->store())
