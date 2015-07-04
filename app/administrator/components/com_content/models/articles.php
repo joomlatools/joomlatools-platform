@@ -300,7 +300,7 @@ class ContentModelArticles extends JModelList
 		{
 			$query->where($db->quoteName('tagmap.tag_id') . ' = ' . (int) $tagId)
 				->join(
-					'LEFT', $db->quoteName('#__tags_map', 'tagmap')
+					'LEFT', $db->quoteName('#__content_tags_map', 'tagmap')
 					. ' ON ' . $db->quoteName('tagmap.content_item_id') . ' = ' . $db->quoteName('a.id')
 					. ' AND ' . $db->quoteName('tagmap.type_alias') . ' = ' . $db->quote('com_content.article')
 				);
