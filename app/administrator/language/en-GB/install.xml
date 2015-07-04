@@ -92,16 +92,12 @@
 		<filename>en-GB.plg_finder_categories.sys.ini</filename>
 		<filename>en-GB.plg_finder_content.ini</filename>
 		<filename>en-GB.plg_finder_content.sys.ini</filename>
-		<filename>en-GB.plg_finder_tags.ini</filename>
-		<filename>en-GB.plg_finder_tags.sys.ini</filename>
 		<filename>en-GB.plg_installer_webinstaller.ini</filename>
 		<filename>en-GB.plg_installer_webinstaller.sys.ini</filename>
 		<filename>en-GB.plg_search_categories.ini</filename>
 		<filename>en-GB.plg_search_categories.sys.ini</filename>
 		<filename>en-GB.plg_search_content.ini</filename>
 		<filename>en-GB.plg_search_content.sys.ini</filename>
-		<filename>en-GB.plg_search_tags.ini</filename>
-		<filename>en-GB.plg_search_tags.sys.ini</filename>
 		<filename>en-GB.plg_system_debug.ini</filename>
 		<filename>en-GB.plg_system_debug.sys.ini</filename>
 		<filename>en-GB.plg_system_highlight.ini</filename>
