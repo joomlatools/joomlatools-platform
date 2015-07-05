@@ -595,23 +595,27 @@ abstract class JToolbarHelper
 	 */
 	public static function versions($typeAlias, $itemId, $height = 800, $width = 500, $alt = 'JTOOLBAR_VERSIONS')
 	{
-		JHtml::_('behavior.modal', 'a.modal_jform_contenthistory');
+		if(JComponentHelper::isEnabled('com_contenthistory'))
+        {
+            JHtml::_('behavior.modal', 'a.modal_jform_contenthistory');
 
-		$contentTypeTable = JTable::getInstance('Contenttype');
-		$typeId           = $contentTypeTable->getTypeId($typeAlias);
+            $contentTypeTable = JTable::getInstance('Contenttype');
+            $typeId           = $contentTypeTable->getTypeId($typeAlias);
 
-		// Options array for JLayout
-		$options              = array();
-		$options['title']     = JText::_($alt);
-		$options['height']    = $height;
-		$options['width']     = $width;
-		$options['itemId']    = $itemId;
-		$options['typeId']    = $typeId;
-		$options['typeAlias'] = $typeAlias;
+            // Options array for JLayout
+            $options              = array();
+            $options['title']     = JText::_($alt);
+            $options['height']    = $height;
+            $options['width']     = $width;
+            $options['itemId']    = $itemId;
+            $options['typeId']    = $typeId;
+            $options['typeAlias'] = $typeAlias;
 
-		$bar    = JToolbar::getInstance('toolbar');
-		$layout = new JLayoutFile('joomla.toolbar.versions');
-		$bar->appendButton('Custom', $layout->render($options), 'versions');
+            $bar    = JToolbar::getInstance('toolbar');
+            $layout = new JLayoutFile('joomla.toolbar.versions');
+            $bar->appendButton('Custom', $layout->render($options), 'versions');
+        }
+        }
 	}
 
 	/**
