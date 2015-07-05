@@ -14,8 +14,5 @@
 		<file plugin="categories">categories.php</file>
     	<filename>index.html</filename>
 	</files>
-	<languages>
-		<language tag="en-GB">language/en-GB/en-GB.plg_finder_categories.ini</language>
-		<language tag="en-GB">language/en-GB/en-GB.plg_finder_categories.sys.ini</language>
-	</languages>
+
 </extension>

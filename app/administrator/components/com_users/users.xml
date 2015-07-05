@@ -20,9 +20,7 @@
 		<folder>models</folder>
 		<folder>views</folder>
 	</files>
-	<languages folder="site">
-		<language tag="en-GB">language/en-GB.com_users.ini</language>
-	</languages>
+
 	<administration>
 		<files folder="admin">
 			<filename>config.xml</filename>
@@ -34,9 +32,6 @@
 			<folder>models</folder>
 			<folder>views</folder>
 		</files>
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB.com_users.ini</language>
-			<language tag="en-GB">language/en-GB.com_users.sys.ini</language>
-		</languages>
+
 	</administration>
 </extension>

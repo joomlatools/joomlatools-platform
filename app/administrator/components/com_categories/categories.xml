@@ -20,10 +20,6 @@
 			<folder>models</folder>
 			<folder>views</folder>
 		</files>
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB.com_categories.ini</language>
-			<language tag="en-GB">language/en-GB.com_categories.sys.ini</language>
-		</languages>
 	</administration>
 </extension>
 

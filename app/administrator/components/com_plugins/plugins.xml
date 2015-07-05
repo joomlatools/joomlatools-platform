@@ -20,9 +20,5 @@
 			<folder>models</folder>
 			<folder>views</folder>
 		</files>
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB.com_plugins.ini</language>
-			<language tag="en-GB">language/en-GB.com_plugins.sys.ini</language>
-		</languages>
 	</administration>
 </extension>

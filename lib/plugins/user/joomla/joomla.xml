@@ -14,10 +14,7 @@
 		<filename>index.html</filename>
 		<folder>postinstall</folder>
 	</files>
-	<languages>
-		<language tag="en-GB">en-GB.plg_user_joomla.ini</language>
-		<language tag="en-GB">en-GB.plg_user_joomla.sys.ini</language>
-	</languages>
+
 	<config>
 		<fields name="params">
 

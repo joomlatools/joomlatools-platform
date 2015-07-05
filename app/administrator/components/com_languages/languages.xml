@@ -23,10 +23,6 @@
 			<folder>tables</folder>
 			<folder>views</folder>
 		</files>
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB.com_languages.ini</language>
-			<language tag="en-GB">language/en-GB.com_languages.sys.ini</language>
-		</languages>
 	</administration>
 </extension>
 

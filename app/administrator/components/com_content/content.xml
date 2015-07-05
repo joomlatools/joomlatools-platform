@@ -18,9 +18,7 @@
 		<folder>helpers</folder>
 		<folder>models</folder>
 	</files>
-	<languages folder="site">
-		<language tag="en-GB">language/en-GB.com_content.ini</language>
-	</languages>
+
 	<administration>
 		<files folder="admin">
 			<filename>access.xml</filename>
@@ -35,10 +33,6 @@
 			<folder>tables</folder>
 			<folder>views</folder>
 		</files>
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB.com_content.ini</language>
-			<language tag="en-GB">language/en-GB.com_content.sys.ini</language>
-		</languages>
 	</administration>
 </extension>
 
