@@ -12,7 +12,6 @@
 	<scriptfile>script.php</scriptfile>
 	<files>
 		<file plugin="highlight">highlight.php</file>
-    	<filename>index.html</filename>
 		<folder>media</folder>
 	</files>
 

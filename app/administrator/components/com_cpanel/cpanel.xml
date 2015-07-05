@@ -13,7 +13,6 @@
 		<files folder="admin">
 			<filename>controller.php</filename>
 			<filename>cpanel.php</filename>
-			<filename>index.html</filename>
 			<folder>views</folder>
 		</files>
 	</administration>

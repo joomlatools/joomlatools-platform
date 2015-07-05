@@ -14,7 +14,6 @@
 	<description>MOD_STATUS_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_status">mod_status.php</filename>
-		<filename>index.html</filename>
 		<folder>tmpl</folder>
 	</files>
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_STATUS" />

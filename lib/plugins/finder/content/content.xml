@@ -12,7 +12,6 @@
 	<scriptfile>script.php</scriptfile>
 	<files>
 		<file plugin="content">content.php</file>
-    	<filename>index.html</filename>
 	</files>
 
 </extension>
