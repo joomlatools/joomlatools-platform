@@ -466,7 +466,7 @@ abstract class JModelLegacy extends JObject
 			$user = JFactory::getUser();
 
 			// Get an instance of the row to checkout.
-			$historyTable = JTable::getInstance('Contenthistory');
+			$historyTable = JTable::getInstance('History', 'ContenthistoryTable');
 
 			if (!$historyTable->load($version_id))
 			{
