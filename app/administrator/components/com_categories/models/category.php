@@ -25,29 +25,6 @@ class CategoriesModelCategory extends JModelAdmin
 	protected $text_prefix = 'COM_CATEGORIES';
 
 	/**
-	 * The type alias for this content type. Used for content version history.
-	 *
-	 * @var      string
-	 * @since    3.2
-	 */
-	public $typeAlias = null;
-
-	/**
-	 * Override parent constructor.
-	 *
-	 * @param   array  $config  An optional associative array of configuration settings.
-	 *
-	 * @see     JModelLegacy
-	 * @since   3.2
-	 */
-	public function __construct($config = array())
-	{
-		parent::__construct($config);
-		$extension = JFactory::getApplication()->input->get('extension', 'com_content');
-		$this->typeAlias = $extension . '.category';
-	}
-
-	/**
 	 * Method to test whether a record can be deleted.
 	 *
 	 * @param   object   $record  A record object.
@@ -680,9 +657,6 @@ class CategoriesModelCategory extends JModelAdmin
 	 */
 	protected function batchCopy($value, $pks, $contexts)
 	{
-		$type = new JUcmType;
-		$this->type = $type->getTypeByAlias($this->typeAlias);
-
 		// $value comes as {parent_id}.{extension}
 		$parts = explode('.', $value);
 		$parentId = (int) JArrayHelper::getValue($parts, 0, 1);
@@ -876,9 +850,7 @@ class CategoriesModelCategory extends JModelAdmin
 	protected function batchMove($value, $pks, $contexts)
 	{
 		$parentId = (int) $value;
-		$type = new JUcmType;
-		$this->type = $type->getTypeByAlias($this->typeAlias);
-
+		
 		$db = $this->getDbo();
 		$query = $db->getQuery(true);
 		$extension = JFactory::getApplication()->input->get('extension', '', 'word');
