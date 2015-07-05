@@ -114,7 +114,6 @@ INSERT IGNORE INTO `assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `
 (170, 50, 223, 224, 6, 'com_content.article.68', 'Captcha', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (171, 50, 225, 226, 6, 'com_content.article.69', 'Quick Icons', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (172, 96, 182, 183, 7, 'com_content.article.70', 'Smart Search', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(175, 1, 430, 431, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
 (178, 93, 144, 145, 7, 'com_content.article.71', 'Similar Tags', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
 (179, 1, 435, 436, 1, 'ucm_content.3', 'ucm_content.3', '[]'),
 (180, 93, 146, 147, 7, 'com_content.article.72', 'Popular Tags', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}');
