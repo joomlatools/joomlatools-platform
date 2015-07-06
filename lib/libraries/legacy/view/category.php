@@ -174,9 +174,6 @@ class JViewCategory extends JViewLegacy
 			// We need to set the layout in case this is an alternative menu item (with an alternative layout)
 			$this->setLayout($active->query['layout']);
 		}
-
-		$this->category->tags = new JHelperTags;
-		$this->category->tags->getItemTags($this->extension . '.category', $this->category->id);
 	}
 
 	/**
