@@ -52,30 +52,6 @@ abstract class ModQuickIconHelper
 
 				self::$buttons[$key] = array(
 					array(
-						'link' => JRoute::_('index.php?option=com_content&task=article.add'),
-						'image' => 'pencil-2',
-						'icon' => 'header/icon-48-article-add.png',
-						'text' => JText::_('MOD_QUICKICON_ADD_NEW_ARTICLE'),
-						'access' => array('core.manage', 'com_content', 'core.create', 'com_content'),
-						'group' => 'MOD_QUICKICON_CONTENT'
-					),
-					array(
-						'link' => JRoute::_('index.php?option=com_content'),
-						'image' => 'stack',
-						'icon' => 'header/icon-48-article.png',
-						'text' => JText::_('MOD_QUICKICON_ARTICLE_MANAGER'),
-						'access' => array('core.manage', 'com_content'),
-						'group' => 'MOD_QUICKICON_CONTENT'
-					),
-					array(
-						'link' => JRoute::_('index.php?option=com_categories&extension=com_content'),
-						'image' => 'folder',
-						'icon' => 'header/icon-48-category.png',
-						'text' => JText::_('MOD_QUICKICON_CATEGORY_MANAGER'),
-						'access' => array('core.manage', 'com_content'),
-						'group' => 'MOD_QUICKICON_CONTENT'
-					),
-					array(
 						'link' => JRoute::_('index.php?option=com_menus'),
 						'image' => 'list-view',
 						'icon' => 'header/icon-48-menumgr.png',

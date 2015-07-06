@@ -170,7 +170,7 @@ class JHelperTags extends JHelper
      * @return  string  Name of the table for a type
      *
      * @since   3.1
-     * @deprecated  4.0  Use JUcmType::getTypeId() instead
+     * @deprecated  4.0  Use ContentTableUcmType::getTypeId() instead
      */
     public function getTypeId($typeAlias)
     {

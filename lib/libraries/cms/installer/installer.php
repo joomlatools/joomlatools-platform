@@ -1967,7 +1967,7 @@ class JInstaller extends JAdapter
 	 * Cleans up discovered extensions if they're being installed some other way
 	 *
 	 * @param   string   $type     The type of extension (component, etc)
-	 * @param   string   $element  Unique element identifier (e.g. com_content)
+	 * @param   string   $element  Unique element identifier (e.g. com_foo)
 	 * @param   string   $folder   The folder of the extension (plugins; e.g. system)
 	 * @param   integer  $client   The client application (administrator or site)
 	 *
