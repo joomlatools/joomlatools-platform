@@ -75,7 +75,7 @@ class CategoriesViewCategory extends JViewLegacy
 		$checkedOut = !($this->item->checked_out == 0 || $this->item->checked_out == $userId);
 
 		// Check to see if the type exists
-		$ucmType = new JUcmType;
+		$ucmType = new ContentTableUcmType;
 		$this->typeId = $ucmType->getTypeId($extension . '.category');
 
 		// Avoid nonsense situation.

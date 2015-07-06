@@ -31,14 +31,6 @@ if ($user->authorise('core.manage', 'com_menus'))
 }
 
 /**
- * Content Submenu
-**/
-if ($user->authorise('core.manage', 'com_content'))
-{
-	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_COM_CONTENT'), null, 'disabled'));
-}
-
-/**
  * Components Submenu
 **/
 

@@ -552,7 +552,7 @@ abstract class JToolbarHelper
 	/**
 	 * Writes a configuration button and invokes a cancel operation (eg a checkin).
 	 *
-	 * @param   string   $component  The name of the component, eg, com_content.
+	 * @param   string   $component  The name of the component, eg, com_foo.
 	 * @param   integer  $height     The height of the popup. [UNUSED]
 	 * @param   integer  $width      The width of the popup. [UNUSED]
 	 * @param   string   $alt        The name of the button.
@@ -583,7 +583,7 @@ abstract class JToolbarHelper
 	/**
 	 * Writes a version history
 	 *
-	 * @param   string   $typeAlias  The component and type, for example 'com_content.article'
+	 * @param   string   $typeAlias  The component and type, for example 'com_foo.article'
 	 * @param   integer  $itemId     The id of the item, for example the article id.
 	 * @param   integer  $height     The height of the popup.
 	 * @param   integer  $width      The width of the popup.
@@ -599,7 +599,7 @@ abstract class JToolbarHelper
         {
             JHtml::_('behavior.modal', 'a.modal_jform_contenthistory');
 
-            $contentTypeTable = JTable::getInstance('Contenttype');
+            $contentTypeTable = JTable::getInstance('Types', 'ContentTable');
             $typeId           = $contentTypeTable->getTypeId($typeAlias);
 
             // Options array for JLayout
@@ -614,7 +614,6 @@ abstract class JToolbarHelper
             $bar    = JToolbar::getInstance('toolbar');
             $layout = new JLayoutFile('joomla.toolbar.versions');
             $bar->appendButton('Custom', $layout->render($options), 'versions');
-        }
         }
 	}
 

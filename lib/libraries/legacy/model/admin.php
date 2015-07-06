@@ -170,19 +170,19 @@ abstract class JModelAdmin extends JModelForm
 		$this->user = JFactory::getUser();
 		$this->table = $this->getTable();
 		$this->tableClassName = get_class($this->table);
-		$this->contentType = new JUcmType;
+		$this->contentType = new ContentTableUcmType;
 		$this->type = $this->contentType->getTypeByTable($this->tableClassName);
 		$this->batchSet = true;
 
 		if ($this->type == false)
 		{
-			$type = new JUcmType;
+			$type = new ContentTableUcmType;
 			$this->type = $type->getTypeByAlias($this->typeAlias);
 
 		}
 		if ($this->type === false)
 		{
-			$type = new JUcmType;
+			$type = new ContentTableUcmType;
 			$this->type = $type->getTypeByAlias($this->typeAlias);
 			$typeAlias = $this->type->type_alias;
 		}
@@ -278,7 +278,7 @@ abstract class JModelAdmin extends JModelForm
 			$this->user = JFactory::getUser();
 			$this->table = $this->getTable();
 			$this->tableClassName = get_class($this->table);
-			$this->contentType = new JUcmType;
+			$this->contentType = new ContentTableUcmType;
 			$this->type = $this->contentType->getTypeByTable($this->tableClassName);
 		}
 
@@ -335,7 +335,7 @@ abstract class JModelAdmin extends JModelForm
 			$this->user = JFactory::getUser();
 			$this->table = $this->getTable();
 			$this->tableClassName = get_class($this->table);
-			$this->contentType = new JUcmType;
+			$this->contentType = new ContentTableUcmType;
 			$this->type = $this->contentType->getTypeByTable($this->tableClassName);
 		}
 
@@ -439,7 +439,7 @@ abstract class JModelAdmin extends JModelForm
 			$this->user = JFactory::getUser();
 			$this->table = $this->getTable();
 			$this->tableClassName = get_class($this->table);
-			$this->contentType = new JUcmType;
+			$this->contentType = new ContentTableUcmType;
 			$this->type = $this->contentType->getTypeByTable($this->tableClassName);
 		}
 
@@ -496,7 +496,7 @@ abstract class JModelAdmin extends JModelForm
 			$this->user = JFactory::getUser();
 			$this->table = $this->getTable();
 			$this->tableClassName = get_class($this->table);
-			$this->contentType = new JUcmType;
+			$this->contentType = new ContentTableUcmType;
 			$this->type = $this->contentType->getTypeByTable($this->tableClassName);
 		}
 
@@ -1148,7 +1148,7 @@ abstract class JModelAdmin extends JModelForm
 	{
 		$table = $this->getTable();
 		$tableClassName = get_class($table);
-		$contentType = new JUcmType;
+		$contentType = new ContentTableUcmType;
 		$type = $contentType->getTypeByTable($tableClassName);
 		$tagsObserver = $table->getObserverOfClass('TagsTableObserverTags');
 		$conditions = array();
@@ -1223,7 +1223,7 @@ abstract class JModelAdmin extends JModelForm
 	 * Method to create a tags helper to ensure proper management of tags
 	 *
 	 * @param   JTableObserverTags  $tagsObserver  The tags observer for this table
-	 * @param   JUcmType            $type          The type for the table being processed
+	 * @param   ContentTableUcmType $type          The type for the table being processed
 	 * @param   integer             $pk            Primary key of the item bing processed
 	 * @param   string              $typeAlias     The type alias for this table
 	 * @param   JTable              $table         The JTable object

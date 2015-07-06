@@ -115,11 +115,6 @@ class PlgUserProfile extends JPlugin
 			{
 				JHtml::register('users.calendar', array(__CLASS__, 'calendar'));
 			}
-
-			if (!JHtml::isRegistered('users.tos'))
-			{
-				JHtml::register('users.tos', array(__CLASS__, 'tos'));
-			}
 		}
 
 		return true;
@@ -235,7 +230,6 @@ class PlgUserProfile extends JPlugin
 			'favoritebook',
 			'aboutme',
 			'dob',
-			'tos',
 		);
 
 		// Change fields description when displayed in front-end or back-end profile editing
@@ -254,22 +248,6 @@ class PlgUserProfile extends JPlugin
 			$form->setFieldAttribute('favoritebook', 'description', 'PLG_USER_PROFILE_FILL_FIELD_DESC_SITE', 'profile');
 			$form->setFieldAttribute('aboutme', 'description', 'PLG_USER_PROFILE_FILL_FIELD_DESC_SITE', 'profile');
 			$form->setFieldAttribute('dob', 'description', 'PLG_USER_PROFILE_FILL_FIELD_DESC_SITE', 'profile');
-			$form->setFieldAttribute('tos', 'description', 'PLG_USER_PROFILE_FIELD_TOS_DESC_SITE', 'profile');
-		}
-
-		$tosarticle = $this->params->get('register_tos_article');
-		$tosenabled = $this->params->get('register-require_tos', 0);
-
-		// We need to be in the registration form, field needs to be enabled and we need an article ID
-		if ($name != 'com_users.registration' || !$tosenabled || !$tosarticle)
-		{
-			// We only want the TOS in the registration form
-			$form->removeField('tos', 'profile');
-		}
-		else
-		{
-			// Push the TOS article ID into the TOS field.
-			$form->setFieldAttribute('tos', 'article', $tosarticle, 'profile');
 		}
 
 		foreach ($fields as $field)

@@ -137,8 +137,6 @@ class SearchViewSearch extends JViewLegacy
 			$total      = $this->get('total');
 			$pagination = $this->get('pagination');
 
-			require_once JPATH_SITE . '/components/com_content/helpers/route.php';
-
 			for ($i = 0, $count = count($results); $i < $count; $i++)
 			{
 				$row = & $results[$i]->text;
