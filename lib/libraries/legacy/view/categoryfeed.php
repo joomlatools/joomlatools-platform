@@ -35,7 +35,7 @@ class JViewCategoryfeed extends JViewLegacy
 		$extension      = $app->input->getString('option');
 		$contentType = $extension . '.' . $this->viewName;
 
-		$ucmType = new JUcmType;
+		$ucmType = new ContentTableUcmType;
 		$ucmRow = $ucmType->getTypeByAlias($contentType);
 		$ucmMapCommon = json_decode($ucmRow->field_mappings)->common;
 		$createdField = null;
