@@ -10,7 +10,7 @@
 defined('JPATH_PLATFORM') or die;
 
 /**
- * Version information class for the Joomla CMS.
+ * Version information class for the Joomlatools Platform.
  *
  * @package     Joomla.Libraries
  * @subpackage  Version
@@ -19,37 +19,37 @@ defined('JPATH_PLATFORM') or die;
 final class JVersion
 {
 	/** @var  string  Product name. */
-	public $PRODUCT = 'Joomla!';
+	public $PRODUCT = 'Joomlatools Platform';
 
 	/** @var  string  Release version. */
-	public $RELEASE = '3.3';
+	public $RELEASE = '1.0';
 
 	/** @var  string  Maintenance version. */
-	public $DEV_LEVEL = '6';
+	public $DEV_LEVEL = '0';
 
 	/** @var  string  Development STATUS. */
-	public $DEV_STATUS = 'Stable';
+	public $DEV_STATUS = 'Beta';
 
 	/** @var  string  Build number. */
 	public $BUILD = '';
 
 	/** @var  string  Code name. */
-	public $CODENAME = 'Ember';
+	public $CODENAME = 'Braveheart';
 
 	/** @var  string  Release date. */
-	public $RELDATE = '01-October-2014';
+	public $RELDATE = '17-August-2015';
 
 	/** @var  string  Release time. */
-	public $RELTIME = '02:00';
+	public $RELTIME = '00:00';
 
 	/** @var  string  Release timezone. */
 	public $RELTZ = 'GMT';
 
 	/** @var  string  Copyright Notice. */
-	public $COPYRIGHT = 'Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.';
+	public $COPYRIGHT = 'Copyright (C) 20015 Johan Janssens. All rights reserved.';
 
 	/** @var  string  Link text. */
-	public $URL = '<a href="http://www.joomla.org">Joomla!</a> is Free Software released under the GNU General Public License.';
+	public $URL = '<a href="http://developer.joomlatools.com/platform">Joomlatools Platform</a> is Free Software released under the GNU General Public License.';
 
     /** @var string Media version */
     private $mediaVersion;
