@@ -51,6 +51,9 @@ final class JVersion
 	/** @var  string  Link text. */
 	public $URL = '<a href="http://www.joomla.org">Joomla!</a> is Free Software released under the GNU General Public License.';
 
+    /** @var string Media version */
+    private $mediaVersion;
+
 	/**
 	 * Compares two a "PHP standardized" version number against the current Joomla version.
 	 *
@@ -148,10 +151,8 @@ final class JVersion
 	 */
 	public function generateMediaVersion()
 	{
-		$date   = new JDate;
 		$config = JFactory::getConfig();
-
-		return md5($this->getLongVersion() . $config->get('secret') . $date->toSql());
+		return md5($this->getLongVersion() . $config->get('secret'));
 	}
 
 	/**
@@ -167,30 +168,11 @@ final class JVersion
 	 */
 	public function getMediaVersion()
 	{
-		// Load the media version and cache it for future use
-		static $mediaVersion = null;
-
-		if ($mediaVersion === null)
-		{
-			$config = JFactory::getConfig();
-			$debugEnabled = $config->get('debug', 0);
-
-			// Get the joomla library params
-			$params = JLibraryHelper::getParams('joomla');
-
-			// Get the media version
-			$mediaVersion = $params->get('mediaversion', '');
-
-			// Refresh assets in debug mode or when the media version is not set
-			if ($debugEnabled || empty($mediaVersion))
-			{
-				$mediaVersion = $this->generateMediaVersion();
-
-				$this->setMediaVersion($mediaVersion);
-			}
+		if (empty($this->mediaVersion)) {
+			$this->mediaVersion = $this->generateMediaVersion();
 		}
 
-		return $mediaVersion;
+		return $this->mediaVersion;
 	}
 
 	/**
@@ -202,9 +184,8 @@ final class JVersion
 	 */
 	public function refreshMediaVersion()
 	{
-		$newMediaVersion = $this->generateMediaVersion();
-
-		return $this->setMediaVersion($newMediaVersion);
+		$mediaVersion = $this->generateMediaVersion();
+		return $this->setMediaVersion($mediaVersion);
 	}
 
 	/**
@@ -218,16 +199,8 @@ final class JVersion
 	 */
 	public function setMediaVersion($mediaVersion)
 	{
-		// Do not allow empty media versions
-		if (!empty($mediaVersion))
-		{
-			// Get library parameters
-			$params = JLibraryHelper::getParams('joomla');
-
-			$params->set('mediaversion', $mediaVersion);
-
-			// Save modified params
-			JLibraryHelper::saveParams('joomla', $params);
+		if (!empty($mediaVersion)) {
+			$this->mediaVersion = $mediaVersion;
 		}
 
 		return $this;
