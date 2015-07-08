@@ -7,6 +7,11 @@
   "license": "GPL-2.0+",
   "authors": [
     {
+      "name": "Johan Janssens",
+      "email": "johan@janssens.me",
+      "homepage": "http://about.me/johanjanssens"
+    },
+    {
       "name": "Timble",
       "email": "info@timble.net",
       "homepage": "http://www.timble.net"

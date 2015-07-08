@@ -369,26 +369,31 @@ class JUser extends JObject
 	 */
 	public function getAuthorisedCategories($component, $action)
 	{
-		// Brute force method: get all published category rows for the component and check each one
-		// TODO: Modify the way permissions are stored in the db to allow for faster implementation and better scaling
-		$db = JFactory::getDbo();
-		$query = $db->getQuery(true)
-			->select('c.id AS id, a.name AS asset_name')
-			->from('#__categories AS c')
-			->join('INNER', '#__assets AS a ON c.asset_id = a.id')
-			->where('c.extension = ' . $db->quote($component))
-			->where('c.published = 1');
-		$db->setQuery($query);
-		$allCategories = $db->loadObjectList('id');
-		$allowedCategories = array();
+        $allowedCategories = array();
 
-		foreach ($allCategories as $category)
-		{
-			if ($this->authorise($action, $category->asset_name))
-			{
-				$allowedCategories[] = (int) $category->id;
-			}
-		}
+        if(JComponentHelper::isEnabled('com_categories'))
+        {
+            // Brute force method: get all published category rows for the component and check each one
+            // TODO: Modify the way permissions are stored in the db to allow for faster implementation and better scaling
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true)
+                ->select('c.id AS id, a.name AS asset_name')
+                ->from('#__categories AS c')
+                ->join('INNER', '#__assets AS a ON c.asset_id = a.id')
+                ->where('c.extension = ' . $db->quote($component))
+                ->where('c.published = 1');
+            $db->setQuery($query);
+            $allCategories = $db->loadObjectList('id');
+            $allowedCategories = array();
+
+            foreach ($allCategories as $category)
+            {
+                if ($this->authorise($action, $category->asset_name))
+                {
+                    $allowedCategories[] = (int) $category->id;
+                }
+            }
+        }
 
 		return $allowedCategories;
 	}

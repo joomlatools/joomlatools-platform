@@ -1145,12 +1145,15 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		}
 
 		// Remove categories for this component
-		$query->clear()
-			->delete('#__categories')
-			->where('extension=' . $db->quote($element), 'OR')
-			->where('extension LIKE ' . $db->quote($element . '.%'));
-		$db->setQuery($query);
-		$db->execute();
+        if(JComponentHelper::isEnabled('com_categories'))
+        {
+            $query->clear()
+                ->delete('#__categories')
+                ->where('extension=' . $db->quote($element), 'OR')
+                ->where('extension LIKE ' . $db->quote($element . '.%'));
+            $db->setQuery($query);
+            $db->execute();
+        }
 
 		// Clobber any possible pending updates
 		//$update = JTable::getInstance('update');

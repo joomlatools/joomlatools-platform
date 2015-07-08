@@ -1256,7 +1256,7 @@ abstract class JModelAdmin extends JModelForm
 		// Check that the category exists
 		if ($categoryId)
 		{
-			$categoryTable = JTable::getInstance('Category');
+			$categoryTable = JTable::getInstance('Categories', 'CategoriesTable');
 
 			if (!$categoryTable->load($categoryId))
 			{
