@@ -229,8 +229,8 @@ class MenusModelItems extends JModelList
 		if ($assoc)
 		{
 			$query->select('COUNT(asso2.id)>1 as association')
-				->join('LEFT', '#__associations AS asso ON asso.id = a.id AND asso.context=' . $db->quote('com_menus.item'))
-				->join('LEFT', '#__associations AS asso2 ON asso2.key = asso.key')
+				->join('LEFT', '#__languages_associations AS asso ON asso.id = a.id AND asso.context=' . $db->quote('com_menus.item'))
+				->join('LEFT', '#__languages_associations AS asso2 ON asso2.key = asso.key')
 				->group('a.id');
 		}
 
