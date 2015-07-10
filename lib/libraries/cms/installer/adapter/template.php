@@ -330,9 +330,9 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 
 			$lang->setDebug($debug);
 
-			// Insert record in #__template_styles
+			// Insert record in #__templates
 			$query->clear()
-				->insert($db->quoteName('#__template_styles'))
+				->insert($db->quoteName('#__templates'))
 				->columns($columns)
 				->values(implode(',', $values));
 
@@ -403,7 +403,7 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 
 		// Deny remove default template
 		$db = $this->parent->getDbo();
-		$query = "SELECT COUNT(*) FROM #__template_styles WHERE home = '1' AND template = " . $db->quote($name);
+		$query = "SELECT COUNT(*) FROM #__templates WHERE home = '1' AND template = " . $db->quote($name);
 		$db->setQuery($query);
 
 		if ($db->loadResult() != 0)
@@ -462,14 +462,14 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 		$query = 'UPDATE #__menu'
 			. ' SET template_style_id = 0'
 			. ' WHERE template_style_id in ('
-			. '	SELECT s.id FROM #__template_styles s'
+			. '	SELECT s.id FROM #__templates s'
 			. ' WHERE s.template = ' . $db->quote(strtolower($name)) . ' AND s.client_id = ' . $clientId . ')';
 
 		$db->setQuery($query);
 		$db->execute();
 
 		$query = $db->getQuery(true)
-			->delete($db->quoteName('#__template_styles'))
+			->delete($db->quoteName('#__templates'))
 			->where($db->quoteName('template') . ' = ' . $db->quote($name))
 			->where($db->quoteName('client_id') . ' = ' . $clientId);
 		$db->setQuery($query);
@@ -585,7 +585,7 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 		{
 			$db = $this->parent->getDbo();
 
-			// Insert record in #__template_styles
+			// Insert record in #__templates
 			$lang = JFactory::getLanguage();
 			$debug = $lang->setDebug(false);
 			$columns = array($db->quoteName('template'),
@@ -595,7 +595,7 @@ class JInstallerAdapterTemplate extends JAdapterInstance
 				$db->quoteName('params')
 			);
 			$query = $db->getQuery(true)
-				->insert($db->quoteName('#__template_styles'))
+				->insert($db->quoteName('#__templates'))
 				->columns($columns)
 				->values(
 					$db->quote($this->parent->extension->element)

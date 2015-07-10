@@ -51,7 +51,7 @@ abstract class JHtmlUsers
 			$db = JFactory::getDbo();
 			$query = $db->getQuery(true)
 				->select('title')
-				->from('#__template_styles')
+				->from('#__templates')
 				->where('id = ' . $db->quote($value));
 			$db->setQuery($query);
 			$title = $db->loadResult();

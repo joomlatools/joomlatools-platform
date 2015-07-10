@@ -205,7 +205,7 @@ class JApplicationAdministrator extends JApplicationCms
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('template, s.params')
-			->from('#__template_styles as s')
+			->from('#__templates as s')
 			->join('LEFT', '#__extensions as e ON e.type=' . $db->quote('template') . ' AND e.element=s.template AND e.client_id=s.client_id');
 
 		if ($admin_style)

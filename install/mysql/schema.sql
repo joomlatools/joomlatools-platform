@@ -213,10 +213,10 @@ CREATE TABLE IF NOT EXISTS `schemas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `template_styles`
+-- Table structure for table `templates`
 --
 
-CREATE TABLE IF NOT EXISTS `template_styles` (
+CREATE TABLE IF NOT EXISTS `templates` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `template` varchar(50) NOT NULL DEFAULT '',
   `client_id` tinyint(1) unsigned NOT NULL DEFAULT 0,
