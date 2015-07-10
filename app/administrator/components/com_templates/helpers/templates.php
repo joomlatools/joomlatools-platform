@@ -149,8 +149,8 @@ class TemplatesHelper
 	{
 		$positions = array();
 
-		$templateBaseDir = $clientId ? JPATH_ADMINISTRATOR : JPATH_SITE;
-		$filePath = JPath::clean($templateBaseDir . '/templates/' . $templateDir . '/templateDetails.xml');
+        $client	  = JApplicationHelper::getClientInfo($clientId);
+		$filePath = JPath::clean($client->web_root . '/templates/' . $templateDir . '/templateDetails.xml');
 
 		if (is_file($filePath))
 		{
