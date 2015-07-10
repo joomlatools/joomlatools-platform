@@ -755,7 +755,7 @@ class MenusModelItem extends JModelAdmin
 
 		// Join on the asset groups table.
 		$query->select('ag.title AS access_title')
-			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access')
+			->join('LEFT', '#__users_roles AS ag ON ag.id = a.access')
 			->where('a.published >= 0')
 			->where('a.client_id = 0')
 			->order('a.position, a.ordering');

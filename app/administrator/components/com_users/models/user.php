@@ -672,7 +672,7 @@ class UsersModelUser extends JModelAdmin
 			$query = $db->getQuery(true);
 
 			// Remove users from the group
-			$query->delete($db->quoteName('#__user_usergroup_map'))
+			$query->delete($db->quoteName('#__users_groups_users'))
 				->where($db->quoteName('user_id') . ' IN (' . implode(',', $user_ids) . ')');
 
 			// Only remove users from selected group
@@ -702,7 +702,7 @@ class UsersModelUser extends JModelAdmin
 
 			// First, we need to check if the user is already assigned to a group
 			$query->select($db->quoteName('user_id'))
-				->from($db->quoteName('#__user_usergroup_map'))
+				->from($db->quoteName('#__users_groups_users'))
 				->where($db->quoteName('group_id') . ' = ' . (int) $group_id);
 			$db->setQuery($query);
 			$users = $db->loadColumn();
@@ -728,7 +728,7 @@ class UsersModelUser extends JModelAdmin
 				return false;
 			}
 
-			$query->insert($db->quoteName('#__user_usergroup_map'))
+			$query->insert($db->quoteName('#__users_groups_users'))
 				->columns(array($db->quoteName('user_id'), $db->quoteName('group_id')));
 			$db->setQuery($query);
 

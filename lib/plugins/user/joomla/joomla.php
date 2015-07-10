@@ -55,7 +55,7 @@ class PlgUserJoomla extends JPlugin
 		}
 
 		$query = $this->db->getQuery(true)
-			->delete($this->db->quoteName('#__session'))
+			->delete($this->db->quoteName('#__users_sessions'))
 			->where($this->db->quoteName('userid') . ' = ' . (int) $user['id']);
 
 		$this->db->setQuery($query)->execute();
@@ -210,7 +210,7 @@ class PlgUserJoomla extends JPlugin
 
 		// Update the user related fields for the Joomla sessions table.
 		$query = $this->db->getQuery(true)
-			->update($this->db->quoteName('#__session'))
+			->update($this->db->quoteName('#__users_sessions'))
 			->set($this->db->quoteName('guest') . ' = ' . $this->db->quote($instance->guest))
 			->set($this->db->quoteName('username') . ' = ' . $this->db->quote($instance->username))
 			->set($this->db->quoteName('userid') . ' = ' . (int) $instance->id)
@@ -260,7 +260,7 @@ class PlgUserJoomla extends JPlugin
 		if ($forceLogout)
 		{
 			$query = $this->db->getQuery(true)
-				->delete($this->db->quoteName('#__session'))
+				->delete($this->db->quoteName('#__users_sessions'))
 				->where($this->db->quoteName('userid') . ' = ' . (int) $user['id'])
 				->where($this->db->quoteName('client_id') . ' = ' . (int) $options['clientid']);
 			$this->db->setQuery($query)->execute();

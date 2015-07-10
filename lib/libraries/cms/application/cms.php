@@ -168,7 +168,7 @@ class JApplicationCms extends JApplicationWeb
 
 		$query = $db->getQuery(true)
 			->select($db->quoteName('session_id'))
-			->from($db->quoteName('#__session'))
+			->from($db->quoteName('#__users_sessions'))
 			->where($db->quoteName('session_id') . ' = ' . $db->quote($session->getId()));
 
 		$db->setQuery($query, 0, 1);
@@ -181,14 +181,14 @@ class JApplicationCms extends JApplicationWeb
 
 			if ($session->isNew())
 			{
-				$query->insert($db->quoteName('#__session'))
+				$query->insert($db->quoteName('#__users_sessions'))
 					->columns($db->quoteName('session_id') . ', ' . $db->quoteName('client_id') . ', ' . $db->quoteName('time'))
 					->values($db->quote($session->getId()) . ', ' . (int) $this->getClientId() . ', ' . $db->quote((int) time()));
 				$db->setQuery($query);
 			}
 			else
 			{
-				$query->insert($db->quoteName('#__session'))
+				$query->insert($db->quoteName('#__users_sessions'))
 					->columns(
 						$db->quoteName('session_id') . ', ' . $db->quoteName('client_id') . ', ' . $db->quoteName('guest') . ', ' .
 						$db->quoteName('time') . ', ' . $db->quoteName('userid') . ', ' . $db->quoteName('username')
@@ -678,7 +678,7 @@ class JApplicationCms extends JApplicationWeb
 			// The modulus introduces a little entropy, making the flushing less accurate
 			// but fires the query less than half the time.
 			$query = $db->getQuery(true)
-				->delete($db->quoteName('#__session'))
+				->delete($db->quoteName('#__users_sessions'))
 				->where($db->quoteName('time') . ' < ' . $db->quote((int) ($time - $session->getExpire())));
 
 			$db->setQuery($query);

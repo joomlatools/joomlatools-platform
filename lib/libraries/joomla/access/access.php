@@ -172,7 +172,7 @@ class JAccess
 			$db = JFactory::getDbo();
 			$query = $db->getQuery(true)
 				->select('parent.id, parent.lft, parent.rgt')
-				->from('#__usergroups AS parent')
+				->from('#__users_groups AS parent')
 				->order('parent.lft');
 			$db->setQuery($query);
 			self::$userGroups = $db->loadObjectList('id');
@@ -313,20 +313,20 @@ class JAccess
 
 				if (empty($userId))
 				{
-					$query->from('#__usergroups AS a')
+					$query->from('#__users_groups AS a')
 						->where('a.id = ' . (int) $guestUsergroup);
 				}
 				else
 				{
-					$query->from('#__user_usergroup_map AS map')
+					$query->from('#__users_groups_users AS map')
 						->where('map.user_id = ' . (int) $userId)
-						->join('LEFT', '#__usergroups AS a ON a.id = map.group_id');
+						->join('LEFT', '#__users_groups AS a ON a.id = map.group_id');
 				}
 
 				// If we want the rules cascading up to the global asset node we need a self-join.
 				if ($recursive)
 				{
-					$query->join('LEFT', '#__usergroups AS b ON b.lft <= a.lft AND b.rgt >= a.rgt');
+					$query->join('LEFT', '#__users_groups AS b ON b.lft <= a.lft AND b.rgt >= a.rgt');
 				}
 
 				// Execute the query and load the rules from the result.
@@ -373,9 +373,9 @@ class JAccess
 		// First find the users contained in the group
 		$query = $db->getQuery(true)
 			->select('DISTINCT(user_id)')
-			->from('#__usergroups as ug1')
-			->join('INNER', '#__usergroups AS ug2 ON ug2.lft' . $test . 'ug1.lft AND ug1.rgt' . $test . 'ug2.rgt')
-			->join('INNER', '#__user_usergroup_map AS m ON ug2.id=m.group_id')
+			->from('#__users_groups as ug1')
+			->join('INNER', '#__users_groups AS ug2 ON ug2.lft' . $test . 'ug1.lft AND ug1.rgt' . $test . 'ug2.rgt')
+			->join('INNER', '#__users_groups_users AS m ON ug2.id=m.group_id')
 			->where('ug1.id=' . $db->quote($groupId));
 
 		$db->setQuery($query);
@@ -411,7 +411,7 @@ class JAccess
 			// Build the base query.
 			$query = $db->getQuery(true)
 				->select('id, rules')
-				->from($db->quoteName('#__viewlevels'));
+				->from($db->quoteName('#__users_roles'));
 
 			// Set the query for execution.
 			$db->setQuery($query);
