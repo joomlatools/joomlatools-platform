@@ -97,7 +97,7 @@ class JFormFieldModulelayout extends JFormField
 
 			if ($template_style_id)
 			{
-				$query->join('LEFT', '#__template_styles as s on s.template=e.element')
+				$query->join('LEFT', '#__templates as s on s.template=e.element')
 					->where('s.id=' . (int) $template_style_id);
 			}
 
