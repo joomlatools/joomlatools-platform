@@ -345,6 +345,11 @@ CREATE TABLE IF NOT EXISTS `users_roles` (
 --
 -- Table structure for table `session`
 --
+-- InnoDB tables can make a database slow down if not using incremental primary keys. We are storing the session hash as
+-- primary key, which can result in big load times when the table grows. Hence why we use MyISAM for the session table.
+--
+-- More info see : http://blog.johnjosephbachir.org/2006/10/22/everything-you-need-to-know-about-designing-mysql-innodb-primary-keys/
+--
 
 CREATE TABLE IF NOT EXISTS `users_session` (
   `session_id` varchar(200) NOT NULL DEFAULT '',
@@ -357,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `users_session` (
   PRIMARY KEY (`session_id`),
   KEY `userid` (`userid`),
   KEY `time` (`time`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
 -- --------------------------------------------------------
