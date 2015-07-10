@@ -27,7 +27,7 @@ class JTableUsergroup extends JTable
 	 */
 	public function __construct($db)
 	{
-		parent::__construct('#__usergroups', 'id', $db);
+		parent::__construct('#__users_groups', 'id', $db);
 	}
 
 	/**
@@ -209,7 +209,7 @@ class JTableUsergroup extends JTable
 
 		$query->clear()
 			->select('id, rules')
-			->from('#__viewlevels');
+			->from('#__users_roles');
 		$db->setQuery($query);
 		$rules = $db->loadObjectList();
 
@@ -230,7 +230,7 @@ class JTableUsergroup extends JTable
 		{
 			$query->clear()
 				->set('rules=' . str_repeat('replace(', 4 * count($ids)) . 'rules' . implode('', $replace))
-				->update('#__viewlevels')
+				->update('#__users_roles')
 				->where('id IN (' . implode(',', $match_ids) . ')');
 			$db->setQuery($query);
 			$db->execute();
@@ -238,7 +238,7 @@ class JTableUsergroup extends JTable
 
 		// Delete the user to usergroup mappings for the group(s) from the database.
 		$query->clear()
-			->delete($db->quoteName('#__user_usergroup_map'))
+			->delete($db->quoteName('#__users_groups_users'))
 			->where($db->quoteName('group_id') . ' IN (' . implode(',', $ids) . ')');
 		$db->setQuery($query);
 		$db->execute();

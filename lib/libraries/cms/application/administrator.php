@@ -357,8 +357,8 @@ class JApplicationAdministrator extends JApplicationCms
 		// Get the JInput object
 		$input = $this->input;
 
-		$component = $input->getCmd('option');
-		$view      = $input->getCmd('view');
+        $component = $input->getCmd('option', 'com_users');
+        $view      = $input->getCmd('view',   'login');
 		$file     =  $input->getCmd('tmpl',   'index');
 
 		if ($component == 'com_users' && $view == 'login') {

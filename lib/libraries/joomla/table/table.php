@@ -1270,7 +1270,7 @@ abstract class JTable extends JObject implements JObservableInterface, JTableInt
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('COUNT(userid)')
-			->from($db->quoteName('#__session'))
+			->from($db->quoteName('#__users_sessions'))
 			->where($db->quoteName('userid') . ' = ' . (int) $against);
 		$db->setQuery($query);
 		$checkedOut = (boolean) $db->loadResult();

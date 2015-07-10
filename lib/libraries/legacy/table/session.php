@@ -30,7 +30,7 @@ class JTableSession extends JTable
 	public function __construct(JDatabaseDriver $db)
 	{
 		JLog::add('JTableSession is deprecated. Use SQL queries directly to interact with the session table.', JLog::WARNING, 'deprecated');
-		parent::__construct('#__session', 'session_id', $db);
+		parent::__construct('#__users_sessions', 'session_id', $db);
 
 		$this->guest = 1;
 		$this->username = '';

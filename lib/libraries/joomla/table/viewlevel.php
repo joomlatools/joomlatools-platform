@@ -27,7 +27,7 @@ class JTableViewlevel extends JTable
 	 */
 	public function __construct($db)
 	{
-		parent::__construct('#__viewlevels', 'id', $db);
+		parent::__construct('#__users_roles', 'id', $db);
 	}
 
 	/**

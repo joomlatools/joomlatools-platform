@@ -33,7 +33,7 @@ abstract class ModLoggedHelper
 		$user  = JFactory::getUser();
 		$query = $db->getQuery(true)
 			->select('s.time, s.client_id, u.id, u.name, u.username')
-			->from('#__session AS s')
+			->from('#__users_sessions AS s')
 			->join('LEFT', '#__users AS u ON s.userid = u.id')
 			->where('s.guest = 0');
 		$db->setQuery($query, 0, $params->get('count', 5));
