@@ -163,10 +163,10 @@ VALUES
 -- --------------------------------------------------------
 
 --
--- Dumping data for table `usergroups`
+-- Dumping data for table `users_groups`
 --
 
-INSERT INTO `usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
+INSERT INTO `users_groups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 (1, 0, 1, 18, 'Public'),
 (2, 1, 8, 15, 'Registered'),
 (3, 2, 9, 14, 'Author'),
@@ -180,20 +180,20 @@ INSERT INTO `usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Dumping data for table `usergroups`
+-- Dumping data for table `users_groups_users`
 --
 
-INSERT INTO `user_usergroup_map` (`user_id`, `group_id`)
+INSERT INTO `users_groups_users` (`user_id`, `group_id`)
 VALUES
 	(951,8);
 
 -- --------------------------------------------------------
 
 --
--- Dumping data for table `viewlevels`
+-- Dumping data for table `users_roles`
 --
 
-INSERT INTO `viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
+INSERT INTO `users_roles` (`id`, `title`, `ordering`, `rules`) VALUES
 (1, 'Public', 0, '[1]'),
 (2, 'Registered', 1, '[6,2,8]'),
 (3, 'Special', 2, '[6,3,8]'),

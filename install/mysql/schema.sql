@@ -351,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `users_roles` (
 -- More info see : http://blog.johnjosephbachir.org/2006/10/22/everything-you-need-to-know-about-designing-mysql-innodb-primary-keys/
 --
 
-CREATE TABLE IF NOT EXISTS `users_session` (
+CREATE TABLE IF NOT EXISTS `users_sessions` (
   `session_id` varchar(200) NOT NULL DEFAULT '',
   `client_id` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `guest` tinyint(4) unsigned DEFAULT 1,
