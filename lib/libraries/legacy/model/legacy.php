@@ -466,7 +466,7 @@ abstract class JModelLegacy extends JObject
 			$user = JFactory::getUser();
 
 			// Get an instance of the row to checkout.
-			$historyTable = JTable::getInstance('Contenthistory');
+			$historyTable = JTable::getInstance('History', 'ContenthistoryTable');
 
 			if (!$historyTable->load($version_id))
 			{
@@ -477,7 +477,7 @@ abstract class JModelLegacy extends JObject
 
 			$rowArray = JArrayHelper::fromObject(json_decode($historyTable->version_data));
 
-			$typeId = JTable::getInstance('Contenttype')->getTypeId($this->typeAlias);
+			$typeId = JTable::getInstance('Types', 'ContentTable')->getTypeId($this->typeAlias);
 
 			if ($historyTable->ucm_type_id != $typeId)
 			{

@@ -14,13 +14,8 @@
 	<description>MOD_STATUS_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_status">mod_status.php</filename>
-		<filename>index.html</filename>
 		<folder>tmpl</folder>
 	</files>
-	<languages>
-		<language tag="en-GB">en-GB.mod_status.ini</language>
-		<language tag="en-GB">en-GB.mod_status.sys.ini</language>
-	</languages>
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_STATUS" />
 	<config>
 		<fields name="params">

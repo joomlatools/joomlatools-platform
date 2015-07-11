@@ -1308,8 +1308,14 @@ class JTableNested extends JTable
 		// Build the structure of the recursive query.
 		if (!isset($this->_cache['rebuild.sql']))
 		{
-			$query->clear()
-				->select($this->_tbl_key . ', alias')
+            $select = $this->_tbl_key;
+            if (array_key_exists('alias', $this->getFields()))
+            {
+                $select .= ', alias';
+            }
+
+            $query->clear()
+				->select($select)
 				->from($this->_tbl)
 				->where('parent_id = %d');
 
@@ -1358,9 +1364,14 @@ class JTableNested extends JTable
 			->update($this->_tbl)
 			->set('lft = ' . (int) $leftId)
 			->set('rgt = ' . (int) $rightId)
-			->set('level = ' . (int) $level)
-			->set('path = ' . $this->_db->quote($path))
-			->where($this->_tbl_key . ' = ' . (int) $parentId);
+			->set('level = ' . (int) $level);
+
+            if (array_key_exists('path', $this->getFields()))
+            {
+                $query->set('path = ' . $this->_db->quote($path));
+            }
+
+		$query->where($this->_tbl_key . ' = ' . (int) $parentId);
 		$this->_db->setQuery($query)->execute();
 
 		// Return the right value of this node + 1.

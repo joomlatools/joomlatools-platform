@@ -162,10 +162,13 @@ abstract class JToolbarHelper
 	 */
 	public static function media_manager($directory = '', $alt = 'JTOOLBAR_UPLOAD')
 	{
-		$bar = JToolbar::getInstance('toolbar');
+		if(JComponentHelper::isEnabled('com_media'))
+        {
+            $bar = JToolbar::getInstance('toolbar');
 
-		// Add an upload button.
-		$bar->appendButton('Popup', 'upload', $alt, 'index.php?option=com_media&tmpl=component&task=popupUpload&folder=' . $directory, 800, 520);
+            // Add an upload button.
+            $bar->appendButton('Popup', 'upload', $alt, 'index.php?option=com_media&tmpl=component&task=popupUpload&folder=' . $directory, 800, 520);
+        }
 	}
 
 	/**
@@ -549,7 +552,7 @@ abstract class JToolbarHelper
 	/**
 	 * Writes a configuration button and invokes a cancel operation (eg a checkin).
 	 *
-	 * @param   string   $component  The name of the component, eg, com_content.
+	 * @param   string   $component  The name of the component, eg, com_foo.
 	 * @param   integer  $height     The height of the popup. [UNUSED]
 	 * @param   integer  $width      The width of the popup. [UNUSED]
 	 * @param   string   $alt        The name of the button.
@@ -580,7 +583,7 @@ abstract class JToolbarHelper
 	/**
 	 * Writes a version history
 	 *
-	 * @param   string   $typeAlias  The component and type, for example 'com_content.article'
+	 * @param   string   $typeAlias  The component and type, for example 'com_foo.article'
 	 * @param   integer  $itemId     The id of the item, for example the article id.
 	 * @param   integer  $height     The height of the popup.
 	 * @param   integer  $width      The width of the popup.
@@ -592,23 +595,26 @@ abstract class JToolbarHelper
 	 */
 	public static function versions($typeAlias, $itemId, $height = 800, $width = 500, $alt = 'JTOOLBAR_VERSIONS')
 	{
-		JHtml::_('behavior.modal', 'a.modal_jform_contenthistory');
+		if(JComponentHelper::isEnabled('com_contenthistory'))
+        {
+            JHtml::_('behavior.modal', 'a.modal_jform_contenthistory');
 
-		$contentTypeTable = JTable::getInstance('Contenttype');
-		$typeId           = $contentTypeTable->getTypeId($typeAlias);
+            $contentTypeTable = JTable::getInstance('Types', 'ContentTable');
+            $typeId           = $contentTypeTable->getTypeId($typeAlias);
 
-		// Options array for JLayout
-		$options              = array();
-		$options['title']     = JText::_($alt);
-		$options['height']    = $height;
-		$options['width']     = $width;
-		$options['itemId']    = $itemId;
-		$options['typeId']    = $typeId;
-		$options['typeAlias'] = $typeAlias;
+            // Options array for JLayout
+            $options              = array();
+            $options['title']     = JText::_($alt);
+            $options['height']    = $height;
+            $options['width']     = $width;
+            $options['itemId']    = $itemId;
+            $options['typeId']    = $typeId;
+            $options['typeAlias'] = $typeAlias;
 
-		$bar    = JToolbar::getInstance('toolbar');
-		$layout = new JLayoutFile('joomla.toolbar.versions');
-		$bar->appendButton('Custom', $layout->render($options), 'versions');
+            $bar    = JToolbar::getInstance('toolbar');
+            $layout = new JLayoutFile('joomla.toolbar.versions');
+            $bar->appendButton('Custom', $layout->render($options), 'versions');
+        }
 	}
 
 	/**

@@ -27,7 +27,7 @@ class TemplatesTableStyle extends JTable
 	 */
 	public function __construct(&$db)
 	{
-		parent::__construct('#__template_styles', 'id', $db);
+		parent::__construct('#__templates', 'id', $db);
 	}
 
 	/**
@@ -93,7 +93,7 @@ class TemplatesTableStyle extends JTable
 		if ($this->home != '0')
 		{
 			$query = $this->_db->getQuery(true)
-				->update('#__template_styles')
+				->update('#__templates')
 				->set('home=\'0\'')
 				->where('client_id=' . (int) $this->client_id)
 				->where('home=' . $this->_db->quote($this->home));
@@ -121,7 +121,7 @@ class TemplatesTableStyle extends JTable
 		if (!is_null($pk))
 		{
 			$query = $this->_db->getQuery(true)
-				->from('#__template_styles')
+				->from('#__templates')
 				->select('id')
 				->where('client_id=' . (int) $this->client_id)
 				->where('template=' . $this->_db->quote($this->template));

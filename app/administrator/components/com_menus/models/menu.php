@@ -260,7 +260,7 @@ class MenusModelMenu extends JModelForm
 			->select('a.id, a.title, a.params, a.position')
 			->where('module = ' . $db->quote('mod_menu'))
 			->select('ag.title AS access_title')
-			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');
+			->join('LEFT', '#__users_roles AS ag ON ag.id = a.access');
 		$db->setQuery($query);
 
 		$modules = $db->loadObjectList();

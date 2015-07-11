@@ -12,7 +12,6 @@ return [
     'access'     => '1',
 
     /* Server */
-    'secret'     => 'VyxD8SlIXdaLwRCZ',
     'force_ssl'  => '0',
 
     /* Locale */

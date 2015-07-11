@@ -17,7 +17,7 @@ $input  = JFactory::getApplication()->input;
 // Get the number of back-end logged in users.
 $query	= $db->getQuery(true)
     ->select('COUNT(session_id)')
-	->from('#__session')
+	->from('#__users_sessions')
 	->where('guest = 0 AND client_id = 1');
 
 $db->setQuery($query);
@@ -26,7 +26,7 @@ $count = (int) $db->loadResult();
 // Get the number of frontend logged in users.
 $query->clear()
 	->select('COUNT(session_id)')
-	->from('#__session')
+	->from('#__users_sessions')
 	->where('guest = 0 AND client_id = 0');
 
 $db->setQuery($query);

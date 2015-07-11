@@ -55,17 +55,9 @@ class ConfigViewApplicationHtml extends ConfigViewCmsHtml
 		{
 			$form->bind($data);
 		}
-		// Get the params for com_users.
-		$usersParams = JComponentHelper::getParams('com_users');
-
-		// Get the params for com_media.
-		$mediaParams = JComponentHelper::getParams('com_media');
 
 		$this->form = &$form;
 		$this->data = &$data;
-
-		$this->usersParams = &$usersParams;
-		$this->mediaParams = &$mediaParams;
 
 		$this->components = ConfigHelperConfig::getComponentsWithConfig();
 		ConfigHelperConfig::loadLanguageForComponents($this->components);

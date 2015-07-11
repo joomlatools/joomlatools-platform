@@ -193,11 +193,11 @@ class UsersModelUsers extends JModelList
 
 			// Join over the group mapping table.
 			$query->select('map.user_id, COUNT(map.group_id) AS group_count')
-				->from('#__user_usergroup_map AS map')
+				->from('#__users_groups_users AS map')
 				->where('map.user_id IN (' . implode(',', $userIds) . ')')
 				->group('map.user_id')
 				// Join over the user groups table.
-				->join('LEFT', '#__usergroups AS g2 ON g2.id = map.group_id');
+				->join('LEFT', '#__users_groups AS g2 ON g2.id = map.group_id');
 
 			$db->setQuery($query);
 
@@ -284,7 +284,7 @@ class UsersModelUsers extends JModelList
 
 		if ($groupId || isset($groups))
 		{
-			$query->join('LEFT', '#__user_usergroup_map AS map2 ON map2.user_id = a.id')
+			$query->join('LEFT', '#__user_groups_map AS map2 ON map2.user_id = a.id')
 				->group($db->quoteName(array('a.id', 'a.name', 'a.username', 'a.password', 'a.block', 'a.sendEmail', 'a.registerDate', 'a.lastvisitDate', 'a.activation', 'a.params', 'a.email')));
 
 			if ($groupId)
@@ -401,8 +401,8 @@ class UsersModelUsers extends JModelList
 	function _getUserDisplayedGroups($user_id)
 	{
 		$db = JFactory::getDbo();
-		$query = "SELECT title FROM " . $db->quoteName('#__usergroups') . " ug left join " .
-			$db->quoteName('#__user_usergroup_map') . " map on (ug.id = map.group_id)" .
+		$query = "SELECT title FROM " . $db->quoteName('#__users_groups') . " ug left join " .
+			$db->quoteName('#__users_groups_users') . " map on (ug.id = map.group_id)" .
 			" WHERE map.user_id=" . (int) $user_id;
 
 		$db->setQuery($query);

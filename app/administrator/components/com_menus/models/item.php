@@ -755,7 +755,7 @@ class MenusModelItem extends JModelAdmin
 
 		// Join on the asset groups table.
 		$query->select('ag.title AS access_title')
-			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access')
+			->join('LEFT', '#__users_roles AS ag ON ag.id = a.access')
 			->where('a.published >= 0')
 			->where('a.client_id = 0')
 			->order('a.position, a.ordering');
@@ -1257,7 +1257,7 @@ class MenusModelItem extends JModelAdmin
 			// Deleting old association for these items
 			$db = JFactory::getDbo();
 			$query = $db->getQuery(true)
-				->delete('#__associations')
+				->delete('#__languages_associations')
 				->where('context=' . $db->quote('com_menus.item'))
 				->where('id IN (' . implode(',', $associations) . ')');
 			$db->setQuery($query);
@@ -1277,7 +1277,7 @@ class MenusModelItem extends JModelAdmin
 				// Adding new association for these items
 				$key = md5(json_encode($associations));
 				$query->clear()
-					->insert('#__associations');
+					->insert('#__languages_associations');
 				foreach ($associations as $id)
 				{
 					$query->values($id . ',' . $db->quote('com_menus.item') . ',' . $db->quote($key));

@@ -14,13 +14,9 @@
 	<description>MOD_LOGGED_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_logged">mod_logged.php</filename>
-		<filename>index.html</filename>
 		<folder>tmpl</folder>
 	</files>
-	<languages>
-		<language tag="en-GB">en-GB.mod_logged.ini</language>
-		<language tag="en-GB">en-GB.mod_logged.sys.ini</language>
-	</languages>
+
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_LOGGED" />
 	<config>
 		<fields name="params">

@@ -121,12 +121,14 @@ class JApplicationHelper
 			$obj->id = 0;
 			$obj->name = 'site';
 			$obj->path = JPATH_SITE;
+            $obj->web_root  = JPATH_WEB;
 			self::$_clients[0] = clone $obj;
 
 			// Administrator Client
 			$obj->id = 1;
 			$obj->name = 'administrator';
 			$obj->path = JPATH_ADMINISTRATOR;
+            $obj->web_root  = JPATH_WEB.'/administrator';
 			self::$_clients[1] = clone $obj;
 		}
 

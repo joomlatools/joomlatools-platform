@@ -75,7 +75,7 @@ class PlgUserProfile extends JPlugin
 				// Load the profile data from the database.
 				$db = JFactory::getDbo();
 				$db->setQuery(
-					'SELECT profile_key, profile_value FROM #__user_profiles' .
+					'SELECT profile_key, profile_value FROM #__users_profiles' .
 						' WHERE user_id = ' . (int) $userId . " AND profile_key LIKE 'profile.%'" .
 						' ORDER BY ordering'
 				);
@@ -114,11 +114,6 @@ class PlgUserProfile extends JPlugin
 			if (!JHtml::isRegistered('users.calendar'))
 			{
 				JHtml::register('users.calendar', array(__CLASS__, 'calendar'));
-			}
-
-			if (!JHtml::isRegistered('users.tos'))
-			{
-				JHtml::register('users.tos', array(__CLASS__, 'tos'));
 			}
 		}
 
@@ -235,7 +230,6 @@ class PlgUserProfile extends JPlugin
 			'favoritebook',
 			'aboutme',
 			'dob',
-			'tos',
 		);
 
 		// Change fields description when displayed in front-end or back-end profile editing
@@ -254,22 +248,6 @@ class PlgUserProfile extends JPlugin
 			$form->setFieldAttribute('favoritebook', 'description', 'PLG_USER_PROFILE_FILL_FIELD_DESC_SITE', 'profile');
 			$form->setFieldAttribute('aboutme', 'description', 'PLG_USER_PROFILE_FILL_FIELD_DESC_SITE', 'profile');
 			$form->setFieldAttribute('dob', 'description', 'PLG_USER_PROFILE_FILL_FIELD_DESC_SITE', 'profile');
-			$form->setFieldAttribute('tos', 'description', 'PLG_USER_PROFILE_FIELD_TOS_DESC_SITE', 'profile');
-		}
-
-		$tosarticle = $this->params->get('register_tos_article');
-		$tosenabled = $this->params->get('register-require_tos', 0);
-
-		// We need to be in the registration form, field needs to be enabled and we need an article ID
-		if ($name != 'com_users.registration' || !$tosenabled || !$tosarticle)
-		{
-			// We only want the TOS in the registration form
-			$form->removeField('tos', 'profile');
-		}
-		else
-		{
-			// Push the TOS article ID into the TOS field.
-			$form->setFieldAttribute('tos', 'article', $tosarticle, 'profile');
 		}
 
 		foreach ($fields as $field)
@@ -403,7 +381,7 @@ class PlgUserProfile extends JPlugin
 
 				$db = JFactory::getDbo();
 				$query = $db->getQuery(true)
-					->delete($db->quoteName('#__user_profiles'))
+					->delete($db->quoteName('#__users_profiles'))
 					->where($db->quoteName('user_id') . ' = ' . (int) $userId)
 					->where($db->quoteName('profile_key') . ' LIKE ' . $db->quote('profile.%'));
 				$db->setQuery($query);
@@ -417,7 +395,7 @@ class PlgUserProfile extends JPlugin
 					$tuples[] = '(' . $userId . ', ' . $db->quote('profile.' . $k) . ', ' . $db->quote(json_encode($v)) . ', ' . ($order++) . ')';
 				}
 
-				$db->setQuery('INSERT INTO #__user_profiles VALUES ' . implode(', ', $tuples));
+				$db->setQuery('INSERT INTO #__users_profiles VALUES ' . implode(', ', $tuples));
 				$db->execute();
 			}
 			catch (RuntimeException $e)
@@ -457,7 +435,7 @@ class PlgUserProfile extends JPlugin
 			{
 				$db = JFactory::getDbo();
 				$db->setQuery(
-					'DELETE FROM #__user_profiles WHERE user_id = ' . $userId .
+					'DELETE FROM #__users_profiles WHERE user_id = ' . $userId .
 						" AND profile_key LIKE 'profile.%'"
 				);
 

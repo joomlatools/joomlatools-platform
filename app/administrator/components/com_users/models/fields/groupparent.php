@@ -42,13 +42,13 @@ class JFormFieldGroupParent extends JFormFieldList
 		$user = JFactory::getUser();
 		$query = $db->getQuery(true)
 			->select('a.id AS value, a.title AS text, COUNT(DISTINCT b.id) AS level')
-			->from('#__usergroups AS a')
-			->join('LEFT', $db->quoteName('#__usergroups') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt');
+			->from('#__users_groups AS a')
+			->join('LEFT', $db->quoteName('#__users_groups') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt');
 
 		// Prevent parenting to children of this item.
 		if ($id = $this->form->getValue('id'))
 		{
-			$query->join('LEFT', $db->quoteName('#__usergroups') . ' AS p ON p.id = ' . (int) $id)
+			$query->join('LEFT', $db->quoteName('#__users_groups') . ' AS p ON p.id = ' . (int) $id)
 				->where('NOT(a.lft >= p.lft AND a.rgt <= p.rgt)');
 		}
 

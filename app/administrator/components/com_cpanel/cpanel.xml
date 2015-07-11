@@ -13,13 +13,8 @@
 		<files folder="admin">
 			<filename>controller.php</filename>
 			<filename>cpanel.php</filename>
-			<filename>index.html</filename>
 			<folder>views</folder>
 		</files>
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB.com_cpanel.ini</language>
-			<language tag="en-GB">language/en-GB.com_cpanel.sys.ini</language>
-		</languages>
 	</administration>
 </extension>
 

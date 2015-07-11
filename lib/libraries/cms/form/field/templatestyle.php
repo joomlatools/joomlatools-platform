@@ -144,7 +144,7 @@ class JFormFieldTemplatestyle extends JFormFieldGroupedList
 
 		// Build the query.
 		$query->select('s.id, s.title, e.name as name, s.template')
-			->from('#__template_styles as s')
+			->from('#__templates as s')
 			->where('s.client_id = ' . (int) $client->id)
 			->order('template')
 			->order('title');

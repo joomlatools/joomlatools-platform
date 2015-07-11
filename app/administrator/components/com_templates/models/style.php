@@ -299,7 +299,7 @@ class TemplatesModelStyle extends JModelAdmin
 
 			// Get the template XML.
 			$client	= JApplicationHelper::getClientInfo($table->client_id);
-			$path	= JPath::clean($client->path.'/templates/'.$table->template.'/templateDetails.xml');
+			$path	= JPath::clean($client->web_root.'/templates/'.$table->template.'/templateDetails.xml');
 
 			if (file_exists($path))
 			{
@@ -354,7 +354,7 @@ class TemplatesModelStyle extends JModelAdmin
 
 		jimport('joomla.filesystem.path');
 
-		$formFile = JPath::clean($client->path . '/templates/' . $template . '/templateDetails.xml');
+		$formFile = JPath::clean($client->web_root . '/templates/' . $template . '/templateDetails.xml');
 
 		// Load the core and/or local language file(s).
 			$lang->load('tpl_' . $template, $client->path, null, false, true)
@@ -574,7 +574,7 @@ class TemplatesModelStyle extends JModelAdmin
 
 		// Reset the home fields for the client_id.
 		$db->setQuery(
-			'UPDATE #__template_styles' .
+			'UPDATE #__templates' .
 			' SET home = \'0\'' .
 			' WHERE client_id = ' . (int) $style->client_id .
 			' AND home = \'1\''
@@ -583,7 +583,7 @@ class TemplatesModelStyle extends JModelAdmin
 
 		// Set the new home style.
 		$db->setQuery(
-			'UPDATE #__template_styles' .
+			'UPDATE #__templates' .
 			' SET home = \'1\'' .
 			' WHERE id = ' . (int) $id
 		);
@@ -618,7 +618,7 @@ class TemplatesModelStyle extends JModelAdmin
 		// Lookup the client_id.
 		$db->setQuery(
 			'SELECT client_id, home' .
-			' FROM #__template_styles' .
+			' FROM #__templates' .
 			' WHERE id = ' . (int) $id
 		);
 		$style = $db->loadObject();
@@ -634,7 +634,7 @@ class TemplatesModelStyle extends JModelAdmin
 
 		// Set the new home style.
 		$db->setQuery(
-			'UPDATE #__template_styles' .
+			'UPDATE #__templates' .
 			' SET home = \'0\'' .
 			' WHERE id = ' . (int) $id
 		);

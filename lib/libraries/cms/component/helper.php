@@ -240,10 +240,6 @@ class JComponentHelper
 
 		if (empty(static::$components[$option]))
 		{
-			// Fatal error.
-			$error = JText::_('JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND');
-			JLog::add(JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $error), JLog::WARNING, 'jerror');
-
 			return false;
 		}
 
