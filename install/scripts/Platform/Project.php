@@ -14,6 +14,8 @@ class Project
             return;
         }
 
+        
+
         $cwd  = getcwd();
         $www  = dirname($cwd);
         $site = basename($cwd);
@@ -22,13 +24,14 @@ class Project
             'site:install',
             'site'          => $site,
             '--www'         => $www,
-            '--interactive' => true
+            '--interactive' => true,
+            '--mysql_db_prefix' => ''
         );
 
         self::logo();
 
         $output = new ConsoleOutput();
-        $output->writeln("<info>Welcome to the Joomla Platform installer</info>");
+        $output->writeln("<info>Welcome to the Joomla Platform installer!</info>");
         $output->writeln("Fill in the following details to configure your new application.");
 
         $application = new Application();
