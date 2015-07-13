@@ -18,9 +18,9 @@ class Project
 
         $arguments = array(
             'site:install',
-            'site'  => $site,
-            '--www' => $www,
-            '--interactive'
+            'site'          => $site,
+            '--www'         => $www,
+            '--interactive' => true
         );
 
         $application = new Application();
