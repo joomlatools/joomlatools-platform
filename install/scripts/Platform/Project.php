@@ -14,9 +14,9 @@ class Project
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             return;
         }
-
+        
         $input = new ArgvInput();
-        if ($input->hasParameterOption(array('--no-interaction', '-n') === true)) {
+        if ($input->hasParameterOption(array('--no-interaction', '-n'))) {
             return;
         }
 
