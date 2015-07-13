@@ -2,6 +2,7 @@
 namespace Platform;
 
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 use Joomlatools\Console\Application;
@@ -14,7 +15,10 @@ class Project
             return;
         }
 
-        
+        $input = new ArgvInput();
+        if ($input->hasParameterOption(array('--no-interaction', '-n') === true)) {
+            return;
+        }
 
         $cwd  = getcwd();
         $www  = dirname($cwd);
