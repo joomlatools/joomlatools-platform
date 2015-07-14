@@ -46,7 +46,7 @@ class JErrorPage
             }
 
             // Exit immediatly if we are in a CLI environment
-			if (PHP_SAPI == 'cli')
+			if (!$document || PHP_SAPI == 'cli')
 			{
 				exit($message);
 				$app->close(0);
