@@ -81,7 +81,7 @@ class JDocumentError extends JDocument
 		// If no error object is set return null
 		if (isset($this->_error))
 		{
-            $code = $$this->_error->getCode();
+            $code = $this->_error->getCode();
             if(!isset(JHttpResponse::$status_messages[$code])) {
                 $code = '500';
             }
