@@ -475,8 +475,17 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		$row->set('protected', 0);
 		$row->set('access', 0);
 		$row->set('client_id', 1);
-		$row->set('params', $this->parent->getParams());
 		$row->set('manifest_cache', $this->parent->generateManifestCache());
+
+        $params = $this->parent->getParams();
+
+        if (empty($params) || $params == '{}')
+        {
+            $defaults = (object) $this->_loadDefaultParams($this->get('element'));
+            $params   = json_encode($defaults);
+        }
+
+        $row->set('params', $params);
 
 		if (!$row->store())
 		{
@@ -1623,7 +1632,16 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		$this->parent->extension->state = 0;
 		$this->parent->extension->name = $manifest_details['name'];
 		$this->parent->extension->enabled = 1;
-		$this->parent->extension->params = $this->parent->getParams();
+
+        $params = $this->parent->getParams();
+
+        if (empty($params) || $params == '{}')
+        {
+            $defaults = (object) $this->_loadDefaultParams($this->parent->extension->element);
+            $params   = json_encode($defaults);
+        }
+
+        $this->parent->extension->params = $params;
 
 		try
 		{
@@ -1892,6 +1910,54 @@ class JInstallerAdapterComponent extends JAdapterInstance
 			return false;
 		}
 	}
+
+    /**
+     * Parses the config.xml for the given component and
+     * returns the default values for each parameter.
+     *
+     * @param   string  Element name (com_xyz)
+     * @return  array   Array of parameters
+     */
+    protected function _loadDefaultParams($element)
+    {
+        $params = array();
+        $file   = JPATH_ADMINISTRATOR . '/components/' . $element . '/config.xml';
+
+        if (!file_exists($file)) {
+            return $params;
+        }
+
+        $xml = simplexml_load_file($file);
+
+        if (!($xml instanceof SimpleXMLElement)) {
+            return $params;
+        }
+
+        $elements = $xml->xpath('/config');
+
+        if (empty($elements)) {
+            return $params;
+        }
+
+        foreach ($elements as $element)
+        {
+            $fields = $element->xpath('descendant-or-self::field');
+
+            foreach ($fields as $field)
+            {
+                if (!isset($field['default'])) {
+                    continue;
+                }
+
+                $name    = (string) $field['name'];
+                $default = (string) $field['default'];
+
+                $params[$name] = $default;
+            }
+        }
+
+        return $params;
+    }
 }
 
 /**
