@@ -8,9 +8,9 @@ class JConfig
          */
         $env = new \Dotenv\Dotenv(dirname(__DIR__));
         $env->load();
-        $env->required(['JOOMLA_DB_NAME', 'JOOMLA_DB_USER', 'JOOMLA_DB_PASS']);
+        $env->required(['JOOMLA_DB_NAME'])->notEmpty();
+        $env->required(['JOOMLA_DB_USER', 'JOOMLA_DB_PASS']);
 
-        $this->dbtype   = getenv('JOOMLA_DB_TYPE');
 	    $this->host     = getenv('JOOMLA_DB_HOST');
 	    $this->user     = getenv('JOOMLA_DB_USER');
         $this->password = getenv('JOOMLA_DB_PASS');
@@ -19,7 +19,7 @@ class JConfig
         $this->log_path  = getenv('JOOMLA_LOG_PATH');
         $this->tmp_path  = getenv('JOOMLA_TMP_PATH');
 
-        $this->secret    = getenv('JOOMLA_KEY');
+        $this->secret  = getenv('JOOMLA_KEY');
 
         /**
          * Load application configuration
@@ -39,6 +39,17 @@ class JConfig
                     $this->$key = $value;
                 }
             }
+        }
+
+        /**
+         * Override application configuration if defined in environment
+         */
+        if(getenv('JOOMLA_CACHE') !== false) {
+            $this->caching = getenv('JOOMLA_CACHE');
+        }
+
+        if(getenv('JOOMLA_DEBUG') !== false) {
+            $this->debug = getenv('JOOMLA_DEBUG');
         }
     }
 }

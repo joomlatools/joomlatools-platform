@@ -14,6 +14,9 @@ return [
     /* Server */
     'force_ssl'  => '0',
 
+    /* Database */
+    'dbtype'     => 'mysqli',
+
     /* Locale */
 	'offset'     => 'UTC',
 

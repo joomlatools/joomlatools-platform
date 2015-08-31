@@ -63,7 +63,7 @@ $stickyToolbar = $params->get('stickyToolbar', '1');
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title><?php echo $this->title; ?> <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></title>
+	<title><?php echo $this->title; ?> <?php echo htmlspecialchars($this->message, ENT_QUOTES, 'UTF-8'); ?></title>
 	<?php if ($app->get('debug_lang', '0') == '1' || $app->get('debug', '0') == '1') : ?>
 		<!-- Load additional CSS styles for debug mode-->
 		<link rel="stylesheet" href="<?php echo JUri::root(); ?>/media/system/css/debug.css" type="text/css" />
@@ -221,7 +221,7 @@ $stickyToolbar = $params->get('stickyToolbar', '1');
 						<!-- Begin Content -->
 						<h1 class="page-header"><?php echo JText::_('JERROR_AN_ERROR_HAS_OCCURRED'); ?></h1>
 						<blockquote>
-							<span class="label label-inverse"><?php echo $this->error->getCode(); ?></span> <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8');?>
+							<span class="label label-inverse"><?php echo $this->code; ?></span> <?php echo htmlspecialchars($this->message, ENT_QUOTES, 'UTF-8');?>
 						</blockquote>
 						<p><a href="<?php echo $this->baseurl; ?>" class="btn"><i class="icon-dashboard"></i> <?php echo JText::_('JGLOBAL_TPL_CPANEL_LINK_TEXT'); ?></a></p>
 						<!-- End Content -->
