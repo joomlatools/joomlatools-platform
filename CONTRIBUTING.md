@@ -1,6 +1,6 @@
 # How to contribute
 
-Contributions and patches are essential for the success of our [Joomlatools](http://developer.joomlaotols.com) 
+Contributions and patches are essential for the success of our [Joomlatools](http://developer.joomlatools.com) 
 open source projects. We simply can't access the huge number of platforms 
 and myriad configurations for running our code. We want to keep it as easy 
 as possible to contribute changes that get things working in your environment. 
@@ -26,7 +26,7 @@ All our projects are build to be packageble and extensible using [Composer](http
 If you are unsure of whether your contribution should be implemented as an 
 extension or part of the Core, you may visit
 [joomlatools/chat on Gitter](http://gitter.com/joomlatools/chat) or ask on the
-[jooomlatools mailing list](https://groups.google.com/forum/#!forum/joomlatools-dev)
+[Joomlatools mailing list](https://groups.google.com/forum/#!forum/joomlatools-dev)
 for advice.
 
 ## Using the issue tracker
@@ -36,7 +36,7 @@ The issue tracker is the preferred channel for [bug reports](#bugs),
 requests](#pull-requests), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal support requests (use the
-  [jooomlatools mailing list](https://groups.google.com/forum/#!forum/joomlatools-dev)).
+  [Joomlatools mailing list](https://groups.google.com/forum/#!forum/joomlatools-dev)).
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
