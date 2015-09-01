@@ -18,9 +18,13 @@ structure.
 Much of the philosophy behind the platform is inspired by the [Twelve-Factor App](http://12factor.net/) methodology 
 including the [Joomla specific version](https://developer.joomlatools.com/platform).
 
+> Forked from [Joomla CMS v3.3.6](https://github.com/joomla/joomla-cms/releases/tag/3.3.6)
+
 ## Features
 
 * Better folder structure
+* Slimmed down codebase
+* Additional flexibility improvements and bug fixes
 * Dependency management with [Composer](http://getcomposer.org)
 * Easy Joomla configuration with environment specific files
 * Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
