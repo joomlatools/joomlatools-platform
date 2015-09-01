@@ -136,3 +136,11 @@ merged:
 
 10. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description.
+    
+<a name="contributor-copyright"></a>
+## Contributor Copyright
+ 
+As a contributor, you retain the copyright to your code, however by contributing 
+code to one of our Joomlatools code repositories you are releasing your code under 
+the same license terms as specified in the LICENSE.txt file included in each 
+repository. In most cases this will be the GPLv3 or MPLv2 licenses. 
