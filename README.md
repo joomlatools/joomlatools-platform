@@ -7,7 +7,7 @@ Would you be willing to trade all the days from this day forward for one chance
 -- just one chance -- to come back here and tell our enemies that they 
 may take our lives, but they'll never take our freedom?
 
-Alba gu bra!
+Alba gu bràth!
 
 
 ---
