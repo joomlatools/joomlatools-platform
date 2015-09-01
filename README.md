@@ -1,5 +1,5 @@
-Joomlatools Platform
-====================
+[Joomlatools Platform]
+======================
 
 [![Alt text for your video](http://img.youtube.com/vi/1Gt_eln1mUU/0.jpg)](http://www.youtube.com/watch?v=1Gt_eln1mUU)
 
@@ -12,7 +12,7 @@ Alba gu bra!
 
 ---
 
-Joomlatools Platform is a modern Joomla stack that helps you get started with the best development tools and project 
+[Joomlatools Platform] is a modern Joomla stack that helps you get started with the best development tools and project 
 structure.
 
 Much of the philosophy behind the platform is inspired by the [Twelve-Factor App](http://12factor.net/) methodology 
@@ -49,8 +49,8 @@ Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for addition
   * `JOOMLA_DB_HOST` - Database host
   * `JOOMLA_ENV` - Set to environment (`development`, `staging`, `production`)
   * `JOOMLA_KEY` - A 32 character random string
-  * `JOOMLA_CACHE` - [OPTIONAL] True or false to enable or disable caching. 
-  * `JOOMLA_DEBUG` - [OPTIONAL] True or false to enable or disable debug mode.
+  * `JOOMLA_CACHE` - [OPTIONAL] True or false to enable or disable caching
+  * `JOOMLA_DEBUG` - [OPTIONAL] True or false to enable or disable debug mode
 4. Set your site vhost document root to `/path/to/site/web/` 
 5. Access Joomla administrator at `http://example.com/administrator`
 
@@ -75,6 +75,10 @@ Any other deployment method can be used as well with one requirement:
 
 Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
 
+## License 
+
+Joomlatools Platform is open-source software licensed under the [GPLv3 license](LICENSE.txt).
+
 ## Community
 
 Keep track of development and community news.
@@ -82,3 +86,5 @@ Keep track of development and community news.
 * Follow [@joomlatools on Twitter](https://twitter.com/joomlatools)
 * Read and subscribe to the [Joomlatools Blog](https://joomlatools.com/blog/)
 * Subscribe to the [Joomlatools Newsletter](http://www.joomlatools.com/newsletter)
+
+[Joomlatools Platform] : http://developer.joomlatools.com/platform
