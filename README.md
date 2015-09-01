@@ -73,7 +73,8 @@ Any other deployment method can be used as well with one requirement:
 
 ## Contributing
 
-Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
+Joomlatools Platform is an open source, community-driven project. Contributions are welcome from everyone. 
+We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
 
 ## License 
 
