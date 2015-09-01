@@ -87,4 +87,4 @@ Keep track of development and community news.
 * Read and subscribe to the [Joomlatools Blog](https://joomlatools.com/blog/)
 * Subscribe to the [Joomlatools Newsletter](http://www.joomlatools.com/newsletter)
 
-[Joomlatools Platform] : http://developer.joomlatools.com/platform
+[Joomlatools Platform]: http://developer.joomlatools.com/platform
