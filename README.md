@@ -40,6 +40,14 @@ Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for addition
 
 ## Installation
 
+### Automatic (recommended)
+
+1. Run `composer create-project joomlatools/joomla-platform` 
+2. Complete the steps
+3. Access Joomla administrator at `http://example.com/web/administrator`
+
+### Manual
+
 1. Clone the git repo - `git clone https://github.com/joomlatools/joomla-platform.git`
 2. Run `composer install`
 3. Copy `.env.example` to `.env` and update environment variables:
@@ -51,8 +59,16 @@ Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for addition
   * `JOOMLA_KEY` - A 32 character random string
   * `JOOMLA_CACHE` - [OPTIONAL] True or false to enable or disable caching
   * `JOOMLA_DEBUG` - [OPTIONAL] True or false to enable or disable debug mode
-4. Set your site vhost document root to `/path/to/site/web/` 
-5. Access Joomla administrator at `http://example.com/administrator`
+4. Access Joomla administrator at `http://example.com/web/administrator`
+
+## Configuration
+
+To be able to access your Joomla site at `http://example.com/`set your site vhost document root 
+to `/path/to/site/web/`.
+
+If you are using shared hosting and/or you are not allowed to change your server Apache vhost
+configuration directly rename [htaccess.txt](htaccess.txt) to .htaccess and modify it use your
+domain name to set web root or document root to /web.
 
 ## Deploys
 
@@ -66,7 +82,7 @@ Any other deployment method can be used as well with one requirement:
 
 ## Documentation
 
-* [Folder structure](https://developer.joomlatools.com/tools/platform/folder-structure)
+* [Folder structure](https://developer.joomlatools.com/tools/platform/structure)
 * [Configuration files](https://developer.joomlatools.com/tools/platform/configuration)
 * [Environment variables](https://developer.joomlatools.com/tools/platform/environment)
 * [Composer](https://developer.joomlatools.com/tools/platform/composer)
