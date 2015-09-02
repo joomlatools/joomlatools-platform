@@ -8,6 +8,7 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
 
 * 1.0.0 (2015-09-01)
  * Added - Initial release
+ * Added [#118] : Restructure codebase
  * Added [#233] : Set default parameters after component installation
  * Added [#228] : Legacy support
  * Added [#229] : Added composer create-project installer
@@ -49,6 +50,7 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
  * Removed [#211] : plg_system_languagecode
  * Removed [#207] : plg_content_emailcloak
  * Removed [#98]  : plg_captcha_recaptcha
+ * Removed [#60]  : plg_authentication_ldap
  * Removed [#58]  : plg_authentication_gmail
  * Removed [#57]  : plg_system_cache
  * Removed [#55]  : plg_content_vote
@@ -223,3 +225,5 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
 [#37]: https://github.com/joomlatools/joomla-platform/pull/37
 [#35]: https://github.com/joomlatools/joomla-platform/pull/35
 [#88]: https://github.com/joomlatools/joomla-platform/pull/88
+[#60]: https://github.com/joomlatools/joomla-platform/pull/60
+[#118]: https://github.com/joomlatools/joomla-platform/pull/118
