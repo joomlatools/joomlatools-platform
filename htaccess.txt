@@ -19,7 +19,7 @@ RewriteEngine On
 
 ## Begin - Change document root
 #
-# If you are using shared hosting and/or you are not allowed to change your server Apacge vhost
+# If you are using shared hosting and/or you are not allowed to change your server Apache vhost
 # configuration directly use following rewrites to change the web root or document root to /web.
 #
 # In the below lines you should replace the following string:
