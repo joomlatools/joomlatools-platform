@@ -1,4 +1,12 @@
 <?php
+/**
+ * Joomla Platform - http://developer.joomlatools.org/platform
+ *
+ * @copyright	Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
+ * @license		GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
+ * @link		https://github.com/joomlatools/joomla-platform for the canonical source repository
+ */
+
 namespace Composer;
 
 use Symfony\Component\Console\Input\ArrayInput;
@@ -14,7 +22,7 @@ class Project
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             return;
         }
-        
+
         $input = new ArgvInput();
         if ($input->hasParameterOption(array('--no-interaction', '-n'))) {
             return;

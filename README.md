@@ -1,5 +1,5 @@
-Joomlatools Platform
-====================
+[Joomlatools Platform]
+======================
 
 [![Alt text for your video](http://img.youtube.com/vi/1Gt_eln1mUU/0.jpg)](http://www.youtube.com/watch?v=1Gt_eln1mUU)
 
@@ -7,20 +7,24 @@ Would you be willing to trade all the days from this day forward for one chance
 -- just one chance -- to come back here and tell our enemies that they 
 may take our lives, but they'll never take our freedom?
 
-Alba gu bra!
+Alba gu bràth!
 
 
 ---
 
-Joomlatools Platform is a modern Joomla stack that helps you get started with the best development tools and project 
+[Joomlatools Platform] is a modern Joomla stack that helps you get started with the best development tools and project 
 structure.
 
 Much of the philosophy behind the platform is inspired by the [Twelve-Factor App](http://12factor.net/) methodology 
 including the [Joomla specific version](https://developer.joomlatools.com/platform).
 
+> Forked from [Joomla CMS v3.3.6](https://github.com/joomla/joomla-cms/releases/tag/3.3.6)
+
 ## Features
 
 * Better folder structure
+* Slimmed down codebase
+* Additional flexibility improvements and bug fixes
 * Dependency management with [Composer](http://getcomposer.org)
 * Easy Joomla configuration with environment specific files
 * Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
@@ -40,6 +44,14 @@ Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for addition
 
 ## Installation
 
+### Automatic (recommended)
+
+1. Run `composer create-project joomlatools/joomla-platform` 
+2. Complete the steps
+3. Access Joomla administrator at `http://example.com/web/administrator`
+
+### Manual
+
 1. Clone the git repo - `git clone https://github.com/joomlatools/joomla-platform.git`
 2. Run `composer install`
 3. Copy `.env.example` to `.env` and update environment variables:
@@ -49,10 +61,18 @@ Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for addition
   * `JOOMLA_DB_HOST` - Database host
   * `JOOMLA_ENV` - Set to environment (`development`, `staging`, `production`)
   * `JOOMLA_KEY` - A 32 character random string
-  * `JOOMLA_CACHE` - [OPTIONAL] True or false to enable or disable caching. 
-  * `JOOMLA_DEBUG` - [OPTIONAL] True or false to enable or disable debug mode.
-4. Set your site vhost document root to `/path/to/site/web/` 
-5. Access Joomla administrator at `http://example.com/administrator`
+  * `JOOMLA_CACHE` - [OPTIONAL] True or false to enable or disable caching
+  * `JOOMLA_DEBUG` - [OPTIONAL] True or false to enable or disable debug mode
+4. Access Joomla administrator at `http://example.com/web/administrator`
+
+## Configuration
+
+To be able to access your Joomla site at `http://example.com/`set your site vhost document root 
+to `/path/to/site/web/`.
+
+If you are using shared hosting and/or you are not allowed to change your server Apache vhost
+configuration directly rename [htaccess.txt](htaccess.txt) to .htaccess and modify it use your
+domain name to set web root or document root to /web.
 
 ## Deploys
 
@@ -66,14 +86,19 @@ Any other deployment method can be used as well with one requirement:
 
 ## Documentation
 
-* [Folder structure](https://developer.joomlatools.com/tools/platform/folder-structure)
+* [Folder structure](https://developer.joomlatools.com/tools/platform/structure)
 * [Configuration files](https://developer.joomlatools.com/tools/platform/configuration)
 * [Environment variables](https://developer.joomlatools.com/tools/platform/environment)
 * [Composer](https://developer.joomlatools.com/tools/platform/composer)
 
 ## Contributing
 
-Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
+Joomlatools Platform is an open source, community-driven project. Contributions are welcome from everyone. 
+We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
+
+## License 
+
+Joomlatools Platform is free and open-source software licensed under the [GPLv3 license](LICENSE.txt).
 
 ## Community
 
@@ -82,3 +107,5 @@ Keep track of development and community news.
 * Follow [@joomlatools on Twitter](https://twitter.com/joomlatools)
 * Read and subscribe to the [Joomlatools Blog](https://joomlatools.com/blog/)
 * Subscribe to the [Joomlatools Newsletter](http://www.joomlatools.com/newsletter)
+
+[Joomlatools Platform]: http://developer.joomlatools.com/platform

@@ -25,7 +25,7 @@
     "joomla/string": "~1.0",
     "phpmailer/phpmailer": "5.2.9",
     "vlucas/phpdotenv": "2.0.*",
-    "joomlatools/joomla-console": "^1.3.4"
+    "joomlatools/joomla-console": "^1.4.0"
   },
   "autoload": {
     "psr-0": {"Composer": "install/scripts"}
