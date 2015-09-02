@@ -22,9 +22,9 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
  * Changed [#195] : Move the search extension to the [joomla-platform-search] repo
  * Changed [#180] : Move the content extension to the [joomla–platform-content] repo
  * Changed [#189] : Move the contenthistory extension to the [joomla–platform-content] repo
- * Changed [#176] : Move the tags extension to the [joomla-platform-content] repo
- * Changed [#174] : Move the media extension to the [joomla-platform-media] repo
- * Changed [#170] : Move the finder extension to the [joomla-platform-finder] repo
+ * Changed [#176] : Move the tags extension to the [joomla–platform-content] repo
+ * Changed [#174] : Move the media extension to the [joomla–platform-media] repo
+ * Changed [#170] : Move the finder extension to the [joomla–platform-finder] repo
  * Changed [#225] : Rename 'template_styles' table to 'templates' 
  * Changed [#221] : Rename user related database tables 
  * Changed [#218] : Rename 'associations' table to 'languages_associations'
@@ -64,7 +64,7 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
  * Removed [#20]  : com_contacts
  * Removed [#17]  : com_banners
  * Removed [#16]  : com_redirect
- * Removed [#144] : Library - phputf8 library
+ * Removed [#144] : Library - phputf8 
  * Removed [#94]  : Library - FOF library
  * Removed [#90]  : Library - JOauth1 and 2 
  * Removed [#82]  : Library - JApplicationDaemon
@@ -78,12 +78,12 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
  * Removed [#61]  : Library - JClientLdap
  * Removed [#39]  : Library - SimplePie
  * Removed [#134] : Remove codemirror editor
- * Removed [#172] : Remove /tests 
- * Removed [#115] : Remove /build 
- * Removed [#113] : Remove /installation
+ * Removed [#172] : Remove /tests folder
+ * Removed [#115] : Remove /build folder
+ * Removed [#113] : Remove /installation folder
  * Removed [#19]  : Remove sample data 
  * Removed [#193] : Remove sample data images
- * Removed [#192] : Remove tag id to titles logic JDocumentRendererHead
+ * Removed [#192] : Remove tag id to titles logic in JDocumentRendererHead
  * Removed [#186] : Remove versioning support from com_categories
  * Removed [#184] : Remove tag support from com_categories
  * Removed [#182] : Remove partially implemented tags support from com_users
@@ -98,13 +98,13 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
  * Removed [#138] : Remove com_cache. Use [joomla-console v1.4]
  * Removed [#160] : Remove com_config from the site application
  * Removed [#152] : Remove global configuration user interface
- * Removed [#158] : Remove global configuration 'Text Filter' settings
+ * Removed [#158] : Remove 'Text Filter' config settings
  * Removed [#146] : Remove offline config settings
  * Removed [#157] : Remove the 'root_user' config setting
  * Removed [#132] : Remove proxy config setting
  * Removed [#130] : Remove gzip config setting
  * Removed [#128] : Remove error_reporting config setting
- * Removed [#117] : Remove the FTP settings
+ * Removed [#117] : Remove FTP config settings
  * Removed [#127] : Remove $_PROFILER global
  * Removed [#92]  : Remove less compiler and generatecss build cli command
  * Removed [#66]  : Remove two factor authentication implementation
