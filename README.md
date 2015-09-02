@@ -98,7 +98,7 @@ We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
 
 ## License 
 
-Joomlatools Platform is open-source software licensed under the [GPLv3 license](LICENSE.txt).
+Joomlatools Platform is free and open-source software licensed under the [GPLv3 license](LICENSE.txt).
 
 ## Community
 
