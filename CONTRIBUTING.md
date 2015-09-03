@@ -25,7 +25,7 @@ All our projects are build to be packageble and extensible using [Composer](http
 
 If you are unsure of whether your contribution should be implemented as an 
 extension or part of the Core, you may visit
-[joomlatools/dev on Gitter](http://gitter.com/joomlatools/dev) or ask on the
+[joomlatools/dev on Gitter](http://gitter.im/joomlatools/dev) or ask on the
 [Joomlatools dev mailing list](https://groups.google.com/forum/#!forum/joomlatools-dev)
 for advice.
 
