@@ -1888,7 +1888,7 @@ class JForm
 		// Add the field paths.
 		foreach ($paths as $path)
 		{
-			$path = JPATH_ROOT . '/' . ltrim($path, '/\\');
+			$path = JPATH_APP . '/' . ltrim($path, '/\\');
 			self::addFieldPath($path);
 		}
 
@@ -1899,7 +1899,7 @@ class JForm
 		// Add the form paths.
 		foreach ($paths as $path)
 		{
-			$path = JPATH_ROOT . '/' . ltrim($path, '/\\');
+			$path = JPATH_APP . '/' . ltrim($path, '/\\');
 			self::addFormPath($path);
 		}
 
@@ -1910,7 +1910,7 @@ class JForm
 		// Add the rule paths.
 		foreach ($paths as $path)
 		{
-			$path = JPATH_ROOT . '/' . ltrim($path, '/\\');
+			$path = JPATH_APP . '/' . ltrim($path, '/\\');
 			self::addRulePath($path);
 		}
 
