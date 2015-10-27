@@ -315,12 +315,12 @@ class JSession implements IteratorAggregate
 	 */
 	public static function checkToken($method = 'post')
 	{
-		$token = self::getFormToken();
-		$app = JFactory::getApplication();
+		$token   = self::getFormToken();
+		$app     = JFactory::getApplication();
+        $session = JFactory::getSession();
 
-		if (!$app->input->$method->get($token, '', 'alnum'))
+		if ($session->getState() == 'active' && !$app->input->$method->get($token, '', 'alnum'))
 		{
-			$session = JFactory::getSession();
 			if ($session->isNew())
 			{
 				// Redirect to login screen.
