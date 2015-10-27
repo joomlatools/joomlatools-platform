@@ -743,45 +743,29 @@ class JSession implements IteratorAggregate
 	 */
 	public function fork()
 	{
-        if($this->_state !== 'active') {
-            return false;
-        }
+		if ($this->_state !== 'active')
+		{
+			// @TODO :: generated error here
+			return false;
+		}
 
-        // Keep the old values
-        $values	= $_SESSION;
+		// Keep session config
+		$cookie = session_get_cookie_params();
 
-        $trans = ini_get('session.use_trans_sid');
-        if( $trans ) {
-            ini_set( 'session.use_trans_sid', 0 );
-        }
-        $cookie	= session_get_cookie_params();
+		// Kill session
+		session_destroy();
 
-        // Generate a new ID
-        session_regenerate_id(true);
-        $id = session_id();
+		// Re-register the session store after a session has been destroyed, to avoid PHP bug
+		$this->_store->register();
 
-        $data = $this->_store->read($this->getId());
+		// Restore config
+		session_set_cookie_params($cookie['lifetime'], $cookie['path'], $cookie['domain'], $cookie['secure'], true);
 
-        // Kill the session
-        session_destroy();
+		// Restart session with new id
+		session_regenerate_id(true);
+		session_start();
 
-        // Re-register the session store after a session has been destroyed, to avoid PHP bug
-        $this->_store->register();
-
-        // Restore config
-        ini_set( 'session.use_trans_sid', $trans);
-        session_set_cookie_params( $cookie['lifetime'], $cookie['path'], $cookie['domain'], $cookie['secure']);
-
-        // Restart session with new id
-        session_id($id);
-        session_start();
-
-        $_SESSION = $values;
-
-        // Now put the session data back
-        $this->_store->write($id, $data);
-
-        return true;
+		return true;
 	}
 
 	/**
