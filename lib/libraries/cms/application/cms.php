@@ -124,12 +124,6 @@ class JApplicationCms extends JApplicationWeb
 		{
 			$this->config->set('session_name', $this->getName());
 		}
-
-		// Create the session if a session name is passed.
-		if ($this->config->get('session') !== false)
-		{
-			$this->loadSession(null, $this->config->get('session_autostart'));
-		}
 	}
 
 	/**
@@ -614,7 +608,8 @@ class JApplicationCms extends JApplicationWeb
 	 * but for many applications it will make sense to override this method and create a session,
 	 * if required, based on more specific needs.
 	 *
-	 * @param   JSession  $session  An optional session object. If omitted, the session is created.
+	 * @param   JSession  $session    An optional session object. If omitted, the session is created.
+     * @param   boolean   $auto_start Autostart the session if true
 	 *
 	 * @return  JApplicationCms  This method is chainable.
 	 *
@@ -682,7 +677,8 @@ class JApplicationCms extends JApplicationWeb
             // Remove expired sessions from the database.
             $time = time();
 
-            if ($time % 2) {
+            if ($time % 2)
+            {
                 // The modulus introduces a little entropy, making the flushing less accurate
                 // but fires the query less than half the time.
                 $query = $db->getQuery(true)
@@ -701,11 +697,6 @@ class JApplicationCms extends JApplicationWeb
             ) {
                 $this->checkSession();
             }
-        }
-        else
-        {
-            $session->set('registry',    new JRegistry('session'));
-            $session->set('user',        new JUser());
         }
 
 		// Set the session object.
