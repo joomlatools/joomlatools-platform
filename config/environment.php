@@ -52,4 +52,7 @@ return [
 	/* Feed */
     'feed_limit'   => 10,
     'feed_email'   => 'author',
+
+    /* Session autostart */
+    'session_autostart' => false
 ];
