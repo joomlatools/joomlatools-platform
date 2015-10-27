@@ -315,12 +315,12 @@ class JSession implements IteratorAggregate
 	 */
 	public static function checkToken($method = 'post')
 	{
-		$token = self::getFormToken();
-		$app = JFactory::getApplication();
+		$token   = self::getFormToken();
+		$app     = JFactory::getApplication();
+        $session = JFactory::getSession();
 
-		if (!$app->input->$method->get($token, '', 'alnum'))
+		if ($session->getState() == 'active' && !$app->input->$method->get($token, '', 'alnum'))
 		{
-			$session = JFactory::getSession();
 			if ($session->isNew())
 			{
 				// Redirect to login screen.
@@ -743,29 +743,43 @@ class JSession implements IteratorAggregate
 	 */
 	public function fork()
 	{
-		if ($this->_state !== 'active')
-		{
-			// @TODO :: generated error here
-			return false;
-		}
+        if($this->_state !== 'active') {
+            return false;
+        }
 
-		// Keep session config
-		$cookie = session_get_cookie_params();
+        // Keep the old values
+        $values	= $_SESSION;
 
-		// Kill session
-		session_destroy();
+        $trans = ini_get('session.use_trans_sid');
+        if( $trans ) {
+            ini_set( 'session.use_trans_sid', 0 );
+        }
+        $cookie	= session_get_cookie_params();
 
-		// Re-register the session store after a session has been destroyed, to avoid PHP bug
-		$this->_store->register();
+        // Generate a new ID
+        session_regenerate_id(true);
+        $id = session_id();
 
-		// Restore config
-		session_set_cookie_params($cookie['lifetime'], $cookie['path'], $cookie['domain'], $cookie['secure'], true);
+        $data = $this->_store->read($this->getId());
 
-		// Restart session with new id
-		session_regenerate_id(true);
-		session_start();
+        // Kill the session
+        session_destroy();
 
-		return true;
+        // Re-register the session store after a session has been destroyed, to avoid PHP bug
+        $this->_store->register();
+
+        // Restore config
+        ini_set( 'session.use_trans_sid', $trans);
+        session_set_cookie_params( $cookie['lifetime'], $cookie['path'], $cookie['domain'], $cookie['secure']);
+
+        // Restart session with new id
+        session_id($id);
+        session_start();
+
+        $_SESSION = $values;
+
+        // Now put the session data back
+        $this->_store->write($id, $data);
 	}
 
 	/**

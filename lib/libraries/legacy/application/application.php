@@ -146,10 +146,15 @@ class JApplication extends JApplicationBase
 			$this->_createConfiguration(JPATH_CONFIGURATION . '/' . $config['config_file']);
 		}
 
+        // Set the session autostart
+        if(!isset($config['session_autostart'])) {
+            $config['session_autostart'] = !is_null($this->getCfg('session_autostart')) ? $this->getCfg('session_autostart') : true;
+        }
+
 		// Create the session if a session name is passed.
 		if ($config['session'] !== false)
 		{
-			$this->_createSession(self::getHash($config['session_name']));
+			$this->_createSession(self::getHash($config['session_name']), false, $config['session_autostart']);
 		}
 
 		$this->requestTime = gmdate('Y-m-d H:i');
@@ -619,6 +624,8 @@ class JApplication extends JApplicationBase
 		// Get the global JAuthentication object.
 		jimport('joomla.user.authentication');
 
+		JPluginHelper::importPlugin('user');
+
 		$authenticate = JAuthentication::getInstance();
 		$response = $authenticate->authenticate($credentials, $options);
 
@@ -960,7 +967,7 @@ class JApplication extends JApplicationBase
 	 * @since   11.1
 	 * @deprecated  4.0
 	 */
-	protected function _createSession($name)
+	protected function _createSession($name, $auto_start = true)
 	{
 		$options = array();
 		$options['name'] = $name;
@@ -985,36 +992,50 @@ class JApplication extends JApplicationBase
 		$this->registerEvent('onAfterSessionStart', array($this, 'afterSessionStart'));
 
 		$session = JFactory::getSession($options);
-		$session->initialise($this->input, $this->dispatcher);
-		$session->start();
+        $session->initialise($this->input, $this->dispatcher);
 
-		// TODO: At some point we need to get away from having session data always in the db.
+        if($session->getState() != 'active')
+        {
+            if ($auto_start || JRequest::getCmd($session->getName(), null, 'cookie')) {
+                $session->start();
+            }
+        }
 
-		$db = JFactory::getDbo();
+        // Only update the session table if the session is active
+        if($session->getState() == 'active')
+        {
+            // TODO: At some point we need to get away from having session data always in the db.
+            $db = JFactory::getDbo();
 
-		// Remove expired sessions from the database.
-		$time = time();
+            // Remove expired sessions from the database.
+            $time = time();
 
-		if ($time % 2)
-		{
-			// The modulus introduces a little entropy, making the flushing less accurate
-			// but fires the query less than half the time.
-			$query = $db->getQuery(true)
-				->delete($db->quoteName('#__users_sessions'))
-				->where($db->quoteName('time') . ' < ' . $db->quote((int) ($time - $session->getExpire())));
+            if ($time % 2)
+            {
+                // The modulus introduces a little entropy, making the flushing less accurate
+                // but fires the query less than half the time.
+                $query = $db->getQuery(true)
+                    ->delete($db->quoteName('#__users_sessions'))
+                    ->where($db->quoteName('time') . ' < ' . $db->quote((int) ($time - $session->getExpire())));
 
-			$db->setQuery($query);
-			$db->execute();
-		}
+                $db->setQuery($query);
+                $db->execute();
+            }
 
-		// Check to see the the session already exists.
-		$handler = $this->getCfg('session_handler');
+            // Check to see the the session already exists.
+            $handler = $this->getCfg('session_handler');
 
-		if (($handler != 'database' && ($time % 2 || $session->isNew()))
-			|| ($handler == 'database' && $session->isNew()))
-		{
-			$this->checkSession();
-		}
+            if (($handler != 'database' && ($time % 2 || $session->isNew()))
+                || ($handler == 'database' && $session->isNew()))
+            {
+                $this->checkSession();
+            }
+        }
+        else
+        {
+            $session->set('registry',    new JRegistry('session'));
+            $session->set('user',        new JUser());
+        }
 
 		return $session;
 	}
