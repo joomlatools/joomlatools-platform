@@ -27,6 +27,9 @@ class UsersControllerReset extends UsersController
 	 */
 	public function request()
 	{
+		// Check the request token.
+		JSession::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+
 		$app   = JFactory::getApplication();
 		$model = $this->getModel('Reset', 'UsersModel');
 		$data  = $this->input->post->get('jform', array(), 'array');
@@ -91,6 +94,9 @@ class UsersControllerReset extends UsersController
 	 */
 	public function confirm()
 	{
+		// Check the request token.
+		JSession::checkToken('request') or jexit(JText::_('JINVALID_TOKEN'));
+
 		$app   = JFactory::getApplication();
 		$model = $this->getModel('Reset', 'UsersModel');
 		$data  = $this->input->get('jform', array(), 'array');
@@ -154,6 +160,9 @@ class UsersControllerReset extends UsersController
 	 */
 	public function complete()
 	{
+		// Check for request forgeries
+		JSession::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
+
 		$app   = JFactory::getApplication();
 		$model = $this->getModel('Reset', 'UsersModel');
 		$data  = $this->input->post->get('jform', array(), 'array');
