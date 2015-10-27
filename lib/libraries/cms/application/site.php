@@ -62,6 +62,11 @@ final class JApplicationSite extends JApplicationCms
 
 		// Execute the parent constructor
 		parent::__construct($input, $config, $client);
+
+        // Create the session if a session name was passed.
+        if ($this->config->get('session') !== false) {
+            $this->loadSession(null, $this->config->get('session_autostart'));
+        }
 	}
 
 	/**

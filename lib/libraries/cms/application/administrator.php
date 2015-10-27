@@ -47,6 +47,11 @@ class JApplicationAdministrator extends JApplicationCms
 
 		// Set the root in the URI based on the application name
 		JUri::root(null, str_ireplace('/' . $this->getName(), '', JUri::base(true)));
+
+        // Create the session if a session name was passed.
+        if ($this->config->get('session') !== false) {
+            $this->loadSession();
+        }
 	}
 
 	/**

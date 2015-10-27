@@ -124,12 +124,6 @@ class JApplicationCms extends JApplicationWeb
 		{
 			$this->config->set('session_name', $this->getName());
 		}
-
-		// Create the session if a session name is passed.
-		if ($this->config->get('session') !== false)
-		{
-			$this->loadSession();
-		}
 	}
 
 	/**
@@ -614,13 +608,14 @@ class JApplicationCms extends JApplicationWeb
 	 * but for many applications it will make sense to override this method and create a session,
 	 * if required, based on more specific needs.
 	 *
-	 * @param   JSession  $session  An optional session object. If omitted, the session is created.
+	 * @param   JSession  $session    An optional session object. If omitted, the session is created.
+     * @param   boolean   $auto_start Autostart the session if true
 	 *
 	 * @return  JApplicationCms  This method is chainable.
 	 *
 	 * @since   3.2
 	 */
-	public function loadSession(JSession $session = null)
+	public function loadSession(JSession $session = null, $auto_start = true)
 	{
 		if ($session !== null)
 		{
@@ -664,35 +659,45 @@ class JApplicationCms extends JApplicationWeb
 
 		// There's an internal coupling to the session object being present in JFactory, need to deal with this at some point
 		$session = JFactory::getSession($options);
-		$session->initialise($this->input, $this->dispatcher);
-		$session->start();
+        $session->initialise($this->input, $this->dispatcher);
 
-		// TODO: At some point we need to get away from having session data always in the db.
-		$db = JFactory::getDbo();
+        if ($session->getState() != 'active')
+        {
+            if ($auto_start || $this->input->cookie->get($session->getName())) {
+                $session->start();
+            }
+        }
 
-		// Remove expired sessions from the database.
-		$time = time();
+        // Only update the session table if the session is active
+        if ($session->getState() == 'active')
+        {
+            // TODO: At some point we need to get away from having session data always in the db.
+            $db = JFactory::getDbo();
 
-		if ($time % 2)
-		{
-			// The modulus introduces a little entropy, making the flushing less accurate
-			// but fires the query less than half the time.
-			$query = $db->getQuery(true)
-				->delete($db->quoteName('#__users_sessions'))
-				->where($db->quoteName('time') . ' < ' . $db->quote((int) ($time - $session->getExpire())));
+            // Remove expired sessions from the database.
+            $time = time();
 
-			$db->setQuery($query);
-			$db->execute();
-		}
+            if ($time % 2)
+            {
+                // The modulus introduces a little entropy, making the flushing less accurate
+                // but fires the query less than half the time.
+                $query = $db->getQuery(true)
+                    ->delete($db->quoteName('#__users_sessions'))
+                    ->where($db->quoteName('time') . ' < ' . $db->quote((int)($time - $session->getExpire())));
 
-		// Get the session handler from the configuration.
-		$handler = $this->get('session_handler', 'none');
+                $db->setQuery($query);
+                $db->execute();
+            }
 
-		if (($handler != 'database' && ($time % 2 || $session->isNew()))
-			|| ($handler == 'database' && $session->isNew()))
-		{
-			$this->checkSession();
-		}
+            // Get the session handler from the configuration.
+            $handler = $this->get('session_handler', 'none');
+
+            if (($handler != 'database' && ($time % 2 || $session->isNew()))
+                || ($handler == 'database' && $session->isNew())
+            ) {
+                $this->checkSession();
+            }
+        }
 
 		// Set the session object.
 		$this->session = $session;
@@ -732,10 +737,16 @@ class JApplicationCms extends JApplicationWeb
 
 		if ($response->status === JAuthentication::STATUS_SUCCESS)
 		{
-			/*
-			 * Validate that the user should be able to login (different to being authenticated).
-			 * This permits authentication plugins blocking the user.
-			 */
+            $session = JFactory::getSession($options);
+
+            if($session->getState() != 'active') {
+                $session->start();
+            }
+
+            /*
+             * Validate that the user should be able to login (different to being authenticated).
+             * This permits authentication plugins blocking the user.
+             */
 			$authorisations = $authenticate->authorise($response, $options);
 
 			foreach ($authorisations as $authorisation)
