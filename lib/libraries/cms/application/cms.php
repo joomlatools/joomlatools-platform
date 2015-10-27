@@ -739,11 +739,8 @@ class JApplicationCms extends JApplicationWeb
 		{
             $session = JFactory::getSession($options);
 
-            // Fork the session to prevent session fixation issues if it's active
             if($session->getState() != 'active') {
                 $session->start();
-            } else {
-                $session->fork();
             }
 
             /*
