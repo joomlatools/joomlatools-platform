@@ -27,8 +27,6 @@ class UsersControllerUser extends UsersController
 	 */
 	public function login()
 	{
-		JSession::checkToken('post') or jexit(JText::_('JInvalid_Token'));
-
 		$app    = JFactory::getApplication();
 		$input  = $app->input;
 		$method = $input->getMethod();
@@ -125,8 +123,6 @@ class UsersControllerUser extends UsersController
 	 */
 	public function register()
 	{
-		JSession::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
-
 		// Get the application
 		$app = JFactory::getApplication();
 
@@ -192,9 +188,6 @@ class UsersControllerUser extends UsersController
 	 */
 	public function remind()
 	{
-		// Check the request token.
-		JSession::checkToken('post') or jexit(JText::_('JINVALID_TOKEN'));
-
 		$app   = JFactory::getApplication();
 		$model = $this->getModel('User', 'UsersModel');
 		$data  = $this->input->post->get('jform', array(), 'array');
