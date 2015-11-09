@@ -10,6 +10,7 @@ defined('_JEXEC') or die;
 // Connect with Joomla
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
+$user = JFactory::getUser();
 $menu = $app->getMenu();
 
 // Detecting Active Variables
