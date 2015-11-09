@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Custom icon font
+   ========================================================================== */
+
+// The placeholders in this file are being replaced with real values by grunt-webfont
+
+
+/* @font-face */
+
+@font-face {
+  font-family: "<%= fontBaseName %>";
+  src:    url("#{$icon-path}/<%= fontBaseName %>/<%= fontBaseName %>.eot");
+  src:    url("#{$icon-path}/fonts/<%= fontBaseName %>/<%= fontBaseName %>.eot?#iefix") format("embedded-opentype"),
+  url("#{$icon-path}/<%= fontBaseName %>/<%= fontBaseName %>.woff") format("woff"),
+  url("#{$icon-path}/<%= fontBaseName %>/<%= fontBaseName %>.ttf") format("truetype"),
+  url("#{$icon-path}/<%= fontBaseName %>/<%= fontBaseName %>.svg#<%= fontBaseName %>") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/**
+ * Use SVG
+ *
+ * Always use SVG on touch / mobile
+ */
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: "<%= fontBaseName %>";
+    src: url("#{$icon-path}/<%= fontBaseName %>/<%= fontBaseName %>.svg#<%= fontBaseName %>") format("svg");
+  }
+}
+
+
+// Placeholder
+// To be used in mixins
+// Sets all default values for the icons
+
+%icon {
+  speak: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-transform: none;
+  line-height: 1;
+  font: {
+    style: normal;
+    variant: normal;
+    weight: normal;
+    family: '<%= fontBaseName %>';
+  }
+  &:before {
+    display: inline-block;
+    margin: auto;
+  }
+}
+
+
+// Sass icon map
+// All the available icons
+
+$icons: (<% for (var glyphIdx = 0; glyphIdx < glyphs.length; glyphIdx++) { %>
+  <%= glyphs[glyphIdx] %>: "<% if (addLigatures) { %><%= glyphs[glyphIdx] %><% } else { %>\<%= codepoints[glyphIdx] %><% } %>",<% } %>);
+
+
+/**
+ * Icon classes
+ *
+ * Creating a class name for each individual icon to be used in markup like:
+ * <span class="k-icon-circle"></span>
+ */
+
+@each $name, $icon in $icons {
+  .<%= classPrefix %>#{$name} {
+    @extend %icon;
+    &:before {
+      content: "#{$icon}";
+    }
+  }
+}
+
+
+// 'Icon before' mixin
+// For adding icons to elements using CSS pseudo-elements
+
+@mixin icon-before($icon: false, $styles: false) {
+  &:before {
+    @if $icon {
+      content: "#{map-get($icons, $icon)}";
+    }
+    @if $styles {
+      @extend %icon;
+    }
+    @content;
+  }
+}
+
+
+// 'Icon after' mixin
+// For adding icons to elements using CSS pseudo-elements
+
+@mixin icon-after($icon: false, $styles: false) {
+  &:after {
+    @if $icon {
+      content: "#{map-get($icons, $icon)}";
+    }
+    @if $styles {
+      @extend %icon;
+    }
+    @content;
+  }
+}
+
+
+// 'Icon both' mixin
+// For adding icons to elements using CSS pseudo-elements
+
+@mixin icon-both($icon: false, $styles: false) {
+  &:before,
+  &:after {
+    @if $icon {
+      content: "#{map-get($icons, $icon)}";
+    }
+    @if $styles {
+      @extend %icon;
+    }
+    @content;
+  }
+}
