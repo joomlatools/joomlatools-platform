@@ -39,7 +39,7 @@ $sortFields = $this->getSortFields();
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=users');?>" method="post" name="adminForm" id="k-offcanvas-container">
+<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=users');?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
     <div class="k-scopebar" id="filter-bar">

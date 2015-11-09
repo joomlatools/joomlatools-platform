@@ -67,7 +67,7 @@ JText::script('COM_USERS_GROUPS_CONFIRM_DELETE');
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=groups');?>" method="post" name="adminForm" id="k-offcanvas-container">
+<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=groups');?>" method="post" name="adminForm" id="adminForm">
 
 	<!-- Scopebar -->
 	<div class="k-scopebar" id="filter-bar">

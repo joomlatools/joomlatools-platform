@@ -39,7 +39,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 </script>
 
 <!-- Form -->
-<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=menus');?>" method="get" name="adminForm" id="k-offcanvas-container">
+<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=menus');?>" method="get" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
     <div class="k-scopebar" id="filter-bar">

@@ -12,22 +12,20 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         // Grunt variables
-        assetsPath: 'web/administrator/templates/backman',
         nookuAssetsPath: '../../../../../joomlatools-projects/nooku-framework/code/resources/assets',
-        bsproxy: 'http://joomla.box/joomla-platform/web/administrator',
 
         // Iconfont
         webfont: {
             icons: {
-                src: '<%= assetsPath %>/icons/svg/*.svg',
-                dest: '<%= assetsPath %>/fonts/koowa-icons',
-                destCss: '<%= assetsPath %>/scss/utilities',
+                src: 'icons/svg/*.svg',
+                dest: 'fonts/koowa-icons',
+                destCss: 'scss/utilities',
                 options: {
                     font: 'koowa-icons',
                     hashes: false,
                     stylesheet: 'scss',
                     relativeFontPath: '../fonts/icons/',
-                    template: '<%= assetsPath %>/icons/template.css',
+                    template: 'icons/template.css',
                     htmlDemo: false
                 }
             }
@@ -41,7 +39,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= assetsPath %>/css/admin.css': '<%= assetsPath %>/scss/admin.scss'
+                    'css/admin.css': 'scss/admin.scss'
                 }
             }
         },
@@ -55,8 +53,8 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: '<%= assetsPath %>/css/*.css',
-                dest: '<%= assetsPath %>/css/'
+                src: 'css/*.css',
+                dest: 'css/'
             }
         },
 
@@ -69,11 +67,11 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    '<%= assetsPath %>/js/admin.js': [
+                    'js/admin.js': [
                         'bower_components/footable/dist/footable.min.js',
-                        '<%= assetsPath %>/scripts/jquery.floatThead.js',
-                        '<%= assetsPath %>/scripts/off-canvas-menu.js',
-                        '<%= assetsPath %>/scripts/main.js'
+                        'scripts/jquery.floatThead.js',
+                        'scripts/off-canvas-menu.js',
+                        'scripts/main.js'
                     ]
                 }
             }
@@ -84,11 +82,11 @@ module.exports = function(grunt) {
             dev: {
                 bsFiles: {
                     src : [
-                        "<%= assetsPath %>/css/*.*"
+                        "css/*.*"
                     ]
                 },
                 options: {
-                    proxy: "<%= bsproxy %>",
+                    proxy: "http://joomla.box/joomla-platform/web/administrator/",
                     port: bsport,
                     open: true,
                     notify: false,
@@ -111,7 +109,7 @@ module.exports = function(grunt) {
         watch: {
             fontcustom: {
                 files: [
-                    '<%= assetsPath %>/icons/svg/*.svg'
+                    'icons/svg/*.svg'
                 ],
                 tasks: ['webfont', 'sass', 'autoprefixer'],
                 options: {
@@ -121,8 +119,8 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: [
-                    '<%= assetsPath %>/scss/*.scss',
-                    '<%= assetsPath %>/scss/**/*.scss',
+                    'scss/*.scss',
+                    'scss/**/*.scss',
                     '<%= nookuAssetsPath %>/scss/*.scss',
                     '<%= nookuAssetsPath %>/scss/**/*.scss'
                 ],
@@ -134,8 +132,8 @@ module.exports = function(grunt) {
             },
             javascript: {
                 files: [
-                    '<%= assetsPath %>/scripts/*.js',
-                    '<%= assetsPath %>/js/*.js'
+                    'scripts/*.js',
+                    'js/*.js'
                 ],
                 tasks: ['uglify'],
                 options: {

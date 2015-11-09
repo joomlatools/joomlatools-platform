@@ -57,13 +57,6 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 <!-- Form -->
 <form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=items');?>" method="post" name="adminForm" id="adminForm">
 
-    <?php if (empty($this->items)) : ?>
-    <!-- Placeholder -->
-    <div class="k-placeholder">
-        <?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
-    </div><!-- .k-placeholder -->
-    <?php else : ?>
-
     <!-- Scopebar -->
     <div class="k-scopebar" id="filter-bar">
         <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this), null, array('debug' => false)); ?>
@@ -247,7 +240,6 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
         <input type="hidden" name="task" value="" />
         <input type="hidden" name="boxchecked" value="0" />
         <?php echo JHtml::_('form.token'); ?>
-        <?php endif; ?>
 
     </div><!-- .k-table-container -->
 
