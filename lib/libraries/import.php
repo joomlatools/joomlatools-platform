@@ -46,8 +46,13 @@ if (!class_exists('JLoader'))
 	throw new RuntimeException('Joomla Platform not loaded.');
 }
 
+
+
 // Setup the autoloaders.
 JLoader::setup();
+
+// Register J prefix
+JLoader::registerPrefix('J', JPATH_PLATFORM . '/cms');
 
 // Import the base Joomla Platform libraries.
 JLoader::import('joomla.factory');

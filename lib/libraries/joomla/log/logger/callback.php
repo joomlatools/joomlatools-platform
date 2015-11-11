@@ -46,7 +46,7 @@ class JLogLoggerCallback extends JLogLogger
 		}
 		else
 		{
-			throw new JLogException(JText::_('JLogLoggerCallback created without valid callback function.'));
+			throw new RuntimeException(JText::_('JLogLoggerCallback created without valid callback function.'));
 		}
 	}
 
@@ -58,7 +58,7 @@ class JLogLoggerCallback extends JLogLogger
 	 * @return  boolean  True on success.
 	 *
 	 * @since   12.2
-	 * @throws  LogException
+	 * @throws  RuntimeException
 	 */
 	public function addEntry(JLogEntry $entry)
 	{

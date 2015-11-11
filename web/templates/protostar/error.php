@@ -68,9 +68,6 @@ else
 		</style>
 	<?php endif; ?>
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/template.css" type="text/css" />
-	<?php if ($app->get('debug_lang', '0') == '1' || $app->get('debug', '0') == '1') : ?>
-		<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/media/system/css/debug.css" type="text/css" />
-	<?php endif; ?>
 	<?php // If Right-to-Left ?>
 	<?php if ($this->direction == 'rtl') : ?>
 		<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/media/jui/css/bootstrap-rtl.css" type="text/css" />
@@ -188,6 +185,5 @@ else
 			</p>
 		</div>
 	</div>
-	<?php echo $doc->getBuffer('modules', 'debug', array('style' => 'none')); ?>
 </body>
 </html>

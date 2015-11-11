@@ -24,8 +24,11 @@
     "joomla/registry": "~1.2",
     "joomla/string": "~1.0",
     "phpmailer/phpmailer": "5.2.9",
-    "vlucas/phpdotenv": "2.0.*",
+    "vlucas/phpdotenv": "dev-master",
     "joomlatools/joomla-console": "^1.4.0"
+  },
+  "suggest": {
+    "joomlatools/joomla-platform-legacy": "Includes deprecated library classes no longer used in the core"
   },
   "autoload": {
     "psr-0": {"Composer": "install/scripts"}

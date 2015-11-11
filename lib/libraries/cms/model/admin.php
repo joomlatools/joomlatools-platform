@@ -67,6 +67,13 @@ abstract class JModelAdmin extends JModelForm
 	protected $event_change_state = null;
 
 	/**
+	 * Maps events to plugin groups.
+	 *
+	 * @var array
+	 */
+	protected $events_map = null;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param   array  $config  An optional associative array of configuration settings.
@@ -122,6 +129,16 @@ abstract class JModelAdmin extends JModelForm
 		{
 			$this->event_change_state = 'onContentChangeState';
 		}
+
+		$config['events_map'] = isset($config['events_map']) ? $config['events_map'] : array();
+
+		$this->events_map = array_merge(
+			array(
+				'delete'       => 'content',
+				'save'         => 'content',
+				'change_state' => 'content'
+			), $config['events_map']
+		);
 
 		// Guess the JText message prefix. Defaults to the option.
 		if (isset($config['text_prefix']))
@@ -727,8 +744,8 @@ abstract class JModelAdmin extends JModelForm
 		$pks = (array) $pks;
 		$table = $this->getTable();
 
-		// Include the content plugins for the on delete events.
-		JPluginHelper::importPlugin('content');
+		// Include the plugins for the delete events.
+		JPluginHelper::importPlugin($this->events_map['delete']);
 
 		// Iterate the items to delete each one.
 		foreach ($pks as $i => $pk)
@@ -742,7 +759,7 @@ abstract class JModelAdmin extends JModelForm
 
 					$context = $this->option . '.' . $this->name;
 
-					// Trigger the onContentBeforeDelete event.
+					// Trigger the before delete event.
 					$result = $dispatcher->trigger($this->event_before_delete, array($context, $table));
 
 					if (in_array(false, $result, true))
@@ -757,7 +774,7 @@ abstract class JModelAdmin extends JModelForm
 						return false;
 					}
 
-					// Trigger the onContentAfterDelete event.
+					// Trigger the after delete event.
 					$dispatcher->trigger($this->event_after_delete, array($context, $table));
 
 				}
@@ -924,8 +941,8 @@ abstract class JModelAdmin extends JModelForm
 		$table = $this->getTable();
 		$pks = (array) $pks;
 
-		// Include the content plugins for the change of state event.
-		JPluginHelper::importPlugin('content');
+		// Include the plugins for the change of state event.
+		JPluginHelper::importPlugin($this->events_map['change_state']);
 
 		// Access checks.
 		foreach ($pks as $i => $pk)
@@ -955,7 +972,7 @@ abstract class JModelAdmin extends JModelForm
 
 		$context = $this->option . '.' . $this->name;
 
-		// Trigger the onContentChangeState event.
+		// Trigger the change state event.
 		$result = $dispatcher->trigger($this->event_change_state, array($context, $pks, $value));
 
 		if (in_array(false, $result, true))
@@ -1054,7 +1071,9 @@ abstract class JModelAdmin extends JModelForm
 	public function save($data)
 	{
 		$dispatcher = JEventDispatcher::getInstance();
-		$table = $this->getTable();
+
+		$table   = $this->getTable();
+		$context = $this->option . '_' . $this->name;
 
 		if ((!empty($data['tags']) && $data['tags'][0] != ''))
 		{
@@ -1065,8 +1084,8 @@ abstract class JModelAdmin extends JModelForm
 		$pk = (!empty($data[$key])) ? $data[$key] : (int) $this->getState($this->getName() . '.id');
 		$isNew = true;
 
-		// Include the content plugins for the on save events.
-		JPluginHelper::importPlugin('content');
+		// Include the plugins for the save events.
+		JPluginHelper::importPlugin($this->events_map['save']);
 
 		// Allow an exception to be thrown.
 		try
@@ -1096,8 +1115,8 @@ abstract class JModelAdmin extends JModelForm
 				return false;
 			}
 
-			// Trigger the onContentBeforeSave event.
-			$result = $dispatcher->trigger($this->event_before_save, array($this->option . '.' . $this->name, $table, $isNew));
+			// Trigger the before save event.
+			$result = $dispatcher->trigger($this->event_before_save, array($context, $table, $isNew));
 
 			if (in_array(false, $result, true))
 			{
@@ -1115,8 +1134,8 @@ abstract class JModelAdmin extends JModelForm
 			// Clean the cache.
 			$this->cleanCache();
 
-			// Trigger the onContentAfterSave event.
-			$dispatcher->trigger($this->event_after_save, array($this->option . '.' . $this->name, $table, $isNew));
+			// Trigger the after save event.
+			$dispatcher->trigger($this->event_after_save, array($context, $table, $isNew));
 		}
 		catch (Exception $e)
 		{
