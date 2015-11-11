@@ -256,7 +256,6 @@ $stickyToolbar = $this->params->get('stickyToolbar', '1');
 	</div>
 	<!-- End Status Module -->
 <?php endif; ?>
-<jdoc:include type="modules" name="debug" style="none" />
 <?php if ($stickyToolbar) : ?>
 	<script>
 		(function($)
