@@ -189,7 +189,7 @@ class JFormFieldRules extends JFormField
 		$html = array();
 
 		// Description
-		$html[] = '<p class="rule-desc">' . JText::_('JLIB_RULES_SETTINGS_DESC') . '</p>';
+		//$html[] = '<p class="rule-desc">' . JText::_('JLIB_RULES_SETTINGS_DESC') . '</p>';
 
 		// Begin tabs
 		$html[] = '<div id="permissions-sliders" class="tabbable tabs-left">';
@@ -367,7 +367,7 @@ class JFormFieldRules extends JFormField
 
 		$html[] = '</div></div>';
 
-		$html[] = '<div class="alert">';
+		/*$html[] = '<div class="alert">';
 
 		if ($section == 'component' || $section == null)
 		{
@@ -378,7 +378,7 @@ class JFormFieldRules extends JFormField
 			$html[] = JText::_('JLIB_RULES_SETTING_NOTES_ITEM');
 		}
 
-		$html[] = '</div>';
+		$html[] = '</div>';*/
 
 		return implode("\n", $html);
 	}

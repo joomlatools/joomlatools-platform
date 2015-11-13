@@ -160,7 +160,7 @@ class InstallerModelDiscover extends InstallerModel
 	{
 		$app       = JFactory::getApplication();
 		$installer = JInstaller::getInstance();
-		$eid       = JRequest::getVar('cid', 0);
+		$eid       = $app->input->getInt('cid', 0);
 
 		if (is_array($eid) || $eid)
 		{

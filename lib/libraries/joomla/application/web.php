@@ -133,6 +133,10 @@ class JApplicationWeb extends JApplicationBase
 		// Load the configuration object.
 		$this->loadConfiguration($this->fetchConfigurationData());
 
+        if (is_null($this->config->get('session_autostart'))) {
+            $this->config->set('session_autostart', true);
+        }
+
 		// Set the execution datetime and timestamp;
 		$this->set('execution.datetime', gmdate('Y-m-d H:i:s'));
 		$this->set('execution.timestamp', time());
@@ -213,7 +217,7 @@ class JApplicationWeb extends JApplicationBase
 		// Create the session based on the application logic.
 		if ($session !== false)
 		{
-			$this->loadSession($session);
+			$this->loadSession($session, $this->config->get('session_autostart'));
 		}
 
 		// Create the document based on the application logic.
@@ -1030,7 +1034,7 @@ class JApplicationWeb extends JApplicationBase
 	 *
 	 * @since   11.3
 	 */
-	public function loadSession(JSession $session = null)
+	public function loadSession(JSession $session = null, $auto_start = true)
 	{
 		if ($session !== null)
 		{
@@ -1065,10 +1069,12 @@ class JApplicationWeb extends JApplicationBase
 		{
 			$session->restart();
 		}
-		else
-		{
-			$session->start();
-		}
+		elseif ($session->getState() != 'active')
+        {
+            if ($auto_start || $this->input->cookie->get($session->getName())) {
+                $session->start();
+            }
+        }
 
 		// Set the session object.
 		$this->session = $session;
