@@ -104,8 +104,9 @@ Joomlatools Platform is free and open-source software licensed under the [GPLv3 
 
 Keep track of development and community news.
 
-* Follow [@joomlatools on Twitter](https://twitter.com/joomlatools)
-* Read and subscribe to the [Joomlatools Blog](https://joomlatools.com/blog/)
+* Follow [@joomlatoolsdev on Twitter](https://twitter.com/joomlatoolsdev)
+* Join [joomlatools/dev on Gitter](http://gitter.im/joomlatools/dev)
+* Read and subscribe to the [Joomlatools Blog](https://develeoper.joomlatools.com/blog/)
 * Subscribe to the [Joomlatools Newsletter](http://www.joomlatools.com/newsletter)
 
 [Joomlatools Platform]: http://developer.joomlatools.com/platform
