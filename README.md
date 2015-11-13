@@ -30,7 +30,7 @@ including the [Joomla specific version](https://developer.joomlatools.com/platfo
 * Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
 * CLI extension installer with [Joomlatools Composer](http://github.com/joomlatools/joomla-composer)
 
-Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for additional features:
+Use the [Joomlatools Box](https://github.com/joomlatools/joomla-vagrant) for additional features:
 
 * Easy development environments with [Vagrant](http://www.vagrantup.com/)
 * Easy server provisioning with [Puppet](https://puppetlabs.com/) (Ubuntu 14.04, PHP 5.5, MariaDB)
