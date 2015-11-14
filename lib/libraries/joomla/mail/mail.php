@@ -318,7 +318,7 @@ class JMail extends PHPMailer
 	 * @since   12.2
 	 * @throws  InvalidArgumentException
 	 */
-	public function addAttachment($attachment, $name = '', $encoding = 'base64', $type = 'application/octet-stream')
+    public function addAttachment($path, $name = '', $encoding = 'base64', $type = '', $disposition = 'attachment')
 	{
 		// If the file attachments is an array, add each file... otherwise just add the one
 		if (isset($attachment))
