@@ -87,10 +87,11 @@ Any other deployment method can be used as well with one requirement:
 
 ## Documentation
 
-* [Folder structure](https://developer.joomlatools.com/tools/platform/structure)
-* [Configuration files](https://developer.joomlatools.com/tools/platform/configuration)
-* [Environment variables](https://developer.joomlatools.com/tools/platform/environment)
-* [Composer](https://developer.joomlatools.com/tools/platform/composer)
+* [Folder structure](http://developer.joomlatools.com/tools/platform/folder-structure.html)
+* [Configuration files](http://developer.joomlatools.com/tools/platform/configuration-files.html)
+* [Environment variables](http://developer.joomlatools.com/tools/platform/environment-variables.html)
+* [Composer](http://developer.joomlatools.com/tools/platform/composer.html)
+* [Deployment](http://developer.joomlatools.com/tools/platform/deployment.html)
 
 ## Contributing
 
