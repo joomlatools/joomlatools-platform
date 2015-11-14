@@ -185,7 +185,7 @@ abstract class JHtmlList
 		$query = $db->getQuery(true)
 			->select('u.id AS value, u.name AS text')
 			->from('#__users AS u')
-			->join('LEFT', '#__user_usergroup_map AS m ON m.user_id = u.id')
+			->join('LEFT', '#__users_groups_users AS m ON m.user_id = u.id')
 			->where('u.block = 0')
 			->order($order)
 			->group('u.id');

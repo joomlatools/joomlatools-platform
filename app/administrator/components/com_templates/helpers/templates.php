@@ -4,6 +4,7 @@
  * @subpackage  com_templates
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -149,8 +150,8 @@ class TemplatesHelper
 	{
 		$positions = array();
 
-		$templateBaseDir = $clientId ? JPATH_ADMINISTRATOR : JPATH_SITE;
-		$filePath = JPath::clean($templateBaseDir . '/templates/' . $templateDir . '/templateDetails.xml');
+        $client	  = JApplicationHelper::getClientInfo($clientId);
+		$filePath = JPath::clean($client->web_root . '/templates/' . $templateDir . '/templateDetails.xml');
 
 		if (is_file($filePath))
 		{

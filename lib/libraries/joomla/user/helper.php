@@ -44,7 +44,7 @@ abstract class JUserHelper
 			$db = JFactory::getDbo();
 			$query = $db->getQuery(true)
 				->select($db->quoteName('title'))
-				->from($db->quoteName('#__usergroups'))
+				->from($db->quoteName('#__users_groups'))
 				->where($db->quoteName('id') . ' = ' . (int) $groupId);
 			$db->setQuery($query);
 			$title = $db->loadResult();
@@ -162,7 +162,7 @@ abstract class JUserHelper
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select($db->quoteName('id') . ', ' . $db->quoteName('title'))
-			->from($db->quoteName('#__usergroups'))
+			->from($db->quoteName('#__users_groups'))
 			->where($db->quoteName('id') . ' = ' . implode(' OR ' . $db->quoteName('id') . ' = ', $user->groups));
 		$db->setQuery($query);
 		$results = $db->loadObjectList();
@@ -726,7 +726,7 @@ abstract class JUserHelper
 
 		// Invalidate cookie in the database
 		$query
-			->update($db->quoteName('#__user_keys'))
+			->update($db->quoteName('#__users_keys'))
 			->set($db->quoteName('invalid') . ' = 1')
 			->where($db->quotename('user_id') . ' = ' . $db->quote($userId));
 
@@ -753,7 +753,7 @@ abstract class JUserHelper
 
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
-		->delete('#__user_keys')
+		->delete('#__users_keys')
 		->where($db->quoteName('time') . ' < ' . $db->quote($now));
 
 		return $db->setQuery($query)->execute();

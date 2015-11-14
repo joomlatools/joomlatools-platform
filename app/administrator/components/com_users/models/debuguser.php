@@ -183,7 +183,7 @@ class UsersModelDebugUser extends JModelList
 		// Filter the items over the group id if set.
 		if ($groupId = $this->getState('filter.group_id'))
 		{
-			$query->join('LEFT', '#__user_usergroup_map AS map2 ON map2.user_id = a.id')
+			$query->join('LEFT', '#__users_groups_users AS map2 ON map2.user_id = a.id')
 				->where('map2.group_id = ' . (int) $groupId);
 		}
 

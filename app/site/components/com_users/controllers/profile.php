@@ -4,6 +4,7 @@
  * @subpackage  com_users
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)s
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -199,14 +200,6 @@ class UsersControllerProfile extends UsersController
 	protected function postSaveHook(JModelLegacy $model, $validData = array())
 	{
 		$item = $model->getData();
-		$tags = $validData['tags'];
-
-		if ($tags)
-		{
-			$item->tags = new JHelperTags;
-			$item->tags->getTagIds($item->id, 'com_users.user');
-			$item->metadata['tags'] = $item->tags;
-		}
 	}
 
 }

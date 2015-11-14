@@ -6,6 +6,7 @@
  * @package    Joomla.Platform
  *
  * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -45,8 +46,13 @@ if (!class_exists('JLoader'))
 	throw new RuntimeException('Joomla Platform not loaded.');
 }
 
+
+
 // Setup the autoloaders.
 JLoader::setup();
+
+// Register J prefix
+JLoader::registerPrefix('J', JPATH_PLATFORM . '/cms');
 
 // Import the base Joomla Platform libraries.
 JLoader::import('joomla.factory');

@@ -12,8 +12,10 @@ return [
     'access'     => '1',
 
     /* Server */
-    'secret'     => 'VyxD8SlIXdaLwRCZ',
     'force_ssl'  => '0',
+
+    /* Database */
+    'dbtype'     => 'mysqli',
 
     /* Locale */
 	'offset'     => 'UTC',
@@ -50,4 +52,7 @@ return [
 	/* Feed */
     'feed_limit'   => 10,
     'feed_email'   => 'author',
+
+    /* Session autostart */
+    'session_autostart' => false
 ];

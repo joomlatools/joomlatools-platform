@@ -4,6 +4,7 @@
  * @subpackage  Application
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -121,12 +122,14 @@ class JApplicationHelper
 			$obj->id = 0;
 			$obj->name = 'site';
 			$obj->path = JPATH_SITE;
+            $obj->web_root  = JPATH_WEB;
 			self::$_clients[0] = clone $obj;
 
 			// Administrator Client
 			$obj->id = 1;
 			$obj->name = 'administrator';
 			$obj->path = JPATH_ADMINISTRATOR;
+            $obj->web_root  = JPATH_WEB.'/administrator';
 			self::$_clients[1] = clone $obj;
 		}
 

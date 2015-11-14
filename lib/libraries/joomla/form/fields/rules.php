@@ -189,7 +189,7 @@ class JFormFieldRules extends JFormField
 		$html = array();
 
 		// Description
-		$html[] = '<p class="rule-desc">' . JText::_('JLIB_RULES_SETTINGS_DESC') . '</p>';
+		//$html[] = '<p class="rule-desc">' . JText::_('JLIB_RULES_SETTINGS_DESC') . '</p>';
 
 		// Begin tabs
 		$html[] = '<div id="permissions-sliders" class="tabbable tabs-left">';
@@ -367,7 +367,7 @@ class JFormFieldRules extends JFormField
 
 		$html[] = '</div></div>';
 
-		$html[] = '<div class="alert">';
+		/*$html[] = '<div class="alert">';
 
 		if ($section == 'component' || $section == null)
 		{
@@ -378,7 +378,7 @@ class JFormFieldRules extends JFormField
 			$html[] = JText::_('JLIB_RULES_SETTING_NOTES_ITEM');
 		}
 
-		$html[] = '</div>';
+		$html[] = '</div>';*/
 
 		return implode("\n", $html);
 	}
@@ -395,8 +395,8 @@ class JFormFieldRules extends JFormField
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('a.id AS value, a.title AS text, COUNT(DISTINCT b.id) AS level, a.parent_id')
-			->from('#__usergroups AS a')
-			->join('LEFT', $db->quoteName('#__usergroups') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt')
+			->from('#__users_groups AS a')
+			->join('LEFT', $db->quoteName('#__users_groups') . ' AS b ON a.lft > b.lft AND a.rgt < b.rgt')
 			->group('a.id, a.title, a.lft, a.rgt, a.parent_id')
 			->order('a.lft ASC');
 		$db->setQuery($query);

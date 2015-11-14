@@ -4,6 +4,7 @@
  * @subpackage  Application
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -61,6 +62,11 @@ final class JApplicationSite extends JApplicationCms
 
 		// Execute the parent constructor
 		parent::__construct($input, $config, $client);
+
+        // Create the session if a session name was passed.
+        if ($this->config->get('session') !== false) {
+            $this->loadSession(null, $this->config->get('session_autostart'));
+        }
 	}
 
 	/**
@@ -477,7 +483,7 @@ final class JApplicationSite extends JApplicationCms
 			$db = JFactory::getDbo();
 			$query = $db->getQuery(true)
 				->select('id, home, template, s.params')
-				->from('#__template_styles as s')
+				->from('#__templates as s')
 				->where('s.client_id = 0')
 				->where('e.enabled = 1')
 				->join('LEFT', '#__extensions as e ON e.element=s.template AND e.type=' . $db->quote('template') . ' AND e.client_id=s.client_id');

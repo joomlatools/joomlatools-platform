@@ -17,13 +17,8 @@
 		<filename module="mod_breadcrumbs">mod_breadcrumbs.php</filename>
 		<folder>tmpl</folder>
 		<filename>helper.php</filename>
-		<filename>index.html</filename>
 		<filename>mod_breadcrumbs.xml</filename>
 	</files>
-	<languages>
-		<language tag="en-GB">en-GB.mod_breadcrumbs.ini</language>
-		<language tag="en-GB">en-GB.mod_breadcrumbs.sys.ini</language>
-	</languages>
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_BREADCRUMBS" />
 	<config>
 		<fields name="params">

@@ -10,60 +10,16 @@
 	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<description>en-GB site language</description>
-	<files>
-		<filename>en-GB.com_content.ini</filename>
-		<filename>en-GB.com_finder.ini</filename>
-		<filename>en-GB.com_media.ini</filename>
-		<filename>en-GB.com_newsfeeds.ini</filename>
-		<filename>en-GB.com_search.ini</filename>
-		<filename>en-GB.com_tags.ini</filename>
-		<filename>en-GB.com_users.ini</filename>
-		<filename>en-GB.files_joomla.sys.ini</filename>
-		<filename>en-GB.finder_cli.ini</filename>
+
+    <files>
 		<filename>en-GB.ini</filename>
-		<filename>en-GB.lib_idna_convert.sys.ini</filename>
 		<filename>en-GB.lib_joomla.ini</filename>
 		<filename>en-GB.lib_joomla.sys.ini</filename>
-		<filename>en-GB.lib_phpass.sys.ini</filename>
-		<filename>en-GB.lib_phpmailer.sys.ini</filename>
 		<filename>en-GB.localise.php</filename>
-		<filename>en-GB.mod_articles_archive.ini</filename>
-		<filename>en-GB.mod_articles_archive.sys.ini</filename>
-		<filename>en-GB.mod_articles_categories.ini</filename>
-		<filename>en-GB.mod_articles_categories.sys.ini</filename>
-		<filename>en-GB.mod_articles_category.ini</filename>
-		<filename>en-GB.mod_articles_category.sys.ini</filename>
-		<filename>en-GB.mod_articles_latest.ini</filename>
-		<filename>en-GB.mod_articles_latest.sys.ini</filename>
-		<filename>en-GB.mod_articles_news.ini</filename>
-		<filename>en-GB.mod_articles_news.sys.ini</filename>
-		<filename>en-GB.mod_articles_popular.ini</filename>
-		<filename>en-GB.mod_articles_popular.sys.ini</filename>
-		<filename>en-GB.mod_breadcrumbs.ini</filename>
-		<filename>en-GB.mod_breadcrumbs.sys.ini</filename>
-		<filename>en-GB.mod_custom.ini</filename>
-		<filename>en-GB.mod_custom.sys.ini</filename>
-		<filename>en-GB.mod_feed.ini</filename>
-		<filename>en-GB.mod_feed.sys.ini</filename>
-		<filename>en-GB.mod_finder.ini</filename>
-		<filename>en-GB.mod_finder.sys.ini</filename>
-		<filename>en-GB.mod_languages.ini</filename>
-		<filename>en-GB.mod_languages.sys.ini</filename>
-		<filename>en-GB.mod_login.ini</filename>
-		<filename>en-GB.mod_login.sys.ini</filename>
-		<filename>en-GB.mod_menu.ini</filename>
-		<filename>en-GB.mod_menu.sys.ini</filename>
-		<filename>en-GB.mod_search.ini</filename>
-		<filename>en-GB.mod_search.sys.ini</filename>
-		<filename>en-GB.mod_tags_popular.ini</filename>
-		<filename>en-GB.mod_tags_popular.sys.ini</filename>
-		<filename>en-GB.mod_tags_similar.ini</filename>
-		<filename>en-GB.mod_tags_similar.sys.ini</filename>
-		<filename>en-GB.tpl_protostar.ini</filename>
-		<filename>en-GB.tpl_protostar.sys.ini</filename>
-		<filename>index.html</filename>
 		<filename file="meta">install.xml</filename>
 		<filename file="meta">en-GB.xml</filename>
 	</files>
-	<params />
+
+    <params />
+
 </extension>

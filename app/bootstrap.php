@@ -3,6 +3,7 @@
  * @package    Joomla.Administrator
  *
  * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -19,7 +20,7 @@ if (!file_exists(JPATH_CONFIGURATION . '/configuration.php') || (filesize(JPATH_
 }
 
 // System includes
-require_once JPATH_LIBRARIES . '/import.legacy.php';
+require_once JPATH_LIBRARIES . '/import.php';
 
 // Set system error handling
 JError::setErrorHandling(E_NOTICE, 'message');

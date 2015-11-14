@@ -4,6 +4,7 @@
  * @subpackage  Application
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -46,6 +47,11 @@ class JApplicationAdministrator extends JApplicationCms
 
 		// Set the root in the URI based on the application name
 		JUri::root(null, str_ireplace('/' . $this->getName(), '', JUri::base(true)));
+
+        // Create the session if a session name was passed.
+        if ($this->config->get('session') !== false) {
+            $this->loadSession();
+        }
 	}
 
 	/**
@@ -205,7 +211,7 @@ class JApplicationAdministrator extends JApplicationCms
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('template, s.params')
-			->from('#__template_styles as s')
+			->from('#__templates as s')
 			->join('LEFT', '#__extensions as e ON e.type=' . $db->quote('template') . ' AND e.element=s.template AND e.client_id=s.client_id');
 
 		if ($admin_style)

@@ -4,6 +4,7 @@
  * @subpackage  Document
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -47,13 +48,6 @@ class JDocumentRendererHead extends JDocumentRenderer
 	 */
 	public function fetchHead($document)
 	{
-		// Convert the tagids to titles
-		if (isset($document->_metaTags['standard']['tags']))
-		{
-			$tagsHelper = new JHelperTags;
-			$document->_metaTags['standard']['tags'] = implode(', ', $tagsHelper->getTagNames($document->_metaTags['standard']['tags']));
-		}
-
 		// Trigger the onBeforeCompileHead event
 		$app = JFactory::getApplication();
 		$app->triggerEvent('onBeforeCompileHead');

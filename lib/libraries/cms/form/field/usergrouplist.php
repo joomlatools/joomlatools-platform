@@ -59,8 +59,8 @@ class JFormFieldUserGroupList extends JFormFieldList
 				->select('a.id AS value')
 				->select('a.title AS text')
 				->select('COUNT(DISTINCT b.id) AS level')
-				->from('#__usergroups as a')
-				->join('LEFT', '#__usergroups  AS b ON a.lft > b.lft AND a.rgt < b.rgt')
+				->from('#__users_groups as a')
+				->join('LEFT', '#__users_groups  AS b ON a.lft > b.lft AND a.rgt < b.rgt')
 				->group('a.id, a.title, a.lft, a.rgt')
 				->order('a.lft ASC');
 			$db->setQuery($query);

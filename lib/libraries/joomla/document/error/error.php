@@ -4,6 +4,7 @@
  * @subpackage  Document
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -79,35 +80,46 @@ class JDocumentError extends JDocument
 	public function render($cache = false, $params = array())
 	{
 		// If no error object is set return null
-		if (!isset($this->_error))
+		if (isset($this->_error))
 		{
-			return;
+            $code = $this->_error->getCode();
+            if(!isset(JHttpResponse::$status_messages[$code])) {
+                $code = '500';
+            }
+
+            if(ini_get('display_errors')) {
+                $message = $this->_error->getMessage();
+            } else {
+                $message = JHttpResponse::$status_messages[$code];
+            }
+
+            // Set the status header
+            JFactory::getApplication()->setHeader('status', $code . ' ' . str_replace("\n", ' ', $message));
+            $file = 'error.php';
+
+            // Check template
+            $directory = isset($params['directory']) ? $params['directory'] : 'templates';
+            $template = isset($params['template']) ? JFilterInput::getInstance()->clean($params['template'], 'cmd') : 'system';
+
+            if (!file_exists($directory . '/' . $template . '/' . $file))
+            {
+                $template = 'system';
+            }
+
+            // Set variables
+            $this->baseurl  = JUri::base(true);
+            $this->template = $template;
+            $this->error    = $this->_error;
+            $this->debug    = isset($params['debug']) ? $params['debug'] : false;
+            $this->code     = isset($params['code']) ? $params['code'] : $code;
+            $this->message  = isset($params['message']) ? $params['message'] : $message;
+
+            // Load
+            $data = $this->_loadTemplate($directory . '/' . $template, $file);
+
+            parent::render();
+            return $data;
 		}
-
-		// Set the status header
-		JFactory::getApplication()->setHeader('status', $this->_error->getCode() . ' ' . str_replace("\n", ' ', $this->_error->getMessage()));
-		$file = 'error.php';
-
-		// Check template
-		$directory = isset($params['directory']) ? $params['directory'] : 'templates';
-		$template = isset($params['template']) ? JFilterInput::getInstance()->clean($params['template'], 'cmd') : 'system';
-
-		if (!file_exists($directory . '/' . $template . '/' . $file))
-		{
-			$template = 'system';
-		}
-
-		// Set variables
-		$this->baseurl = JUri::base(true);
-		$this->template = $template;
-		$this->debug = isset($params['debug']) ? $params['debug'] : false;
-		$this->error = $this->_error;
-
-		// Load
-		$data = $this->_loadTemplate($directory . '/' . $template, $file);
-
-		parent::render();
-		return $data;
 	}
 
 	/**

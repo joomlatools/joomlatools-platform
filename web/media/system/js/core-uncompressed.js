@@ -334,7 +334,6 @@ function radioGetCheckedValue(radioObj) {
  * administrator/components/com_content/views/copyselect/tmpl/default.php
  * administrator/components/com_menus/views/list/tmpl/copy.php
  * administrator/components/com_menus/views/list/tmpl/move.php
- * administrator/components/com_messages/views/message/tmpl/default_form.php
  * components/com_content/views/article/tmpl/form.php
  * templates/beez/html/com_content/article/form.php
  *

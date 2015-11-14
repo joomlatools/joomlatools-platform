@@ -4,6 +4,7 @@
  * @subpackage  Error
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -34,10 +35,21 @@ class JErrorPage
 			$app      = JFactory::getApplication();
 			$document = JDocument::getInstance('error');
 
-			if (!$document)
+            $code = $error->getCode();
+            if(!isset(JHttpResponse::$status_messages[$code])) {
+                $code = '500';
+            }
+
+            if(ini_get('display_errors')) {
+                $message = $error->getMessage();
+            } else {
+                $message = JHttpResponse::$status_messages[$code];
+            }
+
+            // Exit immediatly if we are in a CLI environment
+			if (!$document || PHP_SAPI == 'cli')
 			{
-				// We're probably in an CLI environment
-				exit($error->getMessage());
+				exit($message);
 				$app->close(0);
 			}
 
@@ -46,15 +58,13 @@ class JErrorPage
 			// Get the current template from the application
 			$template = $app->getTemplate();
 
-			// Push the error object into the document
 			$document->setError($error);
 
-			if (ob_get_contents())
-			{
+			if (ob_get_contents()) {
 				ob_end_clean();
 			}
 
-			$document->setTitle(JText::_('Error') . ': ' . $error->getCode());
+			$document->setTitle(JText::_('Error') . ': ' . $code);
 			$data = $document->render(
 				false,
 				array('template' => $template,
@@ -63,22 +73,22 @@ class JErrorPage
 			);
 
 			// Failsafe to get the error displayed.
-			if (empty($data))
+			if (!empty($data))
 			{
-				exit($error->getMessage());
+                // Do not allow cache
+                $app->allowCache(false);
+
+                $app->setBody($data);
+                echo $app->toString();
 			}
 			else
-			{
-				// Do not allow cache
-				$app->allowCache(false);
-
-				$app->setBody($data);
-				echo $app->toString();
-			}
+            {
+                exit($message);
+            }
 		}
 		catch (Exception $e)
-		{
-			exit('Error displaying the error page: ' . $e->getMessage() . ': ' . $error->getMessage());
+        {
+            exit('Error displaying the error page: ' . $e->getMessage() . ': ' . $message);
 		}
 	}
 }

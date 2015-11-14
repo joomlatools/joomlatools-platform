@@ -12,7 +12,6 @@
 
 	<files folder="site">
 		<filename>controller.php</filename>
-		<filename>index.html</filename>
 		<filename>router.php</filename>
 		<filename>users.php</filename>
 		<folder>controllers</folder>
@@ -20,23 +19,17 @@
 		<folder>models</folder>
 		<folder>views</folder>
 	</files>
-	<languages folder="site">
-		<language tag="en-GB">language/en-GB.com_users.ini</language>
-	</languages>
+
 	<administration>
 		<files folder="admin">
 			<filename>config.xml</filename>
 			<filename>controller.php</filename>
-			<filename>index.html</filename>
 			<filename>users.php</filename>
 			<folder>controllers</folder>
 			<folder>helpers</folder>
 			<folder>models</folder>
 			<folder>views</folder>
 		</files>
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB.com_users.ini</language>
-			<language tag="en-GB">language/en-GB.com_users.sys.ini</language>
-		</languages>
+
 	</administration>
 </extension>

@@ -84,14 +84,14 @@ class PlgAuthenticationCookie extends JPlugin
 
 		// Remove expired tokens
 		$query = $this->db->getQuery(true)
-			->delete('#__user_keys')
+			->delete('#__users_keys')
 			->where($this->db->quoteName('time') . ' < ' . $this->db->quote(time()));
 		$this->db->setQuery($query)->execute();
 
 		// Find the matching record if it exists.
 		$query = $this->db->getQuery(true)
 			->select($this->db->quoteName(array('user_id', 'token', 'series', 'time')))
-			->from($this->db->quoteName('#__user_keys'))
+			->from($this->db->quoteName('#__users_keys'))
 			->where($this->db->quoteName('series') . ' = ' . $this->db->quote($series))
 			->where($this->db->quoteName('uastring') . ' = ' . $this->db->quote($cookieName))
 			->order($this->db->quoteName('time') . ' DESC');
@@ -116,7 +116,7 @@ class PlgAuthenticationCookie extends JPlugin
 				// This is a real attack! Either the series was guessed correctly or a cookie was stolen and used twice (once by attacker and once by victim).
 				// Delete all tokens for this user!
 				$query = $this->db->getQuery(true)
-					->delete('#__user_keys')
+					->delete('#__users_keys')
 					->where($this->db->quoteName('user_id') . ' = ' . $this->db->quote($results[0]->user_id));
 				$this->db->setQuery($query)->execute();
 
@@ -207,7 +207,7 @@ class PlgAuthenticationCookie extends JPlugin
 				$series = JUserHelper::genRandomPassword(20);
 				$query = $this->db->getQuery(true)
 					->select($this->db->quoteName('series'))
-					->from($this->db->quoteName('#__user_keys'))
+					->from($this->db->quoteName('#__users_keys'))
 					->where($this->db->quoteName('series') . ' = ' . $this->db->quote($series));
 				$results = $this->db->setQuery($query)->loadResult();
 
@@ -242,7 +242,7 @@ class PlgAuthenticationCookie extends JPlugin
 		{
 			// Create new record
 			$query
-				->insert($this->db->quoteName('#__user_keys'))
+				->insert($this->db->quoteName('#__users_keys'))
 				->set($this->db->quoteName('user_id') . ' = ' . $this->db->quote($options['user']->username))
 				->set($this->db->quoteName('series') . ' = ' . $this->db->quote($series))
 				->set($this->db->quoteName('uastring') . ' = ' . $this->db->quote($cookieName))
@@ -252,7 +252,7 @@ class PlgAuthenticationCookie extends JPlugin
 		{
 			// Update existing record with new token
 			$query
-				->update($this->db->quoteName('#__user_keys'))
+				->update($this->db->quoteName('#__users_keys'))
 				->where($this->db->quoteName('user_id') . ' = ' . $this->db->quote($options['user']->username))
 				->where($this->db->quoteName('series') . ' = ' . $this->db->quote($series))
 				->where($this->db->quoteName('uastring') . ' = ' . $this->db->quote($cookieName));
@@ -301,7 +301,7 @@ class PlgAuthenticationCookie extends JPlugin
 		// Remove the record from the database
 		$query = $this->db->getQuery(true);
 		$query
-			->delete('#__user_keys')
+			->delete('#__users_keys')
 			->where($this->db->quoteName('series') . ' = ' . $this->db->quote($series));
 		$this->db->setQuery($query)->execute();
 

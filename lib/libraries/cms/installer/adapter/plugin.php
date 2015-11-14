@@ -4,6 +4,7 @@
  * @subpackage  Installer
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -728,7 +729,7 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 
 		// Remove the schema version
 		$query = $db->getQuery(true)
-			->delete('#__schemas')
+			->delete($db->quoteName('#__schemas'))
 			->where('extension_id = ' . $row->extension_id);
 		$db->setQuery($query);
 		$db->execute();
@@ -758,15 +759,15 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 	public function discover()
 	{
 		$results = array();
-		$folder_list = JFolder::folders(JPATH_SITE . '/plugins');
+		$folder_list = JFolder::folders(JPATH_PLUGINS);
 
 		foreach ($folder_list as $folder)
 		{
-			$file_list = JFolder::files(JPATH_SITE . '/plugins/' . $folder, '\.xml$');
+			$file_list = JFolder::files(JPATH_PLUGINS . '/' . $folder, '\.xml$');
 
 			foreach ($file_list as $file)
 			{
-				$manifest_details = JInstaller::parseXMLInstallFile(JPATH_SITE . '/plugins/' . $folder . '/' . $file);
+				$manifest_details = JInstaller::parseXMLInstallFile(JPATH_PLUGINS . '/' . $folder . '/' . $file);
 				$file = JFile::stripExt($file);
 
 				// Ignore example plugins
@@ -787,16 +788,16 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 				$results[] = $extension;
 			}
 
-			$folder_list = JFolder::folders(JPATH_SITE . '/plugins/' . $folder);
+			$folder_list = JFolder::folders(JPATH_PLUGINS . '/' . $folder);
 
 			foreach ($folder_list as $plugin_folder)
 			{
-				$file_list = JFolder::files(JPATH_SITE . '/plugins/' . $folder . '/' . $plugin_folder, '\.xml$');
+				$file_list = JFolder::files(JPATH_PLUGINS . '/' . $folder . '/' . $plugin_folder, '\.xml$');
 
 				foreach ($file_list as $file)
 				{
 					$manifest_details = JInstaller::parseXMLInstallFile(
-						JPATH_SITE . '/plugins/' . $folder . '/' . $plugin_folder . '/' . $file
+                        JPATH_PLUGINS . '/' . $folder . '/' . $plugin_folder . '/' . $file
 					);
 					$file = JFile::stripExt($file);
 
@@ -837,16 +838,14 @@ class JInstallerAdapterPlugin extends JAdapterInstance
 		 * Similar to modules and templates, rather easy
 		 * If it's not in the extensions table we just add it
 		 */
-		$client = JApplicationHelper::getClientInfo($this->parent->extension->client_id);
-
-		if (is_dir($client->path . '/plugins/' . $this->parent->extension->folder . '/' . $this->parent->extension->element))
+		if (is_dir(JPATH_PLUGINS . '/' . $this->parent->extension->folder . '/' . $this->parent->extension->element))
 		{
-			$manifestPath = $client->path . '/plugins/' . $this->parent->extension->folder . '/' . $this->parent->extension->element . '/'
+			$manifestPath = JPATH_PLUGINS . '/' . $this->parent->extension->folder . '/' . $this->parent->extension->element . '/'
 				. $this->parent->extension->element . '.xml';
 		}
 		else
 		{
-			$manifestPath = $client->path . '/plugins/' . $this->parent->extension->folder . '/' . $this->parent->extension->element . '.xml';
+			$manifestPath = JPATH_PLUGINS . '/' . $this->parent->extension->folder . '/' . $this->parent->extension->element . '.xml';
 		}
 
 		$this->parent->manifest = $this->parent->isManifest($manifestPath);

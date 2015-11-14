@@ -397,15 +397,15 @@ class JInstallerAdapterFile extends JAdapterInstance
 			}
 		}
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(
-			array('element' => $this->get('element'), 'type' => 'file', 'client_id' => (int) '', 'folder' => '')
-		);
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(
+		//	array('element' => $this->get('element'), 'type' => 'file', 'client_id' => (int) '', 'folder' => '')
+		//);
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// And now we run the postflight
 		ob_start();
@@ -560,7 +560,7 @@ class JInstallerAdapterFile extends JAdapterInstance
 
 			// Remove the schema version
 			$query = $db->getQuery(true)
-				->delete('#__schemas')
+				->delete($db->quoteName('#__schemas'))
 				->where('extension_id = ' . $row->extension_id);
 			$db->setQuery($query);
 			$db->execute();

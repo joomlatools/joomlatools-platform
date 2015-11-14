@@ -31,14 +31,6 @@ if ($user->authorise('core.manage', 'com_menus'))
 }
 
 /**
- * Content Submenu
-**/
-if ($user->authorise('core.manage', 'com_content'))
-{
-	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_COM_CONTENT'), null, 'disabled'));
-}
-
-/**
  * Components Submenu
 **/
 
@@ -59,7 +51,7 @@ $pm = $user->authorise('core.manage', 'com_plugins');
 $tm = $user->authorise('core.manage', 'com_templates');
 $lm = $user->authorise('core.manage', 'com_languages');
 
-if ($im || $mm || $pm || $tm || $lm)
+if ($mm || $pm || $tm || $lm)
 {
 	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_EXTENSIONS_EXTENSIONS'), null, 'disabled'));
 }

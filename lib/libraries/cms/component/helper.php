@@ -4,6 +4,7 @@
  * @subpackage  Component
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -240,10 +241,6 @@ class JComponentHelper
 
 		if (empty(static::$components[$option]))
 		{
-			// Fatal error.
-			$error = JText::_('JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND');
-			JLog::add(JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $error), JLog::WARNING, 'jerror');
-
 			return false;
 		}
 

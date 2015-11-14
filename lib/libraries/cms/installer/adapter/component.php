@@ -4,6 +4,7 @@
  * @subpackage  Installer
  *
  * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -475,8 +476,17 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		$row->set('protected', 0);
 		$row->set('access', 0);
 		$row->set('client_id', 1);
-		$row->set('params', $this->parent->getParams());
 		$row->set('manifest_cache', $this->parent->generateManifestCache());
+
+        $params = $this->parent->getParams();
+
+        if (empty($params) || $params == '{}')
+        {
+            $defaults = (object) $this->_loadDefaultParams($this->get('element'));
+            $params   = json_encode($defaults);
+        }
+
+        $row->set('params', $params);
 
 		if (!$row->store())
 		{
@@ -489,13 +499,13 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		$eid = $row->extension_id;
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// We will copy the manifest file to its appropriate place.
 		if (!$this->parent->copyManifest())
@@ -889,13 +899,13 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		 */
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// Update an entry to the extension table
 		if ($eid)
@@ -1131,7 +1141,7 @@ class JInstallerAdapterComponent extends JAdapterInstance
 
 		// Remove the schema version
 		$query = $db->getQuery(true)
-			->delete('#__schemas')
+			->delete($db->quoteName('#__schemas'))
 			->where('extension_id = ' . $id);
 		$db->setQuery($query);
 		$db->execute();
@@ -1145,21 +1155,24 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		}
 
 		// Remove categories for this component
-		$query->clear()
-			->delete('#__categories')
-			->where('extension=' . $db->quote($element), 'OR')
-			->where('extension LIKE ' . $db->quote($element . '.%'));
-		$db->setQuery($query);
-		$db->execute();
+        if(JComponentHelper::isEnabled('com_categories'))
+        {
+            $query->clear()
+                ->delete('#__categories')
+                ->where('extension=' . $db->quote($element), 'OR')
+                ->where('extension LIKE ' . $db->quote($element . '.%'));
+            $db->setQuery($query);
+            $db->execute();
+        }
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $row->element, 'type' => 'component', 'client_id' => 1, 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $row->element, 'type' => 'component', 'client_id' => 1, 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// Now we need to delete the installation directories. This is the final step in uninstalling the component.
 		if (trim($row->element))
@@ -1260,7 +1273,12 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		// Ok, now its time to handle the menus.  Start with the component root menu, then handle submenus.
 		$menuElement = $this->manifest->administration->menu;
 
-		if ($menuElement)
+		// @TODO: Just do not create the menu if $menuElement not exist
+		if (in_array((string) $menuElement['hidden'], array('true', 'hidden')))
+		{
+			return true;
+		}
+		elseif ($menuElement)
 		{
 			$data = array();
 			$data['menutype'] = 'main';
@@ -1615,7 +1633,16 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		$this->parent->extension->state = 0;
 		$this->parent->extension->name = $manifest_details['name'];
 		$this->parent->extension->enabled = 1;
-		$this->parent->extension->params = $this->parent->getParams();
+
+        $params = $this->parent->getParams();
+
+        if (empty($params) || $params == '{}')
+        {
+            $defaults = (object) $this->_loadDefaultParams($this->parent->extension->element);
+            $params   = json_encode($defaults);
+        }
+
+        $this->parent->extension->params = $params;
 
 		try
 		{
@@ -1824,13 +1851,13 @@ class JInstallerAdapterComponent extends JAdapterInstance
 		 */
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
+		//$update = JTable::getInstance('update');
+		//$uid = $update->find(array('element' => $this->get('element'), 'type' => 'component', 'client_id' => 1, 'folder' => ''));
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		//if ($uid)
+		//{
+		//	$update->delete($uid);
+		//}
 
 		// And now we run the postflight
 		ob_start();
@@ -1884,6 +1911,54 @@ class JInstallerAdapterComponent extends JAdapterInstance
 			return false;
 		}
 	}
+
+    /**
+     * Parses the config.xml for the given component and
+     * returns the default values for each parameter.
+     *
+     * @param   string  Element name (com_xyz)
+     * @return  array   Array of parameters
+     */
+    protected function _loadDefaultParams($element)
+    {
+        $params = array();
+        $file   = JPATH_ADMINISTRATOR . '/components/' . $element . '/config.xml';
+
+        if (!file_exists($file)) {
+            return $params;
+        }
+
+        $xml = simplexml_load_file($file);
+
+        if (!($xml instanceof SimpleXMLElement)) {
+            return $params;
+        }
+
+        $elements = $xml->xpath('/config');
+
+        if (empty($elements)) {
+            return $params;
+        }
+
+        foreach ($elements as $element)
+        {
+            $fields = $element->xpath('descendant-or-self::field');
+
+            foreach ($fields as $field)
+            {
+                if (!isset($field['default'])) {
+                    continue;
+                }
+
+                $name    = (string) $field['name'];
+                $default = (string) $field['default'];
+
+                $params[$name] = $default;
+            }
+        }
+
+        return $params;
+    }
 }
 
 /**

@@ -755,7 +755,7 @@ class MenusModelItem extends JModelAdmin
 
 		// Join on the asset groups table.
 		$query->select('ag.title AS access_title')
-			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access')
+			->join('LEFT', '#__users_roles AS ag ON ag.id = a.access')
 			->where('a.published >= 0')
 			->where('a.client_id = 0')
 			->order('a.position, a.ordering');
@@ -1140,9 +1140,14 @@ class MenusModelItem extends JModelAdmin
 	 */
 	public function save($data)
 	{
-		$pk = (!empty($data['id'])) ? $data['id'] : (int) $this->getState('item.id');
-		$isNew = true;
-		$table = $this->getTable();
+		$dispatcher = JEventDispatcher::getInstance();
+		$pk         = (!empty($data['id'])) ? $data['id'] : (int) $this->getState('item.id');
+		$isNew      = true;
+		$table      = $this->getTable();
+		$context    = $this->option . '.' . $this->name;
+
+		// Include the plugins for the on save events.
+		JPluginHelper::importPlugin($this->events_map['save']);
 
 		// Load the row if saving an existing item.
 		if ($pk > 0)
@@ -1213,12 +1218,18 @@ class MenusModelItem extends JModelAdmin
 			return false;
 		}
 
+		// Trigger the before save event.
+		$result = $dispatcher->trigger($this->event_before_save, array($context, &$table, $isNew));
+
 		// Store the data.
-		if (!$table->store())
+		if (in_array(false, $result, true)|| !$table->store())
 		{
 			$this->setError($table->getError());
 			return false;
 		}
+
+		// Trigger the after save event.
+		$dispatcher->trigger($this->event_after_save, array($context, &$table, $isNew));
 
 		// Rebuild the tree path.
 		if (!$table->rebuildPath($table->id))
@@ -1257,7 +1268,7 @@ class MenusModelItem extends JModelAdmin
 			// Deleting old association for these items
 			$db = JFactory::getDbo();
 			$query = $db->getQuery(true)
-				->delete('#__associations')
+				->delete('#__languages_associations')
 				->where('context=' . $db->quote('com_menus.item'))
 				->where('id IN (' . implode(',', $associations) . ')');
 			$db->setQuery($query);
@@ -1277,7 +1288,7 @@ class MenusModelItem extends JModelAdmin
 				// Adding new association for these items
 				$key = md5(json_encode($associations));
 				$query->clear()
-					->insert('#__associations');
+					->insert('#__languages_associations');
 				foreach ($associations as $id)
 				{
 					$query->values($id . ',' . $db->quote('com_menus.item') . ',' . $db->quote($key));

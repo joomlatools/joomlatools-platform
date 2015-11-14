@@ -19,6 +19,28 @@ defined('_JEXEC') or die;
 class UsersModelUser extends JModelAdmin
 {
 	/**
+	 * Constructor.
+	 *
+	 * @param   array  $config  An optional associative array of configuration settings.
+	 *
+	 * @since   3.2
+	 */
+	public function __construct($config = array())
+	{
+		$config = array_merge(
+			array(
+				'event_after_delete'  => 'onUserAfterDelete',
+				'event_after_save'    => 'onUserAfterSave',
+				'event_before_delete' => 'onUserBeforeDelete',
+				'event_before_save'   => 'onUserBeforeSave',
+				'events_map'          => array('save' => 'user', 'delete' => 'user')
+			), $config
+		);
+
+		parent::__construct($config);
+	}
+
+	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
 	 * @param   string  $type    The table type to instantiate
@@ -49,11 +71,11 @@ class UsersModelUser extends JModelAdmin
 	{
 		$result = parent::getItem($pk);
 
-		$result->tags = new JHelperTags;
-		$result->tags->getTagIds($result->id, 'com_users.user');
-
-		// Get the dispatcher and load the users plugins.
+		// Get the dispatcher and load the content plugins.
 		$dispatcher	= JEventDispatcher::getInstance();
+		JPluginHelper::importPlugin('content');
+
+		// Load the user plugins for backward compatibility (v3.3.3 and earlier).
 		JPluginHelper::importPlugin('user');
 
 		// Trigger the data preparation event.
@@ -235,8 +257,7 @@ class UsersModelUser extends JModelAdmin
 		// Check if I am a Super Admin
 		$iAmSuperAdmin = $user->authorise('core.admin');
 
-		// Trigger the onUserBeforeSave event.
-		JPluginHelper::importPlugin('user');
+		JPluginHelper::importPlugin($this->events_map['delete']);
 		$dispatcher = JEventDispatcher::getInstance();
 
 		if (in_array($user->id, $pks))
@@ -262,8 +283,8 @@ class UsersModelUser extends JModelAdmin
 					// Get users data for the users to delete.
 					$user_to_delete = JFactory::getUser($pk);
 
-					// Fire the onUserBeforeDelete event.
-					$dispatcher->trigger('onUserBeforeDelete', array($table->getProperties()));
+					// Fire the before delete event.
+					$dispatcher->trigger($this->event_before_delete, array($table->getProperties()));
 
 					if (!$table->delete($pk))
 					{
@@ -273,8 +294,8 @@ class UsersModelUser extends JModelAdmin
 					}
 					else
 					{
-						// Trigger the onUserAfterDelete event.
-						$dispatcher->trigger('onUserAfterDelete', array($user_to_delete->getProperties(), true, $this->getError()));
+						// Trigger the after delete event.
+						$dispatcher->trigger($this->event_after_delete, array($user_to_delete->getProperties(), true, $this->getError()));
 					}
 				}
 				else
@@ -316,7 +337,7 @@ class UsersModelUser extends JModelAdmin
 		$table         = $this->getTable();
 		$pks           = (array) $pks;
 
-		JPluginHelper::importPlugin('user');
+		JPluginHelper::importPlugin($this->events_map['save']);
 
 		// Access checks.
 		foreach ($pks as $i => $pk)
@@ -367,8 +388,8 @@ class UsersModelUser extends JModelAdmin
 							return false;
 						}
 
-						// Trigger the onUserBeforeSave event.
-						$result = $dispatcher->trigger('onUserBeforeSave', array($old, false, $table->getProperties()));
+						// Trigger the before save event.
+						$result = $dispatcher->trigger($this->event_before_save, array($old, false, $table->getProperties()));
 
 						if (in_array(false, $result, true))
 						{
@@ -384,8 +405,8 @@ class UsersModelUser extends JModelAdmin
 							return false;
 						}
 
-						// Trigger the onAftereStoreUser event
-						$dispatcher->trigger('onUserAfterSave', array($table->getProperties(), false, true, null));
+						// Trigger the after save event
+						$dispatcher->trigger($this->event_after_save, array($table->getProperties(), false, true, null));
 					}
 					catch (Exception $e)
 					{
@@ -431,7 +452,7 @@ class UsersModelUser extends JModelAdmin
 		$table         = $this->getTable();
 		$pks           = (array) $pks;
 
-		JPluginHelper::importPlugin('user');
+		JPluginHelper::importPlugin($this->events_map['save']);
 
 		// Access checks.
 		foreach ($pks as $i => $pk)
@@ -464,8 +485,8 @@ class UsersModelUser extends JModelAdmin
 							return false;
 						}
 
-						// Trigger the onUserBeforeSave event.
-						$result = $dispatcher->trigger('onUserBeforeSave', array($old, false, $table->getProperties()));
+						// Trigger the before save event.
+						$result = $dispatcher->trigger($this->event_before_save, array($old, false, $table->getProperties()));
 
 						if (in_array(false, $result, true))
 						{
@@ -481,8 +502,8 @@ class UsersModelUser extends JModelAdmin
 							return false;
 						}
 
-						// Fire the onAftereStoreUser event
-						$dispatcher->trigger('onUserAfterSave', array($table->getProperties(), false, true, null));
+						// Fire the after save event
+						$dispatcher->trigger($this->event_after_save, array($table->getProperties(), false, true, null));
 					}
 					catch (Exception $e)
 					{
@@ -675,7 +696,7 @@ class UsersModelUser extends JModelAdmin
 			$query = $db->getQuery(true);
 
 			// Remove users from the group
-			$query->delete($db->quoteName('#__user_usergroup_map'))
+			$query->delete($db->quoteName('#__users_groups_users'))
 				->where($db->quoteName('user_id') . ' IN (' . implode(',', $user_ids) . ')');
 
 			// Only remove users from selected group
@@ -705,7 +726,7 @@ class UsersModelUser extends JModelAdmin
 
 			// First, we need to check if the user is already assigned to a group
 			$query->select($db->quoteName('user_id'))
-				->from($db->quoteName('#__user_usergroup_map'))
+				->from($db->quoteName('#__users_groups_users'))
 				->where($db->quoteName('group_id') . ' = ' . (int) $group_id);
 			$db->setQuery($query);
 			$users = $db->loadColumn();
@@ -731,7 +752,7 @@ class UsersModelUser extends JModelAdmin
 				return false;
 			}
 
-			$query->insert($db->quoteName('#__user_usergroup_map'))
+			$query->insert($db->quoteName('#__users_groups_users'))
 				->columns(array($db->quoteName('user_id'), $db->quoteName('group_id')));
 			$db->setQuery($query);
 

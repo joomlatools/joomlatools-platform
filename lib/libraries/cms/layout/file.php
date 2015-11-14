@@ -232,7 +232,7 @@ class JLayoutFile extends JLayoutBase
 	/**
 	 * Validate that the active component is valid
 	 *
-	 * @param   string  $option  URL Option of the component. Example: com_content
+	 * @param   string  $option  URL Option of the component. Example: com_foo
 	 *
 	 * @return  boolean
 	 *
@@ -259,7 +259,7 @@ class JLayoutFile extends JLayoutBase
 	/**
 	 * Method to change the component where search for layouts
 	 *
-	 * @param   string  $option  URL Option of the component. Example: com_content
+	 * @param   string  $option  URL Option of the component. Example: com_foo
 	 *
 	 * @return  mixed  Component option string | null for none
 	 *

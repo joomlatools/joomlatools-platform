@@ -100,8 +100,8 @@ class JTableUser extends JTable
 			$query->clear()
 				->select($this->_db->quoteName('g.id'))
 				->select($this->_db->quoteName('g.title'))
-				->from($this->_db->quoteName('#__usergroups') . ' AS g')
-				->join('INNER', $this->_db->quoteName('#__user_usergroup_map') . ' AS m ON m.group_id = g.id')
+				->from($this->_db->quoteName('#__users_groups') . ' AS g')
+				->join('INNER', $this->_db->quoteName('#__users_groups_users') . ' AS m ON m.group_id = g.id')
 				->where($this->_db->quoteName('m.user_id') . ' = ' . (int) $userId);
 			$this->_db->setQuery($query);
 
@@ -144,7 +144,7 @@ class JTableUser extends JTable
 			$query = $this->_db->getQuery(true)
 				->select($this->_db->quoteName('id'))
 				->select($this->_db->quoteName('title'))
-				->from($this->_db->quoteName('#__usergroups'))
+				->from($this->_db->quoteName('#__users_groups'))
 				->where($this->_db->quoteName('id') . ' = ' . implode(' OR ' . $this->_db->quoteName('id') . ' = ', $this->groups));
 			$this->_db->setQuery($query);
 
@@ -299,14 +299,14 @@ class JTableUser extends JTable
 		if (is_array($this->groups) && count($this->groups))
 		{
 			// Delete the old user group maps.
-			$query->delete($this->_db->quoteName('#__user_usergroup_map'))
+			$query->delete($this->_db->quoteName('#__users_groups_users'))
 				->where($this->_db->quoteName('user_id') . ' = ' . (int) $this->id);
 			$this->_db->setQuery($query);
 			$this->_db->execute();
 
 			// Set the new user group maps.
 			$query->clear()
-				->insert($this->_db->quoteName('#__user_usergroup_map'))
+				->insert($this->_db->quoteName('#__users_groups_users'))
 				->columns(array($this->_db->quoteName('user_id'), $this->_db->quoteName('group_id')));
 
 			// Have to break this up into individual queries for cross-database support.
@@ -323,7 +323,7 @@ class JTableUser extends JTable
 		if ($this->block == (int) 1)
 		{
 			$query->clear()
-				->delete($this->_db->quoteName('#__user_keys'))
+				->delete($this->_db->quoteName('#__users_keys'))
 				->where($this->_db->quoteName('user_id') . ' = ' . $this->_db->quote($this->username));
 			$this->_db->setQuery($query);
 			$this->_db->execute();
@@ -360,7 +360,7 @@ class JTableUser extends JTable
 
 		// Delete the user group maps.
 		$query->clear()
-			->delete($this->_db->quoteName('#__user_usergroup_map'))
+			->delete($this->_db->quoteName('#__users_groups_users'))
 			->where($this->_db->quoteName('user_id') . ' = ' . (int) $this->$k);
 		$this->_db->setQuery($query);
 		$this->_db->execute();
@@ -370,7 +370,7 @@ class JTableUser extends JTable
 		 */
 
 		$query->clear()
-			->delete($this->_db->quoteName('#__user_keys'))
+			->delete($this->_db->quoteName('#__users_keys'))
 			->where($this->_db->quoteName('user_id') . ' = ' . $this->_db->quote($this->username));
 		$this->_db->setQuery($query);
 		$this->_db->execute();

@@ -239,7 +239,7 @@ class ModulesModelModules extends JModelList
 
 		// Join over the asset groups.
 		$query->select('ag.title AS access_level')
-			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');
+			->join('LEFT', '#__users_roles AS ag ON ag.id = a.access');
 
 		// Join over the module menus
 		$query->select('MIN(mm.menuid) AS pages')

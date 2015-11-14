@@ -7,6 +7,11 @@
   "license": "GPL-2.0+",
   "authors": [
     {
+      "name": "Johan Janssens",
+      "email": "johan@janssens.me",
+      "homepage": "http://about.me/johanjanssens"
+    },
+    {
       "name": "Timble",
       "email": "info@timble.net",
       "homepage": "http://www.timble.net"
@@ -19,10 +24,16 @@
     "joomla/registry": "~1.2",
     "joomla/string": "~1.0",
     "phpmailer/phpmailer": "5.2.9",
-    "vlucas/phpdotenv": "2.0.*"
+    "vlucas/phpdotenv": "dev-master",
+    "joomlatools/joomla-console": "^1.4.0"
   },
-  "require-dev": {
-    "phpunit/phpunit": "4.1.*",
-    "phpunit/dbunit": "~1.3"
+  "suggest": {
+    "joomlatools/joomla-platform-legacy": "Includes deprecated library classes no longer used in the core"
+  },
+  "autoload": {
+    "psr-0": {"Composer": "install/scripts"}
+  },
+  "scripts": {
+    "post-create-project-cmd": "Composer\\Project::install"
   }
 }
