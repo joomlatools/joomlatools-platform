@@ -97,6 +97,10 @@ Any other deployment method can be used as well with one requirement:
 Joomlatools Platform is an open source, community-driven project. Contributions are welcome from everyone. 
 We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
 
+## Contributors
+
+See the list of [contributors](https://github.com/joomlatools/joomla-platform/contributors).
+
 ## License 
 
 Joomlatools Platform is free and open-source software licensed under the [GPLv3 license](LICENSE.txt).
