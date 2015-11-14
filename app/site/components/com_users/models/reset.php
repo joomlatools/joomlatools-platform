@@ -161,7 +161,7 @@ class UsersModelReset extends JModelForm
 		// Check the token and user id.
 		if (empty($token) || empty($userId))
 		{
-			return new JException(JText::_('COM_USERS_RESET_COMPLETE_TOKENS_MISSING'), 403);
+			return new RuntimeException(JText::_('COM_USERS_RESET_COMPLETE_TOKENS_MISSING'), JHttpResponse::FORBIDDEN);
 		}
 
 		// Get the user object.
@@ -199,7 +199,7 @@ class UsersModelReset extends JModelForm
 		// Save the user to the database.
 		if (!$user->save(true))
 		{
-			return new JException(JText::sprintf('COM_USERS_USER_SAVE_FAILED', $user->getError()));
+			return new RuntimeException(JText::sprintf('COM_USERS_USER_SAVE_FAILED', $user->getError()));
 		}
 
 		// Flush the user data from the session.
@@ -264,7 +264,7 @@ class UsersModelReset extends JModelForm
 		}
 		catch (RuntimeException $e)
 		{
-			return new JException(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()));
+			return new RuntimeException(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()));
 		}
 
 		// Check for a user.
@@ -419,7 +419,7 @@ class UsersModelReset extends JModelForm
 		// Save the user to the database.
 		if (!$user->save(true))
 		{
-			return new JException(JText::sprintf('COM_USERS_USER_SAVE_FAILED', $user->getError()));
+			return new RuntimeException(JText::sprintf('COM_USERS_USER_SAVE_FAILED', $user->getError()));
 		}
 
 		// Assemble the password reset confirmation link.
@@ -454,7 +454,7 @@ class UsersModelReset extends JModelForm
 		// Check for an error.
 		if ($return !== true)
 		{
-			return new JException(JText::_('COM_USERS_MAIL_FAILED'));
+			return new RuntimeException(JText::_('COM_USERS_MAIL_FAILED'));
 		}
 
 		return true;
