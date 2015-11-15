@@ -1240,8 +1240,13 @@ abstract class JTable extends JObject implements JObservableInterface, JTableInt
 
 	/**
 	 * Method to determine if a row is checked out and therefore uneditable by
-	 * a user. If the row is checked out by the same user, then it is considered
+	 * a user.
+     *
+     * - If the row is checked out by the same user, then it is considered
 	 * not checked out -- as the user can still edit it.
+     *
+     * - If the user who checked out the row doesn't have an active session,
+     * then it's considered not checked out
 	 *
 	 * @param   integer  $with     The userid to preform the match with, if an item is checked
 	 *                             out by this user the function will return false.
@@ -1256,10 +1261,13 @@ abstract class JTable extends JObject implements JObservableInterface, JTableInt
 	public function isCheckedOut($with = 0, $against = null)
 	{
 		// Handle the non-static case.
-		if (isset($this) && ($this instanceof JTable) && is_null($against))
-		{
+		if (isset($this) && ($this instanceof JTable) && is_null($against)) {
 			$against = $this->get('checked_out');
 		}
+
+        if(empty($with)) {
+            $with = JFactory::getUser()->id;
+        }
 
 		// The item is not checked out or is checked out by the same user.
 		if (!$against || ($against == $with))
