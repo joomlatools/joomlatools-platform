@@ -6,6 +6,27 @@ This changelog references the relevant changes (bug and security fixes) done in 
 To get the diff for a specific change, go to https://github.com/joomlatools/joomla-platform/commit/xxx where xxx is the change hash.
 To view the diff between two versions, go to https://github.com/joomlatools/joomla-platform/compare/v1.0.0...v1.0.1
 
+## 1.0.1 (2015-11-13)
+
+### Fixed
+
+* Fixed Session fixation vulnerability [#253](https://github.com/joomlatools/joomla-platform/issues/253)
+* Fixed Security issues in Joomla v3.4.5 [#249](https://github.com/joomlatools/joomla-platform/issues/249)
+* Fixed Undefined variable $im when editing plugin [#242](https://github.com/joomlatools/joomla-platform/issues/242)
+* Fixed Menu manager cannot find the view manifest [#241](https://github.com/joomlatools/joomla-platform/issues/241)
+* Fixed Fix event dispatching inconsistencies [#164](https://github.com/joomlatools/joomla-platform/issues/164)
+
+### Changed
+
+* Disable anonymous sessions [#251](https://github.com/joomlatools/joomla-platform/issues/251)
+* Move legacy libraries into separate repo [#258](https://github.com/joomlatools/joomla-platform/issues/258)
+* Improve administrator menu [#248](https://github.com/joomlatools/joomla-platform/issues/248)
+* Do not load .env file in production [#246](https://github.com/joomlatools/joomla-platform/issues/246)
+
+### Removed
+
+* Remove debug plugin [#263](https://github.com/joomlatools/joomla-platform/pull/263)
+
 ## 1.0.0 (2015-09-01)
 
 ### Added
@@ -132,3 +153,4 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
 [joomla–platform-finder]: https://github.com/joomlatools/joomla-platform-finder
 
 [joomla-console v1.4]: https://github.com/joomlatools/joomla-console/releases/tag/v1.4.0
+

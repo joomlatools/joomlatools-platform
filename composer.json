@@ -27,6 +27,9 @@
     "vlucas/phpdotenv": "dev-master",
     "joomlatools/joomla-console": "^1.4.0"
   },
+  "suggest": {
+    "joomlatools/joomla-platform-legacy": "Includes deprecated library classes no longer used in the core"
+  },
   "autoload": {
     "psr-0": {"Composer": "install/scripts"}
   },

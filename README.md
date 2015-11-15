@@ -30,11 +30,12 @@ including the [Joomla specific version](https://developer.joomlatools.com/platfo
 * Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
 * CLI extension installer with [Joomlatools Composer](http://github.com/joomlatools/joomla-composer)
 
-Use [joomla-vagrant](https://github.com/joomlatools/joomla-vagrant) for additional features:
+Use the [Joomlatools Box](https://github.com/joomlatools/joomla-vagrant) for additional features:
 
 * Easy development environments with [Vagrant](http://www.vagrantup.com/)
 * Easy server provisioning with [Puppet](https://puppetlabs.com/) (Ubuntu 14.04, PHP 5.5, MariaDB)
 * One-command deploys using [Capistrano](http://capistranorb.com/)  
+* Easy application debgging using [Zray](http://www.zend.com/en/products/server/z-ray)
 
 ## Requirements
 
@@ -86,15 +87,20 @@ Any other deployment method can be used as well with one requirement:
 
 ## Documentation
 
-* [Folder structure](https://developer.joomlatools.com/tools/platform/structure)
-* [Configuration files](https://developer.joomlatools.com/tools/platform/configuration)
-* [Environment variables](https://developer.joomlatools.com/tools/platform/environment)
-* [Composer](https://developer.joomlatools.com/tools/platform/composer)
+* [Folder structure](http://developer.joomlatools.com/tools/platform/folder-structure.html)
+* [Configuration files](http://developer.joomlatools.com/tools/platform/configuration-files.html)
+* [Environment variables](http://developer.joomlatools.com/tools/platform/environment-variables.html)
+* [Composer](http://developer.joomlatools.com/tools/platform/composer.html)
+* [Deployment](http://developer.joomlatools.com/tools/platform/deployment.html)
 
 ## Contributing
 
 Joomlatools Platform is an open source, community-driven project. Contributions are welcome from everyone. 
 We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
+
+## Contributors
+
+See the list of [contributors](https://github.com/joomlatools/joomla-platform/contributors).
 
 ## License 
 
@@ -104,8 +110,9 @@ Joomlatools Platform is free and open-source software licensed under the [GPLv3 
 
 Keep track of development and community news.
 
-* Follow [@joomlatools on Twitter](https://twitter.com/joomlatools)
-* Read and subscribe to the [Joomlatools Blog](https://joomlatools.com/blog/)
+* Follow [@joomlatoolsdev on Twitter](https://twitter.com/joomlatoolsdev)
+* Join [joomlatools/dev on Gitter](http://gitter.im/joomlatools/dev)
+* Read and subscribe to the [Joomlatools Developer Blog](https://develeoper.joomlatools.com/blog/)
 * Subscribe to the [Joomlatools Newsletter](http://www.joomlatools.com/newsletter)
 
 [Joomlatools Platform]: http://developer.joomlatools.com/platform

@@ -26,10 +26,10 @@ final class JVersion
 	public $RELEASE = '1.0';
 
 	/** @var  string  Maintenance version. */
-	public $DEV_LEVEL = '0';
+	public $DEV_LEVEL = '1';
 
 	/** @var  string  Development STATUS. */
-	public $DEV_STATUS = 'Beta';
+	public $DEV_STATUS = '';
 
 	/** @var  string  Build number. */
 	public $BUILD = '';
