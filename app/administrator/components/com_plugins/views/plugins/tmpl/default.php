@@ -154,7 +154,7 @@ $sortFields = $this->getSortFields();
 						<?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'plugins.', $canChange); ?>
 					</td>
 					<td>
-						<?php if ($item->checked_out) : ?>
+                        <?php if (JHtml::_('grid.ischeckedout', $item)) : ?>
 							<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'plugins.', $canCheckin); ?>
 						<?php endif; ?>
 						<?php if ($canEdit) : ?>
