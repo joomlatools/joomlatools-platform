@@ -174,7 +174,7 @@ $sortFields = $this->getSortFields();
 					</td>
 					<td class="has-context">
 						<div class="pull-left">
-							<?php if ($item->checked_out) : ?>
+							<?php if (JHtml::_('grid.ischeckedout', $item)) : ?>
 								<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'modules.', $canCheckin); ?>
 							<?php endif; ?>
 							<?php if ($canEdit) : ?>
