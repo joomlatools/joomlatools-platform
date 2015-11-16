@@ -27,12 +27,6 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                                <span>
-                                    <span class="k-icon-user"></span>
-                                    <strong><?php echo $user->name; ?></strong>
-                                </span>
-                        </li>
-                        <li>
                             <a href="index.php?option=com_users&amp;task=profile.edit&amp;id=<?php echo $user->id; ?>"><?php echo JText::_('TPL_ISIS_EDIT_ACCOUNT'); ?></a>
                         </li>
                         <li>
