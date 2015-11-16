@@ -19,3 +19,28 @@
 .k-container__no-tabs {
   border-top: 1px solid #ddd;
 }
+
+.tabs-left {
+  .nav-tabs {
+    float: left;
+    border-bottom: 0 none;
+
+    li {
+      float: none;
+
+      a {
+        border-radius: 4px 0 0 4px;
+        margin-right: -1px;
+        margin-bottom: 3px;
+      }
+
+      &.active a {
+        border-color: #ddd transparent #ddd #ddd;
+      }
+    }
+  }
+
+  .tab-pane {
+    border-top: 1px solid #ddd;
+  }
+}

@@ -4310,6 +4310,16 @@ body.koowa > .koowa { height: 100%; }
 
 .koowa .k-container__no-tabs { border-top: 1px solid #ddd; }
 
+.koowa .tabs-left .nav-tabs { float: left; border-bottom: 0 none; }
+
+.koowa .tabs-left .nav-tabs li { float: none; }
+
+.koowa .tabs-left .nav-tabs li a { border-radius: 4px 0 0 4px; margin-right: -1px; margin-bottom: 3px; }
+
+.koowa .tabs-left .nav-tabs li.active a { border-color: #ddd transparent #ddd #ddd; }
+
+.koowa .tabs-left .tab-pane { border-top: 1px solid #ddd; }
+
 .koowa .k-toolbar { padding: 0 10px 10px; /* 1 */ /** Wrappers 1. No margin on Joomla toolbar to keep styling in line with Nooku toolbar */ /** Buttons 1. Space buttons nicely so they also look good on two lines 2. No padding on mobile 3. Re-set padding on larger screens 4. Set to inline block when text is showing 5. Style to be flat 6. Not green for success button */ /** Icon styling 1. Fill up complete button 2. Align centered 3. Reset on larger screens 4. Some spacing between icon and text 5. No special joomla red and green colors */ /** Off canvas toggle button */ }
 
 .koowa .k-toolbar .btn-toolbar { margin: 0; /* 1 */ }

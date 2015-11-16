@@ -69,7 +69,7 @@ JHtml::_('formbehavior.chosen', 'select');
                                     <?php echo $field->label; ?>
                                 </div>
                             <?php endif; ?>
-                            <div class="<?php if ($name != "permissions") : ?>controls<?php endif; ?>">
+                            <div<?php $name != "permissions" ? ' class="controls' : '' ?>>
                                 <?php echo $field->input; ?>
                             </div>
                         </div>
