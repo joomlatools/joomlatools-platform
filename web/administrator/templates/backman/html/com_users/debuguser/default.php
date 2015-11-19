@@ -20,7 +20,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<form class="k-list-layout" action="<?php echo JRoute::_('index.php?option=com_users&view=debuggroup&user_id='.(int) $this->state->get('filter.user_id'));?>" method="post" name="adminForm" id="adminForm">
+<form class="k-list-layout" action="<?php echo JRoute::_('index.php?option=com_users&view=debuguser&user_id=' . (int) $this->state->get('filter.user_id'));?>" method="post" name="adminForm" id="adminForm">
     <!-- Scopebar -->
     <div class="k-scopebar" id="filter-bar">
 
@@ -55,7 +55,8 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                     <th>
                         <?php echo JHtml::_('grid.sort', 'COM_USERS_HEADING_ASSET_TITLE', 'a.title', $listDirn, $listOrder); ?>
                     </th>
-                    <th                        <?php echo JHtml::_('grid.sort', 'COM_USERS_HEADING_ASSET_NAME', 'a.name', $listDirn, $listOrder); ?>
+                    <th>
+                        <?php echo JHtml::_('grid.sort', 'COM_USERS_HEADING_ASSET_NAME', 'a.name', $listDirn, $listOrder); ?>
                     </th>
                     <?php foreach ($this->actions as $key => $action) : ?>
                         <th width="5%">
@@ -78,6 +79,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                 </tr>
                 </tfoot>
                 <tbody>
+                </tr>
                 <?php foreach ($this->items as $i => $item) : ?>
                     <tr>
                         <td>
@@ -105,13 +107,13 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                                 $button = '';
                             endif;
                             ?>
-                            <td class="center">
-                            <span class="btn disabled btn-micro <?php echo $button; ?>">
-                                <i class="icon-white <?php echo $class; ?>"></i>
-                            </span>
+                            <td class="k-table-data--center">
+							<span class="btn disabled btn-micro <?php echo $button; ?>">
+								<i class="icon-white <?php echo $class; ?>"></i>
+							</span>
                             </td>
                         <?php endforeach; ?>
-                        <td class="k-table-data--center k-table-data--nowrap">
+                        <td class="k-table-data--nowrap k-table-data--center">
                             <?php echo (int) $item->lft; ?>
                             - <?php echo (int) $item->rgt; ?>
                         </td>
@@ -125,6 +127,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
         <div class="k-table-pagination">
             <?php echo $this->pagination->getListFooter(); ?>
         </div><!-- .k-table-pagination -->
+
     </div>
 
     <input type="hidden" name="task" value="" />
