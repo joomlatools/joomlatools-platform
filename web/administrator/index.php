@@ -6,8 +6,6 @@
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-define('_JEXEC', 1);
-
 define('JPATH_WEB'   , dirname(__DIR__));
 define('JPATH_ROOT'  , dirname(JPATH_WEB));
 define('JPATH_BASE'  , JPATH_ROOT . '/app/administrator');
