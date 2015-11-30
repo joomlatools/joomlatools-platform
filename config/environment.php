@@ -3,7 +3,7 @@
 return [
 
     /* Site */
-    'sitename'   => 'Joomla Platform',
+    'sitename'   => 'Joomlatools Platform',
     'editor'     => 'tinymce',
     'captcha'    => '0',
     'list_limit' => '20',
