@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6154c7634d13c3ca804e3a5afefe7a44",
+    "hash": "9209aa0cf8fe7195d5787fbbf946609e",
     "packages": [
         {
             "name": "joomla/application",
@@ -347,17 +347,17 @@
             "time": "2015-03-28 17:52:43"
         },
         {
-            "name": "joomlatools/joomla-console",
-            "version": "v1.4.3",
+            "name": "joomlatools/console",
+            "version": "v1.4.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/joomlatools/joomla-console.git",
-                "reference": "318166c217ae9c7d04e1d7bc789421a11d9ae579"
+                "url": "https://github.com/joomlatools/joomlatools-console.git",
+                "reference": "5f38c8bc917453908badc297b045274736ace1d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joomlatools/joomla-console/zipball/318166c217ae9c7d04e1d7bc789421a11d9ae579",
-                "reference": "318166c217ae9c7d04e1d7bc789421a11d9ae579",
+                "url": "https://api.github.com/repos/joomlatools/joomlatools-console/zipball/5f38c8bc917453908badc297b045274736ace1d0",
+                "reference": "5f38c8bc917453908badc297b045274736ace1d0",
                 "shasum": ""
             },
             "require": {
@@ -384,13 +384,13 @@
                 }
             ],
             "description": "This command-line script helps to ease the management of Joomla sites in your development environment.",
-            "homepage": "https://github.com/joomlatools/joomla-console",
+            "homepage": "https://github.com/joomlatools/joomlatools-console",
             "keywords": [
                 "console",
                 "joomla",
                 "tools"
             ],
-            "time": "2015-11-25 17:06:26"
+            "time": "2015-11-30 16:48:31"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -485,25 +485,26 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.7.7",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "16bb1cb86df43c90931df65f529e7ebd79636750"
+                "reference": "d232bfc100dfd32b18ccbcab4bcc8f28697b7e41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/16bb1cb86df43c90931df65f529e7ebd79636750",
-                "reference": "16bb1cb86df43c90931df65f529e7ebd79636750",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d232bfc100dfd32b18ccbcab4bcc8f28697b7e41",
+                "reference": "d232bfc100dfd32b18ccbcab4bcc8f28697b7e41",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.3.9",
+                "symfony/polyfill-mbstring": "~1.0"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/event-dispatcher": "~2.1",
-                "symfony/process": "~2.1"
+                "symfony/event-dispatcher": "~2.1|~3.0.0",
+                "symfony/process": "~2.1|~3.0.0"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
@@ -513,7 +514,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -540,7 +541,63 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-11-18 09:54:26"
+            "time": "2015-11-30 12:35:10"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "0b6a8940385311a24e060ec1fe35680e17c74497"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/0b6a8940385311a24e060ec1fe35680e17c74497",
+                "reference": "0b6a8940385311a24e060ec1fe35680e17c74497",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
         },
         {
             "name": "vlucas/phpdotenv",
