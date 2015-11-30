@@ -19,7 +19,13 @@ class Project
 {
     public static function install()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        $output = new ConsoleOutput();
+
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN')
+        {
+            $output->writeln("<info>Sorry, automated installation is not yet supported on Windows!</info>");
+            $output->writeln("Please refer to the documentation for alternative installation methods: http://developer.joomlatools.com/platform/getting-started.html");
+
             return;
         }
 
@@ -40,25 +46,10 @@ class Project
             '--mysql_db_prefix' => ''
         );
 
-        self::logo();
-
-        $output = new ConsoleOutput();
         $output->writeln("<info>Welcome to the Joomlatools Platform installer!</info>");
         $output->writeln("Fill in the following details to configure your new application.");
 
         $application = new Application();
         $application->run(new ArrayInput($arguments));
-    }
-
-    public static function logo()
-    {
-        $output = new ConsoleOutput();
-
-        $output->writeln("                                                                ");
-        $output->writeln("    __               _        _____ _     _   ___               ");
-        $output->writeln(" __|  |___ ___ _____| |___   |  _  | |___| |_|  _|___ ___ _____ ");
-        $output->writeln("|  |  | . | . |     | | .'|  |   __| | .'|  _|  _| . |  _|     |");
-        $output->writeln("|_____|___|___|_|_|_|_|__,|  |__|  |_|__,|_| |_| |___|_| |_|_|_|");
-        $output->writeln("                                                                ");
     }
 }
