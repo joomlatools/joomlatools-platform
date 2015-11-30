@@ -28,9 +28,9 @@ including the [Joomla specific version](https://developer.joomlatools.com/platfo
 * Dependency management with [Composer](http://getcomposer.org)
 * Easy Joomla configuration with environment specific files
 * Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
-* CLI extension installer with [Joomlatools Composer](http://github.com/joomlatools/joomla-composer)
+* CLI extension installer with [Joomlatools Composer](http://github.com/joomlatools/joomlatools-composer)
 
-Use the [Joomlatools Vagrant](https://github.com/joomlatools/joomla-vagrant) box for additional features:
+Use the [Joomlatools Vagrant](https://github.com/joomlatools/joomlatools-vagrant) box for additional features:
 
 * Easy development environments with [Vagrant](http://www.vagrantup.com/)
 * Easy server provisioning with [Puppet](https://puppetlabs.com/) (Ubuntu 14.04, PHP 5.5, MariaDB)
@@ -47,13 +47,13 @@ Use the [Joomlatools Vagrant](https://github.com/joomlatools/joomla-vagrant) box
 
 ### Automatic (recommended)
 
-1. Run `composer create-project joomlatools/joomla-platform`
+1. Run `composer create-project joomlatools/platform`
 2. Complete the steps
 3. Access Joomla administrator at `http://example.com/web/administrator`
 
 ### Manual
 
-1. Clone the git repo - `git clone https://github.com/joomlatools/joomla-platform.git`
+1. Clone the git repo - `git clone https://github.com/joomlatools/joomlatools-platform.git`
 2. Run `composer install`
 3. Copy `.env.example` to `.env` and update environment variables:
   * `JOOMLA_DB_NAME` - Database name
@@ -85,7 +85,7 @@ domain name to set web root or document root to /web.
 
 There is currently one method to deploy platform sites out of the box:
 
-* [joomla-console-capistrano](https://github.com/joomlatools/joomla-console-capistrano)
+* [joomlatools-console-capistrano](https://github.com/joomlatools/joomlatools-console-capistrano)
 
 Any other deployment method can be used as well with one requirement:
 
@@ -106,7 +106,7 @@ We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
 
 ## Contributors
 
-See the list of [contributors](https://github.com/joomlatools/joomla-platform/contributors).
+See the list of [contributors](https://github.com/joomlatools/joomlatools-platform/contributors).
 
 ## License
 
