@@ -10,11 +10,11 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
 
 ### Added
 
-* Add JOOMLATOOLS_PLATFORM define [#273](https://github.com/joomlatools/joomlatools-platform/issues/273)
+* Added JOOMLATOOLS_PLATFORM define [#273](https://github.com/joomlatools/joomlatools-platform/issues/273)
 
 ### Fixed 
 
-* Declaration of JMail::addAttachment() should be compatible with PHPMailer::addAttachment() [#266](https://github.com/joomlatools/joomlatools-platform/issues/266)
+* Fixed Declaration of JMail::addAttachment() should be compatible with PHPMailer::addAttachment() [#266](https://github.com/joomlatools/joomlatools-platform/issues/266)
 
 ### Changed
 
