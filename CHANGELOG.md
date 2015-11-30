@@ -6,6 +6,21 @@ This changelog references the relevant changes (bug and security fixes) done in 
 To get the diff for a specific change, go to https://github.com/joomlatools/joomlatools-platform/commit/xxx where xxx is the change hash.
 To view the diff between two versions, go to https://github.com/joomlatools/joomlatools-platform/compare/v1.0.0...v1.0.1
 
+## 1.0.2 (2015-11-30)
+
+### Added
+
+* Add JOOMLATOOLS_PLATFORM define [#273](https://github.com/joomlatools/joomlatools-platform/issues/273)
+
+### Fixed 
+
+* Declaration of JMail::addAttachment() should be compatible with PHPMailer::addAttachment() [#266](https://github.com/joomlatools/joomlatools-platform/issues/266)
+
+### Changed
+
+* Require phpdotenv 2.1.0 release [#278](https://github.com/joomlatools/joomlatools-platform/issues/276)
+* Renamed repository [#278](https://github.com/joomlatools/joomlatools-platform/issues/278)
+
 ## 1.0.1 (2015-11-13)
 
 ### Fixed
