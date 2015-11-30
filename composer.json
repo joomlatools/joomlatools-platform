@@ -24,7 +24,7 @@
     "joomla/registry": "~1.2",
     "joomla/string": "~1.0",
     "phpmailer/phpmailer": "5.2.9",
-    "vlucas/phpdotenv": "dev-master",
+    "vlucas/phpdotenv": "^2.1.0",
     "joomlatools/joomla-console": "^1.4.0"
   },
   "suggest": {

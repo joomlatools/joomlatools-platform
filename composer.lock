@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "00cdff769fe4a30d5511cafd79d78c6d",
+    "hash": "6154c7634d13c3ca804e3a5afefe7a44",
     "packages": [
         {
             "name": "joomla/application",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joomla-framework/application.git",
-                "reference": "5825e9fd60681aa77644be85f7eefc8ea3e98285"
+                "reference": "a50d524bdc31488aad46da0da8cb59b1767fc4fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joomla-framework/application/zipball/5825e9fd60681aa77644be85f7eefc8ea3e98285",
-                "reference": "5825e9fd60681aa77644be85f7eefc8ea3e98285",
+                "url": "https://api.github.com/repos/joomla-framework/application/zipball/a50d524bdc31488aad46da0da8cb59b1767fc4fd",
+                "reference": "a50d524bdc31488aad46da0da8cb59b1767fc4fd",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "framework",
                 "joomla"
             ],
-            "time": "2015-07-17 22:26:06"
+            "time": "2015-10-09 12:10:44"
         },
         {
             "name": "joomla/compat",
@@ -200,16 +200,16 @@
         },
         {
             "name": "joomla/registry",
-            "version": "1.4.5",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joomla-framework/registry.git",
-                "reference": "4f926ba961ca45eb95076a1598c3ae689cb02fc5"
+                "reference": "db55cf426bd27524557affbe95b18d6a2f959657"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joomla-framework/registry/zipball/4f926ba961ca45eb95076a1598c3ae689cb02fc5",
-                "reference": "4f926ba961ca45eb95076a1598c3ae689cb02fc5",
+                "url": "https://api.github.com/repos/joomla-framework/registry/zipball/db55cf426bd27524557affbe95b18d6a2f959657",
+                "reference": "db55cf426bd27524557affbe95b18d6a2f959657",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
                 "joomla",
                 "registry"
             ],
-            "time": "2015-03-28 17:54:38"
+            "time": "2015-10-14 17:01:46"
         },
         {
             "name": "joomla/string",
@@ -348,16 +348,16 @@
         },
         {
             "name": "joomlatools/joomla-console",
-            "version": "v1.4.0",
+            "version": "v1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joomlatools/joomla-console.git",
-                "reference": "d32422cb94709afbb91c277fae3752f5c5b39e46"
+                "reference": "318166c217ae9c7d04e1d7bc789421a11d9ae579"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joomlatools/joomla-console/zipball/d32422cb94709afbb91c277fae3752f5c5b39e46",
-                "reference": "d32422cb94709afbb91c277fae3752f5c5b39e46",
+                "url": "https://api.github.com/repos/joomlatools/joomla-console/zipball/318166c217ae9c7d04e1d7bc789421a11d9ae579",
+                "reference": "318166c217ae9c7d04e1d7bc789421a11d9ae579",
                 "shasum": ""
             },
             "require": {
@@ -390,7 +390,7 @@
                 "joomla",
                 "tools"
             ],
-            "time": "2015-09-01 22:39:46"
+            "time": "2015-11-25 17:06:26"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -485,16 +485,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.7.3",
+            "version": "v2.7.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Console.git",
-                "reference": "d6cf02fe73634c96677e428f840704bfbcaec29e"
+                "url": "https://github.com/symfony/console.git",
+                "reference": "16bb1cb86df43c90931df65f529e7ebd79636750"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/d6cf02fe73634c96677e428f840704bfbcaec29e",
-                "reference": "d6cf02fe73634c96677e428f840704bfbcaec29e",
+                "url": "https://api.github.com/repos/symfony/console/zipball/16bb1cb86df43c90931df65f529e7ebd79636750",
+                "reference": "16bb1cb86df43c90931df65f529e7ebd79636750",
                 "shasum": ""
             },
             "require": {
@@ -503,7 +503,6 @@
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/event-dispatcher": "~2.1",
-                "symfony/phpunit-bridge": "~2.7",
                 "symfony/process": "~2.1"
             },
             "suggest": {
@@ -520,7 +519,10 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Console\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -538,20 +540,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-28 15:18:12"
+            "time": "2015-11-18 09:54:26"
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "dev-master",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "4c619d36c7158138ef22b1066f836043629297d7"
+                "reference": "c10040e0df17d2ee88e9212b50cbe9319e878f59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/4c619d36c7158138ef22b1066f836043629297d7",
-                "reference": "4c619d36c7158138ef22b1066f836043629297d7",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/c10040e0df17d2ee88e9212b50cbe9319e878f59",
+                "reference": "c10040e0df17d2ee88e9212b50cbe9319e878f59",
                 "shasum": ""
             },
             "require": {
@@ -589,15 +591,13 @@
                 "env",
                 "environment"
             ],
-            "time": "2015-08-18 21:06:42"
+            "time": "2015-10-28 18:53:35"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "vlucas/phpdotenv": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
