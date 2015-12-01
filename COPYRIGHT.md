@@ -81,3 +81,22 @@ Copyright (C) 2000 - 2004 by following authors:
 - Mambo Foundation, Inc.
 - Miro International Pty Ltd.
 
+### 3rd-party libraries
+
+#### TinyMCE
+
+Author:		Moxiecode Systems
+Copyright:	Copyright (C) 2005-2014, Moxiecode Systems AB, All rights reserved.
+License:	GNU Lesser General Public License (LGPL) 2.1
+
+#### IDNA Convert
+
+Author:    phlyLabs
+Copyright: Copyright (C) 2004-2011, phlyLabs, Berlin, All rights reserved.
+License:	GNU Lesser General Public License (LGPL) 2.1
+
+#### phpass
+
+Author:		Solar Designer
+Copyright:	Copyright (C) 2004-2006, Solar Designer, All rights reserved.
+License:    Not specified
