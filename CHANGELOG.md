@@ -11,6 +11,7 @@ To view the diff between two versions, go to https://github.com/joomlatools/joom
 ### Added
 
 * Added JOOMLATOOLS_PLATFORM define [#273](https://github.com/joomlatools/joomlatools-platform/issues/273)
+* Added COPYRIGHT.md file [#282](https://github.com/joomlatools/joomlatools-platform/issues/282)
 
 ### Fixed 
 
