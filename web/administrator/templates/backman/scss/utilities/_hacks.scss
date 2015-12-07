@@ -63,3 +63,9 @@
 .tooltip {
   display: none !important;
 }
+
+
+
+.koowa .navbar-default .navbar-nav > .disabled > a {
+  opacity: .75;
+}

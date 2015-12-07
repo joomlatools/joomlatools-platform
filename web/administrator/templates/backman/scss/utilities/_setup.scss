@@ -43,7 +43,8 @@ body.koowa {
 
   // Also make the first koowa in body full height
   & > .koowa {
-    height: 100%;
+    min-height: 100%;
+    overflow: hidden;
 
     // But an auto height when item has flexbox
     @include flexbox {
@@ -51,7 +52,6 @@ body.koowa {
     }
   }
 }
-
 
 
 /**

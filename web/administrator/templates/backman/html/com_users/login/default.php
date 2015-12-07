@@ -33,7 +33,7 @@ JHtml::_('formbehavior.chosen');
     </div>
     <div class="form-group">
         <div class="input-group input-group-lg">
-            <label for="mod-login-password" class="input-group-addon input-lg">
+            <label for="mod-login-password" class="input-group-addon">
                 <span class="k-icon-lock-locked" title="<?php echo JText::_('JGLOBAL_PASSWORD'); ?>"></span>
                 <span class="element-invisible">
                     <?php echo JText::_('JGLOBAL_PASSWORD'); ?>
