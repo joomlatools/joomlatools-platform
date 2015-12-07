@@ -184,3 +184,9 @@ table {
   }
 }
 
+.icon-menu-2 {
+  @include icon-before(sorting,true) {
+    font-size: 10px;
+    color: palette(Grey, 500);
+  }
+}
