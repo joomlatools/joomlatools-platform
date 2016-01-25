@@ -7,7 +7,11 @@
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('_JEXEC') or die;
+//Define the platform
+define('JOOMLATOOLS_PLATFORM', 1);
+
+//Required by Joomla
+define('_JEXEC', 1);
 
 // Configuration
 define('JPATH_CONFIGURATION', JPATH_ROOT . '/config');
