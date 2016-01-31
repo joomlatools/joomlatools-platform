@@ -23,16 +23,16 @@ final class JVersion
 	public $PRODUCT = 'Joomlatools Platform';
 
 	/** @var  string  Release version. */
-	public $RELEASE = '1.0';
+	public $RELEASE = '3.3';
 
 	/** @var  string  Maintenance version. */
-	public $DEV_LEVEL = '2';
+	public $DEV_LEVEL = '6';
 
 	/** @var  string  Development STATUS. */
-	public $DEV_STATUS = '';
+	public $DEV_STATUS = 'Stable';
 
 	/** @var  string  Build number. */
-	public $BUILD = '';
+	public $BUILD = '103';
 
 	/** @var  string  Code name. */
 	public $CODENAME = 'Braveheart';
