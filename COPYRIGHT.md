@@ -1,7 +1,9 @@
 ### Joomlatools Platform
 
+License: GNU General Public License (GPL) 3.0
 Copyright (C) 2015 - 2016 by following authors:
 
+- Timble, CVBA
 - Johan Janssens
 - Steven Rombauts
 - Mati Kochen
@@ -12,14 +14,108 @@ Copyright (C) 2015 - 2016 by following authors:
 - Mathew Artemenko
 - Arunas Mazeika
 
-### Joomla! 3.x
+### Joomla! 1.6/1.7/2.5/3.3
 
-Copyright (C) 2008 - 20015 by following authors:
+License: GNU General Public License (GPL) 2.1 or later
+Copyright (C) 2008 - 2015 by following authors:
 
-- Open Source Matters, Inc and all contributors
+- Open Source Matters, Inc
+- Adrian Louter
+- Adrian Victor III Onod
+- Airton Torres
+- Akarawuth Tamrareang
+- Amy Stephen
+- Andrea Tarr
+- Andrew Eddie
+- Andy Capiau
+- Angie Radtke
+- Anja Hage
+- Anthony Ferrara
+- Anthony McLin
+- Antonio Escobar Tizon
+- Artyom Bisyarin
+- Benjamin Trenkle
+- Bill Richardson
+- Birger Lehner
+- Boris Baddenoff
+- Brian Teeman
+- C. Tapuscrine
+- Cherif Gouiaa
+- Chris Davenport
+- Christophe Demko
+- Christopher Garvis
+- Cristina Solana
+- CY Lee
+- Dennis Hermacki
+- Elin Waring
+- Ercan Ozkaya
+- Franklin Tse
+- Gergő Erdősi
+- Gobezu Sewu
+- Hannes Papenberg
+- Harry Reinhardt
+- Ian MacLennan
+- Iszak Bryan
+- Jacob Waisner
+- Janich Rasmussen 
+- Jason Pettett
+- Jean-Marie Simonet
+- Jen Kramer
+- Jennifer Marriott
+- Jeremy Wilken
+- Johan Janssens
+- Jonatas Braganca
+- Jonnathan S. Lima
+- Joseph LeBlanc
+- Kevin Devine
+- Klas Berlič
+- Louis Landry
+- Loyd Headrick
+- Marijke Stuivenberg
+- Marius van Rijnsoever
+- Mark Dexter
+- Martijn Maandag
+- Mathavan Jeyadev
+- Matt Thomas
+- Michael Babker
+- Navid Zeraati
+- Nicholas Dionysopoulos
+- Nikolai Plath
+- Ole Bang Ottosen
+- Omar Ramos
+- Peter Osipof
+- Phani Kalluri
+- Phil Snell
+- Prasit Gebsaap
+- Radek Suski
+- Ramindu Deshapriya
+- Rob Joyce
+- Rob Schley
+- Robert Deutz
+- Roland Dalmulder
+- Ron Severdia
+- Ronald de Vries
+- Ronald Pijpers
+- Rouven Weßling
+- Rune Sjøen
+- Samuel Moffatt
+- Sander Potjer
+- Selene Feigl
+- Sergio Iglesias
+- Stefania Gaianigo
+- Steve Burge
+- Sudhi Seshachala
+- Thierry Bela
+- Tim Plummer
+- Tore Krudtaa
+- Troy Hall
+- Tudor Mazilu
+- Viet Hoang Vu
+- Zachary Draper
 
 ### Joomla! 1.5
 
+License: GNU General Public License (GPL) 2.1 or later
 Copyright (C) 2004 - 2008 by following authors:
 
 - Levis Bisson
@@ -76,6 +172,7 @@ Copyright (C) 2004 - 2008 by following authors:
 
 ### Mambo
 
+License: GNU General Public License (GPL) 2.1 or later
 Copyright (C) 2000 - 2004 by following authors:
 
 - Mambo Foundation, Inc.
