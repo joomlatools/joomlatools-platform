@@ -6,6 +6,17 @@ This changelog references the relevant changes (bug and security fixes) done in 
 To get the diff for a specific change, go to https://github.com/joomlatools/joomlatools-platform/commit/xxx where xxx is the change hash.
 To view the diff between two versions, go to https://github.com/joomlatools/joomlatools-platform/compare/v1.0.0...v1.0.1
 
+## 1.0.3 (2016-02-01)
+
+### Fixed 
+
+* Keep JVERSION compatible with Joomla [#290](https://github.com/joomlatools/joomlatools-platform/issues/290)
+* Gitignore ignores lib/libraries/joomla/log [#289](https://github.com/joomlatools/joomlatools-platform/issues/289)
+
+### Changed
+
+* Add missing authors to COPYRIGHT.md [#284](https://github.com/joomlatools/joomlatools-platform/issues/284)
+
 ## 1.0.2 (2015-11-30)
 
 ### Added
