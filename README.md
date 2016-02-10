@@ -16,7 +16,7 @@ Alba gu bràth!
 structure.
 
 Much of the philosophy behind the platform is inspired by the [Twelve-Factor App](http://12factor.net/) methodology
-including the [Joomla specific version](https://developer.joomlatools.com/platform).
+including the [Joomla specific version](https://www.joomlatools.com/developer/platform/).
 
 > Forked from [Joomla CMS v3.3.6](https://github.com/joomla/joomla-cms/releases/tag/3.3.6)
 
@@ -93,11 +93,11 @@ Any other deployment method can be used as well with one requirement:
 
 ## Documentation
 
-* [Directory structure](http://developer.joomlatools.com/platform/directory-structure.html)
-* [Configuration files](http://developer.joomlatools.com/platform/configuration-files.html)
-* [Environment variables](http://developer.joomlatools.com/platform/environment-variables.html)
-* [Composer](http://developer.joomlatools.com/platform/composer.html)
-* [Deployment](http://developer.joomlatools.com/platform/deployment.html)
+* [Directory structure](http://www.joomlatools.com/developer/platform/directory-structure/)
+* [Configuration files](http://www.joomlatools.com/developer/platform/configuration-files/)
+* [Environment variables](http://www.joomlatools.com/developer/platform/environment-variables/)
+* [Composer](http://www.joomlatools.com/developer/platform/composer/)
+* [Deployment](http://www.joomlatools.com/developer/platform/deployment/)
 
 ## Contributing
 
@@ -118,7 +118,7 @@ Keep track of development and community news.
 
 * Follow [@joomlatoolsdev on Twitter](https://twitter.com/joomlatoolsdev)
 * Join [joomlatools/dev on Gitter](http://gitter.im/joomlatools/dev)
-* Read the [Joomlatools Developer Blog](http://developer.joomlatools.com/blog/)
-* Subscribe to the [Joomlatools Developer Newsletter](http://developer.joomlatools.com/newsletter)
+* Read the [Joomlatools Developer Blog](http://www.joomlatools.com/developer/blog/)
+* Subscribe to the [Joomlatools Developer Newsletter](http://www.joomlatools.com/developer/newsletter/)
 
-[Joomlatools Platform]: http://developer.joomlatools.com/platform
+[Joomlatools Platform]: http://www.joomlatools.com/developer/platform/
