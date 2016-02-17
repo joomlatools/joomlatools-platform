@@ -1,4 +1,4 @@
-[Joomlatools Platform]
+Joomlatools Platform
 ======================
 
 [![Alt text for your video](http://img.youtube.com/vi/1Gt_eln1mUU/0.jpg)](http://www.youtube.com/watch?v=1Gt_eln1mUU)
@@ -68,7 +68,7 @@ Use the [Joomlatools Vagrant](https://github.com/joomlatools/joomlatools-vagrant
 
 ### Joomlatools Console
 
-Our [Joomlatools Console](../tools/console.html) also supports the Joomlatools Platform. To install the platform with a single command, add the `--repo=platform` flag:
+Our [Joomlatools Console] also supports the Joomlatools Platform. To install the platform with a single command, add the `--repo=platform` flag:
 
     joomla site:create joomlatools-platform --repo=platform
 
@@ -93,11 +93,11 @@ Any other deployment method can be used as well with one requirement:
 
 ## Documentation
 
-* [Directory structure](http://www.joomlatools.com/developer/platform/directory-structure/)
-* [Configuration files](http://www.joomlatools.com/developer/platform/configuration-files/)
-* [Environment variables](http://www.joomlatools.com/developer/platform/environment-variables/)
-* [Composer](http://www.joomlatools.com/developer/platform/composer/)
-* [Deployment](http://www.joomlatools.com/developer/platform/deployment/)
+* [Directory structure](https://www.joomlatools.com/developer/platform/directory-structure/)
+* [Configuration files](https://www.joomlatools.com/developer/platform/configuration-files/)
+* [Environment variables](https://www.joomlatools.com/developer/platform/environment-variables/)
+* [Composer](https://www.joomlatools.com/developer/platform/composer/)
+* [Deployment](https://www.joomlatools.com/developer/platform/deployment/)
 
 ## Contributing
 
@@ -118,7 +118,8 @@ Keep track of development and community news.
 
 * Follow [@joomlatoolsdev on Twitter](https://twitter.com/joomlatoolsdev)
 * Join [joomlatools/dev on Gitter](http://gitter.im/joomlatools/dev)
-* Read the [Joomlatools Developer Blog](http://www.joomlatools.com/developer/blog/)
-* Subscribe to the [Joomlatools Developer Newsletter](http://www.joomlatools.com/developer/newsletter/)
+* Read the [Joomlatools Developer Blog](https://www.joomlatools.com/developer/blog/)
+* Subscribe to the [Joomlatools Developer Newsletter](https://www.joomlatools.com/developer/newsletter/)
 
 [Joomlatools Platform]: http://www.joomlatools.com/developer/platform/
+[Joomlatools Console]: http://www.joomlatools.com/developer/tools/console/
