@@ -364,7 +364,7 @@ class JApplicationAdministrator extends JApplicationCms
 		$input = $this->input;
 
         $component = $input->getCmd('option', 'com_users');
-        $view      = $input->getCmd('view',   'login');
+        $view      = $input->getCmd('view',   'users');
 		$file     =  $input->getCmd('tmpl',   'index');
 
 		if ($component == 'com_users' && $view == 'login') {
