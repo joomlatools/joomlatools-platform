@@ -114,7 +114,8 @@ INSERT INTO `menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 
 INSERT INTO `migrations` (`version`, `start_time`, `end_time`)
 VALUES
-	(20160303152100, '2016-03-03 15:29:28', '2016-03-03 15:29:28');
+	(20160303152100, '2016-03-03 15:29:28', '2016-03-03 15:29:28'),
+	(20160303172718, '2016-03-03 17:35:40', '2016-03-03 17:35:40');
 
 --
 -- Dumping data for table `modules`
