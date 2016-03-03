@@ -119,7 +119,7 @@ class PlgSystemLanguageFilter extends JPlugin
 					$cookie_domain 	= $conf->get('cookie_domain', '');
 					$cookie_path 	= $conf->get('cookie_path', JUri::base(true));
 					setcookie(JApplicationHelper::getHash('language'), $lang_code, $this->getLangCookieTime(), $cookie_path, $cookie_domain);
-					$app->input->cookie->set(JApplicationHelper::getHash('language'), $lang_code);
+					$app->input->cookie->set(JApplicationHelper::getHash('language'), $lang_code, 0, $cookie_path);
 
 					// Set the request var.
 					$app->input->set('language', $lang_code);
