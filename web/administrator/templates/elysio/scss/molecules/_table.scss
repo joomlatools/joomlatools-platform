@@ -1,0 +1,116 @@
+/**
+ * Table overrides
+ *
+ * 1. Never wrap headings
+ */
+
+th {
+  white-space: nowrap; /* 1 */
+}
+
+
+/* Override default Joomla buttons in tabels to flat icons (no button style) */
+
+.k-table__data-button--override {
+  .btn.btn {
+    &,&:hover,&:active,&:focus {
+      @include reset;
+      box-shadow: none;
+    }
+  }
+
+  .disabled.disabled {
+    background: transparent;
+    opacity: 1;
+  }
+
+  .icon-unfeatured {
+    color: palette(Grey, 400);
+
+    &:hover {
+      color: palette(Blue Grey);
+    }
+  }
+
+  .icon-featured {
+    color: palette(Blue Grey, 700);
+  }
+}
+
+
+
+/* Selected rows */
+
+table {
+  tr.selected {
+    td {
+      .label {
+        &,&:hover,&:focus,&:active {
+          background: $table-cell-accent-color;
+          color: $table-cell-accent-background;
+        }
+
+        a {
+          &,&:hover,&:focus,&:active {
+            background: $table-cell-accent-color;
+            color: $table-cell-accent-background;
+          }
+        }
+      }
+
+      [class^="icon-"] {
+        &:before {
+          color: white;
+        }
+      }
+
+      .koowa_icon--enabled,
+      .koowa_icon--disabled {
+        &:before {
+          color: white;
+        }
+      }
+
+      .icon-unpublish,
+      .icon-unfeatured,
+      .koowa_icon--disabled {
+        &:before {
+          opacity: .5;
+        }
+      }
+
+      .dropdown-menu {
+        &, a, button, span, span:before {
+          color: $table-cell-color;
+          text-decoration: none;
+        }
+      }
+
+      .dropdown-toggle.btn {
+        &, &:hover, &:focus, &:active {
+          color: $table-cell-accent-background;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* Put some spacing between the icon and toggle button in tables */
+
+.k-table {
+  .btn-group > .btn + .dropdown-toggle {
+    &, &:focus, &:hover, &:active {
+      margin-left: .5em;
+    }
+  }
+}
+
+
+
+/* Placeholder for when tables are empty */
+
+.k-placeholder {
+  padding: 1em;
+}
