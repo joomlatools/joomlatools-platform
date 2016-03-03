@@ -1,4 +1,4 @@
-[Joomlatools Platform]
+Joomlatools Platform
 ======================
 
 [![Alt text for your video](http://img.youtube.com/vi/1Gt_eln1mUU/0.jpg)](http://www.youtube.com/watch?v=1Gt_eln1mUU)
@@ -16,7 +16,7 @@ Alba gu bràth!
 structure.
 
 Much of the philosophy behind the platform is inspired by the [Twelve-Factor App](http://12factor.net/) methodology
-including the [Joomla specific version](https://developer.joomlatools.com/platform).
+including the [Joomla specific version](https://www.joomlatools.com/developer/platform/).
 
 > Forked from [Joomla CMS v3.3.6](https://github.com/joomla/joomla-cms/releases/tag/3.3.6)
 
@@ -68,7 +68,7 @@ Use the [Joomlatools Vagrant](https://github.com/joomlatools/joomlatools-vagrant
 
 ### Joomlatools Console
 
-Our [Joomlatools Console](../tools/console.html) also supports the Joomlatools Platform. To install the platform with a single command, add the `--repo=platform` flag:
+Our [Joomlatools Console] also supports the Joomlatools Platform. To install the platform with a single command, add the `--repo=platform` flag:
 
     joomla site:create joomlatools-platform --repo=platform
 
@@ -93,11 +93,11 @@ Any other deployment method can be used as well with one requirement:
 
 ## Documentation
 
-* [Directory structure](http://developer.joomlatools.com/platform/directory-structure.html)
-* [Configuration files](http://developer.joomlatools.com/platform/configuration-files.html)
-* [Environment variables](http://developer.joomlatools.com/platform/environment-variables.html)
-* [Composer](http://developer.joomlatools.com/platform/composer.html)
-* [Deployment](http://developer.joomlatools.com/platform/deployment.html)
+* [Directory structure](https://www.joomlatools.com/developer/platform/directory-structure/)
+* [Configuration files](https://www.joomlatools.com/developer/platform/configuration-files/)
+* [Environment variables](https://www.joomlatools.com/developer/platform/environment-variables/)
+* [Composer](https://www.joomlatools.com/developer/platform/composer/)
+* [Deployment](https://www.joomlatools.com/developer/platform/deployment/)
 
 ## Contributing
 
@@ -118,7 +118,8 @@ Keep track of development and community news.
 
 * Follow [@joomlatoolsdev on Twitter](https://twitter.com/joomlatoolsdev)
 * Join [joomlatools/dev on Gitter](http://gitter.im/joomlatools/dev)
-* Read the [Joomlatools Developer Blog](http://developer.joomlatools.com/blog/)
-* Subscribe to the [Joomlatools Developer Newsletter](http://developer.joomlatools.com/newsletter)
+* Read the [Joomlatools Developer Blog](https://www.joomlatools.com/developer/blog/)
+* Subscribe to the [Joomlatools Developer Newsletter](https://www.joomlatools.com/developer/newsletter/)
 
-[Joomlatools Platform]: http://developer.joomlatools.com/platform
+[Joomlatools Platform]: http://www.joomlatools.com/developer/platform/
+[Joomlatools Console]: http://www.joomlatools.com/developer/tools/console/
