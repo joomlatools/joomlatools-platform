@@ -1,0 +1,12 @@
+/* ==========================================================================
+   The component div
+   ========================================================================== */
+
+@include flexbox {
+  .k-component {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    overflow: auto;
+  }
+}
