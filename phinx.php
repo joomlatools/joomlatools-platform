@@ -24,7 +24,7 @@ if (strstr($host, ':') !== false) {
 
 return array(
     'paths' => array(
-        'migrations' => '%%PHINX_CONFIG_DIR%%/install/mysql/migrations'
+        'migrations' => '%%PHINX_CONFIG_DIR%%/install/mysql/migrations/*/'
     ),
     'environments' => array(
         'default_migration_table' => 'migrations',
