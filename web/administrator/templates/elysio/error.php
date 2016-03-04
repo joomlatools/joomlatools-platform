@@ -12,6 +12,9 @@ $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
 $menu = $app->getMenu();
 
+// Getting params from template
+$params = JFactory::getApplication()->getTemplate(true)->params;
+
 // Detecting Active Variables
 $option = $app->input->getCmd('option', '');
 $view = $app->input->getCmd('view', '');
@@ -35,8 +38,8 @@ $doc->setMetaData('apple-mobile-web-app-title', 'Elysio');
 $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 
 // Set links
-$doc->addHeadLink($this->params->get('logo').'.ico', 'shortcut icon', 'rel', array('type' => 'image/ico'));
-$doc->addHeadLink($this->params->get('logo').'.png', 'shortcut icon', 'rel', array('type' => 'image/png', "sizes" => "192x192"));
+$doc->addHeadLink($params->get('logo').'.ico', 'shortcut icon', 'rel', array('type' => 'image/ico'));
+$doc->addHeadLink($params->get('logo').'.png', 'shortcut icon', 'rel', array('type' => 'image/png', "sizes" => "192x192"));
 
 // Add Stylesheets
 $doc->addStyleSheet('templates/' . $this->template . '/css/admin.css');

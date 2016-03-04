@@ -1,5 +1,12 @@
 <!-- Top Navigation -->
-<?php echo $this->params->get('templateColor') ?>
+<?php
+
+// Getting params from template
+$params = JFactory::getApplication()->getTemplate(true)->params;
+
+?>
+
+<?php echo $params->get('templateColor') ?>
 <nav class="k-navigation-container navbar navbar-default navbar-static-top">
     <div class="container-fluid">
 
@@ -11,7 +18,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">
-                <img src="<?php echo $this->baseurl; ?>/<?php echo $this->params->get('logo') ?>.svg" style="height: 30px;margin: -5px 0;">
+                <img src="<?php echo $this->baseurl; ?>/<?php echo $params->get('logo') ?>.svg" style="height: 30px;margin: -5px 0;">
             </a>
         </div>
 
