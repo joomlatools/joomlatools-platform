@@ -92,7 +92,7 @@ class JMenuSite extends JMenu
 	{
 		$attributes = (array) $attributes;
 		$values     = (array) $values;
-		$app        = JApplication::getInstance('site');
+		$app        = JApplicationCms::getInstance('site');
 
 		if ($app->isSite())
 		{
@@ -142,7 +142,7 @@ class JMenuSite extends JMenu
 	 */
 	public function getDefault($language = '*')
 	{
-		if (array_key_exists($language, $this->_default) && JApplication::getInstance('site')->getLanguageFilter())
+		if (array_key_exists($language, $this->_default) && JApplicationCms::getInstance('site')->getLanguageFilter())
 		{
 			return $this->_items[$this->_default[$language]];
 		}

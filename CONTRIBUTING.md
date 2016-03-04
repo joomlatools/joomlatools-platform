@@ -136,11 +136,24 @@ merged:
 
 10. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description.
+
+To increase the chance that your pull request is accepted make sure to write tests and [good commit messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
     
 <a name="contributor-copyright"></a>
-## Contributor Copyright
+
+# Contributor Guidelines
+
+## Copyright
  
 As a contributor, you retain the copyright to your code, however by contributing 
 code to one of our Joomlatools code repositories you are releasing your code under 
 the same license terms as specified in the LICENSE.txt file included in each 
-repository. In most cases this will be the GPLv3 or MPLv2 licenses. 
+repository. In most cases this will be the GPLv3 or MPLv2 licenses.
+
+## Code of Conduct 
+
+The community is one of the best features of our Joomlatools projects, and we want to ensure it remains welcoming and safe for everyone. We have adopted the [Open Code of Conduct](http://todogroup.org/opencodeofconduct/#Joomlatools/contact@joomlatools.com) for all projects in the [@joomlatools GitHub organization](http://www.github.com/joomlatools), our [discussion forum](https://groups.google.com/forum/#!forum/joomlatools-dev), and [gitter chat room](https://gitter.im/joomlatools/chat). 
+
+This code of conduct outlines the expectations for all community members, as well as steps to report unacceptable behavior. We are committed to providing a welcoming and inspiring community for all and expect our code of conduct to be honored.
+
+Read more about the Open Code of Conduct on the [TODO Group blog](http://todogroup.org/blog/open-code-of-conduct/).
