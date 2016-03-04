@@ -30,17 +30,22 @@ class ModulesControllerModules extends JControllerAdmin
 		$pks = $this->input->post->get('cid', array(), 'array');
 		JArrayHelper::toInteger($pks);
 
-		try {
+		try
+        {
 			if (empty($pks))
 			{
 				throw new Exception(JText::_('COM_MODULES_ERROR_NO_MODULES_SELECTED'));
 			}
+
 			$model = $this->getModel();
 			$model->duplicate($pks);
 			$this->setMessage(JText::plural('COM_MODULES_N_MODULES_DUPLICATED', count($pks)));
-		} catch (Exception $e)
+		}
+        catch (Exception $e)
 		{
-			JError::raiseWarning(500, $e->getMessage());
+			JFactory::getApplication()->enqueueMessage(
+				$e->getMessage(), 'error'
+			);
 		}
 
 		$this->setRedirect('index.php?option=com_modules&view=modules');

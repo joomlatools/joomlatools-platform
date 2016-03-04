@@ -52,7 +52,11 @@ class UsersViewDebuggroup extends JViewLegacy
 		// Access check.
 		if (!JFactory::getUser()->authorise('core.manage', 'com_users') || !JFactory::getConfig()->get('debug'))
 		{
-			return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('JERROR_ALERTNOAUTHOR'), 'error'
+			);
+
+			return false;
 		}
 
 		$this->actions    = $this->get('DebugActions');
@@ -66,7 +70,7 @@ class UsersViewDebuggroup extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode("\n", $errors));
+			throw new Exception(implode("\n", $errors));
 			return false;
 		}
 

@@ -56,7 +56,7 @@ class UsersViewGroups extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode("\n", $errors));
+			throw new Exception(implode("\n", $errors));
 			return false;
 		}
 

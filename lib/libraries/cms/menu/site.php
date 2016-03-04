@@ -48,7 +48,9 @@ class JMenuSite extends JMenu
 		}
 		catch (RuntimeException $e)
 		{
-			JError::raiseWarning(500, JText::sprintf('JERROR_LOADING_MENUS', $e->getMessage()));
+			JFactory::getApplication()->enqueueMessage(
+				JText::sprintf('JERROR_LOADING_MENUS', $e->getMessage()), 'error'
+			);
 
 			return false;
 		}

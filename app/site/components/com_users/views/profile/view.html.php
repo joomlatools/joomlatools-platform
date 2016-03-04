@@ -48,7 +48,7 @@ class UsersViewProfile extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode('<br />', $errors));
+			throw new Exception(implode('<br />', $errors));
 			return false;
 		}
 
@@ -70,7 +70,7 @@ class UsersViewProfile extends JViewLegacy
 		// Check if a user was found.
 		if (!$this->data->id)
 		{
-			JError::raiseError(404, JText::_('JERROR_USERS_PROFILE_NOT_FOUND'));
+			throw new Exception(JText::_('JERROR_USERS_PROFILE_NOT_FOUND'));
 			return false;
 		}
 

@@ -61,7 +61,9 @@ class MenusControllerMenus extends JControllerLegacy
 
 		if (!is_array($cid) || count($cid) < 1)
 		{
-			JError::raiseWarning(500, JText::_('COM_MENUS_NO_MENUS_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_MENUS_NO_MENUS_SELECTED'), 'error'
+			);
 		}
 		else
 		{
@@ -133,7 +135,9 @@ class MenusControllerMenus extends JControllerLegacy
 		}
 		catch (RuntimeException $e)
 		{
-			return JError::raiseWarning(500, $e->getMessage());
+			JFactory::getApplication()->enqueueMessage(
+				$e->getMessage(), 'error'
+			);
 		}
 
 		// Load all the component menu links
@@ -150,7 +154,9 @@ class MenusControllerMenus extends JControllerLegacy
 		}
 		catch (RuntimeException $e)
 		{
-			return JError::raiseWarning(500, $e->getMessage());
+			JFactory::getApplication()->enqueueMessage(
+				$e->getMessage(), 'error'
+			);
 		}
 
 		foreach ($items as $item)
@@ -192,7 +198,11 @@ class MenusControllerMenus extends JControllerLegacy
 					}
 					catch (RuntimeException $e)
 					{
-						return JError::raiseWarning(500, $e->getMessage());
+						JFactory::getApplication()->enqueueMessage(
+							$e->getMessage(), 'error'
+						);
+
+						return false;
 					}
 					//echo "<br>".$db->getQuery();
 				}

@@ -77,7 +77,9 @@ class UsersControllerUsers extends JControllerAdmin
 
 		if (empty($ids))
 		{
-			JError::raiseWarning(500, JText::_('COM_USERS_USERS_NO_ITEM_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_USERS_USERS_NO_ITEM_SELECTED'), 'error'
+			);
 		}
 		else
 		{
@@ -87,7 +89,9 @@ class UsersControllerUsers extends JControllerAdmin
 			// Change the state of the records.
 			if (!$model->block($ids, $value))
 			{
-				JError::raiseWarning(500, $model->getError());
+				JFactory::getApplication()->enqueueMessage(
+					$model->getError(), 'error'
+				);
 			}
 			else
 			{
@@ -121,7 +125,9 @@ class UsersControllerUsers extends JControllerAdmin
 
 		if (empty($ids))
 		{
-			JError::raiseWarning(500, JText::_('COM_USERS_USERS_NO_ITEM_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_USERS_USERS_NO_ITEM_SELECTED'), 'error'
+			);
 		}
 		else
 		{
@@ -131,7 +137,9 @@ class UsersControllerUsers extends JControllerAdmin
 			// Change the state of the records.
 			if (!$model->activate($ids))
 			{
-				JError::raiseWarning(500, $model->getError());
+				JFactory::getApplication()->enqueueMessage(
+					$model->getError(), 'error'
+				);
 			}
 			else
 			{

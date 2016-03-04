@@ -12,7 +12,9 @@ JHtml::_('behavior.tabstate');
 
 if (!JFactory::getUser()->authorise('core.manage', 'com_plugins'))
 {
-	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+	JFactory::getApplication()->enqueueMessage(
+		JText::_('JERROR_ALERTNOAUTHOR'), 'error'
+	);
 }
 
 $controller	= JControllerLegacy::getInstance('Plugins');

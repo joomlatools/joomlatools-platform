@@ -16,8 +16,11 @@ $view  = $input->get('view');
 
 if ($view != 'login' && !in_array($task, array('session.login', 'session.logout')))
 {
-    if (!JFactory::getUser()->authorise('core.manage', 'com_users')) {
-        return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+    if (!JFactory::getUser()->authorise('core.manage', 'com_users'))
+    {
+        JFactory::getApplication()->enqueueMessage(
+            JText::_('JERROR_ALERTNOAUTHOR'), 'error'
+        );
     }
 }
 

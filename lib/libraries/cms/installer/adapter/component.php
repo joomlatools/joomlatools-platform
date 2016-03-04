@@ -1323,7 +1323,9 @@ class JInstallerAdapterComponent extends JAdapterInstance
 				if (!$menu_id)
 				{
 					// Oops! Could not get the menu ID. Go back and rollback changes.
-					JError::raiseWarning(1, $table->getError());
+				   JFactory::getApplication()->enqueueMessage(
+						$table->getError(), 'error'
+					);
 
 					return false;
 				}
@@ -1343,7 +1345,9 @@ class JInstallerAdapterComponent extends JAdapterInstance
 					if (!$table->bind($data) || !$table->check() || !$table->store())
 					{
 						// Install failed, warn user and rollback changes
-						JError::raiseWarning(1, $table->getError());
+						JFactory::getApplication()->enqueueMessage(
+							$table->getError(), 'error'
+						);
 
 						return false;
 					}

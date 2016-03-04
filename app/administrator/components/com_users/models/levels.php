@@ -179,7 +179,11 @@ class UsersModelLevels extends JModelList
 
 		if (empty($pks))
 		{
-			return JError::raiseWarning(500, JText::_('COM_USERS_ERROR_LEVELS_NOLEVELS_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_USERS_ERROR_LEVELS_NOLEVELS_SELECTED'), 'error'
+			);
+
+			return false;
 		}
 
 		// update ordering values
@@ -194,7 +198,9 @@ class UsersModelLevels extends JModelList
 			{
 				// Prune items that you can't change.
 				unset($pks[$i]);
-				JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				JFactory::getApplication()->enqueueMessage(
+					JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 'error'
+				);
 			}
 			elseif ($table->ordering != $order[$i])
 			{
