@@ -369,7 +369,7 @@ class UsersModelReset extends JModelForm
 		}
 		catch (RuntimeException $e)
 		{
-			$this->setError(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()), 500);
+			$this->setError(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()));
 
 			return false;
 		}
