@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Bootstrap 3 overrides / additions
+   ========================================================================== */
+
+/**
+ * Bootstrap 3 navbar overrides
+ *
+ * 1. Remove gradient
+ * 2. No border for a more flat design
+ * 3. No margin to connect navbar to toolbar and sidebar
+ * 4. Set a normal z-index
+ * 5. No shadows for a more flat design
+ * 6. Auto height for client logo
+ * 7. Align vertically middle to "reset" line-height
+ */
+
+.navbar-default {
+  background-image: none; /* 1 */
+  border: none; /* 2 */
+  margin-bottom: 0; /* 3 */
+  z-index: 10; /* 4 */
+
+  .navbar-nav > li > a,
+  .navbar-brand {
+    text-shadow: none; /* 5 */
+  }
+
+  .dropdown-menu a {
+    &:focus,
+    &:hover {
+      background: palette(Blue Grey, 600);
+      color: white;
+    }
+  }
+
+  .navbar-brand {
+    height: auto; /* 6 */
+    padding: $navbar-padding-vertical $navbar-padding-horizontal $navbar-padding-vertical ($navbar-padding-horizontal / 2);
+
+    @include breakpoint($charlie) {
+      padding-left: 0;
+    }
+
+    img {
+      vertical-align: middle; /* 7 */
+    }
+  }
+
+  /* Position the toggle button */
+  .navbar-toggle {
+    padding: $navbar-padding-vertical $navbar-padding-horizontal;
+    margin: 2px;
+  }
+}
+
+
+
+/**
+ * No shadows on buttons
+ */
+
+.btn {
+  text-shadow: none;
+}
+
+
+
+/* Legend */
+
+form {
+  legend {
+    @include reset;
+    display: block;
+    margin-top: 0;
+    margin-bottom: $spacing;
+    border-bottom: 1px solid darker($form-background);
+    padding-top: $spacing;
+    padding-bottom: .2em;
+    font-size: $font-size * 1.65;
+    font-weight: normal;
+
+    /* No margin top for the first legend */
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+
+
+/* Radio styling */
+
+.radio label,
+.checkbox label {
+  min-height: 1px;
+  padding-left: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+
+/* Setting some spacing on Bootstrap rows */
+
+.row-fluid {
+  margin-bottom: $spacing;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/* Horizontal forms */
+
+.form-horizontal {
+  .control-label {
+    text-align: left;
+  }
+  .control-group {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* For the menu item accordions */
+
+.collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height .35s ease;
+  display: block !important;
+}
+
+.collapse.in {
+  height: auto;
+  display: block !important;
+}
