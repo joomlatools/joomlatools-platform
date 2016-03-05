@@ -239,7 +239,7 @@ class JMenu
 	 * Gets menu items by attribute
 	 *
 	 * @param   mixed    $attributes  The field name(s).
-	 * @param   mixed    $values      The value(s) of the field. If an array, need to match field names 
+	 * @param   mixed    $values      The value(s) of the field. If an array, need to match field names
 	 *                                each attribute may have multiple values to lookup for.
 	 * @param   boolean  $firstonly   If true, only returns the first item found
 	 *
@@ -266,7 +266,7 @@ class JMenu
 			{
 				if (is_array($values[$i]))
 				{
-					if (!in_array($item->$attributes[$i], $values[$i]))
+					if (!in_array($item->{$attributes[$i]}, $values[$i]))
 					{
 						$test = false;
 						break;
@@ -274,7 +274,7 @@ class JMenu
 				}
 				else
 				{
-					if ($item->$attributes[$i] != $values[$i])
+					if ($item->{$attributes[$i]} != $values[$i])
 					{
 						$test = false;
 						break;
