@@ -1174,7 +1174,10 @@ abstract class JModelAdmin extends JModelForm
 
 		if (empty($pks))
 		{
-			return JError::raiseWarning(500, JText::_($this->text_prefix . '_ERROR_NO_ITEMS_SELECTED'));
+            JFactory::getApplication()->enqueueMessage(
+                JText::_($this->text_prefix . '_ERROR_NO_ITEMS_SELECTED'), 'error'
+            );
+            return false;
 		}
 
 		// Update ordering values

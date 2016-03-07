@@ -260,7 +260,7 @@ class UsersRouter extends JComponentRouterBase
 		}
 		else
 		{
-			JError::raiseError(404, JText::_('JGLOBAL_RESOURCE_NOT_FOUND'));
+			throw new Exception(JText::_('JGLOBAL_RESOURCE_NOT_FOUND'), 404);
 		}
 
 		return $vars;

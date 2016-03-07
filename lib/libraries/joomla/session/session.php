@@ -104,6 +104,13 @@ class JSession implements IteratorAggregate
 	private $_dispatcher = null;
 
 	/**
+	 * Internal data store for the session data
+	 *
+	 * @var  \Joomla\Registry\Registry
+	*/
+	protected $data;
+
+	/**
 	 * Constructor
 	 *
 	 * @param   string  $store    The type of storage for the session.
@@ -113,6 +120,9 @@ class JSession implements IteratorAggregate
 	 */
 	public function __construct($store = 'none', array $options = array())
 	{
+		// Initialize the data variable, let's avoid fatal error if the session is not corretly started (ie in CLI).
+		$this->data = new \Joomla\Registry\Registry;
+
 		// Need to destroy any existing sessions started with session.auto_start
 		if (session_id())
 		{
@@ -299,7 +309,17 @@ class JSession implements IteratorAggregate
 	 */
 	public function getIterator()
 	{
-		return new ArrayIterator($_SESSION);
+		return new ArrayIterator($this->getData());
+	}
+
+	/**
+	+	 * Returns a clone of the internal data pointer
+	+	 *
+	+	 * @return  \Joomla\Registry\Registry
+	+	 */
+	public function getData()
+	{
+		return clone $this->data;
 	}
 
 	/**
@@ -317,7 +337,7 @@ class JSession implements IteratorAggregate
 	{
 		$token   = self::getFormToken();
 		$app     = JFactory::getApplication();
-        $session = JFactory::getSession();
+		$session = JFactory::getSession();
 
 		if ($session->getState() == 'active' && !$app->input->$method->get($token, '', 'alnum'))
 		{
@@ -481,11 +501,7 @@ class JSession implements IteratorAggregate
 			return $error;
 		}
 
-		if (isset($_SESSION[$namespace][$name]))
-		{
-			return $_SESSION[$namespace][$name];
-		}
-		return $default;
+		return $this->data->get($namespace . '.' . $name, $default);
 	}
 
 	/**
@@ -510,18 +526,7 @@ class JSession implements IteratorAggregate
 			return null;
 		}
 
-		$old = isset($_SESSION[$namespace][$name]) ? $_SESSION[$namespace][$name] : null;
-
-		if (null === $value)
-		{
-			unset($_SESSION[$namespace][$name]);
-		}
-		else
-		{
-			$_SESSION[$namespace][$name] = $value;
-		}
-
-		return $old;
+		return $this->data->set($namespace . '.' . $name, $value);
 	}
 
 	/**
@@ -545,7 +550,7 @@ class JSession implements IteratorAggregate
 			return null;
 		}
 
-		return isset($_SESSION[$namespace][$name]);
+		return !is_null($this->data->get($namespace . '.' . $name, null));
 	}
 
 	/**
@@ -569,14 +574,7 @@ class JSession implements IteratorAggregate
 			return null;
 		}
 
-		$value = null;
-		if (isset($_SESSION[$namespace][$name]))
-		{
-			$value = $_SESSION[$namespace][$name];
-			unset($_SESSION[$namespace][$name]);
-		}
-
-		return $value;
+		return $this->data->set($namespace . '.' . $name, null);
 	}
 
 	/**
@@ -602,7 +600,11 @@ class JSession implements IteratorAggregate
 		$this->_setTimers();
 
 		// Perform security checks
-		$this->_validate();
+		if (!$this->_validate())
+		{
+			// Destroy the session if it's not valid
+			$this->destroy();
+		}
 
 		if ($this->_dispatcher instanceof JEventDispatcher)
 		{
@@ -649,13 +651,20 @@ class JSession implements IteratorAggregate
 		 * Write and Close handlers are called after destructing objects since PHP 5.0.5.
 		 * Thus destructors can use sessions but session handler can't use objects.
 		 * So we are moving session closure before destructing objects.
-		 *
-		 * Replace with session_register_shutdown() when dropping compatibility with PHP 5.3
 		 */
-		register_shutdown_function('session_write_close');
+		register_shutdown_function(array($this, 'close'));
 
 		session_cache_limiter('none');
 		session_start();
+
+		// Ok let's unserialize the whole thing
+		// Try loading data from the session
+		if (isset($_SESSION['joomla']) && !empty($_SESSION['joomla']))
+		{
+			$data = $_SESSION['joomla'];
+			$data = base64_decode($data);
+			$this->data = unserialize($data);
+		}
 
 		return true;
 	}
@@ -663,8 +672,8 @@ class JSession implements IteratorAggregate
 	/**
 	 * Frees all session variables and destroys all data registered to a session
 	 *
-	 * This method resets the $_SESSION variable and destroys all of the data associated
-	 * with the current session in its storage (file or DB). It forces new session to be
+	 * This method resets the data pointer and destroys all of the data associated
+	 * with the current session in its storage (file or DB). It forces a new session to be
 	 * started after this method is called. It does not unset the session cookie.
 	 *
 	 * @return  boolean  True on success
@@ -694,6 +703,7 @@ class JSession implements IteratorAggregate
 			setcookie(session_name(), '', time() - 42000, $cookie_path, $cookie_domain);
 		}
 
+		$this->data = new \Joomla\Registry\Registry;
 		session_unset();
 		session_destroy();
 
@@ -728,7 +738,12 @@ class JSession implements IteratorAggregate
 		$this->_start();
 		$this->_state = 'active';
 
-		$this->_validate();
+		if (!$this->_validate())
+		{
+			// Destroy the session if it's not valid
+			$this->destroy();
+		}
+
 		$this->_setCounter();
 
 		return true;
@@ -743,43 +758,43 @@ class JSession implements IteratorAggregate
 	 */
 	public function fork()
 	{
-        if($this->_state !== 'active') {
-            return false;
-        }
+		if($this->_state !== 'active') {
+			return false;
+		}
 
-        // Keep the old values
-        $values	= $_SESSION;
+		// Keep the old values
+		$values	= $_SESSION;
 
-        $trans = ini_get('session.use_trans_sid');
-        if( $trans ) {
-            ini_set( 'session.use_trans_sid', 0 );
-        }
-        $cookie	= session_get_cookie_params();
+		$trans = ini_get('session.use_trans_sid');
+		if( $trans ) {
+			ini_set( 'session.use_trans_sid', 0 );
+		}
+		$cookie	= session_get_cookie_params();
 
-        // Generate a new ID
-        session_regenerate_id(true);
-        $id = session_id();
+		// Generate a new ID
+		session_regenerate_id(true);
+		$id = session_id();
 
-        $data = $this->_store->read($this->getId());
+		$data = $this->_store->read($this->getId());
 
-        // Kill the session
-        session_destroy();
+		// Kill the session
+		session_destroy();
 
-        // Re-register the session store after a session has been destroyed, to avoid PHP bug
-        $this->_store->register();
+		// Re-register the session store after a session has been destroyed, to avoid PHP bug
+		$this->_store->register();
 
-        // Restore config
-        ini_set( 'session.use_trans_sid', $trans);
-        session_set_cookie_params( $cookie['lifetime'], $cookie['path'], $cookie['domain'], $cookie['secure']);
+		// Restore config
+		ini_set( 'session.use_trans_sid', $trans);
+		session_set_cookie_params( $cookie['lifetime'], $cookie['path'], $cookie['domain'], $cookie['secure']);
 
-        // Restart session with new id
-        session_id($id);
-        session_start();
+		// Restart session with new id
+		session_id($id);
+		session_start();
 
-        $_SESSION = $values;
+		$_SESSION = $values;
 
-        // Now put the session data back
-        $this->_store->write($id, $data);
+		// Now put the session data back
+		$this->_store->write($id, $data);
 	}
 
 	/**
@@ -793,14 +808,22 @@ class JSession implements IteratorAggregate
 	 * frames by ending the session as soon as all changes to session variables are
 	 * done.
 	 *
-	 * @return  void
+	 * @return  boolean
 	 *
 	 * @see     session_write_close()
 	 * @since   11.1
 	 */
 	public function close()
 	{
+		$session = JFactory::getSession();
+		$data    = $session->getData();
+
+		// Before storing it, let's serialize and encode the JRegistry object
+		$_SESSION['joomla'] = base64_encode(serialize($data));
+
 		session_write_close();
+
+		return true;
 	}
 
 	/**
@@ -984,14 +1007,10 @@ class JSession implements IteratorAggregate
 			}
 		}
 
-		// Record proxy forwarded for in the session in case we need it later
-		if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-		{
-			$this->set('session.client.forwarded', $_SERVER['HTTP_X_FORWARDED_FOR']);
-		}
-
 		// Check for client address
-		if (in_array('fix_adress', $this->_security) && isset($_SERVER['REMOTE_ADDR']))
+		if (in_array('fix_adress', $this->_security)
+				&& isset($_SERVER['REMOTE_ADDR'])
+				&& filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) !== false)
 		{
 			$ip = $this->get('session.client.address');
 
@@ -1007,19 +1026,10 @@ class JSession implements IteratorAggregate
 		}
 
 		// Check for clients browser
-		if (in_array('fix_browser', $this->_security) && isset($_SERVER['HTTP_USER_AGENT']))
+		// Record proxy forwarded for in the session in case we need it later
+		if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP) !== false)
 		{
-			$browser = $this->get('session.client.browser');
-
-			if ($browser === null)
-			{
-				$this->set('session.client.browser', $_SERVER['HTTP_USER_AGENT']);
-			}
-			elseif ($_SERVER['HTTP_USER_AGENT'] !== $browser)
-			{
-				// @todo remove code: 				$this->_state	=	'error';
-				// @todo remove code: 				return false;
-			}
+			$this->set('session.client.forwarded', $_SERVER['HTTP_X_FORWARDED_FOR']);
 		}
 
 		return true;

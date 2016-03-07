@@ -39,7 +39,7 @@ class UsersControllerProfile extends UsersController
 		// Check if the user is trying to edit another users profile.
 		if ($userId != $loginUserId)
 		{
-			JError::raiseError(403, JText::_('JERROR_ALERTNOAUTHOR'));
+            throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'), 403);
 			return false;
 		}
 
@@ -103,7 +103,7 @@ class UsersControllerProfile extends UsersController
 		$form = $model->getForm();
 		if (!$form)
 		{
-			JError::raiseError(500, $model->getError());
+			throw new Exception($model->getError());
 			return false;
 		}
 

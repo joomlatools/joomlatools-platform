@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 if (!isset($this->error))
 {
-	$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+	$this->error = new Exception(JText::_('JERROR_ALERTNOAUTHOR'), 404);
 	$this->debug = false;
 }
 

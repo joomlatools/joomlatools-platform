@@ -19,11 +19,6 @@ if (!file_exists(JPATH_CONFIGURATION . '/configuration.php') || (filesize(JPATH_
 // System includes
 require_once JPATH_LIBRARIES . '/import.php';
 
-// Set system error handling
-JError::setErrorHandling(E_NOTICE, 'message');
-JError::setErrorHandling(E_WARNING, 'message');
-JError::setErrorHandling(E_ERROR, 'message', array('JError', 'customErrorPage'));
-
 // Bootstrap the CMS libraries.
 require_once JPATH_LIBRARIES . '/cms.php';
 

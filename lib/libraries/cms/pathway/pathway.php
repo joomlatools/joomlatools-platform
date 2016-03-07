@@ -93,7 +93,7 @@ class JPathway
 			}
 			else
 			{
-				throw new RuntimeException(JText::sprintf('JLIB_APPLICATION_ERROR_PATHWAY_LOAD', $client), 500);
+				throw new RuntimeException(JText::sprintf('JLIB_APPLICATION_ERROR_PATHWAY_LOAD', $client));
 			}
 		}
 

@@ -187,7 +187,7 @@ class JArchive
 
 			if (!class_exists($class))
 			{
-				throw new UnexpectedValueException('Unable to load archive', 500);
+				throw new UnexpectedValueException('Unable to load archive');
 			}
 
 			self::$adapters[$type] = new $class;

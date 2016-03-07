@@ -45,7 +45,7 @@ class UsersControllerGroups extends JControllerAdmin
 	{
 		if (!JFactory::getUser()->authorise('core.admin', $this->option))
 		{
-			JError::raiseError(500, JText::_('JERROR_ALERTNOAUTHOR'));
+			throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
 			jexit();
 		}
 
@@ -63,7 +63,7 @@ class UsersControllerGroups extends JControllerAdmin
 	{
 		if (!JFactory::getUser()->authorise('core.admin', $this->option))
 		{
-			JError::raiseError(500, JText::_('JERROR_ALERTNOAUTHOR'));
+			throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
 			jexit();
 		}
 
@@ -81,7 +81,7 @@ class UsersControllerGroups extends JControllerAdmin
 	{
 		if (!JFactory::getUser()->authorise('core.admin', $this->option))
 		{
-			JError::raiseError(500, JText::_('JERROR_ALERTNOAUTHOR'));
+			throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
 			jexit();
 		}
 
@@ -99,7 +99,7 @@ class UsersControllerGroups extends JControllerAdmin
 	{
 		if (!JFactory::getUser()->authorise('core.admin', $this->option))
 		{
-			JError::raiseError(500, JText::_('JERROR_ALERTNOAUTHOR'));
+            throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
 			jexit();
 		}
 
@@ -117,7 +117,7 @@ class UsersControllerGroups extends JControllerAdmin
 	{
 		if (!JFactory::getUser()->authorise('core.admin', $this->option))
 		{
-			JError::raiseError(500, JText::_('JERROR_ALERTNOAUTHOR'));
+			throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
 			jexit();
 		}
 

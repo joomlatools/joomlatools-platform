@@ -119,7 +119,7 @@ class UsersModelRemind extends JModelForm
 		}
 		catch (RuntimeException $e)
 		{
-			$this->setError(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()), 500);
+			$this->setError(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()));
 			return false;
 		}
 
@@ -170,7 +170,7 @@ class UsersModelRemind extends JModelForm
 		// Check for an error.
 		if ($return !== true)
 		{
-			$this->setError(JText::_('COM_USERS_MAIL_FAILED'), 500);
+			$this->setError(JText::_('COM_USERS_MAIL_FAILED'));
 			return false;
 		}
 

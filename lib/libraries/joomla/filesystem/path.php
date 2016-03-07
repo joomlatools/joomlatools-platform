@@ -168,14 +168,14 @@ class JPath
 		if (strpos($path, '..') !== false)
 		{
 			// Don't translate
-			throw new Exception('JPath::check Use of relative paths not permitted', 20);
+			throw new Exception('JPath::check Use of relative paths not permitted');
 		}
 
 		$path = self::clean($path);
 
 		if ((JPATH_ROOT != '') && strpos($path, self::clean(JPATH_ROOT)) !== 0)
 		{
-			throw new Exception('JPath::check Snooping out of bounds @ ' . $path, 20);
+			throw new Exception('JPath::check Snooping out of bounds @ ' . $path);
 		}
 
 		return $path;
