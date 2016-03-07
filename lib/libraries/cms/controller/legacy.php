@@ -613,7 +613,7 @@ class JControllerLegacy extends JObject
 
 				if (!class_exists($viewClass))
 				{
-					throw new Exception(JText::sprintf('JLIB_APPLICATION_ERROR_VIEW_CLASS_NOT_FOUND', $viewClass, $path), 500);
+					throw new Exception(JText::sprintf('JLIB_APPLICATION_ERROR_VIEW_CLASS_NOT_FOUND', $viewClass, $path));
 				}
 			}
 			else
@@ -794,7 +794,7 @@ class JControllerLegacy extends JObject
 			$r = null;
 			if (!preg_match('/(.*)Controller/i', get_class($this), $r))
 			{
-				throw new Exception(JText::_('JLIB_APPLICATION_ERROR_CONTROLLER_GET_NAME'), 500);
+				throw new Exception(JText::_('JLIB_APPLICATION_ERROR_CONTROLLER_GET_NAME'));
 			}
 			$this->name = strtolower($r[1]);
 		}

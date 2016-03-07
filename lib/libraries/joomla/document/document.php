@@ -303,7 +303,7 @@ class JDocument
 				}
 				else
 				{
-					throw new RuntimeException('Invalid JDocument Class', 500);
+					throw new RuntimeException('Invalid JDocument Class');
 				}
 			}
 
@@ -1018,7 +1018,7 @@ class JDocument
 			}
 			else
 			{
-				throw new RuntimeException('Unable to load renderer class', 500);
+				throw new RuntimeException('Unable to load renderer class');
 			}
 		}
 

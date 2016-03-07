@@ -166,8 +166,7 @@ class MenusControllerItem extends JControllerForm
 
 		if (!$form)
 		{
-			JError::raiseError(500, $model->getError());
-
+			throw new Exception($model->getError());
 			return false;
 		}
 

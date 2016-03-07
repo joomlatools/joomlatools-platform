@@ -44,8 +44,7 @@ class UsersControllerRegistration extends UsersController
 		// If user registration or account activation is disabled, throw a 403.
 		if ($uParams->get('useractivation') == 0 || $uParams->get('allowUserRegistration') == 0)
 		{
-			JError::raiseError(403, JText::_('JLIB_APPLICATION_ERROR_ACCESS_FORBIDDEN'));
-
+			throw new Exception(JText::_('JLIB_APPLICATION_ERROR_ACCESS_FORBIDDEN'), 403);
 			return false;
 		}
 
@@ -55,8 +54,7 @@ class UsersControllerRegistration extends UsersController
 		// Check that the token is in a valid format.
 		if ($token === null || strlen($token) !== 32)
 		{
-			JError::raiseError(403, JText::_('JINVALID_TOKEN'));
-
+			throw new Exception(JText::_('JINVALID_TOKEN'), 403);
 			return false;
 		}
 
@@ -131,8 +129,7 @@ class UsersControllerRegistration extends UsersController
 
 		if (!$form)
 		{
-			JError::raiseError(500, $model->getError());
-
+			throw new Exception($model->getError());
 			return false;
 		}
 

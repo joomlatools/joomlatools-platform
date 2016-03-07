@@ -1098,7 +1098,11 @@ class MenusModelItem extends JModelAdmin
 		}
 		catch (RuntimeException $e)
 		{
-			return JError::raiseWarning(500, $e->getMessage());
+			JFactory::getApplication()->enqueueMessage(
+				$e->getMessage(), 'error'
+			);
+
+			return false;
 		}
 
 		foreach ($items as &$item)
@@ -1118,7 +1122,11 @@ class MenusModelItem extends JModelAdmin
 			}
 			catch (RuntimeException $e)
 			{
-				return JError::raiseWarning(500, $e->getMessage());
+				JFactory::getApplication()->enqueueMessage(
+					$e->getMessage(), 'error'
+				);
+
+				return false;
 			}
 
 			unset($registry);
@@ -1260,7 +1268,9 @@ class MenusModelItem extends JModelAdmin
 			$all_language = $table->language == '*';
 			if ($all_language && !empty($associations))
 			{
-				JError::raiseNotice(403, JText::_('COM_MENUS_ERROR_ALL_LANGUAGE_ASSOCIATED'));
+				JFactory::getApplication()->enqueueMessage(
+					JText::_('COM_MENUS_ERROR_ALL_LANGUAGE_ASSOCIATED'), 'notice'
+				);
 			}
 
 			$associations[$table->language] = $table->id;
@@ -1381,7 +1391,10 @@ class MenusModelItem extends JModelAdmin
 					if ($table->home == $value)
 					{
 						unset($pks[$i]);
-						JError::raiseNotice(403, JText::_('COM_MENUS_ERROR_ALREADY_HOME'));
+
+						JFactory::getApplication()->enqueueMessage(
+							JText::_('COM_MENUS_ERROR_ALREADY_HOME'), 'notice'
+						);
 					}
 					else
 					{
@@ -1395,19 +1408,26 @@ class MenusModelItem extends JModelAdmin
 						{
 							// Prune items that you can't change.
 							unset($pks[$i]);
-							JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_SAVE_NOT_PERMITTED'));
+
+							JFactory::getApplication()->enqueueMessage(
+								JText::_('JLIB_APPLICATION_ERROR_SAVE_NOT_PERMITTED'), 'error'
+							);
 						}
 						elseif (!$table->check())
 						{
 							// Prune the items that failed pre-save checks.
 							unset($pks[$i]);
-							JError::raiseWarning(403, $table->getError());
+							JFactory::getApplication()->enqueueMessage(
+								$table->getError(), 'error'
+							);
 						}
 						elseif (!$table->store())
 						{
 							// Prune the items that could not be stored.
 							unset($pks[$i]);
-							JError::raiseWarning(403, $table->getError());
+							JFactory::getApplication()->enqueueMessage(
+								$table->getError(), 'error'
+							);
 						}
 					}
 				}
@@ -1417,7 +1437,9 @@ class MenusModelItem extends JModelAdmin
 					if (!$onehome)
 					{
 						$onehome = true;
-						JError::raiseNotice(403, JText::sprintf('COM_MENUS_ERROR_ONE_HOME'));
+						JFactory::getApplication()->enqueueMessage(
+							JText::sprintf('COM_MENUS_ERROR_ONE_HOME'), 'notice'
+						);
 					}
 				}
 			}
@@ -1452,7 +1474,9 @@ class MenusModelItem extends JModelAdmin
 				if ($table->load($pk) && $table->home && $table->language == '*')
 				{
 					// Prune items that you can't change.
-					JError::raiseWarning(403, JText::_('JLIB_DATABASE_ERROR_MENU_UNPUBLISH_DEFAULT_HOME'));
+					JFactory::getApplication()->enqueueMessage(
+						JText::_('JLIB_DATABASE_ERROR_MENU_UNPUBLISH_DEFAULT_HOME'), 'error'
+					);
 					unset($pks[$i]);
 					break;
 				}

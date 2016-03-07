@@ -283,7 +283,7 @@ abstract class JDatabaseDriverPdo extends JDatabaseDriver
 		}
 		catch (PDOException $e)
 		{
-			throw new RuntimeException('Could not connect to PDO: ' . $e->getMessage(), 2, $e);
+			throw new RuntimeException('Could not connect to PDO: ' . $e->getMessage(), 500, $e);
 		}
 	}
 

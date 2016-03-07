@@ -102,7 +102,7 @@ class JCacheController
 			}
 			else
 			{
-				throw new RuntimeException('Unable to load Cache Controller: ' . $type, 500);
+				throw new RuntimeException('Unable to load Cache Controller: ' . $type);
 			}
 		}
 

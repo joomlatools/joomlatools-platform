@@ -187,7 +187,10 @@ class MenusHelper
 		}
 		catch (RuntimeException $e)
 		{
-			JError::raiseWarning(500, $e->getMessage());
+			JFactory::getApplication()->enqueueMessage(
+				$e->getMessage(), 'error'
+			);
+
 			return false;
 		}
 
@@ -207,7 +210,10 @@ class MenusHelper
 			}
 			catch (RuntimeException $e)
 			{
-				JError::raiseWarning(500, $e->getMessage());
+				JFactory::getApplication()->enqueueMessage(
+					$e->getMessage(), 'error'
+				);
+
 				return false;
 			}
 
@@ -258,7 +264,7 @@ class MenusHelper
 		}
 		catch (RuntimeException $e)
 		{
-			throw new Exception($e->getMessage(), 500);
+			throw new Exception($e->getMessage());
 		}
 
 		foreach ($menuitems as $tag => $item)

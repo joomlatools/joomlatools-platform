@@ -21,7 +21,7 @@ class ModulesControllerModule extends JControllerForm
 	/**
 	 * Override parent add method.
 	 *
-	 * @return  mixed  True if the record can be added, a JError object if not.
+	 * @return  mixed  True if the record can be added, otherwise false
 	 *
 	 * @since   1.6
 	 */
@@ -41,7 +41,10 @@ class ModulesControllerModule extends JControllerForm
 		if (empty($extensionId))
 		{
 			$this->setRedirect(JRoute::_('index.php?option='.$this->option.'&view='.$this->view_item.'&layout=edit', false));
-			return JError::raiseWarning(500, JText::_('COM_MODULES_ERROR_INVALID_EXTENSION'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_MODULES_ERROR_INVALID_EXTENSION'), 'error'
+			);
+			return false;
 		}
 
 		$app->setUserState('com_modules.add.module.extension_id', $extensionId);

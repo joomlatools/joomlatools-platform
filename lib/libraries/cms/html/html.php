@@ -118,12 +118,12 @@ abstract class JHtml
 
 				if (!class_exists($className))
 				{
-					throw new InvalidArgumentException(sprintf('%s not found.', $className), 500);
+					throw new InvalidArgumentException(sprintf('%s not found.', $className));
 				}
 			}
 			else
 			{
-				throw new InvalidArgumentException(sprintf('%s %s not found.', $prefix, $file), 500);
+				throw new InvalidArgumentException(sprintf('%s %s not found.', $prefix, $file));
 			}
 		}
 
@@ -141,7 +141,7 @@ abstract class JHtml
 		}
 		else
 		{
-			throw new InvalidArgumentException(sprintf('%s::%s not found.', $className, $func), 500);
+			throw new InvalidArgumentException(sprintf('%s::%s not found.', $className, $func));
 		}
 	}
 
@@ -224,7 +224,7 @@ abstract class JHtml
 	{
 		if (!is_callable($function))
 		{
-			throw new InvalidArgumentException('Function not supported', 500);
+			throw new InvalidArgumentException('Function not supported');
 		}
 
 		// PHP 5.3 workaround

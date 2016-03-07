@@ -109,7 +109,9 @@ class TemplatesModelStyle extends JModelAdmin
 				// You should not delete a default style
 				if ($table->home != '0')
 				{
-					JError::raiseWarning(SOME_ERROR_NUMBER, JText::_('COM_TEMPLATES_STYLE_CANNOT_DELETE_DEFAULT_STYLE'));
+					JFactory::getApplication()->enqueueMessage(
+						JText::_('COM_TEMPLATES_STYLE_CANNOT_DELETE_DEFAULT_STYLE'), 'error'
+					);
 
 					return false;
 				}

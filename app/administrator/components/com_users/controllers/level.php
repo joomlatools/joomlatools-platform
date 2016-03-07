@@ -52,12 +52,14 @@ class UsersControllerLevel extends JControllerForm
 
 		if (!JFactory::getUser()->authorise('core.admin', $this->option))
 		{
-			JError::raiseError(500, JText::_('JERROR_ALERTNOAUTHOR'));
+			throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
 			jexit();
 		}
 		elseif (empty($ids))
 		{
-			JError::raiseWarning(500, JText::_('COM_USERS_NO_LEVELS_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_USERS_NO_LEVELS_SELECTED'), 'error'
+			);
 		}
 		else
 		{
@@ -69,7 +71,9 @@ class UsersControllerLevel extends JControllerForm
 			// Remove the items.
 			if (!$model->delete($ids))
 			{
-				JError::raiseWarning(500, $model->getError());
+				JFactory::getApplication()->enqueueMessage(
+					$model->getError(), 'error'
+				);
 			}
 			else
 			{

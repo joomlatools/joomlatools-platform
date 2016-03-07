@@ -198,7 +198,7 @@ class JClientHelper
 	 *
 	 * @param   string  $client  The name of the client.
 	 *
-	 * @return  mixed  True, if FTP settings; JError if using legacy tree.
+	 * @return  mixed  True, if FTP settings; otherwise false
 	 *
 	 * @since   11.1
 	 * @throws  InvalidArgumentException if credentials invalid
@@ -219,14 +219,7 @@ class JClientHelper
 			}
 			else
 			{
-				if (class_exists('JError'))
-				{
-					$return = JError::raiseWarning('SOME_ERROR_CODE', JText::_('JLIB_CLIENT_ERROR_HELPER_SETCREDENTIALSFROMREQUEST_FAILED'));
-				}
-				else
-				{
-					throw new InvalidArgumentException('Invalid user credentials');
-				}
+                throw new InvalidArgumentException('Invalid user credentials');
 			}
 		}
 		else

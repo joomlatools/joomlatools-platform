@@ -302,7 +302,9 @@ class UsersModelUser extends JModelAdmin
 				{
 					// Prune items that you can't change.
 					unset($pks[$i]);
-					JError::raiseWarning(403, JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
+					JFactory::getApplication()->enqueueMessage(
+						JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'), 'error'
+					);
 				}
 			}
 			else
@@ -346,7 +348,9 @@ class UsersModelUser extends JModelAdmin
 			{
 				// Cannot block yourself.
 				unset($pks[$i]);
-				JError::raiseWarning(403, JText::_('COM_USERS_USERS_ERROR_CANNOT_BLOCK_SELF'));
+				JFactory::getApplication()->enqueueMessage(
+					JText::_('COM_USERS_USERS_ERROR_CANNOT_BLOCK_SELF'), 'error'
+				);
 			}
 			elseif ($table->load($pk))
 			{
@@ -425,7 +429,9 @@ class UsersModelUser extends JModelAdmin
 				{
 					// Prune items that you can't change.
 					unset($pks[$i]);
-					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+					JFactory::getApplication()->enqueueMessage(
+						JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 'error'
+					);
 				}
 			}
 		}
@@ -516,7 +522,9 @@ class UsersModelUser extends JModelAdmin
 				{
 					// Prune items that you can't change.
 					unset($pks[$i]);
-					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+					JFactory::getApplication()->enqueueMessage(
+						JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 'error'
+					);
 				}
 			}
 		}
