@@ -122,7 +122,7 @@ class JFormFieldGroupedList extends JFormField
 
 				// Unknown element type.
 				default:
-					throw new UnexpectedValueException(sprintf('Unsupported element %s in JFormFieldGroupedList', $element->getName()), 500);
+					throw new UnexpectedValueException(sprintf('Unsupported element %s in JFormFieldGroupedList', $element->getName()));
 			}
 		}
 

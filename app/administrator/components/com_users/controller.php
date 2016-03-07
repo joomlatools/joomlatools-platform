@@ -63,7 +63,9 @@ class UsersController extends JControllerLegacy
 
 		if (!$this->canView($view))
 		{
-			JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('JERROR_ALERTNOAUTHOR'), 'error'
+			);
 
 			return;
 		}

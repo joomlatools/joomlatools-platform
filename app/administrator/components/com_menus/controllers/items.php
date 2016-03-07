@@ -63,9 +63,9 @@ class MenusControllerItems extends JControllerAdmin
 
 	/**
 	 * Save the manual order inputs from the menu items list view
-	 * 
+	 *
 	 * @return      void
-	 * 
+	 *
 	 * @see         JControllerAdmin::saveorder()
 	 * @deprecated  4.0
 	 */
@@ -110,7 +110,9 @@ class MenusControllerItems extends JControllerAdmin
 
 		if (empty($cid))
 		{
-			JError::raiseWarning(500, JText::_($this->text_prefix.'_NO_ITEM_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_($this->text_prefix.'_NO_ITEM_SELECTED'), 'error'
+			);
 		}
 		else
 		{
@@ -123,8 +125,12 @@ class MenusControllerItems extends JControllerAdmin
 			// Publish the items.
 			if (!$model->setHome($cid, $value))
 			{
-				JError::raiseWarning(500, $model->getError());
-			} else {
+				JFactory::getApplication()->enqueueMessage(
+					$model->getError(), 'error'
+				);
+			}
+            else
+            {
 				if ($value == 1)
 				{
 					$ntext = 'COM_MENUS_ITEMS_SET_HOME';

@@ -161,7 +161,7 @@ class UsersModelReset extends JModelForm
 		// Check the token and user id.
 		if (empty($token) || empty($userId))
 		{
-			return new JException(JText::_('COM_USERS_RESET_COMPLETE_TOKENS_MISSING'), 403);
+			return new RuntimeException(JText::_('COM_USERS_RESET_COMPLETE_TOKENS_MISSING'), JHttpResponse::FORBIDDEN);
 		}
 
 		// Get the user object.
@@ -199,7 +199,7 @@ class UsersModelReset extends JModelForm
 		// Save the user to the database.
 		if (!$user->save(true))
 		{
-			return new JException(JText::sprintf('COM_USERS_USER_SAVE_FAILED', $user->getError()), 500);
+			return new RuntimeException(JText::sprintf('COM_USERS_USER_SAVE_FAILED', $user->getError()));
 		}
 
 		// Flush the user data from the session.
@@ -264,7 +264,7 @@ class UsersModelReset extends JModelForm
 		}
 		catch (RuntimeException $e)
 		{
-			return new JException(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()), 500);
+			return new RuntimeException(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()));
 		}
 
 		// Check for a user.
@@ -275,20 +275,14 @@ class UsersModelReset extends JModelForm
 			return false;
 		}
 
-		$parts = explode(':', $user->activation);
-		$crypt = $parts[0];
-
-		if (!isset($parts[1]))
+		if (!$user->activation)
 		{
 			$this->setError(JText::_('COM_USERS_USER_NOT_FOUND'));
 			return false;
 		}
 
-		$salt = $parts[1];
-		$testcrypt = JUserHelper::getCryptedPassword($data['token'], $salt, 'md5-hex');
-
 		// Verify the token
-		if (!($crypt == $testcrypt))
+		if (!(JUserHelper::verifyPassword($data['token'], $user->activation)))
 		{
 			$this->setError(JText::_('COM_USERS_USER_NOT_FOUND'));
 
@@ -305,7 +299,7 @@ class UsersModelReset extends JModelForm
 
 		// Push the user data into the session.
 		$app = JFactory::getApplication();
-		$app->setUserState('com_users.reset.token', $crypt . ':' . $salt);
+		$app->setUserState('com_users.reset.token', $user->activation);
 		$app->setUserState('com_users.reset.user', $user->id);
 
 		return true;
@@ -369,7 +363,7 @@ class UsersModelReset extends JModelForm
 		}
 		catch (RuntimeException $e)
 		{
-			$this->setError(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()), 500);
+			$this->setError(JText::sprintf('COM_USERS_DATABASE_ERROR', $e->getMessage()));
 
 			return false;
 		}
@@ -412,14 +406,13 @@ class UsersModelReset extends JModelForm
 
 		// Set the confirmation token.
 		$token = JApplicationHelper::getHash(JUserHelper::genRandomPassword());
-		$salt = JUserHelper::getSalt('crypt-md5');
-		$hashedToken = md5($token . $salt) . ':' . $salt;
+		$hashedToken = JUserHelper::hashPassword($token);
 		$user->activation = $hashedToken;
 
 		// Save the user to the database.
 		if (!$user->save(true))
 		{
-			return new JException(JText::sprintf('COM_USERS_USER_SAVE_FAILED', $user->getError()), 500);
+			return new RuntimeException(JText::sprintf('COM_USERS_USER_SAVE_FAILED', $user->getError()));
 		}
 
 		// Assemble the password reset confirmation link.
@@ -454,7 +447,7 @@ class UsersModelReset extends JModelForm
 		// Check for an error.
 		if ($return !== true)
 		{
-			return new JException(JText::_('COM_USERS_MAIL_FAILED'), 500);
+			return new RuntimeException(JText::_('COM_USERS_MAIL_FAILED'));
 		}
 
 		return true;

@@ -316,7 +316,7 @@ class JApplicationCms extends JApplicationWeb
 
 			if (!class_exists($classname))
 			{
-				throw new RuntimeException(JText::sprintf('JLIB_APPLICATION_ERROR_APPLICATION_LOAD', $name), 500);
+				throw new RuntimeException(JText::sprintf('JLIB_APPLICATION_ERROR_APPLICATION_LOAD', $name));
 			}
 
 			static::$instances[$name] = new $classname;
@@ -771,17 +771,27 @@ class JApplicationCms extends JApplicationWeb
 					switch ($authorisation->status)
 					{
 						case JAuthentication::STATUS_EXPIRED:
-							return JError::raiseWarning('102002', JText::_('JLIB_LOGIN_EXPIRED'));
+
+                            JFactory::getApplication()->enqueueMessage(
+                                JText::_('JLIB_LOGIN_EXPIRED'), 'error'
+                            );
+							return false;
 
 							break;
 
 						case JAuthentication::STATUS_DENIED:
-							return JError::raiseWarning('102003', JText::_('JLIB_LOGIN_DENIED'));
+                            JFactory::getApplication()->enqueueMessage(
+                                JText::_('JLIB_LOGIN_DENIED'), 'error'
+                            );
+							return false;
 
 							break;
 
 						default:
-							return JError::raiseWarning('102004', JText::_('JLIB_LOGIN_AUTHORISATION'));
+                            JFactory::getApplication()->enqueueMessage(
+                                JText::_('JLIB_LOGIN_AUTHORISATION'), 'error'
+                            );
+							return false;
 
 							break;
 					}

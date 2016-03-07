@@ -226,7 +226,10 @@ class UsersModelGroup extends JModelAdmin
 		{
 			if (in_array($pk, $groups))
 			{
-				JError::raiseWarning(403, JText::_('COM_USERS_DELETE_ERROR_INVALID_GROUP'));
+				JFactory::getApplication()->enqueueMessage(
+					JText::_('COM_USERS_DELETE_ERROR_INVALID_GROUP'), 'error'
+				);
+
 				return false;
 			}
 		}
@@ -256,7 +259,9 @@ class UsersModelGroup extends JModelAdmin
 				} else {
 					// Prune items that you can't change.
 					unset($pks[$i]);
-					JError::raiseWarning(403, JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
+					JFactory::getApplication()->enqueueMessage(
+						JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'), 'error'
+					);
 				}
 			} else {
 				$this->setError($table->getError());

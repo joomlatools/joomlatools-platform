@@ -119,7 +119,7 @@ class JMenu
 			}
 			else
 			{
-				throw new Exception(JText::sprintf('JLIB_APPLICATION_ERROR_MENU_LOAD', $client), 500);
+				throw new Exception(JText::sprintf('JLIB_APPLICATION_ERROR_MENU_LOAD', $client));
 			}
 		}
 
@@ -239,7 +239,7 @@ class JMenu
 	 * Gets menu items by attribute
 	 *
 	 * @param   mixed    $attributes  The field name(s).
-	 * @param   mixed    $values      The value(s) of the field. If an array, need to match field names 
+	 * @param   mixed    $values      The value(s) of the field. If an array, need to match field names
 	 *                                each attribute may have multiple values to lookup for.
 	 * @param   boolean  $firstonly   If true, only returns the first item found
 	 *
