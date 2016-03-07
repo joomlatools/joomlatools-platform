@@ -1256,9 +1256,13 @@ class MenusModelItem extends JModelAdmin
 		{
 			// Adding self to the association
 			$associations = $data['associations'];
+
+			// Unset any invalid associations
+			$associations = Joomla\Utilities\ArrayHelper::toInteger($associations);
+
 			foreach ($associations as $tag => $id)
 			{
-				if (empty($id))
+				if (!$id)
 				{
 					unset($associations[$tag]);
 				}
@@ -1299,9 +1303,10 @@ class MenusModelItem extends JModelAdmin
 				$key = md5(json_encode($associations));
 				$query->clear()
 					->insert('#__languages_associations');
+
 				foreach ($associations as $id)
 				{
-					$query->values($id . ',' . $db->quote('com_menus.item') . ',' . $db->quote($key));
+					$query->values((int) $id . ',' . $db->quote('com_menus.item') . ',' . $db->quote($key));
 				}
 				$db->setQuery($query);
 
