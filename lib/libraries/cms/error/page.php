@@ -22,73 +22,98 @@ class JErrorPage
 	/**
 	 * Render the error page based on an exception.
 	 *
-	 * @param   Exception  $error  The exception for which to render the error page.
+	 * @param   object  $error  An Exception or Throwable (PHP 7+) object for which to render the error page.
 	 *
 	 * @return  void
 	 *
 	 * @since   3.0
 	 */
-	public static function render(Exception $error)
+	public static function render($error)
 	{
-		try
+		$expectedClass = PHP_MAJOR_VERSION >= 7 ? 'Throwable' : 'Exception';
+		$isException   = $error instanceof $expectedClass;
+
+		// In PHP 5, the $error object should be an instance of Exception; PHP 7 should be a Throwable implementation
+		if ($isException)
 		{
-			$app      = JFactory::getApplication();
-			$document = JDocument::getInstance('error');
-
-            $code = $error->getCode();
-            if(!isset(JHttpResponse::$status_messages[$code])) {
-                $code = '500';
-            }
-
-            if(ini_get('display_errors')) {
-                $message = $error->getMessage();
-            } else {
-                $message = JHttpResponse::$status_messages[$code];
-            }
-
-            // Exit immediatly if we are in a CLI environment
-			if (!$document || PHP_SAPI == 'cli')
+			try
 			{
-				exit($message);
-				$app->close(0);
+				$app      = JFactory::getApplication();
+				$document = JDocument::getInstance('error');
+
+                $code = $error->getCode();
+                if(!isset(JHttpResponse::$status_messages[$code])) {
+                    $code = '500';
+                }
+
+                if(ini_get('display_errors')) {
+                    $message = $error->getMessage();
+                } else {
+                    $message = JHttpResponse::$status_messages[$code];
+                }
+
+				if (!$document || PHP_SAPI == 'cli')
+				{
+					// We're probably in an CLI environment
+					jexit($message);
+				}
+
+				// Get the current template from the application
+				$template = $app->getTemplate();
+
+				// Push the error object into the document
+				$document->setError($error);
+
+				if (ob_get_contents()) {
+					ob_end_clean();
+				}
+
+				$document->setTitle(JText::_('Error') . ': ' . $code);
+				$data = $document->render(
+					false,
+					array(
+						'template'  => $template,
+						'directory' => JPATH_THEMES,
+						'debug'     => JFactory::getConfig()->get('debug')
+					)
+				);
+
+				// Do not allow cache
+				$app->allowCache(false);
+
+				// If nothing was rendered, just use the message from the Exception
+				if (empty($data))
+				{
+					$data = $message;
+				}
+
+				$app->setBody($data);
+
+				echo $app->toString();
+
+				return;
 			}
-
-			$config = JFactory::getConfig();
-
-			// Get the current template from the application
-			$template = $app->getTemplate();
-
-			$document->setError($error);
-
-			if (ob_get_contents()) {
-				ob_end_clean();
-			}
-
-			$document->setTitle(JText::_('Error') . ': ' . $code);
-			$data = $document->render(
-				false,
-				array('template' => $template,
-				'directory' => JPATH_THEMES,
-				'debug' => $config->get('debug'))
-			);
-
-			// Failsafe to get the error displayed.
-			if (!empty($data))
+			catch (Exception $e)
 			{
-                // Do not allow cache
-                $app->allowCache(false);
-
-                $app->setBody($data);
-                echo $app->toString();
+				// Pass the error down
 			}
-			else
-            {
-                exit($message);
-            }
 		}
-		catch (Exception $e)
-        {
-            exit('Error displaying the error page: ' . $e->getMessage() . ': ' . $message);
+
+		// This isn't an Exception, we can't handle it.
+		if (!headers_sent())
+		{
+			header('HTTP/1.1 500 Internal Server Error');
 		}
+
+		$message = 'Error displaying the error page';
+
+		if ($isException)
+		{
+			$message .= ': ' . $e->getMessage() . ': ' . $message;
+		}
+
+		echo $message;
+
+		jexit(1);
 	}
 }

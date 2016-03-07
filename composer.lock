@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ef97ad15a33ba6e5d76991ee24e846ae",
+    "hash": "0b6804a54ab103a2aca794aac615ef2b",
+    "content-hash": "2c0f811645915023803c55de7c940673",
     "packages": [
         {
             "name": "joomla/application",
