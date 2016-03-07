@@ -150,6 +150,12 @@ abstract class JHtmlGrid
 	/**
 	 * Displays a checked out icon.
 	 *
+     * * - If the row is checked out by the same user, then it is considered
+     * not checked out -- as the user can still edit it.
+     *
+     * - If the user who checked out the row doesn't have an active session,
+     * then it's considered not checked out
+     *
 	 * @param   object   &$row        A data object (must contain checkedout as a property).
 	 * @param   integer  $i           The index of the row.
 	 * @param   string   $identifier  The property name of the primary key or index of the row.
@@ -158,36 +164,61 @@ abstract class JHtmlGrid
 	 *
 	 * @since   1.5
 	 */
-	public static function checkedOut(&$row, $i, $identifier = 'id')
+	public static function checkedOut($row, $i, $identifier = 'id')
 	{
-		$user = JFactory::getUser();
-		$userid = $user->get('id');
+		$result = static::isCheckedOut($row);
 
-		if ($row instanceof JTable)
+		if (!$result)
 		{
-			$result = $row->isCheckedOut($userid);
+            if ($identifier == 'id') {
+                $result = JHtml::_('grid.id', $i, $row->$identifier);
+            } else {
+                $result = JHtml::_('grid.id', $i, $row->$identifier, $result, $identifier);
+            }
 		}
-		else
-		{
-			$result = false;
-		}
+        else $result = static::_checkedOut($row);
 
-		if ($result)
-		{
-			return static::_checkedOut($row);
-		}
-		else
-		{
-			if ($identifier == 'id')
-			{
-				return JHtml::_('grid.id', $i, $row->$identifier);
-			}
-			else
-			{
-				return JHtml::_('grid.id', $i, $row->$identifier, $result, $identifier);
-			}
-		}
+        return $result;
 	}
+
+    /**
+     * Check if a row is checkedout
+     *
+     * * - If the row is checked out by the same user, then it is considered
+     * not checked out -- as the user can still edit it.
+     *
+     * - If the user who checked out the row doesn't have an active session,
+     * then it's considered not checked out
+     *
+     * @param   object   $row        A data object (must contain checked_out as a property).
+     * @return  string
+     * @since   Joomlatools Platform 1.1
+     */
+    public static function isCheckedOut($row)
+    {
+        $result = false;
+        $user   = JFactory::getUser()->get('id');
+
+        if ($row instanceof JTable) {
+            $checked_out = $row->get('checked_out');
+        } else {
+            $checked_out = $row->checked_out;
+        }
+
+        if (!empty($checked_out) && ($checked_out != $user))
+        {
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true)
+                ->select('COUNT(userid)')
+                ->from($db->quoteName('#__users_sessions'))
+                ->where($db->quoteName('userid') . ' = ' . (int) $checked_out);
+            $db->setQuery($query);
+
+            $result = (boolean) $db->loadResult();
+        }
+
+        return $result;
+    }
 
 	/**
 	 * Method to create a clickable icon to change the state of an item
