@@ -10,6 +10,7 @@
     "jqtree": "https://github.com/mbraak/jqTree.git#1.2.1",
     "select2": "https://github.com/select2/select2.git#4.0.0",
     "select2-bootstrap": "https://github.com/select2/select2-bootstrap-theme.git#0.1.0-beta.4",
+    "bootstrap-chosen": "https://github.com/alxlit/bootstrap-chosen.git#1.0.1",
     "bootstrap-sass": "3.3.4",
     "neat": "1.7.2",
     "footable": "2.0.3",
