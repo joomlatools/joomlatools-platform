@@ -9,9 +9,6 @@
 
 defined('_JEXEC') or die;
 
-// Joomla system checks.
-@ini_set('magic_quotes_runtime', 0);
-
 // Installation check, and check on removal of the install directory.
 if (!file_exists(JPATH_CONFIGURATION . '/configuration.php') || (filesize(JPATH_CONFIGURATION . '/configuration.php') < 10))
 {

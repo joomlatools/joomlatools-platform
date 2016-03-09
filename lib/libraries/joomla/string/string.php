@@ -19,43 +19,24 @@ use \Joomla\String\StringHelper;
  * @package     Joomla.Platform
  * @subpackage  String
  * @since       11.1
+ * @deprecated  4.0  Use {@link \Joomla\String\StringHelper} instead unless otherwise noted.
  */
 abstract class JString extends StringHelper
 {
-	/**
-	 * Does a UTF-8 safe version of PHP parse_url function
-	 *
-	 * @param   string  $url  URL to parse
-	 *
-	 * @return  mixed  Associative array or false if badly formed URL.
-	 *
-	 * @see     http://us3.php.net/manual/en/function.parse-url.php
-	 * @since   11.1
-	 */
-	public static function parse_url($url)
-	{
-		$result = false;
-
-		// Build arrays of values we need to decode before parsing
-		$entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%24', '%2C', '%2F', '%3F', '%23', '%5B', '%5D');
-		$replacements = array('!', '*', "'", "(", ")", ";", ":", "@", "&", "=", "$", ",", "/", "?", "#", "[", "]");
-
-		// Create encoded URL with special URL characters decoded so it can be parsed
-		// All other characters will be encoded
-		$encodedURL = str_replace($entities, $replacements, urlencode($url));
-
-		// Parse the encoded URL
-		$encodedParts = parse_url($encodedURL);
-
-		// Now, decode each value of the resulting array
-		if ($encodedParts)
-		{
-			foreach ($encodedParts as $key => $value)
-			{
-				$result[$key] = urldecode(str_replace($replacements, $entities, $value));
-			}
-		}
-
-		return $result;
-	}
+    /**
+     * Does a UTF-8 safe version of PHP parse_url function
+     *
+     * @param   string  $url  URL to parse
+     *
+     * @return  mixed  Associative array or false if badly formed URL.
+     *
+     * @see     http://us3.php.net/manual/en/function.parse-url.php
+     * @since   11.1
+     * @deprecated  4.0 (CMS) - Use {@link \Joomla\Uri\UriHelper::parse_url()} instead.
+     */
+    public static function parse_url($url)
+    {
+        JLog::add('JString::parse_url has been deprecated. Use \\Joomla\\Uri\\UriHelper::parse_url.', JLog::WARNING, 'deprecated');
+        return \Joomla\Uri\UriHelper::parse_url($url);
+    }
 }
