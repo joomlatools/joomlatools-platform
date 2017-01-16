@@ -10,15 +10,17 @@
 defined('_JEXEC') or die;
 
 /**
- * View Module positions class.
- * 
- * @since  1.6
+ * View to edit a module.
+ *
+ * @package     Joomla.Administrator
+ * @subpackage  com_templates
+ * @since       3.2
  */
-class ModulesViewPositions extends JViewLegacy
+class ModulesViewModule extends JViewLegacy
 {
-	protected $items;
+	protected $item;
 
-	protected $pagination;
+	protected $form;
 
 	protected $state;
 
@@ -31,18 +33,27 @@ class ModulesViewPositions extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		$this->items      = $this->get('Items');
-		$this->pagination = $this->get('Pagination');
-		$this->state      = $this->get('State');
+		$app = JFactory::getApplication();
 
-		// Check for errors.
-		if (count($errors = $this->get('Errors')))
+		try
 		{
-			throw new Exception(implode("\n", $errors));
+			$this->item = $this->get('Item');
+		}
+		catch (Exception $e)
+		{
+			$app->enqueueMessage($e->getMessage(), 'error');
 
 			return false;
 		}
 
-		parent::display($tpl);
+		$paramsList = $this->item->getProperties();
+
+		unset($paramsList['xml']);
+
+		$paramsList = json_encode($paramsList);
+
+		return $paramsList;
+
 	}
+
 }
