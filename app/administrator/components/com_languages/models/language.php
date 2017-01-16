@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_languages
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Languages Component Language Model
  *
- * @package     Joomla.Administrator
- * @subpackage  com_languages
- * @since       1.5
+ * @since  1.5
  */
 class LanguagesModelLanguage extends JModelAdmin
 {
@@ -39,9 +37,14 @@ class LanguagesModelLanguage extends JModelAdmin
 	}
 
 	/**
-	 * Override to get the table
+	 * Override to get the table.
+	 *
+	 * @param   string  $name     Name of the table.
+	 * @param   string  $prefix   Table name prefix.
+	 * @param   array   $options  Array of options.
 	 *
 	 * @return  JTable
+	 *
 	 * @since   1.6
 	 */
 	public function getTable($name = '', $prefix = '', $options = array())
@@ -55,6 +58,7 @@ class LanguagesModelLanguage extends JModelAdmin
 	 * Note. Calling getState in this method will result in recursion.
 	 *
 	 * @return  void
+	 *
 	 * @since   1.6
 	 */
 	protected function populateState()
@@ -73,15 +77,15 @@ class LanguagesModelLanguage extends JModelAdmin
 	/**
 	 * Method to get a member item.
 	 *
-	 * @param   integer	The id of the member to get.
+	 * @param   integer  $langId  The id of the member to get.
 	 *
 	 * @return  mixed  User data object on success, false on failure.
+	 *
 	 * @since   1.0
 	 */
 	public function getItem($langId = null)
 	{
-		$langId	= (!empty($langId)) ? $langId : (int) $this->getState('language.id');
-		$false  = false;
+		$langId = (!empty($langId)) ? $langId : (int) $this->getState('language.id');
 
 		// Get a member row instance.
 		$table = $this->getTable();
@@ -93,7 +97,8 @@ class LanguagesModelLanguage extends JModelAdmin
 		if ($return === false && $table->getError())
 		{
 			$this->setError($table->getError());
-			return $false;
+
+			return false;
 		}
 
 		// Set a valid accesslevel in case '0' is stored due to a bug in the installation SQL (was fixed with PR 2714).
@@ -103,7 +108,7 @@ class LanguagesModelLanguage extends JModelAdmin
 		}
 
 		$properties = $table->getProperties(1);
-		$value = JArrayHelper::toObject($properties, 'JObject');
+		$value      = JArrayHelper::toObject($properties, 'JObject');
 
 		return $value;
 	}
@@ -111,16 +116,18 @@ class LanguagesModelLanguage extends JModelAdmin
 	/**
 	 * Method to get the group form.
 	 *
-	 * @param   array  $data		Data for the form.
-	 * @param   boolean	$loadData	True if the form is to load its own data (default case), false if not.
+	 * @param   array    $data      Data for the form.
+	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
 	 *
-	 * @return  mixed  A JForm object on success, false on failure
+	 * @return  mixed  A JForm object on success, false on failure.
+	 *
 	 * @since   1.6
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
 		$form = $this->loadForm('com_languages.language', 'language', array('control' => 'jform', 'load_data' => $loadData));
+
 		if (empty($form))
 		{
 			return false;
@@ -133,6 +140,7 @@ class LanguagesModelLanguage extends JModelAdmin
 	 * Method to get the data that should be injected in the form.
 	 *
 	 * @return  mixed  The data for the form.
+	 *
 	 * @since   1.6
 	 */
 	protected function loadFormData()
@@ -153,15 +161,16 @@ class LanguagesModelLanguage extends JModelAdmin
 	/**
 	 * Method to save the form data.
 	 *
-	 * @param   array  The form data.
+	 * @param   array  $data  The form data.
 	 *
 	 * @return  boolean  True on success.
+	 *
 	 * @since   1.6
 	 */
 	public function save($data)
 	{
 		$langId = (!empty($data['lang_id'])) ? $data['lang_id'] : (int) $this->getState('language.id');
-		$isNew	= true;
+		$isNew  = true;
 
 		$dispatcher = JEventDispatcher::getInstance();
 		JPluginHelper::importPlugin($this->events_map['save']);
@@ -176,23 +185,35 @@ class LanguagesModelLanguage extends JModelAdmin
 			$isNew = false;
 		}
 
-		// Prevent white spaces, including East Asian double bytes
+		// Prevent white spaces, including East Asian double bytes.
 		$spaces = array('/\xE3\x80\x80/', ' ');
 
 		$data['lang_code'] = str_replace($spaces, '', $data['lang_code']);
-		$data['sef'] = str_replace($spaces, '', $data['sef']);
 
-		// Bind the data
-		if (!$table->bind($data))
+		// Prevent saving an incorrect language tag
+		if (!preg_match('#\b([a-z]{2,3})[-]([A-Z]{2})\b#', $data['lang_code']))
 		{
-			$this->setError($table->getError());
+			$this->setError(JText::_('COM_LANGUAGES_ERROR_LANG_TAG'));
+
 			return false;
 		}
 
-		// Check the data
+		$data['sef'] = str_replace($spaces, '', $data['sef']);
+		$data['sef'] = JApplicationHelper::stringURLSafe($data['sef']);
+
+		// Bind the data.
+		if (!$table->bind($data))
+		{
+			$this->setError($table->getError());
+
+			return false;
+		}
+
+		// Check the data.
 		if (!$table->check())
 		{
 			$this->setError($table->getError());
+
 			return false;
 		}
 
@@ -203,13 +224,15 @@ class LanguagesModelLanguage extends JModelAdmin
 		if (in_array(false, $result, true))
 		{
 			$this->setError($table->getError());
+
 			return false;
 		}
 
-		// Store the data
+		// Store the data.
 		if (!$table->store())
 		{
 			$this->setError($table->getError());
+
 			return false;
 		}
 
@@ -225,7 +248,12 @@ class LanguagesModelLanguage extends JModelAdmin
 	}
 
 	/**
-	 * Custom clean cache method
+	 * Custom clean cache method.
+	 *
+	 * @param   string   $group      Optional cache group name.
+	 * @param   integer  $client_id  Application client id.
+	 *
+	 * @return  void
 	 *
 	 * @since   1.6
 	 */
