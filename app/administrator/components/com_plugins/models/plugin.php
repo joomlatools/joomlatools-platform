@@ -3,18 +3,18 @@
  * @package     Joomla.Administrator
  * @subpackage  com_plugins
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
+use Joomla\Registry\Registry;
+
 /**
  * Plugin model.
  *
- * @package     Joomla.Administrator
- * @subpackage  com_plugins
- * @since       1.6
+ * @since  1.6
  */
 class PluginsModelPlugin extends JModelAdmin
 {
@@ -61,8 +61,9 @@ class PluginsModelPlugin extends JModelAdmin
 	 *
 	 * @param   array    $data      Data for the form.
 	 * @param   boolean  $loadData  True if the form is to load its own data (default case), false if not.
-	 * 
-	 * @return  JForm	A JForm object on success, false on failure
+	 *
+	 * @return  JForm	A JForm object on success, false on failure.
+	 *
 	 * @since   1.6
 	 */
 	public function getForm($data = array(), $loadData = true)
@@ -70,19 +71,22 @@ class PluginsModelPlugin extends JModelAdmin
 		// The folder and element vars are passed when saving the form.
 		if (empty($data))
 		{
-			$item		= $this->getItem();
-			$folder		= $item->folder;
-			$element	= $item->element;
+			$item    = $this->getItem();
+			$folder  = $item->folder;
+			$element = $item->element;
 		}
 		else
 		{
-			$folder		= JArrayHelper::getValue($data, 'folder', '', 'cmd');
-			$element	= JArrayHelper::getValue($data, 'element', '', 'cmd');
+			$folder  = JArrayHelper::getValue($data, 'folder', '', 'cmd');
+			$element = JArrayHelper::getValue($data, 'element', '', 'cmd');
 		}
 
+		// Add the default fields directory
+		JForm::addFieldPath(JPATH_PLUGINS . '/' . $folder . '/' . $element . '/field');
+
 		// These variables are used to add data from the plugin XML files.
-		$this->setState('item.folder',	$folder);
-		$this->setState('item.element',	$element);
+		$this->setState('item.folder', $folder);
+		$this->setState('item.element', $element);
 
 		// Get the form.
 		$form = $this->loadForm('com_plugins.plugin', 'plugin', array('control' => 'jform', 'load_data' => $loadData));
@@ -112,6 +116,7 @@ class PluginsModelPlugin extends JModelAdmin
 	 * Method to get the data that should be injected in the form.
 	 *
 	 * @return  mixed  The data for the form.
+	 *
 	 * @since   1.6
 	 */
 	protected function loadFormData()
@@ -132,7 +137,7 @@ class PluginsModelPlugin extends JModelAdmin
 	/**
 	 * Method to get a single record.
 	 *
-	 * @param   integer	The id of the primary key.
+	 * @param   integer  $pk  The id of the primary key.
 	 *
 	 * @return  mixed  Object on success, false on failure.
 	 */
@@ -142,8 +147,6 @@ class PluginsModelPlugin extends JModelAdmin
 
 		if (!isset($this->_cache[$pk]))
 		{
-			$false	= false;
-
 			// Get a row instance.
 			$table = $this->getTable();
 
@@ -154,7 +157,8 @@ class PluginsModelPlugin extends JModelAdmin
 			if ($return === false && $table->getError())
 			{
 				$this->setError($table->getError());
-				return $false;
+
+				return false;
 			}
 
 			// Convert to the JObject before adding other data.
@@ -162,7 +166,7 @@ class PluginsModelPlugin extends JModelAdmin
 			$this->_cache[$pk] = JArrayHelper::toObject($properties, 'JObject');
 
 			// Convert the params field to an array.
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadString($table->params);
 			$this->_cache[$pk]->params = $registry->toArray();
 
@@ -183,13 +187,14 @@ class PluginsModelPlugin extends JModelAdmin
 	}
 
 	/**
-	 * Returns a reference to the a Table object, always creating it.
+	 * Returns a reference to the Table object, always creating it.
 	 *
-	 * @param   type	The table type to instantiate
-	 * @param   string	A prefix for the table class name. Optional.
-	 * @param   array  Configuration array for model. Optional.
+	 * @param   string  $type    The table type to instantiate.
+	 * @param   string  $prefix  A prefix for the table class name. Optional.
+	 * @param   array   $config  Configuration array for model. Optional.
+	 *
 	 * @return  JTable	A database object
-	*/
+	 */
 	public function getTable($type = 'Extension', $prefix = 'JTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
@@ -201,6 +206,7 @@ class PluginsModelPlugin extends JModelAdmin
 	 * Note. Calling getState in this method will result in recursion.
 	 *
 	 * @return  void
+	 *
 	 * @since   1.6
 	 */
 	protected function populateState()
@@ -216,9 +222,14 @@ class PluginsModelPlugin extends JModelAdmin
 	}
 
 	/**
-	 * @param   object	A form object.
-	 * @param   mixed	The data expected for the form.
+	 * Preprocess the form.
+	 *
+	 * @param   JForm   $form   A form object.
+	 * @param   mixed   $data   The data expected for the form.
+	 * @param   string  $group  Cache group name.
+	 *
 	 * @return  mixed  True if successful.
+	 *
 	 * @throws	Exception if there is an error in the form event.
 	 * @since   1.6
 	 */
@@ -226,12 +237,12 @@ class PluginsModelPlugin extends JModelAdmin
 	{
 		jimport('joomla.filesystem.path');
 
-		$folder		= $this->getState('item.folder');
-		$element	= $this->getState('item.element');
-		$lang		= JFactory::getLanguage();
+		$folder  = $this->getState('item.folder');
+		$element = $this->getState('item.element');
+		$lang    = JFactory::getLanguage();
 
 		// Load the core and/or local language sys file(s) for the ordering field.
-		$db = JFactory::getDbo();
+		$db    = $this->getDbo();
 		$query = $db->getQuery(true)
 			->select($db->quoteName('element'))
 			->from($db->quoteName('#__extensions'))
@@ -242,8 +253,8 @@ class PluginsModelPlugin extends JModelAdmin
 
 		foreach ($elements as $elementa)
 		{
-				$lang->load('plg_' . $folder . '_' . $elementa . '.sys', JPATH_ADMINISTRATOR, null, false, true)
-			||	$lang->load('plg_' . $folder . '_' . $elementa . '.sys', JPATH_PLUGINS . '/' . $folder . '/' . $elementa, null, false, true);
+			$lang->load('plg_' . $folder . '_' . $elementa . '.sys', JPATH_ADMINISTRATOR, null, false, true)
+			|| $lang->load('plg_' . $folder . '_' . $elementa . '.sys', JPATH_PLUGINS . '/' . $folder . '/' . $elementa, null, false, true);
 		}
 
 		if (empty($folder) || empty($element))
@@ -253,6 +264,7 @@ class PluginsModelPlugin extends JModelAdmin
 		}
 
 		$formFile = JPath::clean(JPATH_PLUGINS . '/' . $folder . '/' . $element . '/' . $element . '.xml');
+
 		if (!file_exists($formFile))
 		{
 			throw new Exception(JText::sprintf('COM_PLUGINS_ERROR_FILE_NOT_FOUND', $element . '.xml'));
@@ -279,6 +291,7 @@ class PluginsModelPlugin extends JModelAdmin
 
 		// Get the help data from the XML file if present.
 		$help = $xml->xpath('/extension/help');
+
 		if (!empty($help))
 		{
 			$helpKey = trim((string) $help[0]['key']);
@@ -295,8 +308,10 @@ class PluginsModelPlugin extends JModelAdmin
 	/**
 	 * A protected method to get a set of ordering conditions.
 	 *
-	 * @param   object	A record object.
+	 * @param   object  $table  A record object.
+	 *
 	 * @return  array  An array of conditions to add to add to ordering queries.
+	 *
 	 * @since   1.6
 	 */
 	protected function getReorderConditions($table)
@@ -304,19 +319,22 @@ class PluginsModelPlugin extends JModelAdmin
 		$condition = array();
 		$condition[] = 'type = ' . $this->_db->quote($table->type);
 		$condition[] = 'folder = ' . $this->_db->quote($table->folder);
+
 		return $condition;
 	}
 
 	/**
 	 * Override method to save the form data.
 	 *
-	 * @param   array  The form data.
+	 * @param   array  $data  The form data.
+	 *
 	 * @return  boolean  True on success.
+	 *
 	 * @since   1.6
 	 */
 	public function save($data)
 	{
-		// Setup type
+		// Setup type.
 		$data['type'] = 'plugin';
 
 		return parent::save($data);
@@ -326,6 +344,7 @@ class PluginsModelPlugin extends JModelAdmin
 	 * Get the necessary data to load an item help screen.
 	 *
 	 * @return  object  An object with key, url, and local properties for loading the item help screen.
+	 *
 	 * @since   1.6
 	 */
 	public function getHelp()
@@ -334,12 +353,18 @@ class PluginsModelPlugin extends JModelAdmin
 	}
 
 	/**
-	 * Custom clean cache method, plugins are cached in 2 places for different clients
+	 * Custom clean cache method, plugins are cached in 2 places for different clients.
+	 *
+	 * @param   string   $group      Cache group name.
+	 * @param   integer  $client_id  Application client id.
+	 *
+	 * @return  void
 	 *
 	 * @since   1.6
 	 */
 	protected function cleanCache($group = null, $client_id = 0)
 	{
-		parent::cleanCache('com_plugins');
+		parent::cleanCache('com_plugins', 0);
+		parent::cleanCache('com_plugins', 1);
 	}
 }

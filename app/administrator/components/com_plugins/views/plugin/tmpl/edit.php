@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_plugins
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -11,25 +11,26 @@ defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.formvalidator');
 JHtml::_('formbehavior.chosen', 'select');
 $this->fieldsets = $this->form->getFieldsets('params');
-?>
-<script type="text/javascript">
+
+JFactory::getDocument()->addScriptDeclaration("
 	Joomla.submitbutton = function(task)
 	{
-		if (task == 'plugin.cancel' || document.formvalidator.isValid(document.id('style-form'))) {
+		if (task == 'plugin.cancel' || document.formvalidator.isValid(document.getElementById('style-form'))) {
 			Joomla.submitform(task, document.getElementById('style-form'));
 		}
-	}
-</script>
+	};
+");
+?>
 
 <form action="<?php echo JRoute::_('index.php?option=com_plugins&layout=edit&extension_id=' . (int) $this->item->extension_id); ?>" method="post" name="adminForm" id="style-form" class="form-validate">
 	<div class="form-horizontal">
 
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
-		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_PLUGINS_PLUGIN', true)); ?>
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_PLUGINS_PLUGIN')); ?>
 
 		<div class="row-fluid">
 			<div class="span9">
@@ -74,7 +75,7 @@ $this->fieldsets = $this->form->getFieldsets('params');
 							<p><?php echo $short_description; ?></p>
 							<?php if ($long_description) : ?>
 								<p class="readmore">
-									<a href="#" onclick="jQuery('.nav-tabs a[href=#description]').tab('show');">
+									<a href="#" onclick="jQuery('.nav-tabs a[href=\'#description\']').tab('show');">
 										<?php echo JText::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
 									</a>
 								</p>
@@ -124,7 +125,7 @@ $this->fieldsets = $this->form->getFieldsets('params');
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
 		<?php if (isset($long_description) && $long_description != '') : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION', true)); ?>
+			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
 			<?php echo $long_description; ?>
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
