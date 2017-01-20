@@ -3,18 +3,19 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
+use Joomla\Registry\Registry;
+use Joomla\Utilities\ArrayHelper;
+
 /**
  * User model.
  *
- * @package     Joomla.Administrator
- * @subpackage  com_users
- * @since       1.6
+ * @since  1.6
  */
 class UsersModelUser extends JModelAdmin
 {
@@ -33,7 +34,7 @@ class UsersModelUser extends JModelAdmin
 				'event_after_save'    => 'onUserAfterSave',
 				'event_before_delete' => 'onUserBeforeDelete',
 				'event_before_save'   => 'onUserBeforeSave',
-				'events_map'          => array('save' => 'user', 'delete' => 'user')
+				'events_map'          => array('save' => 'user', 'delete' => 'user', 'validate' => 'user')
 			), $config
 		);
 
@@ -50,7 +51,7 @@ class UsersModelUser extends JModelAdmin
 	 * @return  JTable  A database object
 	 *
 	 * @since   1.6
-	*/
+	 */
 	public function getTable($type = 'User', $prefix = 'JTable', $config = array())
 	{
 		$table = JTable::getInstance($type, $prefix, $config);
@@ -71,15 +72,17 @@ class UsersModelUser extends JModelAdmin
 	{
 		$result = parent::getItem($pk);
 
+		$context = 'com_users.user';
+
 		// Get the dispatcher and load the content plugins.
-		$dispatcher	= JEventDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		JPluginHelper::importPlugin('content');
 
 		// Load the user plugins for backward compatibility (v3.3.3 and earlier).
 		JPluginHelper::importPlugin('user');
 
 		// Trigger the data preparation event.
-		$dispatcher->trigger('onContentPrepareData', array('com_users.user', $result));
+		$dispatcher->trigger('onContentPrepareData', array($context, $result));
 
 		return $result;
 	}
@@ -97,7 +100,7 @@ class UsersModelUser extends JModelAdmin
 	public function getForm($data = array(), $loadData = true)
 	{
 		$plugin = JPluginHelper::getPlugin('user', 'joomla');
-		$pluginParams = new JRegistry($plugin->params);
+		$pluginParams = new Registry($plugin->params);
 
 		// Get the form.
 		$form = $this->loadForm('com_users.user', 'user', array('control' => 'jform', 'load_data' => $loadData));
@@ -121,6 +124,12 @@ class UsersModelUser extends JModelAdmin
 		{
 			$form->setFieldAttribute('password', 'required', 'true');
 			$form->setFieldAttribute('password2', 'required', 'true');
+		}
+
+		// When multilanguage is set, a user's default site language should also be a Content Language
+		if (JLanguageMultilang::isEnabled())
+		{
+			$form->setFieldAttribute('language', 'type', 'frontend_language', 'params');
 		}
 
 		// The user should not be able to set the requireReset value on their own account
@@ -188,6 +197,19 @@ class UsersModelUser extends JModelAdmin
 		$user = JUser::getInstance($pk);
 
 		$my = JFactory::getUser();
+		$iAmSuperAdmin = $my->authorise('core.admin');
+
+		// User cannot modify own user groups
+		if ((int) $user->id == (int) $my->id && !$iAmSuperAdmin)
+		{
+			if ($data['groups'] != null)
+			{
+				// Form was probably tampered with
+				JFactory::getApplication()->enqueueMessage(JText::_('COM_USERS_USERS_ERROR_CANNOT_EDIT_OWN_GROUP'), 'warning');
+
+				$data['groups'] = null;
+			}
+		}
 
 		if ($data['block'] && $pk == $my->id && !$my->block)
 		{
@@ -197,8 +219,6 @@ class UsersModelUser extends JModelAdmin
 		}
 
 		// Make sure that we are not removing ourself from Super Admin group
-		$iAmSuperAdmin = $my->authorise('core.admin');
-
 		if ($iAmSuperAdmin && $my->get('id') == $pk)
 		{
 			// Check that at least one of our new groups is Super Admin
@@ -450,8 +470,8 @@ class UsersModelUser extends JModelAdmin
 	 */
 	public function activate(&$pks)
 	{
-		$dispatcher	= JEventDispatcher::getInstance();
-		$user		= JFactory::getUser();
+		$dispatcher = JEventDispatcher::getInstance();
+		$user       = JFactory::getUser();
 
 		// Check if I am a Super Admin
 		$iAmSuperAdmin = $user->authorise('core.admin');
@@ -465,8 +485,8 @@ class UsersModelUser extends JModelAdmin
 		{
 			if ($table->load($pk))
 			{
-				$old	= $table->getProperties();
-				$allow	= $user->authorise('core.edit.state', 'com_users');
+				$old   = $table->getProperties();
+				$allow = $user->authorise('core.edit.state', 'com_users');
 
 				// Don't allow non-super-admin to delete a super admin
 				$allow = (!$iAmSuperAdmin && JAccess::check($pk, 'core.admin')) ? false : $allow;
@@ -478,8 +498,8 @@ class UsersModelUser extends JModelAdmin
 				}
 				elseif ($allow)
 				{
-					$table->block		= 0;
-					$table->activation	= '';
+					$table->block      = 0;
+					$table->activation = '';
 
 					// Allow an exception to be thrown.
 					try
@@ -611,6 +631,19 @@ class UsersModelUser extends JModelAdmin
 	 */
 	public function batchReset($user_ids, $action)
 	{
+		$user_ids = ArrayHelper::toInteger($user_ids);
+
+		// Check if I am a Super Admin
+		$iAmSuperAdmin = JFactory::getUser()->authorise('core.admin');
+
+		// Non-super super user cannot work with super-admin user.
+		if (!$iAmSuperAdmin && JUserHelper::checkSuperUserInUsers($user_ids))
+		{
+			$this->setError(JText::_('COM_USERS_ERROR_CANNOT_BATCH_SUPERUSER'));
+
+			return false;
+		}
+
 		// Set the action to perform
 		if ($action === 'yes')
 		{
@@ -624,10 +657,15 @@ class UsersModelUser extends JModelAdmin
 		// Prune out the current user if they are in the supplied user ID array
 		$user_ids = array_diff($user_ids, array(JFactory::getUser()->id));
 
+		if (empty($user_ids))
+		{
+			$this->setError(JText::_('COM_USERS_USERS_ERROR_CANNOT_REQUIRERESET_SELF'));
+
+			return false;
+		}
+
 		// Get the DB object
 		$db = $this->getDbo();
-
-		JArrayHelper::toInteger($user_ids);
 
 		$query = $db->getQuery(true);
 
@@ -665,18 +703,29 @@ class UsersModelUser extends JModelAdmin
 	 */
 	public function batchUser($group_id, $user_ids, $action)
 	{
-		// Get the DB object
-		$db = $this->getDbo();
-
 		JArrayHelper::toInteger($user_ids);
 
-		// Non-super admin cannot work with super-admin group
-		if ((!JFactory::getUser()->get('isRoot') && JAccess::checkGroup($group_id, 'core.admin')) || $group_id < 1)
+		// Check if I am a Super Admin
+		$iAmSuperAdmin = JFactory::getUser()->authorise('core.admin');
+
+		// Non-super super user cannot work with super-admin user.
+		if (!$iAmSuperAdmin && JUserHelper::checkSuperUserInUsers($user_ids))
+		{
+			$this->setError(JText::_('COM_USERS_ERROR_CANNOT_BATCH_SUPERUSER'));
+
+			return false;
+		}
+
+		// Non-super admin cannot work with super-admin group.
+		if ((!$iAmSuperAdmin && JAccess::checkGroup($group_id, 'core.admin')) || $group_id < 1)
 		{
 			$this->setError(JText::_('COM_USERS_ERROR_INVALID_GROUP'));
 
 			return false;
 		}
+
+		// Get the DB object
+		$db = $this->getDbo();
 
 		switch ($action)
 		{
@@ -817,9 +866,14 @@ class UsersModelUser extends JModelAdmin
 
 		if (empty($userId))
 		{
-			$result = array();
+			$result   = array();
+			$form     = $this->getForm();
+			$groupIDs = array();
 
-			$groupsIDs = $this->getForm()->getValue('groups');
+			if ($form)
+			{
+				$groupsIDs = $form->getValue('groups');
+			}
 
 			if (!empty($groupsIDs))
 			{

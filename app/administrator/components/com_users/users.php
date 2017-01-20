@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,9 +18,7 @@ if ($view != 'login' && !in_array($task, array('session.login', 'session.logout'
 {
     if (!JFactory::getUser()->authorise('core.manage', 'com_users'))
     {
-        JFactory::getApplication()->enqueueMessage(
-            JText::_('JERROR_ALERTNOAUTHOR'), 'error'
-        );
+		throw new JAccessExceptionNotallowed(JText::_('JERROR_ALERTNOAUTHOR'), 403);
     }
 }
 

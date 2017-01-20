@@ -9,7 +9,13 @@
 
 defined('_JEXEC') or die;
 
-// Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-?>
-<?php echo JHtml::_('access.usergroups', 'jform[groups]', $this->groups, true); ?>
+JLoader::register('UsersControllerProfile_Base_Json', JPATH_SITE . '/components/com_users/controllers/profile_base_json.php');
+
+/**
+ * Profile controller class for Users.
+ *
+ * @since  3.5
+ */
+class UsersControllerProfile extends UsersControllerProfile_Base_Json
+{
+}
