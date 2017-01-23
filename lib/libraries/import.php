@@ -5,7 +5,7 @@
  *
  * @package    Joomla.Platform
  *
- * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
@@ -23,15 +23,10 @@ if (!defined('IS_WIN'))
 {
 	define('IS_WIN', ($os === 'WIN') ? true : false);
 }
+
 if (!defined('IS_UNIX'))
 {
 	define('IS_UNIX', (IS_WIN === false) ? true : false);
-}
-
-// Import the platform version library if necessary.
-if (!class_exists('JPlatform'))
-{
-	require_once JPATH_PLATFORM . '/platform.php';
 }
 
 // Import the library loader if necessary.
@@ -53,9 +48,6 @@ JLoader::setup();
 
 // Register J prefix
 JLoader::registerPrefix('J', JPATH_PLATFORM . '/cms');
-
-// Import the base Joomla Platform libraries.
-JLoader::import('joomla.factory');
 
 // Register classes that don't follow one file per class naming conventions.
 JLoader::register('JText', JPATH_PLATFORM . '/joomla/language/text.php');

@@ -2,7 +2,7 @@
 /**
  * @package    Joomla.Platform
  *
- * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -49,12 +49,28 @@ abstract class JLoader
 	protected static $classAliases = array();
 
 	/**
+	 * Holds the inverse lookup for proxy classes and the class names the proxy.
+	 *
+	 * @var    array
+	 * @since  3.4
+	 */
+	protected static $classAliasesInverse = array();
+
+	/**
 	 * Container for namespace => path map.
 	 *
 	 * @var    array
 	 * @since  12.3
 	 */
 	protected static $namespaces = array();
+
+	/**
+	 * Holds a reference for all deprecated aliases (mainly for use by a logging platform).
+	 *
+	 * @var    array
+	 * @since  3.6.3
+	 */
+	protected static $deprecatedAliases = array();
 
 	/**
 	 * Method to discover classes of a given type in a given path.
@@ -119,6 +135,18 @@ abstract class JLoader
 	public static function getClassList()
 	{
 		return self::$classes;
+	}
+
+	/**
+	 * Method to get the list of deprecated class aliases.
+	 *
+	 * @return  array  An associative array with deprecated class alias data.
+	 *
+	 * @since   3.6.3
+	 */
+	public static function getDeprecatedAliases()
+	{
+		return self::$deprecatedAliases;
 	}
 
 	/**
@@ -280,6 +308,8 @@ abstract class JLoader
 		// Verify the library path exists.
 		if (!file_exists($path))
 		{
+			$path = (str_replace(JPATH_ROOT, '', $path) == $path) ? basename($path) : str_replace(JPATH_ROOT, '', $path);
+
 			throw new RuntimeException('Library path ' . $path . ' cannot be found.');
 		}
 
@@ -306,18 +336,40 @@ abstract class JLoader
 	 * Offers the ability for "just in time" usage of `class_alias()`.
 	 * You cannot overwrite an existing alias.
 	 *
-	 * @param   string  $alias     The alias name to register.
-	 * @param   string  $original  The original class to alias.
+	 * @param   string          $alias     The alias name to register.
+	 * @param   string          $original  The original class to alias.
+	 * @param   string|boolean  $version   The version in which the alias will no longer be present.
 	 *
 	 * @return  boolean  True if registration was successful. False if the alias already exists.
 	 *
 	 * @since   3.2
 	 */
-	public static function registerAlias($alias, $original)
+	public static function registerAlias($alias, $original, $version = false)
 	{
 		if (!isset(self::$classAliases[$alias]))
 		{
 			self::$classAliases[$alias] = $original;
+
+			// Remove the root backslash if present.
+			if ($original[0] == '\\')
+			{
+				$original = substr($original, 1);
+			}
+
+			if (!isset(self::$classAliasesInverse[$original]))
+			{
+				self::$classAliasesInverse[$original] = array($alias);
+			}
+			else
+			{
+				self::$classAliasesInverse[$original][] = $alias;
+			}
+
+			// If given a version, log this alias as deprecated
+			if ($version)
+			{
+				self::$deprecatedAliases[] = array('old' => $alias, 'new' => $original, 'version' => $version);
+			}
 
 			return true;
 		}
@@ -344,6 +396,8 @@ abstract class JLoader
 		// Verify the library path exists.
 		if (!file_exists($path))
 		{
+			$path = (str_replace(JPATH_ROOT, '', $path) == $path) ? basename($path) : str_replace(JPATH_ROOT, '', $path);
+
 			throw new RuntimeException('Library path ' . $path . ' cannot be found.');
 		}
 
@@ -483,7 +537,41 @@ abstract class JLoader
 
 		if (isset(self::$classAliases[$class]))
 		{
-			class_alias(self::$classAliases[$class], $class);
+			// Force auto-load of the regular class
+			class_exists(self::$classAliases[$class], true);
+
+			// Normally this shouldn't execute as the autoloader will execute applyAliasFor when the regular class is
+			// auto-loaded above.
+			if (!class_exists($class, false) && !interface_exists($class, false))
+			{
+				class_alias(self::$classAliases[$class], $class);
+			}
+		}
+	}
+
+	/**
+	 * Applies a class alias for an already loaded class, if a class alias was created for it.
+	 *
+	 * @param   string  $class  We'll look for and register aliases for this (real) class name
+	 *
+	 * @return  void
+	 *
+	 * @since   3.4
+	 */
+	public static function applyAliasFor($class)
+	{
+		// Remove the root backslash if present.
+		if ($class[0] == '\\')
+		{
+			$class = substr($class, 1);
+		}
+
+		if (isset(self::$classAliasesInverse[$class]))
+		{
+			foreach (self::$classAliasesInverse[$class] as $alias)
+			{
+				class_alias($class, $alias);
+			}
 		}
 	}
 
@@ -525,9 +613,7 @@ abstract class JLoader
 	{
 		// Split the class name into parts separated by camelCase.
 		$parts = preg_split('/(?<=[a-z0-9])(?=[A-Z])/x', $class);
-
-		// If there is only one part we want to duplicate that part for generating the path.
-		$parts = (count($parts) === 1) ? array($parts[0], $parts[0]) : $parts;
+		$partsCount = count($parts);
 
 		foreach ($lookup as $base)
 		{
@@ -539,6 +625,21 @@ abstract class JLoader
 			{
 				return include $path;
 			}
+
+			// Backwards compatibility patch
+
+			// If there is only one part we want to duplicate that part for generating the path.
+			if ($partsCount === 1)
+			{
+				// Generate the path based on the class name parts.
+				$path = $base . '/' . implode('/', array_map('strtolower', array($parts[0], $parts[0]))) . '.php';
+
+				// Load the file if it exists.
+				if (file_exists($path))
+				{
+					return include $path;
+				}
+			}
 		}
 
 		return false;
@@ -548,34 +649,35 @@ abstract class JLoader
 // Check if jexit is defined first (our unit tests mock this)
 if (!function_exists('jexit'))
 {
-    /**
-     * Global application exit.
-     *
-     * This function provides a single exit point for the platform.
-     *
-     * @param   mixed  $message  Exit code or string. Defaults to zero.
-     *
-     * @return  void
-     *
-     * @codeCoverageIgnore
-     * @since   11.1
-     */
-    function jexit($message = 0)
-    {
-        exit($message);
-    }
+	/**
+	 * Global application exit.
+	 *
+	 * This function provides a single exit point for the platform.
+	 *
+	 * @param   mixed  $message  Exit code or string. Defaults to zero.
+	 *
+	 * @return  void
+	 *
+	 * @codeCoverageIgnore
+	 * @since   11.1
+	 */
+	function jexit($message = 0)
+	{
+		exit($message);
+	}
 }
 
 /**
  * Intelligent file importer.
  *
  * @param   string  $path  A dot syntax path.
+ * @param   string  $base  Search this directory for the class.
  *
  * @return  boolean  True on success.
  *
  * @since   11.1
  */
-function jimport($path)
+function jimport($path, $base = null)
 {
-	return JLoader::import($path);
+	return JLoader::import($path, $base);
 }
