@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  mod_menu
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Tree based class to render the admin menu
  *
- * @package     Joomla.Administrator
- * @subpackage  mod_menu
- * @since       1.5
+ * @since  1.5
  */
 class JAdminCssMenu extends JObject
 {
@@ -51,12 +49,12 @@ class JAdminCssMenu extends JObject
 	/**
 	 * Method to add a child
 	 *
-	 * @param   JMenuNode  &$node       The node to process
+	 * @param   JMenuNode  $node        The node to process
 	 * @param   boolean    $setCurrent  True to set as current working node
 	 *
 	 * @return  void
 	 */
-	public function addChild(JMenuNode &$node, $setCurrent = false)
+	public function addChild(JMenuNode $node, $setCurrent = false)
 	{
 		$this->_current->addChild($node);
 
@@ -130,6 +128,8 @@ class JAdminCssMenu extends JObject
 			}
 
 			echo "</ul>\n";
+
+			echo '<ul id="nav-empty" class="dropdown-menu nav-empty hidden-phone"></ul>';
 		}
 
 		if ($this->_css)
@@ -164,6 +164,11 @@ class JAdminCssMenu extends JObject
 		if ($this->_current->hasChildren() && $this->_current->class)
 		{
 			$class = ' class="dropdown-submenu"';
+
+			if ($this->_current->class == 'scrollable-menu')
+			{
+				$class = ' class="dropdown scrollable-menu"';
+			}
 		}
 
 		if ($this->_current->class == 'disabled')
@@ -188,6 +193,10 @@ class JAdminCssMenu extends JObject
 			{
 				$dropdownCaret = ' <span class="caret"></span>';
 			}
+		}
+		else
+		{
+			$linkClass[] = 'no-dropdown';
 		}
 
 		if ($this->_current->link != null && $this->_current->getParent()->title != 'ROOT')
@@ -233,11 +242,11 @@ class JAdminCssMenu extends JObject
 					$id = ' id="menu-' . strtolower($this->_current->id) . '"';
 				}
 
-				echo '<ul' . $id . ' class="dropdown-menu menu-component">' . "\n";
+				echo '<ul' . $id . ' class="dropdown-menu menu-scrollable">' . "\n";
 			}
 			else
 			{
-				echo '<ul class="dropdown-menu">' . "\n";
+				echo '<ul class="dropdown-menu scroll-menu">' . "\n";
 			}
 
 			foreach ($this->_current->getChildren() as $child)
@@ -310,10 +319,8 @@ class JAdminCssMenu extends JObject
 /**
  * A Node for JAdminCssMenu
  *
- * @package     Joomla.Administrator
- * @subpackage  mod_menu
- * @see         JAdminCssMenu
- * @since       1.5
+ * @see    JAdminCssMenu
+ * @since  1.5
  */
 class JMenuNode extends JObject
 {
