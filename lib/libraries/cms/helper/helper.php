@@ -3,7 +3,7 @@
  * @package     Joomla.Libraries
  * @subpackage  Helper
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Base Helper class.
  *
- * @package     Joomla.Libraries
- * @subpackage  Helper
- * @since       3.2
+ * @since  3.2
  */
 class JHelper
 {
@@ -100,7 +98,7 @@ class JHelper
 	 *
 	 * @param   JTableInterface  $table  JTable object.
 	 *
-	 * @return  object Contains all of the columns and values.
+	 * @return  stdClass  Contains all of the columns and values.
 	 *
 	 * @since   3.2
 	 */

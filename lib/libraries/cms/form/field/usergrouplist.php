@@ -3,7 +3,7 @@
  * @package     Joomla.Libraries
  * @subpackage  Form
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,11 +12,9 @@ defined('JPATH_PLATFORM') or die;
 JFormHelper::loadFieldClass('list');
 
 /**
- * Field to load a list of available users statuses
+ * Field to load a dropdown list of available user groups
  *
- * @package     Joomla.Libraries
- * @subpackage  Form
- * @since       3.2
+ * @since  3.2
  */
 class JFormFieldUserGroupList extends JFormFieldList
 {
@@ -52,28 +50,27 @@ class JFormFieldUserGroupList extends JFormFieldList
 		{
 			static::$options[$hash] = parent::getOptions();
 
-			$options = array();
+			$groups         = JHelperUsergroups::getInstance()->getAll();
+			$checkSuperUser = (int) $this->getAttribute('checksuperusergroup', 0);
+			$isSuperUser    = JFactory::getUser()->authorise('core.admin');
+			$options        = array();
 
-			$db = JFactory::getDbo();
-			$query = $db->getQuery(true)
-				->select('a.id AS value')
-				->select('a.title AS text')
-				->select('COUNT(DISTINCT b.id) AS level')
-				->from('#__users_groups as a')
-				->join('LEFT', '#__users_groups  AS b ON a.lft > b.lft AND a.rgt < b.rgt')
-				->group('a.id, a.title, a.lft, a.rgt')
-				->order('a.lft ASC');
-			$db->setQuery($query);
-
-			if ($options = $db->loadObjectList())
+			foreach ($groups as $group)
 			{
-				foreach ($options as &$option)
+				// Don't show super user groups to non super users.
+				if ($checkSuperUser && !$isSuperUser && JAccess::checkGroup($group->id, 'core.admin'))
 				{
-					$option->text = str_repeat('- ', $option->level) . $option->text;
+					continue;
 				}
 
-				static::$options[$hash] = array_merge(static::$options[$hash], $options);
+				$options[] = (object) array(
+					'text'  => str_repeat('- ', $group->level) . $group->title,
+					'value' => $group->id,
+					'level' => $group->level
+				);
 			}
+
+			static::$options[$hash] = array_merge(static::$options[$hash], $options);
 		}
 
 		return static::$options[$hash];
