@@ -135,20 +135,20 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
     {
         // Clobber any possible pending updates
         /** @var JTableUpdate $update */
-        $update = JTable::getInstance('update');
+        // $update = JTable::getInstance('update');
 
-        $uid = $update->find(
-            array(
-                'element'   => $this->element,
-                'type'      => $this->type,
-                'client_id' => $this->clientId,
-            )
-        );
+        // $uid = $update->find(
+        //     array(
+        //         'element'   => $this->element,
+        //         'type'      => $this->type,
+        //         'client_id' => $this->clientId,
+        //     )
+        // );
 
-        if ($uid)
-        {
-            $update->delete($uid);
-        }
+        // if ($uid)
+        // {
+        //     $update->delete($uid);
+        // }
 
         // Lastly, we will copy the manifest file to its appropriate place.
         if ($this->route != 'discover_install')
@@ -173,7 +173,7 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
     public function loadLanguage($path = null)
     {
         $source   = $this->parent->getPath('source');
-        $basePath = $this->parent->extension->client_id ? JPATH_ADMINISTRATOR : JPATH_SITE;
+        $basePath = JPATH_WEB . ($this->parent->extension->client_id ? '/administrator' : '');
 
         if (!$source)
         {
@@ -192,7 +192,7 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
 
         $base = constant('JPATH_' . strtoupper($client));
         $extension = 'tpl_' . $this->getName();
-        $source    = $path ? $path : $base . '/templates/' . $this->getName();
+        $source    = $path ? $path : JPATH_WEB . ($this->parent->extension->client_id ? '/administrator' : '') . '/templates/' . $this->getName();
 
         $this->doLoadLanguage($extension, $source, $base);
     }
@@ -242,9 +242,9 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
 
             $lang->setDebug($debug);
 
-            // Insert record in #__template_styles
+            // Insert record in #__templates
             $query = $db->getQuery(true);
-            $query->insert($db->quoteName('#__template_styles'))
+            $query->insert($db->quoteName('#__templates'))
                 ->columns($columns)
                 ->values(implode(',', $values));
 
@@ -263,7 +263,7 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
     public function prepareDiscoverInstall()
     {
         $client = JApplicationHelper::getClientInfo($this->extension->client_id);
-        $manifestPath = $client->path . '/templates/' . $this->extension->element . '/templateDetails.xml';
+        $manifestPath = $client->web_root . '/templates/' . $this->extension->element . '/templateDetails.xml';
         $this->parent->manifest = $this->parent->isManifest($manifestPath);
         $this->parent->setPath('manifest', $manifestPath);
         $this->setManifest($this->parent->getManifest());
@@ -531,7 +531,7 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
 
         foreach ($site_list as $template)
         {
-            if (file_exists(JPATH_SITE . "/templates/$template/templateDetails.xml"))
+            if (file_exists(JPATH_WEB . "/templates/$template/templateDetails.xml"))
             {
                 if ($template == 'system')
                 {
@@ -539,7 +539,7 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
                     continue;
                 }
 
-                $manifest_details = JInstaller::parseXMLInstallFile(JPATH_SITE . "/templates/$template/templateDetails.xml");
+                $manifest_details = JInstaller::parseXMLInstallFile(JPATH_WEB . "/templates/$template/templateDetails.xml");
                 $extension = JTable::getInstance('extension');
                 $extension->set('type', 'template');
                 $extension->set('client_id', $site_info->id);
@@ -555,7 +555,7 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
 
         foreach ($admin_list as $template)
         {
-            if (file_exists(JPATH_ADMINISTRATOR . "/templates/$template/templateDetails.xml"))
+            if (file_exists(JPATH_WEB . "/administrator/templates/$template/templateDetails.xml"))
             {
                 if ($template == 'system')
                 {
@@ -563,7 +563,7 @@ class JInstallerAdapterTemplate extends JInstallerAdapter
                     continue;
                 }
 
-                $manifest_details = JInstaller::parseXMLInstallFile(JPATH_ADMINISTRATOR . "/templates/$template/templateDetails.xml");
+                $manifest_details = JInstaller::parseXMLInstallFile(JPATH_WEB . "/administrator/templates/$template/templateDetails.xml");
                 $extension = JTable::getInstance('extension');
                 $extension->set('type', 'template');
                 $extension->set('client_id', $admin_info->id);

@@ -273,21 +273,21 @@ class JInstallerAdapterComponent extends JInstallerAdapter
 	protected function finaliseInstall()
 	{
 		/** @var JTableUpdate $update */
-		$update = JTable::getInstance('update');
+		// $update = JTable::getInstance('update');
 
 		// Clobber any possible pending updates
-		$uid = $update->find(
-			array(
-				'element'   => $this->element,
-				'type'      => $this->extension->type,
-				'client_id' => 1,
-			)
-		);
+		// $uid = $update->find(
+		// 	array(
+		// 		'element'   => $this->element,
+		// 		'type'      => $this->extension->type,
+		// 		'client_id' => 1,
+		// 	)
+		// );
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		// if ($uid)
+		// {
+		// 	$update->delete($uid);
+		// }
 
 		// We will copy the manifest file to its appropriate place.
 		if ($this->route != 'discover_install')
@@ -454,6 +454,16 @@ class JInstallerAdapterComponent extends JInstallerAdapter
 		$this->extension->name = $manifest_details['name'];
 		$this->extension->enabled = 1;
 		$this->extension->params = $this->parent->getParams();
+
+        $params = $this->parent->getParams();
+
+        if (empty($params) || $params == '{}')
+        {
+            $defaults = (object) $this->_loadDefaultParams($this->extension->element);
+            $params   = json_encode($defaults);
+        }
+
+        $this->extension->params = $params;
 
 		$stored = false;
 
@@ -630,9 +640,18 @@ class JInstallerAdapterComponent extends JInstallerAdapter
 			$this->extension->protected = 0;
 			$this->extension->access    = 0;
 			$this->extension->client_id = 1;
-			$this->extension->params    = $this->parent->getParams();
 			$this->extension->custom_data = '';
 			$this->extension->system_data = '';
+
+	        $params = $this->parent->getParams();
+
+	        if (empty($params) || $params == '{}')
+	        {
+	            $defaults = (object) $this->_loadDefaultParams($this->extension->element);
+	            $params   = json_encode($defaults);
+	        }
+
+	        $this->extension->params = $params;
 		}
 
 		$this->extension->manifest_cache = $this->parent->generateManifestCache();
@@ -798,32 +817,35 @@ class JInstallerAdapterComponent extends JInstallerAdapter
 		}
 
 		// Remove categories for this component
-		$query->clear()
-			->delete('#__categories')
-			->where('extension=' . $db->quote($this->element), 'OR')
-			->where('extension LIKE ' . $db->quote($this->element . '.%'));
-		$db->setQuery($query);
-		$db->execute();
+		if(JComponentHelper::isEnabled('com_categories'))
+		{
+			$query->clear()
+				->delete('#__categories')
+				->where('extension=' . $db->quote($this->element), 'OR')
+				->where('extension LIKE ' . $db->quote($this->element . '.%'));
+			$db->setQuery($query);
+			$db->execute();
+		}
 
 		// Rebuild the categories for correct lft/rgt
 		$category = JTable::getInstance('category');
 		$category->rebuild();
 
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid = $update->find(
-			array(
-				'element'   => $this->extension->element,
-				'type'      => 'component',
-				'client_id' => 1,
-				'folder'    => '',
-			)
-		);
+		// $update = JTable::getInstance('update');
+		// $uid = $update->find(
+		// 	array(
+		// 		'element'   => $this->extension->element,
+		// 		'type'      => 'component',
+		// 		'client_id' => 1,
+		// 		'folder'    => '',
+		// 	)
+		// );
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		// if ($uid)
+		// {
+		// 	$update->delete($uid);
+		// }
 
 		// Now we need to delete the installation directories. This is the final step in uninstalling the component.
 		if (trim($this->extension->element))
@@ -1308,7 +1330,9 @@ class JInstallerAdapterComponent extends JInstallerAdapter
 			if (!$menu_id)
 			{
 				// Oops! Could not get the menu ID. Go back and rollback changes.
-				JError::raiseWarning(1, $table->getError());
+				JFactory::getApplication()->enqueueMessage(
+					$table->getError(), 'error'
+				);
 
 				return false;
 			}
@@ -1325,7 +1349,9 @@ class JInstallerAdapterComponent extends JInstallerAdapter
 				if (!$table->bind($data) || !$table->check() || !$table->store())
 				{
 					// Install failed, warn user and rollback changes
-					JError::raiseWarning(1, $table->getError());
+					JFactory::getApplication()->enqueueMessage(
+						$table->getError(), 'error'
+					);
 
 					return false;
 				}
