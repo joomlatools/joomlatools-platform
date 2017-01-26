@@ -3,18 +3,18 @@
  * @package     Joomla.Libraries
  * @subpackage  Menu
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('JPATH_PLATFORM') or die;
 
+use Joomla\Registry\Registry;
+
 /**
  * JMenu class
  *
- * @package     Joomla.Libraries
- * @subpackage  Menu
- * @since       1.5
+ * @since  1.5
  */
 class JMenu
 {
@@ -46,10 +46,20 @@ class JMenu
 	protected $_active = 0;
 
 	/**
-	 * @var    array  JMenu instances container.
+	 * JMenu instances container.
+	 *
+	 * @var    JMenu[]
 	 * @since  1.7
 	 */
 	protected static $instances = array();
+
+	/**
+	 * User object to check access levels for
+	 *
+	 * @var    JUser
+	 * @since  3.5
+	 */
+	protected $user;
 
 	/**
 	 * Class constructor
@@ -71,10 +81,24 @@ class JMenu
 			}
 
 			// Decode the item params
-			$result = new JRegistry;
-			$result->loadString($item->params);
-			$item->params = $result;
+			try
+			{
+				$result = new Registry;
+				$result->loadString($item->params);
+				$item->params = $result;
+			}
+			catch (RuntimeException $e)
+			{
+				/**
+				 * Joomla shipped with a broken sample json string for 4 years which caused fatals with new
+				 * error checks. So for now we catch the exception here - but one day we should remove it and require
+				 * valid JSON.
+				 */
+				$item->params = new Registry;
+			}
 		}
+
+		$this->user = isset($options['user']) && $options['user'] instanceof JUser ? $options['user'] : JFactory::getUser();
 	}
 
 	/**
@@ -113,14 +137,12 @@ class JMenu
 				}
 			}
 
-			if (class_exists($classname))
-			{
-				self::$instances[$client] = new $classname($options);
-			}
-			else
+			if (!class_exists($classname))
 			{
 				throw new Exception(JText::sprintf('JLIB_APPLICATION_ERROR_MENU_LOAD', $client));
 			}
+
+			self::$instances[$client] = new $classname($options);
 		}
 
 		return self::$instances[$client];
@@ -157,7 +179,7 @@ class JMenu
 	 *
 	 * @since   1.5
 	 */
-	public function setDefault($id, $language = '')
+	public function setDefault($id, $language = '*')
 	{
 		if (isset($this->_items[$id]))
 		{
@@ -184,14 +206,13 @@ class JMenu
 		{
 			return $this->_items[$this->_default[$language]];
 		}
-		elseif (array_key_exists('*', $this->_default))
+
+		if (array_key_exists('*', $this->_default))
 		{
 			return $this->_items[$this->_default['*']];
 		}
-		else
-		{
-			return null;
-		}
+
+		return;
 	}
 
 	/**
@@ -213,7 +234,7 @@ class JMenu
 			return $result;
 		}
 
-		return null;
+		return;
 	}
 
 	/**
@@ -232,7 +253,7 @@ class JMenu
 			return $item;
 		}
 
-		return null;
+		return;
 	}
 
 	/**
@@ -252,6 +273,7 @@ class JMenu
 		$items = array();
 		$attributes = (array) $attributes;
 		$values = (array) $values;
+		$count = count($attributes);
 
 		foreach ($this->_items as $item)
 		{
@@ -262,7 +284,7 @@ class JMenu
 
 			$test = true;
 
-			for ($i = 0, $count = count($attributes); $i < $count; $i++)
+			for ($i = 0; $i < $count; $i++)
 			{
 				if (is_array($values[$i]))
 				{
@@ -301,7 +323,7 @@ class JMenu
 	 *
 	 * @param   integer  $id  The item id
 	 *
-	 * @return  JRegistry  A JRegistry object
+	 * @return  Registry  A Registry object
 	 *
 	 * @since   1.5
 	 */
@@ -311,10 +333,8 @@ class JMenu
 		{
 			return $menu->params;
 		}
-		else
-		{
-			return new JRegistry;
-		}
+
+		return new Registry;
 	}
 
 	/**
@@ -342,16 +362,13 @@ class JMenu
 	public function authorise($id)
 	{
 		$menu = $this->getItem($id);
-		$user = JFactory::getUser();
 
 		if ($menu)
 		{
-			return in_array((int) $menu->access, $user->getAuthorisedViewLevels());
+			return in_array((int) $menu->access, $this->user->getAuthorisedViewLevels());
 		}
-		else
-		{
-			return true;
-		}
+
+		return true;
 	}
 
 	/**

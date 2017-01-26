@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -13,13 +13,11 @@ JFormHelper::loadFieldClass('text');
 
 /**
  * Form Field class for the Joomla Platform.
- * Provides and input field for e-mail addresses
+ * Provides and input field for email addresses
  *
- * @package     Joomla.Platform
- * @subpackage  Form
- * @link        http://www.w3.org/TR/html-markup/input.email.html#input.email
- * @see         JFormRuleEmail
- * @since       11.1
+ * @link   http://www.w3.org/TR/html-markup/input.email.html#input.email
+ * @see    JFormRuleEmail
+ * @since  11.1
  */
 class JFormFieldEMail extends JFormFieldText
 {
@@ -32,7 +30,7 @@ class JFormFieldEMail extends JFormFieldText
 	protected $type = 'Email';
 
 	/**
-	 * Method to get the field input markup for e-mail addresses.
+	 * Method to get the field input markup for email addresses.
 	 *
 	 * @return  string  The field input markup.
 	 *
@@ -50,7 +48,7 @@ class JFormFieldEMail extends JFormFieldText
 		$readonly     = $this->readonly ? ' readonly' : '';
 		$disabled     = $this->disabled ? ' disabled' : '';
 		$required     = $this->required ? ' required aria-required="true"' : '';
-		$hint         = $hint ? ' placeholder="' . $hint . '"' : '';
+		$hint         = strlen($hint) ? ' placeholder="' . $hint . '"' : '';
 		$autocomplete = !$this->autocomplete ? ' autocomplete="off"' : ' autocomplete="' . $this->autocomplete . '"';
 		$autocomplete = $autocomplete == ' autocomplete="on"' ? '' : $autocomplete;
 		$autofocus    = $this->autofocus ? ' autofocus' : '';

@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -15,9 +15,7 @@ JFormHelper::loadFieldClass('list');
 /**
  * Supports an HTML select list of folder
  *
- * @package     Joomla.Platform
- * @subpackage  Form
- * @since       11.1
+ * @since  11.1
  */
 class JFormFieldFolderList extends JFormFieldList
 {
@@ -44,6 +42,14 @@ class JFormFieldFolderList extends JFormFieldList
 	 * @since  3.2
 	 */
 	protected $exclude;
+
+	/**
+	 * The recursive.
+	 *
+	 * @var    string
+	 * @since  3.6
+	 */
+	protected $recursive;
 
 	/**
 	 * The hideNone.
@@ -84,6 +90,7 @@ class JFormFieldFolderList extends JFormFieldList
 		{
 			case 'filter':
 			case 'exclude':
+			case 'recursive':
 			case 'hideNone':
 			case 'hideDefault':
 			case 'directory':
@@ -110,6 +117,7 @@ class JFormFieldFolderList extends JFormFieldList
 			case 'filter':
 			case 'directory':
 			case 'exclude':
+			case 'recursive':
 				$this->$name = (string) $value;
 				break;
 
@@ -127,7 +135,7 @@ class JFormFieldFolderList extends JFormFieldList
 	/**
 	 * Method to attach a JForm object to the field.
 	 *
-	 * @param   SimpleXMLElement  $element  The SimpleXMLElement object representing the <field /> tag for the form field object.
+	 * @param   SimpleXMLElement  $element  The SimpleXMLElement object representing the `<field>` tag for the form field object.
 	 * @param   mixed             $value    The form field value to validate.
 	 * @param   string            $group    The field name group control value. This acts as as an array container for the field.
 	 *                                      For example if the field has name="foo" and the group value is set to "bar" then the
@@ -146,6 +154,9 @@ class JFormFieldFolderList extends JFormFieldList
 		{
 			$this->filter  = (string) $this->element['filter'];
 			$this->exclude = (string) $this->element['exclude'];
+
+			$recursive       = (string) $this->element['recursive'];
+			$this->recursive = ($recursive == 'true' || $recursive == 'recursive' || $recursive == '1');
 
 			$hideNone       = (string) $this->element['hide_none'];
 			$this->hideNone = ($hideNone == 'true' || $hideNone == 'hideNone' || $hideNone == '1');
@@ -190,7 +201,7 @@ class JFormFieldFolderList extends JFormFieldList
 		}
 
 		// Get a list of folders in the search path with the given filter.
-		$folders = JFolder::folders($path, $this->filter);
+		$folders = JFolder::folders($path, $this->filter, $this->recursive, true);
 
 		// Build the options list from the list of folders.
 		if (is_array($folders))
@@ -205,6 +216,9 @@ class JFormFieldFolderList extends JFormFieldList
 						continue;
 					}
 				}
+
+				// Remove the root part and the leading /
+				$folder = trim(str_replace($path, '', $folder), '/');
 
 				$options[] = JHtml::_('select.option', $folder, $folder);
 			}
