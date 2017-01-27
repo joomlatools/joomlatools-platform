@@ -762,7 +762,7 @@ class JAccess
 		$db    = JFactory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('title')
-			->from('#__usergroups')
+			->from('#__users_groups')
 			->where('id = ' . $db->quote($groupId));
 		$db->setQuery($query);
 

@@ -195,7 +195,7 @@ final class JHelperUsergroups
 
 			$query = $db->getQuery(true)
 				->select('count(id)')
-				->from('#__usergroups');
+				->from('#__users_groups');
 
 			$db->setQuery($query, 0, 1);
 
@@ -220,7 +220,7 @@ final class JHelperUsergroups
 
 		$query = $db->getQuery(true)
 			->select('*')
-			->from('#__usergroups')
+			->from('#__users_groups')
 			->where('id = ' . (int) $id);
 
 		$db->setQuery($query);
@@ -250,7 +250,7 @@ final class JHelperUsergroups
 
 		$query = $db->getQuery(true)
 			->select('*')
-			->from('#__usergroups')
+			->from('#__users_groups')
 			->order('lft ASC');
 
 		$db->setQuery($query);

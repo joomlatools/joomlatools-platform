@@ -453,7 +453,7 @@ class ConfigModelApplication extends ConfigModelForm
 			// Get the group parent id of the current group.
 			$query->clear()
 				->select($this->db->quoteName('parent_id'))
-				->from($this->db->quoteName('#__usergroups'))
+				->from($this->db->quoteName('#__users_groups'))
 				->where($this->db->quoteName('id') . ' = ' . (int) $permission['rule']);
 
 			$this->db->setQuery($query);
@@ -463,7 +463,7 @@ class ConfigModelApplication extends ConfigModelForm
 			// Count the number of child groups of the current group.
 			$query->clear()
 				->select('COUNT(' . $this->db->quoteName('id') . ')')
-				->from($this->db->quoteName('#__usergroups'))
+				->from($this->db->quoteName('#__users_groups'))
 				->where($this->db->quoteName('parent_id') . ' = ' . (int) $permission['rule']);
 
 			$this->db->setQuery($query);
