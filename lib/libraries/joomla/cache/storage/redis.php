@@ -109,7 +109,9 @@ class JCacheStorageRedis extends JCacheStorage
 
 			if ($app->isAdmin())
 			{
-				JError::raiseWarning(500, 'Redis connection failed');
+				JFactory::getApplication()->enqueueMessage(
+					'Redis connection failed', 'error'
+				);
 			}
 
 			return false;
@@ -119,7 +121,9 @@ class JCacheStorageRedis extends JCacheStorage
 		{
 			if ($app->isAdmin())
 			{
-				JError::raiseWarning(500, 'Redis authentication failed');
+				JFactory::getApplication()->enqueueMessage(
+					'Redis authentication failed', 'error'
+				);
 			}
 
 			return false;
@@ -133,7 +137,9 @@ class JCacheStorageRedis extends JCacheStorage
 
 			if ($app->isAdmin())
 			{
-				JError::raiseWarning(500, 'Redis failed to select database');
+				JFactory::getApplication()->enqueueMessage(
+					'Redis failed to select database', 'error'
+				);
 			}
 
 			return false;
@@ -149,7 +155,9 @@ class JCacheStorageRedis extends JCacheStorage
 
 			if ($app->isAdmin())
 			{
-				JError::raiseWarning(500, 'Redis ping failed');
+				JFactory::getApplication()->enqueueMessage(
+					'Redis ping failed', 'error'
+				);
 			}
 
 			return false;

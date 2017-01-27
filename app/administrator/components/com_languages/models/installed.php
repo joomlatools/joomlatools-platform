@@ -502,7 +502,9 @@ class LanguagesModelInstalled extends JModelList
 		}
 		else
 		{
-			JError::raiseWarning(500, JText::_('COM_LANGUAGES_ERR_NO_LANGUAGE_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(
+				JText::_('COM_LANGUAGES_ERR_NO_LANGUAGE_SELECTED'), 'error'
+			);
 
 			return false;
 		}
