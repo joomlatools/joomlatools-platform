@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Session
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -12,10 +12,8 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Database session storage handler for PHP
  *
- * @package     Joomla.Platform
- * @subpackage  Session
- * @see         http://www.php.net/manual/en/function.session-set-save-handler.php
- * @since       11.1
+ * @see    https://secure.php.net/manual/en/function.session-set-save-handler.php
+ * @since  11.1
  */
 class JSessionStorageDatabase extends JSessionStorage
 {
@@ -49,7 +47,7 @@ class JSessionStorageDatabase extends JSessionStorage
 
 			return $result;
 		}
-		catch (Exception $e)
+		catch (RuntimeException $e)
 		{
 			return false;
 		}
@@ -82,17 +80,16 @@ class JSessionStorageDatabase extends JSessionStorage
 
 			// Try to update the session data in the database table.
 			$db->setQuery($query);
-			if (!$db->execute())
-			{
-				return false;
-			}
-			/* Since $db->execute did not throw an exception, so the query was successful.
-			Either the data changed, or the data was identical.
-			In either case we are done.
-			*/
+			$db->execute();
+
+			/*
+			 * Since $db->execute did not throw an exception, so the query was successful.
+			 * Either the data changed, or the data was identical.
+			 * In either case we are done.
+			 */
 			return true;
 		}
-		catch (Exception $e)
+		catch (RuntimeException $e)
 		{
 			return false;
 		}
@@ -123,7 +120,7 @@ class JSessionStorageDatabase extends JSessionStorage
 
 			return (boolean) $db->execute();
 		}
-		catch (Exception $e)
+		catch (RuntimeException $e)
 		{
 			return false;
 		}
@@ -157,7 +154,7 @@ class JSessionStorageDatabase extends JSessionStorage
 
 			return (boolean) $db->execute();
 		}
-		catch (Exception $e)
+		catch (RuntimeException $e)
 		{
 			return false;
 		}
