@@ -68,29 +68,6 @@ class JHtmlUsers
 	*/
 	public static function notesModal($count, $userId)
 	{
-		if (empty($count))
-		{
-			return '';
-		}
-
-		$title = JText::plural('COM_USERS_N_USER_NOTES', $count);
-		$footer = '<button type="button" class="btn" data-dismiss="modal" aria-hidden="true">'
-			. JText::_('JTOOLBAR_CLOSE') . '</button>';
-
-		return JHtml::_(
-			'bootstrap.renderModal',
-			'userModal_' . (int) $userId,
-			array(
-				'title' => $title,
-				'backdrop' => 'static',
-				'keyboard' => true,
-				'closeButton' => true,
-				'footer' => $footer,
-				'url' => JRoute::_('index.php?option=com_users&view=notes&tmpl=component&layout=modal&filter[user_id]=' . (int) $userId),
-				'height' => '300px',
-				'width' => '800px'
-			)
-		);
 
 	}
 
