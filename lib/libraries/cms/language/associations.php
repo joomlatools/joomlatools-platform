@@ -47,7 +47,7 @@ class JLanguageAssociations
 			$multilanguageAssociations[$queryKey] = array();
 
 			$db = JFactory::getDbo();
-			$categoriesExtraSql = (($tablename === '#__categories') ? ' AND c2.extension = ' . $db->quote($extension) : '');
+			$categoriesExtraSql = ((JComponentHelper::isEnabled('com_categories') && $tablename === '#__categories') ? ' AND c2.extension = ' . $db->quote($extension) : '');
 			$query = $db->getQuery(true)
 				->select($db->quoteName('c2.language'))
 				->from($db->quoteName($tablename, 'c'))
@@ -74,7 +74,7 @@ class JLanguageAssociations
 			}
 
 			// Use catid field ?
-			if (!empty($catField))
+			if (JComponentHelper::isEnabled('com_categories') && !empty($catField))
 			{
 				$query->join(
 						'INNER',
@@ -89,7 +89,7 @@ class JLanguageAssociations
 			}
 
 			$query->where('c.' . $pk . ' = ' . (int) $id);
-			if ($tablename === '#__categories')
+			if (JComponentHelper::isEnabled('com_categories') && $tablename === '#__categories')
 			{
 				$query->where('c.extension = ' . $db->quote($extension));
 			}
