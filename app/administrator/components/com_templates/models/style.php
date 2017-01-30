@@ -272,7 +272,7 @@ class TemplatesModelStyle extends JModelAdmin
 		}
 
 		// Add the default fields directory
-		$baseFolder = ($clientId) ? JPATH_ADMINISTRATOR : JPATH_SITE;
+		$baseFolder = JPATH_WEB . ($clientId ? '/administrator' : '');
 		JForm::addFieldPath($baseFolder . '/templates/' . $template . '/field');
 
 		// These variables are used to add data from the plugin XML files.
