@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -38,7 +38,19 @@ class UsersControllerSession extends JControllerLegacy
 
 		if (!($result instanceof Exception))
 		{
-			$app->redirect($return);
+			// Only redirect to an internal URL.
+			if (JUri::isInternal($return))
+			{
+				// If &tmpl=component - redirect to index.php
+				if (strpos($return, "tmpl=component") === false)
+				{
+					$app->redirect($return);
+				}
+				else
+				{
+					$app->redirect('index.php');
+				}
+			}
 		}
 
 		parent::display();
@@ -51,7 +63,7 @@ class UsersControllerSession extends JControllerLegacy
 	 */
 	public function logout()
 	{
-		JSession::checkToken('request') or jexit(JText::_('JInvalid_Token'));
+		JSession::checkToken('request') or jexit(JText::_('JINVALID_TOKEN'));
 
 		$app = JFactory::getApplication();
 
@@ -65,9 +77,14 @@ class UsersControllerSession extends JControllerLegacy
 
 		if (!($result instanceof Exception))
 		{
-			$model 	= $this->getModel('session');
+			$model  = $this->getModel('session');
 			$return = $model->getState('return');
-			$app->redirect($return);
+
+			// Only redirect to an internal URL.
+			if (JUri::isInternal($return))
+			{
+				$app->redirect($return);
+			}
 		}
 
 		parent::display();

@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Login Model
  *
- * @package     Joomla.Administrator
- * @subpackage  com_users
- * @since       1.5
+ * @since  1.5
  */
 class UsersModelSession extends JModelLegacy
 {
@@ -41,7 +39,7 @@ class UsersModelSession extends JModelLegacy
 		);
 		$this->setState('credentials', $credentials);
 
-		// Check for return URL from the request first
+		// Check for return URL from the request first.
 		if ($return = $input->$method->get('return', '', 'BASE64'))
 		{
 			$return = base64_decode($return);
