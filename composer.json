@@ -26,7 +26,8 @@
     "joomla/uri": "~1.1",
     "phpmailer/phpmailer": "5.2.9",
     "vlucas/phpdotenv": "^2.1.0",
-    "joomlatools/console": "^1.4.0"
+    "joomlatools/console": "^1.4.0",
+    "paragonie/random_compat": "~1.0"
   },
   "suggest": {
     "joomlatools/platform-legacy": "Includes deprecated library classes no longer used in the core"
