@@ -12,6 +12,9 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.keepalive');
 JHtml::_('bootstrap.tooltip');
 
+$langs  = $this->langs;
+$return = $this->return;
+
 // Load chosen if we have language selector, ie, more than one administrator language installed and enabled.
 if ($langs)
 {

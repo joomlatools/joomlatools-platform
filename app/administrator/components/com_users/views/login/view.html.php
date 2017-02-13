@@ -21,8 +21,8 @@ class UsersViewLogin extends JViewLegacy
      */
     public function display($tpl = null)
     {
-        $this->sidebar = $this->getLanguageList();
-        $this->return  = $this->getReturnURI();
+        $this->langs  = $this->getLanguageList();
+        $this->return = $this->getReturnURI();
 
         parent::display($tpl);
     }
