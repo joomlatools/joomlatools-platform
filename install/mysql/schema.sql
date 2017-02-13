@@ -106,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `languages_associations` (
 
 CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to menu_types.menutype',
   `title` varchar(255) NOT NULL COMMENT 'The display title of the menu item.',
   `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'The SEF alias of the menu item.',
   `note` varchar(255) NOT NULL DEFAULT '',
