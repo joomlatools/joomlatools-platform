@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  System.remember
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Joomla! System Remember Me Plugin
  *
- * @package     Joomla.Plugin
- * @subpackage  System.remember
- * @since       1.5
+ * @since  1.5
  */
 
 class PlgSystemRemember extends JPlugin
@@ -53,7 +51,13 @@ class PlgSystemRemember extends JPlugin
 		// Check for a cookie if user is not logged in
 		if (JFactory::getUser()->get('guest'))
 		{
-			$cookieName = JUserHelper::getShortHashedUserAgent();
+			$cookieName = 'joomla_remember_me_' . JUserHelper::getShortHashedUserAgent();
+
+			// Try with old cookieName (pre 3.6.0) if not found
+			if (!$this->app->input->cookie->get($cookieName))
+			{
+				$cookieName = JUserHelper::getShortHashedUserAgent();
+			}
 
 			// Check for the cookie
 			if ($this->app->input->cookie->get($cookieName))
@@ -79,7 +83,7 @@ class PlgSystemRemember extends JPlugin
 			return true;
 		}
 
-		$cookieName = JUserHelper::getShortHashedUserAgent();
+		$cookieName = 'joomla_remember_me_' . JUserHelper::getShortHashedUserAgent();
 
 		// Check for the cookie
 		if ($this->app->input->cookie->get($cookieName))

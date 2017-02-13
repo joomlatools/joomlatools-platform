@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  Authentication.joomla
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Joomla Authentication plugin
  *
- * @package     Joomla.Plugin
- * @subpackage  Authentication.joomla
- * @since       1.5
+ * @since  1.5
  */
 class PlgAuthenticationJoomla extends JPlugin
 {
@@ -25,7 +23,7 @@ class PlgAuthenticationJoomla extends JPlugin
 	 * @param   array   $options      Array of extra options
 	 * @param   object  &$response    Authentication response object
 	 *
-	 * @return  boolean
+	 * @return  void
 	 *
 	 * @since   1.5
 	 */
@@ -36,10 +34,10 @@ class PlgAuthenticationJoomla extends JPlugin
 		// Joomla does not like blank passwords
 		if (empty($credentials['password']))
 		{
-			$response->status = JAuthentication::STATUS_FAILURE;
+			$response->status        = JAuthentication::STATUS_FAILURE;
 			$response->error_message = JText::_('JGLOBAL_AUTH_EMPTY_PASS_NOT_ALLOWED');
 
-			return false;
+			return;
 		}
 
 		// Get a database object
@@ -59,8 +57,8 @@ class PlgAuthenticationJoomla extends JPlugin
 			if ($match === true)
 			{
 				// Bring this in line with the rest of the system
-				$user = JUser::getInstance($result->id);
-				$response->email = $user->email;
+				$user               = JUser::getInstance($result->id);
+				$response->email    = $user->email;
 				$response->fullname = $user->name;
 
 				if (JFactory::getApplication()->isAdmin())
@@ -72,20 +70,24 @@ class PlgAuthenticationJoomla extends JPlugin
 					$response->language = $user->getParam('language');
 				}
 
-				$response->status = JAuthentication::STATUS_SUCCESS;
+				$response->status        = JAuthentication::STATUS_SUCCESS;
 				$response->error_message = '';
 			}
 			else
 			{
 				// Invalid password
-				$response->status = JAuthentication::STATUS_FAILURE;
+				$response->status        = JAuthentication::STATUS_FAILURE;
 				$response->error_message = JText::_('JGLOBAL_AUTH_INVALID_PASS');
 			}
 		}
 		else
 		{
+			// Let's hash the entered password even if we don't have a matching user for some extra response time
+			// By doing so, we mitigate side channel user enumeration attacks
+			JUserHelper::hashPassword($credentials['password']);
+
 			// Invalid user
-			$response->status = JAuthentication::STATUS_FAILURE;
+			$response->status        = JAuthentication::STATUS_FAILURE;
 			$response->error_message = JText::_('JGLOBAL_AUTH_NO_USER');
 		}
 	}
