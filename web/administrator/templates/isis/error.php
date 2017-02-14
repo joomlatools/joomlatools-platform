@@ -228,7 +228,7 @@ $stickyToolbar = $params->get('stickyToolbar', '1');
 					<!-- Begin Content -->
 					<h1 class="page-header"><?php echo JText::_('JERROR_AN_ERROR_HAS_OCCURRED'); ?></h1>
 					<blockquote>
-						<span class="label label-inverse"><?php echo $this->code; ?></span> <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8');?>
+						<span class="label label-inverse"><?php echo $this->error->getCode(); ?></span> <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8');?>
 					</blockquote>
 					<?php if ($this->debug) : ?>
 						<div>
