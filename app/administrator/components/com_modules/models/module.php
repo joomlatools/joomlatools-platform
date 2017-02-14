@@ -63,6 +63,13 @@ class ModulesModelModule extends JModelAdmin
 	);
 
 	/**
+	 * batchContentType. If set to false, set the batch content type.
+	 *
+	 * @var boolean
+	 */
+	protected $batchContentType = true;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param   array  $config  An optional associative array of configuration settings.

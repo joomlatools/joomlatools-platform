@@ -215,14 +215,18 @@ abstract class JModelAdmin extends JModelForm
 		$this->user = JFactory::getUser();
 		$this->table = $this->getTable();
 		$this->tableClassName = get_class($this->table);
-		$this->contentType = new ContentTableUcmType;
-		$this->type = $this->contentType->getTypeByTable($this->tableClassName);
 		$this->batchSet = true;
 
-		if ($this->type == false)
+		if (empty($this->batchContentType))
 		{
-			$type = new ContentTableUcmType;
-			$this->type = $type->getTypeByAlias($this->typeAlias);
+			$this->contentType = new ContentTableUcmType;
+			$this->type = $this->contentType->getTypeByTable($this->tableClassName);
+
+			if ($this->type == false)
+			{
+				$type = new ContentTableUcmType;
+				$this->type = $type->getTypeByAlias($this->typeAlias);
+			}
 		}
 
 		$this->tagsObserver = $this->table->getObserverOfClass('TagsTableObserverTags');

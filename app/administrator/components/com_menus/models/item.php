@@ -80,6 +80,13 @@ class MenusModelItem extends JModelAdmin
 	);
 
 	/**
+	 * batchContentType. If set to false, set the batch content type.
+	 *
+	 * @var boolean
+	 */
+	protected $batchContentType = true;
+
+	/**
 	 * Method to test whether a record can be deleted.
 	 *
 	 * @param   object  $record  A record object.
