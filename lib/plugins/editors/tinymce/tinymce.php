@@ -47,7 +47,7 @@ class PlgEditorTinymce extends JPlugin
 	public function onInit()
 	{
 		JHtml::_('jquery.framework');
-		JHtml::script($this->_basePath . '/tinymce.min.js', false, false, false, false, false);
+		JHtml::script(JUri::root() . $this->_basePath . '/tinymce.min.js', false, false, false, false, false);
 	}
 
 	/**
@@ -812,7 +812,7 @@ class PlgEditorTinymce extends JPlugin
 		$script .= "
 		window.getSize = window.getSize || function(){return {x: jQuery(window).width(), y: jQuery(window).height()};};
 		tinymce.suffix = '.min';
-		tinymce.baseURL = '" . JUri::root() . "media/plg_editors_tinymce/tinymce';
+		tinymce.baseURL = '" . JUri::root() . "media/plg_editors_tinymce';
 		tinymce.init({
 		";
 
