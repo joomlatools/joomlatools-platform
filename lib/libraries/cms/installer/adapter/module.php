@@ -115,19 +115,19 @@ class JInstallerAdapterModule extends JInstallerAdapter
 	protected function finaliseInstall()
 	{
 		// Clobber any possible pending updates
-		$update = JTable::getInstance('update');
-		$uid    = $update->find(
-			array(
-				'element'   => $this->element,
-				'type'      => 'module',
-				'client_id' => $this->clientId,
-			)
-		);
+		// $update = JTable::getInstance('update');
+		// $uid    = $update->find(
+		// 	array(
+		// 		'element'   => $this->element,
+		// 		'type'      => 'module',
+		// 		'client_id' => $this->clientId,
+		// 	)
+		// );
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		// if ($uid)
+		// {
+		// 	$update->delete($uid);
+		// }
 
 		// Lastly, we will copy the manifest file to its appropriate place.
 		if ($this->route != 'discover_install')

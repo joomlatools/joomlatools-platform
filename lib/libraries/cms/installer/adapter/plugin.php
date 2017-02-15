@@ -151,19 +151,19 @@ class JInstallerAdapterPlugin extends JInstallerAdapter
 	{
 		// Clobber any possible pending updates
 		/** @var JTableUpdate $update */
-		$update = JTable::getInstance('update');
-		$uid = $update->find(
-			array(
-				'element' => $this->element,
-				'type'    => $this->type,
-				'folder'  => $this->group,
-			)
-		);
+		// $update = JTable::getInstance('update');
+		// $uid = $update->find(
+		// 	array(
+		// 		'element' => $this->element,
+		// 		'type'    => $this->type,
+		// 		'folder'  => $this->group,
+		// 	)
+		// );
 
-		if ($uid)
-		{
-			$update->delete($uid);
-		}
+		// if ($uid)
+		// {
+		// 	$update->delete($uid);
+		// }
 
 		// Lastly, we will copy the manifest file to its appropriate place.
 		if ($this->route != 'discover_install')
