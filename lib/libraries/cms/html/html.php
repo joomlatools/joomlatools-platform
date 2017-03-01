@@ -536,7 +536,7 @@ abstract class JHtml
 					 */
 					foreach ($files as $file)
 					{
-						$path = JPATH_ROOT . "/$file";
+						$path = JPATH_WEB . "/$file";
 
 						if (file_exists($path))
 						{
