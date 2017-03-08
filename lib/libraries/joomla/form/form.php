@@ -1884,7 +1884,7 @@ class JForm
 		// Add the field paths.
 		foreach ($paths as $path)
 		{
-			$path = JPATH_APP . '/' . ltrim($path, '/\\');
+			$path = $this->preparePath($path);
 			self::addFieldPath($path);
 		}
 
@@ -1895,7 +1895,7 @@ class JForm
 		// Add the form paths.
 		foreach ($paths as $path)
 		{
-			$path = JPATH_APP . '/' . ltrim($path, '/\\');
+			$path = $this->preparePath($path);
 			self::addFormPath($path);
 		}
 
@@ -1906,11 +1906,41 @@ class JForm
 		// Add the rule paths.
 		foreach ($paths as $path)
 		{
-			$path = JPATH_APP . '/' . ltrim($path, '/\\');
+			$path = $this->preparePath($path);
 			self::addRulePath($path);
 		}
 
 		return true;
+	}
+
+	/**
+	 * Method to get the correct field, form and rule paths.
+	 *
+	 * @param   string  $path
+	 *
+	 * @return  string  The correct path of the file.
+	 */
+	protected function preparePath($path)
+	{
+		$path     = ltrim($path, '/\\');
+		$basepath = JPATH_SITE;
+
+		if (preg_match('/^(administrator|libraries|plugins)/', $path, $matches))
+		{
+			$type     = $matches[0];
+			$basepath = JPATH_APP;
+			$path     = ltrim(preg_replace('/^(libraries|plugins)/', '', $path), '/\\');
+
+			if ($type == 'libraries') {
+				$basepath = JPATH_LIBRARIES;
+			} elseif ($type == 'plugins') {
+				$basepath = JPATH_PLUGINS;
+			}
+		}
+
+		$path = $basepath . '/' . $path;
+
+		return $path;
 	}
 
 	/**
