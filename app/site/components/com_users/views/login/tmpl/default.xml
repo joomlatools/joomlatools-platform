@@ -13,7 +13,7 @@
 	<fields name="params">
 
 		<!-- Basic options. -->
-		<fieldset name="basic" addrulepath="/site/components/com_users/models/rules" label="COM_MENUS_BASIC_FIELDSET_LABEL">
+		<fieldset name="basic" addrulepath="components/com_users/models/rules" label="COM_MENUS_BASIC_FIELDSET_LABEL">
 
 		<field
 			name="loginredirectchoice"
