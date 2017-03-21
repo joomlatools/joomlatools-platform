@@ -1058,7 +1058,7 @@ class MenusModelItem extends JModelAdmin
 				if (!$formFile && (strpos($layout, ':') > 0))
 				{
 					$temp = explode(':', $layout);
-					$templatePath = JPath::clean(JPATH_SITE . '/templates/' . $temp[0] . '/html/' . $option . '/' . $view . '/' . $temp[1] . '.xml');
+					$templatePath = JPath::clean(JPATH_WEB . '/templates/' . $temp[0] . '/html/' . $option . '/' . $view . '/' . $temp[1] . '.xml');
 
 					if (is_file($templatePath))
 					{
