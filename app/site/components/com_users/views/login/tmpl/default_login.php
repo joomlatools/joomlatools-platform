@@ -53,17 +53,6 @@ JHtml::_('behavior.formvalidator');
 				<?php endif; ?>
 			<?php endforeach; ?>
 
-			<?php if ($this->tfa): ?>
-				<div class="control-group">
-					<div class="control-label">
-						<?php echo $this->form->getField('secretkey')->label; ?>
-					</div>
-					<div class="controls">
-						<?php echo $this->form->getField('secretkey')->input; ?>
-					</div>
-				</div>
-			<?php endif; ?>
-
 			<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
 			<div  class="control-group">
 				<div class="control-label"><label><?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME') ?></label></div>
