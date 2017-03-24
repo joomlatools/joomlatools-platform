@@ -583,12 +583,13 @@ class JDocumentHtml extends JDocument
 		// Try to find a favicon by checking the template and root folder
 		$icon = '/favicon.ico';
 
-		foreach (array($directory, JPATH_BASE) as $dir)
+		foreach (array($directory, JPATH_WEB) as $dir)
 		{
 			if (file_exists($dir . $icon))
 			{
-				$path = str_replace(JPATH_BASE, '', $dir);
+				$path = str_replace(JPATH_WEB, '', $dir);
 				$path = str_replace('\\', '/', $path);
+				$path = preg_replace('/^\/administrator/', '', $path);
 				$this->addFavicon(JUri::base(true) . $path . $icon);
 				break;
 			}
