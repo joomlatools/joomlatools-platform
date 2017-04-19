@@ -16,12 +16,6 @@ $direction = JFactory::getDocument()->direction == 'rtl' ? 'pull-right' : '';
 $shownew    = (boolean) $params->get('shownew', 1);
 
 /*
- * Dashboard Submenu
- */
-
-$menu->addChild(new JMenuNode(JText::_('MOD_MENU_CONTROL_PANEL'), 'index.php', $enabled ? 'class:cpanel' : 'disabled'));
-
-/*
  * Components Submenu
  */
 
@@ -198,4 +192,4 @@ if($enabled)
 
 $menu->getParent();
 
-$menu->renderMenu('menu', $enabled ? 'nav ' . $direction : 'nav disabled ' . $direction);
+$menu->renderMenu('menu', $enabled ? 'nav navbar-nav' . $direction : 'nav navbar-nav disabled ' . $direction);

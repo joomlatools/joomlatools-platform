@@ -51,8 +51,8 @@ class TemplatesControllerStyle extends JControllerForm
 			$model = $this->getModel();
 			$table = $model->getTable();
 			$data  = $this->input->post->get('params', array(), 'array');
-			$checkin = property_exists($table, 'checked_out');
-			$context = $this->option . '.edit.' . $this->context;
+			$checkin = $table->isCheckedOut();
+			$context = "$this->option.edit.$this->context";
 			$task = $this->getTask();
 
 			$item = $model->getItem($app->getTemplate('template')->id);

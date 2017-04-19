@@ -144,6 +144,7 @@ class JControllerForm extends JControllerLegacy
 	 */
 	public function add()
 	{
+		$app = JFactory::getApplication();
 		$context = "$this->option.edit.$this->context";
 
 		// Access check.
@@ -300,6 +301,7 @@ class JControllerForm extends JControllerLegacy
 
 		$model = $this->getModel();
 		$table = $model->getTable();
+		$checkin = !$table->isCheckedOut();
 		$context = "$this->option.edit.$this->context";
 
 		if (empty($key))
@@ -312,7 +314,7 @@ class JControllerForm extends JControllerLegacy
 		// Attempt to check-in the current record.
 		if ($recordId)
 		{
-			if (property_exists($table, 'checked_out'))
+			if ($checkin)
 			{
 				if ($model->checkin($recordId) === false)
 				{
@@ -378,7 +380,7 @@ class JControllerForm extends JControllerLegacy
 
 		// Get the previous record id (if any) and the current record id.
 		$recordId = (int) (count($cid) ? $cid[0] : $this->input->getInt($urlVar));
-		$checkin = property_exists($table, 'checked_out');
+		$checkin = !$table->isCheckedOut();
 
 		// Access check.
 		if (!$this->allowEdit(array($key => $recordId), $key))
@@ -616,7 +618,7 @@ class JControllerForm extends JControllerLegacy
 		$model = $this->getModel();
 		$table = $model->getTable();
 		$data  = $this->input->post->get('jform', array(), 'array');
-		$checkin = property_exists($table, 'checked_out');
+		$checkin = !$table->isCheckedout();
 		$context = "$this->option.edit.$this->context";
 		$task = $this->getTask();
 

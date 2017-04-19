@@ -960,6 +960,7 @@ abstract class JFormField
 			'input'   => $this->getInput(),
 			'label'   => $this->getLabel(),
 			'options' => $options,
+			'name'    => $this->element['name']
 		);
 
 		return $this->getRenderer($this->renderLayout)->render($data);

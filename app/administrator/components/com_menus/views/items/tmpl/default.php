@@ -174,9 +174,8 @@ if ($menuType == '')
 							<?php echo JHtml::_('MenusHtml.Menus.state', $item->published, $i, $canChange, 'cb'); ?>
 						</td>
 						<td>
-							<?php $prefix = JLayoutHelper::render('joomla.html.treeprefix', array('level' => $item->level)); ?>
-							<?php echo $prefix; ?>
-							<?php if ($item->checked_out) : ?>
+							<?php echo str_repeat('<span class="gi">|&mdash;</span>', $item->level - 1) ?>
+                            <?php if (JHtml::_('grid.ischeckedout', $item)) : ?>
 								<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'items.', $canCheckin); ?>
 							<?php endif; ?>
 							<?php if ($canEdit) : ?>

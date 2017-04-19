@@ -74,6 +74,7 @@ INSERT INTO `extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `
 (449, 'plg_authentication_cookie', 'plugin', 'cookie', 'authentication', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (506, 'protostar', 'template', 'protostar', '', 0, 1, 1, 0, '', '{"templateColor":"","logoFile":"","googleFont":"1","googleFontName":"Open+Sans","fluidContainer":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (507, 'isis', 'template', 'isis', '', 1, 1, 1, 0, '', '{"templateColor":"","logoFile":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(508, 'elysio', 'template', 'elysio', '', 1, 1, 1, 0, '{}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (600, 'English (United Kingdom)', 'language', 'en-GB', '', 0, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (601, 'English (United Kingdom)', 'language', 'en-GB', '', 1, 1, 1, 1, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
@@ -104,6 +105,17 @@ INSERT INTO `menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 (1, 'mainmenu', 'Main Menu', 'The main menu for the site');
 
 -- --------------------------------------------------------
+
+--
+-- Dumping data for table `migrations`
+--
+
+-- --------------------------------------------------------
+
+INSERT INTO `migrations` (`version`, `start_time`, `end_time`)
+VALUES
+	(20160303152100, '2016-03-03 15:29:28', '2016-03-03 15:29:28'),
+	(20160303172718, '2016-03-03 17:35:40', '2016-03-03 17:35:40');
 
 --
 -- Dumping data for table `modules`
@@ -147,7 +159,8 @@ INSERT INTO `modules_menu` (`moduleid`, `menuid`) VALUES
 
 INSERT INTO `templates` (`id`, `template`, `client_id`, `home`, `title`, `params`) VALUES
 (7, 'protostar', 0, '1', 'protostar - Default', '{"templateColor":"","logoFile":"","googleFont":"1","googleFontName":"Open+Sans","fluidContainer":"0"}'),
-(8, 'isis', 1, '1', 'isis - Default', '{"templateColor":"","logoFile":""}');
+(8, 'isis', 1, '0', 'isis - Default', '{"templateColor":"","logoFile":""}'),
+(9, 'elysio', 1, '1', 'elysio - Default', '{"logo":"templates/elysio/images/joomla-logo"}');
 
 -- --------------------------------------------------------
 

@@ -264,7 +264,7 @@ class JFormFieldRules extends JFormField
 
 		$html[] = '</ul>';
 
-		$html[] = '<div class="tab-content">';
+		$html[] = '<div class="tab-content k-table-container">';
 
 		// Start a row for each user group.
 		foreach ($groups as $group)

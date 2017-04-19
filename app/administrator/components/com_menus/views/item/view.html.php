@@ -87,10 +87,10 @@ class MenusViewItem extends JViewLegacy
 		$input = JFactory::getApplication()->input;
 		$input->set('hidemainmenu', true);
 
-		$user       = JFactory::getUser();
-		$isNew      = ($this->item->id == 0);
-		$checkedOut = !($this->item->checked_out == 0 || $this->item->checked_out == $user->get('id'));
-		$canDo      = $this->canDo;
+		$user		= JFactory::getUser();
+		$isNew		= ($this->item->id == 0);
+        $checkedOut	= $this->getModel()->getTable()->isCheckedOut($user->id, $this->item->checked_out);
+		$canDo		= $this->canDo;
 
 		JToolbarHelper::title(JText::_($isNew ? 'COM_MENUS_VIEW_NEW_ITEM_TITLE' : 'COM_MENUS_VIEW_EDIT_ITEM_TITLE'), 'list menu-add');
 
