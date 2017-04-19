@@ -27,7 +27,7 @@
     "phpmailer/phpmailer": "5.2.16",
     "vlucas/phpdotenv": "^2.1.0",
     "joomlatools/console": "^1.4.0",
-    "paragonie/random_compat": "~1.0"
+    "paragonie/random_compat": "~1.0",
     "robmorgan/phinx": "^0.5.0"
   },
   "suggest": {
