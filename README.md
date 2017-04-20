@@ -55,16 +55,20 @@ Use the [Joomlatools Vagrant](https://github.com/joomlatools/joomlatools-vagrant
 
 1. Clone the git repo - `git clone https://github.com/joomlatools/joomlatools-platform.git`
 2. Run `composer install`
-3. Copy `.env.example` to `.env` and update environment variables:
-  * `JOOMLA_DB_NAME` - Database name
-  * `JOOMLA_DB_USER` - Database user
-  * `JOOMLA_DB_PASS` - Database password
-  * `JOOMLA_DB_HOST` - Database host
-  * `JOOMLA_ENV` - Set to environment (`development`, `staging`, `production`)
-  * `JOOMLA_KEY` - A 32 character random string
-  * `JOOMLA_CACHE` - [OPTIONAL] True or false to enable or disable caching
-  * `JOOMLA_DEBUG` - [OPTIONAL] True or false to enable or disable debug mode
-4. Access Joomla administrator at `http://example.com/web/administrator`
+3. Create a new database and import the MySQL data in the following order:
+   * `install/mysql/schema.sql`
+   * `install/mysql/data.sql`
+   * `install/mysql/legacy.sql`
+4. Copy `.env.example` to `.env` and update environment variables:
+   * `JOOMLA_DB_NAME` - Database name
+   * `JOOMLA_DB_USER` - Database user
+   * `JOOMLA_DB_PASS` - Database password
+   * `JOOMLA_DB_HOST` - Database host
+   * `JOOMLA_ENV` - Set to environment (`development`, `staging`, `production`)
+   * `JOOMLA_KEY` - A 32 character random string
+   * `JOOMLA_CACHE` - [OPTIONAL] True or false to enable or disable caching
+   * `JOOMLA_DEBUG` - [OPTIONAL] True or false to enable or disable debug mode
+5. Access Joomla administrator at `http://example.com/web/administrator` and login with both username and password `admin`.
 
 ### Joomlatools Console
 
