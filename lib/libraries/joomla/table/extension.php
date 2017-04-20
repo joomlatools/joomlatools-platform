@@ -3,19 +3,19 @@
  * @package     Joomla.Platform
  * @subpackage  Table
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
 
+use Joomla\Registry\Registry;
+use Joomla\Utilities\ArrayHelper;
+
 /**
  * Extension table
- * Replaces plugins table
  *
- * @package     Joomla.Platform
- * @subpackage  Table
- * @since       11.1
+ * @since  11.1
  */
 class JTableExtension extends JTable
 {
@@ -48,6 +48,7 @@ class JTableExtension extends JTable
 
 			return false;
 		}
+
 		return true;
 	}
 
@@ -67,14 +68,14 @@ class JTableExtension extends JTable
 	{
 		if (isset($array['params']) && is_array($array['params']))
 		{
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadArray($array['params']);
 			$array['params'] = (string) $registry;
 		}
 
 		if (isset($array['control']) && is_array($array['control']))
 		{
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadArray($array['control']);
 			$array['control'] = (string) $registry;
 		}
@@ -127,7 +128,7 @@ class JTableExtension extends JTable
 		$k = $this->_tbl_key;
 
 		// Sanitize input.
-		JArrayHelper::toInteger($pks);
+		$pks = ArrayHelper::toInteger($pks);
 		$userId = (int) $userId;
 		$state = (int) $state;
 

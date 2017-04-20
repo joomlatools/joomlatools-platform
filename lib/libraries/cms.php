@@ -2,7 +2,7 @@
 /**
  * @package    Joomla.Libraries
  *
- * @copyright  Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @copyright  Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
@@ -34,7 +34,7 @@ JLoader::registerPrefix('J', JPATH_PLATFORM . '/cms', false, true);
 require_once JPATH_VENDOR . '/autoload.php';
 
 // Register the class aliases for Framework classes that have replaced their Platform equivilents
-require_once __DIR__ . '/classmap.php';
+require_once JPATH_LIBRARIES . '/classmap.php';
 
 // Register a handler for uncaught exceptions that shows a pretty error page when possible
 set_exception_handler(array('JErrorPage', 'render'));
@@ -51,6 +51,12 @@ if (array_key_exists('REQUEST_METHOD', $_SERVER))
 {
 	JLog::addLogger(array('logger' => 'messagequeue'), JLog::ALL, array('jerror'));
 }
+
+// Register JArrayHelper due to JRegistry moved to composer's vendor folder
+JLoader::register('JArrayHelper', JPATH_PLATFORM . '/joomla/utilities/arrayhelper.php');
+
+// Register the Crypto lib
+JLoader::register('Crypto', JPATH_PLATFORM . '/php-encryption/Crypto.php');
 
 // Register classes where the names have been changed to fit the autoloader rules
 // @deprecated  4.0

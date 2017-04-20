@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension
-	type="module"
-	version="3.1"
-	client="administrator">
+<extension type="module" version="3.1" client="administrator" method="upgrade">
 	<name>mod_menu</name>
 	<author>Joomla! Project</author>
 	<creationDate>March 2006</creationDate>
-	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
@@ -14,9 +11,9 @@
 	<description>MOD_MENU_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_menu">mod_menu.php</filename>
-		<filename>menu.php</filename>
-		<filename>helper.php</filename>
 		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>menu.php</filename>
 	</files>
 
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_MENU" />
@@ -36,7 +33,8 @@
 
 				<field
 					name="shownew"
-					type="list"
+					type="radio"
+					class="btn-group btn-group-yesno"
 					default="1"
 					label="MOD_MENU_FIELD_SHOWNEW"
 					description="MOD_MENU_FIELD_SHOWNEW_DESC">
@@ -54,15 +52,6 @@
 					description="MOD_MENU_FIELD_FORUMURL_DESC"
 				/>
 
-				<field
-					name="cache"
-					type="list"
-					default="0"
-					label="COM_MODULES_FIELD_CACHING_LABEL"
-					description="COM_MODULES_FIELD_CACHING_DESC">
-					<option
-						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
-				</field>
 			</fieldset>
 		</fields>
 	</config>

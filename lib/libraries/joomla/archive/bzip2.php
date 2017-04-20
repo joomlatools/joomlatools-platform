@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Archive
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -15,9 +15,7 @@ jimport('joomla.filesystem.stream');
 /**
  * Bzip2 format adapter for the JArchive class
  *
- * @package     Joomla.Platform
- * @subpackage  Archive
- * @since       11.1
+ * @since  11.1
  */
 class JArchiveBzip2 implements JArchiveExtractable
 {
@@ -41,80 +39,93 @@ class JArchiveBzip2 implements JArchiveExtractable
 	 * @since   11.1
 	 * @throws  RuntimeException
 	 */
-	public function extract($archive, $destination, array $options = array ())
+	public function extract($archive, $destination, array $options = array())
 	{
 		$this->_data = null;
 
 		if (!extension_loaded('bz2'))
 		{
-            throw new RuntimeException('The bz2 extension is not available.');
+			throw new RuntimeException('The bz2 extension is not available.');
 		}
 
-		if (!isset($options['use_streams']) || $options['use_streams'] == false)
+		if (isset($options['use_streams']) && $options['use_streams'] != false)
 		{
-			// Old style: read the whole file and then parse it
-			$this->_data = file_get_contents($archive);
+			return $this->extractStream($archive, $destination, $options);
+		}
 
-			if (!$this->_data)
-			{
-                throw new RuntimeException('Unable to read archive');
-			}
+		// Old style: read the whole file and then parse it
+		$this->_data = file_get_contents($archive);
 
-			$buffer = bzdecompress($this->_data);
-			unset($this->_data);
+		if (!$this->_data)
+		{
+			throw new RuntimeException('Unable to read archive');
+		}
 
-			if (empty($buffer))
-			{
-                throw new RuntimeException('Unable to decompress data');
-			}
+		$buffer = bzdecompress($this->_data);
+		unset($this->_data);
 
-			if (JFile::write($destination, $buffer) === false)
-			{
-                throw new RuntimeException('Unable to write archive');
-			}
+		if (empty($buffer))
+		{
+			throw new RuntimeException('Unable to decompress data');
+		}
+
+		if (JFile::write($destination, $buffer) === false)
+		{
+			throw new RuntimeException('Unable to write archive');
+		}
+
+		return true;
+	}
+
+	/**
+	 * Method to extract archive using stream objects
+	 *
+	 * @param   string  $archive      Path to Bzip2 archive to extract
+	 * @param   string  $destination  Path to extract archive to
+	 * @param   array   $options      Extraction options [unused]
+	 *
+	 * @return  boolean  True if successful
+	 */
+	protected function extractStream($archive, $destination, $options = array())
+	{
+		// New style! streams!
+		$input = JFactory::getStream();
+
+		// Use bzip
+		$input->set('processingmethod', 'bz');
+
+		if (!$input->open($archive))
+		{
+			throw new RuntimeException('Unable to read archive (bz2)');
 
 		}
-		else
+
+		$output = JFactory::getStream();
+
+		if (!$output->open($destination, 'w'))
 		{
-			// New style! streams!
-			$input = JFactory::getStream();
+			$input->close();
 
-			// Use bzip
-			$input->set('processingmethod', 'bz');
+			throw new RuntimeException('Unable to write archive (bz2)');
 
-			if (!$input->open($archive))
-			{
-                throw new RuntimeException('Unable to read archive (bz2)');
-			}
+		}
 
-			$output = JFactory::getStream();
+		do
+		{
+			$this->_data = $input->read($input->get('chunksize', 8196));
 
-			if (!$output->open($destination, 'w'))
+			if ($this->_data && !$output->write($this->_data))
 			{
 				$input->close();
 
-                throw new RuntimeException('Unable to write archive (bz2)');
+				throw new RuntimeException('Unable to write archive (bz2)');
 			}
-
-			do
-			{
-				$this->_data = $input->read($input->get('chunksize', 8196));
-
-				if ($this->_data)
-				{
-					if (!$output->write($this->_data))
-					{
-						$input->close();
-
-                        throw new RuntimeException('Unable to write archive (bz2)');
-					}
-				}
-			}
-			while ($this->_data);
-
-			$output->close();
-			$input->close();
 		}
+
+		while ($this->_data);
+
+		$output->close();
+		$input->close();
 
 		return true;
 	}

@@ -3,36 +3,43 @@
  * @package     Joomla.Administrator
  * @subpackage  com_templates
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
+use Joomla\Registry\Registry;
+
 /**
  * Template style model.
  *
- * @package     Joomla.Administrator
- * @subpackage  com_templates
- * @since       1.6
+ * @since  1.6
  */
 class TemplatesModelStyle extends JModelAdmin
 {
 	/**
-	 * @var	    string	The help screen key for the module.
+	 * The help screen key for the module.
+	 *
+	 * @var	    string
 	 * @since   1.6
 	 */
 	protected $helpKey = 'JHELP_EXTENSIONS_TEMPLATE_MANAGER_STYLES_EDIT';
 
 	/**
-	 * @var	    string	The help screen base URL for the module.
+	 * The help screen base URL for the module.
+	 *
+	 * @var     string
 	 * @since   1.6
 	 */
 	protected $helpURL;
 
 	/**
 	 * Item cache.
+	 *
+	 * @var    array
+	 * @since  1.6
 	 */
 	private $_cache = array();
 
@@ -74,7 +81,7 @@ class TemplatesModelStyle extends JModelAdmin
 		$this->setState('style.id', $pk);
 
 		// Load the parameters.
-		$params	= JComponentHelper::getParams('com_templates');
+		$params = JComponentHelper::getParams('com_templates');
 		$this->setState('params', $params);
 	}
 
@@ -84,6 +91,9 @@ class TemplatesModelStyle extends JModelAdmin
 	 * @param   array  &$pks  An array of item ids.
 	 *
 	 * @return  boolean  Returns true on success, false on failure.
+	 *
+	 * @since   1.6
+	 * @throws  Exception
 	 */
 	public function delete(&$pks)
 	{
@@ -261,6 +271,10 @@ class TemplatesModelStyle extends JModelAdmin
 			$template  = JArrayHelper::getValue($data, 'template');
 		}
 
+		// Add the default fields directory
+		$baseFolder = JPATH_WEB . ($clientId ? '/administrator' : '');
+		JForm::addFieldPath($baseFolder . '/templates/' . $template . '/field');
+
 		// These variables are used to add data from the plugin XML files.
 		$this->setState('item.client_id', $clientId);
 		$this->setState('item.template', $template);
@@ -322,8 +336,6 @@ class TemplatesModelStyle extends JModelAdmin
 
 		if (!isset($this->_cache[$pk]))
 		{
-			$false	= false;
-
 			// Get a row instance.
 			$table = $this->getTable();
 
@@ -335,21 +347,21 @@ class TemplatesModelStyle extends JModelAdmin
 			{
 				$this->setError($table->getError());
 
-				return $false;
+				return false;
 			}
 
 			// Convert to the JObject before adding other data.
-			$properties = $table->getProperties(1);
+			$properties        = $table->getProperties(1);
 			$this->_cache[$pk] = JArrayHelper::toObject($properties, 'JObject');
 
 			// Convert the params field to an array.
-			$registry = new JRegistry;
+			$registry = new Registry;
 			$registry->loadString($table->params);
 			$this->_cache[$pk]->params = $registry->toArray();
 
 			// Get the template XML.
-			$client	= JApplicationHelper::getClientInfo($table->client_id);
-			$path	= JPath::clean($client->web_root.'/templates/'.$table->template.'/templateDetails.xml');
+			$client = JApplicationHelper::getClientInfo($table->client_id);
+			$path   = JPath::clean($client->web_root . '/templates/' . $table->template . '/templateDetails.xml');
 
 			if (file_exists($path))
 			{
@@ -379,11 +391,11 @@ class TemplatesModelStyle extends JModelAdmin
 	}
 
 	/**
-	 * TODO
+	 * Method to allow derived classes to preprocess the form.
 	 *
-	 * @param   object  $form   A form object.
+	 * @param   JForm   $form   A JForm object.
 	 * @param   mixed   $data   The data expected for the form.
-	 * @param   string  $group  TODO
+	 * @param   string  $group  The name of the plugin group to import (defaults to "content").
 	 *
 	 * @return  void
 	 *
@@ -473,7 +485,6 @@ class TemplatesModelStyle extends JModelAdmin
 		$table      = $this->getTable();
 		$pk         = (!empty($data['id'])) ? $data['id'] : (int) $this->getState('style.id');
 		$isNew      = true;
-		$context    = $this->option . '.' . $this->name;
 
 		// Include the extension plugins for the save events.
 		JPluginHelper::importPlugin($this->events_map['save']);
@@ -512,7 +523,7 @@ class TemplatesModelStyle extends JModelAdmin
 		}
 
 		// Trigger the before save event.
-		$result = $dispatcher->trigger($this->event_before_save, array($context, &$table, $isNew));
+		$result = $dispatcher->trigger($this->event_before_save, array('com_templates.style', &$table, $isNew));
 
 		// Store the data.
 		if (in_array(false, $result, true) || !$table->store())
@@ -527,7 +538,7 @@ class TemplatesModelStyle extends JModelAdmin
 		if ($user->authorise('core.edit', 'com_menus') && $table->client_id == 0)
 		{
 			$n    = 0;
-			$db   = JFactory::getDbo();
+			$db   = $this->getDbo();
 			$user = JFactory::getUser();
 
 			if (!empty($data['assigned']) && is_array($data['assigned']))
@@ -574,7 +585,7 @@ class TemplatesModelStyle extends JModelAdmin
 		$this->cleanCache();
 
 		// Trigger the after save event.
-		$dispatcher->trigger($this->event_after_save, array($context, &$table, $isNew));
+		$dispatcher->trigger($this->event_after_save, array('com_templates.style', &$table, $isNew));
 
 		$this->setState('style.id', $table->id);
 

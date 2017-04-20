@@ -16,7 +16,7 @@ $menu->addChild(new JMenuNode(JText::_('MOD_MENU_SYSTEM'), null, 'disabled'));
 
 /**
  * Users Submenu
-**/
+ */
 if ($user->authorise('core.manage', 'com_users'))
 {
 	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_COM_USERS'), null, 'disabled'));
@@ -24,7 +24,7 @@ if ($user->authorise('core.manage', 'com_users'))
 
 /**
  * Menus Submenu
-**/
+ */
 if ($user->authorise('core.manage', 'com_menus'))
 {
 	$menu->addChild(new JMenuNode(JText::_('MOD_MENU_MENUS'), null, 'disabled'));
@@ -32,7 +32,7 @@ if ($user->authorise('core.manage', 'com_menus'))
 
 /**
  * Components Submenu
-**/
+ */
 
 // Get the authorised components and sub-menus.
 $components = ModMenuHelper::getComponents(true);
@@ -45,7 +45,7 @@ if ($components)
 
 /**
  * Extensions Submenu
-**/
+ */
 $mm = $user->authorise('core.manage', 'com_modules');
 $pm = $user->authorise('core.manage', 'com_plugins');
 $tm = $user->authorise('core.manage', 'com_templates');

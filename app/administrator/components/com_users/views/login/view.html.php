@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * HTML View class for the Login component
  *
- * @package     Joomla.Administrator
- * @subpackage  com_users
- * @since       1.6
+ * @since  1.6
  */
 class UsersViewLogin extends JViewLegacy
 {
@@ -23,8 +21,8 @@ class UsersViewLogin extends JViewLegacy
      */
     public function display($tpl = null)
     {
-        $this->sidebar = $this->getLanguageList();
-        $this->return  = $this->getReturnURI();
+        $this->langs  = $this->getLanguageList();
+        $this->return = $this->getReturnURI();
 
         parent::display($tpl);
     }
@@ -43,6 +41,23 @@ class UsersViewLogin extends JViewLegacy
             return '';
         }
 
+        usort(
+            $languages,
+            function ($a, $b)
+            {
+                return strcmp($a["value"], $b["value"]);
+            }
+        );
+
+        // Fix wrongly set parentheses in RTL languages
+        if (JFactory::getLanguage()->isRtl())
+        {
+            foreach ($languages as &$language)
+            {
+                $language['text'] = $language['text'] . '&#x200E;';
+            }
+        }
+
         array_unshift($languages, JHtml::_('select.option', '', JText::_('JDEFAULTLANGUAGE')));
 
         return JHtml::_('select.genericlist', $languages, 'lang', ' class="advancedSelect"', 'value', 'text', null);
@@ -53,7 +68,7 @@ class UsersViewLogin extends JViewLegacy
      *
      * @return  string
      */
-    public static function getReturnURI()
+    public static function getReturnUri()
     {
         $uri    = JUri::getInstance();
         $return = 'index.php' . $uri->toString(array('query'));

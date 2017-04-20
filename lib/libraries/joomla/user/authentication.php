@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  User
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -12,9 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Authentication class, provides an interface for the Joomla authentication system
  *
- * @package     Joomla.Platform
- * @subpackage  User
- * @since       11.1
+ * @since  11.1
  */
 class JAuthentication extends JObject
 {
@@ -292,6 +290,7 @@ class JAuthentication extends JObject
 				{
 					$response->type = isset($plugin->_name) ? $plugin->_name : $plugin->name;
 				}
+
 				break;
 			}
 		}
@@ -340,9 +339,7 @@ class JAuthentication extends JObject
 /**
  * Authentication response class, provides an object for storing user and error details
  *
- * @package     Joomla.Platform
- * @subpackage  User
- * @since       11.1
+ * @since  11.1
  */
 class JAuthenticationResponse
 {
@@ -399,7 +396,6 @@ class JAuthenticationResponse
 	 *
 	 * @var    string
 	 * @since  11.1
-	 *
 	 */
 	public $fullname = '';
 
@@ -409,7 +405,7 @@ class JAuthenticationResponse
 	 * value MUST always be 10. If the End User user does not want to reveal any particular
 	 * component of this value, it MUST be set to zero.
 	 *
-	 * For instance, if a End User wants to specify that his date of birth is in 1980, but
+	 * For instance, if an End User wants to specify that their date of birth is in 1980, but
 	 * not the month or day, the value returned SHALL be "1980-00-00".
 	 *
 	 * @var    string

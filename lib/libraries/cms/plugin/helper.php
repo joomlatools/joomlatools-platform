@@ -3,7 +3,7 @@
  * @package     Joomla.Libraries
  * @subpackage  Plugin
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -12,9 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Plugin helper class
  *
- * @package     Joomla.Libraries
- * @subpackage  Plugin
- * @since       1.5
+ * @since  1.5
  */
 abstract class JPluginHelper
 {
@@ -75,7 +73,7 @@ abstract class JPluginHelper
 	 * Get the plugin data of a specific type if no specific plugin is specified
 	 * otherwise only the specific plugin data is returned.
 	 *
-	 * @param   string  $type    The plugin type, relates to the sub-directory in the plugins directory.
+	 * @param   string  $type    The plugin type, relates to the subdirectory in the plugins directory.
 	 * @param   string  $plugin  The plugin name.
 	 *
 	 * @return  mixed  An array of plugin data objects, or a plugin data object.
@@ -118,7 +116,7 @@ abstract class JPluginHelper
 	/**
 	 * Checks if a plugin is enabled.
 	 *
-	 * @param   string  $type    The plugin type, relates to the sub-directory in the plugins directory.
+	 * @param   string  $type    The plugin type, relates to the subdirectory in the plugins directory.
 	 * @param   string  $plugin  The plugin name.
 	 *
 	 * @return  boolean
@@ -129,14 +127,14 @@ abstract class JPluginHelper
 	{
 		$result = static::getPlugin($type, $plugin);
 
-		return (!empty($result));
+		return !empty($result);
 	}
 
 	/**
 	 * Loads all the plugin files for a particular type if no specific plugin is specified
 	 * otherwise only the specific plugin is loaded.
 	 *
-	 * @param   string            $type        The plugin type, relates to the sub-directory in the plugins directory.
+	 * @param   string            $type        The plugin type, relates to the subdirectory in the plugins directory.
 	 * @param   string            $plugin      The plugin name.
 	 * @param   boolean           $autocreate  Autocreate the plugin.
 	 * @param   JEventDispatcher  $dispatcher  Optionally allows the plugin to use a different dispatcher.
@@ -303,9 +301,9 @@ abstract class JPluginHelper
 			$query = $db->getQuery(true)
 				->select('folder AS type, element AS name, params')
 				->from('#__extensions')
-				->where('enabled >= 1')
+				->where('enabled = 1')
 				->where('type =' . $db->quote('plugin'))
-				->where('state >= 0')
+				->where('state IN (0,1)')
 				->where('access IN (' . $levels . ')')
 				->order('ordering');
 

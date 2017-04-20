@@ -3,19 +3,19 @@
  * @package     Joomla.Libraries
  * @subpackage  Component
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
 
+use Joomla\Registry\Registry;
+
 /**
  * Component helper class
  *
- * @package     Joomla.Libraries
- * @subpackage  Component
- * @since       1.5
+ * @since  1.5
  */
 class JComponentHelper
 {
@@ -33,7 +33,7 @@ class JComponentHelper
 	 * @param   string   $option  The component option.
 	 * @param   boolean  $strict  If set and the component does not exist, the enabled attribute will be set to false.
 	 *
-	 * @return  object   An object with the information for the component.
+	 * @return  stdClass   An object with the information for the component.
 	 *
 	 * @since   1.5
 	 */
@@ -49,12 +49,19 @@ class JComponentHelper
 			{
 				$result = new stdClass;
 				$result->enabled = $strict ? false : true;
-				$result->params = new JRegistry;
+				$result->params = new Registry;
 			}
 		}
 		else
 		{
 			$result = static::$components[$option];
+		}
+
+		if (is_string($result->params))
+		{
+			$temp = new Registry;
+			$temp->loadString(static::$components[$option]->params);
+			static::$components[$option]->params = $temp;
 		}
 
 		return $result;
@@ -77,14 +84,36 @@ class JComponentHelper
 	}
 
 	/**
+	 * Checks if a component is installed
+	 *
+	 * @param   string  $option  The component option.
+	 *
+	 * @return  integer
+	 *
+	 * @since   3.4
+	 */
+	public static function isInstalled($option)
+	{
+		$db = JFactory::getDbo();
+
+		return (int) $db->setQuery(
+			$db->getQuery(true)
+				->select('COUNT(' . $db->quoteName('extension_id') . ')')
+				->from($db->quoteName('#__extensions'))
+				->where($db->quoteName('element') . ' = ' . $db->quote($option))
+				->where($db->quoteName('type') . ' = ' . $db->quote('component'))
+		)->loadResult();
+	}
+
+	/**
 	 * Gets the parameter object for the component
 	 *
 	 * @param   string   $option  The option for the component.
 	 * @param   boolean  $strict  If set and the component does not exist, false will be returned
 	 *
-	 * @return  JRegistry  A JRegistry object.
+	 * @return  Registry  A Registry object.
 	 *
-	 * @see     JRegistry
+	 * @see     Registry
 	 * @since   1.5
 	 */
 	public static function getParams($option, $strict = false)
@@ -106,7 +135,7 @@ class JComponentHelper
 	public static function filterText($text)
 	{
         $text = JFilterInput::getInstance(array(), array(), 1, 1, 1)->clean($text, 'html');
-		return $text;
+        return $text;
 	}
 
 	/**
@@ -115,7 +144,7 @@ class JComponentHelper
 	 * @param   string  $option  The component option.
 	 * @param   array   $params  The component parameters
 	 *
-	 * @return  object
+	 * @return  string
 	 *
 	 * @since   1.5
 	 * @throws  Exception
@@ -135,6 +164,11 @@ class JComponentHelper
 			throw new Exception(JText::_('JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND'), 404);
 		}
 
+		if (JDEBUG)
+		{
+			JProfiler::getInstance('Application')->mark('beforeRenderComponent ' . $option);
+		}
+
 		// Record the scope
 		$scope = $app->scope;
 
@@ -146,9 +180,20 @@ class JComponentHelper
 		$file = substr($option, 4);
 
 		// Define component path.
-		define('JPATH_COMPONENT', JPATH_BASE . '/components/' . $option);
-		define('JPATH_COMPONENT_SITE', JPATH_SITE . '/components/' . $option);
-		define('JPATH_COMPONENT_ADMINISTRATOR', JPATH_ADMINISTRATOR . '/components/' . $option);
+		if (!defined('JPATH_COMPONENT'))
+		{
+			define('JPATH_COMPONENT', JPATH_BASE . '/components/' . $option);
+		}
+
+		if (!defined('JPATH_COMPONENT_SITE'))
+		{
+			define('JPATH_COMPONENT_SITE', JPATH_SITE . '/components/' . $option);
+		}
+
+		if (!defined('JPATH_COMPONENT_ADMINISTRATOR'))
+		{
+			define('JPATH_COMPONENT_ADMINISTRATOR', JPATH_ADMINISTRATOR . '/components/' . $option);
+		}
 
 		$path = JPATH_COMPONENT . '/' . $file . '.php';
 
@@ -169,6 +214,11 @@ class JComponentHelper
 
 		// Revert the scope
 		$app->scope = $scope;
+
+		if (JDEBUG)
+		{
+			JProfiler::getInstance('Application')->mark('afterRenderComponent ' . $option);
+		}
 
 		return $contents;
 	}
@@ -219,22 +269,49 @@ class JComponentHelper
 	{
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
-			->select('extension_id AS id, element AS "option", params, enabled')
-			->from('#__extensions')
-			->where($db->quoteName('type') . ' = ' . $db->quote('component'))
-			->where($db->quoteName('element') . ' = ' . $db->quote($option));
+			->select($db->quoteName(array('extension_id', 'element', 'params', 'enabled'), array('id', 'option', null, null)))
+			->from($db->quoteName('#__extensions'))
+			->where($db->quoteName('type') . ' = ' . $db->quote('component'));
 		$db->setQuery($query);
 
 		$cache = JFactory::getCache('_system', 'callback');
 
 		try
 		{
-			static::$components[$option] = $cache->get(array($db, 'loadObject'), null, $option, false);
+			$components = $cache->get(array($db, 'loadObjectList'), array('option'), $option, false);
+
+			/**
+			 * Verify $components is an array, some cache handlers return an object even though
+			 * the original was a single object array.
+			 */
+			if (!is_array($components))
+			{
+				static::$components[$option] = $components;
+			}
+			else
+			{
+				static::$components = $components;
+			}
 		}
 		catch (RuntimeException $e)
 		{
-			// Fatal error.
-			JLog::add(JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $e->getMessage()), JLog::WARNING, 'jerror');
+			/*
+			 * Fatal error
+			 *
+			 * It is possible for this error to be reached before the global JLanguage instance has been loaded so we check for its presence
+			 * before logging the error to ensure a human friendly message is always given
+			 */
+
+			if (JFactory::$language)
+			{
+				$msg = JText::sprintf('JLIB_APPLICATION_ERROR_COMPONENT_NOT_LOADING', $option, $e->getMessage());
+			}
+			else
+			{
+				$msg = sprintf('Error loading component: %1$s, %2$s', $option, $e->getMessage());
+			}
+
+			JLog::add($msg, JLog::WARNING, 'jerror');
 
 			return false;
 		}
@@ -244,14 +321,23 @@ class JComponentHelper
 			return false;
 		}
 
-		// Convert the params to an object.
-		if (is_string(static::$components[$option]->params))
+		return true;
+	}
+
+	/**
+	 * Get installed components
+	 *
+	 * @return  array  The components property
+	 *
+	 * @since   3.6.3
+	 */
+	public static function getComponents()
+	{
+		if (empty(static::$components))
 		{
-			$temp = new JRegistry;
-			$temp->loadString(static::$components[$option]->params);
-			static::$components[$option]->params = $temp;
+			static::load('*');
 		}
 
-		return true;
+		return static::$components;
 	}
 }

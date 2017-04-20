@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,35 +12,62 @@ defined('_JEXEC') or die;
 /**
  * The HTML Menus Menu Item View.
  *
- * @package     Joomla.Administrator
- * @subpackage  com_menus
- * @since       1.6
+ * @since  1.6
  */
 class MenusViewItem extends JViewLegacy
 {
+	/**
+	 * @var  JForm
+	 */
 	protected $form;
 
+	/**
+	 * @var  object
+	 */
 	protected $item;
 
+	/**
+	 * @var  mixed
+	 */
 	protected $modules;
 
+	/**
+	 * @var  JObject
+	 */
 	protected $state;
 
 	/**
 	 * Display the view
+	 *
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
 	 */
 	public function display($tpl = null)
 	{
-		$this->form		= $this->get('Form');
-		$this->item		= $this->get('Item');
-		$this->modules	= $this->get('Modules');
-		$this->state	= $this->get('State');
-		$this->canDo	= JHelperContent::getActions('com_menus');
+		$user = JFactory::getUser();
+
+		$this->form    = $this->get('Form');
+		$this->item    = $this->get('Item');
+		$this->modules = $this->get('Modules');
+		$this->levels  = $this->get('ViewLevels');
+		$this->state   = $this->get('State');
+		$this->canDo   = JHelperContent::getActions('com_menus', 'menu', (int) $this->state->get('item.menutypeid'));
+
+		// Check if we're allowed to edit this item
+		// No need to check for create, because then the moduletype select is empty
+		if (!empty($this->item->id) && !$this->canDo->get('core.edit'))
+		{
+			throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'), 403);
+		}
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			throw new Exception(implode("\n", $errors));
+
 			return false;
 		}
 
@@ -50,6 +77,8 @@ class MenusViewItem extends JViewLegacy
 
 	/**
 	 * Add the page title and toolbar.
+	 *
+	 * @return  void
 	 *
 	 * @since   1.6
 	 */
@@ -72,6 +101,7 @@ class MenusViewItem extends JViewLegacy
 			{
 				JToolbarHelper::apply('item.apply');
 			}
+
 			JToolbarHelper::save('item.save');
 		}
 
@@ -109,16 +139,18 @@ class MenusViewItem extends JViewLegacy
 		$lang = JFactory::getLanguage();
 
 		$help = $this->get('Help');
+
 		if ($lang->hasKey($help->url))
 		{
 			$debug = $lang->setDebug(false);
-			$url = JText::_($help->url);
+			$url   = JText::_($help->url);
 			$lang->setDebug($debug);
 		}
 		else
 		{
 			$url = $help->url;
 		}
+
 		JToolbarHelper::help($help->key, $help->local, $url);
 	}
 }

@@ -18,6 +18,7 @@ require_once JPATH_ROOT . '/app/bootstrap.php';
 //Legacy requires
 require_once JPATH_BASE . '/helper.php';
 require_once JPATH_BASE . '/toolbar.php';
+require_once JPATH_BASE . '/subtoolbar.php';
 
 // Execute the application.
 JFactory::getApplication('administrator')->execute();

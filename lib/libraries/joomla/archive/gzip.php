@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Archive
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -15,14 +15,12 @@ jimport('joomla.filesystem.file');
  * Gzip format adapter for the JArchive class
  *
  * This class is inspired from and draws heavily in code and concept from the Compress package of
- * The Horde Project <http://www.horde.org>
+ * The Horde Project <https://www.horde.org>
  *
  * @contributor  Michael Slusarz <slusarz@horde.org>
  * @contributor  Michael Cochrane <mike@graftonhall.co.nz>
  *
- * @package     Joomla.Platform
- * @subpackage  Archive
- * @since       11.1
+ * @since  11.1
  */
 class JArchiveGzip implements JArchiveExtractable
 {
@@ -54,78 +52,91 @@ class JArchiveGzip implements JArchiveExtractable
 	 * @since   11.1
 	 * @throws  RuntimeException
 	 */
-	public function extract($archive, $destination, array $options = array ())
+	public function extract($archive, $destination, array $options = array())
 	{
 		$this->_data = null;
 
 		if (!extension_loaded('zlib'))
 		{
-            throw new RuntimeException('The zlib extension is not available.');
+			throw new RuntimeException('The zlib extension is not available.');
 		}
 
-		if (!isset($options['use_streams']) || $options['use_streams'] == false)
+		if (isset($options['use_streams']) && $options['use_streams'] != false)
 		{
-			$this->_data = file_get_contents($archive);
-
-			if (!$this->_data)
-			{
-                throw new RuntimeException('Unable to read archive');
-			}
-
-			$position = $this->_getFilePosition();
-			$buffer = gzinflate(substr($this->_data, $position, strlen($this->_data) - $position));
-
-			if (empty($buffer))
-			{
-                throw new RuntimeException('Unable to decompress data');
-			}
-
-			if (JFile::write($destination, $buffer) === false)
-			{
-                throw new RuntimeException('Unable to write archive');
-			}
+			return $this->extractStream($archive, $destination, $options);
 		}
-		else
+
+		$this->_data = file_get_contents($archive);
+
+		if (!$this->_data)
 		{
-			// New style! streams!
-			$input = JFactory::getStream();
+			throw new RuntimeException('Unable to read archive');
+		}
 
-			// Use gz
-			$input->set('processingmethod', 'gz');
+		$position = $this->_getFilePosition();
+		$buffer = gzinflate(substr($this->_data, $position, strlen($this->_data) - $position));
 
-			if (!$input->open($archive))
-			{
-                throw new RuntimeException('Unable to read archive (gz)');
-			}
+		if (empty($buffer))
+		{
+			throw new RuntimeException('Unable to decompress data');
+		}
 
-			$output = JFactory::getStream();
+		if (JFile::write($destination, $buffer) === false)
+		{
+			throw new RuntimeException('Unable to write archive');
+		}
 
-			if (!$output->open($destination, 'w'))
+		return true;
+	}
+
+	/**
+	 * Method to extract archive using stream objects
+	 *
+	 * @param   string  $archive      Path to ZIP archive to extract
+	 * @param   string  $destination  Path to extract archive to
+	 * @param   array   $options      Extraction options [unused]
+	 *
+	 * @return  boolean  True if successful
+	 */
+	protected function extractStream($archive, $destination, $options = array())
+	{
+		// New style! streams!
+		$input = JFactory::getStream();
+
+		// Use gz
+		$input->set('processingmethod', 'gz');
+
+		if (!$input->open($archive))
+		{
+			throw new RuntimeException('Unable to read archive (gz)');
+		}
+
+		$output = JFactory::getStream();
+
+		if (!$output->open($destination, 'w'))
+		{
+			$input->close();
+
+			throw new RuntimeException('Unable to write archive (gz)');
+		}
+
+		do
+		{
+			$this->_data = $input->read($input->get('chunksize', 8196));
+
+			if ($this->_data && !$output->write($this->_data))
 			{
 				$input->close();
 
-                throw new RuntimeException('Unable to write archive (gz)');
+				throw new RuntimeException('Unable to write file (gz)');
 			}
-
-			do
-			{
-				$this->_data = $input->read($input->get('chunksize', 8196));
-
-				if ($this->_data)
-				{
-					if (!$output->write($this->_data))
-					{
-						$input->close();
-
-                        throw new RuntimeException('Unable to write file (gz)');
-					}
-				}
-			}
-			while ($this->_data);
-
-			$output->close();
-			$input->close();
 		}
+
+		while ($this->_data);
+
+		$output->close();
+		$input->close();
+
 		return true;
 	}
 
@@ -157,7 +168,7 @@ class JArchiveGzip implements JArchiveExtractable
 
 		if (!$info)
 		{
-            throw new RuntimeException('Unable to decompress data.');
+			throw new RuntimeException('Unable to decompress data.');
 		}
 
 		$position += 10;

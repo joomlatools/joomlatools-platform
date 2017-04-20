@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `assets` (
   UNIQUE KEY `idx_asset_name` (`name`),
   KEY `idx_lft_rgt` (`lft`,`rgt`),
   KEY `idx_parent_id` (`parent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 
 -- --------------------------------------------------------
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `extensions` (
   KEY `element_clientid` (`element`,`client_id`),
   KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
   KEY `extension` (`type`,`element`,`folder`,`client_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=10000;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=10000;
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,8 @@ CREATE TABLE IF NOT EXISTS `extensions` (
 
 CREATE TABLE IF NOT EXISTS `languages` (
   `lang_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `lang_code` char(7) NOT NULL,
+  `asset_id` int(11) NOT NULL,
+  `lang_code` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `title` varchar(50) NOT NULL,
   `title_native` varchar(50) NOT NULL,
   `sef` varchar(50) NOT NULL,
@@ -80,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `languages` (
   UNIQUE KEY `idx_langcode` (`lang_code`),
   KEY `idx_access` (`access`),
   KEY `idx_ordering` (`ordering`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `languages_associations` (
   `key` char(32) NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
   PRIMARY KEY (`context`,`id`),
   KEY `idx_key` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 
 -- --------------------------------------------------------
@@ -107,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to menu_types.menutype',
   `title` varchar(255) NOT NULL COMMENT 'The display title of the menu item.',
-  `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'The SEF alias of the menu item.',
+  `alias` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT 'The SEF alias of the menu item.',
   `note` varchar(255) NOT NULL DEFAULT '',
   `path` varchar(1024) NOT NULL COMMENT 'The computed path of the menu item based on the alias field.',
   `link` varchar(1024) NOT NULL COMMENT 'The actually link the menu item refers to.',
@@ -129,14 +130,14 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `language` char(7) NOT NULL DEFAULT '',
   `client_id` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_client_id_parent_id_alias_language` (`client_id`,`parent_id`,`alias`,`language`),
+  UNIQUE KEY `idx_client_id_parent_id_alias_language` (`client_id`,`parent_id`,`alias`(100),`language`),
   KEY `idx_componentid` (`component_id`,`menutype`,`published`,`access`),
   KEY `idx_menutype` (`menutype`),
   KEY `idx_left_right` (`lft`,`rgt`),
-  KEY `idx_alias` (`alias`),
-  KEY `idx_path` (`path`(255)),
+  KEY `idx_alias` (`alias`(100)),
+  KEY `idx_path` (`path`(100)),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=102;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=102;
 
 -- --------------------------------------------------------
 
@@ -146,12 +147,13 @@ CREATE TABLE IF NOT EXISTS `menu` (
 
 CREATE TABLE IF NOT EXISTS `menu_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `asset_id` int(11) NOT NULL,
   `menutype` varchar(24) NOT NULL,
   `title` varchar(48) NOT NULL,
   `description` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_menutype` (`menutype`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -194,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
   PRIMARY KEY (`id`),
   KEY `published` (`published`,`access`),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -206,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `modules_menu` (
   `moduleid` int(11) NOT NULL DEFAULT 0,
   `menuid` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`moduleid`,`menuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 
 -- --------------------------------------------------------
@@ -219,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `schemas` (
   `extension_id` int(11) NOT NULL,
   `version_id` varchar(20) NOT NULL,
   PRIMARY KEY (`extension_id`,`version_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 
 -- --------------------------------------------------------
@@ -238,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `templates` (
   PRIMARY KEY (`id`),
   KEY `idx_template` (`template`),
   KEY `idx_home` (`home`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -248,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `templates` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(400) NOT NULL DEFAULT '',
   `username` varchar(150) NOT NULL DEFAULT '',
   `email` varchar(100) NOT NULL DEFAULT '',
   `password` varchar(100) NOT NULL DEFAULT '',
@@ -262,11 +264,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `resetCount` int(11) NOT NULL DEFAULT 0 COMMENT 'Count of password resets since lastResetTime',
   `requireReset` tinyint(4) NOT NULL DEFAULT 0 COMMENT 'Require user to reset password on next login',
   PRIMARY KEY (`id`),
-  KEY `idx_name` (`name`),
+  KEY `idx_name` (`name`(100)),
   KEY `idx_block` (`block`),
   KEY `username` (`username`),
   KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 
 -- --------------------------------------------------------
@@ -287,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   KEY `idx_usergroup_title_lookup` (`title`),
   KEY `idx_usergroup_adjacency_lookup` (`parent_id`),
   KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -299,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `users_groups_users` (
   `user_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Foreign Key to users.id',
   `group_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Foreign Key to usergroups.id',
   PRIMARY KEY (`user_id`,`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 
 -- --------------------------------------------------------
@@ -310,9 +312,9 @@ CREATE TABLE IF NOT EXISTS `users_groups_users` (
 
 CREATE TABLE IF NOT EXISTS `users_keys` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) NOT NULL,
+  `user_id` varchar(150) NOT NULL,
   `token` varchar(255) NOT NULL,
-  `series` varchar(255) NOT NULL,
+  `series` varchar(191) NOT NULL,
   `invalid` tinyint(4) NOT NULL,
   `time` varchar(200) NOT NULL,
   `uastring` varchar(255) NOT NULL,
@@ -321,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `users_keys` (
   UNIQUE KEY `series_2` (`series`),
   UNIQUE KEY `series_3` (`series`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -350,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `users_roles` (
   `rules` varchar(5120) NOT NULL COMMENT 'JSON encoded access control.',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_assetgroup_title_lookup` (`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -364,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `users_roles` (
 --
 
 CREATE TABLE IF NOT EXISTS `users_sessions` (
-  `session_id` varchar(200) NOT NULL DEFAULT '',
+  `session_id` varchar(191) NOT NULL DEFAULT '',
   `client_id` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `guest` tinyint(4) unsigned DEFAULT 1,
   `time` varchar(14) DEFAULT '',
@@ -374,7 +376,7 @@ CREATE TABLE IF NOT EXISTS `users_sessions` (
   PRIMARY KEY (`session_id`),
   KEY `userid` (`userid`),
   KEY `time` (`time`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 
 -- --------------------------------------------------------

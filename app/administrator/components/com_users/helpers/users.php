@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Users component helper.
  *
- * @package     Joomla.Administrator
- * @subpackage  com_users
- * @since       1.6
+ * @since  1.6
  */
 class UsersHelper
 {
@@ -120,33 +118,12 @@ class UsersHelper
 	 */
 	public static function getGroups()
 	{
-		$db = JFactory::getDbo();
-		$query = $db->getQuery(true)
-			->select('a.id AS value')
-			->select('a.title AS text')
-			->select('COUNT(DISTINCT b.id) AS level')
-			->from('#__users_groups as a')
-			->join('LEFT', '#__users_groups  AS b ON a.lft > b.lft AND a.rgt < b.rgt')
-			->group('a.id, a.title, a.lft, a.rgt')
-			->order('a.lft ASC');
-		$db->setQuery($query);
-
-		try
-		{
-			$options = $db->loadObjectList();
-		}
-		catch (RuntimeException $e)
-		{
-			JFactory::getApplication()->enqueueMessage(
-				$e->getMessage(), 'notice'
-			);
-
-			return null;
-		}
+		$options = JHelperUsergroups::getInstance()->getAll();
 
 		foreach ($options as &$option)
 		{
-			$option->text = str_repeat('- ', $option->level).$option->text;
+			$option->value = $option->id;
+			$option->text = str_repeat('- ', $option->level) . $option->title;
 		}
 
 		return $options;
@@ -171,6 +148,7 @@ class UsersHelper
 			JHtml::_('select.option', 'past_year', JText::_('COM_USERS_OPTION_RANGE_PAST_YEAR')),
 			JHtml::_('select.option', 'post_year', JText::_('COM_USERS_OPTION_RANGE_POST_YEAR')),
 		);
+
 		return $options;
 	}
 
@@ -186,5 +164,38 @@ class UsersHelper
 	public static function getTwoFactorMethods()
 	{
 		return array();
+	}
+
+	/**
+	 * Get a list of the User Groups for Viewing Access Levels
+	 *
+	 * @param   string  $rules  User Groups in JSON format
+	 *
+	 * @return  string  $groups  Comma separated list of User Groups
+	 *
+	 * @since   3.6
+	 */
+	public static function getVisibleByGroups($rules)
+	{
+		$rules = json_decode($rules);
+
+		if (!$rules)
+		{
+			return false;
+		}
+
+		$rules = implode(',', $rules);
+
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true)
+			->select('a.title AS text')
+			->from('#__users_groups as a')
+			->where('a.id IN (' . $rules . ')');
+		$db->setQuery($query);
+
+		$groups = $db->loadColumn();
+		$groups = implode(', ', $groups);
+
+		return $groups;
 	}
 }

@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * User profile controller class.
  *
- * @package     Joomla.Administrator
- * @subpackage  com_users
- * @since       1.6
+ * @since  1.6
  */
 class UsersControllerProfile extends JControllerForm
 {
@@ -65,7 +63,7 @@ class UsersControllerProfile extends JControllerForm
 	 *
 	 * @param   string  $key  The name of the primary key of the URL variable.
 	 *
-	 * @return  Boolean  True if access level checks pass, false otherwise.
+	 * @return  boolean  True if access level checks pass, false otherwise.
 	 *
 	 * @since   1.6
 	 */

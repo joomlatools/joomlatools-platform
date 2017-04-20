@@ -3,7 +3,7 @@
  * @package     Joomla.Libraries
  * @subpackage  Application
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
@@ -13,9 +13,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Application helper functions
  *
- * @package     Joomla.Libraries
- * @subpackage  Application
- * @since       1.5
+ * @since  1.5
  */
 class JApplicationHelper
 {
@@ -25,7 +23,7 @@ class JApplicationHelper
 	 * @var    array
 	 * @since  1.6
 	 */
-	protected static $_clients = null;
+	protected static $_clients = array();
 
 	/**
 	 * Return the name of the request component [main component]
@@ -73,17 +71,18 @@ class JApplicationHelper
 	}
 
 	/**
-	 * This method transliterates a string into an URL
+	 * This method transliterates a string into a URL
 	 * safe string or returns a URL safe UTF-8 string
 	 * based on the global configuration
 	 *
-	 * @param   string  $string  String to process
+	 * @param   string  $string    String to process
+	 * @param   string  $language  Language to transliterate to if unicode slugs are disabled
 	 *
 	 * @return  string  Processed string
 	 *
 	 * @since   3.2
 	 */
-	public static function stringURLSafe($string)
+	public static function stringURLSafe($string, $language = '')
 	{
 		if (JFactory::getConfig()->get('unicodeslugs') == 1)
 		{
@@ -91,7 +90,12 @@ class JApplicationHelper
 		}
 		else
 		{
-			$output = JFilterOutput::stringURLSafe($string);
+			if ($language == '*' || $language == '')
+			{
+				$languageParams = JComponentHelper::getParams('com_languages');
+				$language = $languageParams->get('site');
+			}
+			$output = JFilterOutput::stringURLSafe($string, $language);
 		}
 
 		return $output;
@@ -113,8 +117,8 @@ class JApplicationHelper
 	 */
 	public static function getClientInfo($id = null, $byName = false)
 	{
-		// Only create the array if it does not exist
-		if (self::$_clients === null)
+		// Only create the array if it is empty
+		if (empty(self::$_clients))
 		{
 			$obj = new stdClass;
 
@@ -158,7 +162,7 @@ class JApplicationHelper
 			}
 		}
 
-		return null;
+		return;
 	}
 
 	/**
@@ -228,6 +232,12 @@ class JApplicationHelper
 	public static function parseXMLLangMetaFile($path)
 	{
 		JLog::add('JApplicationHelper::parseXMLLangMetaFile is deprecated. Use JInstaller::parseXMLInstallFile instead.', JLog::WARNING, 'deprecated');
+
+		// Check if meta file exists.
+		if (!file_exists($path))
+		{
+			return false;
+		}
 
 		// Read the file to see if it's a valid component XML file
 		$xml = simplexml_load_file($path);

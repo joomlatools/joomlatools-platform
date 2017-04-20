@@ -16,8 +16,6 @@ use \Joomla\String\StringHelper;
  * Wraps the phputf8 library
  * All functions assume the validity of utf-8 strings.
  *
- * @package     Joomla.Platform
- * @subpackage  String
  * @since       11.1
  * @deprecated  4.0  Use {@link \Joomla\String\StringHelper} instead unless otherwise noted.
  */
@@ -37,6 +35,7 @@ abstract class JString extends StringHelper
     public static function parse_url($url)
     {
         JLog::add('JString::parse_url has been deprecated. Use \\Joomla\\Uri\\UriHelper::parse_url.', JLog::WARNING, 'deprecated');
+
         return \Joomla\Uri\UriHelper::parse_url($url);
     }
 }

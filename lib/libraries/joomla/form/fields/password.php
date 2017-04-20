@@ -3,7 +3,7 @@
  * @package     Joomla.Platform
  * @subpackage  Form
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -13,11 +13,9 @@ defined('JPATH_PLATFORM') or die;
  * Form Field class for the Joomla Platform.
  * Text field for passwords
  *
- * @package     Joomla.Platform
- * @subpackage  Form
- * @link        http://www.w3.org/TR/html-markup/input.password.html#input.password
- * @note        Two password fields may be validated as matching using JFormRuleEquals
- * @since       11.1
+ * @link   http://www.w3.org/TR/html-markup/input.password.html#input.password
+ * @note   Two password fields may be validated as matching using JFormRuleEquals
+ * @since  11.1
  */
 class JFormFieldPassword extends JFormField
 {
@@ -97,7 +95,7 @@ class JFormFieldPassword extends JFormField
 				break;
 
 			case 'meter':
-				$this->$meter = ($value === 'true' || $value === $name || $value === '1');
+				$this->meter = ($value === 'true' || $value === $name || $value === '1');
 				break;
 
 			default:
@@ -108,7 +106,7 @@ class JFormFieldPassword extends JFormField
 	/**
 	 * Method to attach a JForm object to the field.
 	 *
-	 * @param   SimpleXMLElement  $element  The SimpleXMLElement object representing the <field /> tag for the form field object.
+	 * @param   SimpleXMLElement  $element  The SimpleXMLElement object representing the `<field>` tag for the form field object.
 	 * @param   mixed             $value    The form field value to validate.
 	 * @param   string            $group    The field name group control value. This acts as as an array container for the field.
 	 *                                      For example if the field has name="foo" and the group value is set to "bar" then the
@@ -154,7 +152,7 @@ class JFormFieldPassword extends JFormField
 		$readonly     = $this->readonly ? ' readonly' : '';
 		$disabled     = $this->disabled ? ' disabled' : '';
 		$required     = $this->required ? ' required aria-required="true"' : '';
-		$hint         = $hint ? ' placeholder="' . $hint . '"' : '';
+		$hint         = strlen($hint) ? ' placeholder="' . $hint . '"' : '';
 		$autocomplete = !$this->autocomplete ? ' autocomplete="off"' : '';
 		$autofocus    = $this->autofocus ? ' autofocus' : '';
 

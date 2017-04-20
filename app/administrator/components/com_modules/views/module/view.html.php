@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_modules
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * View to edit a module.
  *
- * @package     Joomla.Administrator
- * @subpackage  com_modules
- * @since       1.6
+ * @since  1.6
  */
 class ModulesViewModule extends JViewLegacy
 {
@@ -26,18 +24,23 @@ class ModulesViewModule extends JViewLegacy
 
 	/**
 	 * Display the view
+	 *
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
+	 * @return  void
 	 */
 	public function display($tpl = null)
 	{
-		$this->form		= $this->get('Form');
-		$this->item		= $this->get('Item');
-		$this->state	= $this->get('State');
-		$this->canDo	= JHelperContent::getActions('com_modules', 'module', $this->item->id);
+		$this->form  = $this->get('Form');
+		$this->item  = $this->get('Item');
+		$this->state = $this->get('State');
+		$this->canDo = JHelperContent::getActions('com_modules', 'module', $this->item->id);
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			throw new Exception(implode("\n", $errors));
+
 			return false;
 		}
 
@@ -47,6 +50,8 @@ class ModulesViewModule extends JViewLegacy
 
 	/**
 	 * Add the page title and toolbar.
+	 *
+	 * @return  void
 	 *
 	 * @since   1.6
 	 */
@@ -101,6 +106,7 @@ class ModulesViewModule extends JViewLegacy
 		$lang = JFactory::getLanguage();
 
 		$help = $this->get('Help');
+
 		if ($lang->hasKey($help->url))
 		{
 			$debug = $lang->setDebug(false);

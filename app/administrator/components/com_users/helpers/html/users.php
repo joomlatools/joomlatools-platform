@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 /**
  * Extended Utility class for the Users component.
  *
- * @package     Joomla.Administrator
- * @subpackage  com_users
- * @since       2.5
+ * @since  2.5
  */
 class JHtmlUsers
 {
@@ -43,7 +41,6 @@ class JHtmlUsers
 		return '<img src="' . JUri::root() . $src . '" alt="" />';
 	}
 
-
 	/**
 	 * Displays a note icon.
 	 *
@@ -55,6 +52,21 @@ class JHtmlUsers
 	 * @since   2.5
 	 */
 	public static function notes($count, $userId)
+	{
+
+	}
+
+	/**
+	 * Renders the modal html.
+	 *
+	 * @param   integer  $count   The number of notes for the user
+	 * @param   integer  $userId  The user ID
+	 *
+	 * @return  string   The html for the rendered modal
+	 *
+	 * @since   3.4.1
+	*/
+	public static function notesModal($count, $userId)
 	{
 
 	}
@@ -76,22 +88,22 @@ class JHtmlUsers
 		{
 			$states = array(
 				1 => array(
-					'task'				=> 'unblock',
-					'text'				=> '',
-					'active_title'		=> 'COM_USERS_USER_FIELD_BLOCK_DESC',
-					'inactive_title'	=> '',
-					'tip'				=> true,
-					'active_class'		=> 'unpublish',
-					'inactive_class'	=> 'unpublish'
+					'task'           => 'unblock',
+					'text'           => '',
+					'active_title'   => 'COM_USERS_USER_FIELD_BLOCK_DESC',
+					'inactive_title' => '',
+					'tip'            => true,
+					'active_class'   => 'unpublish',
+					'inactive_class' => 'unpublish',
 				),
 				0 => array(
-					'task'				=> 'block',
-					'text'				=> '',
-					'active_title'		=> '',
-					'inactive_title'	=> 'COM_USERS_USERS_ERROR_CANNOT_BLOCK_SELF',
-					'tip'				=> true,
-					'active_class'		=> 'publish',
-					'inactive_class'	=> 'publish'
+					'task'           => 'block',
+					'text'           => '',
+					'active_title'   => '',
+					'inactive_title' => 'COM_USERS_USERS_ERROR_CANNOT_BLOCK_SELF',
+					'tip'            => true,
+					'active_class'   => 'publish',
+					'inactive_class' => 'publish',
 				)
 			);
 		}
@@ -99,22 +111,22 @@ class JHtmlUsers
 		{
 			$states = array(
 				1 => array(
-					'task'				=> 'unblock',
-					'text'				=> '',
-					'active_title'		=> 'COM_USERS_TOOLBAR_UNBLOCK',
-					'inactive_title'	=> '',
-					'tip'				=> true,
-					'active_class'		=> 'unpublish',
-					'inactive_class'	=> 'unpublish'
+					'task'           => 'unblock',
+					'text'           => '',
+					'active_title'   => 'COM_USERS_TOOLBAR_UNBLOCK',
+					'inactive_title' => '',
+					'tip'            => true,
+					'active_class'   => 'unpublish',
+					'inactive_class' => 'unpublish',
 				),
 				0 => array(
-					'task'				=> 'block',
-					'text'				=> '',
-					'active_title'		=> 'COM_USERS_USER_FIELD_BLOCK_DESC',
-					'inactive_title'	=> '',
-					'tip'				=> true,
-					'active_class'		=> 'publish',
-					'inactive_class'	=> 'publish'
+					'task'           => 'block',
+					'text'           => '',
+					'active_title'   => 'COM_USERS_USER_FIELD_BLOCK_DESC',
+					'inactive_title' => '',
+					'tip'            => true,
+					'active_class'   => 'publish',
+					'inactive_class' => 'publish',
 				)
 			);
 		}
@@ -132,25 +144,26 @@ class JHtmlUsers
 	public static function activateStates()
 	{
 		$states = array(
-			1	=> array(
-				'task'				=> 'activate',
-				'text'				=> '',
-				'active_title'		=> 'COM_USERS_TOOLBAR_ACTIVATE',
-				'inactive_title'	=> '',
-				'tip'				=> true,
-				'active_class'		=> 'unpublish',
-				'inactive_class'	=> 'unpublish'
+			1 => array(
+				'task'           => 'activate',
+				'text'           => '',
+				'active_title'   => 'COM_USERS_TOOLBAR_ACTIVATE',
+				'inactive_title' => '',
+				'tip'            => true,
+				'active_class'   => 'unpublish',
+				'inactive_class' => 'unpublish',
 			),
-			0	=> array(
-				'task'				=> '',
-				'text'				=> '',
-				'active_title'		=> '',
-				'inactive_title'	=> 'COM_USERS_ACTIVATED',
-				'tip'				=> true,
-				'active_class'		=> 'publish',
-				'inactive_class'	=> 'publish'
+			0 => array(
+				'task'           => '',
+				'text'           => '',
+				'active_title'   => '',
+				'inactive_title' => 'COM_USERS_ACTIVATED',
+				'tip'            => true,
+				'active_class'   => 'publish',
+				'inactive_class' => 'publish',
 			)
 		);
+
 		return $states;
 	}
 }

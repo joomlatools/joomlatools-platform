@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -13,9 +13,7 @@ defined('_JEXEC') or die;
 /**
  * Profile view class for Users.
  *
- * @package     Joomla.Site
- * @subpackage  com_users
- * @since       1.6
+ * @since  1.6
  */
 class UsersViewProfile extends JViewLegacy
 {
@@ -28,11 +26,19 @@ class UsersViewProfile extends JViewLegacy
 	protected $state;
 
 	/**
+	 * An instance of JDatabaseDriver.
+	 *
+	 * @var    JDatabaseDriver
+	 * @since  3.6.3
+	 */
+	protected $db;
+
+	/**
 	 * Execute and display a template script.
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
-	 * @return  mixed   A string if successful, otherwise a Error object.
+	 * @return  mixed   A string if successful, otherwise an Error object.
 	 *
 	 * @since   1.6
 	 */
@@ -44,11 +50,13 @@ class UsersViewProfile extends JViewLegacy
 		$this->state            = $this->get('State');
 		$this->params           = $this->state->get('params');
 		$this->otpConfig        = $this->get('OtpConfig');
+		$this->db               = JFactory::getDbo();
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			throw new Exception(implode('<br />', $errors));
+
 			return false;
 		}
 
@@ -59,10 +67,10 @@ class UsersViewProfile extends JViewLegacy
 		if (!empty($cookieLogin))
 		{
 			// If so, the user must login to edit the password and other data.
-			// What should happen here? Should we force a logout which detroys the cookies?
+			// What should happen here? Should we force a logout which destroys the cookies?
 			$app = JFactory::getApplication();
 			$app->enqueueMessage(JText::_('JGLOBAL_REMEMBER_MUST_LOGIN'), 'message');
-			$app->redirect(JUri::base() . 'index.php?option=com_users&view=login', '', 302);
+			$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
 
 			return false;
 		}
@@ -71,6 +79,7 @@ class UsersViewProfile extends JViewLegacy
 		if (!$this->data->id)
 		{
 			throw new Exception(JText::_('JERROR_USERS_PROFILE_NOT_FOUND'));
+
 			return false;
 		}
 
@@ -82,7 +91,7 @@ class UsersViewProfile extends JViewLegacy
 			$this->setLayout($active->query['layout']);
 		}
 
-		//Escape strings for HTML output
+		// Escape strings for HTML output
 		$this->pageclass_sfx = htmlspecialchars($this->params->get('pageclass_sfx'));
 
 		$this->prepareDocument();
@@ -92,6 +101,8 @@ class UsersViewProfile extends JViewLegacy
 
 	/**
 	 * Prepares the document
+	 *
+	 * @return  void
 	 *
 	 * @since   1.6
 	 */
