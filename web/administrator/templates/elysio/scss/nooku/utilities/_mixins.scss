@@ -52,14 +52,14 @@
   // Variables
   $width: nth($ratio, 1);
   $height: nth($ratio, 3);
-  $percent: ($height / $width) * 100;
+  $percent: (($height / $width) * 100) + '%';
 
   position: relative;
 
   &:before {
     display: block;
     content: " ";
-    padding-top: #{$percent}%;
+    padding-top: #{$percent};
   }
 }
 

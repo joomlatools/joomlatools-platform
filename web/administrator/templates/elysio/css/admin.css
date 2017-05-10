@@ -507,11 +507,11 @@ body.admin .container-main, body.component .container-main { margin-left: -20px;
 
 body.admin .container-main #content .row-fluid .span12 .k-overview, body.component .container-main #content .row-fluid .span12 .k-overview { margin-top: 0; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox body.admin, .k-flexboxlegacy body.admin, .k-flexbox body.component, .k-flexboxlegacy body.component { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; overflow: auto; padding-top: 0; /** Set navbar from fixed to static */ /** Do not flex following items */ /** The main container */ /** Remove spacing and border-radius to align alerts to the side */ }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox body.admin, .k-flexboxlegacy body.admin, .k-flexbox body.component, .k-flexboxlegacy body.component { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; overflow: auto; padding-top: 0; /** Set navbar from fixed to static */ /** Do not flex following items */ /** The main container */ /** Remove spacing and border-radius to align alerts to the side */ }
   .k-flexbox body.admin nav.navbar, .k-flexboxlegacy body.admin nav.navbar, .k-flexbox body.component nav.navbar, .k-flexboxlegacy body.component nav.navbar { position: static; }
-  .k-flexbox body.admin nav.navbar, .k-flexbox body.admin header.header, .k-flexbox body.admin .subhead-collapse, .k-flexbox body.admin #status, .k-flexbox body.admin #system-message-container, .k-flexbox body.admin #system-debug, .k-flexboxlegacy body.admin nav.navbar, .k-flexboxlegacy body.admin header.header, .k-flexboxlegacy body.admin .subhead-collapse, .k-flexboxlegacy body.admin #status, .k-flexboxlegacy body.admin #system-message-container, .k-flexboxlegacy body.admin #system-debug, .k-flexbox body.component nav.navbar, .k-flexbox body.component header.header, .k-flexbox body.component .subhead-collapse, .k-flexbox body.component #status, .k-flexbox body.component #system-message-container, .k-flexbox body.component #system-debug, .k-flexboxlegacy body.component nav.navbar, .k-flexboxlegacy body.component header.header, .k-flexboxlegacy body.component .subhead-collapse, .k-flexboxlegacy body.component #status, .k-flexboxlegacy body.component #system-message-container, .k-flexboxlegacy body.component #system-debug { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; }
-  .k-flexbox body.admin .container-main, .k-flexboxlegacy body.admin .container-main, .k-flexbox body.component .container-main, .k-flexboxlegacy body.component .container-main { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; /** Flex all children of main container */ /** Remove clearfix psuedo elements Otherwise they'll be treated as 1 pixel flex items */ /** No longer a fixed position for the statusbar since that doesn't play nice with flexbox */ /** Remove the border on successful flexbox */ }
-  .k-flexbox body.admin .container-main #content, .k-flexbox body.admin .container-main #content .row-fluid, .k-flexbox body.admin .container-main #content .row-fluid .span12, .k-flexboxlegacy body.admin .container-main #content, .k-flexboxlegacy body.admin .container-main #content .row-fluid, .k-flexboxlegacy body.admin .container-main #content .row-fluid .span12, .k-flexbox body.component .container-main #content, .k-flexbox body.component .container-main #content .row-fluid, .k-flexbox body.component .container-main #content .row-fluid .span12, .k-flexboxlegacy body.component .container-main #content, .k-flexboxlegacy body.component .container-main #content .row-fluid, .k-flexboxlegacy body.component .container-main #content .row-fluid .span12 { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; }
+  .k-flexbox body.admin nav.navbar, .k-flexbox body.admin header.header, .k-flexbox body.admin .subhead-collapse, .k-flexbox body.admin #status, .k-flexbox body.admin #system-message-container, .k-flexbox body.admin #system-debug, .k-flexboxlegacy body.admin nav.navbar, .k-flexboxlegacy body.admin header.header, .k-flexboxlegacy body.admin .subhead-collapse, .k-flexboxlegacy body.admin #status, .k-flexboxlegacy body.admin #system-message-container, .k-flexboxlegacy body.admin #system-debug, .k-flexbox body.component nav.navbar, .k-flexbox body.component header.header, .k-flexbox body.component .subhead-collapse, .k-flexbox body.component #status, .k-flexbox body.component #system-message-container, .k-flexbox body.component #system-debug, .k-flexboxlegacy body.component nav.navbar, .k-flexboxlegacy body.component header.header, .k-flexboxlegacy body.component .subhead-collapse, .k-flexboxlegacy body.component #status, .k-flexboxlegacy body.component #system-message-container, .k-flexboxlegacy body.component #system-debug { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+  .k-flexbox body.admin .container-main, .k-flexboxlegacy body.admin .container-main, .k-flexbox body.component .container-main, .k-flexboxlegacy body.component .container-main { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; /** Flex all children of main container */ /** Remove clearfix psuedo elements Otherwise they'll be treated as 1 pixel flex items */ /** No longer a fixed position for the statusbar since that doesn't play nice with flexbox */ /** Remove the border on successful flexbox */ }
+  .k-flexbox body.admin .container-main #content, .k-flexbox body.admin .container-main #content .row-fluid, .k-flexbox body.admin .container-main #content .row-fluid .span12, .k-flexboxlegacy body.admin .container-main #content, .k-flexboxlegacy body.admin .container-main #content .row-fluid, .k-flexboxlegacy body.admin .container-main #content .row-fluid .span12, .k-flexbox body.component .container-main #content, .k-flexbox body.component .container-main #content .row-fluid, .k-flexbox body.component .container-main #content .row-fluid .span12, .k-flexboxlegacy body.component .container-main #content, .k-flexboxlegacy body.component .container-main #content .row-fluid, .k-flexboxlegacy body.component .container-main #content .row-fluid .span12 { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; }
   .k-flexbox body.admin .container-main:before, .k-flexbox body.admin .container-main:after, .k-flexbox body.admin .container-main #content:before, .k-flexbox body.admin .container-main #content:after, .k-flexbox body.admin .container-main #content .row-fluid:before, .k-flexbox body.admin .container-main #content .row-fluid:after, .k-flexboxlegacy body.admin .container-main:before, .k-flexboxlegacy body.admin .container-main:after, .k-flexboxlegacy body.admin .container-main #content:before, .k-flexboxlegacy body.admin .container-main #content:after, .k-flexboxlegacy body.admin .container-main #content .row-fluid:before, .k-flexboxlegacy body.admin .container-main #content .row-fluid:after, .k-flexbox body.component .container-main:before, .k-flexbox body.component .container-main:after, .k-flexbox body.component .container-main #content:before, .k-flexbox body.component .container-main #content:after, .k-flexbox body.component .container-main #content .row-fluid:before, .k-flexbox body.component .container-main #content .row-fluid:after, .k-flexboxlegacy body.component .container-main:before, .k-flexboxlegacy body.component .container-main:after, .k-flexboxlegacy body.component .container-main #content:before, .k-flexboxlegacy body.component .container-main #content:after, .k-flexboxlegacy body.component .container-main #content .row-fluid:before, .k-flexboxlegacy body.component .container-main #content .row-fluid:after { display: none; }
   .k-flexbox body.admin .container-main + #status, .k-flexboxlegacy body.admin .container-main + #status, .k-flexbox body.component .container-main + #status, .k-flexboxlegacy body.component .container-main + #status { position: relative; top: auto; right: auto; bottom: auto; left: auto; box-shadow: none; }
   .k-flexbox body.admin .container-main #content .row-fluid .span12 .k-overview, .k-flexboxlegacy body.admin .container-main #content .row-fluid .span12 .k-overview, .k-flexbox body.component .container-main #content .row-fluid .span12 .k-overview, .k-flexboxlegacy body.component .container-main #content .row-fluid .span12 .k-overview { border: none; }
@@ -657,7 +657,7 @@ body.admin a:focus, body.component a:focus { outline: auto 5px -webkit-focus-rin
 
 .select2-container--default .select2-results__group { cursor: default; display: block; padding: 6px; }
 
-.select2-container--classic .select2-selection--single { background-color: #f7f7f7; border: 1px solid false; border-radius: 4px; outline: 0; background-image: -webkit-linear-gradient(top, white 50%, #eeeeee 100%); background-image: linear-gradient(to bottom, white 50%, #eeeeee 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eeeeee', GradientType=0); }
+.select2-container--classic .select2-selection--single { background-color: #f7f7f7; border: 1px solid false; border-radius: 4px; outline: 0; background-image: linear-gradient(to bottom, white 50%, #eeeeee 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eeeeee', GradientType=0); }
 
 .select2-container--classic .select2-selection--single:focus { border: 1px solid #5897fb; }
 
@@ -667,7 +667,7 @@ body.admin a:focus, body.component a:focus { outline: auto 5px -webkit-focus-rin
 
 .select2-container--classic .select2-selection--single .select2-selection__placeholder { color: #999; }
 
-.select2-container--classic .select2-selection--single .select2-selection__arrow { background-color: #ddd; border: none; border-left: 1px solid false; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 26px; position: absolute; top: 1px; right: 1px; width: 20px; background-image: -webkit-linear-gradient(top, #eeeeee 50%, #cccccc 100%); background-image: linear-gradient(to bottom, #eeeeee 50%, #cccccc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc', GradientType=0); }
+.select2-container--classic .select2-selection--single .select2-selection__arrow { background-color: #ddd; border: none; border-left: 1px solid false; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 26px; position: absolute; top: 1px; right: 1px; width: 20px; background-image: linear-gradient(to bottom, #eeeeee 50%, #cccccc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc', GradientType=0); }
 
 .select2-container--classic .select2-selection--single .select2-selection__arrow b { border-color: #888 transparent transparent transparent; border-style: solid; border-width: 5px 4px 0 4px; height: 0; left: 50%; margin-left: -4px; margin-top: -2px; position: absolute; top: 50%; width: 0; }
 
@@ -681,9 +681,9 @@ body.admin a:focus, body.component a:focus { outline: auto 5px -webkit-focus-rin
 
 .select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow b { border-color: transparent transparent #888 transparent; border-width: 0 4px 5px 4px; }
 
-.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single { border-top: none; border-top-left-radius: 0; border-top-right-radius: 0; background-image: -webkit-linear-gradient(top, white 0%, #eeeeee 50%); background-image: linear-gradient(to bottom, white 0%, #eeeeee 50%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eeeeee', GradientType=0); }
+.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single { border-top: none; border-top-left-radius: 0; border-top-right-radius: 0; background-image: linear-gradient(to bottom, white 0%, #eeeeee 50%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eeeeee', GradientType=0); }
 
-.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single { border-bottom: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; background-image: -webkit-linear-gradient(top, #eeeeee 50%, white 100%); background-image: linear-gradient(to bottom, #eeeeee 50%, white 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='white', GradientType=0); }
+.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single { border-bottom: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; background-image: linear-gradient(to bottom, #eeeeee 50%, white 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='white', GradientType=0); }
 
 .select2-container--classic .select2-selection--multiple { background-color: white; border: 1px solid false; border-radius: 4px; cursor: text; outline: 0; }
 
@@ -776,7 +776,7 @@ body.admin a:focus, body.component a:focus { outline: auto 5px -webkit-focus-rin
 
 .select2-container--bootstrap .select2-results__group { color: #777777; display: block; padding: 5px 10px; font-size: 12px; line-height: 1.428571429; white-space: nowrap; }
 
-.select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection { box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; border-color: #66afe9; }
+.select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection { box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; border-color: #66afe9; }
 
 .select2-container--bootstrap.select2-container--open { /** Make the dropdown arrow point up while the dropdown is visible. */ /** Handle border radii of the container when the dropdown is showing. */ }
 
@@ -945,9 +945,9 @@ body.admin a:focus, body.component a:focus { outline: auto 5px -webkit-focus-rin
 
 .mfp-ajax-cur { cursor: progress; }
 
-.mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close { cursor: -webkit-zoom-out; cursor: zoom-out; }
+.mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close { cursor: zoom-out; }
 
-.mfp-zoom { cursor: pointer; cursor: -webkit-zoom-in; cursor: zoom-in; }
+.mfp-zoom { cursor: pointer; cursor: zoom-in; }
 
 .mfp-auto-cursor .mfp-content { cursor: auto; }
 
@@ -1087,9 +1087,9 @@ img.mfp-img { width: auto; max-width: 100%; height: auto; display: block; line-h
 
 .mfp-ajax-cur { cursor: progress; }
 
-.mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close { cursor: -webkit-zoom-out; cursor: zoom-out; }
+.mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close { cursor: zoom-out; }
 
-.mfp-zoom { cursor: pointer; cursor: -webkit-zoom-in; cursor: zoom-in; }
+.mfp-zoom { cursor: pointer; cursor: zoom-in; }
 
 .mfp-auto-cursor .mfp-content { cursor: auto; }
 
@@ -1315,7 +1315,7 @@ img.mfp-img { width: auto; max-width: 100%; height: auto; display: block; line-h
 
 .chzn-container-multi .chzn-choices .search-field .default { color: #999; }
 
-.chzn-container-multi .chzn-choices .search-choice { background-clip: padding-box; background-color: #eeeeee; border: 1px solid #ccc; border-top-right-radius: 4px; border-top-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-image: -webkit-linear-gradient(top, white 0%, #eeeeee 100%); background-image: linear-gradient(to bottom, white 0%, #eeeeee 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eeeeee', GradientType=0); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); color: #333333; cursor: default; line-height: 13px; margin: 6px 0 3px 5px; padding: 3px 20px 3px 5px; position: relative; }
+.chzn-container-multi .chzn-choices .search-choice { background-clip: padding-box; background-color: #eeeeee; border: 1px solid #ccc; border-top-right-radius: 4px; border-top-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-image: linear-gradient(to bottom, white 0%, #eeeeee 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eeeeee', GradientType=0); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); color: #333333; cursor: default; line-height: 13px; margin: 6px 0 3px 5px; padding: 3px 20px 3px 5px; position: relative; }
 
 .chzn-container-multi .chzn-choices .search-choice .search-choice-close { background: url("../images/chosen-sprite.png") right top no-repeat; display: block; font-size: 1px; height: 10px; position: absolute; right: 4px; top: 5px; width: 12px; cursor: pointer; }
 
@@ -1329,15 +1329,15 @@ img.mfp-img { width: auto; max-width: 100%; height: auto; display: block; line-h
 
 .chzn-container-multi .chzn-drop .result-selected { display: none; }
 
-.chzn-container-active .chzn-single { border: 1px solid #66afe9; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #66afe9; -webkit-transition: border linear 0.2s, box-shadow linear 0.2s; transition: border linear 0.2s, box-shadow linear 0.2s; }
+.chzn-container-active .chzn-single { border: 1px solid #66afe9; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #66afe9; transition: border linear 0.2s, box-shadow linear 0.2s; }
 
-.chzn-container-active.chzn-with-drop .chzn-single { background-color: #fff; border: 1px solid #66afe9; border-bottom-right-radius: 0; border-bottom-left-radius: 0; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #66afe9; -webkit-transition: border linear 0.2s, box-shadow linear 0.2s; transition: border linear 0.2s, box-shadow linear 0.2s; }
+.chzn-container-active.chzn-with-drop .chzn-single { background-color: #fff; border: 1px solid #66afe9; border-bottom-right-radius: 0; border-bottom-left-radius: 0; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #66afe9; transition: border linear 0.2s, box-shadow linear 0.2s; }
 
 .chzn-container-active.chzn-with-drop .chzn-single div { background: transparent; border-left: none; }
 
 .chzn-container-active.chzn-with-drop .chzn-single div b { background-position: -18px 7px; }
 
-.chzn-container-active .chzn-choices { border: 1px solid #66afe9; border-bottom-right-radius: 0; border-bottom-left-radius: 0; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #66afe9; -webkit-transition: border linear 0.2s, box-shadow linear 0.2s; transition: border linear 0.2s, box-shadow linear 0.2s; }
+.chzn-container-active .chzn-choices { border: 1px solid #66afe9; border-bottom-right-radius: 0; border-bottom-left-radius: 0; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #66afe9; transition: border linear 0.2s, box-shadow linear 0.2s; }
 
 .chzn-container-active .chzn-choices .search-field input[type="text"] { color: #111 !important; }
 
@@ -1521,14 +1521,14 @@ img.mfp-img { width: auto; max-width: 100%; height: auto; display: block; line-h
 /** HTML, BODY By using 100% for `height` and `min-height` we can work with full-height auto overflowing flexbox pages */
 html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox body, .k-flexboxlegacy body { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox body, .k-flexboxlegacy body { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
 
 /** Koowa container 1. By using a max-width we essentially set a min-width when the contents are to large for the koowa container. The reason we don't use min-width is because if the content is only 300px we don't need horizontal scrollbars 2. Reset the max-width when viewport is as large as minwidth 3. Use z-index to be able to talk with JavaScript 4. Needed for webkit / blink for JS to read zindex value 5. Default font settings 6. Default styling */
 .koowa-container { position: relative; /* 4 */ z-index: 0; /* 3 */ max-width: 400px; /* 1 */ margin: 0; /* 6 */ border: none; /* 6 */ padding: 0; overflow: auto; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* 5 */ font-size: 13px; /* 5 */ line-height: 20px; /* 5 */ background: white; /* 6 */ -webkit-font-smoothing: subpixel-antialiased; -webkit-overflow-scrolling: touch; /* When flexbox is enabled */ /* On 'desktop' view */ }
 
 @media screen and (min-width: 400px) { .koowa-container { max-width: none; /* 2 */ } }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa-container, .k-flexboxlegacy .koowa-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa-container, .k-flexboxlegacy .koowa-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
 
 @media screen and (min-width: 768px) { .koowa-container { z-index: 1; } }
 
@@ -1708,7 +1708,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .btn-default, .koowa .btn { color: #333; background-color: #fff; border-color: #ccc; }
 
-.koowa .btn-default:hover, .koowa .btn:hover, .koowa .btn-default:focus, .koowa .btn:focus, .koowa .btn-default.focus, .koowa .focus.btn, .koowa .btn-default:active, .koowa .btn:active, .koowa .btn-default.active, .koowa .active.btn, .open > .koowa .btn-default.dropdown-toggle, .open > .koowa .dropdown-toggle.btn { color: #333; background-color: #e6e6e6; border-color: #adadad; }
+.koowa .btn-default:hover, .koowa .btn:hover, .koowa .btn-default:focus, .koowa .btn:focus, .koowa .btn-default.focus, .koowa .focus.btn, .koowa .btn-default:active, .koowa .btn:active, .koowa .btn-default.active, .koowa .active.btn, .open > .koowa .btn-default.dropdown-toggle, .open > .koowa .dropdown-toggle.btn { color: #333; background-color: #e6e5e5; border-color: #adadad; }
 
 .koowa .btn-default:active, .koowa .btn:active, .koowa .btn-default.active, .koowa .active.btn, .open > .koowa .btn-default.dropdown-toggle, .open > .koowa .dropdown-toggle.btn { background-image: none; }
 
@@ -1808,7 +1808,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa output { display: block; padding-top: 6px; font-size: 14px; line-height: 1.428571429; color: #555555; }
 
-.koowa .form-control, .koowa select, .koowa .input-group-form-control, .koowa .input-group--alias input, .koowa .form-group textarea, .koowa .control-group textarea, .koowa .input-append input, .koowa .input-xxlarge, .koowa .k-container__no-tabs input[type="text"], .koowa .k-container__no-tabs input[type="password"], .koowa .k-container__no-tabs input[type="email"], .koowa .tab-pane input[type="text"], .koowa .tab-pane input[type="password"], .koowa .tab-pane input[type="email"] { display: block; width: 100%; height: 32px; padding: 5px 10px; font-size: 14px; line-height: 1.428571429; color: #555555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
+.koowa .form-control, .koowa select, .koowa .input-group-form-control, .koowa .input-group--alias input, .koowa .form-group textarea, .koowa .control-group textarea, .koowa .input-append input, .koowa .input-xxlarge, .koowa .k-container__no-tabs input[type="text"], .koowa .k-container__no-tabs input[type="password"], .koowa .k-container__no-tabs input[type="email"], .koowa .tab-pane input[type="text"], .koowa .tab-pane input[type="password"], .koowa .tab-pane input[type="email"] { display: block; width: 100%; height: 32px; padding: 5px 10px; font-size: 14px; line-height: 1.428571429; color: #555555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
 
 .koowa .form-control:focus, .koowa select:focus, .koowa .input-group-form-control:focus, .koowa .input-group--alias input:focus, .koowa .form-group textarea:focus, .koowa .control-group textarea:focus, .koowa .input-append input:focus, .koowa .input-xxlarge:focus, .koowa .k-container__no-tabs input[type="text"]:focus, .koowa .k-container__no-tabs input[type="password"]:focus, .koowa .k-container__no-tabs input[type="email"]:focus, .koowa .tab-pane input[type="text"]:focus, .koowa .tab-pane input[type="password"]:focus, .koowa .tab-pane input[type="email"]:focus { border-color: #66afe9; outline: 0; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
 
@@ -2070,11 +2070,11 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-list-layout, .koowa .k-form-layout { margin: 0; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-list-layout, .k-flexbox .koowa .k-form-layout, .k-flexboxlegacy .koowa .k-list-layout, .k-flexboxlegacy .koowa .k-form-layout { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-list-layout, .k-flexbox .koowa .k-form-layout, .k-flexboxlegacy .koowa .k-list-layout, .k-flexboxlegacy .koowa .k-form-layout { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; } }
 
 .k-appearance.k-checked .koowa { /* Put some space between the box and the label */ }
 
-.k-appearance.k-checked .koowa input[type="checkbox"], .k-appearance.k-checked .koowa input[type="radio"] { /** 1. Resetting the default styling used by browsers. Don't do this for -moz- because the checkbox and radio box will look very ugly 2. Positioning relative to position psuedo before element nicely 3. Vertically positioning next to text 4. Aligning vertically next to labels 5. Indicate that element is clickable */ -webkit-appearance: none; /* 1 */ /* -moz-appearance: don't set this; /* 1 */ position: relative; /* 2 */ height: 15px; width: 15px; margin-top: -1px; /* 3 */ margin-bottom: 2px; /* 3 */ margin-left: 0; margin-right: .33em; border: 1px solid #aaa; padding: 0; background: white; display: inline-block; vertical-align: middle; cursor: pointer; /* 5 */ box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15); -webkit-transition: background 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: background 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /* Hover to indicate element is clickable */ /* Set disabled border color a bit lighter so it won't appear to be larger */ /** 1. Position psuedo element absolute to have full control 2. Position top-left, margin, width and height will take care of centering 3. Initially hide the psuedo element 4. Show the psuedo element when item is checked */ }
+.k-appearance.k-checked .koowa input[type="checkbox"], .k-appearance.k-checked .koowa input[type="radio"] { /** 1. Resetting the default styling used by browsers. Don't do this for -moz- because the checkbox and radio box will look very ugly 2. Positioning relative to position psuedo before element nicely 3. Vertically positioning next to text 4. Aligning vertically next to labels 5. Indicate that element is clickable */ -webkit-appearance: none; /* 1 */ /* -moz-appearance: don't set this; /* 1 */ position: relative; /* 2 */ height: 15px; width: 15px; margin-top: -1px; /* 3 */ margin-bottom: 2px; /* 3 */ margin-left: 0; margin-right: .33em; border: 1px solid #aaa; padding: 0; background: white; display: inline-block; vertical-align: middle; cursor: pointer; /* 5 */ box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15); transition: background 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /* Hover to indicate element is clickable */ /* Set disabled border color a bit lighter so it won't appear to be larger */ /** 1. Position psuedo element absolute to have full control 2. Position top-left, margin, width and height will take care of centering 3. Initially hide the psuedo element 4. Show the psuedo element when item is checked */ }
 
 .k-appearance.k-checked .koowa input[type="checkbox"]:hover, .k-appearance.k-checked .koowa input[type="radio"]:hover { background: #f1f1f1; }
 
@@ -2100,9 +2100,9 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .k-checked .koowa .booleanlist, .k-checked .koowa .btn-group-yesno, .k-checked .koowa #jform_params_include_child_categories, .k-checked .koowa #jform_params_show_icon, .k-checked .koowa #jform_params_show_category { position: relative; z-index: 1; display: block; margin: 0; border: 1px solid #ccc; padding: 1px; width: 100%; height: 32px; max-width: 400px; border-radius: 4px; background: white; /* Hiding the input but keeping accessible */ /** Label styling 1. Float left so the two labels line up next to each other 2. Display block so we have styling control 3. Set height to input height minus border and spacing 4. Take up half of the parent 5. Take one pixel off the radius to look smooth 6. Don't let the user select */ /** Styling label on hover, focus and checked 1. White text on colored labels 2. Display colored background when item is :checked 3. Show fake :focus when any item has :active or :focus */ /** Positioning the colored backgrounds We're not using transform here since an 'overflow:hidden' on the parent would make our fake :focus disappear 1. Set correct color to item 2. Start with 0% (not 0) to have smooth transitions 3. Set position to half so the background takes only up half the space of the parent */ /** Positioning the colored backgrounds when :checked 1. 1px to account for padding in parent element 2. Set position to half so the background takes only up half the space of the parent */ }
 
-.k-checked .koowa .booleanlist label, .k-checked .koowa .btn-group-yesno label, .k-checked .koowa #jform_params_include_child_categories label, .k-checked .koowa #jform_params_show_icon label, .k-checked .koowa #jform_params_show_category label { float: left; /* 1 */ display: block; /* 2 */ margin: 0; padding: 0; height: 28px; /* 3 */ line-height: 28px; /* 3 */ width: 50%; /* 4 */ text-align: center; color: #555555; font-weight: normal; border-radius: 3px; /* 5 */ -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; /* 6 */ -webkit-transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /** Colored backgrounds 1. Position absolute to place behind the label 2. Set background behind the text on the label but on top of the parent 3. Respect the 1px padding set on the parent 4. Set to black and set content to display psuedo element 5. Hide by default, using opacity for performance reasons 6. Take one pixel off the radius to look smooth */ /** Faking :focus on parent 1. Position absolute to parent 2. Set below label itself but above parent 3. Set 1px back because of padding on parent element 4. Hide by default, using opacity for performance reasons 5. Set to black and set content to display psuedo element 6. Same border-radius as parent 7. Same "focus" styling as input elements */ /* A little darker background on hovering */ }
+.k-checked .koowa .booleanlist label, .k-checked .koowa .btn-group-yesno label, .k-checked .koowa #jform_params_include_child_categories label, .k-checked .koowa #jform_params_show_icon label, .k-checked .koowa #jform_params_show_category label { float: left; /* 1 */ display: block; /* 2 */ margin: 0; padding: 0; height: 28px; /* 3 */ line-height: 28px; /* 3 */ width: 50%; /* 4 */ text-align: center; color: #555555; font-weight: normal; border-radius: 3px; /* 5 */ -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; /* 6 */ transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /** Colored backgrounds 1. Position absolute to place behind the label 2. Set background behind the text on the label but on top of the parent 3. Respect the 1px padding set on the parent 4. Set to black and set content to display psuedo element 5. Hide by default, using opacity for performance reasons 6. Take one pixel off the radius to look smooth */ /** Faking :focus on parent 1. Position absolute to parent 2. Set below label itself but above parent 3. Set 1px back because of padding on parent element 4. Hide by default, using opacity for performance reasons 5. Set to black and set content to display psuedo element 6. Same border-radius as parent 7. Same "focus" styling as input elements */ /* A little darker background on hovering */ }
 
-.k-checked .koowa .booleanlist label:before, .k-checked .koowa .btn-group-yesno label:before, .k-checked .koowa #jform_params_include_child_categories label:before, .k-checked .koowa #jform_params_show_icon label:before, .k-checked .koowa #jform_params_show_category label:before { position: absolute; /* 1 */ z-index: -1; /* 2 */ top: 1px; /* 3 */ bottom: 1px; /* 3 */ display: block; /* 4 */ content: " "; /* 4 */ opacity: 0; /* 5 */ border-radius: 3px; /* 6 */ -webkit-transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
+.k-checked .koowa .booleanlist label:before, .k-checked .koowa .btn-group-yesno label:before, .k-checked .koowa #jform_params_include_child_categories label:before, .k-checked .koowa #jform_params_show_icon label:before, .k-checked .koowa #jform_params_show_category label:before { position: absolute; /* 1 */ z-index: -1; /* 2 */ top: 1px; /* 3 */ bottom: 1px; /* 3 */ display: block; /* 4 */ content: " "; /* 4 */ opacity: 0; /* 5 */ border-radius: 3px; /* 6 */ transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
 
 .k-checked .koowa .booleanlist label:after, .k-checked .koowa .btn-group-yesno label:after, .k-checked .koowa #jform_params_include_child_categories label:after, .k-checked .koowa #jform_params_show_icon label:after, .k-checked .koowa #jform_params_show_category label:after { position: absolute; /* 1 */ z-index: -1; /* 2 */ top: -1px; /* 3 */ right: -1px; /* 3 */ bottom: -1px; /* 3 */ left: -1px; /* 3 */ opacity: 0; /* 4 */ display: block; /* 5 */ content: " "; /* 5 */ border-radius: 4px; /* 6 */ border: 1px solid #66afe9; /* 7 */ box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); /* 7 */ }
 
@@ -2130,7 +2130,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-breadcrumb { border-bottom: 1px solid #d6dae2; overflow: auto; /* 1 */ background: #EBEDF1; color: #333; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb, .k-flexboxlegacy .koowa .k-breadcrumb { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb, .k-flexboxlegacy .koowa .k-breadcrumb { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .k-breadcrumb { /** Links 1. Full background hover */ /** List 1. Reset unordered list styling */ /** Styling list items 1. Set z-index to 0 so the :after psuedo element will be on top 2. Make room for the psuedo element separator 3. Make each item at least one breadcrumb size wide 4. Hide by default so we can show only a few on mobile 5. Hide overflowing content 6. Proper spacing for non-flexbox use */ /** first and last elements 1. Always display these items 2. No flexing for these items so the are readable */ /** One but last item Show this item on mobile to get a sense of where you are 1. Set 'missing' content 2. Reset to default content on wider screens */ /* Active item */ }
 
@@ -2140,13 +2140,13 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-breadcrumb ul { margin: 0; padding: 0; list-style: none; border: none; background: transparent; /* 1 */ /* Flexing items to get overflow ellipsis */ }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb ul, .k-flexboxlegacy .koowa .k-breadcrumb ul { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb ul, .k-flexboxlegacy .koowa .k-breadcrumb ul { display: -webkit-box; display: -ms-flexbox; display: flex; } }
 
 .koowa .k-breadcrumb li { position: relative; /* 1 */ z-index: 0; /* 1 */ padding-left: 20px; /* 2 */ min-width: 32px; /* 3 */ display: none; /* 4 */ overflow: hidden; /* 5 */ vertical-align: middle; /* 6 */ /* Display on larger screens */ /* Flexing items to get overflow ellipsis */ /* List item separator */ position: relative; /* No separator on first item */ /** Hover 1. Reset flexbox so the whole item is visible */ }
 
 @media screen and (min-width: 768px) { .koowa .k-breadcrumb li { display: inline-block; } }
 
-@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb li, .k-flexboxlegacy .koowa .k-breadcrumb li { display: block; -webkit-box-flex: 0; -webkit-flex: 0 1 auto; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
+@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb li, .k-flexboxlegacy .koowa .k-breadcrumb li { display: block; -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
 
 .koowa .k-breadcrumb li:before { display: block; position: absolute; top: 0; bottom: 0; left: 0; width: 20px; padding-top: 8px; padding-bottom: 8px; text-align: center; line-height: 16px; content: "»"; }
 
@@ -2156,11 +2156,11 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-breadcrumb li:hover { overflow: visible; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb li:hover, .k-flexboxlegacy .koowa .k-breadcrumb li:hover { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; /* 1 */ } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb li:hover, .k-flexboxlegacy .koowa .k-breadcrumb li:hover { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; /* 1 */ } }
 
 .koowa .k-breadcrumb .home, .koowa .k-breadcrumb .active { display: inline-block; /* 1 */ overflow: visible; /* 1 */ }
 
-@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb .home, .k-flexboxlegacy .koowa .k-breadcrumb .home, .k-flexbox .koowa .k-breadcrumb .active, .k-flexboxlegacy .koowa .k-breadcrumb .active { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; /* 2 */ } }
+@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-breadcrumb .home, .k-flexboxlegacy .koowa .k-breadcrumb .home, .k-flexbox .koowa .k-breadcrumb .active, .k-flexboxlegacy .koowa .k-breadcrumb .active { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; /* 2 */ } }
 
 .koowa .k-breadcrumb li:nth-last-child(2) { display: inline-block; }
 
@@ -2182,17 +2182,17 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-checkbox-toggle:not(old-ie) label:before, .koowa .k-checkbox-toggle:not(old-ie) label:after, .koowa .k-checkbox-toggle:not(old-ie) span:before, .koowa .k-checkbox-toggle:not(old-ie) span:after { position: absolute; display: block; }
 
-.koowa .k-checkbox-toggle:not(old-ie) label:before { top: 0; right: 0; width: 64px; height: 32px; border: 1px solid #ccc; border-radius: 6px; content: " "; background: white; -webkit-transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
+.koowa .k-checkbox-toggle:not(old-ie) label:before { top: 0; right: 0; width: 64px; height: 32px; border: 1px solid #ccc; border-radius: 6px; content: " "; background: white; transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
 
-.koowa .k-checkbox-toggle:not(old-ie) label:after { top: 2px; right: 2px; width: 60px; height: 28px; border-radius: 5px; content: " "; background: #E64A19; -webkit-transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
+.koowa .k-checkbox-toggle:not(old-ie) label:after { top: 2px; right: 2px; width: 60px; height: 28px; border-radius: 5px; content: " "; background: #E64A19; transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
 
 .koowa .k-checkbox-toggle:not(old-ie) span { position: relative; z-index: 1; overflow: hidden; }
 
-.koowa .k-checkbox-toggle:not(old-ie) span:before, .koowa .k-checkbox-toggle:not(old-ie) span:after { -webkit-font-smoothing: antialiased; font-size: .8125em; line-height: 26px; text-transform: uppercase; text-align: center; -webkit-transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
+.koowa .k-checkbox-toggle:not(old-ie) span:before, .koowa .k-checkbox-toggle:not(old-ie) span:after { -webkit-font-smoothing: antialiased; font-size: .8125em; line-height: 26px; text-transform: uppercase; text-align: center; transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
 
 .koowa .k-checkbox-toggle:not(old-ie) span:before { top: 2px; right: 2px; width: 32px; height: 28px; border: 1px solid transparent; content: attr(data-false); color: white; }
 
-.koowa .k-checkbox-toggle:not(old-ie) span:after { top: 2px; right: 34px; width: 28px; height: 28px; border: 1px solid #E64A19; border-radius: 5px; background: white; content: attr(data-true); /* 1 */ text-indent: -60px; /* 1 */ text-align: center; -webkit-transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); color: rgba(255, 255, 255, 0); /* 2 */ }
+.koowa .k-checkbox-toggle:not(old-ie) span:after { top: 2px; right: 34px; width: 28px; height: 28px; border: 1px solid #E64A19; border-radius: 5px; background: white; content: attr(data-true); /* 1 */ text-indent: -60px; /* 1 */ text-align: center; transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); color: rgba(255, 255, 255, 0); /* 2 */ }
 
 .koowa .k-checkbox-toggle:not(old-ie) input:active + label:before, .koowa .k-checkbox-toggle:not(old-ie) input:focus + label:before { border: 1px solid #66afe9; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
 
@@ -2216,13 +2216,13 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-checkbox-toggle:not(old-ie).k-checkbox-toggle--neutral input:checked + label span:after { border-color: #2980b9; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-component, .k-flexboxlegacy .koowa .k-component { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-component, .k-flexboxlegacy .koowa .k-component { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; } }
 
-.koowa .k-content { position: relative; /* 1 */ z-index: 2; /* 1 */ background: #FAFAFA; /* 2 */ -webkit-transition: -webkit-transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /* 3 */ /* Faking flexbox on older browsers by using table styling */ }
+.koowa .k-content { position: relative; /* 1 */ z-index: 2; /* 1 */ background: #FAFAFA; /* 2 */ transition: -webkit-transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /* 3 */ /* Faking flexbox on older browsers by using table styling */ }
 
 @media screen and (min-width: 768px) { .koowa .k-content { display: table-cell; width: 100%; } }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-content, .k-flexboxlegacy .koowa .k-content { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; width: auto; /* 1 */ } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-content, .k-flexboxlegacy .koowa .k-content { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; width: auto; /* 1 */ } }
 
 .koowa .show-left-menu .k-content, .koowa .show-left-menu .k-titlebar { -webkit-transform: translate(270px, 0); transform: translate(270px, 0); /* 1 */ }
 
@@ -2236,7 +2236,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 @media screen and (min-width: 768px) { .koowa .opened--left .k-content, .koowa .opened--right .k-content { overflow: auto; /* 3 */ } }
 
-.koowa .off-canvas-overlay { position: absolute; /* 1 */ top: 0; /* 1 */ right: 0; /* 1 */ bottom: 0; /* 1 */ left: 0; /* 1 */ z-index: -1; /* 2 */ display: block; opacity: 0; /* 3 */ content: " "; background: black; -webkit-transition: opacity 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: opacity 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
+.koowa .off-canvas-overlay { position: absolute; /* 1 */ top: 0; /* 1 */ right: 0; /* 1 */ bottom: 0; /* 1 */ left: 0; /* 1 */ z-index: -1; /* 2 */ display: block; opacity: 0; /* 3 */ content: " "; background: black; transition: opacity 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
 
 @media screen and (min-width: 768px) { .koowa .off-canvas-overlay { display: none; /* 4 */ } }
 
@@ -2246,7 +2246,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-filter-container { position: relative; display: table; width: 100%; background: #EBEDF1; /* When flexbox is in use */ }
 
-@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-filter-container, .k-flexboxlegacy .koowa .k-filter-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-filter-container, .k-flexboxlegacy .koowa .k-filter-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .k-filter-container__item { border-bottom: 1px solid #d6dae2; width: 100%; padding: 7px; display: block; /* Hide items when JS is enabled */ /* Show items when they have a visible class */ }
 
@@ -2254,7 +2254,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-filter-container__item.js-is-visible { display: block; /* When flexbox is in use */ }
 
-@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-filter-container__item.js-is-visible, .k-flexboxlegacy .koowa .k-filter-container__item.js-is-visible { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; } }
+@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-filter-container__item.js-is-visible, .k-flexboxlegacy .koowa .k-filter-container__item.js-is-visible { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } }
 
 .koowa .k-filter-container__item__cell { display: inline-block; vertical-align: middle; max-width: 100%; margin-bottom: 7px; /* When flexbox is in use */ /* No left padding on first items */ /* No margins for labels */ }
 
@@ -2262,7 +2262,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 @media screen and (min-width: 600px) { .koowa .k-filter-container__item__cell { width: 230px; } }
 
-@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-filter-container__item__cell, .k-flexboxlegacy .koowa .k-filter-container__item__cell { -webkit-box-flex: 0; -webkit-flex: 0 1 auto; -ms-flex: 0 1 auto; flex: 0 1 auto; padding-left: 7px; margin-bottom: 0; width: auto; max-width: 230px; } }
+@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-filter-container__item__cell, .k-flexboxlegacy .koowa .k-filter-container__item__cell { -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; padding-left: 7px; margin-bottom: 0; width: auto; max-width: 230px; } }
 
 .koowa .k-filter-container__item__cell:first-child { padding-left: 0; }
 
@@ -2270,7 +2270,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-filter-container__item__cell label { margin: 0; }
 
-.koowa .k-filter-container__item__cell--fixed { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; white-space: nowrap; width: 100%; }
+.koowa .k-filter-container__item__cell--fixed { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; white-space: nowrap; width: 100%; }
 
 @media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-filter-container__item__cell--fixed, .k-flexboxlegacy .koowa .k-filter-container__item__cell--fixed { width: auto; } }
 
@@ -2290,7 +2290,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-container:after { clear: both; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-container, .k-flexboxlegacy .koowa .k-container { -webkit-box-flex: 1; -webkit-flex: 1 0 auto; -ms-flex: 1 0 auto; flex: 1 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-container, .k-flexboxlegacy .koowa .k-container { -webkit-box-flex: 1; -ms-flex: 1 0 auto; flex: 1 0 auto; } }
 
 .koowa .k-container__main { margin-bottom: 20px; }
 
@@ -2312,7 +2312,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 @media screen and (min-width: 768px) { .k-js-enabled .koowa .off-canvas-menu-toggle { display: none; /* 3 */ } }
 
-.koowa .off-canvas-menu-toggle .bar1, .koowa .off-canvas-menu-toggle .bar2, .koowa .off-canvas-menu-toggle .bar3 { position: absolute; left: 9px; display: block; width: 15px; height: 3px; border-radius: 1px; background: white; vertical-align: middle; -webkit-transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
+.koowa .off-canvas-menu-toggle .bar1, .koowa .off-canvas-menu-toggle .bar2, .koowa .off-canvas-menu-toggle .bar3 { position: absolute; left: 9px; display: block; width: 15px; height: 3px; border-radius: 1px; background: white; vertical-align: middle; transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); }
 
 .koowa .off-canvas-menu-toggle .bar1 { top: 9px; }
 
@@ -2394,7 +2394,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .k-checked .koowa .option-list { position: relative; z-index: 1; display: table; width: 100%; height: 32px; margin: 0; padding: 1px; border: 1px solid #ccc; border-radius: 4px; background: white; }
 
-.k-checked .koowa .option-list label { position: relative; z-index: 1; display: table-cell; border-radius: 3px; margin: 0; padding: 0; height: 28px; /* 3 */ line-height: 28px; /* 3 */ text-align: center; color: #555555; font-weight: normal; -webkit-transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); overflow: visible; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.k-checked .koowa .option-list label { position: relative; z-index: 1; display: table-cell; border-radius: 3px; margin: 0; padding: 0; height: 28px; /* 3 */ line-height: 28px; /* 3 */ text-align: center; color: #555555; font-weight: normal; transition: 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); overflow: visible; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
 .k-checked .koowa .option-list label:hover { background: rgba(0, 0, 0, 0.15); }
 
@@ -2404,11 +2404,11 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .k-checked .koowa .option-list input:focus ~ .faux-focus { opacity: 1; }
 
-.koowa .overflowing { overflow: hidden; /* 1 */ position: relative; /* 2 */ -webkit-overflow-scrolling: touch; /* 3 */ width: 100%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; /* 4 */ /** When flexbox is in use 1. When the child has flexbox, the parent needs it as well 2. Don't grow item by default, only shrink if it doesn't fit */ /* Set default settings for all shadow boxes */ }
+.koowa .overflowing { overflow: hidden; /* 1 */ position: relative; /* 2 */ -webkit-overflow-scrolling: touch; /* 3 */ width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; /* 4 */ /** When flexbox is in use 1. When the child has flexbox, the parent needs it as well 2. Don't grow item by default, only shrink if it doesn't fit */ /* Set default settings for all shadow boxes */ }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .overflowing--flex, .k-flexboxlegacy .koowa .overflowing--flex { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; /* 1 */ -webkit-box-flex: 0; -webkit-flex: 0 1 auto; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .overflowing--flex, .k-flexboxlegacy .koowa .overflowing--flex { display: -webkit-box; display: -ms-flexbox; display: flex; /* 1 */ -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
 
-.koowa .overflowing--top, .koowa .overflowing--right, .koowa .overflowing--bottom, .koowa .overflowing--left { position: absolute; /* 2 */ z-index: 99; background: rgba(0, 0, 0, 0.25); -webkit-transition: all 0.5s cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: all 0.5s cubic-bezier(0.2, 0.57, 0.44, 0.83); margin: 0; }
+.koowa .overflowing--top, .koowa .overflowing--right, .koowa .overflowing--bottom, .koowa .overflowing--left { position: absolute; /* 2 */ z-index: 99; background: rgba(0, 0, 0, 0.25); transition: all 0.5s cubic-bezier(0.2, 0.57, 0.44, 0.83); margin: 0; }
 
 .koowa .overflowing--top.js-is-hidden, .koowa .overflowing--right.js-is-hidden, .koowa .overflowing--bottom.js-is-hidden, .koowa .overflowing--left.js-is-hidden { opacity: 0; }
 
@@ -2437,13 +2437,13 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 @media screen and (min-width: 600px) { .koowa .k-scopebar { display: table; width: 100%; } }
 
 @media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa, .k-flexboxlegacy .koowa { /* 1 */ }
-  .k-flexbox .koowa .k-scopebar, .k-flexboxlegacy .koowa .k-scopebar { width: auto; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+  .k-flexbox .koowa .k-scopebar, .k-flexboxlegacy .koowa .k-scopebar { width: auto; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 @media (min-width: 600px) and (min-height: 460px) { .k-flexbox .koowa, .k-flexboxlegacy .koowa { /* Put at least one fluid item in every scopebar */ }
-  .k-flexbox .koowa .k-scopebar, .k-flexboxlegacy .koowa .k-scopebar { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; }
-  .k-flexbox .koowa .k-scopebar__item, .k-flexbox .koowa .js-stools-menutype, .k-flexboxlegacy .koowa .k-scopebar__item, .k-flexboxlegacy .koowa .js-stools-menutype { display: block; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; }
-  .k-flexbox .koowa .k-scopebar__search, .k-flexboxlegacy .koowa .k-scopebar__search { display: block; -webkit-box-flex: 0; -webkit-flex: 0 1 auto; -ms-flex: 0 1 auto; flex: 0 1 auto; }
-  .k-flexbox .koowa .k-scopebar__item--fluid, .k-flexboxlegacy .koowa .k-scopebar__item--fluid { -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
+  .k-flexbox .koowa .k-scopebar, .k-flexboxlegacy .koowa .k-scopebar { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+  .k-flexbox .koowa .k-scopebar__item, .k-flexbox .koowa .js-stools-menutype, .k-flexboxlegacy .koowa .k-scopebar__item, .k-flexboxlegacy .koowa .js-stools-menutype { display: block; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+  .k-flexbox .koowa .k-scopebar__search, .k-flexboxlegacy .koowa .k-scopebar__search { display: block; -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; }
+  .k-flexbox .koowa .k-scopebar__item--fluid, .k-flexboxlegacy .koowa .k-scopebar__item--fluid { -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
 
 .koowa .k-scopebar__item, .koowa .js-stools-menutype { border-bottom: 1px solid #d7dee2; vertical-align: middle; }
 
@@ -2527,8 +2527,8 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 @media screen and (min-width: 1024px) { .k-js-enabled .koowa .k-sidebar, .k-js-enabled .koowa .k-sidebar-right { min-width: 270px; width: 270px; max-width: 270px; } }
 
-@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-sidebar, .k-flexbox .koowa .k-sidebar-right, .k-flexboxlegacy .koowa .k-sidebar, .k-flexboxlegacy .koowa .k-sidebar-right { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; }
-  .k-flexbox .koowa .k-sidebar__navigation, .k-flexbox .koowa .k-sidebar__footer, .k-flexboxlegacy .koowa .k-sidebar__navigation, .k-flexboxlegacy .koowa .k-sidebar__footer { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 768px) and (min-height: 460px) { .k-flexbox .koowa .k-sidebar, .k-flexbox .koowa .k-sidebar-right, .k-flexboxlegacy .koowa .k-sidebar, .k-flexboxlegacy .koowa .k-sidebar-right { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+  .k-flexbox .koowa .k-sidebar__navigation, .k-flexbox .koowa .k-sidebar__footer, .k-flexboxlegacy .koowa .k-sidebar__navigation, .k-flexboxlegacy .koowa .k-sidebar__footer { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .k-sidebar { border-right: 1px solid #B0BEC5; border-bottom: 1px solid #B0BEC5; background: #DEE4E7; color: #333; }
 
@@ -2546,7 +2546,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-sidebar__item + .koowa .k-sidebar__item { margin-top: 20px; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-sidebar__item--flex, .k-flexboxlegacy .koowa .k-sidebar__item--flex { -webkit-box-flex: 1; -webkit-flex: 1 0 auto; -ms-flex: 1 0 auto; flex: 1 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-sidebar__item--flex, .k-flexboxlegacy .koowa .k-sidebar__item--flex { -webkit-box-flex: 1; -ms-flex: 1 0 auto; flex: 1 0 auto; } }
 
 .koowa .k-sidebar__header { padding: 13px 13px 0; font-weight: 700; text-transform: uppercase; font-size: 12px; }
 
@@ -2554,12 +2554,12 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-sidebar__item--overflow { overflow: auto; /* 1 */ }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-sidebar__item--overflow, .k-flexboxlegacy .koowa .k-sidebar__item--overflow { -webkit-box-flex: 0; -webkit-flex: 0 1 auto; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-sidebar__item--overflow, .k-flexboxlegacy .koowa .k-sidebar__item--overflow { -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-table-container, .k-flexboxlegacy .koowa .k-table-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; overflow: auto; }
-  .k-flexbox .koowa .k-table-container .k-table, .k-flexboxlegacy .koowa .k-table-container .k-table { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 0; -webkit-flex: 0 1 auto; -ms-flex: 0 1 auto; flex: 0 1 auto; background: #FAFAFA; }
-  .k-flexbox .koowa .k-table-container .k-table table, .k-flexboxlegacy .koowa .k-table-container .k-table table { -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; }
-  .k-flexbox .koowa .k-table-container .k-table-pagination, .k-flexboxlegacy .koowa .k-table-container .k-table-pagination { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-table-container, .k-flexboxlegacy .koowa .k-table-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; overflow: auto; }
+  .k-flexbox .koowa .k-table-container .k-table, .k-flexboxlegacy .koowa .k-table-container .k-table { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; background: #FAFAFA; }
+  .k-flexbox .koowa .k-table-container .k-table table, .k-flexboxlegacy .koowa .k-table-container .k-table table { -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; }
+  .k-flexbox .koowa .k-table-container .k-table-pagination, .k-flexboxlegacy .koowa .k-table-container .k-table-pagination { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .k-table-container { /** Cells 1. Position checkbox 2. Remove default margin and set negative top margin to visually align vertically */ /** Head 1. Don't set a vertical padding on table headers. Set padding on table heading children We do this so <a> elements are fully clickable for sorting 2. Don't use long header titles since they won't be wrapped 3. Whole <th> should be clickable 4. Set padding here */ /** Body 1. No bottom border for last item 2. Small extra info below title display:block to display below title */ /** Table classes Classes to add to table cells */ /** Selected When rows are selected they are highlighted 1. Coloring Links and extra elements that don't color automatically with it's parent */ /* Sub headings */ }
 
@@ -2611,21 +2611,21 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-table-pagination select { height: 30px; /* 3 */ width: auto; /* 4 */ margin-right: 7px; /* 5 */ }
 
-.koowa .footable.breakpoint .footable-toggle { position: absolute; top: 50%; right: 10px; display: block; width: 20px; height: 20px; border: 2px solid #a2a2a2; border-radius: 50%; margin-top: -10px; }
+.koowa .footable.breakpoint .footable-toggle { position: absolute; top: 50%; right: 10px; display: block; width: 20px; height: 20px; border: 2px solid #a2a1a1; border-radius: 50%; margin-top: -10px; }
 
-.koowa .footable.breakpoint .footable-toggle:after { content: ""; display: block; width: 10px; height: 10px; margin: 3px; color: #a2a2a2; font-size: 10px; line-height: 1.3em; }
+.koowa .footable.breakpoint .footable-toggle:after { content: ""; display: block; width: 10px; height: 10px; margin: 3px; color: #a2a1a1; font-size: 10px; line-height: 1.3em; }
 
 .koowa .footable.breakpoint tr.selected .footable-toggle { border-color: white; }
 
 .koowa .footable.breakpoint tr.selected .footable-toggle:after { color: white; }
 
-.koowa .k-titlebar { border-bottom: 1px solid #bac7cd; position: relative; /* 1 */ z-index: 2; /* 1 */ width: 100%; float: left; background: #CFD8DC; /* 2 */ color: #333; -webkit-transition: -webkit-transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /* 3 */ /** Create custom 'overlay' for off canvas sidebar 1. Overlay over bottom border 2. Hide with negative z-index and opacity: 0 3. Give it a transition 4. Do not display when screen is wide enough */ position: relative; }
+.koowa .k-titlebar { border-bottom: 1px solid #bac7cd; position: relative; /* 1 */ z-index: 2; /* 1 */ width: 100%; float: left; background: #CFD8DC; /* 2 */ color: #333; transition: -webkit-transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /* 3 */ /** Create custom 'overlay' for off canvas sidebar 1. Overlay over bottom border 2. Hide with negative z-index and opacity: 0 3. Give it a transition 4. Do not display when screen is wide enough */ position: relative; }
 
-.koowa .k-titlebar:before { display: block; position: absolute; content: " "; position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin-bottom: -1px; /* 1 */ z-index: -1; /* 2 */ opacity: 0; /* 2 */ background: black; -webkit-transition: opacity 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: opacity 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /* 3 */ }
+.koowa .k-titlebar:before { display: block; position: absolute; content: " "; position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin-bottom: -1px; /* 1 */ z-index: -1; /* 2 */ opacity: 0; /* 2 */ background: black; transition: opacity 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); /* 3 */ }
 
 @media screen and (min-width: 768px) { .koowa .k-titlebar:before { display: none; /* 4 */ } }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-titlebar, .k-flexboxlegacy .koowa .k-titlebar { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-titlebar, .k-flexboxlegacy .koowa .k-titlebar { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .show-left-menu .k-titlebar { -webkit-transform: translate(270px, 0); transform: translate(270px, 0); /* 1 */ }
 
@@ -2645,7 +2645,7 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 @media screen and (min-width: 768px) { .koowa .k-toolbar { width: 100%; display: table; } }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-toolbar, .k-flexboxlegacy .koowa .k-toolbar { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-toolbar, .k-flexboxlegacy .koowa .k-toolbar { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .k-toolbar { /** Options button Align the options button right */ /** Alternative button colors If the button colors don't fit the toolbar you can have alternative colors */ /** Position the icon Only position them if media queries are supported By default we just want them aligned normally */ }
 
@@ -2673,23 +2673,23 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .k-upload { border-bottom: 1px solid #d6dae2; display: table; width: 100%; padding: 13px; background: #EBEDF1; /* When flexbox is in use */ }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-upload, .k-flexboxlegacy .koowa .k-upload { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-upload, .k-flexboxlegacy .koowa .k-upload { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .k-upload__drop { display: table-cell; width: 100%; /* 1 */ margin: 0; line-height: 1.25em; font-size: 1.65em; color: #595959; /** When flexbox is in use 1. Flexible item 2. Reset display to block 3. Reset width for flexbox */ /* <small> upload message behind title */ }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-upload__drop, .k-flexboxlegacy .koowa .k-upload__drop { -webkit-box-flex: 1; -webkit-flex: 1 0 auto; -ms-flex: 1 0 auto; flex: 1 0 auto; /* 1 */ display: block; /* 2 */ width: auto; /* 3 */ } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-upload__drop, .k-flexboxlegacy .koowa .k-upload__drop { -webkit-box-flex: 1; -ms-flex: 1 0 auto; flex: 1 0 auto; /* 1 */ display: block; /* 2 */ width: auto; /* 3 */ } }
 
 .koowa .k-upload__drop small { font-size: 14px; padding-left: 5px; }
 
 .koowa .k-upload__buttons { display: table-cell; width: 1px; /* 1 */ white-space: nowrap; /* 2 */ padding-left: 10px; /** When flexbox is in use 1. Non-flexible item 2. Reset display to block 3. Reset width for flexbox */ }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-upload__buttons, .k-flexboxlegacy .koowa .k-upload__buttons { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; /* 1 */ display: block; /* 2 */ width: auto; /* 3 */ } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-upload__buttons, .k-flexboxlegacy .koowa .k-upload__buttons { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; /* 1 */ display: block; /* 2 */ width: auto; /* 3 */ } }
 
 .koowa .k-content-wrapper { clear: both; /* 1 */ margin: 0; }
 
 @media screen and (min-width: 768px) { .koowa .k-content-wrapper { display: table; width: 100%; } }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-content-wrapper, .k-flexboxlegacy .koowa .k-content-wrapper { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: hidden; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-content-wrapper, .k-flexboxlegacy .koowa .k-content-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: hidden; } }
 
 .koowa .opened--left, .koowa .opened--right { overflow: hidden; /* 1 */ }
 
@@ -2711,13 +2711,13 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 .koowa .margin-bottom.margin-bottom.margin-bottom { margin-bottom: 20px; }
 
-.koowa .no-transition.no-transition.no-transition { -webkit-transition: none; transition: none; }
+.koowa .no-transition.no-transition.no-transition { transition: none; }
 
 .koowa .k-nowrap.k-nowrap.k-nowrap { white-space: nowrap; }
 
 .koowa .k-toolbar .disabled.disabled.disabled { display: none; }
 
-.koowa .floatThead-wrapper { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 0; -webkit-flex: 0 1 auto; -ms-flex: 0 1 auto; flex: 0 1 auto; overflow: auto; z-index: 1 !important; }
+.koowa .floatThead-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; overflow: auto; z-index: 1 !important; }
 
 /** Extra styling ------------- Extra styling that can't be done by merely using variables */
 /** Default select is not styled outside Joomla scope (for example in koowa template) */
@@ -2739,20 +2739,20 @@ html, body { min-height: 100%; height: 100%; padding: 0; margin: 0; }
 
 #system-debug { display: none; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox #system-debug, .k-flexboxlegacy #system-debug { -webkit-box-flex: 0; -webkit-flex: 0 1 auto; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox #system-debug, .k-flexboxlegacy #system-debug { -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
 
 @media (min-width: 300px) and (min-height: 460px) { .k-flexbox html, .k-flexboxlegacy html { height: 100%; overflow: hidden; } }
 
 body.koowa { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: default; font-family: Helvetica , Arial, sans-serif; font-size: 14px; line-height: 20px; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox body.koowa, .k-flexboxlegacy body.koowa { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; overflow: hidden; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; height: 100% !important; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox body.koowa, .k-flexboxlegacy body.koowa { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; overflow: hidden; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; height: 100% !important; } }
 
 body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 @media (min-width: 300px) and (min-height: 460px) { .k-flexbox body.koowa > .koowa, .k-flexboxlegacy body.koowa > .koowa { height: auto; } }
 
 /** Flexbox on .koowa */
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa, .k-flexboxlegacy .koowa { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; overflow: hidden; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa, .k-flexboxlegacy .koowa { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; overflow: hidden; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
 
 .koowa { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* ========================================================================== Bootstrap 2 modal ========================================================================== */ /** Category indentation styling Needs it's element to have a `margin-left` of [level] * 15. Starting with level 0 */ /** Images and previews Position image preview, select box and Gravity field nice to each other 1. Stretch to full width (minus image size) 2. The image area width 3. Set a bottom margin for input group to space it from the gravity field */ /** Images area 16:9 ratio even if no image is present */ /** Image holder 1. Cover entire ratio parent 2. Add double border to enclose images */ /** Extra styling for navigation */ /** Table overrides 1. Never wrap headings */ /* Override default Joomla buttons in tabels to flat icons (no button style) */ /* Selected rows */ /* Put some spacing between the icon and toggle button in tables */ /* Placeholder for when tables are empty */ /** Toolbar styling 1. Set padding on toolbar */ /* ========================================================================== Login screen ========================================================================== */ /** The body element 1. Spacing so login window won't touch sides on mobile resolution */ /** Login container Container holding the login window 1. Setting up for centering the login window 2. Make room fo the logo popping out with negative margin */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ /* ========================================================================== Flexbox in form layouts ========================================================================== 1. Add a .k-form-flexbox to the <form> element 2. Add a .k-container__flex as direct child of the .k-container__main */ /* Hide toolbar when it's visible but not needed */ /* Quick dirty fix for DOCman view */ /* Override the nasty way */ /* Hide with CSS */ /* Hide the very irritating tooltips */ }
 
@@ -2780,7 +2780,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .img-rounded { border-radius: 6px; }
 
-.koowa .img-thumbnail { padding: 4px; line-height: 1.428571429; background-color: #fff; border: 1px solid #ddd; border-radius: 4px; -webkit-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; display: inline-block; max-width: 100%; height: auto; }
+.koowa .img-thumbnail { padding: 4px; line-height: 1.428571429; background-color: #fff; border: 1px solid #ddd; border-radius: 4px; transition: all 0.2s ease-in-out; display: inline-block; max-width: 100%; height: auto; }
 
 .koowa .img-circle { border-radius: 50%; }
 
@@ -2932,7 +2932,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .panel-danger > .panel-footer + .panel-collapse > .panel-body, .koowa .panel-danger > .panel-footer + .panel-collapse > .accordion-content { border-bottom-color: #ebccd1; }
 
-.koowa .fade { opacity: 0; -webkit-transition: opacity 0.15s linear; transition: opacity 0.15s linear; }
+.koowa .fade { opacity: 0; transition: opacity 0.15s linear; }
 
 .koowa .fade.in { opacity: 1; }
 
@@ -2944,7 +2944,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa tbody.collapse.in { display: table-row-group; }
 
-.koowa .collapsing { position: relative; height: 0; overflow: hidden; -webkit-transition-property: height, visibility; transition-property: height, visibility; -webkit-transition-duration: 0.35s; transition-duration: 0.35s; -webkit-transition-timing-function: ease; transition-timing-function: ease; }
+.koowa .collapsing { position: relative; height: 0; overflow: hidden; transition-property: height, visibility; transition-duration: 0.35s; transition-timing-function: ease; }
 
 .koowa .btn-default, .koowa .btn, .koowa .btn-primary, .koowa .btn-success, .koowa .btn-info, .koowa .btn-warning, .koowa .btn-danger { text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075); }
 
@@ -2954,7 +2954,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .btn:active, .koowa .btn.active { background-image: none; }
 
-.koowa .btn-default, .koowa .btn { background-image: -webkit-linear-gradient(top, #fff 0%, #e0e0e0 100%); background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE0E0E0', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #dbdbdb; text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.koowa .btn-default, .koowa .btn { background-image: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE0E0E0', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #dbdbdb; text-shadow: 0 1px 0 #fff; border-color: #ccc; }
 
 .koowa .btn-default:hover, .koowa .btn:hover, .koowa .btn-default:focus, .koowa .btn:focus { background-color: #e0e0e0; background-position: 0 -15px; }
 
@@ -2962,7 +2962,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .btn-default.disabled, .koowa .disabled.btn, .koowa .btn-default:disabled, .koowa .btn:disabled, .koowa .btn-default[disabled], .koowa [disabled].btn { background-color: #e0e0e0; background-image: none; }
 
-.koowa .btn-primary { background-image: -webkit-linear-gradient(top, #546E7A 0%, #3b4d56 100%); background-image: linear-gradient(to bottom, #546E7A 0%, #3b4d56 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF546E7A', endColorstr='#FF3B4D56', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #374850; }
+.koowa .btn-primary { background-image: linear-gradient(to bottom, #546E7A 0%, #3b4d56 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF546E7A', endColorstr='#FF3B4D56', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #374850; }
 
 .koowa .btn-primary:hover, .koowa .btn-primary:focus { background-color: #3b4d56; background-position: 0 -15px; }
 
@@ -2970,7 +2970,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .btn-primary.disabled, .koowa .btn-primary:disabled, .koowa .btn-primary[disabled] { background-color: #3b4d56; background-image: none; }
 
-.koowa .btn-success { background-image: -webkit-linear-gradient(top, #689F38 0%, #4a7228 100%); background-image: linear-gradient(to bottom, #689F38 0%, #4a7228 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF689F38', endColorstr='#FF4A7228', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #456a25; }
+.koowa .btn-success { background-image: linear-gradient(to bottom, #689F38 0%, #4a7228 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF689F38', endColorstr='#FF4A7228', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #456a25; }
 
 .koowa .btn-success:hover, .koowa .btn-success:focus { background-color: #4a7228; background-position: 0 -15px; }
 
@@ -2978,7 +2978,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .btn-success.disabled, .koowa .btn-success:disabled, .koowa .btn-success[disabled] { background-color: #4a7228; background-image: none; }
 
-.koowa .btn-info { background-image: -webkit-linear-gradient(top, #5bc0de 0%, #2aabd2 100%); background-image: linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF5BC0DE', endColorstr='#FF2AABD2', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #28a4c9; }
+.koowa .btn-info { background-image: linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF5BC0DE', endColorstr='#FF2AABD2', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #28a4c9; }
 
 .koowa .btn-info:hover, .koowa .btn-info:focus { background-color: #2aabd2; background-position: 0 -15px; }
 
@@ -2986,7 +2986,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .btn-info.disabled, .koowa .btn-info:disabled, .koowa .btn-info[disabled] { background-color: #2aabd2; background-image: none; }
 
-.koowa .btn-warning { background-image: -webkit-linear-gradient(top, #f0ad4e 0%, #eb9316 100%); background-image: linear-gradient(to bottom, #f0ad4e 0%, #eb9316 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0AD4E', endColorstr='#FFEB9316', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #e38d13; }
+.koowa .btn-warning { background-image: linear-gradient(to bottom, #f0ad4e 0%, #eb9316 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0AD4E', endColorstr='#FFEB9316', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #e38d13; }
 
 .koowa .btn-warning:hover, .koowa .btn-warning:focus { background-color: #eb9316; background-position: 0 -15px; }
 
@@ -2994,7 +2994,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .btn-warning.disabled, .koowa .btn-warning:disabled, .koowa .btn-warning[disabled] { background-color: #eb9316; background-image: none; }
 
-.koowa .btn-danger { background-image: -webkit-linear-gradient(top, #d9534f 0%, #c12e2a 100%); background-image: linear-gradient(to bottom, #d9534f 0%, #c12e2a 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD9534F', endColorstr='#FFC12E2A', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #b92c28; }
+.koowa .btn-danger { background-image: linear-gradient(to bottom, #d9534f 0%, #c12e2a 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD9534F', endColorstr='#FFC12E2A', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #b92c28; }
 
 .koowa .btn-danger:hover, .koowa .btn-danger:focus { background-color: #c12e2a; background-position: 0 -15px; }
 
@@ -3004,71 +3004,71 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .thumbnail, .koowa .img-thumbnail { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075); }
 
-.koowa .dropdown-menu > li > a:hover, .koowa .dropdown-menu > li > a:focus { background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e8e8e8 100%); background-image: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF5F5F5', endColorstr='#FFE8E8E8', GradientType=0); background-color: #e8e8e8; }
+.koowa .dropdown-menu > li > a:hover, .koowa .dropdown-menu > li > a:focus { background-image: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF5F5F5', endColorstr='#FFE8E8E8', GradientType=0); background-color: #e8e8e8; }
 
-.koowa .dropdown-menu > .active > a, .koowa .dropdown-menu > .active > a:hover, .koowa .dropdown-menu > .active > a:focus { background-image: -webkit-linear-gradient(top, #337ab7 0%, #2e6da4 100%); background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2E6DA4', GradientType=0); background-color: #2e6da4; }
+.koowa .dropdown-menu > .active > a, .koowa .dropdown-menu > .active > a:hover, .koowa .dropdown-menu > .active > a:focus { background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2E6DA4', GradientType=0); background-color: #2e6da4; }
 
-.koowa .navbar-default { background-image: -webkit-linear-gradient(top, #3b4d56 0%, #263238 100%); background-image: linear-gradient(to bottom, #3b4d56 0%, #263238 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF3B4D56', endColorstr='#FF263238', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); border-radius: 4px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075); }
+.koowa .navbar-default { background-image: linear-gradient(to bottom, #3b4d56 0%, #263238 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF3B4D56', endColorstr='#FF263238', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); border-radius: 4px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075); }
 
-.koowa .navbar-default .navbar-nav > .open > a, .koowa .navbar-default .navbar-nav > .active > a { background-image: -webkit-linear-gradient(top, #2d3940 0%, #334249 100%); background-image: linear-gradient(to bottom, #2d3940 0%, #334249 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF2D3940', endColorstr='#FF334249', GradientType=0); box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075); }
+.koowa .navbar-default .navbar-nav > .open > a, .koowa .navbar-default .navbar-nav > .active > a { background-image: linear-gradient(to bottom, #2d3940 0%, #334249 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF2D3940', endColorstr='#FF334249', GradientType=0); box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075); }
 
 .koowa .navbar-brand, .koowa .navbar-nav > li > a { text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25); }
 
-.koowa .navbar-inverse { background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222 100%); background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF3C3C3C', endColorstr='#FF222222', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+.koowa .navbar-inverse { background-image: linear-gradient(to bottom, #3c3b3b 0%, #222 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF3C3B3B', endColorstr='#FF222222', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
 
-.koowa .navbar-inverse .navbar-nav > .open > a, .koowa .navbar-inverse .navbar-nav > .active > a { background-image: -webkit-linear-gradient(top, #090909 0%, #0f0f0f 100%); background-image: linear-gradient(to bottom, #090909 0%, #0f0f0f 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF090909', endColorstr='#FF0F0F0F', GradientType=0); box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25); }
+.koowa .navbar-inverse .navbar-nav > .open > a, .koowa .navbar-inverse .navbar-nav > .active > a { background-image: linear-gradient(to bottom, #090808 0%, #0f0f0f 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF090808', endColorstr='#FF0F0F0F', GradientType=0); box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25); }
 
 .koowa .navbar-inverse .navbar-brand, .koowa .navbar-inverse .navbar-nav > li > a { text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
 
 .koowa .navbar-static-top, .koowa .navbar-fixed-top, .koowa .navbar-fixed-bottom { border-radius: 0; }
 
-@media (max-width: 767px) { .koowa .navbar .navbar-nav .open .dropdown-menu > .active > a, .koowa .navbar .navbar-nav .open .dropdown-menu > .active > a:hover, .koowa .navbar .navbar-nav .open .dropdown-menu > .active > a:focus { color: #fff; background-image: -webkit-linear-gradient(top, #337ab7 0%, #2e6da4 100%); background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2E6DA4', GradientType=0); } }
+@media (max-width: 767px) { .koowa .navbar .navbar-nav .open .dropdown-menu > .active > a, .koowa .navbar .navbar-nav .open .dropdown-menu > .active > a:hover, .koowa .navbar .navbar-nav .open .dropdown-menu > .active > a:focus { color: #fff; background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2E6DA4', GradientType=0); } }
 
 .koowa .alert { text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05); }
 
-.koowa .alert-success { background-image: -webkit-linear-gradient(top, #dff0d8 0%, #c8e5bc 100%); background-image: linear-gradient(to bottom, #dff0d8 0%, #c8e5bc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDFF0D8', endColorstr='#FFC8E5BC', GradientType=0); border-color: #b2dba1; }
+.koowa .alert-success { background-image: linear-gradient(to bottom, #dff0d8 0%, #c8e5bc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDFF0D8', endColorstr='#FFC8E5BC', GradientType=0); border-color: #b2dba1; }
 
-.koowa .alert-info, .koowa .alert { background-image: -webkit-linear-gradient(top, #d9edf7 0%, #b9def0 100%); background-image: linear-gradient(to bottom, #d9edf7 0%, #b9def0 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD9EDF7', endColorstr='#FFB9DEF0', GradientType=0); border-color: #9acfea; }
+.koowa .alert-info, .koowa .alert { background-image: linear-gradient(to bottom, #d9edf7 0%, #b9def0 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD9EDF7', endColorstr='#FFB9DEF0', GradientType=0); border-color: #9acfea; }
 
-.koowa .alert-warning { background-image: -webkit-linear-gradient(top, #fcf8e3 0%, #f8efc0 100%); background-image: linear-gradient(to bottom, #fcf8e3 0%, #f8efc0 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFCF8E3', endColorstr='#FFF8EFC0', GradientType=0); border-color: #f5e79e; }
+.koowa .alert-warning { background-image: linear-gradient(to bottom, #fcf8e3 0%, #f8efc0 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFCF8E3', endColorstr='#FFF8EFC0', GradientType=0); border-color: #f5e79e; }
 
-.koowa .alert-danger { background-image: -webkit-linear-gradient(top, #f2dede 0%, #e7c3c3 100%); background-image: linear-gradient(to bottom, #f2dede 0%, #e7c3c3 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF2DEDE', endColorstr='#FFE7C3C3', GradientType=0); border-color: #dca7a7; }
+.koowa .alert-danger { background-image: linear-gradient(to bottom, #f2dede 0%, #e7c3c3 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF2DEDE', endColorstr='#FFE7C3C3', GradientType=0); border-color: #dca7a7; }
 
-.koowa .progress { background-image: -webkit-linear-gradient(top, #ebebeb 0%, #f5f5f5 100%); background-image: linear-gradient(to bottom, #ebebeb 0%, #f5f5f5 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEBEBEB', endColorstr='#FFF5F5F5', GradientType=0); }
+.koowa .progress { background-image: linear-gradient(to bottom, #ebebeb 0%, #f5f5f5 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEBEBEB', endColorstr='#FFF5F5F5', GradientType=0); }
 
-.koowa .progress-bar { background-image: -webkit-linear-gradient(top, #337ab7 0%, #286090 100%); background-image: linear-gradient(to bottom, #337ab7 0%, #286090 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF286090', GradientType=0); }
+.koowa .progress-bar { background-image: linear-gradient(to bottom, #337ab7 0%, #286090 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF286090', GradientType=0); }
 
-.koowa .progress-bar-success { background-image: -webkit-linear-gradient(top, #5cb85c 0%, #449d44 100%); background-image: linear-gradient(to bottom, #5cb85c 0%, #449d44 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF5CB85C', endColorstr='#FF449D44', GradientType=0); }
+.koowa .progress-bar-success { background-image: linear-gradient(to bottom, #5cb85c 0%, #449d44 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF5CB85C', endColorstr='#FF449D44', GradientType=0); }
 
-.koowa .progress-bar-info { background-image: -webkit-linear-gradient(top, #5bc0de 0%, #31b0d5 100%); background-image: linear-gradient(to bottom, #5bc0de 0%, #31b0d5 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF5BC0DE', endColorstr='#FF31B0D5', GradientType=0); }
+.koowa .progress-bar-info { background-image: linear-gradient(to bottom, #5bc0de 0%, #31b0d5 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF5BC0DE', endColorstr='#FF31B0D5', GradientType=0); }
 
-.koowa .progress-bar-warning { background-image: -webkit-linear-gradient(top, #f0ad4e 0%, #ec971f 100%); background-image: linear-gradient(to bottom, #f0ad4e 0%, #ec971f 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0AD4E', endColorstr='#FFEC971F', GradientType=0); }
+.koowa .progress-bar-warning { background-image: linear-gradient(to bottom, #f0ad4e 0%, #ec971f 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0AD4E', endColorstr='#FFEC971F', GradientType=0); }
 
-.koowa .progress-bar-danger { background-image: -webkit-linear-gradient(top, #d9534f 0%, #c9302c 100%); background-image: linear-gradient(to bottom, #d9534f 0%, #c9302c 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD9534F', endColorstr='#FFC9302C', GradientType=0); }
+.koowa .progress-bar-danger { background-image: linear-gradient(to bottom, #d9534f 0%, #c9302c 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD9534F', endColorstr='#FFC9302C', GradientType=0); }
 
-.koowa .progress-bar-striped { background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
+.koowa .progress-bar-striped { background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
 .koowa .list-group { border-radius: 4px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075); }
 
-.koowa .list-group-item.active, .koowa .list-group-item.active:hover, .koowa .list-group-item.active:focus { text-shadow: 0 -1px 0 #286090; background-image: -webkit-linear-gradient(top, #337ab7 0%, #2b669a 100%); background-image: linear-gradient(to bottom, #337ab7 0%, #2b669a 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2B669A', GradientType=0); border-color: #2b669a; }
+.koowa .list-group-item.active, .koowa .list-group-item.active:hover, .koowa .list-group-item.active:focus { text-shadow: 0 -1px 0 #286090; background-image: linear-gradient(to bottom, #337ab7 0%, #2b669a 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2B669A', GradientType=0); border-color: #2b669a; }
 
 .koowa .list-group-item.active .badge, .koowa .list-group-item.active:hover .badge, .koowa .list-group-item.active:focus .badge { text-shadow: none; }
 
 .koowa .panel, .koowa .accordion-group { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); }
 
-.koowa .panel-default > .panel-heading, .koowa .accordion-group > .panel-heading, .koowa .panel-default > .accordion-heading, .koowa .accordion-group > .accordion-heading { background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e8e8e8 100%); background-image: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF5F5F5', endColorstr='#FFE8E8E8', GradientType=0); }
+.koowa .panel-default > .panel-heading, .koowa .accordion-group > .panel-heading, .koowa .panel-default > .accordion-heading, .koowa .accordion-group > .accordion-heading { background-image: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF5F5F5', endColorstr='#FFE8E8E8', GradientType=0); }
 
-.koowa .panel-primary > .panel-heading, .koowa .panel-primary > .accordion-heading { background-image: -webkit-linear-gradient(top, #337ab7 0%, #2e6da4 100%); background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2E6DA4', GradientType=0); }
+.koowa .panel-primary > .panel-heading, .koowa .panel-primary > .accordion-heading { background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2E6DA4', GradientType=0); }
 
-.koowa .panel-success > .panel-heading, .koowa .panel-success > .accordion-heading { background-image: -webkit-linear-gradient(top, #dff0d8 0%, #d0e9c6 100%); background-image: linear-gradient(to bottom, #dff0d8 0%, #d0e9c6 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDFF0D8', endColorstr='#FFD0E9C6', GradientType=0); }
+.koowa .panel-success > .panel-heading, .koowa .panel-success > .accordion-heading { background-image: linear-gradient(to bottom, #dff0d8 0%, #d0e9c6 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDFF0D8', endColorstr='#FFD0E9C6', GradientType=0); }
 
-.koowa .panel-info > .panel-heading, .koowa .panel-info > .accordion-heading { background-image: -webkit-linear-gradient(top, #d9edf7 0%, #c4e3f3 100%); background-image: linear-gradient(to bottom, #d9edf7 0%, #c4e3f3 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD9EDF7', endColorstr='#FFC4E3F3', GradientType=0); }
+.koowa .panel-info > .panel-heading, .koowa .panel-info > .accordion-heading { background-image: linear-gradient(to bottom, #d9edf7 0%, #c4e3f3 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFD9EDF7', endColorstr='#FFC4E3F3', GradientType=0); }
 
-.koowa .panel-warning > .panel-heading, .koowa .panel-warning > .accordion-heading { background-image: -webkit-linear-gradient(top, #fcf8e3 0%, #faf2cc 100%); background-image: linear-gradient(to bottom, #fcf8e3 0%, #faf2cc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFCF8E3', endColorstr='#FFFAF2CC', GradientType=0); }
+.koowa .panel-warning > .panel-heading, .koowa .panel-warning > .accordion-heading { background-image: linear-gradient(to bottom, #fcf8e3 0%, #faf2cc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFCF8E3', endColorstr='#FFFAF2CC', GradientType=0); }
 
-.koowa .panel-danger > .panel-heading, .koowa .panel-danger > .accordion-heading { background-image: -webkit-linear-gradient(top, #f2dede 0%, #ebcccc 100%); background-image: linear-gradient(to bottom, #f2dede 0%, #ebcccc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF2DEDE', endColorstr='#FFEBCCCC', GradientType=0); }
+.koowa .panel-danger > .panel-heading, .koowa .panel-danger > .accordion-heading { background-image: linear-gradient(to bottom, #f2dede 0%, #ebcccc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF2DEDE', endColorstr='#FFEBCCCC', GradientType=0); }
 
-.koowa .well { background-image: -webkit-linear-gradient(top, #e8e8e8 0%, #f5f5f5 100%); background-image: linear-gradient(to bottom, #e8e8e8 0%, #f5f5f5 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE8E8E8', endColorstr='#FFF5F5F5', GradientType=0); border-color: gainsboro; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1); }
+.koowa .well { background-image: linear-gradient(to bottom, #e8e8e8 0%, #f5f5f5 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE8E8E8', endColorstr='#FFF5F5F5', GradientType=0); border-color: #dcdbdb; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1); }
 
 .koowa fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
 
@@ -3090,7 +3090,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa output { display: block; padding-top: 6px; font-size: 14px; line-height: 1.428571429; color: #555555; }
 
-.koowa .form-control, .koowa select, .koowa .input-group-form-control, .koowa .input-group--alias input, .koowa .form-group textarea, .koowa .control-group textarea, .koowa .input-append input, .koowa .input-xxlarge, .koowa .k-container__no-tabs input[type="text"], .koowa .k-container__no-tabs input[type="password"], .koowa .k-container__no-tabs input[type="email"], .koowa .tab-pane input[type="text"], .koowa .tab-pane input[type="password"], .koowa .tab-pane input[type="email"] { display: block; width: 100%; height: 32px; padding: 5px 10px; font-size: 14px; line-height: 1.428571429; color: #555555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
+.koowa .form-control, .koowa select, .koowa .input-group-form-control, .koowa .input-group--alias input, .koowa .form-group textarea, .koowa .control-group textarea, .koowa .input-append input, .koowa .input-xxlarge, .koowa .k-container__no-tabs input[type="text"], .koowa .k-container__no-tabs input[type="password"], .koowa .k-container__no-tabs input[type="email"], .koowa .tab-pane input[type="text"], .koowa .tab-pane input[type="password"], .koowa .tab-pane input[type="email"] { display: block; width: 100%; height: 32px; padding: 5px 10px; font-size: 14px; line-height: 1.428571429; color: #555555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
 
 .koowa .form-control:focus, .koowa select:focus, .koowa .input-group-form-control:focus, .koowa .input-group--alias input:focus, .koowa .form-group textarea:focus, .koowa .control-group textarea:focus, .koowa .input-append input:focus, .koowa .input-xxlarge:focus, .koowa .k-container__no-tabs input[type="text"]:focus, .koowa .k-container__no-tabs input[type="password"]:focus, .koowa .k-container__no-tabs input[type="email"]:focus, .koowa .tab-pane input[type="text"]:focus, .koowa .tab-pane input[type="password"]:focus, .koowa .tab-pane input[type="email"]:focus { border-color: #66afe9; outline: 0; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
 
@@ -3469,7 +3469,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .navbar-default .navbar-brand { color: white; }
 
-.koowa .navbar-default .navbar-brand:hover, .koowa .navbar-default .navbar-brand:focus { color: #e6e6e6; background-color: transparent; }
+.koowa .navbar-default .navbar-brand:hover, .koowa .navbar-default .navbar-brand:focus { color: #e6e5e5; background-color: transparent; }
 
 .koowa .navbar-default .navbar-text { color: white; }
 
@@ -3506,7 +3506,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .navbar-default .btn-link[disabled]:hover, .koowa .navbar-default .btn-link[disabled]:focus, fieldset[disabled] .koowa .navbar-default .btn-link:hover, fieldset[disabled] .koowa .navbar-default .btn-link:focus { color: #ccc; }
 
-.koowa .navbar-inverse { background-color: #222; border-color: #090909; }
+.koowa .navbar-inverse { background-color: #222; border-color: #090808; }
 
 .koowa .navbar-inverse .navbar-brand { color: #9d9d9d; }
 
@@ -3518,7 +3518,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .navbar-inverse .navbar-nav > li > a:hover, .koowa .navbar-inverse .navbar-nav > li > a:focus { color: #fff; background-color: transparent; }
 
-.koowa .navbar-inverse .navbar-nav > .active > a, .koowa .navbar-inverse .navbar-nav > .active > a:hover, .koowa .navbar-inverse .navbar-nav > .active > a:focus { color: #fff; background-color: #090909; }
+.koowa .navbar-inverse .navbar-nav > .active > a, .koowa .navbar-inverse .navbar-nav > .active > a:hover, .koowa .navbar-inverse .navbar-nav > .active > a:focus { color: #fff; background-color: #090808; }
 
 .koowa .navbar-inverse .navbar-nav > .disabled > a, .koowa .navbar-inverse .navbar-nav > .disabled > a:hover, .koowa .navbar-inverse .navbar-nav > .disabled > a:focus { color: #444; background-color: transparent; }
 
@@ -3530,13 +3530,13 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .navbar-inverse .navbar-collapse, .koowa .navbar-inverse .navbar-form { border-color: #101010; }
 
-.koowa .navbar-inverse .navbar-nav > .open > a, .koowa .navbar-inverse .navbar-nav > .open > a:hover, .koowa .navbar-inverse .navbar-nav > .open > a:focus { background-color: #090909; color: #fff; }
+.koowa .navbar-inverse .navbar-nav > .open > a, .koowa .navbar-inverse .navbar-nav > .open > a:hover, .koowa .navbar-inverse .navbar-nav > .open > a:focus { background-color: #090808; color: #fff; }
 
-@media (max-width: 767px) { .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header { border-color: #090909; }
-  .koowa .navbar-inverse .navbar-nav .open .dropdown-menu .divider { background-color: #090909; }
+@media (max-width: 767px) { .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header { border-color: #090808; }
+  .koowa .navbar-inverse .navbar-nav .open .dropdown-menu .divider { background-color: #090808; }
   .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > li > a { color: #9d9d9d; }
   .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus { color: #fff; background-color: transparent; }
-  .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus { color: #fff; background-color: #090909; }
+  .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus { color: #fff; background-color: #090808; }
   .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a, .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover, .koowa .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus { color: #444; background-color: transparent; } }
 
 .koowa .navbar-inverse .navbar-link { color: #9d9d9d; }
@@ -4073,7 +4073,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .btn-default, .koowa .btn { color: #333; background-color: #fff; border-color: #ccc; }
 
-.koowa .btn-default:hover, .koowa .btn:hover, .koowa .btn-default:focus, .koowa .btn:focus, .koowa .btn-default.focus, .koowa .focus.btn, .koowa .btn-default:active, .koowa .btn:active, .koowa .btn-default.active, .koowa .active.btn, .open > .koowa .btn-default.dropdown-toggle, .open > .koowa .dropdown-toggle.btn { color: #333; background-color: #e6e6e6; border-color: #adadad; }
+.koowa .btn-default:hover, .koowa .btn:hover, .koowa .btn-default:focus, .koowa .btn:focus, .koowa .btn-default.focus, .koowa .focus.btn, .koowa .btn-default:active, .koowa .btn:active, .koowa .btn-default.active, .koowa .active.btn, .open > .koowa .btn-default.dropdown-toggle, .open > .koowa .dropdown-toggle.btn { color: #333; background-color: #e6e5e5; border-color: #adadad; }
 
 .koowa .btn-default:active, .koowa .btn:active, .koowa .btn-default.active, .koowa .active.btn, .open > .koowa .btn-default.dropdown-toggle, .open > .koowa .dropdown-toggle.btn { background-image: none; }
 
@@ -4277,7 +4277,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .form-horizontal .control-group { margin-left: auto; margin-right: auto; }
 
-.koowa .collapse { position: relative; height: 0; overflow: hidden; -webkit-transition: height .35s ease; transition: height .35s ease; display: block !important; }
+.koowa .collapse { position: relative; height: 0; overflow: hidden; transition: height .35s ease; display: block !important; }
 
 .koowa .collapse.in { height: auto; display: block !important; }
 
@@ -4289,7 +4289,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa div.modal { position: fixed; top: 10%; left: 50%; z-index: 100; width: 560px; margin-left: -280px; background-color: white; border: 1px solid #999; border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 6px; box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3); outline: none; }
 
-.koowa div.modal.fade { -webkit-transition: opacity .3s linear, top .3s ease-out; transition: opacity .3s linear, top .3s ease-out; top: -25%; }
+.koowa div.modal.fade { transition: opacity .3s linear, top .3s ease-out; top: -25%; }
 
 .koowa div.modal.fade.in { top: 10%; }
 
@@ -4405,7 +4405,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .minicolors .minicolors-swatch { margin: 2px; }
 
-.koowa .k-color { width: 1.2em; height: 1.2em; display: inline-block; vertical-align: middle; background: -webkit-linear-gradient(red, orange, yellow, green, blue); background: linear-gradient(red, orange, yellow, green, blue); border: 1px solid white; outline: 1px solid #ccc; }
+.koowa .k-color { width: 1.2em; height: 1.2em; display: inline-block; vertical-align: middle; background: linear-gradient(red, orange, yellow, green, blue); border: 1px solid white; outline: 1px solid #ccc; }
 
 .koowa .k-indent-level { position: relative; /* Never show a mark for level 0 items */ }
 
@@ -4437,7 +4437,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .k-message-container .alert h4 { font-size: 1em; margin-bottom: .25em; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-navigation-container, .k-flexboxlegacy .koowa .k-navigation-container { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-navigation-container, .k-flexboxlegacy .koowa .k-navigation-container { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .k-navigation-container .k-icon-cog { width: 16px; height: 16px; vertical-align: middle; color: white; }
 
@@ -4554,12 +4554,12 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .koowa .k-login-container:before { content: ' '; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* 1 */ }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-login-container, .k-flexboxlegacy .koowa .k-login-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; /* Hide the psuedo eleemnt when using flexbox */ }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-login-container, .k-flexboxlegacy .koowa .k-login-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; /* Hide the psuedo eleemnt when using flexbox */ }
   .k-flexbox .koowa .k-login-container:before, .k-flexboxlegacy .koowa .k-login-container:before { display: none; } }
 
 .koowa .k-login { background: white; width: 100%; max-width: 360px; height: auto; margin: auto; display: inline-block; /* 1 */ vertical-align: middle; /* 1 */ border-radius: 5px; padding: 20px; box-shadow: 0 6px 0 -4px rgba(0, 0, 0, 0.3); /* Don't flex this window, it needs to be as big as it's children */ /* Extra spacing between input fields */ }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-login, .k-flexboxlegacy .koowa .k-login { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox .koowa .k-login, .k-flexboxlegacy .koowa .k-login { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .k-login .form-group, .koowa .k-login .control-group { padding: 5px 0; }
 
@@ -4569,22 +4569,22 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 @media (min-width: 300px) and (min-height: 660px) { .k-flexbox .koowa .k-form-flexbox, .k-flexboxlegacy .koowa .k-form-flexbox { overflow: hidden; }
   .k-flexbox .koowa .k-form-flexbox *, .k-flexboxlegacy .koowa .k-form-flexbox * { min-height: 0; }
-  .k-flexbox .koowa .k-form-flexbox .k-container, .k-flexboxlegacy .koowa .k-form-flexbox .k-container { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; padding: 0; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__main, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__main { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; margin: 0; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__main fieldset, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__main fieldset { -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; padding: 20px; margin: 0; }
+  .k-flexbox .koowa .k-form-flexbox .k-container, .k-flexboxlegacy .koowa .k-form-flexbox .k-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; padding: 0; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__main, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__main { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; margin: 0; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__main fieldset, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__main fieldset { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; padding: 20px; margin: 0; }
   .k-flexbox .koowa .k-form-flexbox .k-container__sub, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__sub { margin: 0; border-left: 1px solid #CFD8DC; overflow-y: auto; }
   .k-flexbox .koowa .k-form-flexbox .k-container__sub .k-form-block, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__sub .k-form-block { background: none; border: 0 none; margin: 0; padding: 0; border-top: 1px solid #CFD8DC; }
   .k-flexbox .koowa .k-form-flexbox .k-container__sub .k-form-block:first-child, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__sub .k-form-block:first-child { border-top: none; }
   .k-flexbox .koowa .k-form-flexbox .k-container__sub .k-form-block__content, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__sub .k-form-block__content { padding: 20px; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__flex, .k-flexbox .koowa .k-form-flexbox .k-container__flex .k-container__no-tabs, .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-container, .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-content, .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-pane.active, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .k-container__no-tabs, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-container, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-content, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-pane.active { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-container, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-container { -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; margin: 0; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__flex .nav-tabs, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .nav-tabs { padding-left: 20px; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-pane, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-pane { -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; border-bottom: 0 none; border-left: 0 none; border-right: 0 none; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__flex .k-scrollable, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .k-scrollable { max-width: 100%; height: auto; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; overflow: hidden; padding: 0; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__flex, .k-flexbox .koowa .k-form-flexbox .k-container__flex .k-container__no-tabs, .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-container, .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-content, .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-pane.active, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .k-container__no-tabs, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-container, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-content, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-pane.active { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-container, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-container { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; margin: 0; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__flex .nav-tabs, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .nav-tabs { padding-left: 20px; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-pane, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-pane { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; border-bottom: 0 none; border-left: 0 none; border-right: 0 none; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__flex .k-scrollable, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .k-scrollable { max-width: 100%; height: auto; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; overflow: hidden; padding: 0; }
   .k-flexbox .koowa .k-form-flexbox .k-container__flex .k-scrollable .k-scrollable__body, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .k-scrollable .k-scrollable__body { height: auto; padding: 20px; overflow: auto; }
   .k-flexbox .koowa .k-form-flexbox .k-container__flex .tab-editor, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .tab-editor { padding: 0px; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body > .mce-edit-area, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body > .mce-edit-area { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 auto; -ms-flex: 1 1 auto; flex: 1 1 auto; }
-  .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body { -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body > .mce-edit-area, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body > .mce-edit-area { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; }
+  .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
   .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body, .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body iframe, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce > .mce-container-body iframe { height: auto !important; }
   .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .toggle-editor, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .toggle-editor { display: none; }
   .k-flexbox .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce, .k-flexboxlegacy .koowa .k-form-flexbox .k-container__flex .editor .mce-tinymce { border: none; }
@@ -4610,7 +4610,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 body.com_docman .k-sidebar { display: none !important; }
 
-@media (min-width: 300px) and (min-height: 460px) { .k-flexbox body.com_docman .k-component .koowa.com_docman, .k-flexboxlegacy body.com_docman .k-component .koowa.com_docman { display: block; -webkit-box-flex: 0; -webkit-flex: 0 0 auto; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 460px) { .k-flexbox body.com_docman .k-component .koowa.com_docman, .k-flexboxlegacy body.com_docman .k-component .koowa.com_docman { display: block; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
 .koowa .inline-block { display: inline-block !important; }
 
