@@ -9,5 +9,5 @@
 
 defined('_JEXEC') or die;
 ?>
-<div class="k-sidebar__header"><?php echo JFilterOutput::ampReplace(JText::_($displayData)); ?></div>
+<div class="k-sidebar-item__header"><?php echo JFilterOutput::ampReplace(JText::_($displayData)); ?></div>
 <ul class="k-list">

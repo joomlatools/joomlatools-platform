@@ -3,7 +3,9 @@
 @import "utilities/variables";
 
 // Import default Joomla styling (Joomlatools framework)
-@import "nooku/admin";
+//@import "nooku/admin";
+
+$k-icon-path: '../fonts';
 
 // Import default Joomla styling (Joomlatools framework)
 @import "kodekit-ui/src/scss/admin-ui.scss";
@@ -11,15 +13,17 @@
 // Basic html and body setup
 @import "utilities/setup";
 
+
 // Koowa namespaced styling
-.koowa {
+.k-ui-namespace {
+
 
   // Bootstrap
   @import "bootstrap/bootstrap";
 
   // Utilities
-  @import "utilities/icons";
-  @import "utilities/mapping";
+  //@import "utilities/icons";
+  //@import "utilities/mapping";
 
   // Molecules
   @import "molecules/colors";

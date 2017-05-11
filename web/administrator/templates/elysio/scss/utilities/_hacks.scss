@@ -2,7 +2,7 @@
 
 @at-root .view-cpanel {
   .k-toolbar {
-    @include breakpoint($charlie) {
+    @include breakpoint($k-charlie) {
       display: none;
     }
   }

@@ -6,7 +6,7 @@
  * 2. Add a .k-container__flex as direct child of the .k-container__main
  */
 
-@include flexbox($vertical: 660px) {
+@include flexbox($k-vertical: 660px) {
   .k-form-flexbox {
     overflow: hidden;
 

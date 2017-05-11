@@ -58,10 +58,10 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 <head>
 	<jdoc:include type="head" />
 </head>
-<body class="koowa admin <?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
-<script type="text/javascript">function hasClass(e,t){return e.className.match(new RegExp("(\\s|^)"+t+"(\\s|$)"))}var el=document.body;var cl="no-js";if(hasClass(el,cl)){var reg=new RegExp("(\\s|^)"+cl+"(\\s|$)");el.className=el.className.replace(reg," k-js-enabled")}</script>
+<body class="<?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
+<div class="k-ui-namespace k-ui-container">
 
-<div id="koowa" class="koowa">
+    <!-- navigation -->
     <?php include_once('navigation.php'); ?>
 
     <!-- Message container -->
@@ -69,68 +69,72 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
         <jdoc:include type="message" />
     </div>
 
-    <!-- Koowa container -->
-    <section class="koowa-container">
+    <!-- Content wrapper -->
+    <div class="k-content-wrapper">
 
-        <!-- Content wrapper -->
-        <div class="k-content-wrapper">
+        <?php if (($showSidebar || $showSubmenu || $showIcons) && $option != 'com_docman') : ?>
+        <!-- Sidebar -->
+        <div class="k-sidebar-left k-js-sidebar-left">
+            <?php if($showSubmenu) : ?>
+            <jdoc:include type="modules" name="submenu" style="none" />
+            <?php endif ?>
+            <?php if($showIcons) : ?>
+            <jdoc:include type="modules" name="icon" style="none" />
+            <?php endif ?>
+            <?php if($showSidebar) : ?>
+                <jdoc:include type="modules" name="sidebar" style="none" />
+            <?php endif ?>
+        </div>
+        <?php endif; ?>
 
-            <?php if (($showSidebar || $showSubmenu || $showIcons) && $option != 'com_docman') : ?>
-            <!-- Sidebar -->
-            <div id="k-sidebar" class="k-sidebar">
-                <?php if($showSubmenu) : ?>
-                <jdoc:include type="modules" name="submenu" style="none" />
-                <?php endif ?>
-                <?php if($showIcons) : ?>
-                <jdoc:include type="modules" name="icon" style="none" />
-                <?php endif ?>
-                <?php if($showSidebar) : ?>
-                    <jdoc:include type="modules" name="sidebar" style="none" />
-                <?php endif ?>
+        <!-- Content -->
+        <div class="k-content k-js-content">
+
+            <?php if ($this->countModules('toolbar')) : ?>
+            <!-- Toolbar -->
+            <div class="k-toolbar">
+                <jdoc:include type="modules" name="toolbar" style="none" />
             </div>
             <?php endif; ?>
 
-            <!-- Content -->
-            <div class="k-content">
-
-                <?php if ($this->countModules('toolbar')) : ?>
-                <!-- Toolbar -->
-                <div class="k-toolbar">
-                    <jdoc:include type="modules" name="toolbar" style="none" />
-                </div>
-                <?php endif; ?>
+            <!-- Component wrapper -->
+            <div class="k-component-wrapper">
 
                 <!-- Component -->
-                <div class="k-component">
+                <div class="k-component k-js-component">
 
-                    <?php if ($this->countModules('top')) : ?>
-                        <jdoc:include type="modules" name="top" style="xhtml" />
-                    <?php endif; ?>
+                <?php if ($this->countModules('top')) : ?>
+                    <jdoc:include type="modules" name="top" style="xhtml" />
+                <?php endif; ?>
 
-                    <jdoc:include type="component" />
+                <jdoc:include type="component" />
 
-                    <?php if ($this->countModules('bottom')) : ?>
-                        <jdoc:include type="modules" name="bottom" style="xhtml" />
-                    <?php endif; ?>
+                <?php if ($this->countModules('bottom')) : ?>
+                    <jdoc:include type="modules" name="bottom" style="xhtml" />
+                <?php endif; ?>
 
                 </div><!-- .k-component -->
 
-            </div><!-- k-content -->
+            </div><!-- .k-component-wrapper -->
 
-        </div><!-- .k-content-wrapper -->
+        </div><!-- k-content -->
 
-    </section><!-- .koowa-container -->
+    </div><!-- .k-content-wrapper -->
 
-    <jdoc:include type="modules" name="debug" style="none" />
+    <?php if ($this->countModules('debug')) : ?>
+    <div class="k-debug-container">
+        <jdoc:include type="modules" name="debug" style="none" />
+    </div>
+    <?php endif; ?>
 
-    <script>
-        jQuery(document).ready(function($) {
-            var modal = $('#collapseModal');
-            if (modal.length) {
-                modal.appendTo('body');
-            }
-        });
-    </script>
+<!--    <script>-->
+<!--        jQuery(document).ready(function($) {-->
+<!--            var modal = $('#collapseModal');-->
+<!--            if (modal.length) {-->
+<!--                modal.appendTo('body');-->
+<!--            }-->
+<!--        });-->
+<!--    </script>-->
 </div>
 </body>
 </html>

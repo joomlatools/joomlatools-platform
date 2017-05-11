@@ -14,27 +14,31 @@ $user = JFactory::getUser();
 
 <div class="k-container">
 
-    <!-- Content -->
-    <?php
-    $spans = 0;
+    <div class="k-container__full">
 
-    foreach ($this->modules as $module)
-    {
-        // Get module parameters
-        $params = new JRegistry;
-        $params->loadString($module->params);
-        $bootstrapSize = $params->get('bootstrap_size');
-        if (!$bootstrapSize)
+        <!-- Content -->
+        <?php
+        $spans = 0;
+
+        foreach ($this->modules as $module)
         {
-            $bootstrapSize = 12;
+            // Get module parameters
+            $params = new JRegistry;
+            $params->loadString($module->params);
+            $bootstrapSize = $params->get('bootstrap_size');
+            if (!$bootstrapSize)
+            {
+                $bootstrapSize = 12;
+            }
+            $spans += $bootstrapSize;
+            if ($spans > 12)
+            {
+                $spans = $bootstrapSize;
+            }
+            echo JModuleHelper::renderModule($module, array('style' => 'basic'));
         }
-        $spans += $bootstrapSize;
-        if ($spans > 12)
-        {
-            $spans = $bootstrapSize;
-        }
-        echo JModuleHelper::renderModule($module, array('style' => 'xhtml'));
-    }
-    ?>
+        ?>
+
+    </div>
 
 </div>

@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 ?>
 
 <div class="k-sidebar__navigation">
-    <div class="k-sidebar__header">
+    <div class="k-sidebar-item__header">
         <?php echo JText::_('COM_CONFIG_SYSTEM'); ?>
     </div>
     <ul class="k-list">
@@ -21,7 +21,7 @@ defined('_JEXEC') or die;
             </li>
         <?php endif; ?>
     </ul>
-    <div class="k-sidebar__header">
+    <div class="k-sidebar-item__header">
         <?php echo JText::_('COM_CONFIG_COMPONENT_FIELDSET_LABEL'); ?>
     </div>
     <ul class="k-list">
