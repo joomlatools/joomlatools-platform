@@ -35,7 +35,11 @@ module.exports = function(grunt) {
         // Compile sass files
         sass: {
             options: {
-                outputStyle: 'compact'
+                outputStyle: 'compact',
+                includePaths: [
+                    'bower_components', // bower
+                    'node_modules' // npm
+                ]
             },
             dist: {
                 files: {
@@ -86,7 +90,7 @@ module.exports = function(grunt) {
                     ]
                 },
                 options: {
-                    proxy: "http://joomla.box/joomla-platform/web/administrator/",
+                    proxy: "http://joomla.box/joomlatools-platform/web/administrator/",
                     port: bsport,
                     open: true,
                     notify: false,
