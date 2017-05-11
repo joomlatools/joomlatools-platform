@@ -36,8 +36,8 @@ defined('JPATH_BASE') or die;
 <?php endif; ?>
 
 <?php if ($displayData->displayFilters) : ?>
-<div class="k-sidebar__item k-sidebar__item--flex">
-	<div class="k-sidebar__header"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></div>
+<div class="k-sidebar-item k-sidebar-item--flex">
+	<div class="k-sidebar-item__header"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></div>
 	<div class="k-sidebar__content">
 		<form action="<?php echo JRoute::_($action); ?>" method="post">
 			<?php foreach ($displayData->filters as $filter) : ?>

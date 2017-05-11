@@ -9,4 +9,4 @@
 
 defined('_JEXEC') or die;
 ?>
-<div class="k-sidebar__item">
+<div class="k-sidebar-item">

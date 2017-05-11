@@ -5,19 +5,21 @@
 // Import default Joomla styling (Joomlatools framework)
 //@import "nooku/admin";
 
+$k-icon-path: '../fonts';
+
 // Import default Joomla styling (Joomlatools framework)
 @import "kodekit-ui/src/scss/admin-ui.scss";
 
 // Basic html and body setup
 @import "utilities/setup";
 
-// Bootstrap
-@import "bootstrap/bootstrap";
-
 
 // Koowa namespaced styling
-.koowa {
+.k-ui-namespace {
 
+
+  // Bootstrap
+  @import "bootstrap/bootstrap";
 
   // Utilities
   //@import "utilities/icons";
@@ -45,8 +47,4 @@
   // Hacks
   @import "utilities/hacks";
 
-}
-
-body {
-  border: 10px solid pink;
 }
