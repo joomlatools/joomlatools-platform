@@ -2387,7 +2387,7 @@ sg-wrapper:
 
 Styleguide 2.21
 
-*/ /** Default table settings 1. override browser default */ /*
+*/ /** Table 1. Should be as tall as possible for dropdown overflows. Pushes the pagination to the bottom */ /** Default table settings 1. override browser default */ /*
 Table pagination
 
 - Put right below `.k-table` container and inside `.k-table-container` container
@@ -3258,13 +3258,13 @@ markup:
 
 .k-ui-namespace .k-component-wrapper { position: relative; background: #fbfafa; /* Faking flexbox on older browsers by using table styling */ display: table; width: 100%; min-height: 100%; /** When flexbox is in use 1. Reset width needed for table 2. Set overflow for breadcrumbs to properly work */ /* Hide overtflow when resizing the window */ }
 
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-component-wrapper, .k-flexboxlegacy .k-ui-namespace .k-component-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; height: auto; } }
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-component-wrapper, .k-flexboxlegacy .k-ui-namespace .k-component-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: auto; min-height: 0; } }
 
 .k-is-resizing .k-ui-namespace .k-component-wrapper { overflow: hidden; }
 
 .k-ui-namespace .k-content { position: relative; /* 1 */ z-index: 2; /* 1 */ background: white; /* 2 */ transition: -webkit-transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); transition: transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); -webkit-backface-visibility: hidden; /* 3 */ /* Faking flexbox on older browsers by using table styling */ display: table-cell; width: 100%; min-height: 100%; /** When flexbox is in use 1. Reset width needed for table 2. Set overflow for breadcrumbs to properly work */ }
 
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-content, .k-flexboxlegacy .k-ui-namespace .k-content { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; width: auto; /* 1 */ overflow: hidden; /* 2 */ height: auto; } }
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-content, .k-flexboxlegacy .k-ui-namespace .k-content { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; width: auto; /* 1 */ overflow: hidden; /* 2 */ min-height: 0; } }
 
 .k-ui-namespace .k-show-left-menu { /* Set opacity */ }
 
@@ -3290,7 +3290,7 @@ markup:
 
 .k-ui-namespace .k-content-wrapper { position: relative; /* 1 */ clear: both; /* 2 */ margin: 0; overflow: hidden; border-bottom: 1px solid #e0e0e0; /* Faking flexbox on older browsers by using table styling */ display: table; width: 100%; min-height: 80%; /* When flexbox is in use */ }
 
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-content-wrapper, .k-flexboxlegacy .k-ui-namespace .k-content-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; border-bottom: none; height: auto; } }
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-content-wrapper, .k-flexboxlegacy .k-ui-namespace .k-content-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; border-bottom: none; min-height: 0; } }
 
 .k-ui-namespace .k-container { overflow: hidden; width: 100%; margin: 0 auto -20px; padding: 20px 10px; /* When flexbox is in use */ /* When resizing */ }
 
@@ -3336,7 +3336,7 @@ markup:
 
 @media screen and (min-width: 400px) { .k-ui-namespace.k-ui-container { max-width: none; /* 2 */ } }
 
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace.k-ui-container, .k-flexboxlegacy .k-ui-namespace.k-ui-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; height: auto; } }
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace.k-ui-container, .k-flexboxlegacy .k-ui-namespace.k-ui-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; min-height: 0; } }
 
 [dir="rtl"] .k-ui-namespace.k-ui-container { direction: rtl; }
 
@@ -3398,7 +3398,7 @@ markup:
 
 .k-ui-namespace .k-wrapper { position: relative; min-height: 100%; /* When flexbox is in use */ }
 
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-wrapper, .k-flexboxlegacy .k-ui-namespace .k-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: hidden; height: auto; } }
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-wrapper, .k-flexboxlegacy .k-ui-namespace .k-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; overflow: hidden; min-height: 0; } }
 
 .k-ui-namespace .k-is-opened-left, .k-ui-namespace .k-is-opened-right { overflow: hidden; /* 1 */ }
 
@@ -4743,7 +4743,7 @@ markup:
 
 .k-is-resizing .k-ui-namespace .k-table-container { overflow: hidden; }
 
-.k-ui-namespace .k-table { overflow: auto; -webkit-backface-visibility: hidden; backface-visibility: hidden; will-change: overflow; }
+.k-ui-namespace .k-table { overflow: auto; -webkit-backface-visibility: hidden; backface-visibility: hidden; will-change: overflow; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; /* 1 */ }
 
 .k-ui-namespace .k-table-container { /** Sticky header 1. Set top to 0 because there's no default yet 2. Set z-index to 1 to make sure it covers the tbody */ /** Cells 1. Position checkbox 2. Remove default margin */ /** Head 1. Don't set a vertical padding on table headers. Set padding on table heading children We do this so <a> elements are fully clickable for sorting 2. Don't use long header titles since they won't be wrapped 3. Whole <th> should be clickable 4. Set padding here */ /** Body 1. Small extra info below title display:block to display below title */ /* Hover background */ }
 

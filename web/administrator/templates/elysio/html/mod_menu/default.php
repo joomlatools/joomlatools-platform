@@ -77,7 +77,7 @@ if ($user->authorise('core.manage', 'com_menus'))
             }
             elseif ($menuType->home == 1 && $menuType->language == '*')
             {
-                $titleicon = ' <i class="icon-home"></i>';
+                $titleicon = ' <span class="k-icon-home" aria-hidden="true"></span>';
             }
             elseif ($menuType->home > 1)
             {

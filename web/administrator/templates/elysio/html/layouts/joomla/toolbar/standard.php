@@ -16,8 +16,18 @@ $class    = $displayData['class'];
 $text     = $displayData['text'];
 $btnClass = $displayData['btnClass'];
 
+// Override Joomla framework classes
+if (strpos($btnClass, 'btn-success') !== false) {
+    $btnClass = ' k-button--success';
+} else {
+    $btnClass = ' k-button--default';
+}
+
+include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
+$class = classOverride($class);
 ?>
-<button onclick="<?php echo $doTask; ?>" class="k-button k-button--default <?php echo $btnClass; ?>">
+
+<button onclick="<?php echo $doTask; ?>" class="k-button<?php echo $btnClass; ?>">
 	<span class="<?php echo trim($class); ?>"></span>
 	<?php echo $text; ?>
 </button>

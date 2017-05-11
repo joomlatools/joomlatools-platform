@@ -25,8 +25,13 @@ $selector = $displayData['selector'];
 $class    = isset($displayData['class']) ? $displayData['class'] : 'btn btn-small';
 $icon     = isset($displayData['icon']) ? $displayData['icon'] : 'out-3';
 $text     = isset($displayData['text']) ? $displayData['text'] : '';
+
+include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
+$class = classOverride($class);
+
 ?>
-<button class="k-button k-button--default <?php echo $class; ?>" data-toggle="modal" data-target="#<?php echo $selector; ?>">
+
+<button class="k-button k-button--default" data-toggle="modal" data-target="#<?php echo $selector; ?>">
 	<span class="k-icon-<?php echo $icon; ?>" aria-hidden="true"></span>
 	<?php echo $text; ?>
 </button>

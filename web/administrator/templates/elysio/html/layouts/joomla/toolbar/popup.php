@@ -15,6 +15,9 @@ $doTask = $displayData['doTask'];
 $class  = $displayData['class'];
 $text   = $displayData['text'];
 $name   = $displayData['name'];
+
+include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
+$class = classOverride($class);
 ?>
 <button value="<?php echo $doTask; ?>" class="k-button k-button--default modal" data-toggle="modal" data-target="#modal-<?php echo $name; ?>">
 	<span class="<?php echo $class; ?>" aria-hidden="true"></span>

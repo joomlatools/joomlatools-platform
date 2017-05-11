@@ -55,27 +55,31 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 </script>
 
 <!-- Form -->
-<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=items');?>" method="post" name="adminForm" id="adminForm">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=items');?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
-    <div class="k-scopebar" id="filter-bar">
+    <div class="k-scopebar k-js-scopebar">
         <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this), null, array('debug' => false)); ?>
+
+        <!-- Filters -->
+        <div class="k-scopebar__item k-scopebar__item--filters">
+
+            <div class="k-scopebar__filters-content">
+
+                <!-- Filter -->
+                <div class="k-filter-container__item" data-filter="tools">
+                    <?php echo JLayoutHelper::render('joomla.searchtools.default.filters', array('view' => $this), null, array('debug' => false)); ?>
+                </div><!-- k-filter-container__item -->
+            </div>
+
+        </div><!-- .k-scopebar -->
+
     </div><!-- .k-scopebar -->
-
-    <!-- Filters -->
-    <div class="k-filter-container">
-
-        <!-- Filter -->
-        <div class="k-filter-container__item" data-filter="tools">
-            <?php echo JLayoutHelper::render('joomla.searchtools.default.filters', array('view' => $this), null, array('debug' => false)); ?>
-        </div><!-- k-filter-container__item -->
-
-    </div><!-- .k-filter-container -->
 
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="table--fixed footable select-rows" id="itemList">
+            <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                     <tr>
                         <th width="1%">

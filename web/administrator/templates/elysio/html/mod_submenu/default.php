@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
     <ul class="k-navigation">
         <?php foreach ($list as $item) : ?>
             <?php if (isset ($item[2]) && $item[2] == 1) : ?>
-                <li class="active">
+                <li class="k-is-active">
             <?php else : ?>
                 <li>
             <?php endif; ?>

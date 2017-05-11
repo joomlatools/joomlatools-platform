@@ -98,9 +98,6 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
             <!-- Component wrapper -->
             <div class="k-component-wrapper">
 
-                <!-- Component -->
-                <div class="k-component k-js-component">
-
                 <?php if ($this->countModules('top')) : ?>
                     <jdoc:include type="modules" name="top" style="xhtml" />
                 <?php endif; ?>
@@ -110,8 +107,6 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
                 <?php if ($this->countModules('bottom')) : ?>
                     <jdoc:include type="modules" name="bottom" style="xhtml" />
                 <?php endif; ?>
-
-                </div><!-- .k-component -->
 
             </div><!-- .k-component-wrapper -->
 

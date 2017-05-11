@@ -39,41 +39,40 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 </script>
 
 <!-- Form -->
-<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=menus');?>" method="get" name="adminForm" id="adminForm">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=menus');?>" method="get" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
-    <div class="k-scopebar" id="filter-bar">
+    <div class="k-scopebar k-js-scopebar">
 
-        <!-- Filters -->
-        <div class="k-scopebar__item k-scopebar__item--fluid">
-
-            <!-- Search toggle button -->
-            <button type="button" class="k-toggle-search"><span class="k-icon-magnifying-glass"></span><span class="visually-hidden">Search</span></button>
-
-        </div><!-- .k-scopebar__item--fluid -->
+        <!-- Scopebar filters -->
+        <div class="k-scopebar__item k-scopebar__item--filters"></div><!-- .k-scopebar__item--filters -->
 
         <!-- Search -->
-        <div class="k-scopebar__item k-scopebar__search">
-            <div class="k-search__container k-search__container--has-both-buttons">
+        <div class="k-scopebar__item k-scopebar__item--search">
+            <div class="k-search k-search--has-both-buttons">
+                <label for="k-search-input">Search</label>
                 <input class="k-search__field" type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('JSEARCH_FILTER'); ?>" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" />
-                <button type="submit" class="k-search__button-search" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
-                    <span class="k-icon-magnifying-glass"></span>
+                <button type="submit" class="k-search__submit" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
+                    <span class="k-icon-magnifying-glass" aria-hidden="true"></span>
+                    <span class="k-visually-hidden">Search</span>
                 </button>
-                <button type="button" class="k-search__button-empty" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
-                    <span>X</span>
+                <button type="button" class="k-search__empty" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
+                    <span class="k-search__empty-area">
+                        <span class="k-icon-x" aria-hidden="true"></span>
+                        <span class="k-visually-hidden">Clear search</span>
+                    </span>
                 </button>
             </div>
-        </div><!-- .k-scopebar__search -->
-
+        </div>
     </div><!-- .k-scopebar -->
 
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="table--fixed footable select-rows">
+            <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                     <tr>
-                        <th width="1%">
+                        <th width="1%" class="k-table-data--form">
                             <?php echo JHtml::_('grid.checkall'); ?>
                         </th>
                         <th>
@@ -91,10 +90,10 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                     $canChange = $user->authorise('core.edit.state', 'com_menus');
                 ?>
                     <tr>
-                        <td>
+                        <td class="k-table-data--form">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
-                        <td>
+                        <td class="k-table-data--ellipsis">
                             <a href="<?php echo JRoute::_('index.php?option=com_menus&view=items&menutype='.$item->menutype) ?> ">
                                 <?php echo $this->escape($item->title); ?></a>
                             <p class="small">(<span><?php echo JText::_('COM_MENUS_MENU_MENUTYPE_LABEL') ?></span>
@@ -106,7 +105,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                                 <?php endif; ?>
                             </p>
                         </td>
-                        <td class="left">
+                        <td>
                             <?php if (isset($this->modules[$item->menutype])) : ?>
                                 <div class="btn-group">
                                     <a href="#" class="btn btn-small dropdown-toggle" data-toggle="dropdown">
@@ -149,4 +148,4 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 
     </div><!-- .k-table-container -->
 
-</form><!-- .k-list-layout -->
+</form><!-- .k-component -->
