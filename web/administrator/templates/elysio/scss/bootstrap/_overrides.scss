@@ -37,7 +37,7 @@
     height: auto; /* 6 */
     padding: $navbar-padding-vertical $navbar-padding-horizontal $navbar-padding-vertical ($navbar-padding-horizontal / 2);
 
-    @include breakpoint($charlie) {
+    @include breakpoint($k-charlie) {
       padding-left: 0;
     }
 
@@ -72,11 +72,11 @@ form {
     @include reset;
     display: block;
     margin-top: 0;
-    margin-bottom: $spacing;
+    margin-bottom: $k-spacing;
     border-bottom: 1px solid darker($form-background);
-    padding-top: $spacing;
+    padding-top: $k-spacing;
     padding-bottom: .2em;
-    font-size: $font-size * 1.65;
+    font-size: $k-font-size * 1.65;
     font-weight: normal;
 
     /* No margin top for the first legend */
@@ -104,7 +104,7 @@ form {
 /* Setting some spacing on Bootstrap rows */
 
 .row-fluid {
-  margin-bottom: $spacing;
+  margin-bottom: $k-spacing;
 
   &:last-child {
     margin-bottom: 0;

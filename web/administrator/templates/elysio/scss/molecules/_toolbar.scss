@@ -46,7 +46,7 @@
     margin: 10px 10px 0 0; /* 1 */
     padding: 0; /* 2 */
 
-    @include breakpoint($charlie) {
+    @include breakpoint($k-charlie) {
       padding: 6px 8px; /* 3 */
 
       i {
@@ -96,7 +96,7 @@
     text-align: center; /* 2 */
     color: inherit;
 
-    @include breakpoint($charlie) {
+    @include breakpoint($k-charlie) {
       display: inline-block; /* 3 */
       width: auto; /* 3 */
       height: auto; /* 3 */

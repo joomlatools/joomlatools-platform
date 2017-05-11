@@ -61,7 +61,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 <body class="koowa admin <?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
 <script type="text/javascript">function hasClass(e,t){return e.className.match(new RegExp("(\\s|^)"+t+"(\\s|$)"))}var el=document.body;var cl="no-js";if(hasClass(el,cl)){var reg=new RegExp("(\\s|^)"+cl+"(\\s|$)");el.className=el.className.replace(reg," k-js-enabled")}</script>
 
-<div id="koowa" class="koowa">
+<div id="koowa" class="koowa k-ui-namespace k-ui-container">
     <?php include_once('navigation.php'); ?>
 
     <!-- Message container -->
