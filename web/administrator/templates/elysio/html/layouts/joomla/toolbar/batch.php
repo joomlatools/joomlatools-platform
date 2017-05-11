@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 $title = $displayData['title'];
 
 ?>
-<button data-toggle="modal" data-target="#collapseModal" class="btn btn-small">
-	<span class="icon-checkbox-partial" title="<?php echo $title; ?>"></span>
+<button data-toggle="modal" data-target="#collapseModal" class="k-button k-button--default">
+	<span class="k-icon-checkbox-partial" title="<?php echo $title; ?>" aria-hidden="true"></span>
 	<?php echo $title; ?>
 </button>

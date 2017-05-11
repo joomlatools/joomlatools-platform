@@ -92,9 +92,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 
             <?php if ($this->countModules('toolbar')) : ?>
             <!-- Toolbar -->
-            <div class="k-toolbar">
-                <jdoc:include type="modules" name="toolbar" style="none" />
-            </div>
+            <jdoc:include type="modules" name="toolbar" style="none" />
             <?php endif; ?>
 
             <!-- Component wrapper -->
