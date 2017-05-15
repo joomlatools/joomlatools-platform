@@ -43,27 +43,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 
     <!-- Scopebar -->
     <div class="k-scopebar k-js-scopebar">
-
-        <!-- Scopebar filters -->
-        <div class="k-scopebar__item k-scopebar__item--filters"></div><!-- .k-scopebar__item--filters -->
-
-        <!-- Search -->
-        <div class="k-scopebar__item k-scopebar__item--search">
-            <div class="k-search k-search--has-both-buttons">
-                <label for="k-search-input">Search</label>
-                <input class="k-search__field" type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('JSEARCH_FILTER'); ?>" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" />
-                <button type="submit" class="k-search__submit" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
-                    <span class="k-icon-magnifying-glass" aria-hidden="true"></span>
-                    <span class="k-visually-hidden">Search</span>
-                </button>
-                <button type="button" class="k-search__empty" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
-                    <span class="k-search__empty-area">
-                        <span class="k-icon-x" aria-hidden="true"></span>
-                        <span class="k-visually-hidden">Clear search</span>
-                    </span>
-                </button>
-            </div>
-        </div>
+        <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
     </div><!-- .k-scopebar -->
 
     <!-- Table -->

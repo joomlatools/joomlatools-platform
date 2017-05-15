@@ -14,10 +14,10 @@ $data = $displayData;
 // Load the form list fields
 $list = $data['view']->filterForm->getGroup('list');
 ?>
+
+<!-- Scopebar filters -->
 <?php if ($list) : ?>
 	<?php foreach ($list as $fieldName => $field) : ?>
-		<div style="max-width: 200px;display: inline-block">
-			<?php echo $field->input; ?>
-		</div>
+        <?php echo $field->input; ?>
 	<?php endforeach; ?>
 <?php endif; ?>
