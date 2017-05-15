@@ -37,19 +37,22 @@ $filters = $data['view']->filterForm->getGroup('filter');
 
 <div class="k-dynamic-content-holder">
     <div class="k-js-filters">
-        <div data-filter data-title="Status" data-count="0">
-            <select class="k-js-select2" name="enabled" data-placeholder="- Select -">
-                <option value="" class="level1">- Select -</option>
-                <option value="1" class="level1">Published</option>
-                <option value="0" class="level1">Unpublished</option>
-            </select>
-        </div>
+        <?php if ($filters) : ?>
+            <?php $counter = 0; ?>
+            <?php foreach ($filters as $fieldName => $field) : ?>
+                <?php if ($fieldName != 'filter_search') : ?>
+                    <div data-filter data-title="Filter name" data-count="<?php echo $counter; ?>">
+                        <?php echo $field->input; ?>
+                    </div>
+                    <?php $counter++; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </div>
 
 <div class="k-scopebar__item--filters">
     <div class="k-scopebar__filters-content">
-
         <div class="k-scopebar__filters k-js-filter-container">
             <div style="display: none;" class="k-scopebar__item--filter k-scopebar-dropdown k-js-filter-prototype k-js-dropdown">
                 <button type="button" class="k-scopebar-dropdown__button k-js-dropdown-button">
@@ -65,30 +68,7 @@ $filters = $data['view']->filterForm->getGroup('filter');
                 </div>
             </div>
         </div><!-- .k-scopebar__filters -->
-
-        <?php if ( 1 == 1 ): ?>
-<?php if ($filters) : ?>
-	<?php foreach ($filters as $fieldName => $field) : ?>
-		<?php if ($fieldName != 'filter_search') : ?>
-			<?php
-			$showOn = '';
-			if ($showOnData = $field->getAttribute('dataShowOn'))
-			{
-				JHtml::_('jquery.framework');
-				JHtml::_('script', 'jui/cms.js', false, true);
-				$showOn = " data-showon='" . $showOnData . "'";
-			}
-			?>
-			<div class="js-stools-field-filter"<?php echo $showOn; ?>>
-				<?php echo $field->input; ?>
-			</div>
-		<?php endif; ?>
-	<?php endforeach; ?>
-<?php endif; ?>
-<?php endif; ?>
-
-
-</div>
+    </div>
 </div>
 
 <!-- Temporary -->

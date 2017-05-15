@@ -72,10 +72,14 @@ module.exports = function(grunt) {
             build: {
                 files: {
                     'js/admin.js': [
-                        'bower_components/footable/dist/footable.min.js',
-                        'scripts/jquery.floatThead.js',
-                        'scripts/off-canvas-menu.js',
+                        'bower_components/kodekit-ui/dist/js/min/admin.js',
                         'scripts/main.js'
+                    ],
+                    'js/jquery.js': [
+                        'bower_components/kodekit-ui/dist/js/min/jquery.js'
+                    ],
+                    'js/modernizr.js': [
+                        'bower_components/kodekit-ui/dist/js/min/modernizr.js'
                     ]
                 }
             }
