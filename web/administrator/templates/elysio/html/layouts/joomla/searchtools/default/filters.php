@@ -68,6 +68,25 @@ $filters = $data['view']->filterForm->getGroup('filter');
                 </div>
             </div>
         </div><!-- .k-scopebar__filters -->
+
+        <?php if ($filters) : ?>
+            <?php foreach ($filters as $fieldName => $field) : ?>
+                <?php if ($fieldName != 'filter_search') : ?>
+                    <?php
+                    $showOn = '';
+                    if ($showOnData = $field->getAttribute('dataShowOn'))
+                    {
+                        JHtml::_('jquery.framework');
+                        JHtml::_('script', 'jui/cms.js', false, true);
+                        $showOn = " data-showon='" . $showOnData . "'";
+                    }
+                    ?>
+                    <div class="js-stools-field-filter"<?php echo $showOn; ?>>
+                        <?php echo $field->input; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </div>
 

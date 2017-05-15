@@ -18,7 +18,11 @@ $params = JFactory::getApplication()->getTemplate(true)->params;
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo $this->baseurl; ?>">
-                <img src="<?php echo $this->baseurl; ?>/<?php echo $params->get('logo') ?>.svg" style="height: 30px;margin: -5px 0;">
+                <?php if ($params->get('logo')) : ?>
+                    <img src="<?php echo $params->get('avatar'); ?>" alt="<?php echo $sitename; ?>" />
+                <?php else: ?>
+                    <img src="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/images/platform-avatar.png" alt="<?php echo $sitename; ?>" />
+                <?php endif; ?>
             </a>
         </div>
 

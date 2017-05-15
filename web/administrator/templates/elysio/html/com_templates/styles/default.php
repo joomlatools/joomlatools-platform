@@ -24,7 +24,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
 <!-- Form -->
-<form class="k-form-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_templates&view=styles'); ?>" method="post" name="adminForm" id="adminForm">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_templates&view=styles'); ?>" method="post" name="adminForm" id="adminForm">
 
     <?php // Scopebar ?>
     <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
@@ -32,7 +32,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="table--fixed footable select-rows">
+            <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                     <tr>
                         <th width="5">
@@ -81,9 +81,16 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                                 <?php echo $this->escape($item->title);?>
                             <?php endif; ?>
                         </td>
-                        <td class="k-table__data-button--override k-table-data--center">
+                        <td class="k-table-data-icon k-table-data--center">
                             <?php if ($item->home == '0' || $item->home == '1'):?>
-                                <?php echo JHtml::_('jgrid.isdefault', $item->home != '0', $i, 'styles.', $canChange && $item->home != '1');?>
+                                <?php if(1==2): ?>
+                                    <?php echo JHtml::_('jgrid.isdefault', $item->home != '0', $i, 'styles.', $canChange && $item->home != '1');?>
+                                <?php else: ?>
+                                    <a href="#" class="k-button k-button--tiny">
+                                        <span class="k-icon-star k-icon--size-default" aria-hidden="true"></span>
+                                        <span class="k-visually-hidden">Make default</span>
+                                    </a>
+                                <?php endif; ?>
                             <?php elseif ($canChange):?>
                                 <a href="<?php echo JRoute::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . JSession::getFormToken() . '=1');?>">
                                     <?php echo JHtml::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => JText::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true);?>

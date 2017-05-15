@@ -62,6 +62,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 <body class="<?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
 <script data-inline="" type="text/javascript">(function(){var el=document.documentElement;var cl="k-js-enabled";if(el.classList){el.classList.add(cl);}else{el.className+=" "+cl;}})()</script>
 
+<!-- Koowa -->
 <div class="k-ui-namespace k-ui-container">
 
     <!-- navigation -->
@@ -96,7 +97,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
             <!-- Content -->
             <div class="k-content k-js-content">
 
-                <?php if ($this->countModules('toolbar')) : ?>
+                <?php if (!$cpanel) : ?>
                 <!-- Toolbar -->
                 <jdoc:include type="modules" name="toolbar" style="none" />
                 <?php endif; ?>

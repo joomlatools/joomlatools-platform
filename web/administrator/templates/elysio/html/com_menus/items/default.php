@@ -148,10 +148,10 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                         <td>
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
-                        <td class="k-table__data-button--override k-table-data--center">
+                        <td class="k-table-data-button--override k-table-data--center">
                             <?php echo JHtml::_('MenusHtml.Menus.state', $item->published, $i, $canChange, 'cb'); ?>
                         </td>
-                        <td class="k-table__data-button--override">
+                        <td class="k-table-data-button--override">
                             <?php echo str_repeat('<span class="gi">|&mdash;</span>', $item->level - 1) ?>
                             <?php if ($item->checked_out) : ?>
                                 <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'items.', $canCheckin); ?>
@@ -179,7 +179,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                                     <?php echo $this->escape($item->item_type); ?></span>
                             </div>
                         </td>
-                        <td class="k-table__data-button--override k-table-data--center">
+                        <td class="k-table-data-button--override k-table-data--center">
                             <?php if ($item->type == 'component') : ?>
                                 <?php if ($item->language == '*' || $item->home == '0'):?>
                                     <?php echo JHtml::_('jgrid.isdefault', $item->home, $i, 'items.', ($item->language != '*' || !$item->home) && $canChange);?>

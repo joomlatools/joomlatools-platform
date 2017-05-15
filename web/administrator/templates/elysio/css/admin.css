@@ -1,7 +1,4 @@
 @charset "UTF-8";
-/** google-material-color v1.2.6 https://github.com/danlevan/google-material-color */
-/* NOTE: I added values 75 and 150 to Blue Grey to get some more variations in the lighter colors */
-/** Icon path */
 /* ========================================================================== Global tools ========================================================================== */
 /* Containing different libraries, variables, mixins and functions */
 /* ========================================================================== Tools ========================================================================== */
@@ -3939,7 +3936,7 @@ markup:
 
 .k-ui-namespace .k-input-group--small textarea.k-form-control, .k-ui-namespace .k-input-group--small select[multiple].k-form-control { height: auto; }
 
-.k-ui-namespace .k-input-group__addon, .k-ui-namespace .k-input-group__button, .k-ui-namespace .k-input-group .k-form-control { display: table-cell; /* Flexbox input groups for better overflow styling */ }
+.k-ui-namespace .k-input-group__addon, .k-ui-namespace .k-input-group__button, .k-ui-namespace .k-input-group .k-form-control { display: table-cell; margin: 0; /* Flexbox input groups for better overflow styling */ }
 
 .k-ui-namespace .k-input-group__addon:not(:first-child):not(:last-child), .k-ui-namespace .k-input-group__button:not(:first-child):not(:last-child), .k-ui-namespace .k-input-group .k-form-control:not(:first-child):not(:last-child) { border-radius: 0; }
 
@@ -4778,6 +4775,8 @@ markup:
 .k-ui-namespace .k-table-container tr:focus td, .k-ui-namespace .k-table-container tr:hover td, .k-ui-namespace .k-table-container tr:nth-child(n):focus td, .k-ui-namespace .k-table-container tr:nth-child(n):hover td { background: #fbfafa; }
 
 .k-ui-namespace .k-table-container [class*="k-icon"] { display: inline-block; }
+
+.k-ui-namespace .k-table-container a { color: inherit; }
 
 .k-ui-namespace .k-table-pagination { padding: 7px; background: #fbfafa; border-top: 1px solid gainsboro; box-shadow: 0 1px 0 gainsboro; /* 1 */ /* Flexbox */ }
 
@@ -6541,6 +6540,7 @@ Styleguide 2.5
 .input-daterange .add-on { display: inline-block; width: auto; min-width: 16px; height: 20px; padding: 4px 5px; font-weight: normal; line-height: 20px; text-align: center; text-shadow: 0 1px 0 white; vertical-align: middle; background-color: #eeeeee; border: 1px solid #ccc; margin-left: -5px; margin-right: -5px; }
 
 /* 5 */
+/** Icon path */
 #system-debug { display: none; }
 
 @media (min-width: 300px) and (min-height: 391px) { .k-flexbox #system-debug, .k-flexboxlegacy #system-debug { -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
@@ -6626,7 +6626,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .tooltip.bottom-right .tooltip-arrow { top: 0; left: 5px; margin-top: -5px; border-width: 0 5px 5px; border-bottom-color: #000; }
 
-.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* ========================================================================== Bootstrap 2 modal ========================================================================== */ }
+.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* ========================================================================== Bootstrap 2 modal ========================================================================== */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window 2. Make room fo the logo popping out with negative margin */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ }
 
 .k-ui-namespace * { box-sizing: border-box; }
 
@@ -6638,9 +6638,9 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace input, .k-ui-namespace button, .k-ui-namespace select, .k-ui-namespace textarea { font-family: inherit; font-size: inherit; line-height: inherit; }
 
-.k-ui-namespace a { color: #455A64; text-decoration: none; }
+.k-ui-namespace a { color: #337ab7; text-decoration: none; }
 
-.k-ui-namespace a:hover, .k-ui-namespace a:focus { color: #455A64; text-decoration: underline; }
+.k-ui-namespace a:hover, .k-ui-namespace a:focus { color: #23527c; text-decoration: underline; }
 
 .k-ui-namespace a:focus { outline: thin dotted; outline: 5px auto -webkit-focus-ring-color; outline-offset: -2px; }
 
@@ -6877,13 +6877,13 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .btn-default.disabled, .k-ui-namespace .btn-default:disabled, .k-ui-namespace .btn-default[disabled] { background-color: #e0e0e0; background-image: none; }
 
-.k-ui-namespace .btn-primary { background-image: linear-gradient(to bottom, #546E7A 0%, #3b4d56 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF546E7A', endColorstr='#FF3B4D56', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #374850; }
+.k-ui-namespace .btn-primary { background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF265A88', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #245580; }
 
-.k-ui-namespace .btn-primary:hover, .k-ui-namespace .btn-primary:focus { background-color: #3b4d56; background-position: 0 -15px; }
+.k-ui-namespace .btn-primary:hover, .k-ui-namespace .btn-primary:focus { background-color: #265a88; background-position: 0 -15px; }
 
-.k-ui-namespace .btn-primary:active, .k-ui-namespace .btn-primary.active { background-color: #3b4d56; border-color: #374850; }
+.k-ui-namespace .btn-primary:active, .k-ui-namespace .btn-primary.active { background-color: #265a88; border-color: #245580; }
 
-.k-ui-namespace .btn-primary.disabled, .k-ui-namespace .btn-primary:disabled, .k-ui-namespace .btn-primary[disabled] { background-color: #3b4d56; background-image: none; }
+.k-ui-namespace .btn-primary.disabled, .k-ui-namespace .btn-primary:disabled, .k-ui-namespace .btn-primary[disabled] { background-color: #265a88; background-image: none; }
 
 .k-ui-namespace .btn-success { background-image: linear-gradient(to bottom, #5cb85c 0%, #419641 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF5CB85C', endColorstr='#FF419641', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); background-repeat: repeat-x; border-color: #3e8f3e; }
 
@@ -6923,9 +6923,9 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .dropdown-menu > .active > a, .k-ui-namespace .dropdown-menu > .active > a:hover, .k-ui-namespace .dropdown-menu > .active > a:focus { background-image: linear-gradient(to bottom, #337ab7 0%, #2e6da4 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF337AB7', endColorstr='#FF2E6DA4', GradientType=0); background-color: #2e6da4; }
 
-.k-ui-namespace .navbar-default { background-image: linear-gradient(to bottom, #3b4d56 0%, #263238 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF3B4D56', endColorstr='#FF263238', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); border-radius: 4px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075); }
+.k-ui-namespace .navbar-default { background-image: linear-gradient(to bottom, #438bc9 0%, #3071a9 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF438BC9', endColorstr='#FF3071A9', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); border-radius: 4px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075); }
 
-.k-ui-namespace .navbar-default .navbar-nav > .open > a, .k-ui-namespace .navbar-default .navbar-nav > .active > a { background-image: linear-gradient(to bottom, #2d3940 0%, #334249 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF2D3940', endColorstr='#FF334249', GradientType=0); box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075); }
+.k-ui-namespace .navbar-default .navbar-nav > .open > a, .k-ui-namespace .navbar-default .navbar-nav > .active > a { background-image: linear-gradient(to bottom, #2a6495 0%, #2e6ca1 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF2A6495', endColorstr='#FF2E6CA1', GradientType=0); box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075); }
 
 .k-ui-namespace .navbar-brand, .k-ui-namespace .navbar-nav > li > a { text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25); }
 
@@ -7015,7 +7015,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .form-control::-webkit-input-placeholder { color: #999; }
 
-.k-ui-namespace .form-control[disabled], .k-ui-namespace .form-control[readonly], fieldset[disabled] .k-ui-namespace .form-control { background-color: #F5F5F5; opacity: 1; }
+.k-ui-namespace .form-control[disabled], .k-ui-namespace .form-control[readonly], fieldset[disabled] .k-ui-namespace .form-control { background-color: #eeeeee; opacity: 1; }
 
 .k-ui-namespace .form-control[disabled], fieldset[disabled] .k-ui-namespace .form-control { cursor: not-allowed; }
 
@@ -7211,7 +7211,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .nav > li.disabled > a:hover, .k-ui-namespace .nav > li.disabled > a:focus { color: #777777; text-decoration: none; background-color: transparent; cursor: not-allowed; }
 
-.k-ui-namespace .nav .open > a, .k-ui-namespace .nav .open > a:hover, .k-ui-namespace .nav .open > a:focus { background-color: #eeeeee; border-color: #455A64; }
+.k-ui-namespace .nav .open > a, .k-ui-namespace .nav .open > a:hover, .k-ui-namespace .nav .open > a:focus { background-color: #eeeeee; border-color: #337ab7; }
 
 .k-ui-namespace .nav .nav-divider { height: 1px; margin: 9px 0; overflow: hidden; background-color: #e5e5e5; }
 
@@ -7265,7 +7265,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .nav-tabs .dropdown-menu { margin-top: -1px; border-top-right-radius: 0; border-top-left-radius: 0; }
 
-.k-ui-namespace .navbar { position: relative; min-height: 36px; margin-bottom: 20px; border: 1px solid transparent; }
+.k-ui-namespace .navbar { position: relative; min-height: 48px; margin-bottom: 20px; border: 1px solid transparent; }
 
 .k-ui-namespace .navbar:before, .k-ui-namespace .navbar:after { content: " "; display: table; }
 
@@ -7312,7 +7312,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .navbar-fixed-bottom { bottom: 0; margin-bottom: 0; border-width: 1px 0 0; }
 
-.k-ui-namespace .navbar-brand { float: left; padding: 15px 15px; font-size: 18px; line-height: 20px; height: 36px; }
+.k-ui-namespace .navbar-brand { float: left; padding: 14px 15px; font-size: 18px; line-height: 20px; height: 48px; }
 
 .k-ui-namespace .navbar-brand:hover, .k-ui-namespace .navbar-brand:focus { text-decoration: none; }
 
@@ -7320,7 +7320,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 @media (min-width: 768px) { .navbar > .container .k-ui-namespace .navbar-brand, .navbar > .container-fluid .k-ui-namespace .navbar-brand { margin-left: -15px; } }
 
-.k-ui-namespace .navbar-toggle { position: relative; float: right; margin-right: 15px; padding: 9px 10px; margin-top: 1px; margin-bottom: 1px; background-color: transparent; background-image: none; border: 1px solid transparent; border-radius: 4px; }
+.k-ui-namespace .navbar-toggle { position: relative; float: right; margin-right: 15px; padding: 9px 10px; margin-top: 7px; margin-bottom: 7px; background-color: transparent; background-image: none; border: 1px solid transparent; border-radius: 4px; }
 
 .k-ui-namespace .navbar-toggle:focus { outline: 0; }
 
@@ -7330,7 +7330,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 @media (min-width: 768px) { .k-ui-namespace .navbar-toggle { display: none; } }
 
-.k-ui-namespace .navbar-nav { margin: 7.5px -15px; }
+.k-ui-namespace .navbar-nav { margin: 7px -15px; }
 
 .k-ui-namespace .navbar-nav > li > a { padding-top: 10px; padding-bottom: 10px; line-height: 20px; }
 
@@ -7341,9 +7341,9 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 @media (min-width: 768px) { .k-ui-namespace .navbar-nav { float: left; margin: 0; }
   .k-ui-namespace .navbar-nav > li { float: left; }
-  .k-ui-namespace .navbar-nav > li > a { padding-top: 15px; padding-bottom: 15px; } }
+  .k-ui-namespace .navbar-nav > li > a { padding-top: 14px; padding-bottom: 14px; } }
 
-.k-ui-namespace .navbar-form { margin-left: -15px; margin-right: -15px; padding: 10px 15px; border-top: 1px solid transparent; border-bottom: 1px solid transparent; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1); margin-top: 1px; margin-bottom: 1px; }
+.k-ui-namespace .navbar-form { margin-left: -15px; margin-right: -15px; padding: 10px 15px; border-top: 1px solid transparent; border-bottom: 1px solid transparent; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1); margin-top: 7px; margin-bottom: 7px; }
 
 @media (min-width: 768px) { .k-ui-namespace .navbar-form .form-group { display: inline-block; margin-bottom: 0; vertical-align: middle; }
   .k-ui-namespace .navbar-form .form-control { display: inline-block; width: auto; vertical-align: middle; }
@@ -7366,13 +7366,13 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu { margin-bottom: 0; border-top-right-radius: 4px; border-top-left-radius: 4px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
 
-.k-ui-namespace .navbar-btn { margin-top: 1px; margin-bottom: 1px; }
+.k-ui-namespace .navbar-btn { margin-top: 7px; margin-bottom: 7px; }
 
-.k-ui-namespace .navbar-btn.btn-sm, .k-ui-namespace .btn-group-sm > .navbar-btn.btn { margin-top: 3px; margin-bottom: 3px; }
+.k-ui-namespace .navbar-btn.btn-sm, .k-ui-namespace .btn-group-sm > .navbar-btn.btn { margin-top: 9px; margin-bottom: 9px; }
 
-.k-ui-namespace .navbar-btn.btn-xs, .k-ui-namespace .btn-group-xs > .navbar-btn.btn { margin-top: 7px; margin-bottom: 7px; }
+.k-ui-namespace .navbar-btn.btn-xs, .k-ui-namespace .btn-group-xs > .navbar-btn.btn { margin-top: 13px; margin-bottom: 13px; }
 
-.k-ui-namespace .navbar-text { margin-top: 8px; margin-bottom: 8px; }
+.k-ui-namespace .navbar-text { margin-top: 14px; margin-bottom: 14px; }
 
 @media (min-width: 768px) { .k-ui-namespace .navbar-text { float: left; margin-left: 15px; margin-right: 15px; } }
 
@@ -7380,7 +7380,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
   .k-ui-namespace .navbar-right { float: right !important; margin-right: -15px; }
   .k-ui-namespace .navbar-right ~ .navbar-right { margin-right: 0; } }
 
-.k-ui-namespace .navbar-default { background-color: #263238; border-color: transparent; }
+.k-ui-namespace .navbar-default { background-color: #3071a9; border-color: transparent; }
 
 .k-ui-namespace .navbar-default .navbar-brand { color: white; }
 
@@ -7392,23 +7392,23 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .navbar-default .navbar-nav > li > a:hover, .k-ui-namespace .navbar-default .navbar-nav > li > a:focus { color: white; background-color: transparent; }
 
-.k-ui-namespace .navbar-default .navbar-nav > .active > a, .k-ui-namespace .navbar-default .navbar-nav > .active > a:hover, .k-ui-namespace .navbar-default .navbar-nav > .active > a:focus { color: white; background-color: #37474F; }
+.k-ui-namespace .navbar-default .navbar-nav > .active > a, .k-ui-namespace .navbar-default .navbar-nav > .active > a:hover, .k-ui-namespace .navbar-default .navbar-nav > .active > a:focus { color: white; background-color: #3071a9; }
 
 .k-ui-namespace .navbar-default .navbar-nav > .disabled > a, .k-ui-namespace .navbar-default .navbar-nav > .disabled > a:hover, .k-ui-namespace .navbar-default .navbar-nav > .disabled > a:focus { color: #ccc; background-color: transparent; }
 
-.k-ui-namespace .navbar-default .navbar-toggle { border-color: transparent; }
+.k-ui-namespace .navbar-default .navbar-toggle { border-color: #ddd; }
 
-.k-ui-namespace .navbar-default .navbar-toggle:hover, .k-ui-namespace .navbar-default .navbar-toggle:focus { background-color: #37474F; }
+.k-ui-namespace .navbar-default .navbar-toggle:hover, .k-ui-namespace .navbar-default .navbar-toggle:focus { background-color: #ddd; }
 
-.k-ui-namespace .navbar-default .navbar-toggle .icon-bar { background-color: white; }
+.k-ui-namespace .navbar-default .navbar-toggle .icon-bar { background-color: #888; }
 
 .k-ui-namespace .navbar-default .navbar-collapse, .k-ui-namespace .navbar-default .navbar-form { border-color: transparent; }
 
-.k-ui-namespace .navbar-default .navbar-nav > .open > a, .k-ui-namespace .navbar-default .navbar-nav > .open > a:hover, .k-ui-namespace .navbar-default .navbar-nav > .open > a:focus { background-color: #37474F; color: white; }
+.k-ui-namespace .navbar-default .navbar-nav > .open > a, .k-ui-namespace .navbar-default .navbar-nav > .open > a:hover, .k-ui-namespace .navbar-default .navbar-nav > .open > a:focus { background-color: #3071a9; color: white; }
 
 @media (max-width: 767px) { .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > li > a { color: white; }
   .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus { color: white; background-color: transparent; }
-  .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus { color: white; background-color: #37474F; }
+  .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus { color: white; background-color: #3071a9; }
   .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus { color: #ccc; background-color: transparent; } }
 
 .k-ui-namespace .navbar-default .navbar-link { color: white; }
@@ -7996,15 +7996,15 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .btn-default .badge { color: #fff; background-color: #333; }
 
-.k-ui-namespace .btn-primary { color: #fff; background-color: #546E7A; border-color: #4a606b; }
+.k-ui-namespace .btn-primary { color: #fff; background-color: #337ab7; border-color: #2e6da4; }
 
-.k-ui-namespace .btn-primary:hover, .k-ui-namespace .btn-primary:focus, .k-ui-namespace .btn-primary.focus, .k-ui-namespace .btn-primary:active, .k-ui-namespace .btn-primary.active, .open > .k-ui-namespace .btn-primary.dropdown-toggle { color: #fff; background-color: #3f535c; border-color: #314047; }
+.k-ui-namespace .btn-primary:hover, .k-ui-namespace .btn-primary:focus, .k-ui-namespace .btn-primary.focus, .k-ui-namespace .btn-primary:active, .k-ui-namespace .btn-primary.active, .open > .k-ui-namespace .btn-primary.dropdown-toggle { color: #fff; background-color: #286090; border-color: #204d74; }
 
 .k-ui-namespace .btn-primary:active, .k-ui-namespace .btn-primary.active, .open > .k-ui-namespace .btn-primary.dropdown-toggle { background-image: none; }
 
-.k-ui-namespace .btn-primary.disabled, .k-ui-namespace .btn-primary.disabled:hover, .k-ui-namespace .btn-primary.disabled:focus, .k-ui-namespace .btn-primary.disabled.focus, .k-ui-namespace .btn-primary.disabled:active, .k-ui-namespace .btn-primary.disabled.active, .k-ui-namespace .btn-primary[disabled], .k-ui-namespace .btn-primary[disabled]:hover, .k-ui-namespace .btn-primary[disabled]:focus, .k-ui-namespace .btn-primary[disabled].focus, .k-ui-namespace .btn-primary[disabled]:active, .k-ui-namespace .btn-primary[disabled].active, fieldset[disabled] .k-ui-namespace .btn-primary, fieldset[disabled] .k-ui-namespace .btn-primary:hover, fieldset[disabled] .k-ui-namespace .btn-primary:focus, fieldset[disabled] .k-ui-namespace .btn-primary.focus, fieldset[disabled] .k-ui-namespace .btn-primary:active, fieldset[disabled] .k-ui-namespace .btn-primary.active { background-color: #546E7A; border-color: #4a606b; }
+.k-ui-namespace .btn-primary.disabled, .k-ui-namespace .btn-primary.disabled:hover, .k-ui-namespace .btn-primary.disabled:focus, .k-ui-namespace .btn-primary.disabled.focus, .k-ui-namespace .btn-primary.disabled:active, .k-ui-namespace .btn-primary.disabled.active, .k-ui-namespace .btn-primary[disabled], .k-ui-namespace .btn-primary[disabled]:hover, .k-ui-namespace .btn-primary[disabled]:focus, .k-ui-namespace .btn-primary[disabled].focus, .k-ui-namespace .btn-primary[disabled]:active, .k-ui-namespace .btn-primary[disabled].active, fieldset[disabled] .k-ui-namespace .btn-primary, fieldset[disabled] .k-ui-namespace .btn-primary:hover, fieldset[disabled] .k-ui-namespace .btn-primary:focus, fieldset[disabled] .k-ui-namespace .btn-primary.focus, fieldset[disabled] .k-ui-namespace .btn-primary:active, fieldset[disabled] .k-ui-namespace .btn-primary.active { background-color: #337ab7; border-color: #2e6da4; }
 
-.k-ui-namespace .btn-primary .badge { color: #546E7A; background-color: #fff; }
+.k-ui-namespace .btn-primary .badge { color: #337ab7; background-color: #fff; }
 
 .k-ui-namespace .btn-success { color: #fff; background-color: #5cb85c; border-color: #4cae4c; }
 
@@ -8046,13 +8046,13 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .btn-danger .badge { color: #d9534f; background-color: #fff; }
 
-.k-ui-namespace .btn-link { color: #455A64; font-weight: normal; border-radius: 0; }
+.k-ui-namespace .btn-link { color: #337ab7; font-weight: normal; border-radius: 0; }
 
 .k-ui-namespace .btn-link, .k-ui-namespace .btn-link:active, .k-ui-namespace .btn-link.active, .k-ui-namespace .btn-link[disabled], fieldset[disabled] .k-ui-namespace .btn-link { background-color: transparent; box-shadow: none; }
 
 .k-ui-namespace .btn-link, .k-ui-namespace .btn-link:hover, .k-ui-namespace .btn-link:focus, .k-ui-namespace .btn-link:active { border-color: transparent; }
 
-.k-ui-namespace .btn-link:hover, .k-ui-namespace .btn-link:focus { color: #455A64; text-decoration: underline; background-color: transparent; }
+.k-ui-namespace .btn-link:hover, .k-ui-namespace .btn-link:focus { color: #23527c; text-decoration: underline; background-color: transparent; }
 
 .k-ui-namespace .btn-link[disabled]:hover, .k-ui-namespace .btn-link[disabled]:focus, fieldset[disabled] .k-ui-namespace .btn-link:hover, fieldset[disabled] .k-ui-namespace .btn-link:focus { color: #777777; text-decoration: none; }
 
@@ -8114,39 +8114,41 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .label-primary[href]:hover, .k-ui-namespace .label-primary[href]:focus { background-color: #286090; }
 
-.k-ui-namespace .label-success { background-color: #689F38; }
+.k-ui-namespace .label-success { background-color: #5cb85c; }
 
-.k-ui-namespace .label-success[href]:hover, .k-ui-namespace .label-success[href]:focus { background-color: #4f792b; }
+.k-ui-namespace .label-success[href]:hover, .k-ui-namespace .label-success[href]:focus { background-color: #449d44; }
 
-.k-ui-namespace .label-info { background-color: #78909C; }
+.k-ui-namespace .label-info { background-color: #5bc0de; }
 
-.k-ui-namespace .label-info[href]:hover, .k-ui-namespace .label-info[href]:focus { background-color: #5f7682; }
+.k-ui-namespace .label-info[href]:hover, .k-ui-namespace .label-info[href]:focus { background-color: #31b0d5; }
 
 .k-ui-namespace .label-warning { background-color: #f0ad4e; }
 
 .k-ui-namespace .label-warning[href]:hover, .k-ui-namespace .label-warning[href]:focus { background-color: #ec971f; }
 
-.k-ui-namespace .label-danger { background-color: #E64A19; }
+.k-ui-namespace .label-danger { background-color: #d9534f; }
 
-.k-ui-namespace .label-danger[href]:hover, .k-ui-namespace .label-danger[href]:focus { background-color: #b83b14; }
+.k-ui-namespace .label-danger[href]:hover, .k-ui-namespace .label-danger[href]:focus { background-color: #c9302c; }
 
 .k-ui-namespace .navbar-default { background-image: none; /* 1 */ border: none; /* 2 */ margin-bottom: 0; /* 3 */ z-index: 10; /* 4 */ /* Position the toggle button */ }
 
 .k-ui-namespace .navbar-default .navbar-nav > li > a, .k-ui-namespace .navbar-default .navbar-brand { text-shadow: none; /* 5 */ }
 
-.k-ui-namespace .navbar-default .dropdown-menu a:focus, .k-ui-namespace .navbar-default .dropdown-menu a:hover { background: #546E7A; color: white; }
+.k-ui-namespace .navbar-default .dropdown-menu a:focus, .k-ui-namespace .navbar-default .dropdown-menu a:hover { background: #3071a9; color: white; }
 
-.k-ui-namespace .navbar-default .navbar-brand { height: auto; /* 6 */ padding: 15px 15px 15px 7.5px; }
+.k-ui-namespace .navbar-default .navbar-header { position: relative; z-index: 9; }
+
+.k-ui-namespace .navbar-default .navbar-brand { max-width: 100%; max-height: 48px; height: auto; /* 6 */ padding: 12px; }
 
 @media screen and (min-width: 768px) { .k-ui-namespace .navbar-default .navbar-brand { padding-left: 0; } }
 
-.k-ui-namespace .navbar-default .navbar-brand img { vertical-align: middle; /* 7 */ }
+.k-ui-namespace .navbar-default .navbar-brand img { height: 24px; vertical-align: middle; /* 7 */ }
 
-.k-ui-namespace .navbar-default .navbar-toggle { padding: 15px 15px; margin: 2px; }
+.k-ui-namespace .navbar-default .navbar-toggle { padding: 14px 15px; margin: 2px; }
 
 .k-ui-namespace .btn { text-shadow: none; }
 
-.k-ui-namespace form legend { margin: 0; padding: 0; list-style: none; border: none; background: transparent; display: block; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #e3e3e3; padding-top: 20px; padding-bottom: .2em; font-size: 21.45px; font-weight: normal; /* No margin top for the first legend */ }
+.k-ui-namespace form legend { margin: 0; padding: 0; list-style: none; border: none; background: transparent; display: block; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-top: 20px; padding-bottom: .2em; font-size: 21.45px; font-weight: normal; /* No margin top for the first legend */ }
 
 .k-ui-namespace form legend:first-child { margin-top: 0; }
 
@@ -8197,3 +8199,22 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 .k-ui-namespace .modal-footer .btn-group .btn + .btn { margin-left: -1px; }
 
 .k-ui-namespace .modal-footer .btn-block + .btn-block { margin-left: 0; }
+
+.k-ui-namespace .k-login-container { background: #3071a9; text-align: center; /* 1 */ white-space: nowrap; /* 1 */ padding-top: 50px; /* 2 */ /** Psuedo element for vertical centering 1. Adjusts for spacing */ /* Use flexbox when available */ }
+
+.k-ui-namespace .k-login-container:before { content: ' '; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* 1 */ }
+
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-login-container, .k-flexboxlegacy .k-ui-namespace .k-login-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; /* Hide the psuedo eleemnt when using flexbox */ }
+  .k-flexbox .k-ui-namespace .k-login-container:before, .k-flexboxlegacy .k-ui-namespace .k-login-container:before { display: none; } }
+
+.k-ui-namespace .k-login { width: 100%; max-width: 360px; height: auto; margin: auto; display: inline-block; /* 1 */ vertical-align: middle; /* 1 */ /* Don't flex this window, it needs to be as big as it's children */ }
+
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-login, .k-flexboxlegacy .k-ui-namespace .k-login { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+
+.k-ui-namespace .k-login__content { background: white; width: 100%; border-radius: 5px; padding: 20px; box-shadow: 0 6px 0 -4px rgba(0, 0, 0, 0.3); text-align: left; white-space: normal; /* Extra spacing between input fields */ }
+
+.k-ui-namespace .k-login__content .form-group { padding: 5px 0; }
+
+.k-ui-namespace .k-login__brand { display: block; height: auto; /* 1 */ width: auto; /* 1 */ max-width: 100%; text-align: center; /* 2 */ margin-left: auto; margin-right: auto; margin-bottom: 20px; /* 5 */ }
+
+.k-ui-namespace .k-login__brand img { max-height: 100%; vertical-align: middle; }

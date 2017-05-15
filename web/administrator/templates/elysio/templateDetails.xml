@@ -24,4 +24,12 @@
 	<positions>
 		<position>debug</position>
 	</positions>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field name="avatar" type="text" label="Avatar" description="Add URL to logo avatar file" />
+				<field name="logo" type="text" label="Logo" description="Add URL to logo file" />
+			</fieldset>
+		</fields>
+	</config>
 </extension>

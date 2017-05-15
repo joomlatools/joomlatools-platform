@@ -1,14 +1,11 @@
-// Tools and variables
-@import "utilities/material-colors-custom";
-@import "utilities/variables";
-
-// Import default Joomla styling (Joomlatools framework)
-//@import "nooku/admin";
-
+// Set icon path
 $k-icon-path: '../fonts';
 
 // Import default Joomla styling (Joomlatools framework)
 @import "kodekit-ui/src/scss/admin-ui.scss";
+
+// Override variables
+@import "utilities/variables";
 
 // Basic html and body setup
 @import "utilities/setup";
@@ -41,7 +38,7 @@ $k-icon-path: '../fonts';
   //@import "molecules/treeselect";
   //
   //// Organisms
-  //@import "organisms/login";
+  @import "organisms/login";
   //@import "organisms/flexbox";
   //
   //// Shame...
@@ -51,6 +48,5 @@ $k-icon-path: '../fonts';
   //@import "utilities/hacks";
 
 }
-
 
 

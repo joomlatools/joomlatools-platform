@@ -146,7 +146,7 @@ $sortFields = $this->getSortFields();
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->lang_id); ?>
 						</td>
-						<td class="k-table__data-button--override k-table-data--center">
+						<td class="k-table-data-button--override k-table-data--center">
 							<?php echo JHtml::_('jgrid.published', $item->published, $i, 'languages.', $canChange); ?>
 						</td>
 						<td>

@@ -134,7 +134,7 @@ $sortFields = $this->getSortFields();
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->extension_id); ?>
 						</td>
-						<td class="k-table__data-button--override">
+						<td class="k-table-data-button--override">
 							<?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'plugins.', $canChange); ?>
 						</td>
 						<td>

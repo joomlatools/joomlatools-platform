@@ -43,25 +43,6 @@ function modChrome_no($module, &$params, &$attribs)
 	}
 }
 
-function modChrome_well($module, &$params, &$attribs)
-{
-    if ($module->content)
-    {
-        $bootstrapSize = (int) $params->get('bootstrap_size');
-        $moduleClass   = ($bootstrapSize) ? ' span' . $bootstrapSize : '';
-
-        echo '<div class="well well-small' . $moduleClass . '">';
-
-        if ($module->showtitle)
-        {
-            echo '<h2 class="module-title nav-header">' . $module->title . '</h2>';
-        }
-
-        echo $module->content;
-        echo '</div>';
-    }
-}
-
 function modChrome_basic($module, &$params, &$attribs)
 {
     if ($module->content)
@@ -73,3 +54,18 @@ function modChrome_basic($module, &$params, &$attribs)
         echo $module->content;
     }
 }
+
+function modChrome_well($module, &$params, &$attribs)
+{
+    if ($module->content)
+    {
+        if ($module->showtitle)
+        {
+            echo '<div class="k-heading">' . $module->title . '</div>';
+        }
+
+        echo '<div class="k-well__content">' . $module->content . '</div>';
+    }
+}
+
+

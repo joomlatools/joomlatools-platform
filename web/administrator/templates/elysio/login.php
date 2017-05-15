@@ -45,7 +45,6 @@ $doc->addStyleSheet('templates/' . $this->template . '/css/admin.css');
 
 // Add Script
 $doc->addScript('templates/'.$this->template.'/js/modernizr.js', 'text/javascript');
-$doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
@@ -53,32 +52,39 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 	<jdoc:include type="head" />
 </head>
 
-<body class="koowa admin admin--login <?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
+<body class="no-js">
 <script type="text/javascript">function hasClass(e,t){return e.className.match(new RegExp("(\\s|^)"+t+"(\\s|$)"))}var el=document.body;var cl="no-js";if(hasClass(el,cl)){var reg=new RegExp("(\\s|^)"+cl+"(\\s|$)");el.className=el.className.replace(reg," k-js-enabled")}</script>
 
-<div id="koowa" class="koowa">
+<!-- Koowa -->
+<div class="k-ui-namespace k-ui-container">
 
-	<!-- Koowa container -->
-	<section class="koowa-container">
+    <!-- Wrapper -->
+    <div class="k-wrapper k-js-wrapper">
 
+        <!-- Login container -->
         <div class="k-login-container">
 
+            <!-- Login -->
             <div class="k-login">
 
                 <div class="k-login__brand">
-                    <img src="<?php echo $this->baseurl; ?>/<?php echo $params->get('logo') ?>.svg" style="padding: 5px 15px;">
+                    <?php if ($params->get('logo')) : ?>
+                        <img src="<?php echo $params->get('logo'); ?>" alt="<?php echo $sitename; ?>" />
+                    <?php else: ?>
+                        <img src="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/images/platform-logo.png" alt="<?php echo $sitename; ?>" />
+                    <?php endif; ?>
                 </div>
 
-                <jdoc:include type="message" />
-                <jdoc:include type="component" />
+                <div class="k-login__content">
+                    <jdoc:include type="message" />
+                    <jdoc:include type="component" />
+                </div>
 
             </div>
 
         </div><!-- .k-login-container -->
 
-	</section><!-- .koowa-container -->
-
-	<jdoc:include type="modules" name="debug" style="none" />
+    </div><!-- .k-wrapper -->
 
 </div>
 
