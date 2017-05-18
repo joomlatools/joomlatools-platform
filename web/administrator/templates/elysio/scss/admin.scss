@@ -40,13 +40,12 @@ $k-icon-path: '../fonts';
   //// Organisms
   @import "organisms/login";
   //@import "organisms/flexbox";
-  //
-  //// Shame...
-  //@import "shame";
-  //
+
+  // Shame...
+  @import "shame";
+
   //// Hacks
   //@import "utilities/hacks";
 
 }
-
 

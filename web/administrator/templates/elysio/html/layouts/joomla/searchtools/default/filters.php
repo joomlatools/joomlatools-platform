@@ -38,13 +38,11 @@ $filters = $data['view']->filterForm->getGroup('filter');
 <div class="k-dynamic-content-holder">
     <div class="k-js-filters">
         <?php if ($filters) : ?>
-            <?php $counter = 0; ?>
             <?php foreach ($filters as $fieldName => $field) : ?>
                 <?php if ($fieldName != 'filter_search') : ?>
-                    <div data-filter data-title="Filter name" data-count="<?php echo $counter; ?>">
+                    <div data-filter data-title="<?php echo (string) $field->title; ?>">
                         <?php echo $field->input; ?>
                     </div>
-                    <?php $counter++; ?>
                 <?php endif; ?>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -68,31 +66,5 @@ $filters = $data['view']->filterForm->getGroup('filter');
                 </div>
             </div>
         </div><!-- .k-scopebar__filters -->
-
-        <?php if ($filters) : ?>
-            <?php foreach ($filters as $fieldName => $field) : ?>
-                <?php if ($fieldName != 'filter_search') : ?>
-                    <?php
-                    $showOn = '';
-                    if ($showOnData = $field->getAttribute('dataShowOn'))
-                    {
-                        JHtml::_('jquery.framework');
-                        JHtml::_('script', 'jui/cms.js', false, true);
-                        $showOn = " data-showon='" . $showOnData . "'";
-                    }
-                    ?>
-                    <div class="js-stools-field-filter"<?php echo $showOn; ?>>
-                        <?php echo $field->input; ?>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
     </div>
 </div>
-
-<!-- Temporary -->
-<style type="text/css">
-    .js-stools-field-filter {
-        display: inline-block;
-    }
-</style>

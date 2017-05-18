@@ -17,5 +17,4 @@ $title = $form->getField('title') ? 'title' : ($form->getField('name') ? 'name' 
 
 <?php
 	echo $title ? $form->renderField($title) : '';
-	echo $form->renderField('alias');
 ?>

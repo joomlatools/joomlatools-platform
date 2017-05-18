@@ -60,24 +60,27 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
     <!-- Scopebar -->
     <div class="k-scopebar k-js-scopebar">
         <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this), null, array('debug' => false)); ?>
-
-        <!-- Filters -->
-        <div class="k-scopebar__item k-scopebar__item--filters">
-
-            <div class="k-scopebar__filters-content">
-
-                <!-- Filter -->
-                <div class="k-filter-container__item" data-filter="tools">
-                    <?php echo JLayoutHelper::render('joomla.searchtools.default.filters', array('view' => $this), null, array('debug' => false)); ?>
-                </div><!-- k-filter-container__item -->
-            </div>
-
-        </div><!-- .k-scopebar -->
-
     </div><!-- .k-scopebar -->
 
+    <?php if (!$this->items): ?>
+        <div class="k-empty-state">
+            <p>It seems like you don't have any menu items yet.</p>
+            <p>
+                <button id="onboardaction" class="k-button k-button--success k-button--large">
+                    Add your first menu item
+                </button>
+            </p>
+            <script>
+                kQuery(function($) {
+                    $('#onboardaction').on('click', function() {
+                        $('.k-button--new').trigger('click');
+                    })
+                });
+            </script>
+        </div>
+    <?php endif; ?>
     <!-- Table -->
-    <div class="k-table-container">
+    <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : ''; ?>">
         <div class="k-table">
             <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
@@ -247,8 +250,10 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 
     </div><!-- .k-table-container -->
 
-</form><!-- .k-list-layout -->
+</form><!-- .k-component -->
 
-<?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
-    <?php echo $this->loadTemplate('batch'); ?>
-<?php endif;?>
+<div class="k-dynamic-content-holder">
+    <?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
+        <?php echo $this->loadTemplate('batch'); ?>
+    <?php endif;?>
+</div>

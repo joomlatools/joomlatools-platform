@@ -87,23 +87,27 @@ JFactory::getDocument()->addScriptDeclaration($script);
 </script>
 
 <!-- Form -->
-<form class="k-form-layout form-validate" action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form">
+<form class="k-component k-js-component k-js-form-controller form-validate" action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form">
 
 	<!-- Container -->
 	<div class="k-container">
 
-		<?php
-		if ($this->item->type == 'url')
-		{
-			$this->form->setFieldAttribute('alias', 'type', 'hidden');
-		}
-		?>
+        <div class="k-container__main">
+            <?php
+            if ($this->item->type == 'url')
+            {
+                $this->form->setFieldAttribute('alias', 'type', 'hidden');
+            }
+            echo JLayoutHelper::render('joomla.edit.title_alias', $this);
+            ?>
+        </div>
+    </div>
 
-		<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
+    <div class="k-container">
 
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
-
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_ITEM_DETAILS', true)); ?>
+
         <div class="k-container__content">
             <!-- Main information -->
             <div class="k-container__main">
@@ -122,6 +126,8 @@ JFactory::getDocument()->addScriptDeclaration($script);
 
 				echo $this->form->getControlGroups('request');
 
+				echo $this->form->renderField('alias');
+
 				if ($this->item->type == 'url')
 				{
 					$this->form->setFieldAttribute('link', 'readonly', 'false');
@@ -131,6 +137,13 @@ JFactory::getDocument()->addScriptDeclaration($script);
 				echo $this->form->getControlGroup('browserNav');
 				echo $this->form->getControlGroup('template_style_id');
 				?>
+
+            <script>
+                kQuery(function($) {
+                    $('#jform_type').addClass('k-form-control').parent().addClass('k-input-group').removeClass('input-append').children('.btn').addClass('k-button k-button--primary').removeClass('btn btn-primary').wrap('<span class="k-input-group__button">');
+                });
+            </script>
+
 			</div><!-- .k-container__main -->
 
             <!-- Sub information -->
@@ -146,7 +159,6 @@ JFactory::getDocument()->addScriptDeclaration($script);
 					'access',
 					'language',
 					'note'
-
 				);
 				if ($this->item->type != 'component')
 				{
@@ -156,6 +168,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
 			</div><!-- .k-container__sub -->
 		</div><!-- .k-container__content -->
+
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
 		<?php

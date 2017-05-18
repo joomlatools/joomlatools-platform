@@ -31,7 +31,7 @@ $class = classOverride($class);
 
 ?>
 
-<button class="k-button k-button--default" data-toggle="modal" data-target="#<?php echo $selector; ?>">
+<button class="k-button--<?php echo JFilterOutput::stringURLSafe($text); ?> k-button k-button--default" data-toggle="modal" data-target="#<?php echo $selector; ?>">
 	<span class="k-icon-<?php echo $icon; ?>" aria-hidden="true"></span>
 	<?php echo $text; ?>
 </button>

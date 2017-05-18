@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 $title = $displayData['title'];
 
 ?>
-<button data-toggle="modal" data-target="#collapseModal" class="k-button k-button--default">
+<button data-toggle="modal" data-target="#collapseModal" class="k-button--<?php echo JFilterOutput::stringURLSafe($title); ?> k-button k-button--default">
 	<span class="k-icon-layers" aria-hidden="true"></span>
 	<?php echo $title; ?>
 </button>

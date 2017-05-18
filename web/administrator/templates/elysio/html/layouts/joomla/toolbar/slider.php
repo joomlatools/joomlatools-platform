@@ -17,7 +17,7 @@ $text    = $displayData['text'];
 $name    = $displayData['name'];
 $onClose = $displayData['onClose'];
 ?>
-<button onclick="<?php echo $doTask; ?>" class="k-button k-button--default" data-toggle="collapse" data-target="#collapse-<?php echo $name; ?>"<?php echo $onClose; ?>>
+<button onclick="<?php echo $doTask; ?>" class="k-button--<?php echo JFilterOutput::stringURLSafe($text); ?> k-button k-button--default" data-toggle="collapse" data-target="#collapse-<?php echo $name; ?>"<?php echo $onClose; ?>>
 	<span class="k-icon-cog" aria-hidden="true"></span>
 	<?php echo $text; ?>
 </button>

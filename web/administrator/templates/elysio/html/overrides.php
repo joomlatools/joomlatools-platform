@@ -51,3 +51,45 @@ function classOverride($input) {
     }
     return $class;
 }
+
+// Add `k-form-control` class to textfields
+function addFormControlClass($input) {
+
+    // If the field is not a text field or textarea; return original
+    if (strpos($input, 'type="text') === false && strpos($input, '<textarea') === false) {
+        return $input;
+    }
+
+    // If the $input is not strictly an input field or textarea but has more markup for example; return original
+    elseif (substr($input, 0, strlen('<input')) !== '<input' && substr($input, 0, strlen('<textarea')) !== '<textarea') {
+        return $input;
+    } else {
+        // If there's no class attribute yet
+        if (strpos($input, 'class="') === false) {
+            if (substr($input, 0, strlen('<input')) === '<input') {
+                $field = str_replace('<input ', '<input class="k-form-control" ', $input);
+            }
+            if (substr($input, 0, strlen('<textarea')) === '<textarea') {
+                $field = str_replace('<textarea ', '<textarea class="k-form-control" ', $input);
+            }
+
+        // If there's already a class attribute
+        } else {
+            $field = str_replace('class="', 'class="k-form-control ', $input);
+        }
+        return $field;
+    }
+}
+
+// Set input attribute(s)
+function setFormInputAttributes($input, $array) {
+    $field = $input;
+    foreach($array as $key => $item) {
+        if (strpos($field, $key.'="') === false) {
+            $field = str_replace('<input ', '<input '.$key.'="'.$item.'" ', $field);
+        } else {
+            $field = str_replace($key.'="', $key.'="'.$item.' ', $field);
+        }
+    }
+    return $field;
+}

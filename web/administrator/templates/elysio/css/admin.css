@@ -4579,7 +4579,7 @@ markup:
 
 .k-ui-namespace .k-scopebar-dropdown.k-is-active .k-scopebar-dropdown__button { background: #e9e9e9; }
 
-.k-ui-namespace .k-scopebar-dropdown__button { position: relative; border: none; background: transparent; margin: 0; padding: 0 6px; line-height: 39px; height: 39px; font-size: 13px; }
+.k-ui-namespace .k-scopebar-dropdown__button { position: relative; border: none; background: transparent; margin: 0; padding: 0 6px; line-height: 39px; height: 39px; font-size: 13px; cursor: pointer; }
 
 .k-ui-namespace .k-scopebar-dropdown__button:hover, .k-ui-namespace .k-scopebar-dropdown__button:focus { background: #e9e9e9; }
 
@@ -5293,7 +5293,7 @@ markup:
 
 .k-ui-namespace .k-dynamic-content-holder.k-dynamic-content-holder.k-dynamic-content-holder { display: none; }
 
-.k-ui-namespace .k-is-hidden.k-is-hidden.k-is-hidden { display: none; }
+.k-ui-namespace .k-hidden.k-hidden.k-hidden { display: none; }
 
 .k-cssanimations.k-boxshadow .k-ui-namespace .k-loader { display: inline-block; color: #3071a9; font-size: 5px; margin: 0 auto 2em; position: relative; text-indent: -9999em; vertical-align: middle; /* Sizes */ }
 
@@ -8218,3 +8218,27 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 .k-ui-namespace .k-login__brand { display: block; height: auto; /* 1 */ width: auto; /* 1 */ max-width: 100%; text-align: center; /* 2 */ margin-left: auto; margin-right: auto; margin-bottom: 20px; /* 5 */ }
 
 .k-ui-namespace .k-login__brand img { max-height: 100%; vertical-align: middle; }
+
+.k-ui-namespace .chzn-container { min-width: 100%; max-width: 100%; }
+
+.k-ui-namespace .chzn-container-single .chzn-single { height: 32px; line-height: 30px; }
+
+.k-ui-namespace .chzn-container-single .chzn-single div b { background-position: 0 6px; }
+
+.k-ui-namespace .k-scopebar .chzn-container { min-width: 0; max-width: none; }
+
+.k-ui-namespace .k-container .k-container__main:last-child { margin-bottom: 0; }
+
+.k-ui-namespace .k-container .nav-tabs { margin-left: 10px; margin-right: 10px; }
+
+.k-ui-namespace .k-container .tab-content { padding-top: 20px; }
+
+.k-ui-namespace .k-container .tab-content:before, .k-ui-namespace .k-container .tab-content:after { content: " "; display: table; }
+
+.k-ui-namespace .k-container .tab-content:after { clear: both; }
+
+.k-ui-namespace .k-container__content:before, .k-ui-namespace .k-container__content:after { content: " "; display: table; }
+
+.k-ui-namespace .k-container__content:after { clear: both; }
+
+.k-ui-namespace .readonly { display: block; }
