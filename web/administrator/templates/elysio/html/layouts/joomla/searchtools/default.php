@@ -30,7 +30,7 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
 ?>
 
 <!-- Scopebar -->
-<div class="k-scopebar" id="filter-bar">
+<div class="k-scopebar k-js-scopebar" id="filter-bar">
 
     <!-- Toggle buttons -->
     <div class="k-scopebar__item k-scopebar__item--toggle-buttons">
@@ -50,7 +50,6 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
 
     <!-- Filters -->
     <?php echo JLayoutHelper::render('joomla.searchtools.default.filters', $data); ?>
-    <?php echo JLayoutHelper::render('joomla.searchtools.default.list', $data); ?>
 
     <!-- search -->
     <?php echo JLayoutHelper::render('joomla.searchtools.default.bar', $data); ?>

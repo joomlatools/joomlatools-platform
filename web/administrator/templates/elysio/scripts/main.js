@@ -1,6 +1,9 @@
-jQuery(document).ready(function($) {
+kQuery(document).ready(function($) {
 
-    console.log('ready');
+    // Select2
+    $('select').select2({
+        theme: "bootstrap",
+        minimumResultsForSearch: Infinity
+    });
 
 });
-

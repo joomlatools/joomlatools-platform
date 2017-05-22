@@ -13,7 +13,6 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 
 JHtml::_('behavior.formvalidation');
-JHtml::_('formbehavior.chosen', 'select');
 
 // Get the form fieldsets.
 $fieldsets = $this->form->getFieldsets();

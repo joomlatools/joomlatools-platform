@@ -14,7 +14,6 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
 
 $user		= JFactory::getUser();
 $app		= JFactory::getApplication();
@@ -36,81 +35,48 @@ $assoc		= JLanguageAssociations::isEnabled();
 
 JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 ?>
-<script type="text/javascript">
-	Joomla.orderTable = function()
-	{
-		table = document.getElementById("sortTable");
-		direction = document.getElementById("directionTable");
-		order = table.options[table.selectedIndex].value;
-		if (order != '<?php echo $listOrder; ?>')
-		{
-			dirn = 'asc';
-		}
-		else
-		{
-			dirn = direction.options[direction.selectedIndex].value;
-		}
-		Joomla.tableOrdering(order, dirn, '');
-	}
-</script>
 
 <!-- Form -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=items');?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
-    <div class="k-scopebar k-js-scopebar">
-        <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this), null, array('debug' => false)); ?>
-    </div><!-- .k-scopebar -->
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this), null, array('debug' => false)); ?>
 
-    <?php if (!$this->items): ?>
-        <div class="k-empty-state">
-            <p>It seems like you don't have any menu items yet.</p>
-            <p>
-                <button id="onboardaction" class="k-button k-button--success k-button--large">
-                    Add your first menu item
-                </button>
-            </p>
-            <script>
-                kQuery(function($) {
-                    $('#onboardaction').on('click', function() {
-                        $('.k-button--new').trigger('click');
-                    })
-                });
-            </script>
-        </div>
-    <?php endif; ?>
+    <!-- Onboarding -->
+    <?php echo $this->loadTemplate('onboarding'); ?>
+
     <!-- Table -->
     <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : ''; ?>">
         <div class="k-table">
             <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
-                    <tr>
-                        <th width="1%">
-                            <?php echo JHtml::_('grid.checkall'); ?>
-                        </th>
-                        <th width="1%">
-                        </th>
-                        <th data-toggle="true">
-                            <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
-                        </th>
-                        <th data-hide="phone,tablet">
-                            <?php echo JHtml::_('searchtools.sort', 'COM_MENUS_HEADING_HOME', 'a.home', $listDirn, $listOrder); ?>
-                        </th>
-                        <th data-hide="phone,tablet">
-                            <?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
-                        </th>
-                        <?php if ($assoc) : ?>
+                <tr>
+                    <th width="1%">
+                        <?php echo JHtml::_('grid.checkall'); ?>
+                    </th>
+                    <th width="1%">
+                    </th>
+                    <th data-toggle="true">
+                        <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                    </th>
+                    <th data-hide="phone,tablet">
+                        <?php echo JHtml::_('searchtools.sort', 'COM_MENUS_HEADING_HOME', 'a.home', $listDirn, $listOrder); ?>
+                    </th>
+                    <th data-hide="phone,tablet">
+                        <?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
+                    </th>
+                    <?php if ($assoc) : ?>
                         <th data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'COM_MENUS_HEADING_ASSOCIATION', 'association', $listDirn, $listOrder); ?>
                         </th>
-                        <?php endif;?>
-                        <th data-hide="phone,tablet">
-                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
-                        </th>
-                        <th data-hide="phone,tablet">
-                            <?php echo JHtml::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
-                        </th>
-                    </tr>
+                    <?php endif;?>
+                    <th data-hide="phone,tablet">
+                        <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
+                    </th>
+                    <th data-hide="phone,tablet">
+                        <?php echo JHtml::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+                    </th>
+                </tr>
                 </thead>
 
                 <tbody>
@@ -199,11 +165,11 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                             <?php echo $this->escape($item->access_level); ?>
                         </td>
                         <?php if ($assoc):?>
-                        <td class="k-table-data--center">
-                            <?php if ($item->association) : ?>
-                                <?php echo JHtml::_('MenusHtml.Menus.association', $item->id);?>
-                            <?php endif;?>
-                        </td>
+                            <td class="k-table-data--center">
+                                <?php if ($item->association) : ?>
+                                    <?php echo JHtml::_('MenusHtml.Menus.association', $item->id);?>
+                                <?php endif;?>
+                            </td>
                         <?php endif;?>
                         <td>
                             <?php if ($item->language == ''):?>
@@ -234,14 +200,22 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                             <?php endif; ?>
                         </td>
                     </tr>
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div><!-- .k-table -->
 
         <!-- Pagination -->
         <div class="k-table-pagination">
+
+            <!-- Pages -->
             <?php echo $this->pagination->getListFooter(); ?>
+
+            <!-- Filters -->
+            <?php
+            $data = array('view' => $this, 'options' => array('filterButton' => false));
+            echo JLayoutHelper::render('joomla.searchtools.default.list', $data);
+            ?>
         </div><!-- .k-table-pagination -->
 
         <input type="hidden" name="task" value="" />
@@ -256,4 +230,23 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
     <?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
         <?php echo $this->loadTemplate('batch'); ?>
     <?php endif;?>
+
+    <script type="text/javascript">
+        Joomla.orderTable = function()
+        {
+            table = document.getElementById("sortTable");
+            direction = document.getElementById("directionTable");
+            order = table.options[table.selectedIndex].value;
+            if (order != '<?php echo $listOrder; ?>')
+            {
+                dirn = 'asc';
+            }
+            else
+            {
+                dirn = direction.options[direction.selectedIndex].value;
+            }
+            Joomla.tableOrdering(order, dirn, '');
+        }
+    </script>
 </div>
+

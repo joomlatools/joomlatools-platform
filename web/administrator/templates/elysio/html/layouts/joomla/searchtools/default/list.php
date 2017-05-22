@@ -15,9 +15,13 @@ $data = $displayData;
 $list = $data['view']->filterForm->getGroup('list');
 ?>
 
-<!-- Scopebar filters -->
-<?php if ($list) : ?>
-	<?php foreach ($list as $fieldName => $field) : ?>
-        <?php echo $field->input; ?>
-	<?php endforeach; ?>
-<?php endif; ?>
+<!-- Pagination filters -->
+<div class="k-pagination">
+    <div class="k-pagination__limit">
+        <?php if ($list) : ?>
+            <?php foreach ($list as $fieldName => $field) : ?>
+                <?php echo $field->input; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>

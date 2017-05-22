@@ -1,0 +1,49 @@
+.accordion {
+  //border: 1px solid red;
+}
+
+.accordion-group {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.accordion-toggle {
+  display: block;
+  padding: 7px;
+}
+
+.accordion-inner {
+  border-top: 1px solid #ccc;
+  background: #eee;
+  border-radius: 0 0 4px 4px;
+
+  .nav-tabs {
+    border: none;
+    background: transparent;
+
+    & > li {
+      margin: 0;
+      border-bottom: 1px solid #ccc;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      > a {
+        border: none;
+
+        &:focus,
+        &:hover {
+          border: none;
+          background: transparent;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

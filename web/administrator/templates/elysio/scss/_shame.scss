@@ -1,24 +1,16 @@
-.chzn-container {
-  min-width: 100%;
-  max-width: 100%;
-}
+// Styling select2 containers inside pagination
+.k-pagination__limit {
+  white-space: nowrap;
 
-.chzn-container-single .chzn-single {
-  height: 32px;
-  line-height: 30px;
-}
-
-.chzn-container-single .chzn-single div b {
-  background-position: 0 6px;
-}
-
-.k-scopebar {
-  .chzn-container {
-    min-width: 0;
-    max-width: none;
+  .select2-container.select2-container.select2-container {
+    display: inline-block;
+    margin-right: $k-table-pagination-spacing;
+    min-width: 56px !important;
+    width: auto !important;
   }
 }
 
+// Form view tabs
 
 .k-container {
 
@@ -29,6 +21,7 @@
     }
   }
 
+  // Tabs
   .nav-tabs {
     margin-left: 10px;
     margin-right: 10px;
@@ -40,10 +33,13 @@
   }
 }
 
+// Form view below tabs
 .k-container__content {
   @include clearfix;
 }
 
+// Form views nicer layout
 .readonly {
   display: block;
+  min-height: 32px;
 }

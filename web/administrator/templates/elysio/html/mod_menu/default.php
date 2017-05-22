@@ -50,6 +50,7 @@ if($components && $enabled)
 
 $menu->getParent();
 
+
 /*
  * Menus Submenu
  */

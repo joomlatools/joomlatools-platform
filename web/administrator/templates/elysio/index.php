@@ -13,6 +13,9 @@ $doc = JFactory::getDocument();
 $user = JFactory::getUser();
 $menu = $app->getMenu();
 
+// Output as HTML5
+$doc->setHtml5(true);
+
 // Getting params from template
 $params = JFactory::getApplication()->getTemplate(true)->params;
 
@@ -41,18 +44,23 @@ $doc->setMetaData('apple-mobile-web-app-status-bar-style', 'black');
 $doc->setMetaData('apple-mobile-web-app-title', 'Elysio');
 $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 
-// Set links
-$doc->addHeadLink($params->get('logo').'.ico', 'shortcut icon', 'rel', array('type' => 'image/ico'));
-$doc->addHeadLink($params->get('logo').'.png', 'shortcut icon', 'rel', array('type' => 'image/png', "sizes" => "192x192"));
+// Unset Mootools
+unset($this->_scripts['/joomlatools-platform/web/media/system/js/mootools-core-uncompressed.js']);
+unset($this->_scripts['/joomlatools-platform/web/media/system/js/mootools-more-uncompressed.js']);
 
-// Add Stylesheets
+// Add Stylesheet
 $doc->addStyleSheet('templates/' . $this->template . '/css/admin.css');
 
-// Add Script
-JHtml::_('bootstrap.framework');
+// Add Modernizr
 $doc->addScript('templates/'.$this->template.'/js/modernizr.js', 'text/javascript');
-$doc->addScript('templates/'.$this->template.'/js/jquery.js', 'text/javascript');
+
+// Add JavaScript Frameworks
+JHtml::_('bootstrap.framework');
+
+// Add KUI scripts
+$doc->addScript('templates/'.$this->template.'/js/koowa.kquery.js', 'text/javascript');
 $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
@@ -123,20 +131,21 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 
     </div><!-- .k-wrapper -->
 
-        <?php if ($this->countModules('debug')) : ?>
-        <div class="k-debug-container">
-            <jdoc:include type="modules" name="debug" style="none" />
-        </div>
-        <?php endif; ?>
+    <?php if ($this->countModules('debug')) : ?>
+    <div class="k-debug-container">
+        <jdoc:include type="modules" name="debug" style="none" />
+    </div>
+    <?php endif; ?>
 
-<!--    <script>-->
-<!--        jQuery(document).ready(function($) {-->
-<!--            var modal = $('#collapseModal');-->
-<!--            if (modal.length) {-->
-<!--                modal.appendTo('body');-->
-<!--            }-->
-<!--        });-->
-<!--    </script>-->
+    <div id="dynamic-content-holder" class="k-dynamic-content-holder"></div>
+    <script>
+        jQuery(document).ready(function($) {
+            var modal = $('#collapseModal');
+            if (modal.length) {
+                modal.appendTo('#dynamic-content-holder');
+            }
+        });
+    </script>
 </div>
 </body>
 </html>

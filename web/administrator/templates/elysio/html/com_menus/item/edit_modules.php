@@ -10,22 +10,12 @@
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.framework', true);
-
-$script = array();
-$script[] = "	window.addEvent('domready', function() {";
-$script[] = "		document.id('showmods').addEvent('click', function(e) {";
-$script[] = "			document.id('showmods').setStyle('display', 'block');";
-$script[] = "		jQuery('.table tr.no').toggle();";
-$script[] = "		});";
-$script[] = "	})";
-
-// Add the script to the document head.
-JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
 ?>
 
-<div class="form-group">
-	<label class="btn btn-default" for="showmods">
-		<input type="checkbox" id="showmods" class="inline-block" /><?php echo JText::_('COM_MENUS_ITEM_FIELD_HIDE_UNASSIGNED');?>
+<div class="k-form-group">
+	<label class="k-button k-button--default" for="showmods">
+		<input type="checkbox" id="showmods" />
+        <?php echo JText::_('COM_MENUS_ITEM_FIELD_HIDE_UNASSIGNED');?>
 	</label>
 </div>
 

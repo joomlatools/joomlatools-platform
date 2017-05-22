@@ -6574,23 +6574,23 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .popover > .arrow, .popover > .arrow:after { position: absolute; display: block; width: 0; height: 0; border-color: transparent; border-style: solid; }
 
-.popover > .arrow { border-width: 11px; }
+.popover > .arrow { border-width: 7px; }
 
 .popover > .arrow:after { border-width: 10px; content: ""; }
 
-.popover.top > .arrow { left: 50%; margin-left: -11px; border-bottom-width: 0; border-top-color: #999999; border-top-color: rgba(0, 0, 0, 0.25); bottom: -11px; }
+.popover.top > .arrow { left: 50%; margin-left: -7px; border-bottom-width: 0; border-top-color: #999999; border-top-color: rgba(0, 0, 0, 0.25); bottom: -7px; }
 
 .popover.top > .arrow:after { content: " "; bottom: 1px; margin-left: -10px; border-bottom-width: 0; border-top-color: #fff; }
 
-.popover.right > .arrow { top: 50%; left: -11px; margin-top: -11px; border-left-width: 0; border-right-color: #999999; border-right-color: rgba(0, 0, 0, 0.25); }
+.popover.right > .arrow { top: 50%; left: -7px; margin-top: -7px; border-left-width: 0; border-right-color: #999999; border-right-color: rgba(0, 0, 0, 0.25); }
 
 .popover.right > .arrow:after { content: " "; left: 1px; bottom: -10px; border-left-width: 0; border-right-color: #fff; }
 
-.popover.bottom > .arrow { left: 50%; margin-left: -11px; border-top-width: 0; border-bottom-color: #999999; border-bottom-color: rgba(0, 0, 0, 0.25); top: -11px; }
+.popover.bottom > .arrow { left: 50%; margin-left: -7px; border-top-width: 0; border-bottom-color: #999999; border-bottom-color: rgba(0, 0, 0, 0.25); top: -7px; }
 
 .popover.bottom > .arrow:after { content: " "; top: 1px; margin-left: -10px; border-top-width: 0; border-bottom-color: #fff; }
 
-.popover.left > .arrow { top: 50%; right: -11px; margin-top: -11px; border-right-width: 0; border-left-color: #999999; border-left-color: rgba(0, 0, 0, 0.25); }
+.popover.left > .arrow { top: 50%; right: -7px; margin-top: -7px; border-right-width: 0; border-left-color: #999999; border-left-color: rgba(0, 0, 0, 0.25); }
 
 .popover.left > .arrow:after { content: " "; right: 1px; border-right-width: 0; border-left-color: #fff; bottom: -10px; }
 
@@ -6626,7 +6626,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .tooltip.bottom-right .tooltip-arrow { top: 0; left: 5px; margin-top: -5px; border-width: 0 5px 5px; border-bottom-color: #000; }
 
-.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* ========================================================================== Bootstrap 2 modal ========================================================================== */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window 2. Make room fo the logo popping out with negative margin */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ }
+.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window 2. Make room fo the logo popping out with negative margin */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ }
 
 .k-ui-namespace * { box-sizing: border-box; }
 
@@ -8134,8 +8134,6 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .navbar-default .navbar-nav > li > a, .k-ui-namespace .navbar-default .navbar-brand { text-shadow: none; /* 5 */ }
 
-.k-ui-namespace .navbar-default .dropdown-menu a:focus, .k-ui-namespace .navbar-default .dropdown-menu a:hover { background: #3071a9; color: white; }
-
 .k-ui-namespace .navbar-default .navbar-header { position: relative; z-index: 9; }
 
 .k-ui-namespace .navbar-default .navbar-brand { max-width: 100%; max-height: 48px; height: auto; /* 6 */ padding: 12px; }
@@ -8143,6 +8141,10 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 @media screen and (min-width: 768px) { .k-ui-namespace .navbar-default .navbar-brand { padding-left: 0; } }
 
 .k-ui-namespace .navbar-default .navbar-brand img { height: 24px; vertical-align: middle; /* 7 */ }
+
+.k-ui-namespace .navbar-default .navbar-nav.navbar-nav > li > a:focus, .k-ui-namespace .navbar-default .navbar-nav.navbar-nav > li > a:hover { color: white; background: #2a6495; }
+
+.k-ui-namespace .navbar-default .navbar-nav.navbar-nav > .open > a { color: white; background: #2a6495; }
 
 .k-ui-namespace .navbar-default .navbar-toggle { padding: 14px 15px; margin: 2px; }
 
@@ -8166,39 +8168,23 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .collapse.in { height: auto; display: block !important; }
 
-.k-ui-namespace .modal-backdrop { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 99; background-color: black; }
+.k-ui-namespace .accordion-group { border: 1px solid #ccc; border-radius: 5px; margin-bottom: 8px; }
 
-.k-ui-namespace .modal-backdrop.fade { opacity: 0; }
+.k-ui-namespace .accordion-group:last-child { margin-bottom: 0; }
 
-.k-ui-namespace .modal-backdrop, .k-ui-namespace .modal-backdrop.fade.in { opacity: .8; }
+.k-ui-namespace .accordion-toggle { display: block; padding: 7px; }
 
-.k-ui-namespace div.modal { position: fixed; top: 10%; left: 50%; z-index: 100; width: 560px; margin-left: -280px; background-color: white; border: 1px solid #999; border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 6px; box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3); outline: none; }
+.k-ui-namespace .accordion-inner { border-top: 1px solid #ccc; background: #eee; border-radius: 0 0 4px 4px; }
 
-.k-ui-namespace div.modal.fade { transition: opacity .3s linear, top .3s ease-out; top: -25%; }
+.k-ui-namespace .accordion-inner .nav-tabs { border: none; background: transparent; }
 
-.k-ui-namespace div.modal.fade.in { top: 10%; }
+.k-ui-namespace .accordion-inner .nav-tabs > li { margin: 0; border-bottom: 1px solid #ccc; }
 
-.k-ui-namespace .modal-header { padding: 9px 15px; border-bottom: 1px solid #eee; }
+.k-ui-namespace .accordion-inner .nav-tabs > li:last-child { border-bottom: none; }
 
-.k-ui-namespace .modal-header .close { margin-top: 2px; }
+.k-ui-namespace .accordion-inner .nav-tabs > li > a { border: none; }
 
-.k-ui-namespace .modal-header h3 { margin: 0; line-height: 30px; }
-
-.k-ui-namespace .modal-body { position: relative; overflow-y: auto; max-height: 400px; padding: 15px; }
-
-.k-ui-namespace .modal-form { margin-bottom: 0; }
-
-.k-ui-namespace .modal-footer { padding: 14px 15px 15px; margin-bottom: 0; text-align: right; background-color: #f5f5f5; border-top: 1px solid #ddd; }
-
-.k-ui-namespace .modal-footer:before, .k-ui-namespace .modal-footer:after { content: " "; display: table; }
-
-.k-ui-namespace .modal-footer:after { clear: both; }
-
-.k-ui-namespace .modal-footer .btn + .btn { margin-left: 5px; margin-bottom: 0; }
-
-.k-ui-namespace .modal-footer .btn-group .btn + .btn { margin-left: -1px; }
-
-.k-ui-namespace .modal-footer .btn-block + .btn-block { margin-left: 0; }
+.k-ui-namespace .accordion-inner .nav-tabs > li > a:focus, .k-ui-namespace .accordion-inner .nav-tabs > li > a:hover { border: none; background: transparent; text-decoration: underline; }
 
 .k-ui-namespace .k-login-container { background: #3071a9; text-align: center; /* 1 */ white-space: nowrap; /* 1 */ padding-top: 50px; /* 2 */ /** Psuedo element for vertical centering 1. Adjusts for spacing */ /* Use flexbox when available */ }
 
@@ -8219,13 +8205,9 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-login__brand img { max-height: 100%; vertical-align: middle; }
 
-.k-ui-namespace .chzn-container { min-width: 100%; max-width: 100%; }
+.k-ui-namespace .k-pagination__limit { white-space: nowrap; }
 
-.k-ui-namespace .chzn-container-single .chzn-single { height: 32px; line-height: 30px; }
-
-.k-ui-namespace .chzn-container-single .chzn-single div b { background-position: 0 6px; }
-
-.k-ui-namespace .k-scopebar .chzn-container { min-width: 0; max-width: none; }
+.k-ui-namespace .k-pagination__limit .select2-container.select2-container.select2-container { display: inline-block; margin-right: 7px; min-width: 56px !important; width: auto !important; }
 
 .k-ui-namespace .k-container .k-container__main:last-child { margin-bottom: 0; }
 
@@ -8241,4 +8223,125 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-container__content:after { clear: both; }
 
-.k-ui-namespace .readonly { display: block; }
+.k-ui-namespace .readonly { display: block; min-height: 32px; }
+
+.popover.popover { margin: 0; padding: 0; border: none; border-radius: 0; background: transparent; font-family: inherit; box-shadow: none; white-space: normal; }
+
+.popover.popover .popover-title.popover-title { display: none; }
+
+.popover.popover .popover-content { max-width: 200px; padding: 3px 8px; color: #fff; text-align: center; text-decoration: none; background-color: #000; border-radius: 4px; }
+
+.popover.popover.top > .arrow { border: none; }
+
+.popover.popover.top > .arrow:after { border-top-color: #000; }
+
+.popover.popover.right > .arrow { border: none; }
+
+.popover.popover.right > .arrow:after { border-right-color: #000; }
+
+.popover.popover.bottom > .arrow { border: none; }
+
+.popover.popover.bottom > .arrow:after { border-bottom-color: #000; }
+
+.popover.popover.left > .arrow { border: none; }
+
+.popover.popover.left > .arrow:after { border-left-color: #000; }
+
+/* ========================================================================== Bootstrap 2 modal ========================================================================== */
+.modal-backdrop { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 99; background-color: black; }
+
+.modal-backdrop.fade { opacity: 0; }
+
+.modal-backdrop, .modal-backdrop.fade.in { opacity: .8; }
+
+div.modal { position: fixed; top: 10%; left: 50%; z-index: 1040; width: 560px; margin-left: -280px; background-color: white; border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 6px; box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3); outline: none; }
+
+div.modal.hide { display: none; }
+
+div.modal.fade { transition: opacity .3s linear, top .3s ease-out; top: -25%; }
+
+div.modal.fade.in { top: 10%; }
+
+div.modal iframe { border: 0; outline: 0; margin: 0; padding: 0; position: absolute; top: 15px; right: 15px; bottom: 15px; left: 15px; width: calc(100% - 30px); max-height: calc(100% - 30px) !important; }
+
+.modal-header { padding: 9px 15px; border-bottom: 1px solid #eee; }
+
+.modal-header .close { margin-top: 2px; }
+
+.modal-header h3 { margin: 0; line-height: 30px; }
+
+.modal-body { position: relative; overflow-y: auto; max-height: 400px; padding: 15px; }
+
+.modal-form { margin-bottom: 0; }
+
+.modal-footer { padding: 14px 15px 15px; margin-bottom: 0; text-align: right; background-color: #f5f5f5; border-top: 1px solid #ddd; }
+
+.modal-footer:before, .modal-footer:after { content: " "; display: table; }
+
+.modal-footer:after { clear: both; }
+
+.modal-footer .btn + .btn { margin-left: 5px; margin-bottom: 0; }
+
+.modal-footer .btn-group .btn + .btn { margin-left: -1px; }
+
+.modal-footer .btn-block + .btn-block { margin-left: 0; }
+
+.modal-body[class^="jviewport-height"], .modal-body[class*="jviewport-height"] { max-height: none; }
+
+.jviewport-height10 { height: 10vh; }
+
+.jviewport-height20 { height: 20vh; }
+
+.jviewport-height30 { height: 30vh; }
+
+.jviewport-height40 { height: 40vh; }
+
+.jviewport-height50 { height: 50vh; }
+
+.jviewport-height60 { height: 60vh; }
+
+.jviewport-height70 { height: 70vh; }
+
+.jviewport-height80 { height: 80vh; }
+
+.jviewport-height90 { height: 90vh; }
+
+.jviewport-height100 { height: 100vh; }
+
+div.modal.jviewport-width10 { width: 10vw; margin-left: -5vw; }
+
+div.modal.jviewport-width20 { width: 20vw; margin-left: -10vw; }
+
+div.modal.jviewport-width30 { width: 30vw; margin-left: -15vw; }
+
+div.modal.jviewport-width40 { width: 40vw; margin-left: -20vw; }
+
+div.modal.jviewport-width50 { width: 50vw; margin-left: -25vw; }
+
+div.modal.jviewport-width60 { width: 60vw; margin-left: -30vw; }
+
+div.modal.jviewport-width70 { width: 70vw; margin-left: -35vw; }
+
+div.modal.jviewport-width80 { width: 80vw; margin-left: -40vw; }
+
+div.modal.jviewport-width90 { width: 90vw; margin-left: -45vw; }
+
+div.modal.jviewport-width100 { width: 100vw; margin-left: -50vw; }
+
+.fade { opacity: 0; transition: opacity .15s linear; }
+
+.fade.in { opacity: 1; }
+
+.collapse { position: relative; height: 0; overflow: hidden; transition: height .35s ease; }
+
+.collapse.in { height: auto; }
+
+.close { float: right; font-size: 20px; font-weight: bold; line-height: 24px; color: black; text-shadow: 0 1px 0 white; opacity: 0.20; }
+
+.close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; opacity: 0.40; }
+
+button.close { padding: 0; cursor: pointer; background: transparent; border: 0; -webkit-appearance: none; }
+
+.alert-options { float: right; line-height: 24px; color: black; text-shadow: 0 1px 0 white; opacity: 0.20; }
+
+.alert-options:hover, .alert-options:focus { color: black; text-decoration: none; cursor: pointer; opacity: 0.40; }

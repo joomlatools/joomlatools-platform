@@ -49,3 +49,8 @@ $k-icon-path: '../fonts';
 
 }
 
+// Outside the koowa namespace
+@import "bootstrap/popover";
+@import "bootstrap/modal";
+@import "bootstrap/animation";
+@import "bootstrap/close";

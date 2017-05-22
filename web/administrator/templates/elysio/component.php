@@ -36,24 +36,31 @@ $doc->setMetaData('apple-mobile-web-app-status-bar-style', 'black');
 $doc->setMetaData('apple-mobile-web-app-title', 'Elysio');
 $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 
-// Set links
-$doc->addHeadLink($params->get('logo').'.ico', 'shortcut icon', 'rel', array('type' => 'image/ico'));
-$doc->addHeadLink($params->get('logo').'.png', 'shortcut icon', 'rel', array('type' => 'image/png', "sizes" => "192x192"));
+// Unset Mootools
+unset($this->_scripts['/joomlatools-platform/web/media/system/js/mootools-core-uncompressed.js']);
+unset($this->_scripts['/joomlatools-platform/web/media/system/js/mootools-more-uncompressed.js']);
 
-// Add Stylesheets
+// Add Stylesheet
 $doc->addStyleSheet('templates/' . $this->template . '/css/admin.css');
 
-// Add Script
+// Add Modernizr
 $doc->addScript('templates/'.$this->template.'/js/modernizr.js', 'text/javascript');
+
+// Add JavaScript Frameworks
+JHtml::_('bootstrap.framework');
+
+// Add KUI scripts
+$doc->addScript('templates/'.$this->template.'/js/koowa.kquery.js', 'text/javascript');
 $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
+
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
 	<jdoc:include type="head" />
 </head>
-<body class="contentpane component koowa">
-	<div id="koowa" class="koowa koowa-container">
+<body class="contentpane component">
+    <div class="k-ui-namespace k-ui-container" style="overflow: auto;">
 		<jdoc:include type="message" />
 		<jdoc:include type="component" />
 	</div>

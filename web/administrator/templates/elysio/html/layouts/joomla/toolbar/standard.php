@@ -27,7 +27,7 @@ include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
 $class = classOverride($class);
 ?>
 
-<button onclick="<?php echo $doTask; ?>" class="k-button--<?php echo JFilterOutput::stringURLSafe($text); ?> k-button<?php echo $btnClass; ?>">
+<button onclick="<?php echo $doTask; ?>" class="k-button--j<?php echo JFilterOutput::stringURLSafe($text); ?> k-button<?php echo $btnClass; ?>">
 	<span class="<?php echo trim($class); ?>"></span>
 	<?php echo $text; ?>
 </button>
