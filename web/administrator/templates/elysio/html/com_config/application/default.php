@@ -28,21 +28,12 @@ JHtml::_('bootstrap.tooltip');
 
 <div class="k-container">
 
-	<form action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
+	<form class="k-container__full" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
 
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#page-permissions" data-toggle="tab"><?php echo JText::_('COM_CONFIG_PERMISSIONS'); ?></a></li>
-		</ul>
+        <?php echo $this->loadTemplate('permissions'); ?>
 
-		<div id="config-document" class="tab-content">
-			<div id="page-permissions" class="tab-pane active">
-				<div class="row-fluid">
-					<?php echo $this->loadTemplate('permissions'); ?>
-				</div>
-			</div>
-			<input type="hidden" name="task" value="" />
-			<?php echo JHtml::_('form.token'); ?>
-		</div>
+        <input type="hidden" name="task" value="" />
+        <?php echo JHtml::_('form.token'); ?>
 
 	</form>
 

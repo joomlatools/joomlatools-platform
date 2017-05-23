@@ -60,7 +60,6 @@ JHtml::_('bootstrap.framework');
 // Add KUI scripts
 $doc->addScript('templates/'.$this->template.'/js/koowa.kquery.js', 'text/javascript');
 $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
-
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">

@@ -98,24 +98,23 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 
 	<!-- Container -->
 	<div class="k-container">
-
         <div class="k-container__main">
             <?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
         </div>
     </div>
 
-    <div class="k-container">
+    <div class="k-tabs-container">
 
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_ITEM_DETAILS')); ?>
-
-        <div class="k-container__content">
 
             <!-- Main information -->
             <div class="k-container__main">
 
                 <?php
                 echo $this->form->renderField('type');
+
+                echo $this->form->renderField('menutype');
 
                 if ($this->item->type == 'alias')
                 {
@@ -143,26 +142,63 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 
             <!-- Sub information -->
             <div class="k-container__sub">
-				<?php
-				// Set main fields.
-				$this->fields = array(
-					'menutype',
-					'parent_id',
-					'menuordering',
-					'published',
-					'home',
-					'access',
-					'language',
-					'note'
-				);
-				if ($this->item->type != 'component')
-				{
-					$this->fields = array_diff($this->fields, array('home'));
-				}
-				?>
-				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+
+                <fieldset class="k-form-block">
+                    <div class="k-form-block__header">Header</div>
+                    <div class="k-form-block__content">
+                        <?php
+                        // Set main fields.
+                        $this->fields = array(
+                            'parent_id',
+                            'menuordering',
+                        );
+                        if ($this->item->type != 'component')
+                        {
+                            $this->fields = array_diff($this->fields, array('home'));
+                        }
+                        ?>
+                        <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                    </div>
+                </fieldset>
+
+                <fieldset class="k-form-block">
+                    <div class="k-form-block__header">Header</div>
+                    <div class="k-form-block__content">
+                        <?php
+                        // Set main fields.
+                        $this->fields = array(
+                            'published',
+                            'home',
+                            'access',
+                            'language',
+                        );
+                        if ($this->item->type != 'component')
+                        {
+                            $this->fields = array_diff($this->fields, array('home'));
+                        }
+                        ?>
+                        <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                    </div>
+                </fieldset>
+
+                <fieldset class="k-form-block">
+                    <div class="k-form-block__header">Extra</div>
+                    <div class="k-form-block__content">
+                        <?php
+                        // Set main fields.
+                        $this->fields = array(
+                            'note'
+                        );
+                        if ($this->item->type != 'component')
+                        {
+                            $this->fields = array_diff($this->fields, array('home'));
+                        }
+                        ?>
+                        <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                    </div>
+                </fieldset>
+
 			</div><!-- .k-container__sub -->
-		</div><!-- .k-container__content -->
 
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
@@ -174,22 +210,18 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 
 		<?php if ($assoc) : ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'associations', JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
-                <div class="k-container__content">
-                    <!-- Main information -->
-                    <div class="k-container__main">
-            			<?php echo $this->loadTemplate('associations'); ?>
-                    </div>
+                <!-- Main information -->
+                <div class="k-container__main">
+                    <?php echo $this->loadTemplate('associations'); ?>
                 </div>
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
 
 		<?php if (!empty($this->modules)) : ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'modules', JText::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT')); ?>
-                <div class="k-container__content">
-                    <!-- Main information -->
-                    <div class="k-container__main">
-                        <?php echo $this->loadTemplate('modules'); ?>
-                    </div>
+                <!-- Main information -->
+                <div class="k-container__main">
+                    <?php echo $this->loadTemplate('modules'); ?>
                 </div>
             <?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>

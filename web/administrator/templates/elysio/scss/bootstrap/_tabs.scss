@@ -1,0 +1,95 @@
+// LEFT & RIGHT
+// ------------
+
+// Common styles
+.tabs-left,
+.tabs-right {
+  @include clearfix;
+
+  .nav-tabs.nav-tabs {
+    margin: 0 -1px 0 0;
+    border-bottom: 0;
+    background: transparent;
+  }
+
+  .tab-content {
+    padding: $k-spacing;
+    border: 1px solid #ddd;
+  }
+}
+
+.tabs-left > .nav-tabs > li,
+.tabs-right > .nav-tabs > li {
+  float: none;
+}
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  margin-bottom: 3px;
+}
+
+// Tabs on the left
+.tabs-left > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+}
+.tabs-left > .nav-tabs > li > a {
+  margin-right: -1px;
+  border-radius: 4px 0 0 4px;
+}
+
+.tabs-left > .nav-tabs > li:last-child > a {
+  margin-bottom: 0;
+}
+
+.tabs-left > .nav-tabs > li > a:hover,
+.tabs-left > .nav-tabs > li > a:focus {
+  border-color: #ddd;
+}
+.tabs-left > .nav-tabs .active.active > a,
+.tabs-left > .nav-tabs .active > a:hover,
+.tabs-left > .nav-tabs .active > a:focus {
+  background: white;
+  border-color: #ddd transparent #ddd #ddd;
+}
+
+// Tabs on the right
+.tabs-right > .nav-tabs {
+  float: right;
+  margin-left: 19px;
+  border-left: 1px solid #ddd;
+}
+.tabs-right > .nav-tabs > li > a {
+  margin-left: -1px;
+  border-radius: 0 4px 4px 0;
+}
+.tabs-right > .nav-tabs > li > a:hover,
+.tabs-right > .nav-tabs > li > a:focus {
+  border-color: #ddd;
+}
+.tabs-right > .nav-tabs .active > a,
+.tabs-right > .nav-tabs .active > a:hover,
+.tabs-right > .nav-tabs .active > a:focus {
+  background: white;
+  border-color: #ddd #ddd #ddd transparent;
+}
+
+
+
+// DISABLED STATES
+// ---------------
+
+// Gray out text
+.nav > .disabled > a {
+  color: red;
+}
+// Nuke hover/focus effects
+.nav > .disabled > a:hover,
+.nav > .disabled > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  cursor: default;
+}
+

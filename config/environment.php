@@ -21,7 +21,7 @@ return [
 	'offset'     => 'UTC',
 
     /* Session */
-	'lifetime'        => '15',
+	'lifetime'        => '999',
 	'session_handler' => 'database',
 
 	/* Mail */
@@ -40,7 +40,7 @@ return [
 	'cache_handler' => 'file',
 
 	/* Debug */
-    'debug'      => '0',
+    'debug'      => '1',
 	'debug_lang' => '0',
 
     /* SEO */

@@ -3,23 +3,27 @@
 <extension version="1.0" type="template" client="administrator">
 	<name>Elysio</name>
 	<version>1.0</version>
-	<creationDate>10/12/2015</creationDate>
+	<creationDate>2017</creationDate>
 	<author>Joomlatools</author>
-	<copyright>Copyright (C) 2015 Timble CVBA (http://www.timble.net)</copyright>
+	<copyright>Copyright (C) 2017 Timble CVBA (http://www.timble.net)</copyright>
 	<description>Administrator template</description>
 	<files>
-		<filename>component.php</filename>
-		<filename>cpanel.php</filename>
-		<filename>favicon.ico</filename>
-		<filename>index.php</filename>
-		<filename>login.php</filename>
-		<filename>templateDetails.xml</filename>
-		<filename>template_preview.png</filename>
-		<filename>template_thumbnail.png</filename>
 		<folder>css</folder>
+		<folder>fonts</folder>
 		<folder>html</folder>
 		<folder>images</folder>
 		<folder>js</folder>
+		<folder>language</folder>
+		<folder>svg</folder>
+		<filename>component.php</filename>
+		<filename>cpanel.php</filename>
+		<filename>error.php</filename>
+		<filename>index.php</filename>
+		<filename>login.php</filename>
+		<filename>navigation.php</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>templateDetails.xml</filename>
 	</files>
 	<positions>
 		<position>debug</position>

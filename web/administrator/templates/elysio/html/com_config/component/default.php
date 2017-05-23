@@ -29,23 +29,22 @@ JHtml::_('behavior.formvalidation');
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
 <div class="k-container">
-
-    <form action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off" class="form-validate form-horizontal">
-        <ul class="nav nav-tabs" id="configTabs">
-            <?php $fieldSets = $this->form->getFieldsets(); ?>
+    <form class="k-container__full" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off">
+        <?php $fieldSets = $this->form->getFieldsets(); ?>
+        <ul class="nav nav-tabs<?php echo count($fieldSets) == 1 ? ' k-hidden' : '';?>" id="configTabs">
             <?php foreach ($fieldSets as $name => $fieldSet) : ?>
                 <?php $label = empty($fieldSet->label) ? 'COM_CONFIG_' . $name . '_FIELDSET_LABEL' : $fieldSet->label; ?>
                 <li><a href="#<?php echo $name; ?>" data-toggle="tab"><?php echo JText::_($label); ?></a></li>
             <?php endforeach; ?>
         </ul>
-        <div class="tab-content">
-            <?php $fieldSets = $this->form->getFieldsets(); ?>
+        <?php echo count($fieldSets) > 1 ? '<div class="tab-content">' : '';?>
             <?php foreach ($fieldSets as $name => $fieldSet) : ?>
-                <div class="tab-pane" id="<?php echo $name; ?>">
+                <?php echo count($fieldSets) > 1 ? '<div class="tab-pane" id="'.$name.'">' : '';?>
+                    <div class="k-heading"><?php echo JText::_($fieldSet->label); ?></div>
                     <?php
                     if (isset($fieldSet->description) && !empty($fieldSet->description))
                     {
-                        echo '<p class="tab-description">' . JText::_($fieldSet->description) . '</p>';
+                        echo '<p class="k-alert k-alert--info">' . JText::_($fieldSet->description) . '</p>';
                     }
                     ?>
                     <?php foreach ($this->form->getFieldset($name) as $field) : ?>
@@ -73,9 +72,9 @@ JHtml::_('behavior.formvalidation');
                             </div>
                         </div>
                     <?php endforeach; ?>
-                </div>
+                <?php echo count($fieldSets) > 1 ? '</div>' : '';?>
             <?php endforeach; ?>
-        </div>
+        <?php echo count($fieldSets) > 1 ? '</div>' : '';?>
         <input type="hidden" name="id" value="<?php echo $this->component->id; ?>" />
         <input type="hidden" name="component" value="<?php echo $this->component->option; ?>" />
         <input type="hidden" name="return" value="<?php echo $this->return; ?>" />

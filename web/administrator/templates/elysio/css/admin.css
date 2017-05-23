@@ -8186,6 +8186,40 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .accordion-inner .nav-tabs > li > a:focus, .k-ui-namespace .accordion-inner .nav-tabs > li > a:hover { border: none; background: transparent; text-decoration: underline; }
 
+.k-ui-namespace .tabs-left:before, .k-ui-namespace .tabs-left:after, .k-ui-namespace .tabs-right:before, .k-ui-namespace .tabs-right:after { content: " "; display: table; }
+
+.k-ui-namespace .tabs-left:after, .k-ui-namespace .tabs-right:after { clear: both; }
+
+.k-ui-namespace .tabs-left .nav-tabs.nav-tabs, .k-ui-namespace .tabs-right .nav-tabs.nav-tabs { margin: 0 -1px 0 0; border-bottom: 0; background: transparent; }
+
+.k-ui-namespace .tabs-left .tab-content, .k-ui-namespace .tabs-right .tab-content { padding: 20px; border: 1px solid #ddd; }
+
+.k-ui-namespace .tabs-left > .nav-tabs > li, .k-ui-namespace .tabs-right > .nav-tabs > li { float: none; }
+
+.k-ui-namespace .tabs-left > .nav-tabs > li > a, .k-ui-namespace .tabs-right > .nav-tabs > li > a { min-width: 74px; margin-right: 0; margin-bottom: 3px; }
+
+.k-ui-namespace .tabs-left > .nav-tabs { float: left; margin-right: 19px; border-right: 1px solid #ddd; }
+
+.k-ui-namespace .tabs-left > .nav-tabs > li > a { margin-right: -1px; border-radius: 4px 0 0 4px; }
+
+.k-ui-namespace .tabs-left > .nav-tabs > li:last-child > a { margin-bottom: 0; }
+
+.k-ui-namespace .tabs-left > .nav-tabs > li > a:hover, .k-ui-namespace .tabs-left > .nav-tabs > li > a:focus { border-color: #ddd; }
+
+.k-ui-namespace .tabs-left > .nav-tabs .active.active > a, .k-ui-namespace .tabs-left > .nav-tabs .active > a:hover, .k-ui-namespace .tabs-left > .nav-tabs .active > a:focus { background: white; border-color: #ddd transparent #ddd #ddd; }
+
+.k-ui-namespace .tabs-right > .nav-tabs { float: right; margin-left: 19px; border-left: 1px solid #ddd; }
+
+.k-ui-namespace .tabs-right > .nav-tabs > li > a { margin-left: -1px; border-radius: 0 4px 4px 0; }
+
+.k-ui-namespace .tabs-right > .nav-tabs > li > a:hover, .k-ui-namespace .tabs-right > .nav-tabs > li > a:focus { border-color: #ddd; }
+
+.k-ui-namespace .tabs-right > .nav-tabs .active > a, .k-ui-namespace .tabs-right > .nav-tabs .active > a:hover, .k-ui-namespace .tabs-right > .nav-tabs .active > a:focus { background: white; border-color: #ddd #ddd #ddd transparent; }
+
+.k-ui-namespace .nav > .disabled > a { color: red; }
+
+.k-ui-namespace .nav > .disabled > a:hover, .k-ui-namespace .nav > .disabled > a:focus { text-decoration: none; background-color: transparent; cursor: default; }
+
 .k-ui-namespace .k-login-container { background: #3071a9; text-align: center; /* 1 */ white-space: nowrap; /* 1 */ padding-top: 50px; /* 2 */ /** Psuedo element for vertical centering 1. Adjusts for spacing */ /* Use flexbox when available */ }
 
 .k-ui-namespace .k-login-container:before { content: ' '; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* 1 */ }
@@ -8224,6 +8258,30 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 .k-ui-namespace .k-container__content:after { clear: both; }
 
 .k-ui-namespace .readonly { display: block; min-height: 32px; }
+
+.k-ui-namespace form legend:first-child { padding-top: 0; }
+
+.k-ui-namespace .k-tabs-container { overflow: hidden; width: 100%; margin: 0 auto -20px; padding: 20px 0; /* When flexbox is in use */ /* When resizing */ }
+
+.k-ui-namespace .k-tabs-container:before, .k-ui-namespace .k-tabs-container:after { content: " "; display: table; }
+
+.k-ui-namespace .k-tabs-container:after { clear: both; }
+
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-tabs-container, .k-flexboxlegacy .k-ui-namespace .k-tabs-container { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+
+.k-is-resizing .k-ui-namespace .k-tabs-container { overflow: hidden; }
+
+.k-ui-namespace .k-tabs-container > .nav-tabs { /* Rename to k-tabs if this goes into KUI */ padding-top: 20px; padding-left: 20px; padding-right: 20px; background: white; border-top: 1px solid #ddd; }
+
+.k-ui-namespace .k-tabs-container .tab-content { /* Rename to k-tabs-content if this goes into KUI */ padding: 20px; }
+
+.k-ui-namespace .nav-tabs > li.active.active > a { background: #fbfafa; color: #222222; }
+
+.k-ui-namespace .k-form-block { margin-bottom: 1.5em; }
+
+.k-ui-namespace .k-form-block:last-child { margin-bottom: 0; }
+
+.k-ui-namespace .label-important { background: red; }
 
 .popover.popover { margin: 0; padding: 0; border: none; border-radius: 0; background: transparent; font-family: inherit; box-shadow: none; white-space: normal; }
 

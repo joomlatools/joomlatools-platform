@@ -43,3 +43,59 @@
   display: block;
   min-height: 32px;
 }
+
+
+
+
+
+// Back to KUI?
+form legend {
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.k-tabs-container {
+  @include clearfix;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto (-($k-spacing));
+  padding: $k-spacing 0;
+
+  /* When flexbox is in use */
+  @include flexbox {
+    flex: 0 0 auto;
+  }
+
+  /* When resizing */
+  @include resizing {
+    overflow: hidden;
+  }
+
+  > .nav-tabs { /* Rename to k-tabs if this goes into KUI */
+    padding-top: $k-spacing;
+    padding-left: $k-spacing;
+    padding-right: $k-spacing;
+    background: white;
+    border-top: 1px solid #ddd;
+  }
+
+  .tab-content { /* Rename to k-tabs-content if this goes into KUI */
+    padding: $k-spacing;
+  }
+}
+
+.nav-tabs > li.active.active > a {
+  background: $k-component-background;
+  color: $k-color-type;
+}
+
+
+.k-form-block {
+  @include content-block;
+}
+
+
+.label-important {
+  background: red;
+}
