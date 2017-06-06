@@ -127,8 +127,10 @@ if ($user->authorise('core.manage', 'com_users'))
     if($enabled)
     {
         $menu->addChild(new JMenuNode(JText::_('MOD_MENU_COM_USERS_USER_MANAGER'), 'index.php?option=com_users&view=users', 'class:user'), $createUser);
-        $menu->getParent();
 
+        if ($createUser) {
+            $menu->getParent();
+        }
 
         if ($createGrp)
         {
