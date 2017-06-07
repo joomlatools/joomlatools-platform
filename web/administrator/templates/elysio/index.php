@@ -83,6 +83,12 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
     <!-- Wrapper -->
     <div class="k-wrapper k-js-wrapper">
 
+        <div class="k-title-bar k-js-title-bar k-title-bar--mobile">
+            <div class="k-title-bar__heading">
+                <?php $option = explode("_", $option); echo $option[1];?>
+            </div>
+        </div>
+
         <!-- Content wrapper -->
         <div class="k-content-wrapper">
 

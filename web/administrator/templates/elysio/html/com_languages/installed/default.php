@@ -76,7 +76,7 @@ $clientId	= $this->state->get('filter.client_id', 0);
                         <td>
                             <?php echo $client;?>
                         </td>
-                        <td class="k-table-data-button--override k-table-data--center">
+                        <td class="k-table-data--center">
                             <?php echo JHtml::_('jgrid.isdefault', $row->published, $i, 'installed.', !$row->published && $canChange);?>
                         </td>
                         <td>

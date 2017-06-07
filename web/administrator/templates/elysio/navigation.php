@@ -4,6 +4,11 @@
 // Getting params from template
 $params = JFactory::getApplication()->getTemplate(true)->params;
 
+// Gets the FrontEnd Main page Uri
+$frontEndUri = JUri::getInstance(JUri::root());
+$frontEndUri->setScheme(((int) $app->get('force_ssl', 0) === 2) ? 'https' : 'http');
+$mainPageUri = $frontEndUri->toString();
+
 ?>
 
 <?php echo $params->get('templateColor') ?>
@@ -32,9 +37,16 @@ $params = JFactory::getApplication()->getTemplate(true)->params;
             <jdoc:include type="modules" name="menu" style="none" />
 
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="brand hidden-desktop hidden-tablet" href="<?php echo $mainPageUri; ?>" title="<?php echo JText::sprintf('TPL_ISIS_PREVIEW', $sitename); ?>" target="_blank">
+                        <span style="margin-right: 5px">View site</span>
+                        <span class="k-icon-external-link" aria-hidden="true"></span>
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <span class="k-icon-cog"></span>
+                        <span class="k-icon-person" aria-hidden="true"></span>
+                        <span class="k-visually-hidden">Settings</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>

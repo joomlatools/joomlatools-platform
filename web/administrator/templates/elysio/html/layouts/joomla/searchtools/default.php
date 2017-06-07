@@ -27,6 +27,10 @@ $formSelector = !empty($data['options']['formSelector']) ? $data['options']['for
 
 // Load search tools
 JHtml::_('searchtools.form', $formSelector, $data['options']);
+
+// Show filter toggle button?
+$showFilterToggle = (count($data['view']->filterForm->getGroup('filter')) > 1) ? true : false;
+
 ?>
 
 <!-- Scopebar -->
@@ -40,12 +44,14 @@ JHtml::_('searchtools.form', $formSelector, $data['options']);
                 <div class="k-js-search-count k-scopebar__item-label k-scopebar__item-label--numberless" style="display: none"></div>
             </span>
         </button>
+        <?php if ($showFilterToggle): ?>
         <button type="button" class="k-scopebar__button k-toggle-scopebar-filters k-js-toggle-filters">
             <span class="k-icon-filter" aria-hidden="true">
                 <span class="k-visually-hidden">Filters toggle</span>
                 <div class="k-js-filter-count k-scopebar__item-label k-scopebar__item-label--numberless"></div>
             </span>
         </button>
+        <?php endif; ?>
     </div>
 
     <!-- Filters -->

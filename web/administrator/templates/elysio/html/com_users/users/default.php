@@ -120,7 +120,7 @@ $sortFields = $this->getSortFields();
                         <td>
                             <?php echo $this->escape($item->username); ?>
                         </td>
-                        <td class="k-table-data-button--override k-table-data--center">
+                        <td class="k-table-data--center">
                             <?php if ($canChange) : ?>
                                 <?php
                                 $self = $loggeduser->id == $item->id;
@@ -130,7 +130,7 @@ $sortFields = $this->getSortFields();
                                 <?php echo JText::_($item->block ? 'JNO' : 'JYES'); ?>
                             <?php endif; ?>
                         </td>
-                        <td class="k-table-data-button--override k-table-data--center">
+                        <td class="k-table-data--center">
                             <?php
                             $activated = empty( $item->activation) ? 0 : 1;
                             echo JHtml::_('jgrid.state', JHtmlUsers::activateStates(), $activated, $i, 'users.', (boolean) $activated);

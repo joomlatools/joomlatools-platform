@@ -99,3 +99,64 @@ form legend {
 .label-important {
   background: red;
 }
+
+.k-table-container .k-table small {
+  a,
+  span {
+    display: inline;
+    vertical-align: baseline;
+  }
+}
+
+.k-title-bar__heading {
+  text-transform: capitalize;
+}
+
+
+// @TODO: Create a mixin from button in KUI to be able to include it elsewhere easily?
+.k-table .btn-micro {
+  display: inline-block;
+  margin-bottom: 0; /* 1 */
+  font-weight: $k-regular;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none; /* 2 */
+  border: 1px solid transparent;
+  white-space: nowrap;
+  box-shadow: none;
+  text-shadow: none;
+  user-select: none;
+  border-radius: $k-border-radius;
+  margin-right: $k-spacing-tiny;
+  line-height: $k-line-height;
+  padding: $k-spacing-base-vertical $k-spacing-base-horizontal;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include rtl {
+    margin-right: 0;
+    margin-left: $k-spacing-tiny;
+
+    &:last-child {
+      margin-left: 0;
+    }
+  }
+
+  @include button-variant($k-btn-default-color, $k-btn-default-background, $k-btn-default-border);
+
+  // @TODO: mixin as well?
+  border-radius: $k-border-radius-small;
+  font-size: $k-font-size-tiny;
+  line-height: $k-line-height-tiny;
+  padding: $k-spacing-tiny-vertical $k-spacing-tiny-horizontal;
+
+  background: white;
+
+  .icon-publish {
+    @include icon-after(check, true);
+  }
+}

@@ -148,7 +148,7 @@ $sortFields = $this->getSortFields();
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 						</td>
-						<td class="k-table-data-button--override">
+						<td>
 							<div class="btn-group" style="width: 36px;">
 								<?php echo JHtml::_('modules.state', $item->published, $i, $canChange, 'cb'); ?>
 								<?php
@@ -166,9 +166,7 @@ $sortFields = $this->getSortFields();
 						<td class="has-context">
 							<div class="pull-left">
 								<?php if ($item->checked_out) : ?>
-									<span class="k-table-data-button--override">
-										<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'modules.', $canCheckin); ?>
-									</span>
+                                    <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'modules.', $canCheckin); ?>
 								<?php endif; ?>
 								<?php if ($canEdit) : ?>
 									<a href="<?php echo JRoute::_('index.php?option=com_modules&task=module.edit&id='.(int) $item->id); ?>">

@@ -51,12 +51,12 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
             <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                 <tr>
-                    <th width="1%">
+                    <th width="1%" class="k-table-data--form">
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
-                    <th width="1%">
-                    </th>
-                    <th data-toggle="true">
+                    <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
+                    <th width="1%"></th>
+                    <th>
                         <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
                     </th>
                     <th data-hide="phone,tablet">
@@ -74,7 +74,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                         <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
                     </th>
                     <th data-hide="phone,tablet">
-                        <?php echo JHtml::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+                        <?php echo JHtml::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'k-icon-move'); ?>
                     </th>
                 </tr>
                 </thead>
@@ -114,13 +114,14 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                     }
                     ?>
                     <tr sortable-group-id="<?php echo $item->parent_id;?>" item-id="<?php echo $item->id?>" parents="<?php echo $parentsStr?>" level="<?php echo $item->level?>">
-                        <td>
+                        <td class="k-table-data--form">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
-                        <td class="k-table-data-button--override k-table-data--center">
+                        <td class="k-table-data--toggle"></td>
+                        <td class="k-table-data--center">
                             <?php echo JHtml::_('MenusHtml.Menus.state', $item->published, $i, $canChange, 'cb'); ?>
                         </td>
-                        <td class="k-table-data-button--override">
+                        <td>
                             <?php echo str_repeat('<span class="gi">|&mdash;</span>', $item->level - 1) ?>
                             <?php if ($item->checked_out) : ?>
                                 <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'items.', $canCheckin); ?>
@@ -148,7 +149,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                                     <?php echo $this->escape($item->item_type); ?></span>
                             </div>
                         </td>
-                        <td class="k-table-data-button--override k-table-data--center">
+                        <td class="k-table-data--center">
                             <?php if ($item->type == 'component') : ?>
                                 <?php if ($item->language == '*' || $item->home == '0'):?>
                                     <?php echo JHtml::_('jgrid.isdefault', $item->home, $i, 'items.', ($item->language != '*' || !$item->home) && $canChange);?>

@@ -9,36 +9,6 @@ th {
 }
 
 
-/* Override default Joomla buttons in tabels to flat icons (no button style) */
-
-.k-table-data-button--override {
-  .btn.btn {
-    &,&:hover,&:active,&:focus {
-      @include reset;
-      box-shadow: none;
-    }
-  }
-
-  .disabled.disabled {
-    background: transparent;
-    opacity: 1;
-  }
-
-  .icon-unfeatured {
-    color: palette(Grey, 400);
-
-    &:hover {
-      color: palette(Blue Grey);
-    }
-  }
-
-  .icon-featured {
-    color: palette(Blue Grey, 700);
-  }
-}
-
-
-
 /* Selected rows */
 
 table {

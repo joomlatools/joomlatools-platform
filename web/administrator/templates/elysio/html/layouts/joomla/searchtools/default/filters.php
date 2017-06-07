@@ -65,6 +65,6 @@ $filters = $data['view']->filterForm->getGroup('filter');
                     </div>
                 </div>
             </div>
-        </div><!-- .k-scopebar__filters -->
+        </div>
     </div>
 </div>
