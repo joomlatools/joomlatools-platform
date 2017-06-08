@@ -13,16 +13,24 @@ defined('_JEXEC') or die;
 // Load tooltips behavior
 JHtml::_('behavior.formvalidation');
 JHtml::_('bootstrap.tooltip');
-?>
-<script type="text/javascript">
+
+// Load JS message titles
+JText::script('ERROR');
+JText::script('WARNING');
+JText::script('NOTICE');
+JText::script('MESSAGE');
+
+JFactory::getDocument()->addScriptDeclaration('
 	Joomla.submitbutton = function(task)
 	{
-		if (task == 'application.cancel' || document.formvalidator.isValid(document.id('application-form')))
+		if (task === "config.cancel.application" || document.formvalidator.isValid(document.getElementById("application-form")))
 		{
-			Joomla.submitform(task, document.getElementById('application-form'));
+			jQuery("#permissions-sliders select").attr("disabled", "disabled");
+			Joomla.submitform(task, document.getElementById("application-form"));
 		}
-	}
-</script>
+	};
+');
+?>
 
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
