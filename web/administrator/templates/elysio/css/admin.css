@@ -8303,19 +8303,19 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-table .btn-micro .badge { color: white; background-color: #222222; }
 
-.k-ui-namespace .k-table .btn-micro .icon-publish:after { content: ""; color: #3071a9; }
+.k-ui-namespace .k-table .btn-micro.disabled { opacity: 1; }
+
+.k-ui-namespace .k-table .btn-micro.disabled [class*="icon"]:after { opacity: 1; color: #a2a1a1; }
+
+.k-ui-namespace .k-table .btn-micro .icon-publish.icon-publish:after { content: ""; color: #3071a9; }
 
 .k-ui-namespace .k-table .btn-micro .icon-unpublish:after { content: ""; }
 
-.k-ui-namespace .k-table .btn-micro .icon-featured:after { content: ""; color: #3071a9; }
+.k-ui-namespace .k-table .btn-micro .icon-featured.icon-featured:after { content: ""; color: #3071a9; }
 
 .k-ui-namespace .k-table .btn-micro .icon-unfeatured:after { content: ""; color: #a2a1a1; }
 
 .k-ui-namespace .k-table .btn-micro .icon-checkedout:after { content: ""; }
-
-.k-ui-namespace .k-table .btn-micro.disabled { opacity: 1; }
-
-.k-ui-namespace .k-table .btn-micro.disabled [class*="icon"]:after { opacity: 1; color: #a2a1a1; }
 
 .k-ui-namespace .k-list .active { font-weight: 700; }
 
