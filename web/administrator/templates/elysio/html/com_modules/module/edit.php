@@ -46,71 +46,65 @@ JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 
 <!-- Form -->
-<form class="k-form-layout form-validate" action="<?php echo JRoute::_('index.php?option=com_modules&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="module-form" class="form-validate">
+<form class="k-component k-js-component k-js-form-controller form-validate" action="<?php echo JRoute::_('index.php?option=com_modules&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="module-form" class="form-validate">
 
-	<!-- Container -->
-	<div class="k-container">
+    <!-- Container -->
+    <div class="k-container">
+        <div class="k-container__main">
+            <?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
+        </div>
+    </div>
 
-		<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
+    <div class="k-tabs-container">
 
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_MODULES_MODULE', true)); ?>
 
-		<!-- Content -->
-		<div class="k-container__content">
-
 			<!-- Main information -->
 			<div class="k-container__main">
 
-				<?php if ($this->item->xml) : ?>
-					<?php if ($this->item->xml->description) : ?>
-						<h3>
-							<?php
-							if ($this->item->xml)
-							{
-								echo ($text = (string) $this->item->xml->name) ? JText::_($text) : $this->item->module;
-							}
-							else
-							{
-								echo JText::_('COM_MODULES_ERR_XML');
-							}
-							?>
-						</h3>
-						<div class="info-labels">
-							<span class="label hasTooltip" title="<?php echo JHtml::tooltipText('COM_MODULES_FIELD_CLIENT_ID_LABEL'); ?>">
-								<?php echo $this->item->client_id == 0 ? JText::_('JSITE') : JText::_('JADMINISTRATOR'); ?>
-							</span>
-						</div>
-						<div>
-							<?php
-							$short_description = JText::_($this->item->xml->description);
-							$this->fieldset = 'description';
-							$long_description = JLayoutHelper::render('joomla.edit.fieldset', $this);
-							if(!$long_description) {
-								$truncated = JHtmlString::truncate($short_description, 550, true, false);
-								if(strlen($truncated) > 500) {
-									$long_description = $short_description;
-									$short_description = JHtmlString::truncate($truncated, 250);
-									if($short_description == $long_description) {
-										$long_description = '';
-									}
-								}
-							}
-							?>
-							<p><?php echo $short_description; ?></p>
-							<?php if ($long_description) : ?>
-								<p class="readmore">
-									<a href="#" onclick="jQuery('.nav-tabs a[href=#description]').tab('show');">
-										<?php echo JText::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
-									</a>
-								</p>
-							<?php endif; ?>
-						</div>
-					<?php endif; ?>
-				<?php else : ?>
-					<div class="alert alert-error"><?php echo JText::_('COM_MODULES_ERR_XML'); ?></div>
-				<?php endif; ?>
+                <?php if ($this->item->xml) : ?>
+                    <p class="k-static-form-label">
+                        <?php
+                        if ($this->item->xml)
+                        {
+                            echo ($text = (string) $this->item->xml->name) ? JText::_($text) : $this->item->module;
+                        }
+                        else
+                        {
+                            echo JText::_('COM_MODULES_ERR_XML');
+                        }
+                        ?>
+                        <small>(<?php echo $this->item->client_id == 0 ? JText::_('JSITE') : JText::_('JADMINISTRATOR'); ?>)</small>
+                    </p>
+                    <?php
+                    $short_description = JText::_($this->item->xml->description);
+                    $this->fieldset = 'description';
+                    $long_description = JLayoutHelper::render('joomla.edit.fieldset', $this);
+                    if(!$long_description) {
+                        $truncated = JHtmlString::truncate($short_description, 550, true, false);
+                        if(strlen($truncated) > 500) {
+                            $long_description = $short_description;
+                            $short_description = JHtmlString::truncate($truncated, 250);
+                            if($short_description == $long_description) {
+                                $long_description = '';
+                            }
+                        }
+                    }
+                    ?>
+                    <p><?php echo $short_description; ?></p>
+                    <?php if ($long_description) : ?>
+                        <p class="readmore">
+                            <a href="#" onclick="jQuery('.nav-tabs a[href=#description]').tab('show');">
+                                <?php echo JText::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
+                            </a>
+                        </p>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <p class="k-alert k-alert--danger"><?php echo JText::_('COM_MODULES_ERR_XML'); ?></p>
+                <?php endif; ?>
+
 				<?php
 				if ($hasContent)
 				{
@@ -118,7 +112,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 				}
 				$this->fieldset = 'basic';
 				$html = JLayoutHelper::render('joomla.edit.fieldset', $this);
-				echo $html ? '<hr />' . $html : '';
+				echo $html;
 				?>
 			</div><!-- .k-container__main -->
 
@@ -146,11 +140,9 @@ JFactory::getDocument()->addScriptDeclaration($script);
 					'language',
 					'note'
 				);
-
 				?>
 				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
 			</div>
-		</div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
 		<?php if (isset($long_description) && $long_description != '') : ?>
@@ -185,3 +177,4 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	<?php echo $this->form->getInput('module'); ?>
 	<?php echo $this->form->getInput('client_id'); ?>
 </form>
+

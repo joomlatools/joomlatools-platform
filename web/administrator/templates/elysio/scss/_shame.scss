@@ -178,17 +178,19 @@ form legend {
     }
   }
 
+  .icon-checkedout {
+    @include icon-after(lock-locked, true);
+  }
+
 
   &.disabled {
     opacity: 1;
 
-    .icon-publish {
-      &:after {
-        color: $k-color-type-light;
-      }
+    [class*="icon"]:after {
+      opacity: 1;
+      color: $k-color-type-light;
     }
   }
-
 }
 
 
@@ -200,6 +202,7 @@ form legend {
 }
 
 .label {
+  background: $k-color-type-light;
   vertical-align: middle;
 }
 
@@ -217,7 +220,7 @@ form legend {
 
 
 // @TODO: Create a mixin of arrows so we can include?
-.k-table th a {
+.k-table th {
   font-weight: $k-bold;
 }
 
@@ -309,5 +312,33 @@ form legend {
         border-left: 4px solid transparent;
       }
     }
+  }
+}
+
+
+.element-invisible {
+  @include visually-hidden;
+}
+
+.k-table {
+  .btn-group {
+    white-space: nowrap;
+    font-size: 0;
+
+    .btn {
+      display: inline-block;
+      float: none;
+      margin-right: 0;
+    }
+  }
+}
+
+label {
+  vertical-align: middle;
+
+  & + small {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 5px;
   }
 }

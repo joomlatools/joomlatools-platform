@@ -11,7 +11,6 @@ $mainPageUri = $frontEndUri->toString();
 
 ?>
 
-<?php echo $params->get('templateColor') ?>
 <nav class="k-navigation-container navbar navbar-default navbar-static-top">
     <div class="container-fluid">
 
@@ -50,10 +49,10 @@ $mainPageUri = $frontEndUri->toString();
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="index.php?option=com_users&amp;task=profile.edit&amp;id=<?php echo $user->id; ?>"><?php echo JText::_('TPL_ISIS_EDIT_ACCOUNT'); ?></a>
+                            <a href="index.php?option=com_users&amp;task=profile.edit&amp;id=<?php echo $user->id; ?>"><?php echo JText::_('TPL_ELYSIO_EDIT_ACCOUNT'); ?></a>
                         </li>
                         <li>
-                            <a href="<?php echo JRoute::_('index.php?option=com_users&task=session.logout&' . JSession::getFormToken() . '=1'); ?>"><?php echo JText::_('TPL_ISIS_LOGOUT'); ?></a>
+                            <a href="<?php echo JRoute::_('index.php?option=com_users&task=session.logout&' . JSession::getFormToken() . '=1'); ?>"><?php echo JText::_('TPL_ELYSIO_LOGOUT'); ?></a>
                         </li>
                     </ul>
                 </li>

@@ -119,10 +119,8 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
         </div><!-- .k-table -->
 
         <!-- Pagination -->
-        <div class="k-table-pagination">
-            <?php echo $this->pagination->getListFooter(); ?>
-        </div><!-- .k-table-pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
     </div><!-- .k-table-container -->
 
-</form><!-- .k-list-layout -->
+</form><!-- .k-component -->

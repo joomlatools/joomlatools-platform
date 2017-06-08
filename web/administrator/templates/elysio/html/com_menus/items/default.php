@@ -118,14 +118,14 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
                         <td class="k-table-data--toggle"></td>
-                        <td class="k-table-data--center">
+                        <td class="k-table-data--nowrap">
                             <?php echo JHtml::_('MenusHtml.Menus.state', $item->published, $i, $canChange, 'cb'); ?>
-                        </td>
-                        <td>
-                            <?php echo str_repeat('<span class="gi">|&mdash;</span>', $item->level - 1) ?>
                             <?php if ($item->checked_out) : ?>
                                 <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'items.', $canCheckin); ?>
                             <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php echo str_repeat('<span class="gi">|&mdash;</span>', $item->level - 1) ?>
                             <?php if ($canEdit) : ?>
                                 <a href="<?php echo JRoute::_('index.php?option=com_menus&task=item.edit&id='.(int) $item->id);?>">
                                     <?php echo $this->escape($item->title); ?></a>
@@ -207,17 +207,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
         </div><!-- .k-table -->
 
         <!-- Pagination -->
-        <div class="k-table-pagination">
-
-            <!-- Pages -->
-            <?php echo $this->pagination->getListFooter(); ?>
-
-            <!-- Filters -->
-            <?php
-            $data = array('view' => $this, 'options' => array('filterButton' => false));
-            echo JLayoutHelper::render('joomla.searchtools.default.list', $data);
-            ?>
-        </div><!-- .k-table-pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
         <input type="hidden" name="task" value="" />
         <input type="hidden" name="boxchecked" value="0" />

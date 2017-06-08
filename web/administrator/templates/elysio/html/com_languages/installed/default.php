@@ -25,7 +25,7 @@ $clientId	= $this->state->get('filter.client_id', 0);
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="table--fixed footable">
+            <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                 <tr>
                     <th>
@@ -101,10 +101,8 @@ $clientId	= $this->state->get('filter.client_id', 0);
         </div><!-- .k-table -->
 
         <!-- Pagination -->
-        <div class="k-table-pagination">
-            <?php echo $this->pagination->getListFooter(); ?>
-        </div><!-- .k-table-pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
     </div><!-- .k-table-container -->
 
-</form><!-- .k-list-layout -->
+</form><!-- .k-component -->

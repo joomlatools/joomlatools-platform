@@ -52,16 +52,15 @@ $sortFields = $this->getSortFields();
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_categories&view=categories'); ?>" method="post" name="adminForm" id="adminForm">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_categories&view=categories'); ?>" method="post" name="adminForm" id="adminForm">
+
     <!-- Scopebar -->
-    <div class="k-scopebar" id="filter-bar">
-        <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
-    </div>
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
 
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="table--fixed footable select-rows">
+            <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                     <tr>
                         <th width="1%">

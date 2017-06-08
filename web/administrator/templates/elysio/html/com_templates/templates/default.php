@@ -27,35 +27,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 <form class="k-form-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_templates&view=templates'); ?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
-    <div class="k-scopebar" id="filter-bar">
-
-        <!-- Filters -->
-        <div class="k-scopebar__item k-scopebar__item--fluid">
-
-            <!-- Search button -->
-            <button type="button" class="k-toggle-search"><span class="k-icon-magnifying-glass"></span><span class="visually-hidden">Search</span></button>
-
-        </div><!-- .k-scopebar__item--fluid -->
-
-        <!-- Search -->
-        <div class="k-scopebar__item k-scopebar__search">
-            <div class="k-search__container k-search__container--has-both-buttons">
-                <input class="k-search__field" type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('JSEARCH_FILTER'); ?>" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" />
-                <button type="submit" class="k-search__button-search" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
-                    <span class="k-icon-magnifying-glass"></span>
-                </button>
-                <button type="button" class="k-search__button-empty" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
-                    <span>X</span>
-                </button>
-            </div>
-        </div><!-- .k-scopebar__search -->
-
-    </div><!-- .k-scopebar -->
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
 
 	<!-- Table -->
 	<div class="k-table-container">
 		<div class="k-table">
-			<table class="table--fixed footable select-rows" id="template-mgr">
+            <table class="k-js-fixed-table-header k-js-responsive-table">
 				<thead>
 					<tr>
 						<th class="col1template">
@@ -132,11 +109,9 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php echo JHtml::_('form.token'); ?>
 		</div><!-- .k-table -->
 
-		<!-- Pagination -->
-		<div class="k-table-pagination">
-			<?php echo $this->pagination->getListFooter(); ?>
-		</div><!-- .k-table-pagination -->
+        <!-- Pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
 	</div><!-- .k-table-container -->
 
-</form><!-- .k-list-layout -->
+</form><!-- .k-component -->

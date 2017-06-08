@@ -38,24 +38,15 @@ $sortFields = $this->getSortFields();
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=users');?>" method="post" name="adminForm" id="adminForm">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=users');?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
-    <div class="k-scopebar" id="filter-bar">
-        <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
-    </div>
-
-    <!-- Filters -->
-    <div class="k-filter-container">
-        <div class="k-filter-container__item" data-filter="tools">
-            <?php echo JLayoutHelper::render('joomla.searchtools.default.filters', array('view' => $this), null, array('debug' => false)); ?>
-        </div>
-    </div><!-- .k-filter-container -->
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
 
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="table--fixed footable select-rows">
+            <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                     <tr>
                         <th width="1%">
@@ -162,11 +153,9 @@ $sortFields = $this->getSortFields();
         </div><!-- .k-table -->
 
         <!-- Pagination -->
-        <div class="k-table-pagination">
-            <?php echo $this->pagination->getListFooter(); ?>
-        </div><!-- .k-table-pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
     </div><!-- .k-table-container -->
 
-</form><!-- .k-list-layout -->
+</form><!-- .k-component -->
 

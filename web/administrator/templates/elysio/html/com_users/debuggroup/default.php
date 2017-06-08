@@ -18,38 +18,15 @@ $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
 
-<?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=debuggroup&user_id='.(int) $this->state->get('filter.user_id'));?>" method="post" name="adminForm" id="adminForm">
 
-<form class="k-list-layout" action="<?php echo JRoute::_('index.php?option=com_users&view=debuggroup&user_id='.(int) $this->state->get('filter.user_id'));?>" method="post" name="adminForm" id="adminForm">
     <!-- Scopebar -->
-    <div class="k-scopebar" id="filter-bar">
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
 
-        <!-- Filters -->
-        <div class="k-scopebar__item k-scopebar__item--fluid">
-
-            <!-- Search toggle button -->
-            <button type="button" class="k-toggle-search"><span class="k-icon-magnifying-glass"></span><span class="visually-hidden">Search</span></button>
-
-        </div><!-- .k-scopebar__item--fluid -->
-
-        <!-- Search -->
-        <div class="k-scopebar__item k-scopebar__search">
-            <div class="k-search__container k-search__container--has-both-buttons">
-                <input class="k-search__field" type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('JSEARCH_FILTER'); ?>" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" />
-                <button type="submit" class="k-search__button-search" title="Search">
-                    <span class="k-icon-magnifying-glass"></span>
-                </button>
-                <button type="button" class="k-search__button-empty" title="Clear" onclick="document.id('filter_search').value='';this.form.submit();">
-                    <span>X</span>
-                </button>
-            </div>
-        </div><!-- .k-scopebar__search -->
-
-    </div><!-- .k-scopebar -->
-
+    <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="table--fixed footable select-rows">
+            <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                 <tr>
                     <th>
@@ -122,9 +99,8 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
         </div>
 
         <!-- Pagination -->
-        <div class="k-table-pagination">
-            <?php echo $this->pagination->getListFooter(); ?>
-        </div><!-- .k-table-pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
+
     </div>
 
     <input type="hidden" name="task" value="" />
@@ -133,3 +109,4 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
     <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
     <?php echo JHtml::_('form.token'); ?>
 </form>
+

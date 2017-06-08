@@ -16,12 +16,10 @@ $list = $data['view']->filterForm->getGroup('list');
 ?>
 
 <!-- Pagination filters -->
-<div class="k-pagination">
-    <div class="k-pagination__limit">
-        <?php if ($list) : ?>
-            <?php foreach ($list as $fieldName => $field) : ?>
-                <?php echo $field->input; ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+<div class="k-pagination__limit">
+    <?php if ($list) : ?>
+        <?php foreach ($list as $fieldName => $field) : ?>
+            <?php echo $field->input; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </div>

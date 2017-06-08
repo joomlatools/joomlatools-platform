@@ -30,6 +30,7 @@ if (!empty($displayData['options']['showonEnabled']))
 
 <?php if(isset($displayData['name']) && $displayData['name'] == 'title') : ?>
     <div class="k-form-group k-form-group--large">
+        <label><?php echo $displayData['label']; ?></label>
         <?php echo setFormInputAttributes($displayData['input'], array('class' => 'k-form-control', 'placeholder' => 'Title')); ?>
     </div>
 <?php else : ?>

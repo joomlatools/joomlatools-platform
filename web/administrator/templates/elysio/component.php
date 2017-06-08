@@ -40,6 +40,10 @@ $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 unset($this->_scripts['/joomlatools-platform/web/media/system/js/mootools-core-uncompressed.js']);
 unset($this->_scripts['/joomlatools-platform/web/media/system/js/mootools-more-uncompressed.js']);
 
+// Unset CSS
+unset($this->_stylesheets[JURI::root(true).'media/jui/css/jquery.searchtools.css']);
+unset($this->_stylesheets[JURI::root(true).'media/jui/css/chosen.css']);
+
 // Add Stylesheet
 $doc->addStyleSheet('templates/' . $this->template . '/css/admin.css');
 

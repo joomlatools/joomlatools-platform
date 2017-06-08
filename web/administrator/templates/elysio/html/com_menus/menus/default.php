@@ -59,23 +59,22 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                     <th width="1%" class="k-table-data--form">
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
-                    <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                     <th>
                         <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="1%" data-hide="phone,tablet">
+                    <th width="1%">
                         <?php echo JText::_('COM_MENUS_HEADING_PUBLISHED_ITEMS'); ?>
                     </th>
-                    <th width="1%" data-hide="phone,tablet">
+                    <th width="1%">
                         <?php echo JText::_('COM_MENUS_HEADING_UNPUBLISHED_ITEMS'); ?>
                     </th>
-                    <th width="1%" data-hide="phone,tablet,desktop">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JText::_('COM_MENUS_HEADING_TRASHED_ITEMS'); ?>
                     </th>
-                    <th width="1%" data-hide="phone,tablet,desktop">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JText::_('COM_MENUS_HEADING_LINKED_MODULES'); ?>
                     </th>
-                    <th width="1%" data-hide="phone,tablet,desktop">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                     </th>
                 </tr>
@@ -89,7 +88,6 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                         <td class="k-table-data--form">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
-                        <td class="k-table-data--toggle"></td>
                         <td class="k-table-data--ellipsis">
                             <?php if ($canManageItems) : ?>
                                 <a href="<?php echo JRoute::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype); ?>">
@@ -228,18 +226,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
         </div><!-- .k-table -->
 
         <!-- Pagination -->
-        <div class="k-table-pagination">
-
-            <!-- Pages -->
-            <?php echo $this->pagination->getListFooter(); ?>
-
-            <!-- Filters -->
-            <?php
-            $data = array('view' => $this, 'options' => array('filterButton' => false));
-            echo JLayoutHelper::render('joomla.searchtools.default.list', $data);
-            ?>
-
-        </div><!-- .k-table-pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
     </div><!-- .k-table-container -->
 

@@ -29,6 +29,7 @@ $sitename = $app->getCfg('sitename');
 $menuactive = $menu->getActive();
 $debug = $app->getCfg('debug', 0);
 $cpanel = ($option === 'com_cpanel');
+$debugUsers = ($option === 'com_users' && $view === 'debuggroup');
 
 $showSubmenu = JFactory::getDocument()->getBuffer('modules', 'submenu') && !JFactory::getApplication()->input->getBool('hidemainmenu');
 $showSidebar = JFactory::getDocument()->getBuffer('modules', 'sidebar');
@@ -44,13 +45,13 @@ $doc->setMetaData('apple-mobile-web-app-status-bar-style', 'black');
 $doc->setMetaData('apple-mobile-web-app-title', 'Elysio');
 $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 
-// Unset Mootools
+// Unset JS
 unset($this->_scripts[JURI::root(true).'/media/system/js/mootools-core-uncompressed.js']);
 unset($this->_scripts[JURI::root(true).'/media/system/js/mootools-more-uncompressed.js']);
 
 // Unset CSS
-unset($this->_styleSheets[JURI::root(true).'/media/jui/css/jquery.searchtools.css']);
-unset($this->_styleSheets[JURI::root(true).'/media/jui/css/sortablelist.css']);
+unset($this->_stylesheets[JURI::root(true).'/media/jui/css/jquery.searchtools.css']);
+unset($this->_stylesheets[JURI::root(true).'/media/jui/css/chosen.css']);
 
 // Add Stylesheet
 $doc->addStyleSheet('templates/' . $this->template . '/css/admin.css');
@@ -114,9 +115,9 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
             <!-- Content -->
             <div class="k-content k-js-content">
 
-                <?php if (!$cpanel) : ?>
-                <!-- Toolbar -->
-                <jdoc:include type="modules" name="toolbar" style="none" />
+                <?php if ((!$cpanel && !$debugUsers)): ?>
+                    <!-- Toolbar -->
+                    <jdoc:include type="modules" name="toolbar" style="none" />
                 <?php endif; ?>
 
                 <!-- Component wrapper -->
