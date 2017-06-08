@@ -157,6 +157,157 @@ form legend {
   background: white;
 
   .icon-publish {
-    @include icon-after(check, true);
+    @include icon-after(check, true) {
+      color: $k-color-accent;
+    }
+  }
+
+  .icon-unpublish {
+    @include icon-after(x, true);
+  }
+
+  .icon-featured {
+    @include icon-after(star, true) {
+      color: $k-color-accent;
+    }
+  }
+
+  .icon-unfeatured {
+    @include icon-after(star, true) {
+      color: $k-color-type-light;
+    }
+  }
+
+
+  &.disabled {
+    opacity: 1;
+
+    .icon-publish {
+      &:after {
+        color: $k-color-type-light;
+      }
+    }
+  }
+
+}
+
+
+
+.k-list {
+  .active {
+    font-weight: $k-bold;
+  }
+}
+
+.label {
+  vertical-align: middle;
+}
+
+
+.k-table-container {
+  td {
+    .select2 {
+      display: inline-block;
+      vertical-align: top;
+      max-width: 90% !important;
+    }
+  }
+}
+
+
+
+// @TODO: Create a mixin of arrows so we can include?
+.k-table th a {
+  font-weight: $k-bold;
+}
+
+
+.k-table {
+  .icon-arrow-up-3,
+  .icon-arrow-down-3 {
+    position: relative;
+    display: inline-block;
+    width: 6px;
+    height: 3px;
+    background: transparent;
+
+    &:before,
+    &:after {
+      display: block;
+      content: " ";
+      position: absolute;
+      opacity: 0.33;
+    }
+
+    &:before {
+      @include caret(top, 4px);
+      bottom: 100%;
+    }
+
+    &:after {
+      @include caret(bottom, 4px);
+      top: 100%;
+    }
+  }
+
+  .icon-arrow-up-3 {
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  .icon-arrow-down-3 {
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  th {
+    .icon-arrow-up-3,
+    .icon-arrow-down-3 {
+      margin-left: 0.66em;
+      vertical-align: middle;
+    }
+
+    @include rtl {
+      .icon-arrow-up-3,
+      .icon-arrow-down-3 {
+        margin-left: 0;
+        margin-right: 0.66em;
+      }
+    }
+
+    a:focus,
+    a:hover {
+      .icon-arrow-up-3 {
+        &:after {
+          opacity: 0.66;
+        }
+      }
+
+      .icon-arrow-down-3 {
+        &:before {
+          opacity: 0.66;
+        }
+      }
+    }
+  }
+}
+
+.navbar {
+  .disabled {
+    .no-dropdown {
+      &:after {
+        display: inline-block;
+        content: " ";
+        width: 0;
+        height: 0;
+        margin-left: 6px;
+        vertical-align: middle;
+        border-top: 4px dashed;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+      }
+    }
   }
 }

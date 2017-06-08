@@ -45,8 +45,12 @@ $doc->setMetaData('apple-mobile-web-app-title', 'Elysio');
 $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 
 // Unset Mootools
-unset($this->_scripts['/joomlatools-platform/web/media/system/js/mootools-core-uncompressed.js']);
-unset($this->_scripts['/joomlatools-platform/web/media/system/js/mootools-more-uncompressed.js']);
+unset($this->_scripts[JURI::root(true).'/media/system/js/mootools-core-uncompressed.js']);
+unset($this->_scripts[JURI::root(true).'/media/system/js/mootools-more-uncompressed.js']);
+
+// Unset CSS
+unset($this->_styleSheets[JURI::root(true).'/media/jui/css/jquery.searchtools.css']);
+unset($this->_styleSheets[JURI::root(true).'/media/jui/css/sortablelist.css']);
 
 // Add Stylesheet
 $doc->addStyleSheet('templates/' . $this->template . '/css/admin.css');
