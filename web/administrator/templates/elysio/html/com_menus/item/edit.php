@@ -220,7 +220,7 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 		<?php if (!empty($this->modules)) : ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'modules', JText::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT')); ?>
                 <!-- Main information -->
-                <div class="k-container__main">
+                <div class="k-container__full">
                     <?php echo $this->loadTemplate('modules'); ?>
                 </div>
             <?php echo JHtml::_('bootstrap.endTab'); ?>

@@ -21,7 +21,7 @@ JHtml::_('behavior.framework', true);
 
 <div class="k-table-container">
 	<div class="k-table">
-		<table>
+        <table class="k-js-fixed-table-header k-js-responsive-table">
 			<thead>
 			<tr>
 				<th>
