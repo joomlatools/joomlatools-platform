@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_modules
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.formvalidator');
 JHtml::_('behavior.combobox');
 
 $hasContent = empty($this->item->module) ||  isset($this->item->xml->customContent);
@@ -20,29 +20,140 @@ $hasContentFieldName = "content";
 // For a later improvement
 if ($hasContent)
 {
-	$hasContentFieldName = "content";
+    $hasContentFieldName = "content";
 }
 
 // Get Params Fieldsets
 $this->fieldsets = $this->form->getFieldsets('params');
 
-$script = "Joomla.submitbutton = function(task)
-	{
-			if (task == 'module.cancel' || document.formvalidator.isValid(document.id('module-form'))) {";
+$script = "
+	Joomla.submitbutton = function(task) {
+			if (task == 'module.cancel' || document.formvalidator.isValid(document.getElementById('module-form')))
+			{
+";
 if ($hasContent)
 {
-	$script .= $this->form->getField($hasContentFieldName)->save();
+    $script .= $this->form->getField($hasContentFieldName)->save();
 }
-$script .= "	Joomla.submitform(task, document.getElementById('module-form'));
+$script .= "
+			Joomla.submitform(task, document.getElementById('module-form'));
+
+				jQuery('#permissions-sliders select').attr('disabled', 'disabled');
+
 				if (self != top)
 				{
-					window.top.setTimeout('window.parent.SqueezeBox.close()', 1000);
+					if (parent.viewLevels)
+					{
+						var updPosition = jQuery('#jform_position').chosen().val(),
+							updTitle = jQuery('#jform_title').val(),
+							updMenus = jQuery('#jform_assignment').chosen().val(),
+							updStatus = jQuery('#jform_published').chosen().val(),
+							updAccess = jQuery('#jform_access').chosen().val(),
+							tmpMenu = jQuery('#menus-" . $this->item->id . "', parent.document),
+							tmpRow = jQuery('#tr-" . $this->item->id . "', parent.document);
+							tmpStatus = jQuery('#status-" . $this->item->id . "', parent.document);
+							window.parent.inMenus = new Array();
+							window.parent.numMenus = jQuery(':input[name=\"jform[assigned][]\"]').length;
+
+						jQuery('input[name=\"jform[assigned][]\"]').each(function(){
+							if (updMenus > 0 )
+							{
+								if (jQuery(this).is(':checked'))
+								{
+									window.parent.inMenus.push(parseInt(jQuery(this).val()));
+								}
+							}
+							if (updMenus < 0 )
+							{
+								if (!jQuery(this).is(':checked'))
+								{
+									window.parent.inMenus.push(parseInt(jQuery(this).val()));
+								}
+							}
+						});
+						if (updMenus == 0) {
+							tmpMenu.html('<span class=\"label label-info\">" . JText::_("JALL") . "</span>');
+							if (tmpRow.hasClass('no')) { tmpRow.removeClass('no '); }
+						}
+						if (updMenus == '-') {
+							tmpMenu.html('<span class=\"label label-important\">" . JText::_("JNO") . "</span>');
+							if (!tmpRow.hasClass('no') || tmpRow.hasClass('')) { tmpRow.addClass('no '); }
+						}
+						if (updMenus > 0) {
+							if (window.parent.inMenus.indexOf(parent.menuId) >= 0)
+							{
+								if (window.parent.numMenus == window.parent.inMenus.length)
+								{
+									tmpMenu.html('<span class=\"label label-info\">" . JText::_("JALL") . "</span>');
+									if (tmpRow.hasClass('no') || tmpRow.hasClass('')) { tmpRow.removeClass('no'); }
+								}
+								else
+								{
+									tmpMenu.html('<span class=\"label label-success\">" . JText::_("JYES") . "</span>');
+									if (tmpRow.hasClass('no')) { tmpRow.removeClass('no'); }
+								}
+							}
+							if (window.parent.inMenus.indexOf(parent.menuId) < 0)
+							{
+								tmpMenu.html('<span class=\"label label-important\">" . JText::_("JNO") . "</span>');
+								if (!tmpRow.hasClass('no')) { tmpRow.addClass('no'); }
+							}
+						}
+						if (updMenus < 0) {
+							if (window.parent.inMenus.indexOf(parent.menuId) >= 0)
+							{
+								if (window.parent.numMenus == window.parent.inMenus.length)
+								{
+									tmpMenu.html('<span class=\"label label-info\">" . JText::_("JALL") . "</span>');
+									if (tmpRow.hasClass('no')) { tmpRow.removeClass('no'); }
+								}
+								else
+								{
+									tmpMenu.html('<span class=\"label label-success\">" . JText::_("JYES") . "</span>');
+									if (tmpRow.hasClass('no')) { tmpRow.removeClass('no'); }
+								}
+							}
+							if (window.parent.inMenus.indexOf(parent.menuId) < 0)
+							{
+								tmpMenu.html('<span class=\"label label-important\">" . JText::_("JNO") . "</span>');
+								if (!tmpRow.hasClass('no') || tmpRow.hasClass('')) { tmpRow.addClass('no'); }
+							}
+						}
+						if (updStatus == 1) {
+							tmpStatus.html('<span class=\"label label-success\">" . JText::_("JYES") . "</span>');
+							if (tmpRow.hasClass('unpublished')) { tmpRow.removeClass('unpublished '); }
+						}
+						if (updStatus == 0) {
+							tmpStatus.html('<span class=\"label label-important\">" . JText::_("JNO") . "</span>');
+							if (!tmpRow.hasClass('unpublished') || tmpRow.hasClass('')) { tmpRow.addClass('unpublished'); }
+						}
+						if (updStatus == -2) {
+							tmpStatus.html('<span class=\"label label-default\">" . JText::_("JTRASHED") . "</span>');
+							if (!tmpRow.hasClass('unpublished') || tmpRow.hasClass('')) { tmpRow.addClass('unpublished'); }
+						}
+						if (document.formvalidator.isValid(document.getElementById('module-form'))) {
+							jQuery('#title-" . $this->item->id . "', parent.document).text(updTitle);
+							jQuery('#position-" . $this->item->id . "', parent.document).text(updPosition);
+							jQuery('#access-" . $this->item->id . "', parent.document).html(parent.viewLevels[updAccess]);
+						}
+					}
+				}
+
+				if (task !== 'module.apply')
+				{
+					window.parent.jQuery('#module" . ((int) $this->item->id == 0 ? 'Add' : 'Edit' . (int) $this->item->id) . "Modal').modal('hide');
 				}
 			}
 	};";
 
 JFactory::getDocument()->addScriptDeclaration($script);
 
+$input = JFactory::getApplication()->input;
+
+// In case of modal
+$isModal = $input->get('layout') == 'modal' ? true : false;
+$layout  = $isModal ? 'modal' : 'edit';
+$tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 ?>
 
 <!-- Form -->

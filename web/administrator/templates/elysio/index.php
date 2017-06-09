@@ -147,12 +147,12 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
     </div>
     <?php endif; ?>
 
-    <div id="dynamic-content-holder" class="k-dynamic-content-holder"></div>
+    <div id="modal-holder"></div>
     <script>
-        jQuery(document).ready(function($) {
+        kQuery(document).ready(function($) {
             var modal = $('#collapseModal');
             if (modal.length) {
-                modal.appendTo('#dynamic-content-holder');
+                modal.appendTo('#modal-holder');
             }
         });
     </script>

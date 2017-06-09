@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,7 +14,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('behavior.core');
 JHtml::_('behavior.tabstate');
-JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.formvalidator');
 JHtml::_('behavior.keepalive');
 
 JText::script('ERROR');
@@ -108,97 +108,101 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_ITEM_DETAILS')); ?>
 
-            <!-- Main information -->
-            <div class="k-container__main">
+            <div class="k-container">
 
-                <?php
-                echo $this->form->renderField('type');
+                <!-- Main information -->
+                <div class="k-container__main">
 
-                echo $this->form->renderField('menutype');
+                    <?php
+                    echo $this->form->renderField('type');
 
-                if ($this->item->type == 'alias')
-                {
-                    echo $this->form->renderFieldset('aliasoptions');
-                }
+                    echo $this->form->renderField('menutype');
 
-                echo $this->form->renderFieldset('request');
+                    if ($this->item->type == 'alias')
+                    {
+                        echo $this->form->renderFieldset('aliasoptions');
+                    }
 
-                if ($this->item->type == 'url')
-                {
-                    $this->form->setFieldAttribute('link', 'readonly', 'false');
-                }
+                    echo $this->form->renderFieldset('request');
 
-                echo $this->form->renderField('link');
+                    if ($this->item->type == 'url')
+                    {
+                        $this->form->setFieldAttribute('link', 'readonly', 'false');
+                    }
 
-                echo $this->form->renderField('alias');
+                    echo $this->form->renderField('link');
 
-                echo $this->form->renderField('browserNav');
+                    echo $this->form->renderField('alias');
 
-                echo $this->form->renderField('template_style_id');
+                    echo $this->form->renderField('browserNav');
 
-                ?>
+                    echo $this->form->renderField('template_style_id');
 
-			</div><!-- .k-container__main -->
+                    ?>
 
-            <!-- Sub information -->
-            <div class="k-container__sub">
+                </div><!-- .k-container__main -->
 
-                <fieldset class="k-form-block">
-                    <div class="k-form-block__header">Header</div>
-                    <div class="k-form-block__content">
-                        <?php
-                        // Set main fields.
-                        $this->fields = array(
-                            'parent_id',
-                            'menuordering',
-                        );
-                        if ($this->item->type != 'component')
-                        {
-                            $this->fields = array_diff($this->fields, array('home'));
-                        }
-                        ?>
-                        <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-                    </div>
-                </fieldset>
+                <!-- Sub information -->
+                <div class="k-container__sub">
 
-                <fieldset class="k-form-block">
-                    <div class="k-form-block__header">Header</div>
-                    <div class="k-form-block__content">
-                        <?php
-                        // Set main fields.
-                        $this->fields = array(
-                            'published',
-                            'home',
-                            'access',
-                            'language',
-                        );
-                        if ($this->item->type != 'component')
-                        {
-                            $this->fields = array_diff($this->fields, array('home'));
-                        }
-                        ?>
-                        <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-                    </div>
-                </fieldset>
+                    <fieldset class="k-form-block">
+                        <div class="k-form-block__header">Global</div>
+                        <div class="k-form-block__content">
+                            <?php
+                            // Set main fields.
+                            $this->fields = array(
+                                'parent_id',
+                                'menuordering',
+                            );
+                            if ($this->item->type != 'component')
+                            {
+                                $this->fields = array_diff($this->fields, array('home'));
+                            }
+                            ?>
+                            <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                        </div>
+                    </fieldset>
 
-                <fieldset class="k-form-block">
-                    <div class="k-form-block__header">Extra</div>
-                    <div class="k-form-block__content">
-                        <?php
-                        // Set main fields.
-                        $this->fields = array(
-                            'note'
-                        );
-                        if ($this->item->type != 'component')
-                        {
-                            $this->fields = array_diff($this->fields, array('home'));
-                        }
-                        ?>
-                        <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-                    </div>
-                </fieldset>
+                    <fieldset class="k-form-block">
+                        <div class="k-form-block__header">Publishing / access</div>
+                        <div class="k-form-block__content">
+                            <?php
+                            // Set main fields.
+                            $this->fields = array(
+                                'published',
+                                'home',
+                                'access',
+                                'language',
+                            );
+                            if ($this->item->type != 'component')
+                            {
+                                $this->fields = array_diff($this->fields, array('home'));
+                            }
+                            ?>
+                            <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                        </div>
+                    </fieldset>
 
-			</div><!-- .k-container__sub -->
+                    <fieldset class="k-form-block">
+                        <div class="k-form-block__header">Extra</div>
+                        <div class="k-form-block__content">
+                            <?php
+                            // Set main fields.
+                            $this->fields = array(
+                                'note'
+                            );
+                            if ($this->item->type != 'component')
+                            {
+                                $this->fields = array_diff($this->fields, array('home'));
+                            }
+                            ?>
+                            <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                        </div>
+                    </fieldset>
+
+                </div><!-- .k-container__sub -->
+
+            </div>
 
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
@@ -210,19 +214,18 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 
 		<?php if ($assoc) : ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'associations', JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
-                <!-- Main information -->
-                <div class="k-container__main">
-                    <?php echo $this->loadTemplate('associations'); ?>
+                <div class="k-container">
+                    <!-- Main information -->
+                    <div class="k-container__main">
+                        <?php echo $this->loadTemplate('associations'); ?>
+                    </div>
                 </div>
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
 
 		<?php if (!empty($this->modules)) : ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'modules', JText::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT')); ?>
-                <!-- Main information -->
-                <div class="k-container__full">
-                    <?php echo $this->loadTemplate('modules'); ?>
-                </div>
+                <?php echo $this->loadTemplate('modules'); ?>
             <?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
 

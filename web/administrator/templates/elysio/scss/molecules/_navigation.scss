@@ -116,6 +116,19 @@ $k-menu-width: $k-charlie;
       }
     }
 
+    &.disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+
+      a {
+        pointer-events: none;
+      }
+
+      .has-open-submenu {
+        background: transparent;
+      }
+    }
+
     > a {
       line-height: 40px;
       position: relative;

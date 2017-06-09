@@ -5331,7 +5331,7 @@ markup:
 
 .k-ui-namespace .k-no-wrap.k-no-wrap.k-no-wrap { white-space: nowrap; }
 
-.k-ui-namespace .k-visually-hidden.k-visually-hidden.k-visually-hidden, .k-checked .k-ui-namespace .k-optionlist__content input[type=radio], .k-ui-namespace .k-scopebar__item--search label { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0; }
+.k-ui-namespace .k-visually-hidden.k-visually-hidden.k-visually-hidden, .k-checked .k-ui-namespace .k-optionlist__content input[type=radio], .k-ui-namespace .k-scopebar__item--search label, .k-checked .k-ui-namespace .k-optionlist-joomla .controls input[type=radio] { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0; }
 
 .k-ui-namespace .k-visually-shown.k-visually-shown.k-visually-shown { position: static; overflow: visible; clip: auto; height: auto; width: auto; margin: 0; }
 
@@ -8054,6 +8054,12 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 @media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li.divider { margin: 7px 0; } }
 
+.k-ui-namespace .k-navigation-container__nav li.disabled { opacity: 0.65; cursor: not-allowed; }
+
+.k-ui-namespace .k-navigation-container__nav li.disabled a { pointer-events: none; }
+
+.k-ui-namespace .k-navigation-container__nav li.disabled .has-open-submenu { background: transparent; }
+
 .k-ui-namespace .k-navigation-container__nav li > a { line-height: 40px; position: relative; z-index: 0; display: block; padding: 0 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); color: white; text-shadow: none; }
 
 .k-ui-namespace .k-navigation-container__nav li > a.has-open-submenu { z-index: 1; background: #285e8d; text-decoration: none; }
@@ -8119,12 +8125,6 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-container .nav-tabs { margin-left: 10px; margin-right: 10px; }
 
-.k-ui-namespace .k-container .tab-content { padding-top: 20px; }
-
-.k-ui-namespace .k-container .tab-content:before, .k-ui-namespace .k-container .tab-content:after { content: " "; display: table; }
-
-.k-ui-namespace .k-container .tab-content:after { clear: both; }
-
 .k-ui-namespace .k-container__content:before, .k-ui-namespace .k-container__content:after { content: " "; display: table; }
 
 .k-ui-namespace .k-container__content:after { clear: both; }
@@ -8145,7 +8145,11 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-tabs-container > .nav-tabs { /* Rename to k-tabs if this goes into KUI */ padding-top: 20px; padding-left: 20px; padding-right: 20px; background: white; border-top: 1px solid #ddd; }
 
-.k-ui-namespace .k-tabs-container .tab-content { /* Rename to k-tabs-content if this goes into KUI */ padding: 20px; }
+.k-ui-namespace .k-tabs-container .tab-content { /* Rename to k-tabs-content if this goes into KUI */ }
+
+.k-ui-namespace .k-tabs-container .tab-content:before, .k-ui-namespace .k-tabs-container .tab-content:after { content: " "; display: table; }
+
+.k-ui-namespace .k-tabs-container .tab-content:after { clear: both; }
 
 .k-ui-namespace .nav-tabs > li.active.active > a { background: #fbfafa; color: #222222; }
 
@@ -8217,7 +8221,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-table th a:focus .icon-arrow-down-3:before, .k-ui-namespace .k-table th a:hover .icon-arrow-down-3:before { opacity: 0.66; }
 
-.k-ui-namespace .navbar .disabled .no-dropdown:after { display: inline-block; content: " "; width: 0; height: 0; margin-left: 6px; vertical-align: middle; border-top: 4px dashed; border-right: 4px solid transparent; border-left: 4px solid transparent; }
+.k-ui-namespace .k-navigation-container__nav .disabled .no-dropdown:after { display: inline-block; content: " "; width: 0; height: 0; margin-left: 6px; vertical-align: middle; border-top: 4px dashed; border-right: 4px solid transparent; border-left: 4px solid transparent; }
 
 .k-ui-namespace .element-invisible { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0; }
 
@@ -8228,6 +8232,40 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 .k-ui-namespace label { vertical-align: middle; }
 
 .k-ui-namespace label + small { display: inline-block; vertical-align: middle; margin-bottom: 5px; }
+
+.k-checked .k-ui-namespace { /* Block element to clear from other floating / inline-block elements */ }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla { display: block; max-width: 100%; overflow: auto; /* "Inline" table to make element as wide as children */ }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla:before, .k-checked .k-ui-namespace .k-optionlist-joomla:after { content: " "; display: table; }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla:after { clear: both; }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla .controls { position: relative; display: table; margin: 0; border: 1px solid #cdcdcd; padding: 1px; border-radius: 4px; background: white; /* Hiding the input but keeping accessible */ /** Label styling 1. Display as table cell so the labels line up next to each other 2. Take one pixel off the radius to look smooth 3. Don't let the user select */ /** Styling label when checked 1. Transparent background for label itself 2. Show psuedo element */ /** Fake focus We need to create a separate element for the fake focus The children have position: relative so we can't just fill up the entire parent div 1. Position it on top of the parent element but behind the labels 2. Hide by default 3. Display on focus 4. Set border-radius same as parent */ /* Display on focus and active */ }
+
+@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-checked .k-ui-namespace .k-optionlist-joomla .controls, .k-flexboxlegacy .k-checked .k-ui-namespace .k-optionlist-joomla .controls { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; } }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla .controls label { position: relative; z-index: 1; display: table-cell; /* 1 */ margin: 0; padding: 6px 10px; line-height: 1.25em; text-align: center; color: #222222; font-weight: normal; border-radius: 3px; /* 2 */ cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; /* 3 */ word-wrap: break-word; overflow-wrap: break-word; vertical-align: top; transition: all 200ms ease-in-out; /** Fake background to be able to zoom in in from the center on select 1. Cover the entire parent 2. Low z-index so label content will stay on top 3. Hide the element by default 4. Same radius as parent 5. Scale to 0,0 */ /* A little darker background on hovering (no need for focus since this is a `<label>`) */ }
+
+@media (min-width: 0) and (min-height: 0) { .k-flexbox.k-checked .k-ui-namespace .k-optionlist-joomla .controls label, .k-flexboxlegacy.k-checked .k-ui-namespace .k-optionlist-joomla .controls label { -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla .controls label:before { position: absolute; top: 0; right: 0; bottom: 0; left: 0; /* 1 */ z-index: -1; /* 2 */ display: block; content: " "; opacity: 0; /* 3 */ border-radius: 3px; /* 4 */ -webkit-transform: scale(0, 0); transform: scale(0, 0); /* 5 */ background: #3498db; transition: all 200ms ease-in-out; }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla .controls label:hover { background: rgba(0, 0, 0, 0.15); }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla .controls label.is-checked, .k-checked .k-ui-namespace .k-optionlist-joomla .controls label.is-checked:hover, .k-checked .k-ui-namespace .k-optionlist-joomla .controls label.is-checked:focus { background: transparent; /* 1 */ color: white; }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla .controls label.is-checked:before { -webkit-transform: scale(1, 1); transform: scale(1, 1); /* 2 */ opacity: 1; /* 2 */ }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla .controls .k-optionlist__focus { position: absolute; top: -1px; right: -1px; bottom: -1px; left: -1px; /* 1 */ z-index: 0; /* 1 */ outline: 0; display: block; opacity: 0; /* 2 */ visibility: hidden; /* 2 */ border-radius: 4px; /* 4 */ border: 1px solid #3498db; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(52, 152, 219, 0.6); }
+
+.k-checked .k-ui-namespace .k-optionlist-joomla .controls input:active ~ .k-optionlist__focus, .k-checked .k-ui-namespace .k-optionlist-joomla .controls input:focus ~ .k-optionlist__focus { opacity: 1; /* 3 */ visibility: visible; /* 3 */ }
+
+.k-ui-namespace .grid:before, .k-ui-namespace .grid:after { content: " "; display: table; }
+
+.k-ui-namespace .grid:after { clear: both; }
+
+.k-ui-namespace .grid--2columns .grid__item { float: left; width: 50%; }
 
 .popover.popover { margin: 0; padding: 0; border: none; border-radius: 0; background: transparent; font-family: inherit; box-shadow: none; white-space: normal; }
 

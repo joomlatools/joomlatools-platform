@@ -3,16 +3,20 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('_JEXEC') or die;
+defined('JPATH_BASE') or die;
+
+JHtml::_('behavior.core');
 
 $title = $displayData['title'];
-
+$message = JText::_('JLIB_HTML_PLEASE_MAKE_A_SELECTION_FROM_THE_LIST');
+$message = addslashes($message);
 ?>
-<button data-toggle="modal" data-target="#collapseModal" class="k-button--<?php echo JFilterOutput::stringURLSafe($title); ?> k-button k-button--default">
+
+<button data-toggle="modal" onclick="if (document.adminForm.boxchecked.value==0){alert('<?php echo $message; ?>');  }else{jQuery( '#collapseModal' ).modal('show'); return true;}" class="k-button k-button--default">
 	<span class="k-icon-layers" aria-hidden="true"></span>
-	<?php echo $title; ?>
+    <?php echo $title; ?>
 </button>

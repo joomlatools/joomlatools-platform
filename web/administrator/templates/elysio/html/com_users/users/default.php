@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -11,30 +11,11 @@ defined('_JEXEC') or die;
 
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
-JHtml::_('behavior.modal', 'a.modal');
 
 $listOrder  = $this->escape($this->state->get('list.ordering'));
 $listDirn   = $this->escape($this->state->get('list.direction'));
 $loggeduser = JFactory::getUser();
-$sortFields = $this->getSortFields();
 ?>
-<script type="text/javascript">
-	Joomla.orderTable = function()
-	{
-		table = document.getElementById("sortTable");
-		direction = document.getElementById("directionTable");
-		order = table.options[table.selectedIndex].value;
-		if (order != '<?php echo $listOrder; ?>')
-		{
-			dirn = 'asc';
-		}
-		else
-		{
-			dirn = direction.options[direction.selectedIndex].value;
-		}
-		Joomla.tableOrdering(order, dirn, '');
-	}
-</script>
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
@@ -145,8 +126,6 @@ $sortFields = $this->getSortFields();
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <?php //Load the batch processing form. ?>
-            <?php echo $this->loadTemplate('batch'); ?>
             <input type="hidden" name="task" value="" />
             <input type="hidden" name="boxchecked" value="0" />
             <?php echo JHtml::_('form.token'); ?>
@@ -159,3 +138,17 @@ $sortFields = $this->getSortFields();
 
 </form><!-- .k-component -->
 
+<?php // Load the batch processing form if user is allowed ?>
+<?php if ($loggeduser->authorise('core.create', 'com_users')
+    && $loggeduser->authorise('core.edit', 'com_users')
+    && $loggeduser->authorise('core.edit.state', 'com_users')) : ?>
+    <?php echo JHtml::_(
+        'bootstrap.renderModal',
+        'collapseModal',
+        array(
+            'title' => JText::_('COM_USERS_BATCH_OPTIONS'),
+            'footer' => $this->loadTemplate('batch_footer')
+        ),
+        $this->loadTemplate('batch_body')
+    ); ?>
+<?php endif;?>

@@ -26,11 +26,6 @@
     margin-left: 10px;
     margin-right: 10px;
   }
-
-  .tab-content {
-    @include clearfix;
-    padding-top: 20px;
-  }
 }
 
 // Form view below tabs
@@ -81,7 +76,7 @@ form legend {
   }
 
   .tab-content { /* Rename to k-tabs-content if this goes into KUI */
-    padding: $k-spacing;
+    @include clearfix;
   }
 }
 
@@ -297,7 +292,7 @@ form legend {
   }
 }
 
-.navbar {
+.k-navigation-container__nav {
   .disabled {
     .no-dropdown {
       &:after {
@@ -351,6 +346,159 @@ label {
 
 
 
+@include modernizr('.k-checked') {
+
+
+  /* Block element to clear from other floating / inline-block elements */
+
+  .k-optionlist-joomla {
+    @include clearfix;
+    display: block;
+    max-width: 100%;
+    overflow: auto;
+
+
+    /* "Inline" table to make element as wide as children */
+
+    .controls {
+      position: relative;
+      display: table;
+      margin: 0;
+      border: 1px solid $k-input-border;
+      padding: 1px;
+      border-radius: $k-input-border-radius;
+      background: white;
+
+      @include flexbox(0,0) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+
+      /* Hiding the input but keeping accessible */
+
+      input[type=radio] {
+        @extend .k-visually-hidden;
+      }
+
+
+      /**
+       * Label styling
+       *
+       * 1. Display as table cell so the labels line up next to each other
+       * 2. Take one pixel off the radius to look smooth
+       * 3. Don't let the user select
+       */
+
+      label {
+        position: relative;
+        z-index: 1;
+        display: table-cell; /* 1 */
+        margin: 0;
+        padding: floor(($k-input-height-base - $k-font-size - 6px) / 2) 10px;
+        line-height: 1.25em;
+        text-align: center;
+        color: $k-input-color;
+        font-weight: normal;
+        border-radius: $k-input-border-radius - 1px; /* 2 */
+        cursor: pointer;
+        user-select: none; /* 3 */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        vertical-align: top;
+        transition: all 200ms ease-in-out;
+
+        @include flexbox(0,0,true) {
+          flex: 1 1 auto;
+        }
+
+
+        /**
+         * Fake background to be able to zoom in in from the center on select
+         *
+         * 1. Cover the entire parent
+         * 2. Low z-index so label content will stay on top
+         * 3. Hide the element by default
+         * 4. Same radius as parent
+         * 5. Scale to 0,0
+         */
+
+        &:before {
+          @include coverall; /* 1 */
+          z-index: -1; /* 2 */
+          display: block;
+          content: " ";
+          opacity: 0; /* 3 */
+          border-radius: $k-input-border-radius - 1px; /* 4 */
+          transform: scale(0,0); /* 5 */
+          background: $k-color-neutral;
+          transition: all 200ms ease-in-out;
+        }
+
+
+        /* A little darker background on hovering (no need for focus since this is a `<label>`) */
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.15);
+        }
+      }
+
+
+      /**
+       * Styling label when checked
+       *
+       * 1. Transparent background for label itself
+       * 2. Show psuedo element
+       */
+
+      label.is-checked {
+        &, &:hover, &:focus {
+          background: transparent; /* 1 */
+          color: $k-color-neutral-type;
+        }
+
+        &:before {
+          transform: scale(1,1); /* 2 */
+          opacity: 1;; /* 2 */
+        }
+      }
+
+
+      /**
+       * Fake focus
+       *
+       * We need to create a separate element for the fake focus
+       * The children have position: relative so we can't just fill up the entire parent div
+       *
+       * 1. Position it on top of the parent element but behind the labels
+       * 2. Hide by default
+       * 3. Display on focus
+       * 4. Set border-radius same as parent
+       */
+
+      .k-optionlist__focus {
+        @include coverall(-1px); /* 1 */
+        z-index: 0; /* 1 */
+        outline: 0;
+        display: block;
+        opacity: 0; /* 2 */
+        visibility: hidden; /* 2 */
+        border-radius: $k-input-border-radius; /* 4 */
+        border: 1px solid $k-input-border-focus;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($k-input-border-focus, 0.6);
+      }
+
+
+      /* Display on focus and active */
+
+      input:active ~ .k-optionlist__focus,
+      input:focus ~ .k-optionlist__focus {
+        opacity: 1; /* 3 */
+        visibility: visible; /* 3 */
+      }
+    }
+  }
+}
 
 
 
@@ -367,6 +515,15 @@ label {
 
 
 
+.grid {
+  @include clearfix;
+}
 
+.grid--2columns {
+  .grid__item {
+    float: left;
+    width: 50%;
+  }
+}
 
 
