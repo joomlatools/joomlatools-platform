@@ -193,4 +193,4 @@ if($enabled)
 
 $menu->getParent();
 
-$menu->renderMenu('menu', $enabled ? 'nav navbar-nav' . $direction : 'nav navbar-nav disabled ' . $direction);
+$menu->renderMenu('menu', $enabled ? '' . $direction : 'disabled ' . $direction);

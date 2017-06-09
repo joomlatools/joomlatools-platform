@@ -22,6 +22,9 @@ $k-icon-path: '../fonts';
   // Bootstrap
   @import "bootstrap/bootstrap";
 
+  // Molecules
+  @import "molecules/navigation";
+
   // Organisms
   @import "organisms/login";
 

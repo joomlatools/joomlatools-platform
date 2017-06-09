@@ -1,19 +1,243 @@
-/**
- * Extra styling for navigation
- */
+/* Navigation */
+
+$k-menu-width: $k-charlie;
+
+
+/* Navigation container */
 
 .k-navigation-container {
+  background: $k-color-accent;
 
   // When flexbox is active
   @include flexbox {
     flex: 0 0 auto;
   }
 
-  // The cog icon
-  .k-icon-cog {
-    width: 16px;
-    height: 16px;
+  @include breakpoint($k-menu-width) {
+    position: relative;
+    z-index: 3;
+    display: flex;
+  }
+}
+
+
+/* Navigation logo */
+
+.k-navigation-container__logo {
+  height: 48px;
+
+  a, img {
+    display: inline-block;
     vertical-align: middle;
-    color: white;
+    width: auto;
+  }
+
+  a {
+    padding: 12px;
+
+    &:focus,
+    &:hover {
+      background: darker($k-color-accent);
+    }
+  }
+
+  img {
+    max-height: 24px;
+  }
+}
+
+
+/* Navigation nav */
+
+.k-navigation-container__nav {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  bottom: 0;
+  width: 276px;
+  display: none;
+  background: $k-color-accent;
+  overflow: auto;
+  box-shadow: inset 5px 5px 5px rgba(black, 0.1);
+
+
+  /* On desktop */
+
+  @include breakpoint($k-menu-width) {
+    position: static;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: none;
+    height: 48px;
+    width: auto;
+    overflow: visible;
+    flex: 1 1 auto;
+  }
+
+
+  /* First level */
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: $k-color-accent;
+    flex: 0 0 auto;
+  }
+
+  .k-navigation-right {
+    @include breakpoint($k-menu-width) {
+      float: right;
+
+      ul {
+        left: auto;
+        right: 1px;
+      }
+    }
+  }
+
+  li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background: $k-color-accent;
+
+    @include breakpoint($k-menu-width) {
+      float: left;
+    }
+
+    &.divider {
+      height: 2px;
+      background: rgba(black, 0.1);
+      margin: 3px 0;
+
+      @include breakpoint($k-menu-width) {
+        margin: 7px 0;
+      }
+    }
+
+    > a {
+      line-height: 40px;
+      position: relative;
+      z-index: 0;
+      display: block;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba($k-color-accent-type, 0.25);
+      color: $k-color-accent-type;
+      text-shadow: none;
+
+      &.has-open-submenu {
+        z-index: 1;
+        background: darker($k-color-accent);
+        text-decoration: none;
+      }
+
+      &:focus,
+      &:hover {
+        text-decoration: none;
+      }
+
+      @include breakpoint($k-menu-width) {
+        height: 48px;
+        border-bottom: none;
+        line-height: 48px;
+        padding: 0 8px;
+      }
+
+      @include breakpoint($k-delta) {
+        padding: 0 12px;
+      }
+    }
+
+
+    /* Second level */
+
+    ul {
+      display: none;
+      border-bottom: 1px solid rgba($k-color-accent-type, 0.25);
+      padding: 4px 0;
+      background: lighter($k-color-accent);
+
+      @include breakpoint($k-menu-width) {
+        background: white;
+        box-shadow: 2px 4px 6px rgba(black, 0.2), 0 0 0 1px rgba(black, .33);
+        position: absolute;
+        z-index: 0;
+        top: 100%;
+        left: 1px;
+        width: 180px;
+        border-bottom: none;
+        padding: 0;
+      }
+
+      li {
+        float: none;
+        background: transparent;
+      }
+
+      a {
+        height: 32px;
+        line-height: 32px;
+        border-bottom: none;
+
+        &:focus,
+        &:hover {
+          background: $k-color-accent;
+          color: white;
+        }
+
+        @include breakpoint($k-menu-width) {
+          color: $k-color-type;
+        }
+      }
+    }
+
+    .has-open-submenu + ul {
+      display: block;
+    }
+  }
+}
+
+
+/* Mobile settings */
+
+&.k-is-opened-right {
+  overflow: visible;
+
+  .k-navigation-container__nav {
+    display: block;
+  }
+}
+
+.k-wrapper {
+  transition: transform 200ms ease-in-out;
+}
+
+&.k-show-right-menu {
+  .k-wrapper {
+    transform: translateX(-276px);
+
+    @include breakpoint($k-menu-width) {
+      transform: translateX(0);
+    }
+  }
+}
+
+
+/* Toggler */
+
+.navigation-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $k-color-accent-type;
+  border: 1px solid $k-color-accent-type;
+  background: transparent;
+  border-radius: $k-border-radius;
+  padding: 5px 10px;
+  margin: 8px;
+
+  @include breakpoint($k-menu-width) {
+    display: none;
   }
 }

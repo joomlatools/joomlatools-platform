@@ -6626,7 +6626,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .tooltip.bottom-right .tooltip-arrow { top: 0; left: 5px; margin-top: -5px; border-width: 0 5px 5px; border-bottom-color: #000; }
 
-.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window 2. Make room fo the logo popping out with negative margin */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ }
+.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* Navigation */ /* Navigation container */ /* Navigation logo */ /* Navigation nav */ /* Mobile settings */ /* Toggler */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window 2. Make room fo the logo popping out with negative margin */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ }
 
 .k-ui-namespace * { box-sizing: border-box; }
 
@@ -7264,205 +7264,6 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 .k-ui-namespace .tab-content > .active { display: block; }
 
 .k-ui-namespace .nav-tabs .dropdown-menu { margin-top: -1px; border-top-right-radius: 0; border-top-left-radius: 0; }
-
-.k-ui-namespace .navbar { position: relative; min-height: 48px; margin-bottom: 20px; border: 1px solid transparent; }
-
-.k-ui-namespace .navbar:before, .k-ui-namespace .navbar:after { content: " "; display: table; }
-
-.k-ui-namespace .navbar:after { clear: both; }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar { border-radius: 4px; } }
-
-.k-ui-namespace .navbar-header:before, .k-ui-namespace .navbar-header:after { content: " "; display: table; }
-
-.k-ui-namespace .navbar-header:after { clear: both; }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-header { float: left; } }
-
-.k-ui-namespace .navbar-collapse { overflow-x: visible; padding-right: 15px; padding-left: 15px; border-top: 1px solid transparent; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); -webkit-overflow-scrolling: touch; }
-
-.k-ui-namespace .navbar-collapse:before, .k-ui-namespace .navbar-collapse:after { content: " "; display: table; }
-
-.k-ui-namespace .navbar-collapse:after { clear: both; }
-
-.k-ui-namespace .navbar-collapse.in { overflow-y: auto; }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-collapse { width: auto; border-top: 0; box-shadow: none; }
-  .k-ui-namespace .navbar-collapse.collapse { display: block !important; height: auto !important; padding-bottom: 0; overflow: visible !important; }
-  .k-ui-namespace .navbar-collapse.in { overflow-y: visible; }
-  .navbar-fixed-top .k-ui-namespace .navbar-collapse, .navbar-static-top .k-ui-namespace .navbar-collapse, .navbar-fixed-bottom .k-ui-namespace .navbar-collapse { padding-left: 0; padding-right: 0; } }
-
-.k-ui-namespace .navbar-fixed-top .navbar-collapse, .k-ui-namespace .navbar-fixed-bottom .navbar-collapse { max-height: 340px; }
-
-@media (max-device-width: 480px) and (orientation: landscape) { .k-ui-namespace .navbar-fixed-top .navbar-collapse, .k-ui-namespace .navbar-fixed-bottom .navbar-collapse { max-height: 200px; } }
-
-.k-ui-namespace .container > .navbar-header, .k-ui-namespace .container > .navbar-collapse, .k-ui-namespace .container-fluid > .navbar-header, .k-ui-namespace .container-fluid > .navbar-collapse { margin-right: -15px; margin-left: -15px; }
-
-@media (min-width: 768px) { .k-ui-namespace .container > .navbar-header, .k-ui-namespace .container > .navbar-collapse, .k-ui-namespace .container-fluid > .navbar-header, .k-ui-namespace .container-fluid > .navbar-collapse { margin-right: 0; margin-left: 0; } }
-
-.k-ui-namespace .navbar-static-top { z-index: 1000; border-width: 0 0 1px; }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-static-top { border-radius: 0; } }
-
-.k-ui-namespace .navbar-fixed-top, .k-ui-namespace .navbar-fixed-bottom { position: fixed; right: 0; left: 0; z-index: 1030; }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-fixed-top, .k-ui-namespace .navbar-fixed-bottom { border-radius: 0; } }
-
-.k-ui-namespace .navbar-fixed-top { top: 0; border-width: 0 0 1px; }
-
-.k-ui-namespace .navbar-fixed-bottom { bottom: 0; margin-bottom: 0; border-width: 1px 0 0; }
-
-.k-ui-namespace .navbar-brand { float: left; padding: 14px 15px; font-size: 18px; line-height: 20px; height: 48px; }
-
-.k-ui-namespace .navbar-brand:hover, .k-ui-namespace .navbar-brand:focus { text-decoration: none; }
-
-.k-ui-namespace .navbar-brand > img { display: block; }
-
-@media (min-width: 768px) { .navbar > .container .k-ui-namespace .navbar-brand, .navbar > .container-fluid .k-ui-namespace .navbar-brand { margin-left: -15px; } }
-
-.k-ui-namespace .navbar-toggle { position: relative; float: right; margin-right: 15px; padding: 9px 10px; margin-top: 7px; margin-bottom: 7px; background-color: transparent; background-image: none; border: 1px solid transparent; border-radius: 4px; }
-
-.k-ui-namespace .navbar-toggle:focus { outline: 0; }
-
-.k-ui-namespace .navbar-toggle .icon-bar { display: block; width: 22px; height: 2px; border-radius: 1px; }
-
-.k-ui-namespace .navbar-toggle .icon-bar + .icon-bar { margin-top: 4px; }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-toggle { display: none; } }
-
-.k-ui-namespace .navbar-nav { margin: 7px -15px; }
-
-.k-ui-namespace .navbar-nav > li > a { padding-top: 10px; padding-bottom: 10px; line-height: 20px; }
-
-@media (max-width: 767px) { .k-ui-namespace .navbar-nav .open .dropdown-menu { position: static; float: none; width: auto; margin-top: 0; background-color: transparent; border: 0; box-shadow: none; }
-  .k-ui-namespace .navbar-nav .open .dropdown-menu > li > a, .k-ui-namespace .navbar-nav .open .dropdown-menu .dropdown-header { padding: 5px 15px 5px 25px; }
-  .k-ui-namespace .navbar-nav .open .dropdown-menu > li > a { line-height: 20px; }
-  .k-ui-namespace .navbar-nav .open .dropdown-menu > li > a:hover, .k-ui-namespace .navbar-nav .open .dropdown-menu > li > a:focus { background-image: none; } }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-nav { float: left; margin: 0; }
-  .k-ui-namespace .navbar-nav > li { float: left; }
-  .k-ui-namespace .navbar-nav > li > a { padding-top: 14px; padding-bottom: 14px; } }
-
-.k-ui-namespace .navbar-form { margin-left: -15px; margin-right: -15px; padding: 10px 15px; border-top: 1px solid transparent; border-bottom: 1px solid transparent; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1); margin-top: 7px; margin-bottom: 7px; }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-form .form-group { display: inline-block; margin-bottom: 0; vertical-align: middle; }
-  .k-ui-namespace .navbar-form .form-control { display: inline-block; width: auto; vertical-align: middle; }
-  .k-ui-namespace .navbar-form .form-control-static { display: inline-block; }
-  .k-ui-namespace .navbar-form .input-group { display: inline-table; vertical-align: middle; }
-  .k-ui-namespace .navbar-form .input-group .input-group-addon, .k-ui-namespace .navbar-form .input-group .input-group-btn, .k-ui-namespace .navbar-form .input-group .form-control { width: auto; }
-  .k-ui-namespace .navbar-form .input-group > .form-control { width: 100%; }
-  .k-ui-namespace .navbar-form .control-label { margin-bottom: 0; vertical-align: middle; }
-  .k-ui-namespace .navbar-form .radio, .k-ui-namespace .navbar-form .checkbox { display: inline-block; margin-top: 0; margin-bottom: 0; vertical-align: middle; }
-  .k-ui-namespace .navbar-form .radio label, .k-ui-namespace .navbar-form .checkbox label { padding-left: 0; }
-  .k-ui-namespace .navbar-form .radio input[type="radio"], .k-ui-namespace .navbar-form .checkbox input[type="checkbox"] { position: relative; margin-left: 0; }
-  .k-ui-namespace .navbar-form .has-feedback .form-control-feedback { top: 0; } }
-
-@media (max-width: 767px) { .k-ui-namespace .navbar-form .form-group { margin-bottom: 5px; }
-  .k-ui-namespace .navbar-form .form-group:last-child { margin-bottom: 0; } }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-form { width: auto; border: 0; margin-left: 0; margin-right: 0; padding-top: 0; padding-bottom: 0; box-shadow: none; } }
-
-.k-ui-namespace .navbar-nav > li > .dropdown-menu { margin-top: 0; border-top-right-radius: 0; border-top-left-radius: 0; }
-
-.k-ui-namespace .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu { margin-bottom: 0; border-top-right-radius: 4px; border-top-left-radius: 4px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
-
-.k-ui-namespace .navbar-btn { margin-top: 7px; margin-bottom: 7px; }
-
-.k-ui-namespace .navbar-btn.btn-sm, .k-ui-namespace .btn-group-sm > .navbar-btn.btn { margin-top: 9px; margin-bottom: 9px; }
-
-.k-ui-namespace .navbar-btn.btn-xs, .k-ui-namespace .btn-group-xs > .navbar-btn.btn { margin-top: 13px; margin-bottom: 13px; }
-
-.k-ui-namespace .navbar-text { margin-top: 14px; margin-bottom: 14px; }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-text { float: left; margin-left: 15px; margin-right: 15px; } }
-
-@media (min-width: 768px) { .k-ui-namespace .navbar-left { float: left !important; }
-  .k-ui-namespace .navbar-right { float: right !important; margin-right: -15px; }
-  .k-ui-namespace .navbar-right ~ .navbar-right { margin-right: 0; } }
-
-.k-ui-namespace .navbar-default { background-color: #3071a9; border-color: transparent; }
-
-.k-ui-namespace .navbar-default .navbar-brand { color: white; }
-
-.k-ui-namespace .navbar-default .navbar-brand:hover, .k-ui-namespace .navbar-default .navbar-brand:focus { color: #e6e5e5; background-color: transparent; }
-
-.k-ui-namespace .navbar-default .navbar-text { color: white; }
-
-.k-ui-namespace .navbar-default .navbar-nav > li > a { color: white; }
-
-.k-ui-namespace .navbar-default .navbar-nav > li > a:hover, .k-ui-namespace .navbar-default .navbar-nav > li > a:focus { color: white; background-color: transparent; }
-
-.k-ui-namespace .navbar-default .navbar-nav > .active > a, .k-ui-namespace .navbar-default .navbar-nav > .active > a:hover, .k-ui-namespace .navbar-default .navbar-nav > .active > a:focus { color: white; background-color: #3071a9; }
-
-.k-ui-namespace .navbar-default .navbar-nav > .disabled > a, .k-ui-namespace .navbar-default .navbar-nav > .disabled > a:hover, .k-ui-namespace .navbar-default .navbar-nav > .disabled > a:focus { color: #ccc; background-color: transparent; }
-
-.k-ui-namespace .navbar-default .navbar-toggle { border-color: #ddd; }
-
-.k-ui-namespace .navbar-default .navbar-toggle:hover, .k-ui-namespace .navbar-default .navbar-toggle:focus { background-color: #ddd; }
-
-.k-ui-namespace .navbar-default .navbar-toggle .icon-bar { background-color: #888; }
-
-.k-ui-namespace .navbar-default .navbar-collapse, .k-ui-namespace .navbar-default .navbar-form { border-color: transparent; }
-
-.k-ui-namespace .navbar-default .navbar-nav > .open > a, .k-ui-namespace .navbar-default .navbar-nav > .open > a:hover, .k-ui-namespace .navbar-default .navbar-nav > .open > a:focus { background-color: #3071a9; color: white; }
-
-@media (max-width: 767px) { .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > li > a { color: white; }
-  .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus { color: white; background-color: transparent; }
-  .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus { color: white; background-color: #3071a9; }
-  .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .k-ui-namespace .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus { color: #ccc; background-color: transparent; } }
-
-.k-ui-namespace .navbar-default .navbar-link { color: white; }
-
-.k-ui-namespace .navbar-default .navbar-link:hover { color: white; }
-
-.k-ui-namespace .navbar-default .btn-link { color: white; }
-
-.k-ui-namespace .navbar-default .btn-link:hover, .k-ui-namespace .navbar-default .btn-link:focus { color: white; }
-
-.k-ui-namespace .navbar-default .btn-link[disabled]:hover, .k-ui-namespace .navbar-default .btn-link[disabled]:focus, fieldset[disabled] .k-ui-namespace .navbar-default .btn-link:hover, fieldset[disabled] .k-ui-namespace .navbar-default .btn-link:focus { color: #ccc; }
-
-.k-ui-namespace .navbar-inverse { background-color: #222; border-color: #090808; }
-
-.k-ui-namespace .navbar-inverse .navbar-brand { color: #9d9d9d; }
-
-.k-ui-namespace .navbar-inverse .navbar-brand:hover, .k-ui-namespace .navbar-inverse .navbar-brand:focus { color: #fff; background-color: transparent; }
-
-.k-ui-namespace .navbar-inverse .navbar-text { color: #9d9d9d; }
-
-.k-ui-namespace .navbar-inverse .navbar-nav > li > a { color: #9d9d9d; }
-
-.k-ui-namespace .navbar-inverse .navbar-nav > li > a:hover, .k-ui-namespace .navbar-inverse .navbar-nav > li > a:focus { color: #fff; background-color: transparent; }
-
-.k-ui-namespace .navbar-inverse .navbar-nav > .active > a, .k-ui-namespace .navbar-inverse .navbar-nav > .active > a:hover, .k-ui-namespace .navbar-inverse .navbar-nav > .active > a:focus { color: #fff; background-color: #090808; }
-
-.k-ui-namespace .navbar-inverse .navbar-nav > .disabled > a, .k-ui-namespace .navbar-inverse .navbar-nav > .disabled > a:hover, .k-ui-namespace .navbar-inverse .navbar-nav > .disabled > a:focus { color: #444; background-color: transparent; }
-
-.k-ui-namespace .navbar-inverse .navbar-toggle { border-color: #333; }
-
-.k-ui-namespace .navbar-inverse .navbar-toggle:hover, .k-ui-namespace .navbar-inverse .navbar-toggle:focus { background-color: #333; }
-
-.k-ui-namespace .navbar-inverse .navbar-toggle .icon-bar { background-color: #fff; }
-
-.k-ui-namespace .navbar-inverse .navbar-collapse, .k-ui-namespace .navbar-inverse .navbar-form { border-color: #101010; }
-
-.k-ui-namespace .navbar-inverse .navbar-nav > .open > a, .k-ui-namespace .navbar-inverse .navbar-nav > .open > a:hover, .k-ui-namespace .navbar-inverse .navbar-nav > .open > a:focus { background-color: #090808; color: #fff; }
-
-@media (max-width: 767px) { .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header { border-color: #090808; }
-  .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu .divider { background-color: #090808; }
-  .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > li > a { color: #9d9d9d; }
-  .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus { color: #fff; background-color: transparent; }
-  .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus { color: #fff; background-color: #090808; }
-  .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a, .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover, .k-ui-namespace .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus { color: #444; background-color: transparent; } }
-
-.k-ui-namespace .navbar-inverse .navbar-link { color: #9d9d9d; }
-
-.k-ui-namespace .navbar-inverse .navbar-link:hover { color: #fff; }
-
-.k-ui-namespace .navbar-inverse .btn-link { color: #9d9d9d; }
-
-.k-ui-namespace .navbar-inverse .btn-link:hover, .k-ui-namespace .navbar-inverse .btn-link:focus { color: #fff; }
-
-.k-ui-namespace .navbar-inverse .btn-link[disabled]:hover, .k-ui-namespace .navbar-inverse .btn-link[disabled]:focus, fieldset[disabled] .k-ui-namespace .navbar-inverse .btn-link:hover, fieldset[disabled] .k-ui-namespace .navbar-inverse .btn-link:focus { color: #444; }
 
 .k-ui-namespace .container { margin-right: auto; margin-left: auto; padding-left: 15px; padding-right: 15px; }
 
@@ -8219,6 +8020,77 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 .k-ui-namespace .nav > .disabled > a { color: red; }
 
 .k-ui-namespace .nav > .disabled > a:hover, .k-ui-namespace .nav > .disabled > a:focus { text-decoration: none; background-color: transparent; cursor: default; }
+
+.k-ui-namespace .k-navigation-container { background: #3071a9; }
+
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-navigation-container, .k-flexboxlegacy .k-ui-namespace .k-navigation-container { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container { position: relative; z-index: 3; display: -webkit-box; display: -ms-flexbox; display: flex; } }
+
+.k-ui-namespace .k-navigation-container__logo { height: 48px; }
+
+.k-ui-namespace .k-navigation-container__logo a, .k-ui-namespace .k-navigation-container__logo img { display: inline-block; vertical-align: middle; width: auto; }
+
+.k-ui-namespace .k-navigation-container__logo a { padding: 12px; }
+
+.k-ui-namespace .k-navigation-container__logo a:focus, .k-ui-namespace .k-navigation-container__logo a:hover { background: #285e8d; }
+
+.k-ui-namespace .k-navigation-container__logo img { max-height: 24px; }
+
+.k-ui-namespace .k-navigation-container__nav { position: absolute; top: 48px; right: 0; bottom: 0; width: 276px; display: none; background: #3071a9; overflow: auto; box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.1); /* On desktop */ /* First level */ }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav { position: static; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; box-shadow: none; height: 48px; width: auto; overflow: visible; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
+
+.k-ui-namespace .k-navigation-container__nav ul { list-style: none; margin: 0; padding: 0; background: #3071a9; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav .k-navigation-right { float: right; }
+  .k-ui-namespace .k-navigation-container__nav .k-navigation-right ul { left: auto; right: 1px; } }
+
+.k-ui-namespace .k-navigation-container__nav li { position: relative; margin: 0; padding: 0; background: #3071a9; /* Second level */ }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li { float: left; } }
+
+.k-ui-namespace .k-navigation-container__nav li.divider { height: 2px; background: rgba(0, 0, 0, 0.1); margin: 3px 0; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li.divider { margin: 7px 0; } }
+
+.k-ui-namespace .k-navigation-container__nav li > a { line-height: 40px; position: relative; z-index: 0; display: block; padding: 0 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); color: white; text-shadow: none; }
+
+.k-ui-namespace .k-navigation-container__nav li > a.has-open-submenu { z-index: 1; background: #285e8d; text-decoration: none; }
+
+.k-ui-namespace .k-navigation-container__nav li > a:focus, .k-ui-namespace .k-navigation-container__nav li > a:hover { text-decoration: none; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li > a { height: 48px; border-bottom: none; line-height: 48px; padding: 0 8px; } }
+
+@media screen and (min-width: 1024px) { .k-ui-namespace .k-navigation-container__nav li > a { padding: 0 12px; } }
+
+.k-ui-namespace .k-navigation-container__nav li ul { display: none; border-bottom: 1px solid rgba(255, 255, 255, 0.25); padding: 4px 0; background: #3884c5; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li ul { background: white; box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.33); position: absolute; z-index: 0; top: 100%; left: 1px; width: 180px; border-bottom: none; padding: 0; } }
+
+.k-ui-namespace .k-navigation-container__nav li ul li { float: none; background: transparent; }
+
+.k-ui-namespace .k-navigation-container__nav li ul a { height: 32px; line-height: 32px; border-bottom: none; }
+
+.k-ui-namespace .k-navigation-container__nav li ul a:focus, .k-ui-namespace .k-navigation-container__nav li ul a:hover { background: #3071a9; color: white; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li ul a { color: #222222; } }
+
+.k-ui-namespace .k-navigation-container__nav li .has-open-submenu + ul { display: block; }
+
+.k-ui-namespace.k-is-opened-right { overflow: visible; }
+
+.k-ui-namespace.k-is-opened-right .k-navigation-container__nav { display: block; }
+
+.k-ui-namespace .k-wrapper { transition: -webkit-transform 200ms ease-in-out; transition: transform 200ms ease-in-out; }
+
+.k-ui-namespace.k-show-right-menu .k-wrapper { -webkit-transform: translateX(-276px); transform: translateX(-276px); }
+
+@media screen and (min-width: 768px) { .k-ui-namespace.k-show-right-menu .k-wrapper { -webkit-transform: translateX(0); transform: translateX(0); } }
+
+.k-ui-namespace .navigation-toggle { position: absolute; top: 0; right: 0; color: white; border: 1px solid white; background: transparent; border-radius: 4px; padding: 5px 10px; margin: 8px; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .navigation-toggle { display: none; } }
 
 .k-ui-namespace .k-login-container { background: #3071a9; text-align: center; /* 1 */ white-space: nowrap; /* 1 */ padding-top: 50px; /* 2 */ /** Psuedo element for vertical centering 1. Adjusts for spacing */ /* Use flexbox when available */ }
 

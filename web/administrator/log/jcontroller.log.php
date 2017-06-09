@@ -328,3 +328,8 @@
 2017-06-08T14:50:18+00:00	INFO 127.0.0.1	controller	Releasing edit ID com_menus.edit.item.2 Array ( ) 
 2017-06-08T15:24:24+00:00	INFO 127.0.0.1	controller	Holding edit ID com_menus.edit.item.2 Array (     [0] => 2 ) 
 2017-06-08T15:28:11+00:00	INFO 127.0.0.1	controller	Holding edit ID com_menus.edit.item.4 Array (     [0] => 4 ) 
+2017-06-09T10:44:48+00:00	INFO 127.0.0.1	controller	Holding edit ID com_menus.edit.item.2 Array (     [0] => 2 ) 
+2017-06-09T10:45:05+00:00	INFO 127.0.0.1	controller	Releasing edit ID com_menus.edit.item.2 Array ( ) 
+2017-06-09T12:36:27+00:00	INFO 127.0.0.1	controller	Holding edit ID com_menus.edit.item.2 Array (     [0] => 2 ) 
+2017-06-09T13:24:19+00:00	INFO 127.0.0.1	controller	Holding edit ID com_users.edit.profile.951 Array (     [0] => 951 ) 
+2017-06-09T13:24:21+00:00	INFO 127.0.0.1	controller	Releasing edit ID com_users.edit.profile.951 Array ( ) 
