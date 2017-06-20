@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package    Joomlatools Platform
  *
@@ -22,14 +21,17 @@ if (strstr($host, ':') !== false) {
     list($host, $port) = explode(':', $host);
 }
 
-return array(
-    'paths' => array(
-        'migrations' => '%%PHINX_CONFIG_DIR%%/install/mysql/migrations/*/'
-    ),
-    'environments' => array(
+return [
+    'paths' => [
+        'migrations' => [
+            '%%PHINX_CONFIG_DIR%%/install/mysql/migrations/*/',
+            '%%PHINX_CONFIG_DIR%%/app/administrator/components/com_*/resources/install/mysql/migrations/'
+        ]
+    ],
+    'environments' => [
         'default_migration_table' => 'migrations',
         'default_database'        => $environment,
-        $environment => array(
+        $environment => [
             'adapter'   => 'mysql',
             'name'      => $config->db,
             'host'      => $host,
@@ -38,6 +40,6 @@ return array(
             'port'      => $port,
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci'
-        )
-    )
-);
+        ]
+    ]
+];
