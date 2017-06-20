@@ -227,7 +227,7 @@ class JSession implements IteratorAggregate
 		$token = $this->get('session.token');
 
 		// Create a token
-        if ($this->isActive() && ($token === null || $forceNew))
+		if ($token === null || $forceNew)
 		{
 			$token = $this->_createToken();
 			$this->set('session.token', $token);
