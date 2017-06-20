@@ -72,13 +72,6 @@ class JSessionStorageDatabase extends JSessionStorage
 
 		try
 		{
-			$session = JFactory::getSession();
-
-			// Make sure the session exists in the database
-			if ($session->isActive() && $session->isNew()) {
-				JFactory::getApplication()->checkSession();
-			}
-
 			$query = $db->getQuery(true)
 				->update($db->quoteName('#__users_sessions'))
 				->set($db->quoteName('data') . ' = ' . $db->quote($data))

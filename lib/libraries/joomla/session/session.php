@@ -518,14 +518,6 @@ class JSession implements IteratorAggregate
 		// Add prefix to namespace to avoid collisions
 		$namespace = '__' . $namespace;
 
-		// Start the session if session_autostart is disabled,
-		// otherwise the data won't be stored.
-		$config = JFactory::getConfig();
-
-		if (!$this->isActive() && $config->get('session_autostart') !== true) {
-			$this->start();
-		}
-
 		if ($this->_state !== 'active')
 		{
 			// @TODO :: generated error here
