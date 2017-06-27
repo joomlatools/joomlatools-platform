@@ -28,7 +28,7 @@
     "vlucas/phpdotenv": "^2.1.0",
     "joomlatools/console": "^1.4.0",
     "paragonie/random_compat": "~1.0",
-    "robmorgan/phinx": "^0.5.0"
+    "robmorgan/phinx": "^0.8.0"
   },
   "suggest": {
     "joomlatools/platform-legacy": "Includes deprecated library classes no longer used in the core"
