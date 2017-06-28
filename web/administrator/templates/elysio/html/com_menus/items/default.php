@@ -55,7 +55,9 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
                     <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-                    <th width="1%"></th>
+                    <th width="1%">
+                        <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
+                    </th>
                     <th>
                         <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
                     </th>
