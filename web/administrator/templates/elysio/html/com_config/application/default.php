@@ -3,15 +3,17 @@
  * @package     Joomla.Administrator
  * @subpackage  com_config
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
+use Joomla\Registry\Registry;
+
 // Load tooltips behavior
-JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.formvalidator');
 JHtml::_('bootstrap.tooltip');
 
 // Load JS message titles
@@ -36,7 +38,7 @@ JFactory::getDocument()->addScriptDeclaration('
 
 <div class="k-container">
 
-	<form class="k-container__full" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
+	<form class="k-container__full" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm"  class="form-validate">
 
         <?php echo $this->loadTemplate('permissions'); ?>
 

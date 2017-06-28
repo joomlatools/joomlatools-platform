@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_config
  *
- * @copyright   Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,76 +14,107 @@ $template = $app->getTemplate();
 
 // Load the tooltip behavior.
 JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.formvalidator');
+
+// Load JS message titles
+JText::script('ERROR');
+JText::script('WARNING');
+JText::script('NOTICE');
+JText::script('MESSAGE');
+
+JFactory::getDocument()->addScriptDeclaration(
+	'
+	Joomla.submitbutton = function(task)
+	{
+		if (task === "config.cancel.component" || document.formvalidator.isValid(document.getElementById("component-form")))
+		{
+			jQuery("#permissions-sliders select").attr("disabled", "disabled");
+			Joomla.submitform(task, document.getElementById("component-form"));
+		}
+	};
+
+	// Select first tab
+	jQuery(document).ready(function() {
+		jQuery("#configTabs a:first").tab("show");
+	});'
+);
 ?>
-<script type="text/javascript">
-    Joomla.submitbutton = function(task)
-    {
-        if (document.formvalidator.isValid(document.id('component-form')))
-        {
-            Joomla.submitform(task, document.getElementById('component-form'));
-        }
-    }
-</script>
 
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
-<div class="k-container">
-    <form class="k-container__full" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off">
-        <?php $fieldSets = $this->form->getFieldsets(); ?>
-        <ul class="nav nav-tabs<?php echo count($fieldSets) == 1 ? ' k-hidden' : '';?>" id="configTabs">
-            <?php foreach ($fieldSets as $name => $fieldSet) : ?>
-                <?php $label = empty($fieldSet->label) ? 'COM_CONFIG_' . $name . '_FIELDSET_LABEL' : $fieldSet->label; ?>
-                <li><a href="#<?php echo $name; ?>" data-toggle="tab"><?php echo JText::_($label); ?></a></li>
-            <?php endforeach; ?>
-        </ul>
-        <?php echo count($fieldSets) > 1 ? '<div class="tab-content">' : '';?>
-            <?php foreach ($fieldSets as $name => $fieldSet) : ?>
-                <?php echo count($fieldSets) > 1 ? '<div class="tab-pane" id="'.$name.'">' : '';?>
+<form class="form-validate form-horizontal k-tabs-container" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off">
+    <?php $fieldSets = $this->fieldsets; ?>
+    <?php if(count($fieldSets) > 1) : ?>
+	<ul class="nav nav-tabs" id="configTabs">
+		<?php foreach ($fieldSets as $name => $fieldSet) : ?>
+			<?php $rel = ''; ?>
+			<?php if (!empty($fieldSet->showon)) : ?>
+				<?php JHtml::_('jquery.framework'); ?>
+				<?php JHtml::_('script', 'jui/cms.js', false, true); ?>
+				<?php $showonarr = array(); ?>
+				<?php foreach (preg_split('%\[AND\]|\[OR\]%', $fieldSet->showon) as $showonfield) : ?>
+					<?php $showon = explode(':', $showonfield, 2); ?>
+					<?php $showonarr[] = array(
+						'field'  => $this->form->getFormControl() . '[' . $showon[0] . ']',
+						'values' => explode(',', $showon[1]),
+						'op'     => (preg_match('%\[(AND|OR)\]' . $showonfield . '%', $fieldSet->showon, $matches)) ? $matches[1] : ''
+					); ?>
+				<?php endforeach; ?>
+				<?php $rel = ' data-showon=\'' . json_encode($showonarr) . '\''; ?>
+			<?php endif; ?>
+			<?php $label = empty($fieldSet->label) ? 'COM_CONFIG_' . $name . '_FIELDSET_LABEL' : $fieldSet->label; ?>
+			<li<?php echo $rel; ?>><a data-toggle="tab" href="#<?php echo $name; ?>"><?php echo JText::_($label); ?></a></li>
+		<?php endforeach; ?>
+	</ul><!-- /configTabs -->
+    <?php endif ?>
+
+    <?php echo count($fieldSets) > 1 ? '<div class="tab-content" id="configContent">' : '';?>
+		<?php foreach ($this->fieldsets as $name => $fieldSet) : ?>
+			<div class="tab-pane" id="<?php echo $name; ?>">
+                <div class="k-container">
+                    <?php if (count($fieldSets) == 1) : ?>
                     <div class="k-heading"><?php echo JText::_($fieldSet->label); ?></div>
-                    <?php
-                    if (isset($fieldSet->description) && !empty($fieldSet->description))
-                    {
-                        echo '<p class="k-alert k-alert--info">' . JText::_($fieldSet->description) . '</p>';
-                    }
-                    ?>
-                    <?php foreach ($this->form->getFieldset($name) as $field) : ?>
-                        <?php
-                        $class = '';
-                        $rel = '';
-                        if ($showon = $field->getAttribute('showon'))
-                        {
-                            JHtml::_('jquery.framework');
-                            JHtml::_('script', 'jui/cms.js', false, true);
-                            $id = $this->form->getFormControl();
-                            $showon = explode(':', $showon, 2);
-                            $class = ' showon_' . implode(' showon_', explode(',', $showon[1]));
-                            $rel = ' rel="showon_' . $id . '[' . $showon[0] . ']"';
-                        }
-                        ?>
-                        <div class="control-group<?php echo $class; ?>"<?php echo $rel; ?>>
-                            <?php if (!$field->hidden && $name != "permissions") : ?>
-                                <div class="control-label">
+                    <?php endif ?>
+                    <?php if (isset($fieldSet->description) && !empty($fieldSet->description)) : ?>
+                    <p class="k-alert k-alert--info"><?php echo JText::_($fieldSet->description) ?></p>
+                    <?php endif ?>
+    				<?php foreach ($this->form->getFieldset($name) as $field) : ?>
+    					<?php $datashowon = ''; ?>
+    					<?php if ($showonstring = $field->getAttribute('showon')) : ?>
+    						<?php JHtml::_('jquery.framework'); ?>
+    						<?php JHtml::_('script', 'jui/cms.js', false, true); ?>
+    						<?php $showonarr = array(); ?>
+    						<?php foreach (preg_split('%\[AND\]|\[OR\]%', $showonstring) as $showonfield) : ?>
+    							<?php $showon = explode(':', $showonfield, 2); ?>
+    							<?php $showonarr[] = array(
+    								'field'  => $this->form->getFormControl() . '[' . $this->form->getFieldAttribute($showon[0], 'name') . ']',
+    								'values' => explode(',', $showon[1]),
+    								'op'     => (preg_match('%\[(AND|OR)\]' . $showonfield . '%', $showonstring, $matches)) ? $matches[1] : ''
+    							); ?>
+    						<?php endforeach; ?>
+    						<?php $datashowon = ' data-showon=\'' . json_encode($showonarr) . '\''; ?>
+    					<?php endif; ?>
+    					<?php if ($field->hidden) : ?>
+    						<?php echo $field->input; ?>
+    					<?php else : ?>
+    						<div class="k-form-group"<?php echo $datashowon; ?>>
+    							<?php if ($name != "permissions") : ?>
                                     <?php echo $field->label; ?>
-                                </div>
-                            <?php endif; ?>
-                            <div<?php $name != "permissions" ? ' class="controls' : '' ?>>
-                                <?php echo $field->input; ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php echo count($fieldSets) > 1 ? '</div>' : '';?>
-            <?php endforeach; ?>
-        <?php echo count($fieldSets) > 1 ? '</div>' : '';?>
-        <input type="hidden" name="id" value="<?php echo $this->component->id; ?>" />
-        <input type="hidden" name="component" value="<?php echo $this->component->option; ?>" />
-        <input type="hidden" name="return" value="<?php echo $this->return; ?>" />
-        <input type="hidden" name="task" value="" />
-        <?php echo JHtml::_('form.token'); ?>
-    </form>
+    							<?php endif; ?>
+    							<div class="<?php if ($name != "permissions") : ?>controls<?php endif; ?>">
+    								<?php echo $field->input; ?>
+    							</div>
+    						</div>
+    					<?php endif; ?>
+    				<?php endforeach; ?>
+                </div>
+			</div>
+		<?php endforeach; ?>
+	<?php echo count($fieldSets) > 1 ? '</div>' : '';?>
 
-</div>
-
-<script type="text/javascript">
-    jQuery('#configTabs a:first').tab('show'); // Select first tab
-</script>
+	<input type="hidden" name="id" value="<?php echo $this->component->id; ?>" />
+	<input type="hidden" name="component" value="<?php echo $this->component->option; ?>" />
+	<input type="hidden" name="return" value="<?php echo $this->return; ?>" />
+	<input type="hidden" name="task" value="" />
+	<?php echo JHtml::_('form.token'); ?>
+</form>
