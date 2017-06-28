@@ -44,14 +44,18 @@ $script[] = "});";
 JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 ?>
 
+
 <!-- Form -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=menus');?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
     <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
 
+    <!-- Onboarding -->
+    <?php echo JLayoutHelper::render('elysio.onboarding', array('items' => $this->items, 'type' => 'menu')); ?>
+
     <!-- Table -->
-    <div class="k-table-container">
+    <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
         <div class="k-table">
             <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>

@@ -43,10 +43,10 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
     <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this), null, array('debug' => false)); ?>
 
     <!-- Onboarding -->
-    <?php echo $this->loadTemplate('onboarding'); ?>
+    <?php echo JLayoutHelper::render('elysio.onboarding', array('items' => $this->items, 'type' => 'menu item')); ?>
 
     <!-- Table -->
-    <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : ''; ?>">
+    <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
         <div class="k-table">
             <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
