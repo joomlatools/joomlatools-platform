@@ -8050,9 +8050,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 @media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li { float: left; } }
 
-.k-ui-namespace .k-navigation-container__nav li.divider { height: 2px; background: rgba(0, 0, 0, 0.1); margin: 3px 0; }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li.divider { margin: 7px 0; } }
+.k-ui-namespace .k-navigation-container__nav li.divider { height: 2px; background: rgba(0, 0, 0, 0.1); margin: 2px 0; }
 
 .k-ui-namespace .k-navigation-container__nav li.disabled { opacity: 0.65; cursor: not-allowed; }
 
@@ -8072,13 +8070,13 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-navigation-container__nav li ul { display: none; border-bottom: 1px solid rgba(255, 255, 255, 0.25); padding: 4px 0; background: #3884c5; }
 
-@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li ul { background: white; box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.33); position: absolute; z-index: 0; top: 100%; left: 1px; width: 180px; border-bottom: none; padding: 0; } }
+@media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li ul { background: white; box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.33); position: absolute; z-index: 0; top: 100%; left: 1px; width: 180px; border-bottom: none; padding: 2px; } }
 
 .k-ui-namespace .k-navigation-container__nav li ul li { float: none; background: transparent; }
 
 .k-ui-namespace .k-navigation-container__nav li ul a { height: 32px; line-height: 32px; border-bottom: none; }
 
-.k-ui-namespace .k-navigation-container__nav li ul a:focus, .k-ui-namespace .k-navigation-container__nav li ul a:hover { background: #3071a9; color: white; }
+.k-ui-namespace .k-navigation-container__nav li ul a:focus, .k-ui-namespace .k-navigation-container__nav li ul a:hover { background: rgba(0, 0, 0, 0.1); }
 
 @media screen and (min-width: 768px) { .k-ui-namespace .k-navigation-container__nav li ul a { color: #222222; } }
 

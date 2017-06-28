@@ -109,11 +109,7 @@ $k-menu-width: $k-charlie;
     &.divider {
       height: 2px;
       background: rgba(black, 0.1);
-      margin: 3px 0;
-
-      @include breakpoint($k-menu-width) {
-        margin: 7px 0;
-      }
+      margin: 2px 0;
     }
 
     &.disabled {
@@ -180,7 +176,7 @@ $k-menu-width: $k-charlie;
         left: 1px;
         width: 180px;
         border-bottom: none;
-        padding: 0;
+        padding: 2px;
       }
 
       li {
@@ -195,8 +191,7 @@ $k-menu-width: $k-charlie;
 
         &:focus,
         &:hover {
-          background: $k-color-accent;
-          color: white;
+          background: rgba(black, 0.1);
         }
 
         @include breakpoint($k-menu-width) {
