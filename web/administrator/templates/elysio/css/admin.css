@@ -8299,6 +8299,8 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .minicolors-theme-bootstrap .minicolors-panel { left: 128px; }
 
+.k-ui-namespace .minicolors-panel { width: 186px; height: 164px; }
+
 .k-ui-namespace .tab-content .k-container { overflow: visible; }
 
 .k-ui-namespace #modal-holder { position: absolute; top: 0; left: 0; }
