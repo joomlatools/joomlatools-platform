@@ -11,7 +11,6 @@ defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
 JHtml::_('bootstrap.tooltip');
-JHtml::_('formbehavior.chosen');
 
 ?>
 <form action="<?php echo JRoute::_('index.php', true); ?>" method="post" id="form-login">

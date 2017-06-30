@@ -173,13 +173,13 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                                                 'width'       => '800px',
                                                 'bodyHeight'  => '70',
                                                 'modalWidth'  => '80',
-                                                'footer'      => '<a type="button" class="btn" data-dismiss="modal" aria-hidden="true"'
+                                                'footer'      => '<a type="button" class="k-button k-button--text" data-dismiss="modal" aria-hidden="true"'
                                                     . ' onclick="jQuery(\'#moduleEdit' . $module->id . 'Modal iframe\').contents().find(\'#closeBtn\').click();">'
                                                     . JText::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</a>'
-                                                    . '<button type="button" class="btn btn-primary" aria-hidden="true"'
+                                                    . '<button type="button" class="k-button k-button--primary" aria-hidden="true"'
                                                     . ' onclick="jQuery(\'#moduleEdit' . $module->id . 'Modal iframe\').contents().find(\'#saveBtn\').click();">'
                                                     . JText::_("JSAVE") . '</button>'
-                                                    . '<button type="button" class="btn btn-success" aria-hidden="true"'
+                                                    . '<button type="button" class="k-button k-button--success" aria-hidden="true"'
                                                     . ' onclick="jQuery(\'#moduleEdit' . $module->id . 'Modal iframe\').contents().find(\'#applyBtn\').click();">'
                                                     . JText::_("JAPPLY") . '</button>',
                                             )
@@ -188,7 +188,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                                 <?php endforeach; ?>
                             <?php elseif ($modMenuId) : ?>
                                 <?php $link = JRoute::_('index.php?option=com_modules&task=module.add&eid=' . $modMenuId . '&params[menutype]=' . $item->menutype . '&tmpl=component&layout=modal'); ?>
-                                <a class="btn btn-small btn-primary" data-toggle="modal" role="button" href="#moduleAddModal"><?php echo JText::_('COM_MENUS_ADD_MENU_MODULE'); ?></a>
+                                <a class="k-button k-button--default k-button--small" data-toggle="modal" role="button" href="#moduleAddModal"><?php echo JText::_('COM_MENUS_ADD_MENU_MODULE'); ?></a>
                                 <?php echo JHtml::_(
                                     'bootstrap.renderModal',
                                     'moduleAddModal',
@@ -202,13 +202,13 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                                         'width'       => '800px',
                                         'bodyHeight'  => '70',
                                         'modalWidth'  => '80',
-                                        'footer'      => '<a type="button" class="btn" data-dismiss="modal" aria-hidden="true"'
+                                        'footer'      => '<a type="button" class="k-button k-button--text" data-dismiss="modal" aria-hidden="true"'
                                             . ' onclick="jQuery(\'#moduleAddModal iframe\').contents().find(\'#closeBtn\').click();">'
                                             . JText::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</a>'
-                                            . '<button type="button" class="btn btn-primary" aria-hidden="true"'
+                                            . '<button type="button" class="k-button k-button--primary" aria-hidden="true"'
                                             . ' onclick="jQuery(\'#moduleAddModal iframe\').contents().find(\'#saveBtn\').click();">'
                                             . JText::_("JSAVE") . '</button>'
-                                            . '<button type="button" class="btn btn-success" aria-hidden="true"'
+                                            . '<button type="button" class="k-button k-button--success" aria-hidden="true"'
                                             . ' onclick="jQuery(\'#moduleAddModal iframe\').contents().find(\'#applyBtn\').click();">'
                                             . JText::_("JAPPLY") . '</button>',
                                     )

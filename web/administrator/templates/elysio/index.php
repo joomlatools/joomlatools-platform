@@ -150,7 +150,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
     <div id="modal-holder"></div>
     <script>
         kQuery(document).ready(function($) {
-            var modal = $('#collapseModal');
+            var modal = $('#collapseModal, #moduleAddModal');
             if (modal.length) {
                 modal.appendTo('#modal-holder');
             }

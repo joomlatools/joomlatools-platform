@@ -27,7 +27,6 @@ if (!empty($displayData['options']['showonEnabled']))
 	JHtml::_('script', 'jui/cms.js', false, true);
 }
 ?>
-
 <?php if(isset($displayData['name']) && $displayData['name'] == 'title') : ?>
     <div class="k-form-group k-form-group--large">
         <label><?php echo $displayData['label']; ?></label>

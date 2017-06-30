@@ -10,13 +10,13 @@
 defined('_JEXEC') or die;
 ?>
 
-<div class="k-sidebar__navigation">
+<div class="k-sidebar-item">
+    <?php if ($this->userIsSuperAdmin): ?>
     <div class="k-sidebar-item__header">
         <?php echo JText::_('COM_CONFIG_SYSTEM'); ?>
     </div>
-    <?php if ($this->userIsSuperAdmin): ?>
     <ul class="k-list">
-		<li class="active">
+		<li class="k-is-active">
 			<a href="index.php?option=com_config"><?php echo JText::_('COM_CONFIG_GLOBAL_CONFIGURATION'); ?></a>
 		</li>
     </ul>

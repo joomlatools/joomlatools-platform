@@ -156,8 +156,9 @@ $layout  = $isModal ? 'modal' : 'edit';
 $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 ?>
 
+
 <!-- Form -->
-<form class="k-component k-js-component k-js-form-controller form-validate" action="<?php echo JRoute::_('index.php?option=com_modules&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="module-form" class="form-validate">
+<form class="k-component k-js-component k-js-form-controller form-validate" action="<?php echo JRoute::_('index.php?option=com_modules&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="module-form">
 
     <!-- Container -->
     <div class="k-container">
@@ -168,124 +169,144 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
     <div class="k-tabs-container">
 
-		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
+        <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
+        <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_MODULES_MODULE')); ?>
 
-		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_MODULES_MODULE', true)); ?>
+        <div class="k-container">
 
-			<!-- Main information -->
-			<div class="k-container__main">
+            <!-- Main information -->
+            <div class="k-container__main">
 
                 <?php if ($this->item->xml) : ?>
-                    <p class="k-static-form-label">
-                        <?php
-                        if ($this->item->xml)
-                        {
-                            echo ($text = (string) $this->item->xml->name) ? JText::_($text) : $this->item->module;
-                        }
-                        else
-                        {
-                            echo JText::_('COM_MODULES_ERR_XML');
-                        }
-                        ?>
-                        <small>(<?php echo $this->item->client_id == 0 ? JText::_('JSITE') : JText::_('JADMINISTRATOR'); ?>)</small>
-                    </p>
-                    <?php
-                    $short_description = JText::_($this->item->xml->description);
-                    $this->fieldset = 'description';
-                    $long_description = JLayoutHelper::render('joomla.edit.fieldset', $this);
-                    if(!$long_description) {
-                        $truncated = JHtmlString::truncate($short_description, 550, true, false);
-                        if(strlen($truncated) > 500) {
-                            $long_description = $short_description;
-                            $short_description = JHtmlString::truncate($truncated, 250);
-                            if($short_description == $long_description) {
-                                $long_description = '';
+                    <?php if ($this->item->xml->description) : ?>
+                    <div class="k-well">
+                        <h3 class="k-heading no-margin-bottom">
+                            <?php
+                            if ($this->item->xml)
+                            {
+                                echo ($text = (string) $this->item->xml->name) ? JText::_($text) : $this->item->module;
                             }
-                        }
-                    }
-                    ?>
-                    <p><?php echo $short_description; ?></p>
-                    <?php if ($long_description) : ?>
-                        <p class="readmore">
-                            <a href="#" onclick="jQuery('.nav-tabs a[href=#description]').tab('show');">
-                                <?php echo JText::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
-                            </a>
+                            else
+                            {
+                                echo JText::_('COM_MODULES_ERR_XML');
+                            }
+                            ?>
+                        </h3>
+                        <p>
+							<span class="label hasTooltip" title="<?php echo JHtml::tooltipText('COM_MODULES_FIELD_CLIENT_ID_LABEL'); ?>">
+								<?php echo $this->item->client_id == 0 ? JText::_('JSITE') : JText::_('JADMINISTRATOR'); ?>
+							</span>
                         </p>
+                        <div>
+                            <?php
+                            $short_description = JText::_($this->item->xml->description);
+                            $this->fieldset = 'description';
+                            $long_description = JLayoutHelper::render('joomla.edit.fieldset', $this);
+                            if(!$long_description) {
+                                $truncated = JHtmlString::truncate($short_description, 550, true, false);
+                                if(strlen($truncated) > 500) {
+                                    $long_description = $short_description;
+                                    $short_description = JHtmlString::truncate($truncated, 250);
+                                    if($short_description == $long_description) {
+                                        $long_description = '';
+                                    }
+                                }
+                            }
+                            ?>
+                            <p><?php echo $short_description; ?></p>
+                            <?php if ($long_description) : ?>
+                                <p class="readmore">
+                                    <a href="#" onclick="jQuery('.nav-tabs a[href=\'#description\']').tab('show');">
+                                        <?php echo JText::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
+                                    </a>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                     <?php endif; ?>
                 <?php else : ?>
-                    <p class="k-alert k-alert--danger"><?php echo JText::_('COM_MODULES_ERR_XML'); ?></p>
+                    <div class="alert alert-error"><?php echo JText::_('COM_MODULES_ERR_XML'); ?></div>
                 <?php endif; ?>
+                <?php
+                if ($hasContent)
+                {
+                    echo $this->form->getInput($hasContentFieldName);
+                }
+                $this->fieldset = 'basic';
+                $html = JLayoutHelper::render('joomla.edit.fieldset', $this);
+                echo $html ? '' . $html : '';
+                ?>
 
-				<?php
-				if ($hasContent)
-				{
-					echo $this->form->getInput($hasContentFieldName);
-				}
-				$this->fieldset = 'basic';
-				$html = JLayoutHelper::render('joomla.edit.fieldset', $this);
-				echo $html;
-				?>
-			</div><!-- .k-container__main -->
+            </div><!-- .k-container__main -->
 
-			<!-- Sub information -->
-			<div class="k-container__sub">
-				<fieldset class="form-vertical">
-					<?php echo $this->form->getControlGroup('showtitle'); ?>
-					<div class="control-group">
-						<div class="control-label">
-							<?php echo $this->form->getLabel('position'); ?>
-						</div>
-						<div class="controls">
-							<?php echo $this->loadTemplate('positions'); ?>
-						</div>
-					</div>
-				</fieldset>
-				<?php
-				// Set main fields.
-				$this->fields = array(
-					'published',
-					'publish_up',
-					'publish_down',
-					'access',
-					'ordering',
-					'language',
-					'note'
-				);
-				?>
-				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-			</div>
-		<?php echo JHtml::_('bootstrap.endTab'); ?>
+            <!-- Sub information -->
+            <div class="k-container__sub">
 
-		<?php if (isset($long_description) && $long_description != '') : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION', true)); ?>
-			<?php echo $long_description; ?>
-			<?php echo JHtml::_('bootstrap.endTab'); ?>
-		<?php endif; ?>
+                <fieldset class="k-form-block">
+                    <div class="k-form-block__content">
+                        <?php echo $this->form->renderField('showtitle'); ?>
+                        <div class="k-form-group">
+                            <?php echo $this->form->getLabel('position'); ?>
+                            <?php echo $this->loadTemplate('positions'); ?>
+                        </div>
+                    </div>
+                </fieldset>
 
-		<?php if ($this->item->client_id == 0) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'assignment', JText::_('COM_MODULES_MENU_ASSIGNMENT', true)); ?>
-			<?php echo $this->loadTemplate('assignment'); ?>
-			<?php echo JHtml::_('bootstrap.endTab'); ?>
-		<?php endif; ?>
+                <?php
+                // Set main fields.
+                $this->fields = array(
+                    'published',
+                    'publish_up',
+                    'publish_down',
+                    'access',
+                    'ordering',
+                    'language',
+                    'note'
+                );
 
-		<?php if ($this->canDo->get('core.admin')) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_MODULES_FIELDSET_RULES', true)); ?>
-			<?php echo $this->form->getInput('rules'); ?>
-			<?php echo JHtml::_('bootstrap.endTab'); ?>
-		<?php endif; ?>
+                ?>
+                <fieldset class="k-form-block">
+                    <div class="k-form-block__content">
+                        <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <?php echo JHtml::_('bootstrap.endTab'); ?>
 
-		<?php
-		$this->fieldsets = array();
-		$this->ignore_fieldsets = array('basic', 'description');
-		echo JLayoutHelper::render('joomla.edit.params', $this);
-		?>
+        <?php if (isset($long_description) && $long_description != '') : ?>
+            <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
+            <?php echo $long_description; ?>
+            <?php echo JHtml::_('bootstrap.endTab'); ?>
+        <?php endif; ?>
 
-		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
-	</div>
+        <?php if ($this->item->client_id == 0) : ?>
+            <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'assignment', JText::_('COM_MODULES_MENU_ASSIGNMENT')); ?>
+            <?php echo $this->loadTemplate('assignment'); ?>
+            <?php echo JHtml::_('bootstrap.endTab'); ?>
+        <?php endif; ?>
 
-	<input type="hidden" name="task" value="" />
-	<?php echo JHtml::_('form.token'); ?>
-	<?php echo $this->form->getInput('module'); ?>
-	<?php echo $this->form->getInput('client_id'); ?>
+        <?php if ($this->canDo->get('core.admin')) : ?>
+            <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_MODULES_FIELDSET_RULES')); ?>
+            <div class="k-container">
+                <div class="k-container__full">
+                    <?php echo $this->form->getInput('rules'); ?>
+                </div>
+            </div>
+            <?php echo JHtml::_('bootstrap.endTab'); ?>
+        <?php endif; ?>
+
+        <?php
+        $this->fieldsets = array();
+        $this->ignore_fieldsets = array('basic', 'description');
+        echo JLayoutHelper::render('joomla.edit.params', $this);
+        ?>
+
+        <?php echo JHtml::_('bootstrap.endTabSet'); ?>
+
+        <input type="hidden" name="task" value="" />
+        <?php echo JHtml::_('form.token'); ?>
+        <?php echo $this->form->getInput('module'); ?>
+        <?php echo $this->form->getInput('client_id'); ?>
+    </div>
 </form>
-

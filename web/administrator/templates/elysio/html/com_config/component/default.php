@@ -9,6 +9,8 @@
 
 defined('_JEXEC') or die;
 
+include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
+
 $app = JFactory::getApplication();
 $template = $app->getTemplate();
 
@@ -42,7 +44,7 @@ JFactory::getDocument()->addScriptDeclaration(
 
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
-<form class="form-validate form-horizontal k-component" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off">
+<form class="k-component" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off">
     <div class="k-tabs-container">
         <?php $fieldSets = $this->fieldsets; ?>
         <?php if(count($fieldSets) > 1) : ?>
@@ -103,7 +105,7 @@ JFactory::getDocument()->addScriptDeclaration(
                                         <?php if ($name != "permissions") : ?>
                                             <?php echo $field->label; ?>
                                         <?php endif; ?>
-                                        <?php echo $field->input; ?>
+                                        <?php echo addFormControlClass($field->input); ?>
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>

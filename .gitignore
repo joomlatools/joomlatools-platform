@@ -28,3 +28,4 @@ node_modules
 # Vendor (e.g. Composer)
 vendor/*
 !vendor/.gitkeep
+/web/administrator/log/jcontroller.log.php

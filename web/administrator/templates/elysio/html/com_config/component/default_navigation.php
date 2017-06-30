@@ -10,17 +10,17 @@
 defined('_JEXEC') or die;
 ?>
 
-<div class="k-sidebar__navigation">
-    <div class="k-sidebar-item__header">
-        <?php echo JText::_('COM_CONFIG_SYSTEM'); ?>
-    </div>
-    <ul class="k-list">
-        <?php if ($this->userIsSuperAdmin): ?>
+<div class="k-sidebar-item">
+    <?php if ($this->userIsSuperAdmin): ?>
+        <div class="k-sidebar-item__header">
+            <?php echo JText::_('COM_CONFIG_SYSTEM'); ?>
+        </div>
+        <ul class="k-list">
             <li>
                 <a href="index.php?option=com_config"><?php echo JText::_('COM_CONFIG_GLOBAL_CONFIGURATION'); ?></a>
             </li>
-        <?php endif; ?>
-    </ul>
+        </ul>
+    <?php endif; ?>
     <div class="k-sidebar-item__header">
         <?php echo JText::_('COM_CONFIG_COMPONENT_FIELDSET_LABEL'); ?>
     </div>

@@ -55,6 +55,15 @@ function classOverride($input) {
 // Add `k-form-control` class to textfields
 function addFormControlClass($input) {
 
+    // If the field is an input-append
+    if (strpos($input, 'class="input-append') !== false) {
+        $input = str_replace('class="input-append', 'class="k-input-group ', $input);
+        $input = str_replace('<button', '<div class="k-input-group__button"><button', $input);
+        $input = str_replace('class="btn', 'class="k-button k-button--default', $input);
+        $input = str_replace('class="input-medium', 'class="k-form-control', $input);
+        $input = str_replace('</button>', '</button></div>', $input);
+    }
+
     // If the field is not a text field or textarea; return original
     if (strpos($input, 'type="text') === false && strpos($input, '<textarea') === false) {
         return $input;
@@ -73,7 +82,7 @@ function addFormControlClass($input) {
                 $field = str_replace('<textarea ', '<textarea class="k-form-control" ', $input);
             }
 
-        // If there's already a class attribute
+            // If there's already a class attribute
         } else {
             $field = str_replace('class="', 'class="k-form-control ', $input);
         }

@@ -20,7 +20,7 @@ $clientId	= $this->state->get('filter.client_id', 0);
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
 <!-- Form -->
-<form class="k-form-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_languages&view=installed&client='.$clientId); ?>" method="post" id="adminForm" name="adminForm">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_languages&view=installed&client='.$clientId); ?>" method="post" id="adminForm" name="adminForm">
 
     <!-- Table -->
     <div class="k-table-container">
@@ -28,31 +28,30 @@ $clientId	= $this->state->get('filter.client_id', 0);
             <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                 <tr>
+                    <th width="1%" class="k-table-data--form"></th>
+                    <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                     <th>
-                        &#160;
-                    </th>
-                    <th width="25%">
                         <?php echo JText::_('COM_LANGUAGES_HEADING_LANGUAGE'); ?>
                     </th>
-                    <th>
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('COM_LANGUAGES_FIELD_LANG_TAG_LABEL'); ?>
                     </th>
-                    <th>
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('JCLIENT'); ?>
                     </th>
-                    <th width="1%">
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('COM_LANGUAGES_HEADING_DEFAULT'); ?>
                     </th>
-                    <th>
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('JVERSION'); ?>
                     </th>
-                    <th>
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('JDATE'); ?>
                     </th>
-                    <th>
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('JAUTHOR'); ?>
                     </th>
-                    <th>
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('COM_LANGUAGES_HEADING_AUTHOR_EMAIL'); ?>
                     </th>
                 </tr>
@@ -64,10 +63,11 @@ $clientId	= $this->state->get('filter.client_id', 0);
                     $canChange = $user->authorise('core.edit.state', 'com_languages');
                     ?>
                     <tr>
-                        <td width="1%">
+                        <td class="k-table-data--form">
                             <?php echo JHtml::_('languages.id', $i, $row->language);?>
                         </td>
-                        <td width="25%">
+                        <td class="k-table-data--toggle"></td>
+                        <td class="k-table-data--nowrap">
                             <?php echo $this->escape($row->name); ?>
                         </td>
                         <td>
@@ -76,7 +76,7 @@ $clientId	= $this->state->get('filter.client_id', 0);
                         <td>
                             <?php echo $client;?>
                         </td>
-                        <td class="k-table-data--center">
+                        <td>
                             <?php echo JHtml::_('jgrid.isdefault', $row->published, $i, 'installed.', !$row->published && $canChange);?>
                         </td>
                         <td>
@@ -95,13 +95,14 @@ $clientId	= $this->state->get('filter.client_id', 0);
                 <?php endforeach;?>
                 </tbody>
             </table>
-            <input type="hidden" name="task" value="" />
-            <input type="hidden" name="boxchecked" value="0" />
-            <?php echo JHtml::_('form.token'); ?>
         </div><!-- .k-table -->
 
         <!-- Pagination -->
         <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
+
+        <input type="hidden" name="task" value="" />
+        <input type="hidden" name="boxchecked" value="0" />
+        <?php echo JHtml::_('form.token'); ?>
 
     </div><!-- .k-table-container -->
 

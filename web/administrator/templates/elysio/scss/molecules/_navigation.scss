@@ -1,12 +1,12 @@
 /* Navigation */
 
 $k-menu-width: $k-charlie;
-
+$k-navigation-color: #2c3e50;
 
 /* Navigation container */
 
 .k-navigation-container {
-  background: $k-color-accent;
+  background: $k-navigation-color;
 
   // When flexbox is active
   @include flexbox {
@@ -15,7 +15,7 @@ $k-menu-width: $k-charlie;
 
   @include breakpoint($k-menu-width) {
     position: relative;
-    z-index: 3;
+    z-index: 11;
     display: flex;
   }
 }
@@ -37,7 +37,7 @@ $k-menu-width: $k-charlie;
 
     &:focus,
     &:hover {
-      background: darker($k-color-accent);
+      background: darker($k-navigation-color);
     }
   }
 
@@ -56,7 +56,7 @@ $k-menu-width: $k-charlie;
   bottom: 0;
   width: 276px;
   display: none;
-  background: $k-color-accent;
+  background: $k-navigation-color;
   overflow: auto;
   box-shadow: inset 5px 5px 5px rgba(black, 0.1);
 
@@ -81,7 +81,7 @@ $k-menu-width: $k-charlie;
     list-style: none;
     margin: 0;
     padding: 0;
-    background: $k-color-accent;
+    background: $k-navigation-color;
     flex: 0 0 auto;
   }
 
@@ -100,7 +100,7 @@ $k-menu-width: $k-charlie;
     position: relative;
     margin: 0;
     padding: 0;
-    background: $k-color-accent;
+    background: $k-navigation-color;
 
     @include breakpoint($k-menu-width) {
       float: left;
@@ -131,13 +131,13 @@ $k-menu-width: $k-charlie;
       z-index: 0;
       display: block;
       padding: 0 16px;
-      border-bottom: 1px solid rgba($k-color-accent-type, 0.25);
-      color: $k-color-accent-type;
+      border-bottom: 1px solid rgba(white, 0.25);
+      color: white;
       text-shadow: none;
 
       &.has-open-submenu {
         z-index: 1;
-        background: darker($k-color-accent);
+        background: darker($k-navigation-color);
         text-decoration: none;
       }
 
@@ -163,9 +163,9 @@ $k-menu-width: $k-charlie;
 
     ul {
       display: none;
-      border-bottom: 1px solid rgba($k-color-accent-type, 0.25);
+      border-bottom: 1px solid rgba(white, 0.25);
       padding: 4px 0;
-      background: lighter($k-color-accent);
+      background: lighter($k-navigation-color);
 
       @include breakpoint($k-menu-width) {
         background: white;
@@ -195,7 +195,7 @@ $k-menu-width: $k-charlie;
         }
 
         @include breakpoint($k-menu-width) {
-          color: $k-color-type;
+          color: $k-navigation-color;
         }
       }
     }
@@ -238,8 +238,8 @@ $k-menu-width: $k-charlie;
   position: absolute;
   top: 0;
   right: 0;
-  color: $k-color-accent-type;
-  border: 1px solid $k-color-accent-type;
+  color: white;
+  border: 1px solid white;
   background: transparent;
   border-radius: $k-border-radius;
   padding: 5px 10px;

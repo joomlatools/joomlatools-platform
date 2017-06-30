@@ -3,31 +3,27 @@
  * @package     Joomla.Administrator
  * @subpackage  com_languages
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('behavior.multiselect');
 JHtml::_('bootstrap.tooltip');
 
-$user		= JFactory::getUser();
-$userId		= $user->get('id');
-$n			= count($this->items);
-$listOrder	= $this->escape($this->state->get('list.ordering'));
-$listDirn	= $this->escape($this->state->get('list.direction'));
-$canOrder	= $user->authorise('core.edit.state', 'com_languages');
-$saveOrder	= $listOrder == 'a.ordering';
+$user      = JFactory::getUser();
+$listOrder = $this->escape($this->state->get('list.ordering'));
+$listDirn  = $this->escape($this->state->get('list.direction'));
+$saveOrder = $listOrder == 'a.ordering';
+
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_languages&task=languages.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', 'contentList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+    $saveOrderingUrl = 'index.php?option=com_languages&task=languages.saveOrderAjax&tmpl=component';
+    JHtml::_('sortablelist.sortable', 'contentList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
-
-$sortFields = $this->getSortFields();
 ?>
 <script type="text/javascript">
 	Joomla.orderTable = function()
@@ -50,28 +46,29 @@ $sortFields = $this->getSortFields();
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
 <!-- Form -->
-<form class="k-form-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_languages&view=languages'); ?>" method="post" name="adminForm" id="adminForm">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_languages&view=languages'); ?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
-    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this), null, array('debug' => false)); ?>
 
 	<!-- Table -->
 	<div class="k-table-container">
 		<div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table">
+            <table class="k-js-fixed-table-header k-js-responsive-table" id="contentList">
 				<thead>
 					<tr>
-						<th width="1%">
-							<?php echo JHtml::_('grid.sort', '<i class="icon-menu-2"></i>', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
+						<th width="1%" class="k-table-data--icon">
+							<?php echo JHtml::_('grid.sort', '<span class="k-icon-move"></span>', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
 						</th>
-						<th width="1%">
+						<th width="1%" class="k-table-data--form">
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
+                        <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
 						<th width="1%"></th>
-						<th data-toggle="true">
+						<th>
 							<?php echo JHtml::_('grid.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 						</th>
-						<th data-hide="phone,tablet">
+						<th width="10%" data-hide="phone,tablet">
 							<?php echo JHtml::_('grid.sort', 'COM_LANGUAGES_HEADING_TITLE_NATIVE', 'a.title_native', $listDirn, $listOrder); ?>
 						</th>
 						<th width="5%" data-hide="phone,tablet">
@@ -100,28 +97,30 @@ $sortFields = $this->getSortFields();
 					$canChange = $user->authorise('core.edit.state', 'com_languages');
 				?>
 					<tr>
-						<td>
-							<?php if ($canChange) :
-								$disableClassName = '';
-								$disabledLabel	  = '';
+                        <td>
+                            <?php if ($canChange) : ?>
+                                <?php
+                                $disableClassName = '';
+                                $disabledLabel	  = '';
 
-								if (!$saveOrder) :
-									$disabledLabel    = JText::_('JORDERINGDISABLED');
-									$disableClassName = 'inactive tip-top';
-								endif; ?>
-								<span class="sortable-handler hasTooltip <?php echo $disableClassName; ?>" title="<?php echo $disabledLabel; ?>">
-									<i class="icon-menu"></i>
-								</span>
-								<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
-							<?php else : ?>
-								<span class="sortable-handler inactive" >
-									<i class="icon-menu"></i>
-								</span>
-							<?php endif; ?>
+                                if (!$saveOrder) :
+                                    $disabledLabel    = JText::_('JORDERINGDISABLED');
+                                    $disableClassName = 'inactive tip-top';
+                                endif; ?>
+
+
+                                <span class="sortable-handler hasTooltip <?php echo $disableClassName; ?>" title="<?php echo $disabledLabel; ?>">
+                                    <span class="k-positioner k-is-active" data-k-tooltip="{&quot;container&quot;:&quot;.k-ui-container&quot;}" data-original-title="Please order by this column first by clicking the column title"></span>
+                                </span>
+                                <input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
+                            <?php else: ?>
+                                <span class="k-positioner"></span>
+                            <?php endif; ?>
 						</td>
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->lang_id); ?>
 						</td>
+                        <td class="k-table-data--toggle"></td>
 						<td class="k-table-data--center">
 							<?php echo JHtml::_('jgrid.published', $item->published, $i, 'languages.', $canChange); ?>
 						</td>
@@ -175,4 +174,3 @@ $sortFields = $this->getSortFields();
 	</div><!-- .k-table-container -->
 
 </form><!-- .k-component -->
-
