@@ -636,9 +636,37 @@ label {
   }
 }
 
+// Color pickers
+.minicolors {
+  width: 100%;
+
+  .k-form-control {
+    padding-left: 32px;
+  }
+}
+
+.minicolors-swatch {
+  width: 25px;
+  height: 25px;
+}
+
+.minicolors-theme-bootstrap .minicolors-panel {
+  left: 128px;
+}
 
 
+.tab-content {
+  .k-container {
+    overflow: visible;
+  }
+}
 
+
+#modal-holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 
 .k-heading {
   margin-top: 0;
@@ -685,7 +713,6 @@ label {
 }
 
 .k-title-bar {
-  border: none;
   font-size: 18px;
   line-height: 16px;
 
@@ -700,4 +727,8 @@ label {
 
 .k-table-pagination {
   padding-bottom: 8px;
+}
+
+.k-off-canvas-menu-toggle {
+  margin: 7px 8px;
 }

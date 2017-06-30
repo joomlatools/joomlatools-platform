@@ -8291,6 +8291,18 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .grid--2columns .grid__item { float: left; width: 50%; }
 
+.k-ui-namespace .minicolors { width: 100%; }
+
+.k-ui-namespace .minicolors .k-form-control { padding-left: 32px; }
+
+.k-ui-namespace .minicolors-swatch { width: 25px; height: 25px; }
+
+.k-ui-namespace .minicolors-theme-bootstrap .minicolors-panel { left: 128px; }
+
+.k-ui-namespace .tab-content .k-container { overflow: visible; }
+
+.k-ui-namespace #modal-holder { position: absolute; top: 0; left: 0; }
+
 .k-ui-namespace .k-heading { margin-top: 0; }
 
 .k-ui-namespace .no-margin-bottom { margin-bottom: 0; }
@@ -8309,13 +8321,15 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-table-container td { padding: 8px; height: 40px; }
 
-.k-ui-namespace .k-title-bar { border: none; font-size: 18px; line-height: 16px; }
+.k-ui-namespace .k-title-bar { font-size: 18px; line-height: 16px; }
 
 .k-ui-namespace .k-title-bar .k-title-bar__heading { padding: 12px; }
 
 .k-ui-namespace .k-login-container { background: #2c3e50; }
 
 .k-ui-namespace .k-table-pagination { padding-bottom: 8px; }
+
+.k-ui-namespace .k-off-canvas-menu-toggle { margin: 7px 8px; }
 
 .popover.popover { margin: 0; padding: 0; border: none; border-radius: 0; background: transparent; font-family: inherit; box-shadow: none; white-space: normal; }
 

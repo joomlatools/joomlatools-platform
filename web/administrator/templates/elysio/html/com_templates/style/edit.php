@@ -13,6 +13,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('behavior.formvalidator');
 JHtml::_('behavior.keepalive');
+JHtml::_('formbehavior.chosen', 'select');
 $user = JFactory::getUser();
 
 JFactory::getDocument()->addScriptDeclaration("
@@ -26,7 +27,7 @@ JFactory::getDocument()->addScriptDeclaration("
 ?>
 
 <!-- Form -->
-<form class="k-component k-js-component k-js-form-controller form-validate" action="<?php echo JRoute::_('index.php?option=com_templates&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="style-form">
+<form class="k-component k-js-component k-js-form-controller" action="<?php echo JRoute::_('index.php?option=com_templates&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="style-form">
 
     <!-- Container -->
     <div class="k-container">
