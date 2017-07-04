@@ -137,6 +137,7 @@ jQuery(document).ready(function($) {
         } else {
             checkbox.attr("checked", "checked").trigger('change');
         }
+        Joomla.isChecked(checkbox.attr('checked'));
     });
 
     $('.select-rows tr').find(optionbox).on('change', function() {
