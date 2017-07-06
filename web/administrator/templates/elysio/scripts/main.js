@@ -128,7 +128,7 @@ jQuery(document).ready(function($) {
     var optionbox = $('[type="checkbox"], [type="radio"]');
 
     $('.select-rows tr td').on('click', function(e) {
-        if (e.target.nodeName === 'INPUT' || e.target.nodeName === 'A') {
+        if (e.target.nodeName === 'INPUT' || e.target.nodeName === 'A'|| $(e.target).parent().prop('tagName') === 'BUTTON') {
             return;
         }
         var checkbox = $(this).parent('tr').find(optionbox);
@@ -137,6 +137,7 @@ jQuery(document).ready(function($) {
         } else {
             checkbox.attr("checked", "checked").trigger('change');
         }
+        Joomla.isChecked(checkbox.attr('checked'));
     });
 
     $('.select-rows tr').find(optionbox).on('change', function() {
