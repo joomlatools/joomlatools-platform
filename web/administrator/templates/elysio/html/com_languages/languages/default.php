@@ -25,23 +25,6 @@ if ($saveOrder)
     JHtml::_('sortablelist.sortable', 'contentList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 ?>
-<script type="text/javascript">
-	Joomla.orderTable = function()
-	{
-		table = document.getElementById("sortTable");
-		direction = document.getElementById("directionTable");
-		order = table.options[table.selectedIndex].value;
-		if (order != '<?php echo $listOrder; ?>')
-		{
-			dirn = 'asc';
-		}
-		else
-		{
-			dirn = direction.options[direction.selectedIndex].value;
-		}
-		Joomla.tableOrdering(order, dirn, '');
-	}
-</script>
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
@@ -64,28 +47,31 @@ if ($saveOrder)
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
                         <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-						<th width="1%"></th>
-						<th>
-							<?php echo JHtml::_('grid.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
-						</th>
-						<th width="10%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'COM_LANGUAGES_HEADING_TITLE_NATIVE', 'a.title_native', $listDirn, $listOrder); ?>
-						</th>
-						<th width="5%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'COM_LANGUAGES_FIELD_LANG_TAG_LABEL', 'a.lang_code', $listDirn, $listOrder); ?>
-						</th>
-						<th width="5%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'COM_LANGUAGES_FIELD_LANG_CODE_LABEL', 'a.sef', $listDirn, $listOrder); ?>
-						</th>
-						<th width="5%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'COM_LANGUAGES_HEADING_LANG_IMAGE', 'a.image', $listDirn, $listOrder); ?>
-						</th>
-						<th width="5%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
-						</th>
-						<th width="5%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'COM_LANGUAGES_HOMEPAGE', '', $listDirn, $listOrder); ?>
-						</th>
+                        <th width="1%"></th>
+                        <th>
+                            <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                        </th>
+                        <th data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_TITLE_NATIVE', 'a.title_native', $listDirn, $listOrder); ?>
+                        </th>
+                        <th data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANG_TAG', 'a.lang_code', $listDirn, $listOrder); ?>
+                        </th>
+                        <th data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANG_CODE', 'a.sef', $listDirn, $listOrder); ?>
+                        </th>
+                        <th data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANG_IMAGE', 'a.image', $listDirn, $listOrder); ?>
+                        </th>
+                        <th data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
+                        </th>
+                        <th data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_HOMEPAGE', 'l.home', $listDirn, $listOrder); ?>
+                        </th>
+                        <th data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.lang_id', $listDirn, $listOrder); ?>
+                        </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -107,8 +93,6 @@ if ($saveOrder)
                                     $disabledLabel    = JText::_('JORDERINGDISABLED');
                                     $disableClassName = 'inactive tip-top';
                                 endif; ?>
-
-
                                 <span class="sortable-handler hasTooltip <?php echo $disableClassName; ?>" title="<?php echo $disabledLabel; ?>">
                                     <span class="k-positioner k-is-active" data-k-tooltip="{&quot;container&quot;:&quot;.k-ui-container&quot;}" data-original-title="Please order by this column first by clicking the column title"></span>
                                 </span>
@@ -121,51 +105,48 @@ if ($saveOrder)
 							<?php echo JHtml::_('grid.id', $i, $item->lang_id); ?>
 						</td>
                         <td class="k-table-data--toggle"></td>
-						<td class="k-table-data--center">
-							<?php echo JHtml::_('jgrid.published', $item->published, $i, 'languages.', $canChange); ?>
-						</td>
-						<td>
+                        <td>
+                            <?php echo JHtml::_('jgrid.published', $item->published, $i, 'languages.', $canChange); ?>
+                        </td>
+                        <td>
 							<span class="editlinktip hasTooltip" title="<?php echo JHtml::tooltipText(JText::_('JGLOBAL_EDIT_ITEM'), $item->title, 0); ?>">
-							<?php if ($canEdit) : ?>
-								<a href="<?php echo JRoute::_('index.php?option=com_languages&task=language.edit&lang_id='.(int) $item->lang_id); ?>">
-									<?php echo $this->escape($item->title); ?></a>
-							<?php else : ?>
-									<?php echo $this->escape($item->title); ?>
-							<?php endif; ?>
+                                <?php if ($canEdit) : ?>
+                                    <a href="<?php echo JRoute::_('index.php?option=com_languages&task=language.edit&lang_id=' . (int) $item->lang_id); ?>"><?php echo $this->escape($item->title); ?></a>
+                                <?php else : ?>
+                                    <?php echo $this->escape($item->title); ?>
+                                <?php endif; ?>
 							</span>
-						</td>
-						<td>
-							<?php echo $this->escape($item->title_native); ?>
-						</td>
-						<td>
-							<?php echo $this->escape($item->lang_code); ?>
-						</td>
-						<td>
-							<?php echo $this->escape($item->sef); ?>
-						</td>
-						<td>
-							<?php echo $this->escape($item->image); ?>&nbsp;<?php echo JHtml::_('image', 'mod_languages/'.$item->image.'.gif', $item->image, array('title' => $item->image), true); ?>
-						</td>
-						<td>
-							<?php echo $this->escape($item->access_level); ?>
-						</td>
-						<td>
-							<?php if ($item->home == '1') : ?>
-								<?php echo JText::_('JYES');?>
-							<?php else:?>
-								<?php echo JText::_('JNO');?>
-							<?php endif;?>
-						</td>
+                        </td>
+                        <td>
+                            <?php echo $this->escape($item->title_native); ?>
+                        </td>
+                        <td>
+                            <?php echo $this->escape($item->lang_code); ?>
+                        </td>
+                        <td>
+                            <?php echo $this->escape($item->sef); ?>
+                        </td>
+                        <td>
+                            <?php echo JHtml::_('image', 'mod_languages/' . $item->image . '.gif', $item->image, array('title' => $item->image), true); ?>&nbsp;<?php echo $this->escape($item->image); ?>
+                        </td>
+                        <td>
+                            <?php echo $this->escape($item->access_level); ?>
+                        </td>
+                        <td>
+                            <?php echo ($item->home == '1') ? JText::_('JYES') : JText::_('JNO'); ?>
+                        </td>
+                        <td>
+                            <?php echo $this->escape($item->lang_id); ?>
+                        </td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
 			</table>
 
-			<input type="hidden" name="task" value="" />
-			<input type="hidden" name="boxchecked" value="0" />
-			<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-			<?php echo JHtml::_('form.token'); ?>
+            <input type="hidden" name="task" value="" />
+            <input type="hidden" name="boxchecked" value="0" />
+            <?php echo JHtml::_('form.token'); ?>
+
 		</div><!-- .k-table -->
 
         <!-- Pagination -->

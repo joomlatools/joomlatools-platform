@@ -3,10 +3,11 @@
 - [-] com_config / application / default_permissions.php
 - [x] com_config / component / default.php
 - [x] com_config / component / default_navigation.php
-- [ ] com_cpanel / cpanel / default.php
-- [ ] com_languages / installed / default.php
-- [ ] com_languages / language / edit.php
-- [ ] com_languages / multilangstatus / default.php
+- [x] com_cpanel / cpanel / default.php
+- [x] com_languages / installed / default.php
+- [x] com_languages / language / edit.php
+- [x] com_languages / languages / default.php
+- [?] com_languages / multilangstatus / default.php
 - [ ] com_menus / item / edit.php
 - [ ] com_menus / item / edit_associations.php
 - [ ] com_menus / item / edit_modules.php
@@ -57,4 +58,5 @@
 Legend:
 x: done
 -: not needed
+?: not sure if we need it
  : old

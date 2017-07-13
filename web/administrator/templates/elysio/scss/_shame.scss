@@ -301,6 +301,14 @@ form legend {
   vertical-align: middle;
 }
 
+.label-warning {
+  background: $k-color-warning;
+}
+
+.label-success {
+  background: $k-color-success;
+}
+
 
 .k-table-container {
   td {

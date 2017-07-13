@@ -8213,6 +8213,10 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .label { background: #a2a1a1; vertical-align: middle; }
 
+.k-ui-namespace .label-warning { background: #e67e22; }
+
+.k-ui-namespace .label-success { background: #27ae60; }
+
 .k-ui-namespace .k-table-container td .select2 { display: inline-block; vertical-align: top; max-width: 90% !important; }
 
 .k-ui-namespace .k-table th { font-weight: 700; }

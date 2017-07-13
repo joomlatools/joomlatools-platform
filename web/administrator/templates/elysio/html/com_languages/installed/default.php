@@ -3,18 +3,20 @@
  * @package     Joomla.Administrator
  * @subpackage  com_languages
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
 // Add specific helper files for html generation
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-$user		= JFactory::getUser();
-$userId		= $user->get('id');
-$client		= $this->state->get('filter.client_id', 0) ? JText::_('JADMINISTRATOR') : JText::_('JSITE');
-$clientId	= $this->state->get('filter.client_id', 0);
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+
+JHtml::_('bootstrap.tooltip');
+
+$user      = JFactory::getUser();
+$listOrder = $this->escape($this->state->get('list.ordering'));
+$listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
@@ -31,33 +33,38 @@ $clientId	= $this->state->get('filter.client_id', 0);
                     <th width="1%" class="k-table-data--form"></th>
                     <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                     <th>
-                        <?php echo JText::_('COM_LANGUAGES_HEADING_LANGUAGE'); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANGUAGE', 'name', $listDirn, $listOrder); ?>
                     </th>
                     <th data-hide="phone,tablet">
-                        <?php echo JText::_('COM_LANGUAGES_FIELD_LANG_TAG_LABEL'); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANG_TAG', 'language', $listDirn, $listOrder); ?>
                     </th>
                     <th data-hide="phone,tablet">
-                        <?php echo JText::_('JCLIENT'); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_DEFAULT', 'published', $listDirn, $listOrder); ?>
                     </th>
                     <th data-hide="phone,tablet">
-                        <?php echo JText::_('COM_LANGUAGES_HEADING_DEFAULT'); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_VERSION', 'version', $listDirn, $listOrder); ?>
+                    </th>
+                    <?php if(0): ?>
+                    <th data-hide="phone,tablet">
+                        <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_DATE', 'creationDate', $listDirn, $listOrder); ?>
                     </th>
                     <th data-hide="phone,tablet">
-                        <?php echo JText::_('JVERSION'); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_AUTHOR', 'author', $listDirn, $listOrder); ?>
                     </th>
                     <th data-hide="phone,tablet">
-                        <?php echo JText::_('JDATE'); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_AUTHOR_EMAIL', 'authorEmail', $listDirn, $listOrder); ?>
                     </th>
+                    <?php endif; ?>
                     <th data-hide="phone,tablet">
-                        <?php echo JText::_('JAUTHOR'); ?>
-                    </th>
-                    <th data-hide="phone,tablet">
-                        <?php echo JText::_('COM_LANGUAGES_HEADING_AUTHOR_EMAIL'); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'extension_id', $listDirn, $listOrder); ?>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($this->rows as $i => $row) :
+                <?php
+                $version = new JVersion;
+                $currentShortVersion = preg_replace('#^([0-9\.]+)(|.*)$#', '$1', $version->getShortVersion());
+                foreach ($this->rows as $i => $row) :
                     $canCreate = $user->authorise('core.create',     'com_languages');
                     $canEdit   = $user->authorise('core.edit',       'com_languages');
                     $canChange = $user->authorise('core.edit.state', 'com_languages');
@@ -74,14 +81,19 @@ $clientId	= $this->state->get('filter.client_id', 0);
                             <?php echo $this->escape($row->language); ?>
                         </td>
                         <td>
-                            <?php echo $client;?>
+                            <?php echo JHtml::_('jgrid.isdefault', $row->published, $i, 'installed.', !$row->published && $canChange); ?>
                         </td>
                         <td>
-                            <?php echo JHtml::_('jgrid.isdefault', $row->published, $i, 'installed.', !$row->published && $canChange);?>
+                            <?php // Display a Note if language pack version is not equal to Joomla version ?>
+                            <?php if (substr($row->version, 0, 3) != $version::RELEASE || substr($row->version, 0, 5) != $currentShortVersion) : ?>
+                                <span class="label label-warning hasTooltip" title="<?php echo JText::_('JGLOBAL_LANGUAGE_VERSION_NOT_PLATFORM'); ?>">
+                                    <?php echo $row->version; ?>
+                                </span>
+                            <?php else : ?>
+                                <span class="label label-success"><?php echo $row->version; ?></span>
+                            <?php endif; ?>
                         </td>
-                        <td>
-                            <?php echo $this->escape($row->version); ?>
-                        </td>
+                        <?php if(0): ?>
                         <td>
                             <?php echo $this->escape($row->creationDate); ?>
                         </td>
@@ -90,6 +102,10 @@ $clientId	= $this->state->get('filter.client_id', 0);
                         </td>
                         <td>
                             <?php echo JStringPunycode::emailToUTF8($this->escape($row->authorEmail)); ?>
+                        </td>
+                        <?php endif; ?>
+                        <td>
+                            <?php echo $this->escape($row->extension_id); ?>
                         </td>
                     </tr>
                 <?php endforeach;?>

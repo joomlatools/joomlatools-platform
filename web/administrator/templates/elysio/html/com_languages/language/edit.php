@@ -40,7 +40,7 @@ JFactory::getDocument()->addScriptDeclaration(
 ?>
 
 <!-- Form -->
-<form class="k-component k-js-component k-js-form-controller" action="<?php echo JRoute::_('index.php?option=com_languages&view=language&layout=edit&lang_id=' . (int) $this->item->lang_id); ?>" method="post" name="adminForm" id="language-form">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_languages&view=language&layout=edit&lang_id=' . (int) $this->item->lang_id); ?>" method="post" name="adminForm" id="language-form">
 
     <!-- Container -->
     <div class="k-container">

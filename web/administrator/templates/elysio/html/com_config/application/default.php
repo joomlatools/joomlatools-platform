@@ -36,15 +36,20 @@ JFactory::getDocument()->addScriptDeclaration('
 
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
-<div class="k-container">
+<form class="k-component k-js-component k-js-form-controller form-validate" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
 
-	<form class="k-container__full" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm"  class="form-validate">
+    <div class="k-container">
 
-        <?php echo $this->loadTemplate('permissions'); ?>
+	    <div class="k-container__full">
 
-        <input type="hidden" name="task" value="" />
-        <?php echo JHtml::_('form.token'); ?>
+            <?php echo $this->loadTemplate('permissions'); ?>
 
-	</form>
+            <input type="hidden" name="task" value="" />
+            <?php echo JHtml::_('form.token'); ?>
 
-</div>
+
+        </div>
+
+    </div>
+
+</form>
