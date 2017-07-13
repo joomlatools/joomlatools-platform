@@ -230,6 +230,13 @@ class JApplicationCms extends JApplicationWeb
 			return;
 		}
 
+        // Load the session if it hasn't started yet
+        $session = JFactory::getSession();
+
+        if ($session->getState() != 'active') {
+            $this->loadSession(null, true);
+        }
+
 		// For empty queue, if messages exists in the session, enqueue them first.
 		$messages = $this->getMessageQueue();
 
