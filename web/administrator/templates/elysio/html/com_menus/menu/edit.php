@@ -42,13 +42,14 @@ JFactory::getDocument()->addScriptDeclaration("
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_MENU_DETAILS')); ?>
 
-                <div class="k-container__main">
-                    <div class="k-form-group">
-                        <?php echo $this->form->renderField('menutype'); ?>
-                    </div>
-
-                    <div class="k-form-group">
-                        <?php echo $this->form->renderField('description'); ?>
+                <div class="k-container">
+                    <div class="k-container__main">
+                        <div class="k-form-group">
+                            <?php echo $this->form->renderField('menutype'); ?>
+                        </div>
+                        <div class="k-form-group">
+                            <?php echo $this->form->renderField('description'); ?>
+                        </div>
                     </div>
                 </div>
 
@@ -56,7 +57,11 @@ JFactory::getDocument()->addScriptDeclaration("
 
 			<?php if ($this->canDo->get('core.admin')) : ?>
 				<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_MENUS_FIELDSET_RULES')); ?>
-					<?php echo $this->form->getInput('rules'); ?>
+                    <div class="k-container">
+                        <div class="k-container__full">
+					        <?php echo $this->form->getInput('rules'); ?>
+                        </div>
+                    </div>
 				<?php echo JHtml::_('bootstrap.endTab'); ?>
 			<?php endif; ?>
 
