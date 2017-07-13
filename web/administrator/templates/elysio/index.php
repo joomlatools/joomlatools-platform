@@ -157,5 +157,15 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
         });
     </script>
 </div>
+
+<script>
+    // Open select wehn clicking filters
+    kQuery(document).ready(function($) {
+        $('.k-js-dropdown-button').on('click', function() {
+            $(this).next().children('.k-js-dropdown-content').children('select').select2('open');
+        });
+    });
+</script>
+
 </body>
 </html>

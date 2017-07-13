@@ -20,19 +20,21 @@ $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_templates&view=templates'); ?>" method="post" name="adminForm" id="adminForm">
-    <div id="j-sidebar-container" class="span2">
-        <?php echo $this->sidebar; ?>
-    </div>
-    <div id="j-main-container" class="span10">
-        <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
-        <div class="clearfix"> </div>
-        <?php if (empty($this->items)) : ?>
-            <div class="alert alert-no-items">
-                <?php echo JText::_('COM_TEMPLATES_MSG_MANAGE_NO_TEMPLATES'); ?>
-            </div>
-        <?php else : ?>
-            <table class="table table-striped" id="template-mgr">
+<?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
+
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_templates&view=templates'); ?>" method="post" name="adminForm" id="adminForm">
+
+    <?php // Scopebar ?>
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
+
+    <?php if (empty($this->items)) : ?>
+        <!-- Onboarding -->
+        <?php echo JLayoutHelper::render('elysio.onboarding', array('items' => $this->items, 'type' => 'template')); ?>
+    <?php else : ?>
+    <!-- Table -->
+    <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
+        <div class="k-table">
+            <table class="k-js-fixed-table-header k-js-responsive-table" id="itemList">
                 <thead>
                 <tr>
                     <th class="col1template hidden-phone" width="20%">
@@ -52,13 +54,6 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                     </th>
                 </tr>
                 </thead>
-                <tfoot>
-                <tr>
-                    <td colspan="5">
-                        <?php echo $this->pagination->getListFooter(); ?>
-                    </td>
-                </tr>
-                </tfoot>
                 <tbody>
                 <?php foreach ($this->items as $i => $item) : ?>
                     <tr class="row<?php echo $i % 2; ?>">
@@ -103,10 +98,17 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                 <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php endif;?>
+        </div><!-- .k-table -->
+
+        <!-- Pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
         <input type="hidden" name="task" value="" />
         <input type="hidden" name="boxchecked" value="0" />
         <?php echo JHtml::_('form.token'); ?>
-    </div>
-</form>
+
+    </div><!-- .k-table-container -->
+
+    <?php endif;?>
+
+</form><!-- .k-component -->
