@@ -37,50 +37,58 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
             <table class="k-js-fixed-table-header k-js-responsive-table" id="itemList">
                 <thead>
                 <tr>
-                    <th class="col1template hidden-phone" width="20%">
+                    <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
+                    <?php if(0): ?>
+                    <th width="20%">
                         <?php echo JText::_('COM_TEMPLATES_HEADING_IMAGE'); ?>
                     </th>
-                    <th width="30%">
+                    <?php endif; ?>
+                    <th>
                         <?php echo JHtml::_('searchtools.sort', 'COM_TEMPLATES_HEADING_TEMPLATE', 'a.element', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="10%" class="hidden-phone">
+                    <th width="10%" data-hide="phone,tablet">
                         <?php echo JText::_('JVERSION'); ?>
                     </th>
-                    <th width="15%" class="hidden-phone">
+                    <th width="15%" data-hide="phone,tablet">
                         <?php echo JText::_('JDATE'); ?>
                     </th>
-                    <th width="25%" class="hidden-phone" >
+                    <th width="25%" data-hide="phone,tablet">
                         <?php echo JText::_('JAUTHOR'); ?>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($this->items as $i => $item) : ?>
-                    <tr class="row<?php echo $i % 2; ?>">
-                        <td class="center hidden-phone">
+                    <tr>
+                        <td class="k-table-data--toggle"></td>
+                        <?php if(0): ?>
+                        <td>
                             <?php echo JHtml::_('templates.thumb', $item->element, $item->client_id); ?>
                         </td>
-                        <td class="template-name">
-                            <strong><?php echo JText::sprintf('COM_TEMPLATES_TEMPLATE_DETAILS', ucfirst($item->name)); ?></strong>
+                        <?php endif; ?>
+                        <td>
+                            <?php echo JText::sprintf('COM_TEMPLATES_TEMPLATE_DETAILS', ucfirst($item->name)); ?>
                             <div>
                                 <?php if ($this->preview && $item->client_id == '0') : ?>
-                                    <a href="<?php echo JRoute::_(JUri::root() . 'index.php?tp=1&template=' . $item->element); ?>" target="_blank">
-                                        <?php echo JText::_('COM_TEMPLATES_TEMPLATE_PREVIEW'); ?>
-                                    </a>
+                                    <small>
+                                        <a href="<?php echo JRoute::_(JUri::root() . 'index.php?tp=1&template=' . $item->element); ?>" target="_blank">
+                                            <?php echo JText::_('COM_TEMPLATES_TEMPLATE_PREVIEW'); ?>
+                                        </a>
+                                    </small>
                                 <?php elseif ($item->client_id == '1') : ?>
-                                    <?php echo JText::_('COM_TEMPLATES_TEMPLATE_NO_PREVIEW_ADMIN'); ?>
+                                    <small><?php echo JText::_('COM_TEMPLATES_TEMPLATE_NO_PREVIEW_ADMIN'); ?></small>
                                 <?php else : ?>
-                                    <span class="hasTooltip" title="<?php echo JHtml::tooltipText('COM_TEMPLATES_TEMPLATE_NO_PREVIEW_DESC'); ?>"><?php echo JText::_('COM_TEMPLATES_TEMPLATE_NO_PREVIEW'); ?></span>
+                                    <small class="hasTooltip" title="<?php echo JHtml::tooltipText('COM_TEMPLATES_TEMPLATE_NO_PREVIEW_DESC'); ?>"><?php echo JText::_('COM_TEMPLATES_TEMPLATE_NO_PREVIEW'); ?></small>
                                 <?php endif; ?>
                             </div>
                         </td>
-                        <td class="small hidden-phone">
+                        <td>
                             <?php echo $this->escape($item->xmldata->get('version')); ?>
                         </td>
-                        <td class="small hidden-phone">
+                        <td>
                             <?php echo $this->escape($item->xmldata->get('creationDate')); ?>
                         </td>
-                        <td class="hidden-phone">
+                        <td>
                             <?php if ($author = $item->xmldata->get('author')) : ?>
                                 <div><?php echo $this->escape($author); ?></div>
                             <?php else : ?>

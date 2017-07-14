@@ -34,23 +34,27 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
             <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                     <tr>
-                        <th width="5">
-                            &#160;
+                        <th width="1%" class="k-table-data--form">
+                            <?php echo JHtml::_('grid.checkall'); ?>
                         </th>
+                        <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                         <th>
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_STYLE', 'a.title', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%" class="nowrap center">
+                        <th width="5%" data-hide="phone,tablet">
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_DEFAULT', 'a.home', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%" class="nowrap center hidden-phone">
+                        <th width="5%" data-hide="phone,tablet">
                             <?php echo JText::_('COM_TEMPLATES_HEADING_ASSIGNED'); ?>
                         </th>
-                        <th width="10%" class="nowrap center">
+                        <th width="10%" data-hide="phone,tablet">
                             <?php echo JHtml::_('grid.sort', 'JCLIENT', 'a.client_id', $listDirn, $listOrder); ?>
                         </th>
-                        <th class="center hidden-phone">
+                        <th data-hide="phone,tablet">
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_TEMPLATE', 'a.template', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                         </th>
                     </tr>
                 </thead>
@@ -61,9 +65,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                         $canChange = $user->authorise('core.edit.state', 'com_templates');
                     ?>
                     <tr>
-                        <td width="1%">
+                        <td>
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
+                        <td class="k-table-data--toggle"></td>
                         <td>
                             <?php if ($this->preview && $item->client_id == '0') : ?>
                                 <a target="_blank" href="<?php echo JUri::root() . 'index.php?tp=1&templateStyle='.(int) $item->id ?>" class="jgrid">
@@ -106,6 +111,9 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                                 <?php echo ucfirst($this->escape($item->template));?>
                             </a>
                         </td>
+                        <td class="hidden-phone hidden-tablet">
+                            <?php echo (int) $item->id; ?>
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -113,9 +121,8 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
             <input type="hidden" name="task" value="" />
             <input type="hidden" name="boxchecked" value="0" />
-            <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-            <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
             <?php echo JHtml::_('form.token'); ?>
+
         </div><!-- .k-table -->
 
         <!-- Pagination -->

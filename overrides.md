@@ -34,11 +34,11 @@
 - [ x ] com_plugins / plugin / edit.php
 - [ x ] com_plugins / plugin / edit_options.php
 - [ x ] com_plugins / plugins / default.php
-- [ ] com_templates / style / edit.php
-- [ ] com_templates / style / edit_assignment.php
-- [ ] com_templates / style / edit_options.php
-- [ ] com_templates / styles / default.php
-- [ ] com_templates / templates / default.php
+- [ x ] com_templates / style / edit.php
+- [ x ] com_templates / style / edit_assignment.php
+- [ x ] com_templates / style / edit_options.php
+- [ x ] com_templates / styles / default.php
+- [ x ] com_templates / templates / default.php
 - [ ] com_users / debuggroup / default.php
 - [ ] com_users / debuguser / default.php
 - [ ] com_users / group / edit.php
