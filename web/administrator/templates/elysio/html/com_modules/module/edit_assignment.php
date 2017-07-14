@@ -42,49 +42,68 @@ JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 
 <div class="k-container">
-    <div class="k-container__main">
-        <div class="control-group">
-            <label id="jform_menus-lbl" class="control-label" for="jform_menus"><?php echo JText::_('COM_MODULES_MODULE_ASSIGN'); ?></label>
-
-            <div id="jform_menus" class="controls">
+    <div class="k-container__full">
+        <div class="k-form-group">
+            <label id="jform_menus-lbl" for="jform_menus"><?php echo JText::_('COM_MODULES_MODULE_ASSIGN'); ?></label>
+            <div id="jform_menus">
                 <select name="jform[assignment]" id="jform_assignment">
                     <?php echo JHtml::_('select.options', ModulesHelper::getAssignmentOptions($this->item->client_id), 'value', 'text', $this->item->assignment, true); ?>
                 </select>
             </div>
         </div>
-        <div id="menuselect-group" class="control-group">
-            <label id="jform_menuselect-lbl" class="control-label" for="jform_menuselect"><?php echo JText::_('JGLOBAL_MENU_SELECTION'); ?></label>
+        <div id="menuselect-group" class="k-form-group">
+            <label id="jform_menuselect-lbl" for="jform_menuselect"><?php echo JText::_('JGLOBAL_MENU_SELECTION'); ?></label>
 
-            <div id="jform_menuselect" class="controls">
+            <div id="jform_menuselect">
                 <?php if (!empty($menuTypes)) : ?>
                 <?php $id = 'jform_menuselect'; ?>
+                <div class="k-well">
 
-                <div class="well well-small">
-                    <div class="form-inline">
-                        <span class="small"><?php echo JText::_('JSELECT'); ?>:
-                            <a id="treeCheckAll" href="javascript://"><?php echo JText::_('JALL'); ?></a>,
-                            <a id="treeUncheckAll" href="javascript://"><?php echo JText::_('JNONE'); ?></a>
-                        </span>
-                        <span class="width-20">|</span>
-                        <span class="small"><?php echo JText::_('COM_MODULES_EXPAND'); ?>:
-                            <a id="treeExpandAll" href="javascript://"><?php echo JText::_('JALL'); ?></a>,
-                            <a id="treeCollapseAll" href="javascript://"><?php echo JText::_('JNONE'); ?></a>
-                        </span>
-                        <input type="text" id="treeselectfilter" name="treeselectfilter" class="input-medium search-query pull-right" size="16"
-                            autocomplete="off" placeholder="<?php echo JText::_('JSEARCH_FILTER'); ?>" aria-invalid="false" tabindex="-1">
+                    <div class="k-form-row-group">
+                        <div class="k-form-row">
+                            <div class="k-form-row__item k-form-row__item--label">
+                                <label for="input-form-row-1"><?php echo JText::_('JSELECT'); ?>:</label>
+                            </div>
+                            <div class="k-form-row__item k-form-row__item--input">
+                                <div class="k-button-group">
+                                    <a class="k-button k-button--default" id="treeCheckAll" href="javascript://">
+                                        <?php echo JText::_('JALL'); ?>
+                                    </a>
+                                    <a class="k-button k-button--default" id="treeUncheckAll" href="javascript://">
+                                        <?php echo JText::_('JNONE'); ?>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="k-form-row__item k-form-row__item--label">
+                                <label for="input-form-row-1"><?php echo JText::_('COM_MODULES_EXPAND'); ?>:</label>
+                            </div>
+                            <div class="k-form-row__item k-form-row__item--input">
+                                <div class="k-button-group">
+                                    <a class="k-button k-button--default" id="treeExpandAll" href="javascript://">
+                                        <?php echo JText::_('JALL'); ?>
+                                    </a>
+                                    <a class="k-button k-button--default" id="treeCollapseAll" href="javascript://">
+                                        <?php echo JText::_('JNONE'); ?>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="k-form-row__item k-form-row__item--label">
+                                <label for="input-form-row-2">Search:</label>
+                            </div>
+                            <div class="k-form-row__item k-form-row__item--input">
+                                <input type="text" id="treeselectfilter" name="treeselectfilter" class="k-form-control search-query" size="16" autocomplete="off" placeholder="<?php echo JText::_('JSEARCH_FILTER'); ?>" aria-invalid="false" tabindex="-1">
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="clearfix"></div>
-
-                    <hr class="hr-condensed" />
 
                     <ul class="treeselect">
                         <?php foreach ($menuTypes as &$type) : ?>
                         <?php if (count($type->links)) : ?>
                             <?php $prevlevel = 0; ?>
                             <li>
-                                <div class="treeselect-item pull-left">
-                                    <label class="pull-left nav-header"><?php echo $type->title; ?></label></div>
+                                <div class="treeselect-item">
+                                    <label class="nav-header"><?php echo $type->title; ?></label>
+                                </div>
                             <?php foreach ($type->links as $i => $link) : ?>
                                 <?php
                                 if ($prevlevel < $link->level)
@@ -137,31 +156,51 @@ JFactory::getDocument()->addScriptDeclaration($script);
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
-                    <div id="noresultsfound" style="display:none;" class="alert alert-no-items">
+                    <div id="noresultsfound" style="display:none;" class="k-alert k-alert--info alert-no-items">
                         <?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
                     </div>
+                    <?php // @TODO: See why this is not being used; ?>
                     <div style="display:none;" id="treeselectmenu">
                         <div class="pull-left nav-hover treeselect-menu">
                             <div class="btn-group">
-                                <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-micro">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle k-button k-button--tiny">
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-header"><?php echo JText::_('COM_MODULES_SUBITEMS'); ?></li>
                                     <li class="divider"></li>
-                                    <li class=""><a class="checkall" href="javascript://"><span class="icon-checkbox"></span> <?php echo JText::_('JSELECT'); ?></a>
+                                    <li class="">
+                                        <a class="checkall k-button k-button--tiny" href="javascript://">
+                                            <span class="icon-checkbox"></span>
+                                            <?php echo JText::_('JSELECT'); ?>
+                                        </a>
                                     </li>
-                                    <li><a class="uncheckall" href="javascript://"><span class="icon-checkbox-unchecked"></span> <?php echo JText::_('COM_MODULES_DESELECT'); ?></a>
+                                    <li>
+                                        <a class="uncheckall k-button k-button--tiny" href="javascript://">
+                                            <span class="icon-checkbox-unchecked"></span>
+                                            <?php echo JText::_('COM_MODULES_DESELECT'); ?>
+                                        </a>
                                     </li>
                                     <div class="treeselect-menu-expand">
-                                    <li class="divider"></li>
-                                    <li><a class="expandall" href="javascript://"><span class="icon-plus"></span> <?php echo JText::_('COM_MODULES_EXPAND'); ?></a></li>
-                                    <li><a class="collapseall" href="javascript://"><span class="icon-minus"></span> <?php echo JText::_('COM_MODULES_COLLAPSE'); ?></a></li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a class="expandall k-button k-button--tiny" href="javascript://">
+                                                <span class="icon-plus"></span>
+                                                <?php echo JText::_('COM_MODULES_EXPAND'); ?>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="collapseall k-button k-button--tiny" href="javascript://">
+                                                <span class="icon-minus"></span>
+                                                <?php echo JText::_('COM_MODULES_COLLAPSE'); ?>
+                                            </a>
+                                        </li>
                                     </div>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <?php // @TODO: END; ?>
                 </div>
                 <?php endif; ?>
             </div>

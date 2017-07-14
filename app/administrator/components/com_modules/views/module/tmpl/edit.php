@@ -214,7 +214,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 						</div>
 					<?php endif; ?>
 				<?php else : ?>
-					<div class="alert alert-error"><?php echo JText::_('COM_MODULES_ERR_XML'); ?></div>
+					<div class="k-alert k-alert--error"><?php echo JText::_('COM_MODULES_ERR_XML'); ?></div>
 				<?php endif; ?>
 				<?php
 				if ($hasContent)
