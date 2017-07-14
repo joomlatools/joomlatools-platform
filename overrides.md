@@ -1,24 +1,24 @@
-- [x] com_config / application / default.php
-- [x] com_config / application / default_navigation.php
-- [-] com_config / application / default_permissions.php
-- [x] com_config / component / default.php
-- [x] com_config / component / default_navigation.php
-- [x] com_cpanel / cpanel / default.php
-- [x] com_languages / installed / default.php
-- [x] com_languages / language / edit.php
-- [x] com_languages / languages / default.php
-- [?] com_languages / multilangstatus / default.php
-- [ ] com_menus / item / edit.php
-- [ ] com_menus / item / edit_associations.php
-- [ ] com_menus / item / edit_modules.php
-- [ ] com_menus / item / edit_options.php
-- [ ] com_menus / items / default.php
-- [ ] com_menus / items / default_batch.php
-- [ ] com_menus / items / default_batch_body.php
-- [ ] com_menus / items / default_batch_footer.php
-- [ ] com_menus / menu / edit.php
-- [ ] com_menus / menus / default.php
-- [ ] com_menus / menutypes / default.php
+- [ x ] com_config / application / default.php
+- [ x ] com_config / application / default_navigation.php
+- [ - ] com_config / application / default_permissions.php
+- [ x ] com_config / component / default.php
+- [ x ] com_config / component / default_navigation.php
+- [ x ] com_cpanel / cpanel / default.php
+- [ x ] com_languages / installed / default.php
+- [ x ] com_languages / language / edit.php
+- [ x ] com_languages / languages / default.php
+- [ ? ] com_languages / multilangstatus / default.php
+- [ x ] com_menus / item / edit.php
+- [ - ] com_menus / item / edit_associations.php
+- [ x ] com_menus / item / edit_modules.php
+- [ ? ] com_menus / item / edit_options.php
+- [ x ] com_menus / items / default.php
+- [ x ] com_menus / items / default_batch.php
+- [ x ] com_menus / items / default_batch_body.php
+- [ x ] com_menus / items / default_batch_footer.php
+- [ x ] com_menus / menu / edit.php
+- [ x ] com_menus / menus / default.php
+- [ - ] com_menus / menutypes / default.php
 - [ ] com_modules / module / edit.php
 - [ ] com_modules / module / edit_assignment.php
 - [ ] com_modules / module / edit_options.php

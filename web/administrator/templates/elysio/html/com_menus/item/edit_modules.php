@@ -45,7 +45,6 @@ ul.horizontal-buttons li {
 <div class="k-container">
     <div class="k-container__full">
 
-
         <?php
         // Set main fields.
         $this->fields = array('toggle_modules_assigned','toggle_modules_published');
