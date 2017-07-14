@@ -3,47 +3,30 @@
  * @package     Joomla.Administrator
  * @subpackage  com_plugins
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
 // Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 
-$user		= JFactory::getUser();
-$listOrder	= $this->escape($this->state->get('list.ordering'));
-$listDirn	= $this->escape($this->state->get('list.direction'));
-$canOrder	= $user->authorise('core.edit.state',	'com_plugins');
-$saveOrder	= $listOrder == 'ordering';
+$user      = JFactory::getUser();
+$listOrder = $this->escape($this->state->get('list.ordering'));
+$listDirn  = $this->escape($this->state->get('list.direction'));
+$canOrder  = $user->authorise('core.edit.state', 'com_plugins');
+$saveOrder = $listOrder == 'ordering';
+
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_plugins&task=plugins.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+    $saveOrderingUrl = 'index.php?option=com_plugins&task=plugins.saveOrderAjax&tmpl=component';
+    JHtml::_('sortablelist.sortable', 'pluginList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
-$sortFields = $this->getSortFields();
 ?>
-<script type="text/javascript">
-	Joomla.orderTable = function()
-	{
-		table = document.getElementById("sortTable");
-		direction = document.getElementById("directionTable");
-		order = table.options[table.selectedIndex].value;
-		if (order != '<?php echo $listOrder; ?>')
-		{
-			dirn = 'asc';
-		}
-		else
-		{
-			dirn = direction.options[direction.selectedIndex].value;
-		}
-		Joomla.tableOrdering(order, dirn, '');
-	}
-</script>
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
@@ -56,38 +39,46 @@ $sortFields = $this->getSortFields();
 	<!-- Table -->
 	<div class="k-table-container">
 		<div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table">
+            <table class="k-js-fixed-table-header k-js-responsive-table" id="pluginList">
 				<thead>
 					<tr>
-						<th width="1%">
-							<?php echo JHtml::_('grid.sort', '<i class="icon-menu-2"></i>', 'ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
-						</th>
-						<th width="1%">
-							<?php echo JHtml::_('grid.checkall'); ?>
-						</th>
-						<th width="1%"></th>
-						<th>
-							<?php echo JHtml::_('grid.sort', 'COM_PLUGINS_NAME_HEADING', 'name', $listDirn, $listOrder); ?>
-						</th>
-						<th width="10%">
-							<?php echo JHtml::_('grid.sort', 'COM_PLUGINS_FOLDER_HEADING', 'folder', $listDirn, $listOrder); ?>
-						</th>
-						<th width="10%">
-							<?php echo JHtml::_('grid.sort', 'COM_PLUGINS_ELEMENT_HEADING', 'element', $listDirn, $listOrder); ?>
-						</th>
-						<th width="5%">
-							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
-						</th>
+                        <?php // @TODO: Can't sort on this column, bug to fix; ?>
+                        <th width="1%" class="k-table-data--icon">
+                            <?php echo JHtml::_('grid.sort', '<span class="k-icon-move"></span>', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
+                        </th>
+                        <?php // @TODO: END; ?>
+                        <th width="1%" class="k-table-data--form">
+                            <?php echo JHtml::_('grid.checkall'); ?>
+                        </th>
+                        <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
+                        <th width="1%">
+                            <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
+                        </th>
+                        <th>
+                            <?php echo JHtml::_('searchtools.sort', 'COM_PLUGINS_NAME_HEADING', 'name', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="10%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_PLUGINS_FOLDER_HEADING', 'folder', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="10%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_PLUGINS_ELEMENT_HEADING', 'element', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="5%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'extension_id', $listDirn, $listOrder); ?>
+                        </th>
 					</tr>
 				</thead>
 				<tbody>
-				<?php foreach ($this->items as $i => $item) :
-					$ordering   = ($listOrder == 'ordering');
-					$canEdit    = $user->authorise('core.edit',       'com_plugins');
-					$canCheckin = $item->checked_out == $user->get('id') || $item->checked_out == 0;
-					$canChange  = $user->authorise('core.edit.state', 'com_plugins') && $canCheckin;
-					?>
-					<tr sortable-group-id="<?php echo $item->folder?>">
+                <?php foreach ($this->items as $i => $item) :
+                    $ordering   = ($listOrder == 'ordering');
+                    $canEdit    = $user->authorise('core.edit',       'com_plugins');
+                    $canCheckin = $item->checked_out == $user->get('id') || $item->checked_out == 0;
+                    $canChange  = $user->authorise('core.edit.state', 'com_plugins') && $canCheckin;
+                    ?>
+					<tr>
 						<td>
 							<?php
 							$iconClass = '';
@@ -101,15 +92,17 @@ $sortFields = $this->getSortFields();
 							}
 							?>
 							<span class="sortable-handler<?php echo $iconClass ?>">
-								<i class="icon-menu"></i>
+								<span class="k-positioner"></span>
 							</span>
 							<?php if ($canChange && $saveOrder) : ?>
+                                <span class="k-positioner"></span>
 								<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering;?>" class="width-20 text-area-order " />
-							<?php endif; ?>
+                            <?php endif; ?>
 						</td>
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->extension_id); ?>
 						</td>
+                        <td class="k-table-data--toggle"></td>
 						<td>
 							<?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'plugins.', $canChange); ?>
 						</td>
@@ -133,14 +126,16 @@ $sortFields = $this->getSortFields();
 						<td>
 							<?php echo $this->escape($item->access_level); ?>
 						</td>
+                        <td>
+                            <?php echo (int) $item->extension_id; ?>
+                        </td>
 					</tr>
 				<?php endforeach; ?>
 				</tbody>
 			</table>
+
             <input type="hidden" name="task" value="" />
             <input type="hidden" name="boxchecked" value="0" />
-            <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-            <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
             <?php echo JHtml::_('form.token'); ?>
 
         </div><!-- .k-table -->

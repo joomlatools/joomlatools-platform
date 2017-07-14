@@ -31,9 +31,9 @@
 - [ ? ] com_modules / positions / modal.php
 - [ ? ] com_modules / preview / default.php
 - [ x ] com_modules / select / default.php
-- [ ] com_plugins / plugin / edit.php
-- [ ] com_plugins / plugin / edit_options.php
-- [ ] com_plugins / plugins / default.php
+- [ x ] com_plugins / plugin / edit.php
+- [ x ] com_plugins / plugin / edit_options.php
+- [ x ] com_plugins / plugins / default.php
 - [ ] com_templates / style / edit.php
 - [ ] com_templates / style / edit_assignment.php
 - [ ] com_templates / style / edit_options.php
