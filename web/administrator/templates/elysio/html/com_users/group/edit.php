@@ -3,30 +3,30 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
 // Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-JHtml::_('behavior.formvalidation');
-?>
+JHtml::_('behavior.formvalidator');
 
-<script type="text/javascript">
+JFactory::getDocument()->addScriptDeclaration("
 	Joomla.submitbutton = function(task)
 	{
-		if (task == 'group.cancel' || document.formvalidator.isValid(document.id('group-form')))
+		if (task == 'group.cancel' || document.formvalidator.isValid(document.getElementById('group-form')))
 		{
 			Joomla.submitform(task, document.getElementById('group-form'));
 		}
-	}
-</script>
+	};
+");
+?>
 
 <!-- Form -->
-<form class="k-form-layout" action="<?php echo JRoute::_('index.php?option=com_users&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="group-form">
+<form class="k-component k-js-component k-js-form-controller form-validate" action="<?php echo JRoute::_('index.php?option=com_users&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="group-form">
 
 	<!-- Container -->
 	<div class="k-container">
@@ -54,4 +54,4 @@ JHtml::_('behavior.formvalidation');
 
 	</div><!-- .k-container -->
 
-</form><!-- .k-form-layout -->
+</form><!-- .k-component -->

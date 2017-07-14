@@ -30,9 +30,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                 <thead>
                 <tr>
                     <th>
-                        <?php echo JHtml::_('grid.sort', 'COM_USERS_HEADING_ASSET_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_ASSET_TITLE', 'a.title', $listDirn, $listOrder); ?>
                     </th>
-                    <th                        <?php echo JHtml::_('grid.sort', 'COM_USERS_HEADING_ASSET_NAME', 'a.name', $listDirn, $listOrder); ?>
+                    <th>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_ASSET_NAME', 'a.name', $listDirn, $listOrder); ?>
                     </th>
                     <?php foreach ($this->actions as $key => $action) : ?>
                         <th width="5%">
@@ -40,62 +41,60 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                         </th>
                     <?php endforeach; ?>
                     <th width="5%">
-                        <?php echo JHtml::_('grid.sort', 'COM_USERS_HEADING_LFT', 'a.lft', $listDirn, $listOrder); ?>
+                        <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_LFT', 'a.lft', $listDirn, $listOrder); ?>
+                    </th>
+                    <th width="1%">
+                        <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                     </th>
                 </tr>
                 </thead>
-                <tfoot>
-                <tr>
-                    <td colspan="15">
-                        <?php echo JText::_('COM_USERS_DEBUG_LEGEND'); ?>
-                        <span class="btn disabled btn-micro btn-warning"><i class="icon-white icon-ban-circle"></i></span> <?php echo JText::_('COM_USERS_DEBUG_IMPLICIT_DENY');?>
-                        <span class="btn disabled btn-micro btn-success"><i class="icon-white icon-ok"></i></span> <?php echo JText::_('COM_USERS_DEBUG_EXPLICIT_ALLOW');?>
-                        <span class="btn disabled btn-micro btn-danger"><i class="icon-white icon-remove"></i></span> <?php echo JText::_('COM_USERS_DEBUG_EXPLICIT_DENY');?>
-                    </td>
-                </tr>
-                </tfoot>
                 <tbody>
                 <?php foreach ($this->items as $i => $item) : ?>
                     <tr>
                         <td>
                             <?php echo $this->escape($item->title); ?>
                         </td>
-                        <td class="k-table-data--nowrap">
-                            <?php echo str_repeat('<span class="gi">|&mdash;</span>', $item->level) ?>
-                            <?php echo $this->escape($item->name); ?>
+                        <td>
+                            <?php echo JLayoutHelper::render('joomla.html.treeprefix', array('level' => $item->level + 1)) . $this->escape($item->name); ?>
                         </td>
                         <?php foreach ($this->actions as $action) : ?>
                             <?php
                             $name  = $action[0];
                             $check = $item->checks[$name];
                             if ($check === true) :
-                                $class  = 'icon-ok';
-                                $button = 'btn-success';
+                                $class  = 'k-icon-check k-icon--success';
                             elseif ($check === false) :
-                                $class  = 'icon-remove';
-                                $button = 'btn-danger';
+                                $class  = 'k-icon-x k-icon--error';
                             elseif ($check === null) :
-                                $class  = 'icon-ban-circle';
-                                $button = 'btn-warning';
+                                $class  = 'k-icon-ban';
                             else :
                                 $class  = '';
-                                $button = '';
                             endif;
                             ?>
-                            <td class="center">
-                            <span class="btn disabled btn-micro <?php echo $button; ?>">
-                                <i class="icon-white <?php echo $class; ?>"></i>
-                            </span>
+                            <td class="k-table-data--center">
+                                <span class="<?php echo $class; ?>"></span>
                             </td>
                         <?php endforeach; ?>
-                        <td class="k-table-data--center k-table-data--nowrap">
+                        <td>
                             <?php echo (int) $item->lft; ?>
                             - <?php echo (int) $item->rgt; ?>
+                        </td>
+                        <td>
+                            <?php echo (int) $item->id; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
             </table>
+        </div>
+
+        <div class="k-table-pagination">
+            <strong>
+                <?php echo JText::_('COM_USERS_DEBUG_LEGEND'); ?>
+            </strong>
+            <span class="k-icon-ban"></span> <?php echo JText::_('COM_USERS_DEBUG_IMPLICIT_DENY'); ?>&nbsp;
+            <span class="k-icon-check k-icon--success"></span> <?php echo JText::_('COM_USERS_DEBUG_EXPLICIT_ALLOW'); ?>&nbsp;
+            <span class="k-icon-x k-icon--error"></span> <?php echo JText::_('COM_USERS_DEBUG_EXPLICIT_DENY'); ?>
         </div>
 
         <!-- Pagination -->
@@ -105,8 +104,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
     <input type="hidden" name="task" value="" />
     <input type="hidden" name="boxchecked" value="0" />
-    <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-    <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
     <?php echo JHtml::_('form.token'); ?>
+
 </form>
 

@@ -8211,9 +8211,11 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-list .active { font-weight: 700; }
 
-.k-ui-namespace .label { background: #a2a1a1; vertical-align: middle; }
+.k-ui-namespace .label { background: #a2a1a1; color: white; vertical-align: middle; }
 
-.k-ui-namespace .label-warning { background: #e67e22; }
+.k-ui-namespace a.label { color: white; }
+
+.k-ui-namespace .label-important, .k-ui-namespace .label-warning { background: #e67e22; }
 
 .k-ui-namespace .label-info { background: #3071a9; }
 

@@ -25,7 +25,7 @@ $resetOptions = array(
 ?>
 
 <div id="batch-choose-action" class="k-form-group">
-    <label id="batch-choose-action-lbl" class="control-label" for="batch-choose-action">
+    <label id="batch-choose-action-lbl" for="batch-choose-action">
         <?php echo JText::_('COM_USERS_BATCH_GROUP') ?>
     </label>
     <select name="batch[group_id]" id="batch-group-id">

@@ -34,16 +34,16 @@ $fieldsets = $this->form->getFieldsets();
 <!-- Form -->
 <form class="k-component k-js-component k-js-form-controller" action="<?php echo JRoute::_('index.php?option=com_users&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="user-form" enctype="multipart/form-data">
 
-    <!-- Container -->
-    <div class="k-container">
+    <div class="k-tabs-container">
 
-        <div class="k-container__content">
+        <? // Starting tabs ?>
+        <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+        <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_USERS_USER_ACCOUNT_DETAILS', true)); ?>
 
-            <? // Starting tabs ?>
-            <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+        <div class="k-container">
 
-                <? // Account details ?>
-                <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_USERS_USER_ACCOUNT_DETAILS', true)); ?>
+            <!-- Main information -->
+            <div class="k-container__main">
 
                 <?php foreach ($this->form->getFieldset('user_details') as $field) : ?>
                     <div class="k-container__main">
@@ -59,27 +59,32 @@ $fieldsets = $this->form->getFieldsets();
                     </div>
                 <?php endforeach; ?>
 
+            </div>
+
+        </div>
+
+        <?php echo JHtml::_('bootstrap.endTab'); ?>
+
+            <?php if ($this->grouplist) : ?>
+                <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'groups', JText::_('COM_USERS_ASSIGNED_GROUPS')); ?>
+                <div class="k-container">
+                    <div class="k-container__main">
+                        <?php echo $this->loadTemplate('groups'); ?>
+                    </div>
+                </div>
                 <?php echo JHtml::_('bootstrap.endTab'); ?>
+            <?php endif; ?>
 
-                <?php if ($this->grouplist) : ?>
-                    <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'groups', JText::_('COM_USERS_ASSIGNED_GROUPS')); ?>
-                    <?php echo $this->loadTemplate('groups'); ?>
-                    <?php echo JHtml::_('bootstrap.endTab'); ?>
-                <?php endif; ?>
+            <?php
+            $this->ignore_fieldsets = array('user_details');
+            echo JLayoutHelper::render('joomla.edit.params', $this);
+            ?>
 
-                <?php
-                $this->ignore_fieldsets = array('user_details');
-                echo JLayoutHelper::render('joomla.edit.params', $this);
-                ?>
+        <?php echo JHtml::_('bootstrap.endTabSet'); ?>
 
-            <? // Ending tabs ?>
-            <?php echo JHtml::_('bootstrap.endTabSet'); ?>
+        <input type="hidden" name="task" value="" />
+        <?php echo JHtml::_('form.token'); ?>
 
-            <input type="hidden" name="task" value="" />
-            <?php echo JHtml::_('form.token'); ?>
-
-        </div><!-- .k-container__content -->
-
-    </div><!-- .k-container -->
+    </div>
 
 </form><!-- .k-form-layout -->

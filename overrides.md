@@ -39,21 +39,21 @@
 - [ x ] com_templates / style / edit_options.php
 - [ x ] com_templates / styles / default.php
 - [ x ] com_templates / templates / default.php
-- [ ] com_users / debuggroup / default.php
-- [ ] com_users / debuguser / default.php
-- [ ] com_users / group / edit.php
-- [ ] com_users / groups / default.php
-- [ ] com_users / level / edit.php
-- [ ] com_users / levels / default.php
-- [ ] com_users / login / default.php
-- [ ] com_users / profile / edit.php
-- [ ] com_users / user / edit.php
-- [ ] com_users / user / edit_groups.php
-- [ ] com_users / users / default.php
-- [ ] com_users / users / default_batch.php
-- [ ] com_users / users / default_batch_body.php
-- [ ] com_users / users / default_batch_footer.php
-- [ ] com_users / users / modal.php
+- [ x ] com_users / debuggroup / default.php
+- [ x ] com_users / debuguser / default.php
+- [ x ] com_users / group / edit.php
+- [ x ] com_users / groups / default.php
+- [ x ] com_users / level / edit.php
+- [ x ] com_users / levels / default.php
+- [ ? ] com_users / login / default.php
+- [ x ] com_users / profile / edit.php
+- [ x ] com_users / user / edit.php
+- [ - ] com_users / user / edit_groups.php
+- [ x ] com_users / users / default.php
+- [ x ] com_users / users / default_batch.php
+- [ x ] com_users / users / default_batch_body.php
+- [ x ] com_users / users / default_batch_footer.php
+- [ ? ] com_users / users / modal.php
 
 Legend:
 x: done

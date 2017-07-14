@@ -298,9 +298,15 @@ form legend {
 
 .label {
   background: $k-color-type-light;
+  color: white;
   vertical-align: middle;
 }
 
+a.label {
+  color:white;
+}
+
+.label-important,
 .label-warning {
   background: $k-color-warning;
 }

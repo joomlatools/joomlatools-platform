@@ -31,34 +31,32 @@ $resetOptions = array(
 		<h3 class="k-heading"><?php echo JText::_('COM_USERS_BATCH_OPTIONS'); ?></h3>
 	</div>
 	<div class="modal-body modal-batch">
-		<div class="row-fluid">
-			<div id="batch-choose-action" class="combo control-group">
-				<label id="batch-choose-action-lbl" class="control-label" for="batch-choose-action">
-					<?php echo JText::_('COM_USERS_BATCH_GROUP') ?>
-				</label>
-			</div>
-			<div id="batch-choose-action" class="combo controls">
-				<div class="control-group">
-					<select name="batch[group_id]" id="batch-group-id">
-						<option value=""><?php echo JText::_('JSELECT') ?></option>
-						<?php echo JHtml::_('select.options', JHtml::_('user.groups')); ?>
-					</select>
-				</div>
-			</div>
-			<div class="control-group radio">
-				<?php echo JHtml::_('select.radiolist', $options, 'batch[group_action]', '', 'value', 'text', 'add') ?>
-			</div>
-		</div>
+        <div id="batch-choose-action" class="k-form-group combo">
+            <label id="batch-choose-action-lbl" for="batch-choose-action">
+                <?php echo JText::_('COM_USERS_BATCH_GROUP') ?>
+            </label>
+        </div>
+        <div id="batch-choose-action" class="combo">
+            <div class="k-form-group">
+                <select name="batch[group_id]" id="batch-group-id">
+                    <option value=""><?php echo JText::_('JSELECT') ?></option>
+                    <?php echo JHtml::_('select.options', JHtml::_('user.groups')); ?>
+                </select>
+            </div>
+        </div>
+        <div class="k-form-group radio">
+            <?php echo JHtml::_('select.radiolist', $options, 'batch[group_action]', '', 'value', 'text', 'add') ?>
+        </div>
 		<label><?php echo JText::_('COM_USERS_REQUIRE_PASSWORD_RESET'); ?></label>
-		<div class="control-group radio">
+		<div class="k-form-group radio">
 			<?php echo JHtml::_('select.radiolist', $resetOptions, 'batch[reset_id]', '', 'value', 'text', '') ?>
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn" type="button" onclick="document.getElementById('batch-group-id').value=''" data-dismiss="modal">
+		<button class="k-button k-button--defaul" type="button" onclick="document.getElementById('batch-group-id').value=''" data-dismiss="modal">
 			<?php echo JText::_('JCANCEL'); ?>
 		</button>
-		<button class="btn btn-primary" type="submit" onclick="Joomla.submitbutton('user.batch');">
+		<button class="k-button k-button--primary" type="submit" onclick="Joomla.submitbutton('user.batch');">
 			<?php echo JText::_('JGLOBAL_BATCH_PROCESS'); ?>
 		</button>
 	</div>

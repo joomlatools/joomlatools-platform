@@ -65,7 +65,7 @@ function addFormControlClass($input) {
     }
 
     // If the field is not a text field or textarea; return original
-    if (strpos($input, 'type="text') === false && strpos($input, '<textarea') === false) {
+    if (strpos($input, 'type="text') === false && strpos($input, 'type="password') === false && strpos($input, 'type="email') === false && strpos($input, '<textarea') === false) {
         return $input;
     }
 
