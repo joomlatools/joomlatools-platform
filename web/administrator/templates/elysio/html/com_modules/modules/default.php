@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_modules
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,39 +12,18 @@ defined('_JEXEC') or die;
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 
-$client		= $this->state->get('filter.client_id') ? 'administrator' : 'site';
+$clientId   = (int) $this->state->get('client_id', 0);
 $user		= JFactory::getUser();
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
-$trashed	= $this->state->get('filter.published') == -2 ? true : false;
-$canOrder	= $user->authorise('core.edit.state', 'com_modules');
-$saveOrder	= $listOrder == 'ordering';
+$saveOrder	= ($listOrder == 'a.ordering');
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+    $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component';
+    JHtml::_('sortablelist.sortable', 'moduleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
-$sortFields = $this->getSortFields();
-
+$colSpan = $clientId === 1 ? 9 : 10;
 ?>
-
-<script type="text/javascript">
-	Joomla.orderTable = function()
-	{
-		table = document.getElementById("sortTable");
-		direction = document.getElementById("directionTable");
-		order = table.options[table.selectedIndex].value;
-		if (order != '<?php echo $listOrder; ?>')
-		{
-			dirn = 'asc';
-		}
-		else
-		{
-			dirn = direction.options[direction.selectedIndex].value;
-		}
-		Joomla.tableOrdering(order, dirn, '');
-	}
-</script>
 
 <!-- Form -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_modules'); ?>" method="post" name="adminForm" id="adminForm">
@@ -62,28 +41,32 @@ $sortFields = $this->getSortFields();
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
                         <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-						<th width="1%"></th>
-						<th>
-							<?php echo JHtml::_('grid.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
-						</th>
-						<th width="1%">
-							<?php echo JHtml::_('grid.sort', 'COM_MODULES_HEADING_POSITION', 'position', $listDirn, $listOrder); ?>
-						</th>
-						<th width="15%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'COM_MODULES_HEADING_MODULE', 'name', $listDirn, $listOrder); ?>
-						</th>
-						<th width="1%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'COM_MODULES_HEADING_PAGES', 'pages', $listDirn, $listOrder); ?>
-						</th>
-						<th width="1%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
-						</th>
-						<th width="1%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_LANGUAGE', 'language_title', $listDirn, $listOrder); ?>
-						</th>
-						<th width="1%" data-hide="phone,tablet">
-							<?php echo JHtml::_('grid.sort', '<i class="icon-menu-2"></i>', 'ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
-						</th>
+                        <th width="1%">
+                            <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
+                        </th>
+                        <th>
+                            <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_MODULES_HEADING_POSITION', 'a.position', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'COM_MODULES_HEADING_MODULE', 'name', $listDirn, $listOrder); ?>
+                        </th>
+                        <?php if ($clientId === 0) : ?>
+                            <th data-hide="phone,tablet">
+                                <?php echo JHtml::_('searchtools.sort', 'COM_MODULES_HEADING_PAGES', 'pages', $listDirn, $listOrder); ?>
+                            </th>
+                        <?php endif; ?>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'ag.title', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'l.title', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+                        </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -99,27 +82,37 @@ $sortFields = $this->getSortFields();
 							<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 						</td>
                         <td class="k-table-data--toggle"></td>
-						<td>
-							<div class="btn-group">
-								<?php echo JHtml::_('modules.state', $item->published, $i, $canChange, 'cb'); ?>
-								<?php
-									// Create dropdown items
-									JHtml::_('actionsdropdown.duplicate', 'cb' . $i, 'modules');
-
-									$action = $trashed ? 'untrash' : 'trash';
-									JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'modules');
-
-								// Render dropdown list
-								echo JHtml::_('actionsdropdown.render', $this->escape($item->title));
-								?>
-							</div>
-						</td>
-						<td class="k-table-data--ellipsis">
-                            <?php if ($item->checked_out) : ?>
+                        <td>
+                            <div class="btn-group">
+                                <?php // Check if extension is enabled ?>
+                                <?php if ($item->enabled > 0) : ?>
+                                    <?php echo JHtml::_('jgrid.published', $item->published, $i, 'modules.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+                                    <?php // Create dropdown items and render the dropdown list.
+                                    if ($canCreate)
+                                    {
+                                        JHtml::_('actionsdropdown.duplicate', 'cb' . $i, 'modules');
+                                    }
+                                    if ($canChange)
+                                    {
+                                        JHtml::_('actionsdropdown.' . ((int) $item->published === -2 ? 'un' : '') . 'trash', 'cb' . $i, 'modules');
+                                    }
+                                    if ($canCreate || $canChange)
+                                    {
+                                        echo JHtml::_('actionsdropdown.render', $this->escape($item->title));
+                                    }
+                                    ?>
+                                <?php else : ?>
+                                    <?php // Extension is not enabled, show a message that indicates this. ?>
+                                    <button class="btn-micro hasTooltip" title="<?php echo JText::_('COM_MODULES_MSG_MANAGE_EXTENSION_DISABLED'); ?>"><i class="icon-ban-circle"></i></button>
+                                <?php endif; ?>
+                            </div>
+                        </td>
+                        <td>
+                            <?php if (JHtml::_('grid.ischeckedout', $item)) : ?>
                                 <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'modules.', $canCheckin); ?>
                             <?php endif; ?>
                             <?php if ($canEdit) : ?>
-                                <a href="<?php echo JRoute::_('index.php?option=com_modules&task=module.edit&id='.(int) $item->id); ?>">
+                                <a class="hasTooltip" href="<?php echo JRoute::_('index.php?option=com_modules&task=module.edit&id=' . (int) $item->id); ?>" title="<?php echo JText::_('JACTION_EDIT'); ?>">
                                     <?php echo $this->escape($item->title); ?></a>
                             <?php else : ?>
                                 <?php echo $this->escape($item->title); ?>
@@ -127,68 +120,54 @@ $sortFields = $this->getSortFields();
 
                             <?php if (!empty($item->note)) : ?>
                                 <div class="small">
-                                    <?php echo JText::sprintf('JGLOBAL_LIST_NOTE', $this->escape($item->note));?>
+                                    <?php echo JText::sprintf('JGLOBAL_LIST_NOTE', $this->escape($item->note)); ?>
                                 </div>
                             <?php endif; ?>
-						</td>
-						<td>
-							<?php if ($item->position) : ?>
-								<span class="label label-info">
+                        </td>
+                        <td>
+                            <?php if ($item->position) : ?>
+                                <span class="label label-info">
 									<?php echo $item->position; ?>
 								</span>
-							<?php else : ?>
-								<span class="label">
+                            <?php else : ?>
+                                <span class="label">
 									<?php echo JText::_('JNONE'); ?>
 								</span>
-							<?php endif; ?>
-						</td>
-						<td>
-							<?php echo $item->name;?>
-						</td>
-						<td>
-							<?php echo $item->pages; ?>
-						</td>
-						<td>
-							<?php echo $this->escape($item->access_level); ?>
-						</td>
-						<td>
-							<?php if ($item->language == ''):?>
-								<?php echo JText::_('JDEFAULT'); ?>
-							<?php elseif ($item->language == '*'):?>
-								<?php echo JText::alt('JALL', 'language'); ?>
-							<?php else:?>
-								<?php echo $item->language_title ? $this->escape($item->language_title) : JText::_('JUNDEFINED'); ?>
-							<?php endif;?>
-						</td>
-						<td>
-							<?php
-							$iconClass = '';
-							if (!$canChange)
-							{
-								$iconClass = ' inactive';
-							}
-							elseif (!$saveOrder)
-							{
-								$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-							}
-							?>
-							<span class="sortable-handler<?php echo $iconClass ?>">
-								<i class="icon-menu"></i>
-							</span>
-							<?php if ($canChange && $saveOrder) : ?>
-								<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering;?>" class="width-20 text-area-order" />
-							<?php endif; ?>
-						</td>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php echo $item->name;?>
+                        </td>
+                        <?php if ($clientId === 0) : ?>
+                            <td>
+                                <?php echo $item->pages; ?>
+                            </td>
+                        <?php endif; ?>
+                        <td>
+                            <?php echo $this->escape($item->access_level); ?>
+                        </td>
+                        <td>
+                            <?php if ($item->language == '') : ?>
+                                <?php echo JText::_('JDEFAULT'); ?>
+                            <?php elseif ($item->language == '*'):?>
+                                <?php echo JText::alt('JALL', 'language'); ?>
+                            <?php else:?>
+                                <?php echo $item->language_title ? JHtml::_('image', 'mod_languages/' . $item->language_image . '.gif', $item->language_title, array('title' => $item->language_title), true) . '&nbsp;' . $this->escape($item->language_title) : JText::_('JUNDEFINED'); ?>
+                            <?php endif;?>
+                        </td>
+                        <td>
+                            <?php echo (int) $item->id; ?>
+                        </td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-			<input type="hidden" name="task" value="" />
-			<input type="hidden" name="boxchecked" value="0" />
-			<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-			<?php echo JHtml::_('form.token'); ?>
-		</div><!-- .k-table -->
+
+            <input type="hidden" name="task" value="" />
+            <input type="hidden" name="boxchecked" value="0" />
+            <?php echo JHtml::_('form.token'); ?>
+
+        </div><!-- .k-table -->
 
         <!-- Pagination -->
         <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
@@ -199,5 +178,18 @@ $sortFields = $this->getSortFields();
 
 <div class="k-dynamic-content-holder">
     <?php //Load the batch processing form. ?>
-    <?php echo $this->loadTemplate('batch'); ?>
+    <?php // Load the batch processing form. ?>
+    <?php if ($user->authorise('core.create', 'com_modules')
+        && $user->authorise('core.edit', 'com_modules')
+        && $user->authorise('core.edit.state', 'com_modules')) : ?>
+        <?php echo JHtml::_(
+            'bootstrap.renderModal',
+            'collapseModal',
+            array(
+                'title' => JText::_('COM_MODULES_BATCH_OPTIONS'),
+                'footer' => $this->loadTemplate('batch_footer')
+            ),
+            $this->loadTemplate('batch_body')
+        ); ?>
+    <?php endif; ?>
 </div>

@@ -15,9 +15,7 @@ JHtml::_('bootstrap.popover');
 $document = JFactory::getDocument();
 ?>
 
-
-
-<div class="k-component">
+<div class="k-component k-js-component">
 
     <div class="k-table-container">
         <div class="k-table">
@@ -38,7 +36,6 @@ $document = JFactory::getDocument();
                         <?php $link       = 'index.php?option=com_modules&task=module.add&eid=' . $item->extension_id; ?>
                         <?php $name       = $this->escape($item->name); ?>
                         <?php $desc       = $this->escape(strip_tags($item->desc)); ?>
-
                         <tr>
                             <td>
                                 <a href="<?php echo JRoute::_($link);?>">

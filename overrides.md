@@ -24,13 +24,13 @@
 - [ x ] com_modules / module / edit_options.php
 - [ - ] com_modules / module / edit_positions.php
 - [ x ] com_modules / module / modal.php
-- [ ] com_modules / modules / default.php
-- [ ] com_modules / modules / default_batch.php
-- [ ] com_modules / modules / default_batch_body.php
-- [ ] com_modules / modules / default_batch_footer.php
-- [ ] com_modules / positions / modal.php
-- [ ] com_modules / preview / default.php
-- [ ] com_modules / select / default.php
+- [ x ] com_modules / modules / default.php
+- [ x ] com_modules / modules / default_batch.php
+- [ x ] com_modules / modules / default_batch_body.php
+- [ x ] com_modules / modules / default_batch_footer.php
+- [ ? ] com_modules / positions / modal.php
+- [ ? ] com_modules / preview / default.php
+- [ x ] com_modules / select / default.php
 - [ ] com_plugins / plugin / edit.php
 - [ ] com_plugins / plugin / edit_options.php
 - [ ] com_plugins / plugins / default.php

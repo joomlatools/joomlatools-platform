@@ -8215,6 +8215,8 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .label-warning { background: #e67e22; }
 
+.k-ui-namespace .label-info { background: #3071a9; }
+
 .k-ui-namespace .label-success { background: #27ae60; }
 
 .k-ui-namespace .k-table-container td .select2 { display: inline-block; vertical-align: top; max-width: 90% !important; }
