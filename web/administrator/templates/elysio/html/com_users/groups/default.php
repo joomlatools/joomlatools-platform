@@ -57,6 +57,7 @@ JFactory::getDocument()->addScriptDeclaration('
 						<th width="1%" class="k-table-data--form">
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
+                        <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                         <th>
                             <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_GROUP_TITLE', 'a.title', $listDirn, $listOrder); ?>
                         </th>
@@ -91,6 +92,7 @@ JFactory::getDocument()->addScriptDeclaration('
 								<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 							<?php endif; ?>
 						</td>
+                        <td class="k-table-data--toggle"></td>
                         <td>
                             <?php echo JLayoutHelper::render('joomla.html.treeprefix', array('level' => $item->level + 1)); ?>
                             <?php if ($canEdit) : ?>

@@ -90,7 +90,11 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 
         <div class="k-title-bar k-js-title-bar k-title-bar--mobile">
             <div class="k-title-bar__heading">
-                <?php $option = explode("_", $option); echo $option[1];?>
+                <?php if ($this->countModules('title')) : ?>
+                    <jdoc:include type="modules" name="title" style="none" />
+                <?php else : ?>
+                    <?php $option = explode("_", $option); echo $option[1];?>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -150,7 +154,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
     <div id="modal-holder"></div>
     <script>
         kQuery(document).ready(function($) {
-            var modal = $('#collapseModal, #moduleAddModal');
+            var modal = $('.modal');
             if (modal.length) {
                 modal.appendTo('#modal-holder');
             }

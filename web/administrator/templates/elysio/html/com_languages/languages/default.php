@@ -51,25 +51,25 @@ if ($saveOrder)
                         <th>
                             <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th data-hide="phone">
                             <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_TITLE_NATIVE', 'a.title_native', $listDirn, $listOrder); ?>
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANG_TAG', 'a.lang_code', $listDirn, $listOrder); ?>
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANG_CODE', 'a.sef', $listDirn, $listOrder); ?>
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANG_IMAGE', 'a.image', $listDirn, $listOrder); ?>
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_HOMEPAGE', 'l.home', $listDirn, $listOrder); ?>
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.lang_id', $listDirn, $listOrder); ?>
                         </th>
 					</tr>

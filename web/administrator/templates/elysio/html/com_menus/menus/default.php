@@ -62,13 +62,14 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                     <th width="1%" class="k-table-data--form">
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
+                    <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                     <th>
                         <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="1%">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JText::_('COM_MENUS_HEADING_PUBLISHED_ITEMS'); ?>
                     </th>
-                    <th width="1%">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JText::_('COM_MENUS_HEADING_UNPUBLISHED_ITEMS'); ?>
                     </th>
                     <th width="1%" data-hide="phone,tablet">
@@ -91,6 +92,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                         <td class="k-table-data--form">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
+                        <td class="k-table-data--toggle"></td>
                         <td class="k-table-data--ellipsis">
                             <?php if ($canManageItems) : ?>
                                 <a href="<?php echo JRoute::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype); ?>">

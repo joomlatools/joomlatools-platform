@@ -57,13 +57,13 @@ if ($saveOrder)
                         <th>
                             <?php echo JHtml::_('searchtools.sort', 'COM_PLUGINS_NAME_HEADING', 'name', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="10%" data-hide="phone,tablet">
+                        <th width="11%" data-hide="phone">
                             <?php echo JHtml::_('searchtools.sort', 'COM_PLUGINS_FOLDER_HEADING', 'folder', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="10%" data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'COM_PLUGINS_ELEMENT_HEADING', 'element', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%" data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
                         </th>
                         <th width="1%" data-hide="phone,tablet">
@@ -106,7 +106,7 @@ if ($saveOrder)
 						<td>
 							<?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'plugins.', $canChange); ?>
 						</td>
-						<td>
+						<td class="k-table-data--ellipsis">
 							<?php if ($item->checked_out) : ?>
 								<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'plugins.', $canCheckin); ?>
 							<?php endif; ?>

@@ -19,13 +19,14 @@ $document = JFactory::getDocument();
 
     <div class="k-table-container">
         <div class="k-table">
-            <table>
+            <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                 <tr>
-                    <th width="25%">
+                    <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
+                    <th>
                         <?php echo JText::_('COM_MODULES_TYPE_CHOOSE')?>
                     </th>
-                    <th width="75%">
+                    <th width="75%" data-hide="phone">
                         <?php echo JText::_('TPL_ELYSIO_DESCRIPTION')?>
                     </th>
                 </tr>
@@ -37,6 +38,7 @@ $document = JFactory::getDocument();
                         <?php $name       = $this->escape($item->name); ?>
                         <?php $desc       = $this->escape(strip_tags($item->desc)); ?>
                         <tr>
+                            <td class="k-table-data--toggle"></td>
                             <td>
                                 <a href="<?php echo JRoute::_($link);?>">
                                     <?php echo $name; ?>

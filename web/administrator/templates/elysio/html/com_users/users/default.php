@@ -37,25 +37,25 @@ $loggeduser = JFactory::getUser();
                     <th>
                         <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_NAME', 'a.name', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="10%" data-hide="phone,tablet">
+                    <th data-hide="phone">
                         <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_USERNAME', 'a.username', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="5%" data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_ENABLED', 'a.block', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="5%" data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_ACTIVATED', 'a.activation', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="10%" data-hide="phone,tablet">
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('COM_USERS_HEADING_GROUPS'); ?>
                     </th>
-                    <th width="15%" data-hide="phone,tablet">
+                    <th data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_EMAIL', 'a.email', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="10%" data-hide="phone,tablet">
+                    <th data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_LAST_VISIT_DATE', 'a.lastvisitDate', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="10%" data-hide="phone,tablet">
+                    <th data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_REGISTRATION_DATE', 'a.registerDate', $listDirn, $listOrder); ?>
                     </th>
                     <th width="1%" data-hide="phone,tablet">

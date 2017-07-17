@@ -36,7 +36,7 @@ JFactory::getDocument()->addScriptDeclaration('
 
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
-<form class="k-component k-js-component k-js-form-controller form-validate" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
 
     <div class="k-container">
 

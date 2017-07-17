@@ -45,7 +45,7 @@
 - [ x ] com_users / groups / default.php
 - [ x ] com_users / level / edit.php
 - [ x ] com_users / levels / default.php
-- [ ? ] com_users / login / default.php
+- [ x ] com_users / login / default.php
 - [ x ] com_users / profile / edit.php
 - [ x ] com_users / user / edit.php
 - [ - ] com_users / user / edit_groups.php

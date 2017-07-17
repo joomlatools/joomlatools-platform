@@ -41,16 +41,16 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                         <th>
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_STYLE', 'a.title', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%" data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone">
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_DEFAULT', 'a.home', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%" data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JText::_('COM_TEMPLATES_HEADING_ASSIGNED'); ?>
                         </th>
-                        <th width="10%" data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('grid.sort', 'JCLIENT', 'a.client_id', $listDirn, $listOrder); ?>
                         </th>
-                        <th data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_TEMPLATE', 'a.template', $listDirn, $listOrder); ?>
                         </th>
                         <th width="1%" data-hide="phone,tablet">
@@ -98,7 +98,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                         </td>
                         <td>
                             <?php if ($item->assigned > 0) : ?>
-                                <i class="icon-ok tip hasTooltip" title="<?php echo JHtml::tooltipText(JText::plural('COM_TEMPLATES_ASSIGNED', $item->assigned), '', 0); ?>"></i>
+                                <i class="k-icon-check tip hasTooltip" title="<?php echo JHtml::tooltipText(JText::plural('COM_TEMPLATES_ASSIGNED', $item->assigned), '', 0); ?>"></i>
                             <?php else : ?>
                                 &#160;
                             <?php endif; ?>
@@ -111,7 +111,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                                 <?php echo ucfirst($this->escape($item->template));?>
                             </a>
                         </td>
-                        <td class="hidden-phone hidden-tablet">
+                        <td>
                             <?php echo (int) $item->id; ?>
                         </td>
                     </tr>

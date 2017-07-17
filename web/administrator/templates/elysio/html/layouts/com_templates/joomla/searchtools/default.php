@@ -9,6 +9,10 @@
 
 defined('JPATH_BASE') or die;
 
-$icon = empty($displayData['icon']) ? 'generic' : preg_replace('#\.[^ .]*$#', '', $displayData['icon']);
-?>
-<?php echo $displayData['title']; ?>
+$data = $displayData;
+
+// Receive overridable options
+$data['options'] = !empty($data['options']) ? $data['options'] : array();
+
+// Display the main joomla layout.
+echo JLayoutHelper::render('joomla.searchtools.default', $data, null, array('component' => 'none'));

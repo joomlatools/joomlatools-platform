@@ -35,27 +35,27 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                     <th>
                         <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANGUAGE', 'name', $listDirn, $listOrder); ?>
                     </th>
-                    <th data-hide="phone,tablet">
+                    <th data-hide="phone">
                         <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_LANG_TAG', 'language', $listDirn, $listOrder); ?>
                     </th>
-                    <th data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_DEFAULT', 'published', $listDirn, $listOrder); ?>
                     </th>
-                    <th data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_VERSION', 'version', $listDirn, $listOrder); ?>
                     </th>
                     <?php if(0): ?>
-                    <th data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_DATE', 'creationDate', $listDirn, $listOrder); ?>
                     </th>
-                    <th data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_AUTHOR', 'author', $listDirn, $listOrder); ?>
                     </th>
-                    <th data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_AUTHOR_EMAIL', 'authorEmail', $listDirn, $listOrder); ?>
                     </th>
                     <?php endif; ?>
-                    <th data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'extension_id', $listDirn, $listOrder); ?>
                     </th>
                 </tr>

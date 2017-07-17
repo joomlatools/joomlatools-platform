@@ -46,7 +46,7 @@ include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
 
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
-<form class="k-component" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off">
 
     <div class="k-tabs-container">
         <?php $fieldSets = $this->fieldsets; ?>

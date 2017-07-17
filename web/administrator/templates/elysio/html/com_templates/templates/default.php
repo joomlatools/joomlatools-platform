@@ -39,20 +39,20 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                 <tr>
                     <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                     <?php if(0): ?>
-                    <th width="20%">
+                    <th>
                         <?php echo JText::_('COM_TEMPLATES_HEADING_IMAGE'); ?>
                     </th>
                     <?php endif; ?>
-                    <th>
+                    <th data-hide="phone">
                         <?php echo JHtml::_('searchtools.sort', 'COM_TEMPLATES_HEADING_TEMPLATE', 'a.element', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="10%" data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JText::_('JVERSION'); ?>
                     </th>
-                    <th width="15%" data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JText::_('JDATE'); ?>
                     </th>
-                    <th width="25%" data-hide="phone,tablet">
+                    <th data-hide="phone,tablet">
                         <?php echo JText::_('JAUTHOR'); ?>
                     </th>
                 </tr>
@@ -66,7 +66,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                             <?php echo JHtml::_('templates.thumb', $item->element, $item->client_id); ?>
                         </td>
                         <?php endif; ?>
-                        <td>
+                        <td class="k-table-data--ellipsis">
                             <?php echo JText::sprintf('COM_TEMPLATES_TEMPLATE_DETAILS', ucfirst($item->name)); ?>
                             <div>
                                 <?php if ($this->preview && $item->client_id == '0') : ?>
@@ -85,7 +85,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                         <td>
                             <?php echo $this->escape($item->xmldata->get('version')); ?>
                         </td>
-                        <td>
+                        <td class="k-table-data--nowrap">
                             <?php echo $this->escape($item->xmldata->get('creationDate')); ?>
                         </td>
                         <td>

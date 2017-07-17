@@ -29,21 +29,22 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
             <table class="k-js-fixed-table-header k-js-responsive-table">
                 <thead>
                 <tr>
+                    <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                     <th>
                         <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_ASSET_TITLE', 'a.title', $listDirn, $listOrder); ?>
                     </th>
-                    <th>
+                    <th data-hide="phone">
                         <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_ASSET_NAME', 'a.name', $listDirn, $listOrder); ?>
                     </th>
                     <?php foreach ($this->actions as $key => $action) : ?>
-                        <th width="5%">
+                        <th width="1%" data-hide="phone,tablet">
                             <span class="hasTooltip" title="<?php echo JHtml::tooltipText($key, $action[1]); ?>"><?php echo JText::_($key); ?></span>
                         </th>
                     <?php endforeach; ?>
-                    <th width="5%">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_LFT', 'a.lft', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="1%">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                     </th>
                 </tr>
@@ -51,6 +52,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                 <tbody>
                 <?php foreach ($this->items as $i => $item) : ?>
                     <tr>
+                        <td class="k-table-data--toggle"></td>
                         <td>
                             <?php echo $this->escape($item->title); ?>
                         </td>

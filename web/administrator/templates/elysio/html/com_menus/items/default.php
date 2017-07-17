@@ -52,9 +52,9 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                 <thead>
                 <tr>
                     <?php if ($menuType) : ?>
-                        <th width="1%" class="k-table-data--icon">
-                            <?php echo JHtml::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'k-icon-move'); ?>
-                        </th>
+                    <th width="1%" class="k-table-data--icon">
+                        <?php echo JHtml::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'k-icon-move'); ?>
+                    </th>
                     <?php endif; ?>
                     <th width="1%" class="k-table-data--form">
                         <?php echo JHtml::_('grid.checkall'); ?>
@@ -66,21 +66,21 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                     <th>
                         <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
                     </th>
-                    <th>
+                    <th data-hide="phone">
                         <?php echo JHtml::_('searchtools.sort', 'COM_MENUS_HEADING_MENU', 'menutype_title', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="5%"  data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'COM_MENUS_HEADING_HOME', 'a.home', $listDirn, $listOrder); ?>
                     </th>
-                    <th width="10%" data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
                     </th>
                     <?php if ($assoc) : ?>
-                        <th width="5%" data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'COM_MENUS_HEADING_ASSOCIATION', 'association', $listDirn, $listOrder); ?>
                         </th>
                     <?php endif;?>
-                    <th width="15%" data-hide="phone,tablet">
+                    <th width="1%" data-hide="phone,tablet">
                         <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
                     </th>
                     <th width="1%" data-hide="phone,tablet">

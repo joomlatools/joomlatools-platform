@@ -28,7 +28,7 @@ JFactory::getDocument()->addScriptDeclaration("
 ");
 ?>
 
-<form class="k-component k-js-component k-js-form-controller" action="<?php echo JRoute::_('index.php?option=com_users&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="level-form">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="level-form">
 
     <div class="k-container">
         <div class="k-container__main">

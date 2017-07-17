@@ -32,7 +32,7 @@ $fieldsets = $this->form->getFieldsets();
 ?>
 
 <!-- Form -->
-<form class="k-component k-js-component k-js-form-controller" action="<?php echo JRoute::_('index.php?option=com_users&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="user-form" enctype="multipart/form-data">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="user-form" enctype="multipart/form-data">
 
     <div class="k-tabs-container">
 
@@ -87,4 +87,4 @@ $fieldsets = $this->form->getFieldsets();
 
     </div>
 
-</form><!-- .k-form-layout -->
+</form><!-- .k-component -->

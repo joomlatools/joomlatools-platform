@@ -47,14 +47,14 @@ $colSpan = $clientId === 1 ? 9 : 10;
                         <th>
                             <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="1%" data-hide="phone,tablet">
+                        <th width="1%" data-hide="phone">
                             <?php echo JHtml::_('searchtools.sort', 'COM_MODULES_HEADING_POSITION', 'a.position', $listDirn, $listOrder); ?>
                         </th>
                         <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('searchtools.sort', 'COM_MODULES_HEADING_MODULE', 'name', $listDirn, $listOrder); ?>
                         </th>
                         <?php if ($clientId === 0) : ?>
-                            <th data-hide="phone,tablet">
+                            <th width="1%" data-hide="phone,tablet">
                                 <?php echo JHtml::_('searchtools.sort', 'COM_MODULES_HEADING_PAGES', 'pages', $listDirn, $listOrder); ?>
                             </th>
                         <?php endif; ?>

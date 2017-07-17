@@ -30,7 +30,7 @@ JFactory::getDocument()->addScriptDeclaration('
 // Get the form fieldsets.
 $fieldsets = $this->form->getFieldsets();
 ?>
-<form class="k-component k-js-component k-js-form-controller" action="<?php echo JRoute::_('index.php?option=com_users&view=profile&layout=edit&id=' . $this->item->id); ?>" method="post" name="adminForm" id="profile-form" enctype="multipart/form-data">
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=profile&layout=edit&id=' . $this->item->id); ?>" method="post" name="adminForm" id="profile-form" enctype="multipart/form-data">
 
     <div class="k-tabs-container">
         <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'account')); ?>
