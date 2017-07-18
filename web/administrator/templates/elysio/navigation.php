@@ -11,9 +11,9 @@ $mainPageUri = $frontEndUri->toString();
 
 ?>
 
-<nav class="k-navigation-container">
+<nav class="k-menu-container">
 
-    <div class="k-navigation-container__logo">
+    <div class="k-menu-container__logo">
         <a href="<?php echo $this->baseurl; ?>">
             <?php if ($params->get('logo')) : ?>
                 <img src="<?php echo $params->get('avatar'); ?>" alt="<?php echo $sitename; ?>" />
@@ -24,11 +24,11 @@ $mainPageUri = $frontEndUri->toString();
     </div>
 
     <?php if ($layout != 'error') : ?>
-    <div class="k-navigation-container__nav" id="navigation">
+    <div class="k-menu-container__nav" id="navigation">
 
         <jdoc:include type="modules" name="menu" style="none" />
 
-        <ul class="k-navigation-right">
+        <ul class="k-menu-right">
             <li>
                 <a href="<?php echo $mainPageUri; ?>" title="<?php echo JText::sprintf('TPL_ISIS_PREVIEW', $sitename); ?>" target="_blank">
                     <span style="margin-right: 5px">View site</span>
@@ -66,10 +66,10 @@ $mainPageUri = $frontEndUri->toString();
     kQuery(document).ready(function ($) {
 
         // Remove stuff set by Joomla core which we can't override
-        $('.k-navigation-container .dropdown').removeAttr('class');
-        $('.k-navigation-container .dropdown-menu').removeAttr('class');
-        $('.k-navigation-container .dropdown-toggle').removeAttr('class').removeAttr('data-toggle');
-        $('.k-navigation-container #nav-empty').remove();
+        $('.k-menu-container .dropdown').removeAttr('class');
+        $('.k-menu-container .dropdown-menu').removeAttr('class');
+        $('.k-menu-container .dropdown-toggle').removeAttr('class').removeAttr('data-toggle');
+        $('.k-menu-container #nav-empty').remove();
 
         // Variables
         var $navigation = $('#navigation'),
@@ -113,7 +113,7 @@ $mainPageUri = $frontEndUri->toString();
         function hoverMenuItem() {
             $navigationItem.on('mouseover', function(event) {
                 // Only on desktop
-                if ( $('.k-navigation-container').css('z-index') == 3 ) {
+                if ( $('.k-menu-container').css('z-index') == 3 ) {
                     event.preventDefault();
                     if ( $navigation.hasClass(menuClass) ) {
                         openMenuItem($(this));
@@ -133,7 +133,7 @@ $mainPageUri = $frontEndUri->toString();
 
         // On clicking next to the menu
         $(document).mouseup(function(e) {
-            var $navigationList = $('.k-navigation-container__nav > ul');
+            var $navigationList = $('.k-menu-container__nav > ul');
 
             // if the target of the click isn't the container nor a descendant of the container
             if (!$navigationList.is(e.target) && $navigationList.has(e.target).length === 0)

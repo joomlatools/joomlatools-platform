@@ -1,6 +1,6 @@
-/* Navigation */
+/* Menu */
 
-.k-navigation-container {
+.k-menu-container {
   background: $k-menu-background;
   color: $k-menu-color;
 
@@ -17,9 +17,9 @@
 }
 
 
-/* Navigation logo */
+/* Menu logo */
 
-.k-navigation-container__logo {
+.k-menu-container__logo {
   height: 48px;
 
   a, img {
@@ -43,9 +43,9 @@
 }
 
 
-/* Navigation nav */
+/* Menu nav */
 
-.k-navigation-container__nav {
+.k-menu-container__nav {
   position: absolute;
   top: 48px;
   right: 0;
@@ -81,7 +81,7 @@
     flex: 0 0 auto;
   }
 
-  .k-navigation-right {
+  .k-menu-right {
     @include breakpoint($k-menu-breakpoint) {
       float: right;
 
@@ -208,7 +208,7 @@
 &.k-is-opened-right {
   overflow: visible;
 
-  .k-navigation-container__nav {
+  .k-menu-container__nav {
     display: block;
   }
 }
