@@ -123,70 +123,6 @@ form legend {
   @include content-block;
 }
 
-//.k-container {
-//  .k-form-group {
-//    input[type="text"] {
-//
-//      // @TODO: Make mixin in KUI to easily "extend" here;
-//      display: block;
-//      width: 100%; /* 1 */
-//      max-width: 100%; /* 1 */
-//      height: $k-input-height-base; /* 2 */
-//      padding: $k-spacing-base-vertical $k-spacing-base-horizontal;
-//      font-size: $k-font-size;
-//      line-height: $k-line-height;
-//      color: $k-input-color;
-//      background-color: $k-input-background;
-//      background-image: none; /* 3 */
-//      border: 1px solid $k-input-border;
-//      border-radius: $k-input-border-radius; /* 4 */
-//      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-//      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-//
-//      /* 5 */
-//
-//      @include form-control-focus;
-//
-//      /* Placeholders */
-//
-//      &::-moz-placeholder {
-//        color: $k-input-color-placeholder;
-//        opacity: 1;
-//      }
-//
-//      &:-ms-input-placeholder {
-//        color: $k-input-color-placeholder;
-//      }
-//
-//      &::-webkit-input-placeholder {
-//        color: $k-input-color-placeholder;
-//      }
-//
-//      /* 6 */
-//
-//      &::-ms-expand {
-//        border: 0;
-//        background-color: transparent;
-//      }
-//
-//      /* Disabled and read-only inputs */
-//
-//      &[disabled],
-//      &[readonly],
-//      fieldset[disabled] & {
-//        background-color: $k-input-background-disabled;
-//        opacity: 1; /* 7 */
-//      }
-//
-//      &[disabled],
-//      fieldset[disabled] & {
-//        cursor: $k-cursor-disabled;
-//      }
-//    }
-//  }
-//}
-
-
 .label-important {
   background: red;
 }
@@ -626,20 +562,7 @@ label {
 
 
 
-// Sortable styling
 
-.dndlist-place-holder {
-  height: 48px;
-}
-
-.dndlist-dragged-row {
-  background: $k-table-cell-hover-background-even !important;
-  border: none !important;
-  height: 48px !important;
-  border-top: 1px solid $k-table-cell-border !important;
-  border-bottom: 1px solid $k-table-cell-border !important;
-  opacity: 0.9;
-}
 
 
 
@@ -654,28 +577,6 @@ label {
   }
 }
 
-// Color pickers
-.minicolors {
-  width: 100%;
-
-  .k-form-control {
-    padding-left: 32px;
-  }
-}
-
-.minicolors-swatch {
-  width: 25px;
-  height: 25px;
-}
-
-.minicolors-theme-bootstrap .minicolors-panel {
-  left: 128px;
-}
-
-.minicolors-panel {
-  width: 186px;
-  height: 164px;
-}
 
 
 .tab-content {
@@ -700,7 +601,7 @@ label {
 }
 
 
-// Setting site in 8pixel grid
+// UI in 8pixel grid
 
 .k-navigation {
   padding: 12px 0 11px;
@@ -742,10 +643,6 @@ label {
   .k-title-bar__heading {
     padding: 12px;
   }
-}
-
-.k-login-container {
-  background: #2c3e50;
 }
 
 .k-table-pagination {

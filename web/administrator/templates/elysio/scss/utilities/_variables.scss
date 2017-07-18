@@ -1,49 +1,9 @@
-/**
- * Icon path
- */
-
-
-$icon-path: "../fonts";
-
+/* Colors */
 $color-success: $k-color-success;
 $color-error: $k-color-error;
 $color-accent: $k-color-neutral;
 
-// Navigation
-//$navigation-background: palette(Blue Grey, 150);
-//$navigation-border: palette(Blue Grey, 200);
-//$navigation-color: palette(Blue Grey, 900);
-//$navigation-accent: palette(Blue Grey, 900);
-//
-//$navigation-hover-background: palette(Blue Grey, 50);
-//$navigation-hover-border: palette(Blue Grey, 800);
-//$navigation-hover-color: palette(Blue Grey, 900);
-//
-//
-//$sidebar-background: palette(Blue Grey, 75);
-//$sidebar-border: palette(Blue Grey, 200);
-//
-//$overview-background: palette(Grey, 50);
-//$toolbar-background: palette(Blue Grey, 100);
-//$scopebar-background: palette(Blue Grey, 50);
-//
-//$form-background: palette(Grey, 100);
-//$form-block-background: white;
-//$form-block-border: palette(Blue Grey, 100);
-//$form-block-header-background: palette(Blue Grey, 50);
-//$form-block-header-border: palette(Blue Grey, 100);
-//
-//$table-header-background: palette(Grey, 200);
-//$table-header-border: palette(Grey, 300);
-//$table-cell-background-even: palette(Grey, 50);
-//$table-cell-background-odd: $table-cell-background-even;
-//$table-cell-border: $table-cell-background-even;
-//$table-cell-accent-background: palette(Blue Grey, 600);
-//$table-cell-accent-color: white;
-//$table-pagination-background: $table-header-background;
-//$table-pagination-border: $table-header-border;
-
-// Bootstrap overrides
+/* Bootstrap overrides */
 $navbar-default-brand-color: $k-color-accent-type;
 $navbar-default-bg: $k-color-accent;
 $navbar-default-color: $k-color-accent-type;
@@ -53,22 +13,5 @@ $navbar-default-link-active-bg: $k-color-accent;
 $navbar-default-link-active-color: $k-color-accent-type;
 $navbar-default-border: transparent;
 $navbar-height: 48px;
-
-//$navbar-padding-vertical: 15px;
-//$navbar-padding-horizontal: 15px;
-//$btn-primary-bg: palette(Blue Grey, 600);
-//
-//$navbar-default-toggle-border-color: transparent;
-//$navbar-default-toggle-hover-bg: $navbar-default-link-active-bg;
-//$navbar-default-toggle-icon-bar-bg: white;
-//
-//$input-bg-disabled: palette(Grey, 100);
-//
-//$label-info-bg: palette(Blue Grey, 400);
-//$label-success-bg: $color-success;
-//$label-danger-bg: $color-error;
-//
-//$link-color: $color-accent;
-//$link-hover-color: $color-accent;
 
 $popover-arrow-outer-width: 7px;

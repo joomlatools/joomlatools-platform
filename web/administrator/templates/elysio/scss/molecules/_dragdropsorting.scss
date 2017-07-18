@@ -1,0 +1,14 @@
+// Sortable styling
+
+.dndlist-place-holder {
+  height: 48px;
+}
+
+.dndlist-dragged-row {
+  background: $k-table-cell-hover-background-even !important;
+  border: none !important;
+  height: 48px !important;
+  border-top: 1px solid $k-table-cell-border !important;
+  border-bottom: 1px solid $k-table-cell-border !important;
+  opacity: 0.9;
+}

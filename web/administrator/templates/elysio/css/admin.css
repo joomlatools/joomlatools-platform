@@ -6540,23 +6540,9 @@ Styleguide 2.5
 .input-daterange .add-on { display: inline-block; width: auto; min-width: 16px; height: 20px; padding: 4px 5px; font-weight: normal; line-height: 20px; text-align: center; text-shadow: 0 1px 0 white; vertical-align: middle; background-color: #eeeeee; border: 1px solid #ccc; margin-left: -5px; margin-right: -5px; }
 
 /* 5 */
-/** Icon path */
-#system-debug { display: none; }
-
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox #system-debug, .k-flexboxlegacy #system-debug { -webkit-box-flex: 0; -ms-flex: 0 1 auto; flex: 0 1 auto; } }
-
+/* Colors */
+/* Bootstrap overrides */
 @media (min-width: 300px) and (min-height: 391px) { .k-flexbox html, .k-flexboxlegacy html { height: 100%; overflow: hidden; } }
-
-body.koowa { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: default; font-family: Helvetica , Arial, sans-serif; font-size: 14px; line-height: 20px; }
-
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox body.koowa, .k-flexboxlegacy body.koowa { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; overflow: hidden; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; height: 100% !important; } }
-
-body.koowa > .koowa { min-height: 100%; overflow: hidden; }
-
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox body.koowa > .koowa, .k-flexboxlegacy body.koowa > .koowa { height: auto; } }
-
-/** Flexbox on .koowa */
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .koowa, .k-flexboxlegacy .koowa { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; overflow: hidden; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
 
 .popover { position: absolute; top: 0; left: 0; z-index: 1060; display: none; max-width: 276px; padding: 1px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-weight: normal; line-height: 1.428571429; text-align: left; background-color: #fff; background-clip: padding-box; border: 1px solid #ccc; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 6px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); white-space: normal; }
 
@@ -6626,7 +6612,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .tooltip.bottom-right .tooltip-arrow { top: 0; left: 5px; margin-top: -5px; border-width: 0 5px 5px; border-bottom-color: #000; }
 
-.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* Navigation */ /* Navigation container */ /* Navigation logo */ /* Navigation nav */ /* Mobile settings */ /* Toggler */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window 2. Make room fo the logo popping out with negative margin */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ }
+.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ /* Navigation */ /* Navigation logo */ /* Navigation nav */ /* Mobile settings */ /* Toggler */ }
 
 .k-ui-namespace * { box-sizing: border-box; }
 
@@ -8021,7 +8007,38 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .nav > .disabled > a:hover, .k-ui-namespace .nav > .disabled > a:focus { text-decoration: none; background-color: transparent; cursor: default; }
 
-.k-ui-namespace .k-navigation-container { background: #2c3e50; }
+.k-ui-namespace .minicolors { width: 100%; }
+
+.k-ui-namespace .minicolors .k-form-control { padding-left: 32px; }
+
+.k-ui-namespace .minicolors-swatch { width: 25px; height: 25px; }
+
+.k-ui-namespace .minicolors-theme-bootstrap .minicolors-panel { left: 128px; }
+
+.k-ui-namespace .minicolors-panel { width: 186px; height: 164px; }
+
+.k-ui-namespace .dndlist-place-holder { height: 48px; }
+
+.k-ui-namespace .dndlist-dragged-row { background: #fbfafa !important; border: none !important; height: 48px !important; border-top: 1px solid #ededed !important; border-bottom: 1px solid #ededed !important; opacity: 0.9; }
+
+.k-ui-namespace .k-login-container { background: #2c3e50; text-align: center; /* 1 */ white-space: nowrap; /* 1 */ /** Pseudo element for vertical centering 1. Adjusts for spacing */ /* Use flexbox when available */ }
+
+.k-ui-namespace .k-login-container:before { content: ' '; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* 1 */ }
+
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-login-container, .k-flexboxlegacy .k-ui-namespace .k-login-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; /* Hide the pseudo eleemnt when using flexbox */ }
+  .k-flexbox .k-ui-namespace .k-login-container:before, .k-flexboxlegacy .k-ui-namespace .k-login-container:before { display: none; } }
+
+.k-ui-namespace .k-login { width: 100%; max-width: 360px; height: auto; margin: auto; display: inline-block; /* 1 */ vertical-align: middle; /* 1 */ /* Don't flex this window, it needs to be as big as it's children */ }
+
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-login, .k-flexboxlegacy .k-ui-namespace .k-login { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+
+.k-ui-namespace .k-login__content { background: white; color: #222222; width: 100%; border-radius: 4px; padding: 20px; box-shadow: 0 6px 0 -4px rgba(0, 0, 0, 0.3); text-align: left; white-space: normal; }
+
+.k-ui-namespace .k-login__brand { display: block; height: auto; /* 1 */ width: auto; /* 1 */ max-width: 100%; text-align: center; /* 2 */ margin-left: auto; margin-right: auto; margin-bottom: 20px; /* 5 */ }
+
+.k-ui-namespace .k-login__brand img { max-height: 100%; vertical-align: middle; }
+
+.k-ui-namespace .k-navigation-container { background: #2c3e50; color: white; }
 
 @media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-navigation-container, .k-flexboxlegacy .k-ui-namespace .k-navigation-container { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
 
@@ -8058,7 +8075,7 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-ui-namespace .k-navigation-container__nav li.disabled .has-open-submenu { background: transparent; }
 
-.k-ui-namespace .k-navigation-container__nav li > a { line-height: 40px; position: relative; z-index: 0; display: block; padding: 0 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); color: white; text-shadow: none; }
+.k-ui-namespace .k-navigation-container__nav li > a { line-height: 40px; position: relative; z-index: 0; display: block; padding: 0 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); color: inherit; text-shadow: none; }
 
 .k-ui-namespace .k-navigation-container__nav li > a.has-open-submenu { z-index: 1; background: #1f2c39; text-decoration: none; }
 
@@ -8095,25 +8112,6 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 .k-ui-namespace .navigation-toggle { position: absolute; top: 0; right: 0; color: white; border: 1px solid white; background: transparent; border-radius: 4px; padding: 5px 10px; margin: 8px; }
 
 @media screen and (min-width: 768px) { .k-ui-namespace .navigation-toggle { display: none; } }
-
-.k-ui-namespace .k-login-container { background: #3071a9; text-align: center; /* 1 */ white-space: nowrap; /* 1 */ padding-top: 50px; /* 2 */ /** Psuedo element for vertical centering 1. Adjusts for spacing */ /* Use flexbox when available */ }
-
-.k-ui-namespace .k-login-container:before { content: ' '; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* 1 */ }
-
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-login-container, .k-flexboxlegacy .k-ui-namespace .k-login-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; /* Hide the psuedo eleemnt when using flexbox */ }
-  .k-flexbox .k-ui-namespace .k-login-container:before, .k-flexboxlegacy .k-ui-namespace .k-login-container:before { display: none; } }
-
-.k-ui-namespace .k-login { width: 100%; max-width: 360px; height: auto; margin: auto; display: inline-block; /* 1 */ vertical-align: middle; /* 1 */ /* Don't flex this window, it needs to be as big as it's children */ }
-
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-login, .k-flexboxlegacy .k-ui-namespace .k-login { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
-
-.k-ui-namespace .k-login__content { background: white; width: 100%; border-radius: 5px; padding: 20px; box-shadow: 0 6px 0 -4px rgba(0, 0, 0, 0.3); text-align: left; white-space: normal; /* Extra spacing between input fields */ }
-
-.k-ui-namespace .k-login__content .form-group { padding: 5px 0; }
-
-.k-ui-namespace .k-login__brand { display: block; height: auto; /* 1 */ width: auto; /* 1 */ max-width: 100%; text-align: center; /* 2 */ margin-left: auto; margin-right: auto; margin-bottom: 20px; /* 5 */ }
-
-.k-ui-namespace .k-login__brand img { max-height: 100%; vertical-align: middle; }
 
 .k-ui-namespace .k-pagination__limit { white-space: nowrap; }
 
@@ -8289,25 +8287,11 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 
 .k-checked .k-ui-namespace .k-optionlist-joomla .controls input:active ~ .k-optionlist__focus, .k-checked .k-ui-namespace .k-optionlist-joomla .controls input:focus ~ .k-optionlist__focus { opacity: 1; /* 3 */ visibility: visible; /* 3 */ }
 
-.k-ui-namespace .dndlist-place-holder { height: 48px; }
-
-.k-ui-namespace .dndlist-dragged-row { background: #fbfafa !important; border: none !important; height: 48px !important; border-top: 1px solid #ededed !important; border-bottom: 1px solid #ededed !important; opacity: 0.9; }
-
 .k-ui-namespace .grid:before, .k-ui-namespace .grid:after { content: " "; display: table; }
 
 .k-ui-namespace .grid:after { clear: both; }
 
 .k-ui-namespace .grid--2columns .grid__item { float: left; width: 50%; }
-
-.k-ui-namespace .minicolors { width: 100%; }
-
-.k-ui-namespace .minicolors .k-form-control { padding-left: 32px; }
-
-.k-ui-namespace .minicolors-swatch { width: 25px; height: 25px; }
-
-.k-ui-namespace .minicolors-theme-bootstrap .minicolors-panel { left: 128px; }
-
-.k-ui-namespace .minicolors-panel { width: 186px; height: 164px; }
 
 .k-ui-namespace .tab-content .k-container { overflow: visible; }
 
@@ -8334,8 +8318,6 @@ body.koowa > .koowa { min-height: 100%; overflow: hidden; }
 .k-ui-namespace .k-title-bar { font-size: 18px; line-height: 16px; }
 
 .k-ui-namespace .k-title-bar .k-title-bar__heading { padding: 12px; }
-
-.k-ui-namespace .k-login-container { background: #2c3e50; }
 
 .k-ui-namespace .k-table-pagination { padding-bottom: 8px; }
 

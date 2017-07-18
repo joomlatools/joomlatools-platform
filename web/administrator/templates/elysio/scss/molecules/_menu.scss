@@ -1,19 +1,15 @@
 /* Navigation */
 
-$k-menu-width: $k-charlie;
-$k-navigation-color: #2c3e50;
-
-/* Navigation container */
-
 .k-navigation-container {
-  background: $k-navigation-color;
+  background: $k-menu-background;
+  color: $k-menu-color;
 
   // When flexbox is active
   @include flexbox {
     flex: 0 0 auto;
   }
 
-  @include breakpoint($k-menu-width) {
+  @include breakpoint($k-menu-breakpoint) {
     position: relative;
     z-index: 11;
     display: flex;
@@ -37,7 +33,7 @@ $k-navigation-color: #2c3e50;
 
     &:focus,
     &:hover {
-      background: darker($k-navigation-color);
+      background: darker($k-menu-background);
     }
   }
 
@@ -56,14 +52,14 @@ $k-navigation-color: #2c3e50;
   bottom: 0;
   width: 276px;
   display: none;
-  background: $k-navigation-color;
+  background: $k-menu-background;
   overflow: auto;
   box-shadow: inset 5px 5px 5px rgba(black, 0.1);
 
 
   /* On desktop */
 
-  @include breakpoint($k-menu-width) {
+  @include breakpoint($k-menu-breakpoint) {
     position: static;
     display: flex;
     justify-content: space-between;
@@ -81,12 +77,12 @@ $k-navigation-color: #2c3e50;
     list-style: none;
     margin: 0;
     padding: 0;
-    background: $k-navigation-color;
+    background: $k-menu-background;
     flex: 0 0 auto;
   }
 
   .k-navigation-right {
-    @include breakpoint($k-menu-width) {
+    @include breakpoint($k-menu-breakpoint) {
       float: right;
 
       ul {
@@ -100,9 +96,9 @@ $k-navigation-color: #2c3e50;
     position: relative;
     margin: 0;
     padding: 0;
-    background: $k-navigation-color;
+    background: $k-menu-background;
 
-    @include breakpoint($k-menu-width) {
+    @include breakpoint($k-menu-breakpoint) {
       float: left;
     }
 
@@ -132,12 +128,12 @@ $k-navigation-color: #2c3e50;
       display: block;
       padding: 0 16px;
       border-bottom: 1px solid rgba(white, 0.25);
-      color: white;
+      color: inherit;
       text-shadow: none;
 
       &.has-open-submenu {
         z-index: 1;
-        background: darker($k-navigation-color);
+        background: darker($k-menu-background);
         text-decoration: none;
       }
 
@@ -146,7 +142,7 @@ $k-navigation-color: #2c3e50;
         text-decoration: none;
       }
 
-      @include breakpoint($k-menu-width) {
+      @include breakpoint($k-menu-breakpoint) {
         height: 48px;
         border-bottom: none;
         line-height: 48px;
@@ -165,9 +161,9 @@ $k-navigation-color: #2c3e50;
       display: none;
       border-bottom: 1px solid rgba(white, 0.25);
       padding: 4px 0;
-      background: lighter($k-navigation-color);
+      background: lighter($k-menu-background);
 
-      @include breakpoint($k-menu-width) {
+      @include breakpoint($k-menu-breakpoint) {
         background: white;
         box-shadow: 2px 4px 6px rgba(black, 0.2), 0 0 0 1px rgba(black, .33);
         position: absolute;
@@ -194,8 +190,8 @@ $k-navigation-color: #2c3e50;
           background: rgba(black, 0.1);
         }
 
-        @include breakpoint($k-menu-width) {
-          color: $k-navigation-color;
+        @include breakpoint($k-menu-breakpoint) {
+          color: $k-menu-background;
         }
       }
     }
@@ -225,7 +221,7 @@ $k-navigation-color: #2c3e50;
   .k-wrapper {
     transform: translateX(-276px);
 
-    @include breakpoint($k-menu-width) {
+    @include breakpoint($k-menu-breakpoint) {
       transform: translateX(0);
     }
   }
@@ -245,7 +241,7 @@ $k-navigation-color: #2c3e50;
   padding: 5px 10px;
   margin: 8px;
 
-  @include breakpoint($k-menu-width) {
+  @include breakpoint($k-menu-breakpoint) {
     display: none;
   }
 }

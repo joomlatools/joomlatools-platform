@@ -8,18 +8,16 @@
  * Container holding the login window
  *
  * 1. Setting up for centering the login window
- * 2. Make room fo the logo popping out with negative margin
  */
 
 .k-login-container {
-  background: $k-color-accent;
+  background: $k-login-container-background;
   text-align: center; /* 1 */
   white-space: nowrap; /* 1 */
-  padding-top: 50px; /* 2 */
 
 
   /**
-   * Psuedo element for vertical centering
+   * Pseudo element for vertical centering
    *
    * 1. Adjusts for spacing
    */
@@ -41,7 +39,7 @@
     align-items: center;
 
 
-    /* Hide the psuedo eleemnt when using flexbox */
+    /* Hide the pseudo eleemnt when using flexbox */
 
     &:before {
       display: none;
@@ -59,7 +57,7 @@
 
 .k-login {
   width: 100%;
-  max-width: 360px;
+  max-width: $k-login-width;
   height: auto;
   margin: auto;
   display: inline-block; /* 1 */
@@ -74,20 +72,14 @@
 
 
 .k-login__content {
-  background: white;
+  background: $k-login-background;
+  color: $k-login-color;
   width: 100%;
-  border-radius: 5px;
-  padding: $k-spacing;
-  box-shadow: 0 6px 0 -4px rgba(0,0,0,.3);
+  border-radius: $k-login-radius;
+  padding: $k-login-spacing;
+  box-shadow: $k-login-shadow;
   text-align: left;
   white-space: normal;
-
-
-  /* Extra spacing between input fields */
-
-  .form-group {
-    padding: 5px 0;
-  }
 }
 
 
@@ -110,7 +102,7 @@
   text-align: center; /* 2 */
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: $k-spacing; /* 5 */
+  margin-bottom: $k-login-spacing; /* 5 */
 
   img {
     max-height: 100%;
