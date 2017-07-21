@@ -7,22 +7,6 @@ $k-icon-path: '../fonts';
 // Override variables
 @import "utilities/variables";
 
-$k-color-base: #2c3e50 !default;
-$k-color-base-type: white !default;
-
-$k-login-container-background: $k-color-base !default;
-$k-login-width: 360px !default;
-$k-login-radius: 4px !default;
-$k-login-background: white !default;
-$k-login-color: $k-color-type !default;
-$k-login-spacing: $k-spacing !default;
-$k-login-shadow: 0 6px 0 -4px rgba(0,0,0,.3) !default;
-
-$k-menu-breakpoint: $k-charlie !default;
-$k-menu-background: $k-color-base !default;
-$k-menu-color: $k-color-base-type !default;
-
-
 // Basic html and body setup
 @import "utilities/html";
 
@@ -41,8 +25,7 @@ $k-menu-color: $k-color-base-type !default;
   // Molecules
   @import "molecules/colorpicker";
   @import "molecules/dragdropsorting";
-  @import "molecules/login";
-  @import "molecules/menu";
+  @import "molecules/tabs";
 
   // Shame...
   @import "shame";

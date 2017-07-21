@@ -1,0 +1,58 @@
+/**
+ * Tabs overrides for Joomla
+ */
+
+/**
+ * Tabbable tabs
+ *
+ * Hide tabbable panes to start, show them when `.k-is-active`
+ */
+
+.k-tabs-content {
+  > .active {
+    display: block;
+  }
+}
+
+
+/**
+ * Tabs wrapper
+ *
+ * 1. For proper offset calculation in JS
+ */
+
+.k-tabs {
+  > li.active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: $k-nav-tabs-active-link-hover-color;
+      background-color: $k-nav-tabs-active-link-hover-background;
+      border: 1px solid $k-nav-tabs-active-link-hover-border;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
+  }
+}
+
+.nav-tabs > li {
+  float: none;
+  display: inline-block;
+}
+
+.nav > li > a {
+  padding: 7px 13px;
+  line-height: 20px;
+}
+
+
+/**
+ * Tabs scroller
+ */
+
+.k-tabs-scroller {
+  > .k-tabs > li.active > a {
+    background: $k-component-background;
+    color: $k-color-type;
+  }
+}

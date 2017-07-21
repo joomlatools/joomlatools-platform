@@ -14,6 +14,7 @@
     "bootstrap-sass": "3.3.4",
     "neat": "1.7.2",
     "footable": "2.0.3",
+    "kodekit-ui": "https://github.com/timble/kodekit-ui.git#master",
     "floatThead": "1.3.0",
     "modernizr": "https://github.com/Modernizr/Modernizr.git#2.8.3",
     "magnific-popup": "1.0.0"

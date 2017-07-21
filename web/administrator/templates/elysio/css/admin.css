@@ -1888,21 +1888,7 @@ markup:
 
 Styleguide 2.13
 
-*/ /** 1. Reset default <ul> styling */ /* Menubar ========================================================================== */ /*
-Menubar
-
-- Use as <b>first child</b> of the `.k-ui-container` container only
-- Will always be followed by a `.k-wrapper` container
-- {unsureText}
-
-markup:
-<!-- Menubar -->
-<div class="k-menubar">
-    Menubar
-</div><!-- .k-menubar-->
-
-Styleguide 2.14
-*/ /* Modal ========================================================================== */ /*
+*/ /** 1. Reset default <ul> styling */ /* Menu */ /* Menu logo */ /* Menu nav */ /* Mobile settings */ /* Toggler */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window */ /** Login window 1. Horizontal and vertical centering */ /** Brand */ /** Form */ /* Modal ========================================================================== */ /*
 Modals
 
 Modals using magnific popup (http://dimsemenov.com/plugins/magnific-popup/)
@@ -2757,36 +2743,7 @@ markup:
 
 Styleguide 2.21.11
 
-*/ /* Tabs ========================================================================== */ /*
-Tabs
-
-markup:
-<ul class="k-tabs">
-    <li class="k-is-active">
-        <a href="#tab1" data-k-toggle="tab">Tab 1</a>
-    </li>
-    <li>
-        <a href="#tab2" data-k-toggle="tab">Tab 2</a>
-    </li>
-     <li class="k-is-disabled">
-        <a href="#tab3" data-k-toggle="tab">Tab 3 (disabled)</a>
-    </li>
-</ul>
-<div class="k-tabs-content">
-    <div id="tab1" class="k-tab k-is-active">
-        Content tab 1
-    </div>
-    <div id="tab2" class="k-tab">
-        Content tab 2
-    </div>
-    <div id="tab3" class="k-tab">
-        Content tab 3
-    </div>
-</div>
-
-Styleguide 2.22
-
-*/ /** Tabbable tabs Hide tabbable panes to start, show them when `.k-is-active` */ /* Title bar ========================================================================== */ /*
+*/ /* Tabs ========================================================================== */ /** Tabs container (not mandatory) */ /** Tabs wrapper */ /** Tabs scroller */ /** Tabs wrapper 1. For proper offset calculation in JS */ /** Tabbable tabs Hide tabbable panes to start, show them when `.k-is-active` */ /** Left and right buttons for scrollable tabs */ /* Title bar ========================================================================== */ /*
 Title bar
 
 - A titlebar that can be displayed above the `content-wrapper` when there's no toolbar
@@ -2802,7 +2759,7 @@ markup:
 
 Styleguide 2.23
 
-*/ /** 1. Set the z-index higher than the menus 2. Setting a background so container will fall nicely over the sidebar */ /** Titlebar contents */ /*
+*/ /** 1. Set the z-index higher than the menus 2. Setting a background so container will fall nicely over the sidebar */ /** Dark theme */ /** Titlebar contents */ /*
 Mobile title
 
 Title just for mobile views since the navigation is hidden
@@ -3321,7 +3278,9 @@ markup:
 
 @media screen and (min-width: 1024px) { .k-ui-namespace .k-sidebar + .k-content .k-container__sub { width: calc(100% * 4/12 - 20px); margin-bottom: 0; } }
 
-.k-ui-namespace .k-container__full { clear: both; width: auto; margin: 0 10px 20px; }
+.k-ui-namespace .k-container__full { clear: both; width: auto; margin: 0 0 20px; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-container__full { margin-left: 10px; margin-right: 10px; } }
 
 .k-ui-namespace .k-flex-wrapper { margin: 0; padding: 0; list-style: none; border: none; background: transparent; }
 
@@ -4197,9 +4156,101 @@ markup:
 
 [dir="rtl"] .k-ui-namespace .k-list [class^="k-icon"] { margin-right: auto; margin-left: 0.75em; }
 
-.k-ui-namespace .k-menubar { border-bottom: 1px solid #030303; min-height: 39px; background: #222222; color: #fbfafa; padding: 10.5px; line-height: 21px; font-size: 18px; /* When flexbox is in use */ }
+.k-ui-namespace .k-menu-container { background: #2c3e50; color: white; }
 
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-menubar, .k-flexboxlegacy .k-ui-namespace .k-menubar { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-menu-container, .k-flexboxlegacy .k-ui-namespace .k-menu-container { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container { position: relative; z-index: 11; display: -webkit-box; display: -ms-flexbox; display: flex; } }
+
+.k-ui-namespace .k-menu-container__logo { height: 48px; }
+
+.k-ui-namespace .k-menu-container__logo a, .k-ui-namespace .k-menu-container__logo img { display: inline-block; vertical-align: middle; width: auto; color: inherit; }
+
+.k-ui-namespace .k-menu-container__logo a { padding: 12px; text-decoration: none; font-size: 16px; font-weight: 700; line-height: 24px; }
+
+.k-ui-namespace .k-menu-container__logo a:focus, .k-ui-namespace .k-menu-container__logo a:hover { background: #1f2c39; }
+
+.k-ui-namespace .k-menu-container__logo img { max-height: 24px; }
+
+.k-ui-namespace .k-menu-container__nav { position: absolute; top: 48px; right: 0; bottom: 0; width: 276px; display: none; background: #2c3e50; overflow: auto; box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.1); /* On desktop */ /* First level */ }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav { position: static; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; box-shadow: none; height: 48px; width: auto; overflow: visible; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
+
+.k-ui-namespace .k-menu-container__nav ul { list-style: none; margin: 0; padding: 0; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav .k-menu-right { float: right; }
+  .k-ui-namespace .k-menu-container__nav .k-menu-right ul { left: auto; right: 1px; } }
+
+.k-ui-namespace .k-menu-container__nav li { position: relative; margin: 0; padding: 0; /* Second level */ }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav li { float: left; } }
+
+.k-ui-namespace .k-menu-container__nav li.divider { height: 2px; background: rgba(0, 0, 0, 0.1); margin: 2px 0; }
+
+.k-ui-namespace .k-menu-container__nav li.is-disabled, .k-ui-namespace .k-menu-container__nav li.disabled { opacity: 0.65; cursor: not-allowed; }
+
+.k-ui-namespace .k-menu-container__nav li.is-disabled a, .k-ui-namespace .k-menu-container__nav li.disabled a { pointer-events: none; }
+
+.k-ui-namespace .k-menu-container__nav li > a { line-height: 40px; position: relative; z-index: 0; display: block; padding: 0 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); color: inherit; text-shadow: none; text-decoration: none; }
+
+.k-ui-namespace .k-menu-container__nav li > a.has-open-submenu { z-index: 1; background: #1f2c39; text-decoration: none; }
+
+.k-ui-namespace .k-menu-container__nav li > a:focus, .k-ui-namespace .k-menu-container__nav li > a:hover { text-decoration: none; background: #1f2c39; }
+
+.k-ui-namespace .k-menu-container__nav li > a:not(:only-child):after { display: inline-block; content: " "; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 2px solid transparent; border-top: 4px solid; margin-left: 8px; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav li > a { height: 48px; border-bottom: none; line-height: 48px; padding: 0 8px; } }
+
+@media screen and (min-width: 1024px) { .k-ui-namespace .k-menu-container__nav li > a { padding: 0 12px; } }
+
+.k-ui-namespace .k-menu-container__nav li ul { display: none; border-bottom: 1px solid rgba(255, 255, 255, 0.25); padding: 4px 0; background: #395067; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav li ul { background: white; box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.33); position: absolute; z-index: 0; top: 100%; left: 1px; width: 180px; border-bottom: none; padding: 2px; } }
+
+.k-ui-namespace .k-menu-container__nav li ul li { float: none; background: transparent; }
+
+.k-ui-namespace .k-menu-container__nav li ul a { height: 32px; line-height: 32px; border-bottom: none; }
+
+.k-ui-namespace .k-menu-container__nav li ul a:focus, .k-ui-namespace .k-menu-container__nav li ul a:hover { background: rgba(0, 0, 0, 0.1); }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav li ul a { color: #2c3e50; } }
+
+.k-ui-namespace .k-menu-container__nav li .has-open-submenu + ul { display: block; }
+
+.k-ui-namespace.k-is-opened-right { overflow: visible; }
+
+.k-ui-namespace.k-is-opened-right .k-menu-container__nav { display: block; }
+
+.k-ui-namespace.k-is-opened-right .k-wrapper > .k-off-canvas-overlay { z-index: 10; }
+
+.k-ui-namespace .k-wrapper { transition: -webkit-transform 200ms ease-in-out; transition: transform 200ms ease-in-out; }
+
+.k-ui-namespace.k-show-right-menu .k-wrapper { -webkit-transform: translateX(-276px); transform: translateX(-276px); }
+
+@media screen and (min-width: 768px) { .k-ui-namespace.k-show-right-menu .k-wrapper { -webkit-transform: translateX(0); transform: translateX(0); } }
+
+.k-ui-namespace.k-show-right-menu .k-wrapper > .k-off-canvas-overlay { opacity: 0.75; }
+
+.k-ui-namespace .menu-toggle { position: absolute; top: 0; right: 0; color: white; border: 1px solid white; background: transparent; border-radius: 4px; padding: 5px 10px; margin: 8px; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .menu-toggle { display: none; } }
+
+.k-ui-namespace .k-login-container { background: #2c3e50; color: white; text-align: center; /* 1 */ white-space: nowrap; /* 1 */ padding: 20px; /** Pseudo element for vertical centering 1. Adjusts for spacing */ /* Use flexbox when available */ }
+
+.k-ui-namespace .k-login-container:before { content: ' '; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* 1 */ }
+
+@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-ui-namespace .k-login-container, .k-flexboxlegacy .k-ui-namespace .k-login-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; /* Hide the pseudo eleemnt when using flexbox */ }
+  .k-flexbox .k-ui-namespace .k-login-container:before, .k-flexboxlegacy .k-ui-namespace .k-login-container:before { display: none; } }
+
+.k-ui-namespace .k-login { width: 100%; max-width: 360px; height: auto; margin: auto; display: inline-block; /* 1 */ vertical-align: middle; /* 1 */ /* Don't flex this window, it needs to be as big as it's children */ }
+
+@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-ui-namespace .k-login, .k-flexboxlegacy .k-ui-namespace .k-login { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+
+.k-ui-namespace .k-login__brand { display: block; height: auto; width: auto; max-width: 100%; text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 20px; font-size: 16px; }
+
+.k-ui-namespace .k-login__brand img { max-height: 100%; vertical-align: middle; }
+
+.k-ui-namespace .k-login__content { background: white; color: #222222; width: 100%; border-radius: 4px; padding: 20px; box-shadow: 0 6px 0 -4px rgba(0, 0, 0, 0.3); text-align: left; white-space: normal; }
 
 .k-ui-namespace .mfp-bg { top: 0; left: 0; width: 100%; height: 100%; z-index: 1042; overflow: hidden; position: fixed; background: #0b0b0b; opacity: 0.8; }
 
@@ -4742,21 +4793,21 @@ markup:
 
 .k-ui-namespace .k-table { overflow: auto; -webkit-backface-visibility: hidden; backface-visibility: hidden; will-change: overflow; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; /* 1 */ }
 
-.k-ui-namespace .k-table-container { /** Sticky header 1. Set top to 0 because there's no default yet 2. Set z-index to 1 to make sure it covers the tbody */ /** Cells 1. Position checkbox 2. Remove default margin */ /** Head 1. Don't set a vertical padding on table headers. Set padding on table heading children We do this so <a> elements are fully clickable for sorting 2. Don't use long header titles since they won't be wrapped 3. Whole <th> should be clickable 4. Set padding here */ /** Body 1. Small extra info below title display:block to display below title */ /* Hover background */ }
+.k-ui-namespace .k-table-container { /** Cells 1. Position checkbox 2. Remove default margin */ /** Sticky header 1. Set top to 0 because there's no default yet 2. Set z-index to 1 to make sure it covers the tbody */ /** Head 1. Don't set a vertical padding on table headers. Set padding on table heading children We do this so <a> elements are fully clickable for sorting 2. Don't use long header titles since they won't be wrapped 3. Whole <th> should be clickable 4. Set padding here */ /** Body 1. Small extra info below title display:block to display below title */ /* Hover background */ }
 
-.k-ui-namespace .k-table-container table { width: 100%; text-align: left; border-collapse: separate; border-spacing: 0; font-size: inherit; /* 1 */ min-width: 0 !important; }
+.k-ui-namespace .k-table-container table { margin: 0; padding: 0; width: 100%; text-align: left; border-collapse: separate; border-spacing: 0; font-size: inherit; /* 1 */ min-width: 0 !important; }
 
 [dir="rtl"] .k-ui-namespace .k-table-container table { text-align: right; }
 
 @media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-table-container table, .k-flexboxlegacy .k-ui-namespace .k-table-container table { -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
-
-.k-ui-namespace .k-table-container thead { position: -webkit-sticky; position: sticky; top: 0; z-index: 1; }
 
 .k-ui-namespace .k-table-container th, .k-ui-namespace .k-table-container td { border: none; position: relative; height: 39px; vertical-align: middle; text-align: left; line-height: 1; }
 
 .k-ui-namespace .k-table-container th input, .k-ui-namespace .k-table-container td input { display: inline-block; /* 1 */ vertical-align: middle; /* 1 */ margin: 0; /* 2 */ }
 
 [dir="rtl"] .k-ui-namespace .k-table-container th, [dir="rtl"] .k-ui-namespace .k-table-container td { text-align: right; }
+
+.k-ui-namespace .k-table-container th { position: -webkit-sticky; position: sticky; top: 0; z-index: 1; }
 
 .k-ui-namespace .k-table-container th { border-bottom: 1px solid gainsboro; z-index: 1; padding: 0 7px; /* 1 */ white-space: nowrap; /* 2 */ background: #fbfafa; font-weight: 400; /* Size icons accordingly */ }
 
@@ -4874,7 +4925,7 @@ markup:
 
 .k-ui-namespace .k-table-container .k-table__item--state-published { color: #27ae60; }
 
-.k-ui-namespace .k-table-container .k-table__sub-header th { padding: 0.7em 7px 0.5em; height: auto; font-size: 11px; line-height: 17px; font-weight: 700; vertical-align: middle; text-transform: uppercase; white-space: nowrap; background: #fbfafa; border-bottom-color: #ededed; }
+.k-ui-namespace .k-table-container .k-table__sub-header th { padding: 0.7em 7px 0.5em; height: auto; font-size: 11px; line-height: 17px; font-weight: 700; vertical-align: middle; text-transform: uppercase; white-space: nowrap; background: #fbfafa; border-bottom-color: #ededed; top: 40px; }
 
 .k-ui-namespace .k-table-container { /* Set proper spacing before levels */ /* Do not display the level icon for the first level items */ /* Space icons away from text */ }
 
@@ -5084,33 +5135,83 @@ markup:
 
 .k-ui-namespace .footable.breakpoint th .footable-toggle { display: none; }
 
-.k-ui-namespace .k-tabs { margin-bottom: 0; padding-left: 0; list-style: none; border-bottom: 1px solid #eeeeee; /** 1. Make the list-items overlay the bottom border */ /** Open dropdowns */ }
+.k-ui-namespace .k-tabs-container { overflow: hidden; width: 100%; margin: 0 auto; padding: 0; /* When resizing */ }
 
-.k-ui-namespace .k-tabs:before, .k-ui-namespace .k-tabs:after { display: table; content: " "; }
+.k-ui-namespace .k-tabs-container:before, .k-ui-namespace .k-tabs-container:after { display: table; content: " "; }
 
-.k-ui-namespace .k-tabs:after { clear: both; }
+.k-ui-namespace .k-tabs-container:after { clear: both; }
 
-.k-ui-namespace .k-tabs > li { position: relative; display: block; float: left; margin-bottom: -1px; /* 1 */ /** Disabled state sets text to gray and nukes hover/tab effects */ /** Active state, and its :hover to override normal :hover */ }
+.k-is-resizing .k-ui-namespace .k-tabs-container { overflow: hidden; }
 
-.k-ui-namespace .k-tabs > li > a { position: relative; display: block; padding: 7px 13px; margin-right: 2px; line-height: 20px; border: 1px solid transparent; border-radius: 4px 4px 0 0; text-decoration: none; }
+.k-ui-namespace .k-tabs-container:not(:first-child) .k-tabs-scroller .k-tabs { border-top: 1px solid gainsboro; }
 
-.k-ui-namespace .k-tabs > li > a:hover, .k-ui-namespace .k-tabs > li > a:focus { text-decoration: none; background-color: #eeeeee; border-color: #eeeeee #eeeeee #eeeeee; }
+.k-ui-namespace .k-tabs-container > .k-tabs-content:before, .k-ui-namespace .k-tabs-container > .k-tabs-content:after { display: table; content: " "; }
 
-.k-ui-namespace .k-tabs > li.k-is-disabled > a { color: #343434; cursor: not-allowed; pointer-events: none; }
+.k-ui-namespace .k-tabs-container > .k-tabs-content:after { clear: both; }
 
-.k-ui-namespace .k-tabs > li.k-is-disabled > a:hover, .k-ui-namespace .k-tabs > li.k-is-disabled > a:focus { color: inherit; text-decoration: none; background-color: transparent; cursor: not-allowed; }
+.k-ui-namespace .k-tabs-container > .k-tabs-content > .k-tab { padding: 0; }
 
-.k-ui-namespace .k-tabs > li.k-is-active > a, .k-ui-namespace .k-tabs > li.k-is-active > a:hover, .k-ui-namespace .k-tabs > li.k-is-active > a:focus { color: #222222; background-color: white; border: 1px solid #e6e6e6; border-bottom-color: transparent; cursor: default; }
+.k-ui-namespace .k-tabs-wrapper { position: relative; height: 48px; overflow: hidden; transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); -webkit-backface-visibility: hidden; }
 
-.k-ui-namespace .k-tabs .k-is-open > a, .k-ui-namespace .k-tabs .k-is-open > a:hover, .k-ui-namespace .k-tabs .k-is-open > a:focus { background-color: #eeeeee; border-color: #3071a9; }
+.k-ui-namespace .k-tabs-scroller { height: 80px; overflow: auto; }
+
+.k-ui-namespace .k-tabs-scroller > .k-tabs { padding: 10px 10px 0; background: white; white-space: nowrap; display: inline-block; min-width: 100%; }
+
+@media screen and (min-width: 768px) { .k-ui-namespace .k-tabs-scroller > .k-tabs { padding-left: 20px; padding-right: 20px; } }
+
+.k-ui-namespace .k-tabs-scroller > .k-tabs li.k-is-active a { background: #fbfafa; color: #222222; }
+
+.k-ui-namespace .k-tabs { position: relative; /* 1 */ margin: 0; padding: 0; list-style: none; border-bottom: 1px solid gainsboro; font-size: 0; /** 1. Make the list-items overlay the bottom border */ /** Disabled state sets text to gray and nukes hover/tab effects */ /** Active state, and its :hover to override normal :hover */ /** Links */ /** Open dropdowns */ }
+
+.k-ui-namespace .k-tabs li { position: relative; display: inline-block; margin-bottom: -1px; /* 1 */ margin-right: 2px; }
+
+.k-ui-namespace .k-tabs .k-is-disabled a { color: #343434; cursor: not-allowed; pointer-events: none; }
+
+.k-ui-namespace .k-tabs .k-is-disabled a:hover, .k-ui-namespace .k-tabs .k-is-disabled a:focus { color: inherit; text-decoration: none; background-color: transparent; cursor: not-allowed; }
+
+.k-ui-namespace .k-tabs .k-is-active a, .k-ui-namespace .k-tabs .k-is-active a:hover, .k-ui-namespace .k-tabs .k-is-active a:focus { color: #222222; background-color: white; border: 1px solid gainsboro; border-bottom-color: transparent; cursor: default; }
+
+.k-ui-namespace .k-tabs a { position: relative; display: block; padding: 7px 13px; line-height: 20px; border: 1px solid transparent; border-radius: 4px 4px 0 0; text-decoration: none; font-size: 13px; }
+
+.k-ui-namespace .k-tabs a:hover, .k-ui-namespace .k-tabs a:focus { text-decoration: none; background-color: #eeeeee; border-color: gainsboro; }
+
+.k-ui-namespace .k-tabs .k-is-open a, .k-ui-namespace .k-tabs .k-is-open a:hover, .k-ui-namespace .k-tabs .k-is-open a:focus { background-color: #eeeeee; border-color: #3071a9; }
 
 .k-ui-namespace .k-tabs-content > .k-tab { display: none; padding: 13px; }
 
 .k-ui-namespace .k-tabs-content > .k-is-active { display: block; }
 
+.k-ui-namespace .k-tabs-scroller-prev, .k-ui-namespace .k-tabs-scroller-next { margin: 0; padding: 0; position: absolute; top: 0; bottom: 1px; width: 32px; overflow: hidden; opacity: 0; background: white; border: 1px solid gainsboro; transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); -webkit-backface-visibility: hidden; }
+
+.k-ui-namespace .k-tabs-scroller-prev span, .k-ui-namespace .k-tabs-scroller-next span { transition: all 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83); -webkit-backface-visibility: hidden; }
+
+.k-ui-namespace .k-tabs-scroller-prev { left: 0; border-left: none; -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+
+.k-ui-namespace .k-tabs-scroller-next { right: 0; border-right: none; -webkit-transform: translateX(100%); transform: translateX(100%); }
+
+.k-ui-namespace .k-has-tabs-overflow { padding-left: 32px; padding-right: 32px; }
+
+.k-ui-namespace .k-has-tabs-overflow .k-tabs-scroller-prev, .k-ui-namespace .k-has-tabs-overflow .k-tabs-scroller-next { -webkit-transform: translateX(0); transform: translateX(0); cursor: no-drop; opacity: 1; }
+
+.k-ui-namespace .k-has-tabs-overflow .k-tabs-scroller-prev span, .k-ui-namespace .k-has-tabs-overflow .k-tabs-scroller-next span { opacity: 0.33; }
+
+.k-ui-namespace .k-has-tabs-left-overflow .k-tabs-scroller-prev { opacity: 1; cursor: pointer; }
+
+.k-ui-namespace .k-has-tabs-left-overflow .k-tabs-scroller-prev span { opacity: 1; }
+
+.k-ui-namespace .k-has-tabs-right-overflow .k-tabs-scroller-next { opacity: 1; cursor: pointer; }
+
+.k-ui-namespace .k-has-tabs-right-overflow .k-tabs-scroller-next span { opacity: 1; }
+
 .k-ui-namespace .k-title-bar { border-bottom: 1px solid #d2d2d2; position: relative; /* 1 */ z-index: 10; /* 1 */ display: table; width: 100%; background: #f0f0f0; /* 2 */ color: #222222; font-size: 21px; /* When flexbox is in use */ }
 
 @media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-title-bar, .k-flexboxlegacy .k-ui-namespace .k-title-bar { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
+
+.k-ui-namespace .k-title-bar--dark { background: #425d77; color: white; border-bottom: none; }
+
+.k-ui-namespace .k-title-bar--dark .k-off-canvas-menu-toggle { background: white; }
+
+.k-ui-namespace .k-title-bar--dark .k-off-canvas-menu-toggle .k-toggle-button-bar1, .k-ui-namespace .k-title-bar--dark .k-off-canvas-menu-toggle .k-toggle-button-bar2, .k-ui-namespace .k-title-bar--dark .k-off-canvas-menu-toggle .k-toggle-button-bar3 { background: #425d77; }
 
 .k-ui-namespace .k-title-bar .k-off-canvas-menu-toggle-holder, .k-ui-namespace .k-title-bar .k-title-bar__heading { display: table-cell; vertical-align: middle; }
 
@@ -5293,7 +5394,7 @@ markup:
 
 .k-ui-namespace .k-dynamic-content-holder.k-dynamic-content-holder.k-dynamic-content-holder { display: none; }
 
-.k-ui-namespace .k-hidden.k-hidden.k-hidden { display: none; }
+.k-ui-namespace .k-hidden.k-hidden.k-hidden, .k-ui-namespace .k-is-hidden.k-is-hidden.k-is-hidden { display: none; }
 
 .k-cssanimations.k-boxshadow .k-ui-namespace .k-loader { display: inline-block; color: #3071a9; font-size: 5px; margin: 0 auto 2em; position: relative; text-indent: -9999em; vertical-align: middle; /* Sizes */ }
 
@@ -5477,6 +5578,8 @@ markup:
 
 .select2-container .select2-selection--single .select2-selection__rendered { display: block; padding-left: 8px; padding-right: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+.select2-container .select2-selection--single .select2-selection__clear { position: relative; }
+
 .select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered { padding-right: 8px; padding-left: 20px; }
 
 .select2-container .select2-selection--multiple { box-sizing: border-box; cursor: pointer; display: block; min-height: 32px; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-select: none; }
@@ -5485,7 +5588,7 @@ markup:
 
 .select2-container .select2-search--inline { float: left; }
 
-.select2-container .select2-search--inline .select2-search__field { box-sizing: border-box; border: none; font-size: 100%; margin-top: 5px; }
+.select2-container .select2-search--inline .select2-search__field { box-sizing: border-box; border: none; font-size: 100%; margin-top: 5px; padding: 0; }
 
 .select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button { -webkit-appearance: none; }
 
@@ -5515,7 +5618,7 @@ markup:
 
 .select2-close-mask { border: 0; margin: 0; padding: 0; display: block; position: fixed; left: 0; top: 0; min-height: 100%; min-width: 100%; height: auto; width: auto; opacity: 0; z-index: 99; background-color: #fff; filter: alpha(opacity=0); }
 
-.select2-hidden-accessible { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.select2-hidden-accessible { border: 0 !important; clip: rect(0 0 0 0) !important; height: 1px !important; margin: -1px !important; overflow: hidden !important; padding: 0 !important; position: absolute !important; width: 1px !important; }
 
 .select2-container--default .select2-selection--single { background-color: #fff; border: 1px solid #aaa; border-radius: 4px; }
 
@@ -5543,6 +5646,8 @@ markup:
 
 .select2-container--default .select2-selection--multiple .select2-selection__rendered { box-sizing: border-box; list-style: none; margin: 0; padding: 0 5px; width: 100%; }
 
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li { list-style: none; }
+
 .select2-container--default .select2-selection--multiple .select2-selection__placeholder { color: #999; margin-top: 5px; float: left; }
 
 .select2-container--default .select2-selection--multiple .select2-selection__clear { cursor: pointer; float: right; font-weight: bold; margin-top: 5px; margin-right: 10px; }
@@ -5553,7 +5658,7 @@ markup:
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover { color: #333; }
 
-.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice, .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder { float: right; }
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice, .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder, .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-search--inline { float: right; }
 
 .select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice { margin-left: 5px; margin-right: auto; }
 
@@ -5571,7 +5676,7 @@ markup:
 
 .select2-container--default .select2-search--dropdown .select2-search__field { border: 1px solid #aaa; }
 
-.select2-container--default .select2-search--inline .select2-search__field { background: transparent; border: none; outline: 0; }
+.select2-container--default .select2-search--inline .select2-search__field { background: transparent; border: none; outline: 0; box-shadow: none; -webkit-appearance: textfield; }
 
 .select2-container--default .select2-results > .select2-results__options { max-height: 200px; overflow-y: auto; }
 
@@ -5599,7 +5704,7 @@ markup:
 
 .select2-container--default .select2-results__group { cursor: default; display: block; padding: 6px; }
 
-.select2-container--classic .select2-selection--single { background-color: #f7f7f7; border: 1px solid #aaa; border-radius: 4px; outline: 0; background-image: linear-gradient(to bottom, white 50%, #eeeeee 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eeeeee', GradientType=0); }
+.select2-container--classic .select2-selection--single { background-color: #f7f7f7; border: 1px solid #aaa; border-radius: 4px; outline: 0; background-image: linear-gradient(to bottom, white 50%, #eeeeee 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0); }
 
 .select2-container--classic .select2-selection--single:focus { border: 1px solid #5897fb; }
 
@@ -5609,7 +5714,7 @@ markup:
 
 .select2-container--classic .select2-selection--single .select2-selection__placeholder { color: #999; }
 
-.select2-container--classic .select2-selection--single .select2-selection__arrow { background-color: #ddd; border: none; border-left: 1px solid #aaa; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 26px; position: absolute; top: 1px; right: 1px; width: 20px; background-image: linear-gradient(to bottom, #eeeeee 50%, #cccccc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc', GradientType=0); }
+.select2-container--classic .select2-selection--single .select2-selection__arrow { background-color: #ddd; border: none; border-left: 1px solid #aaa; border-top-right-radius: 4px; border-bottom-right-radius: 4px; height: 26px; position: absolute; top: 1px; right: 1px; width: 20px; background-image: linear-gradient(to bottom, #eeeeee 50%, #cccccc 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFCCCCCC', GradientType=0); }
 
 .select2-container--classic .select2-selection--single .select2-selection__arrow b { border-color: #888 transparent transparent transparent; border-style: solid; border-width: 5px 4px 0 4px; height: 0; left: 50%; margin-left: -4px; margin-top: -2px; position: absolute; top: 50%; width: 0; }
 
@@ -5623,9 +5728,9 @@ markup:
 
 .select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow b { border-color: transparent transparent #888 transparent; border-width: 0 4px 5px 4px; }
 
-.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single { border-top: none; border-top-left-radius: 0; border-top-right-radius: 0; background-image: linear-gradient(to bottom, white 0%, #eeeeee 50%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eeeeee', GradientType=0); }
+.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single { border-top: none; border-top-left-radius: 0; border-top-right-radius: 0; background-image: linear-gradient(to bottom, white 0%, #eeeeee 50%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0); }
 
-.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single { border-bottom: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; background-image: linear-gradient(to bottom, #eeeeee 50%, white 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='white', GradientType=0); }
+.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single { border-bottom: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; background-image: linear-gradient(to bottom, #eeeeee 50%, white 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFFFFFFF', GradientType=0); }
 
 .select2-container--classic .select2-selection--multiple { background-color: white; border: 1px solid #aaa; border-radius: 4px; cursor: text; outline: 0; }
 
@@ -5655,7 +5760,7 @@ markup:
 
 .select2-container--classic .select2-search--dropdown .select2-search__field { border: 1px solid #aaa; outline: 0; }
 
-.select2-container--classic .select2-search--inline .select2-search__field { outline: 0; }
+.select2-container--classic .select2-search--inline .select2-search__field { outline: 0; box-shadow: none; }
 
 .select2-container--classic .select2-dropdown { background-color: white; border: 1px solid transparent; }
 
@@ -6612,7 +6717,7 @@ Styleguide 2.5
 
 .tooltip.bottom-right .tooltip-arrow { top: 0; left: 5px; margin-top: -5px; border-width: 0 5px 5px; border-bottom-color: #000; }
 
-.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /* ========================================================================== Login screen ========================================================================== */ /** Login container Container holding the login window 1. Setting up for centering the login window */ /** Login window 1. Horizontal and vertical centering */ /** Client logo 1. Make a circle 2. Align in the center 3. Pull circle out of main window 4. Add some negative bottom margin to get fields closer to the logo We do this because the padding will act as natural spacing between logo and first field 5. Space the logo from the sides */ /* Menu */ /* Menu logo */ /* Menu nav */ /* Mobile settings */ /* Toggler */ }
+.k-ui-namespace { /* ========================================================================== Bootstrap 3 overrides / additions ========================================================================== */ /** Bootstrap 3 navbar overrides 1. Remove gradient 2. No border for a more flat design 3. No margin to connect navbar to toolbar and sidebar 4. Set a normal z-index 5. No shadows for a more flat design 6. Auto height for client logo 7. Align vertically middle to "reset" line-height */ /** No shadows on buttons */ /* Legend */ /* Radio styling */ /* Setting some spacing on Bootstrap rows */ /* Horizontal forms */ /* For the menu item accordions */ /** Tabs overrides for Joomla */ /** Tabbable tabs Hide tabbable panes to start, show them when `.k-is-active` */ /** Tabs wrapper 1. For proper offset calculation in JS */ /** Tabs scroller */ }
 
 .k-ui-namespace * { box-sizing: border-box; }
 
@@ -8021,149 +8126,23 @@ Styleguide 2.5
 
 .k-ui-namespace .dndlist-dragged-row { background: #fbfafa !important; border: none !important; height: 48px !important; border-top: 1px solid #ededed !important; border-bottom: 1px solid #ededed !important; opacity: 0.9; }
 
-.k-ui-namespace .k-login-container { background: #2c3e50; text-align: center; /* 1 */ white-space: nowrap; /* 1 */ /** Pseudo element for vertical centering 1. Adjusts for spacing */ /* Use flexbox when available */ }
+.k-ui-namespace .k-tabs-content > .active { display: block; }
 
-.k-ui-namespace .k-login-container:before { content: ' '; display: inline-block; height: 100%; vertical-align: middle; margin-right: -0.25em; /* 1 */ }
+.k-ui-namespace .k-tabs > li.active > a, .k-ui-namespace .k-tabs > li.active > a:hover, .k-ui-namespace .k-tabs > li.active > a:focus { color: #222222; background-color: white; border: 1px solid gainsboro; border-bottom-color: transparent; cursor: default; }
 
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-login-container, .k-flexboxlegacy .k-ui-namespace .k-login-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; -webkit-box-align: center; -ms-flex-align: center; align-items: center; /* Hide the pseudo eleemnt when using flexbox */ }
-  .k-flexbox .k-ui-namespace .k-login-container:before, .k-flexboxlegacy .k-ui-namespace .k-login-container:before { display: none; } }
+.k-ui-namespace .nav-tabs > li { float: none; display: inline-block; }
 
-.k-ui-namespace .k-login { width: 100%; max-width: 360px; height: auto; margin: auto; display: inline-block; /* 1 */ vertical-align: middle; /* 1 */ /* Don't flex this window, it needs to be as big as it's children */ }
+.k-ui-namespace .nav > li > a { padding: 7px 13px; line-height: 20px; }
 
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-login, .k-flexboxlegacy .k-ui-namespace .k-login { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
-
-.k-ui-namespace .k-login__content { background: white; color: #222222; width: 100%; border-radius: 4px; padding: 20px; box-shadow: 0 6px 0 -4px rgba(0, 0, 0, 0.3); text-align: left; white-space: normal; }
-
-.k-ui-namespace .k-login__brand { display: block; height: auto; /* 1 */ width: auto; /* 1 */ max-width: 100%; text-align: center; /* 2 */ margin-left: auto; margin-right: auto; margin-bottom: 20px; /* 5 */ }
-
-.k-ui-namespace .k-login__brand img { max-height: 100%; vertical-align: middle; }
-
-.k-ui-namespace .k-menu-container { background: #2c3e50; color: white; }
-
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-menu-container, .k-flexboxlegacy .k-ui-namespace .k-menu-container { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container { position: relative; z-index: 11; display: -webkit-box; display: -ms-flexbox; display: flex; } }
-
-.k-ui-namespace .k-menu-container__logo { height: 48px; }
-
-.k-ui-namespace .k-menu-container__logo a, .k-ui-namespace .k-menu-container__logo img { display: inline-block; vertical-align: middle; width: auto; }
-
-.k-ui-namespace .k-menu-container__logo a { padding: 12px; }
-
-.k-ui-namespace .k-menu-container__logo a:focus, .k-ui-namespace .k-menu-container__logo a:hover { background: #1f2c39; }
-
-.k-ui-namespace .k-menu-container__logo img { max-height: 24px; }
-
-.k-ui-namespace .k-menu-container__nav { position: absolute; top: 48px; right: 0; bottom: 0; width: 276px; display: none; background: #2c3e50; overflow: auto; box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.1); /* On desktop */ /* First level */ }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav { position: static; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; box-shadow: none; height: 48px; width: auto; overflow: visible; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; } }
-
-.k-ui-namespace .k-menu-container__nav ul { list-style: none; margin: 0; padding: 0; background: #2c3e50; -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav .k-menu-right { float: right; }
-  .k-ui-namespace .k-menu-container__nav .k-menu-right ul { left: auto; right: 1px; } }
-
-.k-ui-namespace .k-menu-container__nav li { position: relative; margin: 0; padding: 0; background: #2c3e50; /* Second level */ }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav li { float: left; } }
-
-.k-ui-namespace .k-menu-container__nav li.divider { height: 2px; background: rgba(0, 0, 0, 0.1); margin: 2px 0; }
-
-.k-ui-namespace .k-menu-container__nav li.disabled { opacity: 0.65; cursor: not-allowed; }
-
-.k-ui-namespace .k-menu-container__nav li.disabled a { pointer-events: none; }
-
-.k-ui-namespace .k-menu-container__nav li.disabled .has-open-submenu { background: transparent; }
-
-.k-ui-namespace .k-menu-container__nav li > a { line-height: 40px; position: relative; z-index: 0; display: block; padding: 0 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); color: inherit; text-shadow: none; }
-
-.k-ui-namespace .k-menu-container__nav li > a.has-open-submenu { z-index: 1; background: #1f2c39; text-decoration: none; }
-
-.k-ui-namespace .k-menu-container__nav li > a:focus, .k-ui-namespace .k-menu-container__nav li > a:hover { text-decoration: none; }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav li > a { height: 48px; border-bottom: none; line-height: 48px; padding: 0 8px; } }
-
-@media screen and (min-width: 1024px) { .k-ui-namespace .k-menu-container__nav li > a { padding: 0 12px; } }
-
-.k-ui-namespace .k-menu-container__nav li ul { display: none; border-bottom: 1px solid rgba(255, 255, 255, 0.25); padding: 4px 0; background: #395067; }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav li ul { background: white; box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.33); position: absolute; z-index: 0; top: 100%; left: 1px; width: 180px; border-bottom: none; padding: 2px; } }
-
-.k-ui-namespace .k-menu-container__nav li ul li { float: none; background: transparent; }
-
-.k-ui-namespace .k-menu-container__nav li ul a { height: 32px; line-height: 32px; border-bottom: none; }
-
-.k-ui-namespace .k-menu-container__nav li ul a:focus, .k-ui-namespace .k-menu-container__nav li ul a:hover { background: rgba(0, 0, 0, 0.1); }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .k-menu-container__nav li ul a { color: #2c3e50; } }
-
-.k-ui-namespace .k-menu-container__nav li .has-open-submenu + ul { display: block; }
-
-.k-ui-namespace.k-is-opened-right { overflow: visible; }
-
-.k-ui-namespace.k-is-opened-right .k-menu-container__nav { display: block; }
-
-.k-ui-namespace .k-wrapper { transition: -webkit-transform 200ms ease-in-out; transition: transform 200ms ease-in-out; }
-
-.k-ui-namespace.k-show-right-menu .k-wrapper { -webkit-transform: translateX(-276px); transform: translateX(-276px); }
-
-@media screen and (min-width: 768px) { .k-ui-namespace.k-show-right-menu .k-wrapper { -webkit-transform: translateX(0); transform: translateX(0); } }
-
-.k-ui-namespace .navigation-toggle { position: absolute; top: 0; right: 0; color: white; border: 1px solid white; background: transparent; border-radius: 4px; padding: 5px 10px; margin: 8px; }
-
-@media screen and (min-width: 768px) { .k-ui-namespace .navigation-toggle { display: none; } }
+.k-ui-namespace .k-tabs-scroller > .k-tabs > li.active > a { background: #fbfafa; color: #222222; }
 
 .k-ui-namespace .k-pagination__limit { white-space: nowrap; }
 
 .k-ui-namespace .k-pagination__limit .select2-container.select2-container.select2-container { display: inline-block; margin-right: 7px; min-width: 56px !important; width: auto !important; }
 
-.k-ui-namespace .k-container .nav-tabs { margin-left: 10px; margin-right: 10px; }
-
-.k-ui-namespace .k-container__content:before, .k-ui-namespace .k-container__content:after { content: " "; display: table; }
-
-.k-ui-namespace .k-container__content:after { clear: both; }
-
 .k-ui-namespace .readonly { display: block; min-height: 32px; }
 
 .k-ui-namespace form legend:first-child { padding-top: 0; }
-
-.k-ui-namespace .k-tabs-container { overflow: hidden; width: 100%; margin: 0 auto; padding: 0; /* When flexbox is in use */ /* When resizing */ }
-
-.k-ui-namespace .k-tabs-container:before, .k-ui-namespace .k-tabs-container:after { content: " "; display: table; }
-
-.k-ui-namespace .k-tabs-container:after { clear: both; }
-
-@media (min-width: 300px) and (min-height: 391px) { .k-flexbox .k-ui-namespace .k-tabs-container, .k-flexboxlegacy .k-ui-namespace .k-tabs-container { -webkit-box-flex: 0; -ms-flex: 0 0 auto; flex: 0 0 auto; } }
-
-.k-is-resizing .k-ui-namespace .k-tabs-container { overflow: hidden; }
-
-.k-ui-namespace .k-tabs-container > .nav-tabs { /* Rename to k-tabs if this goes into KUI */ padding-top: 10px; padding-left: 20px; padding-right: 20px; background: white; }
-
-.k-ui-namespace .k-tabs-container .tab-content { /* Rename to k-tabs-content if this goes into KUI */ }
-
-.k-ui-namespace .k-tabs-container .tab-content:before, .k-ui-namespace .k-tabs-container .tab-content:after { content: " "; display: table; }
-
-.k-ui-namespace .k-tabs-container .tab-content:after { clear: both; }
-
-.k-ui-namespace .k-tabs-container:not(:first-child) > .nav-tabs { border-top: 1px solid #ddd; }
-
-.k-ui-namespace .nav-tabs > li.active.active > a { background: #fbfafa; color: #222222; }
-
-.k-ui-namespace .tabs-left { display: table; }
-
-@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-ui-namespace .tabs-left, .k-flexboxlegacy .k-ui-namespace .tabs-left { display: -webkit-box; display: -ms-flexbox; display: flex; } }
-
-.k-ui-namespace .tabs-left .nav-tabs, .k-ui-namespace .tabs-left .tab-content { display: table-cell; vertical-align: top; }
-
-@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-ui-namespace .tabs-left .nav-tabs, .k-flexboxlegacy .k-ui-namespace .tabs-left .nav-tabs, .k-flexbox .k-ui-namespace .tabs-left .tab-content, .k-flexboxlegacy .k-ui-namespace .tabs-left .tab-content { display: block; } }
-
-.k-ui-namespace .tabs-left .nav-tabs.nav-tabs { border: none; }
-
-@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-ui-namespace .tabs-left .nav-tabs.nav-tabs, .k-flexboxlegacy .k-ui-namespace .tabs-left .nav-tabs.nav-tabs { margin-right: 0; } }
-
-.k-ui-namespace .tabs-left .nav-tabs.nav-tabs > li { margin-bottom: 0; }
-
-.k-ui-namespace .tabs-left .tab-content { overflow: auto; }
 
 .k-ui-namespace .k-form-block { margin-bottom: 1.5em; }
 
@@ -8293,8 +8272,6 @@ Styleguide 2.5
 
 .k-ui-namespace .grid--2columns .grid__item { float: left; width: 50%; }
 
-.k-ui-namespace .tab-content .k-container { overflow: visible; }
-
 .k-ui-namespace #modal-holder { position: absolute; top: 0; left: 0; }
 
 .k-ui-namespace .k-heading { margin-top: 0; }
@@ -8322,6 +8299,12 @@ Styleguide 2.5
 .k-ui-namespace .k-table-pagination { padding-bottom: 8px; }
 
 .k-ui-namespace .k-off-canvas-menu-toggle { margin: 7px 8px; }
+
+.k-ui-namespace .k-menu-container .caret { display: none; }
+
+.k-ui-namespace .k-menu-container .dropdown-menu { border-radius: 0; border: none; }
+
+.k-ui-namespace .k-menu-container .k-menu-container__nav li ul a { padding-top: 0; padding-bottom: 0; }
 
 .popover.popover { margin: 0; padding: 0; border: none; border-radius: 0; background: transparent; font-family: inherit; box-shadow: none; white-space: normal; }
 

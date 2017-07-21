@@ -10,31 +10,11 @@
   }
 }
 
-// Form view tabs
-
-.k-container {
-
-  // Tabs
-  .nav-tabs {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-}
-
-// Form view below tabs
-.k-container__content {
-  @include clearfix;
-}
-
 // Form views nicer layout
 .readonly {
   display: block;
   min-height: 32px;
 }
-
-
-
-
 
 // Back to KUI?
 form legend {
@@ -43,80 +23,8 @@ form legend {
   }
 }
 
-.k-tabs-container {
-  @include clearfix;
-  overflow: hidden;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-
-  /* When flexbox is in use */
-  @include flexbox {
-    flex: 0 0 auto;
-  }
-
-  /* When resizing */
-  @include resizing {
-    overflow: hidden;
-  }
-
-  > .nav-tabs { /* Rename to k-tabs if this goes into KUI */
-    padding-top: ($k-spacing / 2);
-    padding-left: ($k-spacing);
-    padding-right: ($k-spacing);
-    background: white;
-  }
-
-  .tab-content { /* Rename to k-tabs-content if this goes into KUI */
-    @include clearfix;
-  }
-
-  &:not(:first-child) > .nav-tabs {
-    border-top: 1px solid #ddd;
-  }
-}
 
 
-
-.nav-tabs > li.active.active > a {
-  background: $k-component-background;
-  color: $k-color-type;
-}
-
-
-.tabs-left {
-  display: table;
-
-  @include flexbox(0, 0) {
-    display: flex;
-  }
-
-  .nav-tabs,
-  .tab-content {
-    display: table-cell;
-    vertical-align: top;
-
-    @include flexbox(0, 0) {
-      display: block;
-    }
-  }
-
-  .nav-tabs.nav-tabs {
-    border: none;
-
-    @include flexbox(0, 0) {
-      margin-right: 0;
-    }
-
-    > li {
-      margin-bottom: 0;
-    }
-  }
-
-  .tab-content {
-    overflow: auto;
-  }
-}
 
 
 .k-form-block {
@@ -579,11 +487,7 @@ label {
 
 
 
-.tab-content {
-  .k-container {
-    overflow: visible;
-  }
-}
+
 
 
 #modal-holder {
@@ -651,4 +555,23 @@ label {
 
 .k-off-canvas-menu-toggle {
   margin: 7px 8px;
+}
+
+
+// Menu overrides
+
+.k-menu-container {
+  .caret {
+    display: none;
+  }
+
+  .dropdown-menu {
+    border-radius: 0;
+    border: none;
+  }
+
+  .k-menu-container__nav li ul a {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
