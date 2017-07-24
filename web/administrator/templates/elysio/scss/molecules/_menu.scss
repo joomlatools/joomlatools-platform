@@ -1,0 +1,19 @@
+/**
+ * Small styling issue fixes coming from Joomla menu
+ */
+
+.k-menu-container {
+  .caret {
+    display: none;
+  }
+
+  .dropdown-menu {
+    border-radius: 0;
+    border: none;
+  }
+
+  .k-menu-container__nav li ul a {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

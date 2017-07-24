@@ -1,0 +1,124 @@
+/**
+ * Table overrides
+ */
+
+/* Default inline display for links and small inside small */
+
+.k-table-container .k-table small {
+  a,
+  span {
+    display: inline;
+    vertical-align: baseline;
+  }
+}
+
+
+/* Select2 alignment and width */
+
+.k-table-container {
+  td {
+    .select2 {
+      display: inline-block;
+      vertical-align: top;
+      max-width: 90% !important;
+    }
+  }
+}
+
+
+/* Styling fix joomla button groups */
+
+.k-table {
+  .btn-group {
+    white-space: nowrap;
+    font-size: 0;
+
+    .btn {
+      display: inline-block;
+      float: none;
+      margin-right: 0;
+    }
+  }
+}
+
+
+/* Bold headers */
+
+.k-table th {
+  font-weight: $k-bold;
+}
+
+
+/* Styling arrow icons */
+
+.k-table {
+  .icon-arrow-up-3,
+  .icon-arrow-down-3 {
+    position: relative;
+    display: inline-block;
+    width: 6px;
+    height: 3px;
+    background: transparent;
+
+    &:before,
+    &:after {
+      display: block;
+      content: " ";
+      position: absolute;
+      opacity: 0.33;
+    }
+
+    &:before {
+      @include caret(top, 4px);
+      bottom: 100%;
+    }
+
+    &:after {
+      @include caret(bottom, 4px);
+      top: 100%;
+    }
+  }
+
+  .icon-arrow-up-3 {
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  .icon-arrow-down-3 {
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  th {
+    .icon-arrow-up-3,
+    .icon-arrow-down-3 {
+      margin-left: 0.66em;
+      vertical-align: middle;
+    }
+
+    @include rtl {
+      .icon-arrow-up-3,
+      .icon-arrow-down-3 {
+        margin-left: 0;
+        margin-right: 0.66em;
+      }
+    }
+
+    a:focus,
+    a:hover {
+      .icon-arrow-up-3 {
+        &:after {
+          opacity: 0.66;
+        }
+      }
+
+      .icon-arrow-down-3 {
+        &:before {
+          opacity: 0.66;
+        }
+      }
+    }
+  }
+}

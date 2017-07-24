@@ -1,0 +1,12 @@
+/* Joomla class */
+
+.element-invisible {
+  @include visually-hidden;
+}
+
+
+/* No margin bottom */
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}

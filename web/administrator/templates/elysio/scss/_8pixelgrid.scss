@@ -1,0 +1,52 @@
+// UI in 8pixel grid
+
+.k-navigation {
+  padding: 12px 0 11px;
+
+  li {
+    a {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
+}
+
+.k-toolbar {
+  padding-bottom: 7px;
+  padding-right: 8px;
+
+  .k-button {
+    margin: 8px 0 0 8px;
+  }
+}
+
+.k-table-container th {
+  height: 40px;
+
+  a {
+    line-height: 26px;
+  }
+}
+
+.k-table-container td {
+  padding: 8px;
+  height: 40px;
+}
+
+.k-title-bar {
+  font-size: 18px;
+  line-height: 16px;
+
+  .k-title-bar__heading {
+    padding: 12px;
+  }
+}
+
+.k-table-pagination {
+  padding-bottom: 8px;
+}
+
+.k-off-canvas-menu-toggle {
+  margin: 7px 8px;
+}
+

@@ -1,0 +1,29 @@
+/**
+ * Map labels
+ */
+
+.label {
+  background: $k-color-type-light;
+  color: white;
+  vertical-align: middle;
+}
+
+a.label {
+  color:white;
+}
+
+.label-warning {
+  background: $k-color-warning;
+}
+
+.label-important {
+  background: $k-color-error;
+}
+
+.label-info {
+  background: $k-color-accent;
+}
+
+.label-success {
+  background: $k-color-success;
+}

@@ -1,0 +1,16 @@
+/**
+ * Pagination
+ *
+ * Styling select2 containers inside table pagination
+ */
+
+.k-pagination__limit {
+  white-space: nowrap;
+
+  .select2-container.select2-container.select2-container {
+    display: inline-block;
+    margin-right: $k-table-pagination-spacing;
+    min-width: 56px !important;
+    width: auto !important;
+  }
+}

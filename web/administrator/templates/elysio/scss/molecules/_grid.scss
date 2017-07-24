@@ -1,0 +1,14 @@
+/**
+ * Custom grid
+ */
+
+.grid {
+  @include clearfix;
+}
+
+.grid--2columns {
+  .grid__item {
+    float: left;
+    width: 50%;
+  }
+}

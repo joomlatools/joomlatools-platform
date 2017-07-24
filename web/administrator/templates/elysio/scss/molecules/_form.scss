@@ -1,0 +1,36 @@
+/**
+ * Fit in grid
+ */
+
+.readonly {
+  display: block;
+  min-height: 32px;
+}
+
+
+/**
+ * Style unoverwriteable optionlist
+ */
+
+@include modernizr('.k-checked') {
+  @include optionlist('.k-optionlist-joomla', '.controls');
+  .k-optionlist-joomla {
+    .controls {
+      label {
+        margin: 0;
+
+        &.is-checked {
+          &, &:hover, &:focus {
+            background: transparent; /* 1 */
+            color: $k-color-neutral-type;
+          }
+
+          &:before {
+            transform: scale(1,1); /* 2 */
+            opacity: 1;; /* 2 */
+          }
+        }
+      }
+    }
+  }
+}
