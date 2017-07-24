@@ -8,15 +8,21 @@
   }
 
   .dropdown-menu {
-    position: static;
-    float: none;
     border-radius: 0;
     border: none;
+
+    @include breakpoint(0, range, $k-charlie) {
+      position: static;
+      float: none;
+    }
   }
 
   .k-menu-container__nav li ul a {
     padding-top: 0;
     padding-bottom: 0;
-    color: inherit;
+
+    @include breakpoint(0, range, $k-charlie) {
+      color: inherit;
+    }
   }
 }
