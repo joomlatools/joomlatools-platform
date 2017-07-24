@@ -8,6 +8,8 @@
   }
 
   .dropdown-menu {
+    position: static;
+    float: none;
     border-radius: 0;
     border: none;
   }
@@ -15,5 +17,6 @@
   .k-menu-container__nav li ul a {
     padding-top: 0;
     padding-bottom: 0;
+    color: inherit;
   }
 }

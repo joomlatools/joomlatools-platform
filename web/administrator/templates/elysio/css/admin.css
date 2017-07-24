@@ -8239,9 +8239,9 @@ Styleguide 2.5
 
 .k-ui-namespace .k-menu-container .caret { display: none; }
 
-.k-ui-namespace .k-menu-container .dropdown-menu { border-radius: 0; border: none; }
+.k-ui-namespace .k-menu-container .dropdown-menu { position: static; float: none; border-radius: 0; border: none; }
 
-.k-ui-namespace .k-menu-container .k-menu-container__nav li ul a { padding-top: 0; padding-bottom: 0; }
+.k-ui-namespace .k-menu-container .k-menu-container__nav li ul a { padding-top: 0; padding-bottom: 0; color: inherit; }
 
 .k-ui-namespace #modal-holder { position: absolute; top: 0; left: 0; }
 
