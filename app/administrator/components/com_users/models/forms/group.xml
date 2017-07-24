@@ -19,7 +19,7 @@
 			description="COM_USERS_GROUP_FIELD_PARENT_DESC"
 			label="COM_USERS_GROUP_FIELD_PARENT_LABEL"
 			required="true"
-		    class="fom-control"
+		    class="form-control"
 		/>
 
 		<field name="actions" type="hidden"
