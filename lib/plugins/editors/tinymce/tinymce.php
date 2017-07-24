@@ -131,7 +131,7 @@ class PlgEditorTinymce extends JPlugin
 		$id       = preg_replace('/(\s|[^A-Za-z0-9_])+/', '_', $id);
 
 		// List the skins
-		$skindirs = glob(JPATH_WEB . '/media/plg_editors_tinymce/tinymce/skins' . '/*', GLOB_ONLYDIR);
+		$skindirs = glob(JPATH_WEB . '/media/plg_editors_tinymce/skins' . '/*', GLOB_ONLYDIR);
 
 		// Set the selected skin in the current side, front-end or back-end
 		$side = $app->isAdmin() ? 'skin_admin' : 'skin';
@@ -150,7 +150,7 @@ class PlgEditorTinymce extends JPlugin
 
 		if ($langMode)
 		{
-			if (file_exists(JPATH_WEB . "/media/plg_editors_tinymce/tinymce/langs/" . $language->getTag() . ".js"))
+			if (file_exists(JPATH_WEB . "/media/plg_editors_tinymce/langs/" . $language->getTag() . ".js"))
 			{
 				$langPrefix = $language->getTag();
 			}
