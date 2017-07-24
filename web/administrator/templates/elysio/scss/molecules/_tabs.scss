@@ -56,3 +56,41 @@
     color: $k-color-type;
   }
 }
+
+
+
+
+.tabs-left {
+  display: table;
+
+  @include flexbox(0, 0) {
+    display: flex;
+  }
+
+  .nav-tabs,
+  .tab-content {
+    display: table-cell;
+    vertical-align: top;
+
+    @include flexbox(0, 0) {
+      display: block;
+    }
+  }
+
+  .nav-tabs.nav-tabs {
+    border: none;
+
+    @include flexbox(0, 0) {
+      margin-right: 0;
+    }
+
+    > li {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  .tab-content {
+    overflow: auto;
+  }
+}

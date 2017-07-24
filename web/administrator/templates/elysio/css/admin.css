@@ -8289,6 +8289,22 @@ Styleguide 2.5
 
 .k-ui-namespace .k-tabs-scroller > .k-tabs > li.active > a { background: #fbfafa; color: #222222; }
 
+.k-ui-namespace .tabs-left { display: table; }
+
+@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-ui-namespace .tabs-left, .k-flexboxlegacy .k-ui-namespace .tabs-left { display: -webkit-box; display: -ms-flexbox; display: flex; } }
+
+.k-ui-namespace .tabs-left .nav-tabs, .k-ui-namespace .tabs-left .tab-content { display: table-cell; vertical-align: top; }
+
+@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-ui-namespace .tabs-left .nav-tabs, .k-flexboxlegacy .k-ui-namespace .tabs-left .nav-tabs, .k-flexbox .k-ui-namespace .tabs-left .tab-content, .k-flexboxlegacy .k-ui-namespace .tabs-left .tab-content { display: block; } }
+
+.k-ui-namespace .tabs-left .nav-tabs.nav-tabs { border: none; }
+
+@media (min-width: 0) and (min-height: 0) { .k-flexbox .k-ui-namespace .tabs-left .nav-tabs.nav-tabs, .k-flexboxlegacy .k-ui-namespace .tabs-left .nav-tabs.nav-tabs { margin-right: 0; } }
+
+.k-ui-namespace .tabs-left .nav-tabs.nav-tabs > li { display: block; margin-bottom: 0; }
+
+.k-ui-namespace .tabs-left .tab-content { overflow: auto; }
+
 .k-ui-namespace .element-invisible { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0; }
 
 .k-ui-namespace .no-margin-bottom { margin-bottom: 0; }

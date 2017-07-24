@@ -35,9 +35,9 @@ foreach ($filters as $field)
 $filters = $data['view']->filterForm->getGroup('filter');
 ?>
 
-<div class="k-dynamic-content-holder">
-    <div class="k-js-filters">
-        <?php if ($filters) : ?>
+<?php if (count($filters) > 1) : ?>
+    <div class="k-dynamic-content-holder">
+        <div class="k-js-filters">
             <?php foreach ($filters as $fieldName => $field) : ?>
                 <?php if ($fieldName != 'filter_search') : ?>
                     <div data-filter data-title="<?php echo (string) $field->title; ?>">
@@ -45,36 +45,36 @@ $filters = $data['view']->filterForm->getGroup('filter');
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-        <?php endif; ?>
-
-        <?php
-        if ($data['view'] instanceof TemplatesViewStyles || $data['view'] instanceof TemplatesViewTemplates) : ?>
-            <?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
-            <div data-filter data-title="<?php echo (string) $clientIdField->title; ?>">
-                <div class="js-stools-field-filter js-stools-client_id">
-                    <?php echo $clientIdField->input; ?>
+            <?php
+            if ($data['view'] instanceof TemplatesViewStyles || $data['view'] instanceof TemplatesViewTemplates) : ?>
+                <?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
+                <div data-filter data-title="<?php echo (string) $clientIdField->title; ?>">
+                    <div class="js-stools-field-filter js-stools-client_id">
+                        <?php echo $clientIdField->input; ?>
+                    </div>
                 </div>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
-
-<div class="k-scopebar__item--filters">
-    <div class="k-scopebar__filters-content">
-        <div class="k-scopebar__filters k-js-filter-container">
-            <div style="display: none;" class="k-scopebar__item--filter k-scopebar-dropdown k-js-filter-prototype k-js-dropdown">
-                <button type="button" class="k-scopebar-dropdown__button k-js-dropdown-button">
-                    <span class="k-scopebar__item--filter__title k-js-dropdown-title"></span>
-                    <span class="k-scopebar__item--filter__icon k-icon-chevron-bottom" aria-hidden="true"></span>
-                    <div class="k-scopebar__item__label k-js-dropdown-label"></div>
-                </button>
-                <div class="k-scopebar-dropdown__body k-js-dropdown-body">
-                    <div class="k-scopebar-dropdown__body__buttons">
-                        <button type="button" class="k-button k-button--default k-js-clear-filter">Clear</button>
-                        <button type="button" class="k-button k-button--primary k-js-apply-filter">Apply</button>
+    <div class="k-scopebar__item--filters">
+        <div class="k-scopebar__filters-content">
+            <div class="k-scopebar__filters k-js-filter-container">
+                <div style="display: none;" class="k-scopebar__item--filter k-scopebar-dropdown k-js-filter-prototype k-js-dropdown">
+                    <button type="button" class="k-scopebar-dropdown__button k-js-dropdown-button">
+                        <span class="k-scopebar__item--filter__title k-js-dropdown-title"></span>
+                        <span class="k-scopebar__item--filter__icon k-icon-chevron-bottom" aria-hidden="true"></span>
+                        <div class="k-scopebar__item__label k-js-dropdown-label"></div>
+                    </button>
+                    <div class="k-scopebar-dropdown__body k-js-dropdown-body">
+                        <div class="k-scopebar-dropdown__body__buttons">
+                            <button type="button" class="k-button k-button--default k-js-clear-filter">Clear</button>
+                            <button type="button" class="k-button k-button--primary k-js-apply-filter">Apply</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+<?php else : ?>
+    <div class="k-scopebar__item"></div>
+<?php endif; ?>

@@ -24,7 +24,7 @@ $mainPageUri = $frontEndUri->toString();
     </div>
 
     <?php if ($layout != 'error') : ?>
-    <div class="k-menu-container__nav" id="navigation">
+    <div class="k-menu-container__nav" id="k-js-menu">
 
         <jdoc:include type="modules" name="menu" style="none" />
 

@@ -42,3 +42,4 @@ kQuery(document).ready(function($) {
     }, 700); // Wait for animation to be finished
 
 });
+
