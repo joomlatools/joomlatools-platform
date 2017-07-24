@@ -1,4 +1,4 @@
-// Styling select2 containers inside pagination
+// Styling select2 containers inside table pagination
 .k-pagination__limit {
   white-space: nowrap;
 
@@ -16,25 +16,12 @@
   min-height: 32px;
 }
 
-// Back to KUI?
-form legend {
-  &:first-child {
-    padding-top: 0;
-  }
-}
-
-
-
-
-
-.k-form-block {
-  @include content-block;
-}
-
+// Labels
 .label-important {
   background: red;
 }
 
+// Default inline display for links and small inside small
 .k-table-container .k-table small {
   a,
   span {
@@ -42,11 +29,6 @@ form legend {
     vertical-align: baseline;
   }
 }
-
-.k-title-bar__heading {
-  text-transform: capitalize;
-}
-
 
 // @TODO: Create a mixin from button in KUI to be able to include it elsewhere easily?
 .k-table .btn-micro {
@@ -294,20 +276,6 @@ a.label {
   }
 }
 
-label {
-  vertical-align: middle;
-
-  & + small {
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 5px;
-  }
-}
-
-
-
-
-
 
 
 
@@ -505,6 +473,11 @@ label {
 }
 
 
+
+
+
+
+
 // UI in 8pixel grid
 
 .k-navigation {
@@ -556,6 +529,10 @@ label {
 .k-off-canvas-menu-toggle {
   margin: 7px 8px;
 }
+
+
+
+
 
 
 // Menu overrides
