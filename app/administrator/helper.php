@@ -37,6 +37,11 @@ class JAdministratorHelper
 		{
 			$option = 'com_users';
             $app->input->set('view', 'login');
+
+            $task = $app->input->get('task');
+            if ($task != 'session.login' && $task != 'session.logout') {
+                $app->input->set('task', '');
+            }
 		}
 
 		if (empty($option))
