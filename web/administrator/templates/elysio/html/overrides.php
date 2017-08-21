@@ -64,6 +64,12 @@ function addFormControlClass($input) {
         $input = str_replace('</button>', '</button></div>', $input);
     }
 
+    // If the field is surrounded by an empty div
+    if (strpos($input, '<div><input') !== false) {
+        $input = str_replace('<div><input', '<input', $input);
+        $input = str_replace('</div>', '', $input);
+    }
+
     // If the field is not a text field or textarea; return original
     if (strpos($input, 'type="text') === false && strpos($input, 'type="password') === false && strpos($input, 'type="email') === false && strpos($input, '<textarea') === false) {
         return $input;
@@ -88,6 +94,14 @@ function addFormControlClass($input) {
         }
         return $field;
     }
+}
+
+
+// Add `k-form-control` class to textfields
+function replaceControlGroup($input) {
+    $input = str_replace('<div class="control-group"', '<div class="k-form-group"', $input);
+//    $input = str_replace('<div class="controls', '<div class="', $input);
+    return $input;
 }
 
 // Set input attribute(s)

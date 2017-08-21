@@ -41,26 +41,19 @@ $fieldsets = $this->form->getFieldsets();
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_USERS_USER_ACCOUNT_DETAILS', true)); ?>
 
         <div class="k-container">
-
-            <!-- Main information -->
             <div class="k-container__main">
-
                 <?php foreach ($this->form->getFieldset('user_details') as $field) : ?>
-                    <div class="k-container__main">
-                        <div class="k-form-group">
-                            <?php echo $field->label; ?>
-                            <div class="controls">
-                                <?php if ($field->fieldname == 'password') : ?>
-                                    <?php // Disables autocomplete ?> <input type="password" style="display:none">
-                                <?php endif; ?>
-                                <?php echo addFormControlClass($field->input); ?>
-                            </div>
-                        </div>
+                <!-- Main information -->
+                    <div class="k-form-group">
+                        <?php echo $field->label; ?>
+                        <?php if ($field->fieldname == 'password') : ?>
+                            <?php // Disables autocomplete ?>
+                            <input type="password" style="display:none">
+                        <?php endif; ?>
+                        <?php echo addFormControlClass($field->input); ?>
                     </div>
                 <?php endforeach; ?>
-
             </div>
-
         </div>
 
         <?php echo JHtml::_('bootstrap.endTab'); ?>
