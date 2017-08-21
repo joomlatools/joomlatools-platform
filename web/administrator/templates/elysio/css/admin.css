@@ -8353,6 +8353,8 @@ Styleguide 2.5
 
 .k-ui-namespace .treeselect-item, .k-ui-namespace .treeselect-menu { display: inline-block; }
 
+.k-ui-namespace .nav-stacked li { display: block; }
+
 .k-ui-namespace .k-navigation { padding: 12px 0 11px; }
 
 .k-ui-namespace .k-navigation li a { padding-top: 6px; padding-bottom: 6px; }
