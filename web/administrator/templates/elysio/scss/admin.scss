@@ -39,6 +39,9 @@ $k-icon-path: '../fonts';
   @import "molecules/tabs";
   @import "molecules/utilities";
 
+  // Re add here to override Bootstrap mixin
+  @import "kodekit-ui/src/scss/admin/utilities/mixins/button";
+
   // Shame...
   @import "shame";
 

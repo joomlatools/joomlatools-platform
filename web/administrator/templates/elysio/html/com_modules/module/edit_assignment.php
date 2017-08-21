@@ -41,7 +41,7 @@ $script = "
 JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 
-<div class="k-container">
+<div class="k-container" style="overflow: visible">
     <div class="k-container__full">
         <div class="k-form-group">
             <label id="jform_menus-lbl" for="jform_menus"><?php echo JText::_('COM_MODULES_MODULE_ASSIGN'); ?></label>
@@ -159,25 +159,22 @@ JFactory::getDocument()->addScriptDeclaration($script);
                     <div id="noresultsfound" style="display:none;" class="k-alert k-alert--info alert-no-items">
                         <?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
                     </div>
-                    <?php // @TODO: See why this is not being used; ?>
                     <div style="display:none;" id="treeselectmenu">
-                        <div class="pull-left nav-hover treeselect-menu">
-                            <div class="btn-group">
-                                <a href="#" data-toggle="dropdown" class="dropdown-toggle k-button k-button--tiny">
+                        <div class="treeselect-menu">
+                            <div class="k-button-group">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle k-button k-button--tiny k-button--default">
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-header"><?php echo JText::_('COM_MODULES_SUBITEMS'); ?></li>
                                     <li class="divider"></li>
                                     <li class="">
-                                        <a class="checkall k-button k-button--tiny" href="javascript://">
-                                            <span class="icon-checkbox"></span>
+                                        <a class="checkall" href="javascript://">
                                             <?php echo JText::_('JSELECT'); ?>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="uncheckall k-button k-button--tiny" href="javascript://">
-                                            <span class="icon-checkbox-unchecked"></span>
+                                        <a class="uncheckall" href="javascript://">
                                             <?php echo JText::_('COM_MODULES_DESELECT'); ?>
                                         </a>
                                     </li>
