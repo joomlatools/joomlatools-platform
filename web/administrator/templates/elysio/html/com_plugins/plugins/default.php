@@ -28,8 +28,6 @@ if ($saveOrder)
 }
 ?>
 
-<?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
-
 <!-- Form -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_plugins&view=plugins'); ?>" method="post" name="adminForm" id="adminForm">
 
