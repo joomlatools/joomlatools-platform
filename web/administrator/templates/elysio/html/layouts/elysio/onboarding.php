@@ -3,8 +3,8 @@ defined('JPATH_BASE') or die;
 
 $items = $displayData['items'];
 $type = $displayData['type'];
-$plural = $displayData['plural'] ? $displayData['plural'] : $type . 's';
-$button = $displayData['button'] ? $displayData['button'] : '.k-toolbar .k-button:first-child';
+$plural = isset($displayData['plural']) ? $displayData['plural'] : $type . 's';
+$button = isset($displayData['button']) ? $displayData['button'] : '.k-toolbar .k-button:first-child';
 ?>
 
 <?php if (!$items): ?>
