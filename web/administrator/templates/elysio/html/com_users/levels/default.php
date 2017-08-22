@@ -37,17 +37,18 @@ if ($saveOrder)
     <!-- Scopebar -->
     <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
 
+    <!-- Onboarding -->
+    <?php echo JLayoutHelper::render('elysio.onboarding', array('items' => $this->items, 'type' => 'level')); ?>
+
     <!-- Table -->
-    <div class="k-table-container">
+    <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
         <div class="k-table">
             <table class="k-js-fixed-table-header k-js-responsive-table" id="levelList">
                 <thead>
                     <tr>
-                        <?php // @TODO: Can't sort on this column, bug to fix; ?>
                         <th width="1%" class="k-table-data--icon">
-                            <?php echo JHtml::_('grid.sort', '<span class="k-icon-move"></span>', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
+                            <?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'k-icon-move'); ?>
                         </th>
-                        <?php // @TODO: END; ?>
                         <th width="1%" class="k-table-data--form">
                             <?php echo JHtml::_('grid.checkall'); ?>
                         </th>
@@ -75,6 +76,7 @@ if ($saveOrder)
                         <td>
                             <?php
                             $iconClass = '';
+
                             if (!$canChange)
                             {
                                 $iconClass = ' inactive';
@@ -85,10 +87,10 @@ if ($saveOrder)
                             }
                             ?>
                             <span class="sortable-handler<?php echo $iconClass ?>">
-								<span class="k-positioner"></span>
+								<span class="k-positioner k-is-active" data-k-tooltip="{&quot;container&quot;:&quot;.k-ui-container&quot;}" data-original-title="Please order by this column first by clicking the column title"></span>
 							</span>
                             <?php if ($canChange && $saveOrder) : ?>
-                                <input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
+                                <input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" />
                             <?php endif; ?>
                         </td>
                         <td>
