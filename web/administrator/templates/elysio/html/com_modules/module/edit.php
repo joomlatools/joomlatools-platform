@@ -309,3 +309,13 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
         <?php echo $this->form->getInput('client_id'); ?>
     </div>
 </form>
+
+
+<script>
+    kQuery(document).ready(function() {
+         kQuery('.chzn-custom-value').select2({
+             theme: "bootstrap",
+             tags: true
+         });
+    });
+</script>

@@ -8497,3 +8497,5 @@ button.close { padding: 0; cursor: pointer; background: transparent; border: 0; 
 .alert-options { float: right; line-height: 24px; color: black; text-shadow: 0 1px 0 white; opacity: 0.20; }
 
 .alert-options:hover, .alert-options:focus { color: black; text-decoration: none; cursor: pointer; opacity: 0.40; }
+
+.select2-results__group:empty, .select2-results__option:empty { display: none; }
