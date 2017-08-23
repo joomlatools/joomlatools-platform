@@ -34,6 +34,8 @@ if ($saveOrder && $menuType)
 
 JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 
+$assoc = JLanguageAssociations::isEnabled();
+
 ?>
 
 <!-- Form -->
@@ -179,7 +181,6 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
                             <?php endif; ?>
 							</span>
                             <div title="<?php echo $this->escape($item->path); ?>">
-                                <?php echo $prefix; ?>
                                 <span class="small"  title="<?php echo isset($item->item_type_desc) ? htmlspecialchars($this->escape($item->item_type_desc), ENT_COMPAT, 'UTF-8') : ''; ?>">
 									<?php echo $this->escape($item->item_type); ?></span>
                             </div>
