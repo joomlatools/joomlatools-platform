@@ -35,7 +35,7 @@ return [
     'smtphost'  => 'localhost',
 
 	/* Cache */
-	'caching'       => '0',
+	'caching'       => 0,
 	'cachetime'     => '15',
 	'cache_handler' => 'file',
 
