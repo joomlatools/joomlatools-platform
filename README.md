@@ -35,7 +35,7 @@ Use the [Joomlatools Vagrant](https://github.com/joomlatools/joomlatools-vagrant
 * Easy development environments with [Vagrant](http://www.vagrantup.com/)
 * Easy server provisioning with [Puppet](https://puppetlabs.com/) (Ubuntu 14.04, PHP 5.5, MariaDB)
 * One-command deploys using [Capistrano](http://capistranorb.com/)  
-* Easy application debgging using [Zray](http://www.zend.com/en/products/server/z-ray)
+* Easy application debugging using [Zray](http://www.zend.com/en/products/server/z-ray)
 
 ## Requirements
 
