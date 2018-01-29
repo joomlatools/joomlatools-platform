@@ -57,11 +57,11 @@ class JConfig
          * Override application configuration if defined in environment
          */
         if(getenv('JOOMLA_CACHE') !== false) {
-            $this->caching = getenv('JOOMLA_CACHE');
+            $this->caching = (int) getenv('JOOMLA_CACHE');
         }
 
         if(getenv('JOOMLA_DEBUG') !== false) {
-            $this->debug = getenv('JOOMLA_DEBUG');
+            $this->debug = (bool) getenv('JOOMLA_DEBUG');
         }
     }
 }
