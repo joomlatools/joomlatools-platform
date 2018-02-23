@@ -3,10 +3,11 @@
 return [
 
     /* Site */
-    'sitename'   => 'Joomlatools Platform',
-    'editor'     => 'tinymce',
-    'captcha'    => '0',
-    'list_limit' => '20',
+    'sitename'     => 'Joomlatools Platform',
+    'editor'       => 'tinymce',
+    'captcha'      => '0',
+    'list_limit'   => '20',
+    'frontediting' => 0,
 
     /* User */
     'access'     => '1',
@@ -35,7 +36,7 @@ return [
     'smtphost'  => 'localhost',
 
 	/* Cache */
-	'caching'       => '0',
+	'caching'       => 0,
 	'cachetime'     => '15',
 	'cache_handler' => 'file',
 
