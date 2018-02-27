@@ -4,7 +4,7 @@
   "description": "Joomla based web platform for building modern, scalable and maintainable software-as-a-service apps",
   "keywords": ["joomla", "platform", "php"],
   "homepage": "https://github.com/joomlatools/joomlatools-platform",
-  "license": "GPL-3.0",
+  "license": "GPL-3.0-only",
   "authors": [
     {
       "name": "Johan Janssens",
