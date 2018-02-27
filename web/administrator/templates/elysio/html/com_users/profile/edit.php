@@ -30,17 +30,18 @@ JFactory::getDocument()->addScriptDeclaration('
 // Get the form fieldsets.
 $fieldsets = $this->form->getFieldsets();
 ?>
+
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=profile&layout=edit&id=' . $this->item->id); ?>" method="post" name="adminForm" id="profile-form" enctype="multipart/form-data">
 
+    <!-- Tabs container -->
     <div class="k-tabs-container">
+
         <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'account')); ?>
+
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'account', JText::_('COM_USERS_USER_ACCOUNT_DETAILS')); ?>
-
         <div class="k-container">
-
-            <!-- Main information -->
             <div class="k-container__main">
-
                 <?php foreach ($this->form->getFieldset('user_details') as $field) : ?>
                     <div class="k-form-group">
                         <?php echo $field->label; ?>
@@ -53,7 +54,6 @@ $fieldsets = $this->form->getFieldsets();
                 <?php endforeach; ?>
             </div>
         </div>
-
         <?php echo JHtml::_('bootstrap.endTab'); ?>
 
         <?php foreach ($fieldsets as $fieldset) : ?>
@@ -64,12 +64,8 @@ $fieldsets = $this->form->getFieldsets();
             }
             ?>
             <?php echo JHtml::_('bootstrap.addTab', 'myTab', $fieldset->name, JText::_($fieldset->label)); ?>
-
                 <div class="k-container">
-
-                    <!-- Main information -->
                     <div class="k-container__main">
-
                     <?php foreach ($this->form->getFieldset($fieldset->name) as $field) : ?>
                         <?php if ($field->hidden) : ?>
                             <div class="k-form-group">
@@ -82,7 +78,6 @@ $fieldsets = $this->form->getFieldsets();
                             </div>
                         <?php endif; ?>
                     <?php endforeach; ?>
-
                     </div>
                 </div>
             <?php echo JHtml::_('bootstrap.endTab'); ?>
@@ -92,6 +87,6 @@ $fieldsets = $this->form->getFieldsets();
         <input type="hidden" name="task" value="" />
         <?php echo JHtml::_('form.token'); ?>
 
-    </div>
+    </div><!-- .k-tabs-container -->
 
-</form>
+</form><!-- k.component -->

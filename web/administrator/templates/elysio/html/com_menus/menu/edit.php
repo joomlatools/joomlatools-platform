@@ -28,6 +28,8 @@ JFactory::getDocument()->addScriptDeclaration("
 		};
 ");
 ?>
+
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form">
 
     <!-- Container -->
@@ -37,11 +39,12 @@ JFactory::getDocument()->addScriptDeclaration("
         </div>
     </div>
 
+    <!-- Tabs container -->
     <div class="k-tabs-container">
 
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_MENU_DETAILS')); ?>
 
+			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_MENU_DETAILS')); ?>
                 <div class="k-container">
                     <div class="k-container__main">
                         <div class="k-form-group">
@@ -52,7 +55,6 @@ JFactory::getDocument()->addScriptDeclaration("
                         </div>
                     </div>
                 </div>
-
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 
 			<?php if ($this->canDo->get('core.admin')) : ?>
@@ -70,5 +72,6 @@ JFactory::getDocument()->addScriptDeclaration("
 		<input type="hidden" name="task" value="" />
 		<?php echo JHtml::_('form.token'); ?>
 
-	</div>
-</form>
+	</div><!-- .k-tabs-container -->
+
+</form><!-- .k-component -->

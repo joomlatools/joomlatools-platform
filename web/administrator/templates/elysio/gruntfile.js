@@ -35,7 +35,6 @@ module.exports = function(grunt) {
         // Compile sass files
         sass: {
             options: {
-                outputStyle: 'compact',
                 includePaths: [
                     'bower_components', // bower
                     'node_modules' // npm
@@ -72,14 +71,17 @@ module.exports = function(grunt) {
             build: {
                 files: {
                     'js/admin.js': [
-                        'bower_components/kodekit-ui/dist/js/admin.min.js',
+                        'node_modules/kodekit-ui/dist/js/admin.min.js',
                         'scripts/main.js'
                     ],
                     'js/jquery.js': [
-                        'bower_components/kodekit-ui/dist/js/jquery.min.js'
+                        'node_modules/kodekit-ui/dist/js/jquery.min.js'
                     ],
                     'js/modernizr.js': [
-                        'bower_components/kodekit-ui/dist/js/modernizr.min.js'
+                        'node_modules/kodekit-ui/dist/js/modernizr.min.js'
+                    ],
+                    'js/kui-initialize.js': [
+                        'node_modules/kodekit-ui/dist/js/kui-initialize.min.js'
                     ]
                 }
             }

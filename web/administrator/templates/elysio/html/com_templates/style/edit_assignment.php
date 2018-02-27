@@ -15,7 +15,10 @@ $menuTypes = MenusHelper::getMenuLinks();
 $user      = JFactory::getUser();
 ?>
 
+<!-- Container -->
 <div class="k-container">
+
+    <!-- Full container -->
     <div class="k-container__full">
         <div class="k-form-group">
             <label id="jform_menuselect-lbl" for="jform_menuselect"><?php echo JText::_('JGLOBAL_MENU_SELECTION'); ?></label>
@@ -47,5 +50,7 @@ $user      = JFactory::getUser();
 
             </ul>
         </div>
-    </div>
-</div>
+
+    </div><!-- .k-container__full -->
+
+</div><!-- .k-container -->

@@ -25,7 +25,7 @@ if ($saveOrder)
 $colSpan = $clientId === 1 ? 9 : 10;
 ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_modules'); ?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
@@ -34,7 +34,7 @@ $colSpan = $clientId === 1 ? 9 : 10;
 	<!-- Table -->
 	<div class="k-table-container">
 		<div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table">
+            <table class="k-js-responsive-table">
 				<thead>
 					<tr>
 						<th width="1%" class="k-table-data--form">

@@ -82,18 +82,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 ?>
 
-<!-- Overrides -->
-<script>
-    kQuery(function($) {
-        // Menu item type layout
-        $('#jform_type').addClass('k-form-control').parent().addClass('k-input-group').removeClass('input-append').children('.btn').addClass('k-button k-button--primary').removeClass('btn btn-primary').wrap('<span class="k-input-group__button">');
-
-        // menu item type modal
-        $('#menuTypeModal').detach().appendTo('body');
-    });
-</script>
-
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form">
 
 	<!-- Container -->
@@ -103,47 +92,32 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
         </div>
     </div>
 
+    <!-- Tabs container -->
     <div class="k-tabs-container">
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_ITEM_DETAILS')); ?>
-
             <div class="k-container">
-
-                <!-- Main information -->
                 <div class="k-container__main">
-
                     <?php
                     echo $this->form->renderField('type');
-
                     echo $this->form->renderField('menutype');
-
                     if ($this->item->type == 'alias')
                     {
                         echo $this->form->renderFieldset('aliasoptions');
                     }
-
                     echo $this->form->renderFieldset('request');
-
                     if ($this->item->type == 'url')
                     {
                         $this->form->setFieldAttribute('link', 'readonly', 'false');
                     }
-
                     echo $this->form->renderField('link');
-
                     echo $this->form->renderField('alias');
-
                     echo $this->form->renderField('browserNav');
-
                     echo $this->form->renderField('template_style_id');
-
                     ?>
-
-                </div><!-- .k-container__main -->
-
-                <!-- Sub information -->
+                </div>
                 <div class="k-container__sub">
-
                     <fieldset class="k-form-block">
                         <div class="k-form-block__header">Global</div>
                         <div class="k-form-block__content">
@@ -161,7 +135,6 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
                             <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                         </div>
                     </fieldset>
-
                     <fieldset class="k-form-block">
                         <div class="k-form-block__header">Publishing / access</div>
                         <div class="k-form-block__content">
@@ -181,7 +154,6 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
                             <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                         </div>
                     </fieldset>
-
                     <fieldset class="k-form-block">
                         <div class="k-form-block__header">Extra</div>
                         <div class="k-form-block__content">
@@ -198,11 +170,8 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
                             <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                         </div>
                     </fieldset>
-
-                </div><!-- .k-container__sub -->
-
+                </div>
             </div>
-
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
 		<?php
@@ -214,7 +183,6 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 		<?php if ($assoc) : ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'associations', JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
                 <div class="k-container">
-                    <!-- Main information -->
                     <div class="k-container__main">
                         <?php echo $this->loadTemplate('associations'); ?>
                     </div>
@@ -229,11 +197,24 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 		<?php endif; ?>
 
 		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
-	</div>
+
+	</div><!-- .k-tabs-container -->
 
 	<input type="hidden" name="task" value="" />
 	<?php echo $this->form->getInput('component_id'); ?>
 	<?php echo JHtml::_('form.token'); ?>
 	<input type="hidden" id="fieldtype" name="fieldtype" value="" />
-</form>
 
+</form><!-- .k-component -->
+
+<div class="k-dynamic-content-holder">
+    <script>
+        kQuery(function($) {
+            // Menu item type layout
+            $('#jform_type').addClass('k-form-control').parent().addClass('k-input-group').removeClass('input-append').children('.btn').addClass('k-button k-button--primary').removeClass('btn btn-primary').wrap('<span class="k-input-group__button">');
+
+            // menu item type modal
+            $('#menuTypeModal').detach().appendTo('body');
+        });
+    </script>
+</div>

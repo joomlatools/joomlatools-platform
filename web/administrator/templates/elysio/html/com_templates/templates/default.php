@@ -22,19 +22,19 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_templates&view=templates'); ?>" method="post" name="adminForm" id="adminForm">
 
-    <?php // Scopebar ?>
+    <!-- Scopebar -->
     <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 
-    <?php if (empty($this->items)) : ?>
-        <!-- Onboarding -->
-        <?php echo JLayoutHelper::render('elysio.onboarding', array('items' => $this->items, 'type' => 'template')); ?>
-    <?php else : ?>
+    <!-- Onboarding -->
+    <?php echo JLayoutHelper::render('elysio.onboarding', array('items' => $this->items, 'type' => 'template')); ?>
+
     <!-- Table -->
     <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
         <div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table" id="itemList">
+            <table class="k-js-responsive-table" id="itemList">
                 <thead>
                 <tr>
                     <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
@@ -116,7 +116,5 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
         <?php echo JHtml::_('form.token'); ?>
 
     </div><!-- .k-table-container -->
-
-    <?php endif;?>
 
 </form><!-- .k-component -->

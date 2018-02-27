@@ -22,7 +22,7 @@
         &.is-checked {
           &, &:hover, &:focus {
             background: transparent; /* 1 */
-            color: $k-color-neutral-type;
+            color: $k-neutral-type-color;
           }
 
           &:before {

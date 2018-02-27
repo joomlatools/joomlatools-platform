@@ -11,9 +11,9 @@ $mainPageUri = $frontEndUri->toString();
 
 ?>
 
-<nav class="k-menu-container">
+<nav class="k-top-container">
 
-    <div class="k-menu-container__logo">
+    <div class="k-top-container__logo">
         <a href="<?php echo $this->baseurl; ?>">
             <?php if ($params->get('logo')) : ?>
                 <img src="<?php echo $params->get('avatar'); ?>" alt="<?php echo $sitename; ?>" />
@@ -24,11 +24,11 @@ $mainPageUri = $frontEndUri->toString();
     </div>
 
     <?php if ($layout != 'error') : ?>
-    <div class="k-menu-container__nav" id="k-js-menu">
+    <div class="k-top-container__navigation k-js-top-navigation" id="k-js-menu">
 
         <jdoc:include type="modules" name="menu" style="none" />
 
-        <ul class="k-menu-right">
+        <ul class="k-navigation-right">
             <li>
                 <a href="<?php echo $mainPageUri; ?>" title="<?php echo JText::sprintf('TPL_ISIS_PREVIEW', $sitename); ?>" target="_blank">
                     <span style="margin-right: 5px">View site</span>
@@ -39,7 +39,6 @@ $mainPageUri = $frontEndUri->toString();
                 <a data-toggle="dropdown" href="#">
                     <span class="k-icon-person" aria-hidden="true"></span>
                     <span class="k-visually-hidden">Settings</span>
-                    <span class="caret"></span>
                 </a>
                 <ul>
                     <li>
@@ -53,9 +52,4 @@ $mainPageUri = $frontEndUri->toString();
         </ul>
     </div>
     <?php endif; ?>
-
-    <!-- The toggle button for the left menu / area -->
-    <button type="button" id="menu-toggle" class="menu-toggle" title="Menu toggle" aria-label="Menu toggle">
-        <?php echo JText::_('TPL_ELYSIO_MENU'); ?>
-    </button>
 </nav>

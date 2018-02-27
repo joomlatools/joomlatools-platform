@@ -1,0 +1,125 @@
+// Module menu assigment tree select styling
+
+// Re add here to override Bootstrap mixin
+@import "../../node_modules/kodekit-ui/src/scss/admin/tools/mixins/button";
+
+.treeselect {
+  @include reset();
+}
+
+.treeselect-toggle {
+  @include button-default();
+  @include button-variant($k-button-default-color, $k-button-default-background, $k-button-default-border);
+  @include button-size($k-button-small-border-radius, $k-button-small-font-size, $k-button-small-line-height, $k-button-small-vertical-spacing $k-button-small-horizontal-spacing);
+
+  &:after {
+    display: inline-block;
+    content: "-"
+  }
+
+  &.icon-plus:after {
+    content: "+";
+  }
+}
+
+.treeselect-item,
+.treeselect-menu {
+  display: inline-block;
+}
+
+.nav-stacked {
+  li {
+    display: block;
+  }
+}
+
+
+// Top navigation overrides
+
+.k-top-container__navigation {
+
+  // Remove caret added by Joomla!
+  .caret {
+    display: none;
+  }
+
+  // Remove styling from default dropdown styles
+  .dropdown-menu {
+    font-size: inherit;
+    text-align: inherit;
+    border-radius: 0;
+    border: none;
+
+    a {
+      display: block;
+      padding: 0 16px;
+      font-weight: inherit;
+      white-space: nowrap;
+    }
+  }
+}
+
+
+
+// Move back to KUI
+// Added to make sure images are not 49px tall instead of 48px
+
+.k-ui-namespace .k-top-container__logo a {
+  line-height: 1;
+}
+
+
+// Style 'multiple' chozen container
+
+.chzn-container {
+  min-width: 100%;
+  width: 100%;
+
+  .chzn-choices {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    user-select: none;
+
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    background-color: white;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+    color: #222222;
+    font-size: 13px;
+    outline: 0;
+
+    height: 32px;
+    line-height: 18px;
+    padding: 6px;
+  }
+
+  &.chzn-container-multi .chzn-choices li.search-field input[type="text"] {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    padding-left: 6px;
+  }
+
+  .chzn-drop {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+  }
+
+  &.chzn-container-multi .search-choice + .search-field {
+    input[type="text"] {
+      height: 28px;
+      padding-left: 12px;
+    }
+  }
+}
+
+
+// Hide 'single' chozen container
+
+.chzn-container-single {
+  display: none !important;
+}

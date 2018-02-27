@@ -36,8 +36,10 @@ JFactory::getDocument()->addScriptDeclaration('
 
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
 
+    <!-- Container -->
     <div class="k-container">
 
 	    <div class="k-container__full">
@@ -47,9 +49,8 @@ JFactory::getDocument()->addScriptDeclaration('
             <input type="hidden" name="task" value="" />
             <?php echo JHtml::_('form.token'); ?>
 
-
         </div>
 
-    </div>
+    </div><!-- .k-container -->
 
-</form>
+</form><!-- .k-component -->

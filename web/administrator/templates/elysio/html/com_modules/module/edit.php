@@ -156,7 +156,7 @@ $layout  = $isModal ? 'modal' : 'edit';
 $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_modules&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="module-form">
 
     <!-- Container -->
@@ -166,16 +166,14 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
         </div>
     </div>
 
+    <!-- Tabs container -->
     <div class="k-tabs-container">
 
         <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
+
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_MODULES_MODULE')); ?>
-
         <div class="k-container">
-
-            <!-- Main information -->
             <div class="k-container__main">
-
                 <?php if ($this->item->xml) : ?>
                     <?php if ($this->item->xml->description) : ?>
                     <div class="k-well">
@@ -235,13 +233,10 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
                 $html = JLayoutHelper::render('joomla.edit.fieldset', $this);
                 echo $html ? '' . $html : '';
                 ?>
-
-            </div><!-- .k-container__main -->
-
-            <!-- Sub information -->
+            </div>
             <div class="k-container__sub">
-
                 <fieldset class="k-form-block">
+                    <div class="k-form-block__header">Basic</div>
                     <div class="k-form-block__content">
                         <?php echo $this->form->renderField('showtitle'); ?>
                         <div class="k-form-group">
@@ -250,25 +245,18 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
                         </div>
                     </div>
                 </fieldset>
-
                 <?php
-                // Set main fields.
                 $this->fields = array(
                     'published',
                     'publish_up',
                     'publish_down',
                     'access',
-                    'ordering',
+//                    'ordering', disable since it's not working nicely with KUI
                     'language',
                     'note'
                 );
-
                 ?>
-                <fieldset class="k-form-block">
-                    <div class="k-form-block__content">
-                        <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-                    </div>
-                </fieldset>
+                <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
             </div>
         </div>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
@@ -310,12 +298,13 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
     </div>
 </form>
 
-
-<script>
-    kQuery(document).ready(function() {
-         kQuery('.chzn-custom-value').select2({
-             theme: "bootstrap",
-             tags: true
-         });
-    });
-</script>
+<div class="k-dynamic-content-holder">
+    <script>
+        kQuery(document).ready(function() {
+             kQuery('.chzn-custom-value').select2({
+                 theme: "bootstrap",
+                 tags: true
+             });
+        });
+    </script>
+</div>

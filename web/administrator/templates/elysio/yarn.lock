@@ -1586,6 +1586,10 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
+"kodekit-ui@https://github.com/timble/kodekit-ui.git#1.0.0":
+  version "1.0.0"
+  resolved "https://github.com/timble/kodekit-ui.git#85f8a5c040a6cb0d47b9466c3d8aeb35a9247ec4"
+
 lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
@@ -2399,6 +2403,10 @@ scss-tokenizer@^0.2.1:
   dependencies:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
+
+select2-bootstrap-theme@0.1.0-beta.9:
+  version "0.1.0-beta.9"
+  resolved "https://registry.yarnpkg.com/select2-bootstrap-theme/-/select2-bootstrap-theme-0.1.0-beta.9.tgz#ceb5d155b789edf4151033f07142df8898b6031d"
 
 select2@4.0.3:
   version "4.0.3"

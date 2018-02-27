@@ -42,8 +42,10 @@ ul.horizontal-buttons li {
 ');
 ?>
 
+<!-- Container -->
 <div class="k-container">
 
+    <!-- Full container -->
     <div class="k-container__full">
 
         <?php
@@ -53,13 +55,11 @@ ul.horizontal-buttons li {
         echo JLayoutHelper::render('joomla.menu.edit_modules', $this); ?>
 
         <div class="k-well">
-
             <div class="k-well__content">
-
                 <div class="k-table-container">
                     <div class="k-table">
                         <!-- Keep .table class for Joomla JS -->
-                        <table class="k-js-fixed-table-header k-js-responsive-table table">
+                        <table class="k-js-responsive-table table">
                             <thead>
                             <tr>
                                 <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
@@ -160,14 +160,10 @@ ul.horizontal-buttons li {
                             <?php endforeach; ?>
                             </tbody>
                         </table>
-
-                    </div><!-- .k-table -->
-
-                </div><!-- .k-table-container -->
-
-            </div><!-- .k-well__content -->
-
-        </div><!-- .k-well -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div><!-- .k-container__full -->
 

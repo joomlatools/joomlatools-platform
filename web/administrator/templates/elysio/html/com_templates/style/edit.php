@@ -25,7 +25,7 @@ JFactory::getDocument()->addScriptDeclaration("
 ");
 ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_templates&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="style-form">
 
     <!-- Container -->
@@ -35,16 +35,15 @@ JFactory::getDocument()->addScriptDeclaration("
         </div>
     </div>
 
+    <!-- Tabs container -->
     <div class="k-tabs-container">
 
         <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('JDETAILS')); ?>
 
         <div class="k-container">
-
-            <!-- Main information -->
             <div class="k-container__main">
-
                 <div class="k-well">
                     <h3 class="k-heading no-margin-bottom">
                         <?php echo JText::_($this->item->template); ?>
@@ -69,7 +68,6 @@ JFactory::getDocument()->addScriptDeclaration("
                         <?php endif; ?>
                     </div>
                 </div>
-
                 <?php
                 $this->fieldset = 'basic';
                 $html = JLayoutHelper::render('joomla.edit.fieldset', $this);
@@ -84,11 +82,9 @@ JFactory::getDocument()->addScriptDeclaration("
                 );
                 ?>
                 <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-
             </div>
         </div>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
-
 
         <?php if ($description) : ?>
             <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
@@ -112,5 +108,7 @@ JFactory::getDocument()->addScriptDeclaration("
 
         <input type="hidden" name="task" value="" />
         <?php echo JHtml::_('form.token'); ?>
-    </div>
-</form>
+
+    </div><!-- .k-tabs-container -->
+
+</form><!-- .k-component -->

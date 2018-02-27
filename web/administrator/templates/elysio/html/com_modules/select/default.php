@@ -15,11 +15,13 @@ JHtml::_('bootstrap.popover');
 $document = JFactory::getDocument();
 ?>
 
+<!-- Component -->
 <div class="k-component k-js-component">
 
+    <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table">
+            <table class="k-js-responsive-table">
                 <thead>
                 <tr>
                     <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
@@ -51,7 +53,8 @@ $document = JFactory::getDocument();
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
-    </div>
+        </div><!-- .k-table -->
+
+    </div><!-- .k-table-container -->
 
 </div><!-- .k-component -->

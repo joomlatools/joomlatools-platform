@@ -48,6 +48,15 @@ function classOverride($input) {
         case strpos($input, 'cancel');
             $class = "k-icon-x";
             break;
+        case strpos($input, 'featured');
+            $class = "k-icon-star";
+            break;
+        case strpos($input, 'archive');
+            $class = "k-icon-box";
+            break;
+        case strpos($input, 'remove');
+            $class = "k-icon-star";
+            break;
     }
     return $class;
 }

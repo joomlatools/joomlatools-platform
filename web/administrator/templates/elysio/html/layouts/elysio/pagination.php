@@ -14,5 +14,7 @@ $data = $displayData;
 
         <!-- Pages -->
         <?php echo $displayData['pages'] ?>
+
     </div>
+
 </div><!-- .k-table-pagination -->

@@ -45,10 +45,6 @@ $doc->setMetaData('apple-mobile-web-app-status-bar-style', 'black');
 $doc->setMetaData('apple-mobile-web-app-title', 'Elysio');
 $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 
-// Unset JS
-unset($this->_scripts[JURI::root(true).'/media/system/js/mootools-core-uncompressed.js']);
-unset($this->_scripts[JURI::root(true).'/media/system/js/mootools-more-uncompressed.js']);
-
 // Unset CSS
 unset($this->_stylesheets[JURI::root(true).'/media/jui/css/jquery.searchtools.css']);
 unset($this->_stylesheets[JURI::root(true).'/media/jui/css/chosen.css']);
@@ -72,7 +68,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 	<jdoc:include type="head" />
 </head>
 <body class="<?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
-<script data-inline="" type="text/javascript">(function(){var el=document.documentElement;var cl="k-js-enabled";if(el.classList){el.classList.add(cl);}else{el.className+=" "+cl;}})()</script>
+<script src="templates/elysio/js/kui-initialize.js"></script>
 
 <!-- Koowa -->
 <div class="k-ui-namespace k-ui-container">

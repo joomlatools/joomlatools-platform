@@ -41,7 +41,9 @@ $script = "
 JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 
+<!-- Container -->
 <div class="k-container" style="overflow: visible">
+
     <div class="k-container__full">
         <div class="k-form-group">
             <label id="jform_menus-lbl" for="jform_menus"><?php echo JText::_('COM_MODULES_MODULE_ASSIGN'); ?></label>
@@ -203,4 +205,5 @@ JFactory::getDocument()->addScriptDeclaration($script);
             </div>
         </div>
     </div>
-</div>
+
+</div><!-- .k-container -->

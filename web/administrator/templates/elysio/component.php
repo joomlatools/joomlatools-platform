@@ -64,7 +64,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 	<jdoc:include type="head" />
 </head>
 <body class="contentpane component">
-    <div class="k-ui-namespace k-ui-container" style="overflow: auto;">
+    <div class="k-ui-namespace k-ui-container">
 		<jdoc:include type="message" />
 		<jdoc:include type="component" />
 	</div>

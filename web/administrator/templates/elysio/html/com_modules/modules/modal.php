@@ -36,6 +36,7 @@ modulePosIns = function(position) {
 	window.parent.jModalClose();
 };');
 ?>
+
 <div class="container-popup">
 
 	<form action="<?php echo JRoute::_('index.php?option=com_modules&view=modules&layout=modal&tmpl=component&' . JSession::getFormToken() . '=1'); ?>" method="post" name="adminForm" id="adminForm">

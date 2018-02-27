@@ -18,6 +18,7 @@ $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
 
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=debuguser&user_id=' . (int) $this->state->get('filter.user_id'));?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
@@ -26,7 +27,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table">
+            <table class="k-js-responsive-table">
                 <thead>
                 <tr>
                     <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
@@ -102,10 +103,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
         <!-- Pagination -->
         <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
-    </div>
+    </div><!-- .k-table-container -->
 
     <input type="hidden" name="task" value="" />
     <input type="hidden" name="boxchecked" value="0" />
     <?php echo JHtml::_('form.token'); ?>
 
-</form>
+</form><!-- k.component -->

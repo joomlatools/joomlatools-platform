@@ -25,7 +25,7 @@ JFactory::getDocument()->addScriptDeclaration("
 ");
 ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="group-form">
 
 	<!-- Container -->
@@ -50,7 +50,7 @@ JFactory::getDocument()->addScriptDeclaration("
             <input type="hidden" name="task" value="" />
             <?php echo JHtml::_('form.token'); ?>
 
-        </div><!-- .k-container__content -->
+        </div><!-- .k-container__main -->
 
 	</div><!-- .k-container -->
 

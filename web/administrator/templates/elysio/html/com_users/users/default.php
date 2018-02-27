@@ -19,6 +19,7 @@ $loggeduser = JFactory::getUser();
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=users');?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
@@ -27,7 +28,7 @@ $loggeduser = JFactory::getUser();
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table" id="userList">
+            <table class="k-js-responsive-table" id="userList">
                 <thead>
                 <tr>
                     <th width="1%" class="k-table-data--form">

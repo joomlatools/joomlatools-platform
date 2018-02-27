@@ -13,8 +13,13 @@ use Joomla\Registry\Registry;
 
 $user = JFactory::getUser();
 ?>
+
+<!-- Component -->
 <div class="k-component k-js-component">
+
+    <!-- Container -->
     <div class="k-container">
+
         <div class="k-container__full">
             <?php
             $spans = 0;
@@ -24,5 +29,7 @@ $user = JFactory::getUser();
                 </div>
             <?php endforeach; ?>
         </div>
-    </div>
-</div>
+
+    </div><!-- .k-container -->
+
+</div><!-- .k-component -->

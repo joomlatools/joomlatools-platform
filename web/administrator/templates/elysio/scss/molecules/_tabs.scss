@@ -26,9 +26,9 @@
     &,
     &:hover,
     &:focus {
-      color: $k-nav-tabs-active-link-hover-color;
-      background-color: $k-nav-tabs-active-link-hover-background;
-      border: 1px solid $k-nav-tabs-active-link-hover-border;
+      color: inherit;
+      background-color: $k-tabs-link-active-hover-background;
+      border: 1px solid $k-tabs-link-active-hover-border;
       border-bottom-color: transparent;
       cursor: default;
     }
@@ -41,6 +41,7 @@
 }
 
 .nav > li > a {
+  color: inherit;
   padding: 7px 13px;
   line-height: 20px;
 }
@@ -53,7 +54,7 @@
 .k-tabs-scroller {
   > .k-tabs > li.active > a {
     background: $k-component-background;
-    color: $k-color-type;
+    color: $k-type-color;
   }
 }
 
@@ -61,28 +62,16 @@
 
 
 .tabs-left {
-  display: table;
-
-  @include flexbox(0, 0) {
-    display: flex;
-  }
+  display: flex;
 
   .nav-tabs,
   .tab-content {
-    display: table-cell;
-    vertical-align: top;
-
-    @include flexbox(0, 0) {
-      display: block;
-    }
+    display: block;
   }
 
   .nav-tabs.nav-tabs {
     border: none;
-
-    @include flexbox(0, 0) {
-      margin-right: 0;
-    }
+    margin-right: 0;
 
     > li {
       display: block;
@@ -93,4 +82,10 @@
   .tab-content {
     overflow: auto;
   }
+}
+
+
+// Override :not(.k-is-active) display: none important
+.k-tabs-content > .k-tab.active {
+  display: block !important;
 }

@@ -1,0 +1,7 @@
+// Hide empty select2 items
+.select2-results__group,
+.select2-results__option {
+  &:empty {
+    display: none;
+  }
+}

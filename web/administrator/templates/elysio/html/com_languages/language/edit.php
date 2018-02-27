@@ -39,7 +39,7 @@ JFactory::getDocument()->addScriptDeclaration(
 );
 ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_languages&view=language&layout=edit&lang_id=' . (int) $this->item->lang_id); ?>" method="post" name="adminForm" id="language-form">
 
     <!-- Container -->
@@ -49,32 +49,27 @@ JFactory::getDocument()->addScriptDeclaration(
         </div>
     </div>
 
+    <!-- Tabs container -->
     <div class="k-tabs-container">
 
-	<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+	    <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('JDETAILS')); ?>
-
         <div class="k-container">
-
-            <!-- Main information -->
             <div class="k-container__main">
-
-			<?php echo $this->form->renderField('title_native'); ?>
-			<?php echo $this->form->renderField('lang_code'); ?>
-			<?php echo $this->form->renderField('sef'); ?>
-			<div class="k-form-group">
-                <?php echo $this->form->getLabel('image'); ?>
-                <?php echo $this->form->getInput('image'); ?>
-                <p class="k-form-info">
-                    <span id="flag">
-                        <?php echo JHtml::_('image', 'mod_languages/' . $this->form->getValue('image') . '.gif', $this->form->getValue('image'), array('title' => $this->form->getValue('image')), true); ?>
-                    </span>
-                </p>
-			</div>
-
-            </div><!-- .k-container__main -->
-
-            <!-- Sub information -->
+                <?php echo $this->form->renderField('title_native'); ?>
+                <?php echo $this->form->renderField('lang_code'); ?>
+                <?php echo $this->form->renderField('sef'); ?>
+                <div class="k-form-group">
+                    <?php echo $this->form->getLabel('image'); ?>
+                    <?php echo $this->form->getInput('image'); ?>
+                    <p class="k-form-info">
+                        <span id="flag">
+                            <?php echo JHtml::_('image', 'mod_languages/' . $this->form->getValue('image') . '.gif', $this->form->getValue('image'), array('title' => $this->form->getValue('image')), true); ?>
+                        </span>
+                    </p>
+                </div>
+            </div>
             <div class="k-container__sub">
                 <?php if ($this->canDo->get('core.edit.state')) : ?>
                     <?php echo $this->form->renderField('published'); ?>
@@ -83,14 +78,11 @@ JFactory::getDocument()->addScriptDeclaration(
                 <?php echo $this->form->renderField('description'); ?>
                 <?php echo $this->form->renderField('lang_id'); ?>
             </div>
-
         </div>
-
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'metadata', JText::_('JGLOBAL_FIELDSET_METADATA_OPTIONS')); ?>
         <div class="k-container">
-            <!-- Main information -->
             <div class="k-container__main">
 		        <?php echo $this->form->renderFieldset('metadata'); ?>
             </div>
@@ -99,17 +91,17 @@ JFactory::getDocument()->addScriptDeclaration(
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'site_name', JText::_('COM_LANGUAGES_FIELDSET_SITE_NAME_LABEL')); ?>
         <div class="k-container">
-            <!-- Main information -->
             <div class="k-container__main">
 		        <?php echo $this->form->renderFieldset('site_name'); ?>
             </div>
         </div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
-	<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+	    <?php echo JHtml::_('bootstrap.endTabSet'); ?>
 
-    </div>
+    </div><!-- .k-tabs-container -->
 
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
-</form>
+
+</form><!-- .k-component -->

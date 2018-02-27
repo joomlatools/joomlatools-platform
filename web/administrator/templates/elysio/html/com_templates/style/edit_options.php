@@ -10,6 +10,7 @@
 defined('_JEXEC') or die;
 
 ?>
+
 <?php
 	echo JHtml::_('bootstrap.startAccordion', 'templatestyleOptions', array('active' => 'collapse0'));
 	$fieldSets = $this->form->getFieldsets('params');

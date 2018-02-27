@@ -44,7 +44,7 @@ if (!$saveHistory)
 }
 
 $html   = array();
-$html[] = '<fieldset class="form-vertical">';
+$html[] = '<fieldset class="k-form-block"><div class="k-form-block__header">Global</div><div class="k-form-block__content">';
 
 foreach ($fields as $field)
 {
@@ -65,6 +65,6 @@ foreach ($fields as $field)
     }
 }
 
-$html[] = '</fieldset>';
+$html[] = '</div></fieldset>';
 
 echo implode('', $html);

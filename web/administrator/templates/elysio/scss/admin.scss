@@ -1,16 +1,13 @@
 // Set icon path
 $k-icon-path: '../fonts';
 
-// Import default Joomla styling (Joomlatools framework)
-@import "kodekit-ui/src/scss/admin-ui.scss";
+// Import kodekit UI
+@import "../node_modules/kodekit-ui/src/scss/admin-ui";
 
 // Override variables
-@import "utilities/variables";
+@import "tools/variables";
 
-// Basic html and body setup
-@import "utilities/html";
-
-// Bootstrap
+// Bootstrap outside the kui namespace
 @import "bootstrap-sass/assets/stylesheets/bootstrap/variables";
 @import "bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 @import "bootstrap-sass/assets/stylesheets/bootstrap/popovers";
@@ -31,35 +28,22 @@ $k-icon-path: '../fonts';
   @import "molecules/heading";
   @import "molecules/icon";
   @import "molecules/label";
-  @import "molecules/logo";
-  @import "molecules/menu";
   @import "molecules/modal";
   @import "molecules/pagination";
   @import "molecules/table";
   @import "molecules/tabs";
   @import "molecules/utilities";
 
-  // Re add here to override Bootstrap mixin
-  @import "kodekit-ui/src/scss/admin/utilities/mixins/button";
-
   // Shame...
-  @import "shame";
-
-  // 8 pixel grid, can go when Kodekit UI is built in 8pixel grid
-  @import "8pixelgrid";
+  @import "utilities/shame";
 
 }
 
-// Outside the koowa namespace
+// Modified Bootstrap outside the kui namespace
 @import "bootstrap/popover";
 @import "bootstrap/modal";
 @import "bootstrap/animation";
 @import "bootstrap/close";
 
-// Hide empty select2 items
-.select2-results__group,
-.select2-results__option {
-  &:empty {
-    display: none;
-  }
-}
+// Styling outside the kui namespace
+@import "utilities/select2";

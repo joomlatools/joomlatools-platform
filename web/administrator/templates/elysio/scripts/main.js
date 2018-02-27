@@ -1,46 +1,36 @@
 kQuery(document).ready(function($) {
 
-    // Select2
-    $('select').select2({
+    // Select2 for single select
+    $(':not(.module-ajax-ordering) select:not([multiple])').select2({
         theme: "bootstrap",
         minimumResultsForSearch: Infinity
     });
 
-    // Tabs overrides
-    var $tabsScroller = $('.k-js-tabs-scroller'),
-        $tabs = $('.k-js-tabs');
-
-    function scrollToTab(element) {
-        if (element.parent('li').parent('ul').parent().hasClass('k-js-tabs-scroller')) {
-            var positionLeft = element.parent().position().left,
-                positionRight = positionLeft + element.parent().outerWidth(),
-                parentPaddingLeft = parseInt($tabs.css('padding-left'), 10),
-                parentPaddingRight = parseInt($tabs.css('padding-right'), 10),
-                scrollerOffset = $tabsScroller.scrollLeft(),
-                scrollerWidth = $tabsScroller.innerWidth(),
-                scroll;
-
-            // When item falls of on the right side
-            if ( positionRight > (scrollerOffset + scrollerWidth) ) {
-                scroll = scrollerOffset + ((positionRight - (scrollerWidth + scrollerOffset)) + (parentPaddingRight * 2));
-            }
-
-            // When item falls of on the left side
-            if ( positionLeft < scrollerOffset ) {
-                scroll = scrollerOffset - ((scrollerOffset - positionLeft) + (parentPaddingLeft * 2));
-            }
-
-            // Animate the scroll
-            $tabsScroller.animate({
-                scrollLeft: scroll
-            }, 200);
-        }
-    }
-
+    // Chosen for multiple select (tags, modules etc.)
+    // Remove single chosen
     setTimeout(function() {
-        scrollToTab($tabsScroller.find('.active a'));
-    }, 700); // Wait for animation to be finished
+        $(':not(.module-ajax-ordering) .chzn-container-single').each(function() {
+            $(this).remove();
+        });
+    }, 1000);
 
+
+    // Optionlist builder
+    var $input = $('.k-optionlist-trigger');
+    if ( $input.length ) {
+
+        // Rename and add markup
+        $input.closest('.controls').removeClass('controls').addClass('k-optionlist__content').append('<div class="k-optionlist__focus"></div>').wrap('<div class="k-optionlist" style="margin-top: 8px;"></div>');
+
+        // Run for each option
+        $input.each(function() {
+            // Variables
+            var $item = $(this),
+                $label = $item.parent();
+
+            // Move the input outside of the label
+            $label.before($item);
+        });
+    }
 });
-
 

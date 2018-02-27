@@ -24,20 +24,18 @@ JFactory::getDocument()->addScriptDeclaration("
 ");
 ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_plugins&layout=edit&extension_id=' . (int) $this->item->extension_id); ?>" method="post" name="adminForm" id="style-form">
 
+    <!-- Tabs container -->
     <div class="k-tabs-container">
 
         <?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
         <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
+
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_PLUGINS_PLUGIN', true)); ?>
-
-            <!-- Container -->
             <div class="k-container">
-
-                <!-- Main information -->
                 <div class="k-container__main">
                     <?php if ($this->item->xml) : ?>
                         <?php if ($this->item->xml->description) : ?>
@@ -92,15 +90,12 @@ JFactory::getDocument()->addScriptDeclaration("
                     <?php else : ?>
                         <div class="k-alert k-alert--error"><?php echo JText::_('COM_PLUGINS_XML_ERR'); ?></div>
                     <?php endif; ?>
-
                     <?php
                     $this->fieldset = 'basic';
                     $html = JLayoutHelper::render('joomla.edit.fieldset', $this);
                     echo $html ? '<hr />' . $html : '';
                     ?>
-                </div><!-- .k-container__main -->
-
-                <!-- Sub information -->
+                </div>
                 <div class="k-container__sub">
                     <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                     <div class="k-form-group">
@@ -116,26 +111,26 @@ JFactory::getDocument()->addScriptDeclaration("
                         <?php echo $this->form->getInput('element'); ?>
                     </div>
                 </div>
-                <?php echo JHtml::_('bootstrap.endTab'); ?>
-
-                <?php if (isset($long_description) && $long_description != '') : ?>
-                    <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION', true)); ?>
-                    <?php echo $long_description; ?>
-                    <?php echo JHtml::_('bootstrap.endTab'); ?>
-                <?php endif; ?>
-
-                <?php
-                $this->fieldsets = array();
-                $this->ignore_fieldsets = array('basic', 'description');
-                echo JLayoutHelper::render('joomla.edit.params', $this);
-                ?>
-
             </div>
+            <?php echo JHtml::_('bootstrap.endTab'); ?>
+
+            <?php if (isset($long_description) && $long_description != '') : ?>
+                <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION', true)); ?>
+                <?php echo $long_description; ?>
+                <?php echo JHtml::_('bootstrap.endTab'); ?>
+            <?php endif; ?>
+
+            <?php
+            $this->fieldsets = array();
+            $this->ignore_fieldsets = array('basic', 'description');
+            echo JLayoutHelper::render('joomla.edit.params', $this);
+            ?>
 
         <?php echo JHtml::_('bootstrap.endTabSet'); ?>
 
-	<input type="hidden" name="task" value="" />
-	<?php echo JHtml::_('form.token'); ?>
+    </div><!-- .k-tabs-container -->
 
-	</div>
+    <input type="hidden" name="task" value="" />
+    <?php echo JHtml::_('form.token'); ?>
+
 </form>

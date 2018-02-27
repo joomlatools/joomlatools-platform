@@ -28,7 +28,7 @@ if ($saveOrder)
 }
 ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_plugins&view=plugins'); ?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
@@ -37,7 +37,7 @@ if ($saveOrder)
 	<!-- Table -->
 	<div class="k-table-container">
 		<div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table" id="pluginList">
+            <table class="k-js-responsive-table" id="pluginList">
 				<thead>
 					<tr>
                         <th width="1%" class="k-table-data--icon">

@@ -4,15 +4,15 @@
 
 .k-table .btn-micro {
   @include button-default('.active', '.disabled');
-  @include button-variant($k-btn-default-color, $k-btn-default-background, $k-btn-default-border);
+  @include button-variant($k-button-default-color, $k-button-default-background, $k-button-default-border);
 
 
   /* Smaller size */
 
-  border-radius: $k-border-radius-small;
-  font-size: $k-font-size-tiny;
-  line-height: $k-line-height-tiny;
-  padding: $k-spacing-tiny-vertical $k-spacing-tiny-horizontal;
+  border-radius: $k-button-small-border-radius;
+  font-size: $k-button-small-font-size;
+  line-height: $k-button-small-line-height;
+  padding: $k-button-small-vertical-spacing $k-button-small-horizontal-spacing;
 
 
   /* Disabled style */
@@ -22,7 +22,7 @@
 
     [class*="icon"]:after {
       opacity: 1;
-      color: $k-color-type-light;
+      color: $k-type-light-color;
     }
   }
 
@@ -31,7 +31,7 @@
 
   .icon-publish.icon-publish {
     @include icon-after(check, true) {
-      color: $k-color-accent;
+      color: $k-accent-color;
     }
   }
 
@@ -41,13 +41,13 @@
 
   .icon-featured.icon-featured {
     @include icon-after(star, true) {
-      color: $k-color-accent;
+      color: $k-accent-color;
     }
   }
 
   .icon-unfeatured {
     @include icon-after(star, true) {
-      color: $k-color-type-light;
+      color: $k-type-light-color;
     }
   }
 

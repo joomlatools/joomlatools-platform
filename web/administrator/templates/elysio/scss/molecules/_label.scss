@@ -3,7 +3,7 @@
  */
 
 .label {
-  background: $k-color-type-light;
+  background: $k-type-light-color;
   color: white;
   vertical-align: middle;
 }
@@ -13,17 +13,17 @@ a.label {
 }
 
 .label-warning {
-  background: $k-color-warning;
+  background: $k-warning-color;
 }
 
 .label-important {
-  background: $k-color-error;
+  background: $k-error-color;
 }
 
 .label-info {
-  background: $k-color-accent;
+  background: $k-accent-color;
 }
 
 .label-success {
-  background: $k-color-success;
+  background: $k-success-color;
 }

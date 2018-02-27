@@ -22,7 +22,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_templates&view=styles'); ?>" method="post" name="adminForm" id="adminForm">
 
     <?php // Scopebar ?>
@@ -31,7 +31,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table">
+            <table class="k-js-responsive-table">
                 <thead>
                     <tr>
                         <th width="1%" class="k-table-data--form">

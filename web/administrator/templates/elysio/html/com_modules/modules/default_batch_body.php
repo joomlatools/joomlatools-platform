@@ -29,6 +29,14 @@ $attr = array(
 		. 'data-placeholder="' . JText::_('COM_MODULES_TYPE_OR_SELECT_POSITION') . '" '
 );
 
+// Create the copy/move options.
+$options = array(
+    JHtml::_('select.option', 'c', JText::_('JLIB_HTML_BATCH_COPY')),
+    JHtml::_('select.option', 'm', JText::_('JLIB_HTML_BATCH_MOVE'))
+);
+$attribs = array(
+    'class' => 'k-optionlist-trigger'
+)
 ?>
 
 <p><?php echo JText::_('COM_MODULES_BATCH_TIP'); ?></p>
@@ -45,24 +53,29 @@ $attr = array(
     <div id="batch-choose-action" class="k-form-group">
         <?php echo JHtml::_('select.groupedlist', $positions, 'batch[position_id]', $attr) ?>
         <div id="batch-copy-move" class="k-form-group radio">
-
-            <?php // @TODO: Change batchoptions below into a list like this; (layouts>joomla.form.field.radio); ?>
-            <fieldset class="k-optionlist">
-                <div class="k-optionlist__content">
-                    <input type="radio" id="example1" name="example" value="1" checked="checked">
-                    <label for="example1">
-                        <span>Copy</span>
-                    </label>
-                    <input type="radio" id="example2" name="example" value="0">
-                    <label for="example2">
-                        <span>Move</span>
-                    </label>
-                    <div class="k-optionlist__focus"></div>
-                </div>
-            </fieldset>
-            <?php echo JHtml::_('modules.batchOptions'); ?>
-            <?php // @TODO; END ?>
-
+            <?php echo JHtml::_('select.radiolist', $options, 'batch[move_copy]', $attribs, 'value', 'text', 'm'); ?>
         </div>
     </div>
 <?php endif; ?>
+
+<div class="k-dynamic-content-holder">
+    <script>
+        kQuery(function($) {
+            var input = $('.k-optionlist-trigger'),
+                controls = $('#batch-copy-move .controls')[0];
+
+            // Rename and add markup
+            $(controls).removeClass('controls').addClass('k-optionlist__content').append('<div class="k-optionlist__focus"></div>').wrap('<div class="k-optionlist" style="margin-top: 8px;"></div>');
+
+            // Run for each option
+            input.each(function() {
+                // Variables
+                var item = $(this),
+                    label = item.parent();
+
+                // Move the input outside of the label
+                label.before(item);
+            });
+        });
+    </script>
+</div>

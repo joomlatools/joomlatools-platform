@@ -21,6 +21,7 @@ if ($langs)
     JHtml::_('formbehavior.chosen', '.advancedSelect');
 }
 ?>
+
 <form action="<?php echo JRoute::_('index.php', true); ?>" method="post" id="form-login">
     <fieldset>
         <div class="k-form-group">
@@ -42,9 +43,7 @@ if ($langs)
                 <span class="icon-lock icon-white"></span> <?php echo JText::_('COM_USERS_LOGIN_LOGIN'); ?>
             </button>
         </div>
-
     </fieldset>
-
     <input type="hidden" name="option" value="com_users"/>
     <input type="hidden" name="task" value="session.login"/>
     <input type="hidden" name="return" value="<?php echo $return; ?>"/>

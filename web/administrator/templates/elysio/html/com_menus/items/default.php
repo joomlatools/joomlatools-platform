@@ -32,13 +32,12 @@ if ($saveOrder && $menuType)
     JHtml::_('sortablelist.sortable', 'itemList', 'adminForm', strtolower($listDirn), $saveOrderingUrl, false, true);
 }
 
-JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
-
 $assoc = JLanguageAssociations::isEnabled();
-
 ?>
 
-<!-- Form -->
+<?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu'); ?>
+
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=items');?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
@@ -50,7 +49,7 @@ $assoc = JLanguageAssociations::isEnabled();
     <!-- Table -->
     <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
         <div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table" id="itemList">
+            <table class="k-js-responsive-table" id="itemList">
                 <thead>
                 <tr>
                     <?php if ($menuType) : ?>
@@ -90,7 +89,6 @@ $assoc = JLanguageAssociations::isEnabled();
                     </th>
                 </tr>
                 </thead>
-
                 <tbody>
                 <?php
                 foreach ($this->items as $i => $item) :

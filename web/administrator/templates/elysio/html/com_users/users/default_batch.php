@@ -25,6 +25,7 @@ $resetOptions = array(
 	JHtml::_('select.option', 'no', JText::_('JNO'))
 );
 ?>
+
 <div class="modal hide fade" id="collapseModal">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&#215;</button>

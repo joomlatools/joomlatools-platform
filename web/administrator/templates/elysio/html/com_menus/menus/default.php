@@ -40,11 +40,11 @@ $script[] = '			window.parent.location.reload();';
 $script[] = '		},1000);';
 $script[] = '	});';
 $script[] = "});";
-
-JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
 ?>
 
-<!-- Form -->
+<?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu'); ?>
+
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&view=menus');?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
@@ -56,7 +56,7 @@ JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu');
     <!-- Table -->
     <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
         <div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table">
+            <table class="k-js-responsive-table">
                 <thead>
                 <tr>
                     <th width="1%" class="k-table-data--form">

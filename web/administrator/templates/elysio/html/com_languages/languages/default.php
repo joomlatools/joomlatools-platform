@@ -28,7 +28,7 @@ if ($saveOrder)
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<!-- Form -->
+<!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_languages&view=languages'); ?>" method="post" name="adminForm" id="adminForm">
 
     <!-- Scopebar -->
@@ -37,7 +37,7 @@ if ($saveOrder)
 	<!-- Table -->
 	<div class="k-table-container">
 		<div class="k-table">
-            <table class="k-js-fixed-table-header k-js-responsive-table" id="contentList">
+            <table class="k-js-responsive-table" id="contentList">
 				<thead>
 					<tr>
 						<th width="1%" class="k-table-data--icon">
