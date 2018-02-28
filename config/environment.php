@@ -45,10 +45,11 @@ return [
 	'debug_lang' => '0',
 
     /* SEO */
-	'sef'          => '1',
-	'sef_rewrite'  => '0',
-	'sef_suffix'   => '0',
-	'unicodeslugs' => '0',
+    'sef'          => '1',
+    'sef_rewrite'  => '0',
+    'sef_advance'  => '1',
+    'sef_suffix'   => '0',
+    'unicodeslugs' => '0',
 
 	/* Feed */
     'feed_limit'   => 10,
