@@ -87,5 +87,5 @@
 
 // Override :not(.k-is-active) display: none important
 .k-tabs-content > .k-tab.active {
-  display: block !important;
+  display: flex !important;
 }

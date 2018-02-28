@@ -12,7 +12,6 @@ defined('_JEXEC') or die;
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-
 JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.keepalive');
 
@@ -65,108 +64,142 @@ if (isset($this->item->attribs['show_urls_images_backend']) && $this->item->attr
 ?>
 
 <script type="text/javascript">
-	Joomla.submitbutton = function(task)
-	{
-		if (task == 'article.cancel' || document.formvalidator.isValid(document.id('item-form')))
-		{
-			<?php echo $this->form->getField('articletext')->save(); ?>
+    Joomla.submitbutton = function(task)
+    {
+        if (task == 'article.cancel' || document.formvalidator.isValid(document.id('item-form')))
+        {
+            <?php echo $this->form->getField('articletext')->save(); ?>
 
-			if (window.opener && (task == 'article.save' || task == 'article.cancel'))
-			{
-				window.opener.document.closeEditWindow = self;
-				window.opener.setTimeout('window.document.closeEditWindow.close()', 1000);
-			}
+            if (window.opener && (task == 'article.save' || task == 'article.cancel'))
+            {
+                window.opener.document.closeEditWindow = self;
+                window.opener.setTimeout('window.document.closeEditWindow.close()', 1000);
+            }
 
-		Joomla.submitform(task, document.getElementById('item-form'));
-		}
-	}
+            Joomla.submitform(task, document.getElementById('item-form'));
+        }
+    }
 </script>
-<div class="container-popup">
 
-<div class="pull-right">
-	<button class="btn btn-primary" type="button" onclick="Joomla.submitbutton('article.apply');"><?php echo JText::_('JTOOLBAR_APPLY') ?></button>
-	<button class="btn btn-primary" type="button" onclick="Joomla.submitbutton('article.save');"><?php echo JText::_('JTOOLBAR_SAVE') ?></button>
-	<button class="btn" type="button" onclick="Joomla.submitbutton('article.cancel');"><?php echo JText::_('JCANCEL') ?></button>
-</div>
+<script src="templates/elysio/js/kui-initialize.js"></script>
 
-<div class="clearfix"> </div>
-<hr class="hr-condensed" />
+<!-- Wrapper -->
+<div class="k-wrapper k-js-wrapper">
 
-<form action="<?php echo JRoute::_('index.php?option=com_content&layout=modal&tmpl=component&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
-<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
+    <!-- Content wrapper -->
+    <div class="k-content-wrapper">
 
-	<div class="form-horizontal">
-		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
+        <!-- Content -->
+        <div class="k-content">
 
-		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_CONTENT_ARTICLE_CONTENT', true)); ?>
-		<div class="row-fluid">
-			<div class="span9">
-				<fieldset class="adminform">
-					<?php echo $this->form->getInput('articletext'); ?>
-				</fieldset>
-			</div>
-			<div class="span3">
-				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-			</div>
-		</div>
-		<?php echo JHtml::_('bootstrap.endTab'); ?>
+            <!-- Toolbar -->
+            <div class="k-toolbar">
+                <button class="k-button k-button--success" type="button" onclick="Joomla.submitbutton('article.apply');"><?php echo JText::_('JTOOLBAR_APPLY') ?></button>
+                <button class="k-button k-button--default" type="button" onclick="Joomla.submitbutton('article.save');"><?php echo JText::_('JTOOLBAR_SAVE') ?></button>
+                <button class="k-button k-button--default" type="button" onclick="Joomla.submitbutton('article.cancel');"><?php echo JText::_('JCANCEL') ?></button>
+            </div><!-- .k-toolbar -->
 
-		<?php // Do not show the publishing options if the edit form is configured not to. ?>
-		<?php if ($params->show_publishing_options == 1) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'publishing', JText::_('COM_CONTENT_FIELDSET_PUBLISHING', true)); ?>
-			<div class="row-fluid form-horizontal-desktop">
-				<div class="span6">
-					<?php echo JLayoutHelper::render('joomla.edit.publishingdata', $this); ?>
-				</div>
-				<div class="span6">
-					<?php echo JLayoutHelper::render('joomla.edit.metadata', $this); ?>
-				</div>
-			</div>
-			<?php echo JHtml::_('bootstrap.endTab'); ?>
-		<?php endif; ?>
+            <!-- Component wrapper -->
+            <div class="k-component-wrapper">
 
-		<?php // Do not show the images and links options if the edit form is configured not to. ?>
-		<?php if ($params->show_urls_images_backend == 1) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'images', JText::_('COM_CONTENT_FIELDSET_URLS_AND_IMAGES', true)); ?>
-			<div class="row-fluid form-horizontal-desktop">
-				<div class="span6">
-					<?php echo $this->form->getControlGroup('images'); ?>
-					<?php foreach ($this->form->getGroup('images') as $field) : ?>
-						<?php echo $field->getControlGroup(); ?>
-					<?php endforeach; ?>
-				</div>
-				<div class="span6">
-					<?php foreach ($this->form->getGroup('urls') as $field) : ?>
-						<?php echo $field->getControlGroup(); ?>
-					<?php endforeach; ?>
-				</div>
-			</div>
-			<?php echo JHtml::_('bootstrap.endTab'); ?>
-		<?php endif; ?>
+                <!-- Component -->
+                <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_content&layout=modal&tmpl=component&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form">
 
-		<?php if (isset($assoc)) : ?>
-			<div class="hidden"><?php echo $this->loadTemplate('associations'); ?></div>
-		<?php endif; ?>
+                    <!-- Container -->
+                    <div class="k-container">
+                        <div class="k-container__main">
+                            <?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
+                        </div>
+                    </div>
 
-		<?php $this->show_options = $params->show_article_options; ?>
-		<?php echo JLayoutHelper::render('joomla.edit.params', $this); ?>
+                    <!-- Tabs container -->
+                    <div class="k-tabs-container">
 
-		<?php if ($this->canDo->get('core.admin')) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'editor', JText::_('COM_CONTENT_SLIDER_EDITOR_CONFIG', true)); ?>
-			<?php echo $this->form->renderFieldset('editorConfig'); ?>
-			<?php echo JHtml::_('bootstrap.endTab'); ?>
-		<?php endif; ?>
+                        <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
-		<?php if ($this->canDo->get('core.admin')) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_CONTENT_FIELDSET_RULES', true)); ?>
-				<?php echo $this->form->getInput('rules'); ?>
-			<?php echo JHtml::_('bootstrap.endTab'); ?>
-		<?php endif; ?>
+                        <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_CONTENT_ARTICLE_CONTENT', true)); ?>
+                        <div class="k-container k-flexbox-from-charlie k-do-flex">
+                            <div class="k-container__main k-flexbox-from-charlie k-do-flex k-flexbox-column">
+                                <div class="mceditor-container">
+                                    <?php echo $this->form->getInput('articletext'); ?>
+                                </div>
+                            </div>
+                            <div class="k-container__sub k-overflow">
+                                <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                            </div>
+                        </div>
+                        <?php echo JHtml::_('bootstrap.endTab'); ?>
 
-		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+                        <?php // Do not show the publishing options if the edit form is configured not to. ?>
+                        <?php if ($params->show_publishing_options == 1) : ?>
+                            <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'publishing', JText::_('COM_CONTENT_FIELDSET_PUBLISHING', true)); ?>
+                            <div class="k-container">
+                                <div class="k-container__main">
+                                    <?php echo JLayoutHelper::render('joomla.edit.publishingdata', $this); ?>
+                                </div>
+                                <div class="k-container__sub">
+                                    <?php echo JLayoutHelper::render('joomla.edit.metadata', $this); ?>
+                                </div>
+                            </div>
+                            <?php echo JHtml::_('bootstrap.endTab'); ?>
+                        <?php endif; ?>
 
-		<input type="hidden" name="task" value="" />
-		<input type="hidden" name="return" value="<?php echo $input->getCmd('return'); ?>" />
-		<?php echo JHtml::_('form.token'); ?>
-	</div>
-</form>
+                        <?php // Do not show the images and links options if the edit form is configured not to. ?>
+                        <?php if ($params->show_urls_images_backend == 1) : ?>
+                            <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'images', JText::_('COM_CONTENT_FIELDSET_URLS_AND_IMAGES', true)); ?>
+                            <div class="k-container">
+                                <div class="k-container__main">
+                                    <?php echo $this->form->getControlGroup('images'); ?>
+                                    <?php foreach ($this->form->getGroup('images') as $field) : ?>
+                                        <?php echo $field->getControlGroup(); ?>
+                                    <?php endforeach; ?>
+                                </div>
+                                <div class="k-container__sub">
+                                    <?php foreach ($this->form->getGroup('urls') as $field) : ?>
+                                        <?php echo $field->getControlGroup(); ?>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                            <?php echo JHtml::_('bootstrap.endTab'); ?>
+                        <?php endif; ?>
+
+                        <?php $this->show_options = $params->show_article_options; ?>
+                        <?php echo JLayoutHelper::render('joomla.edit.params', $this); ?>
+
+                        <?php if ($this->canDo->get('core.admin')) : ?>
+                            <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'editor', JText::_('COM_CONTENT_SLIDER_EDITOR_CONFIG', true)); ?>
+                        <div class="k-container">
+                            <div class="k-container__main">
+                            <?php echo $this->form->renderFieldset('editorConfig'); ?>
+                            </div>
+                        </div>
+                            <?php echo JHtml::_('bootstrap.endTab'); ?>
+                        <?php endif; ?>
+
+                        <?php if ($this->canDo->get('core.admin')) : ?>
+                            <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_CONTENT_FIELDSET_RULES', true)); ?>
+                        <div class="k-container">
+                            <div class="k-container__main">
+                                <?php echo $this->form->getInput('rules'); ?>
+                            </div>
+                        </div>
+                            <?php echo JHtml::_('bootstrap.endTab'); ?>
+                        <?php endif; ?>
+
+                        <?php echo JHtml::_('bootstrap.endTabSet'); ?>
+
+                        <input type="hidden" name="task" value="" />
+                        <input type="hidden" name="return" value="<?php echo $input->getCmd('return'); ?>" />
+                        <?php echo JHtml::_('form.token'); ?>
+
+                    </div><!-- .k-tabs-container -->
+
+                </form><!-- .k-component -->
+
+            </div><!-- .k-component-wrapper -->
+
+        </div><!-- .k-content -->
+
+    </div><!-- .k-content-wrapper -->
+
+</div><!-- .k-wrapper -->

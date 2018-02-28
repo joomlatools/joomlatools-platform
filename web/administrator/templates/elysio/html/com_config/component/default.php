@@ -50,34 +50,39 @@ include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="component-form" method="post" name="adminForm" autocomplete="off">
 
     <div class="k-tabs-container">
-        <?php $fieldSets = $this->fieldsets; ?>
-        <?php if(count($fieldSets) > 1) : ?>
-        <ul class="nav nav-tabs" id="configTabs">
-            <?php foreach ($fieldSets as $name => $fieldSet) : ?>
-                <?php $rel = ''; ?>
-                <?php if (!empty($fieldSet->showon)) : ?>
-                    <?php JHtml::_('jquery.framework'); ?>
-                    <?php JHtml::_('script', 'jui/cms.js', false, true); ?>
-                    <?php $showonarr = array(); ?>
-                    <?php foreach (preg_split('%\[AND\]|\[OR\]%', $fieldSet->showon) as $showonfield) : ?>
-                        <?php $showon = explode(':', $showonfield, 2); ?>
-                        <?php $showonarr[] = array(
-                            'field'  => $this->form->getFormControl() . '[' . $showon[0] . ']',
-                            'values' => explode(',', $showon[1]),
-                            'op'     => (preg_match('%\[(AND|OR)\]' . $showonfield . '%', $fieldSet->showon, $matches)) ? $matches[1] : ''
-                        ); ?>
-                    <?php endforeach; ?>
-                    <?php $rel = ' data-showon=\'' . json_encode($showonarr) . '\''; ?>
-                <?php endif; ?>
-                <?php $label = empty($fieldSet->label) ? 'COM_CONFIG_' . $name . '_FIELDSET_LABEL' : $fieldSet->label; ?>
-                <li<?php echo $rel; ?>><a data-toggle="tab" href="#<?php echo $name; ?>"><?php echo JText::_($label); ?></a></li>
-            <?php endforeach; ?>
-        </ul><!-- /configTabs -->
-        <?php endif ?>
 
-        <?php echo count($fieldSets) > 1 ? '<div class="tab-content" id="configContent">' : '';?>
+        <div class="k-tabs-wrapper k-js-tabs-wrapper">
+            <div class="k-tabs-scroller k-js-tabs-scroller">
+                <?php $fieldSets = $this->fieldsets; ?>
+                <?php if(count($fieldSets) > 1) : ?>
+                <ul class="nav nav-tabs k-tabs k-js-tabs" id="configTabs">
+                    <?php foreach ($fieldSets as $name => $fieldSet) : ?>
+                        <?php $rel = ''; ?>
+                        <?php if (!empty($fieldSet->showon)) : ?>
+                            <?php JHtml::_('jquery.framework'); ?>
+                            <?php JHtml::_('script', 'jui/cms.js', false, true); ?>
+                            <?php $showonarr = array(); ?>
+                            <?php foreach (preg_split('%\[AND\]|\[OR\]%', $fieldSet->showon) as $showonfield) : ?>
+                                <?php $showon = explode(':', $showonfield, 2); ?>
+                                <?php $showonarr[] = array(
+                                    'field'  => $this->form->getFormControl() . '[' . $showon[0] . ']',
+                                    'values' => explode(',', $showon[1]),
+                                    'op'     => (preg_match('%\[(AND|OR)\]' . $showonfield . '%', $fieldSet->showon, $matches)) ? $matches[1] : ''
+                                ); ?>
+                            <?php endforeach; ?>
+                            <?php $rel = ' data-showon=\'' . json_encode($showonarr) . '\''; ?>
+                        <?php endif; ?>
+                        <?php $label = empty($fieldSet->label) ? 'COM_CONFIG_' . $name . '_FIELDSET_LABEL' : $fieldSet->label; ?>
+                        <li<?php echo $rel; ?>><a data-toggle="tab" href="#<?php echo $name; ?>"><?php echo JText::_($label); ?></a></li>
+                    <?php endforeach; ?>
+                </ul><!-- /configTabs -->
+                <?php endif ?>
+            </div>
+        </div>
+
+        <?php echo count($fieldSets) > 1 ? '<div class="tab-content k-tabs-content" id="configContent">' : '';?>
             <?php foreach ($this->fieldsets as $name => $fieldSet) : ?>
-                <div class="tab-pane" id="<?php echo $name; ?>">
+                <div class="tab-pane k-tab" id="<?php echo $name; ?>">
                     <div class="k-container">
                         <div class="k-container__<?php echo ($name != "permissions") ? 'main' : 'full'; ?>">
                             <?php if (count($fieldSets) == 1) : ?>

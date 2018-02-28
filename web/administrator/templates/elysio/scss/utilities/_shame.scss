@@ -5,12 +5,26 @@
 
 .treeselect {
   @include reset();
+
+  > li {
+    @include content-block();
+  }
+}
+
+.treeselect-sub {
+  @include reset();
+  padding-left: 48px;
+
+  label {
+    font-weight: normal;
+  }
 }
 
 .treeselect-toggle {
   @include button-default();
   @include button-variant($k-button-default-color, $k-button-default-background, $k-button-default-border);
   @include button-size($k-button-small-border-radius, $k-button-small-font-size, $k-button-small-line-height, $k-button-small-vertical-spacing $k-button-small-horizontal-spacing);
+  margin-right: 8px;
 
   &:after {
     display: inline-block;
@@ -25,6 +39,34 @@
 .treeselect-item,
 .treeselect-menu {
   display: inline-block;
+
+  .nav-header {
+    margin: 0 8px 0 0;
+  }
+
+  .dropdown-menu {
+    .nav-header {
+      padding-left: 12px;
+      font-weight: bold;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+  }
+
+  .checkall {
+    @include icon-before(task, true);
+  }
+
+  .uncheckall {
+    &:before {
+      display: inline-block;
+      content: " ";
+      width: 12px;
+      height: 12px;
+      border: 2px solid;
+      opacity: 0.8;
+    }
+  }
 }
 
 .nav-stacked {
@@ -64,7 +106,7 @@
 // Move back to KUI
 // Added to make sure images are not 49px tall instead of 48px
 
-.k-ui-namespace .k-top-container__logo a {
+.k-top-container__logo a {
   line-height: 1;
 }
 
@@ -122,4 +164,109 @@
 
 .chzn-container-single {
   display: none !important;
+}
+
+
+// Hide star for title in edit forms
+
+span.star {
+  display: none;
+}
+
+
+
+// Flexing editor
+
+.mceditor-container {
+  &,
+  .editor,
+  .mce-tinymce,
+  .mce-stack-layout,
+  .mce-edit-area,
+  .mce-edit-area iframe {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  textarea {
+    max-width: 100%;
+    min-width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .btn-toolbar,
+  .mce-menubar,
+  .mce-toolbar,
+  .mce-statusbar {
+    display: block;
+    flex: 0 0 auto;
+    flex-direction: row;
+  }
+
+  .mce-edit-area iframe {
+    height: auto !important;
+  }
+
+  .mce-resizehandle,
+  .mce-i-resize {
+    display: none!important;
+  }
+
+  .btn-toolbar {
+    padding-top: 8px;
+  }
+
+  .btn {
+    @include button-default('.active', '.disabled');
+    @include button-variant($k-button-default-color, $k-button-default-background, $k-button-default-border);
+
+    [class*="icon"]:nth-child(n) {
+      display: none;
+    }
+  }
+}
+
+
+// Icons
+.mce-btn-small {
+  .icon-file-add {
+    @include icon-after(file, true);
+  }
+  .icon-copy {
+    @include icon-after(project, true);
+  }
+  .icon-arrow-down {
+    @include icon-after(chevron-bottom, true);
+  }
+}
+
+
+// Fix broken Bootstrap/Joomla styling
+.checkbox {
+  padding-left: 20px;
+}
+
+
+// Tabs, port back to KUI
+.k-component > .k-tabs-container:first-child {
+  .k-tabs-scroller-prev,
+  .k-tabs-scroller-next {
+    margin-top: -1px;
+  }
+}
+
+// Two buttons behind each other in input-group
+.k-input-group__button:not(:last-child) {
+  .k-button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.k-input-group__button:not(:first-child) {
+  .k-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }

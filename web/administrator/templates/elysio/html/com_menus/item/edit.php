@@ -116,60 +116,50 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
                     echo $this->form->renderField('browserNav');
                     echo $this->form->renderField('template_style_id');
                     ?>
+
+
                 </div>
                 <div class="k-container__sub">
-                    <fieldset class="k-form-block">
-                        <div class="k-form-block__header">Global</div>
-                        <div class="k-form-block__content">
-                            <?php
-                            // Set main fields.
-                            $this->fields = array(
-                                'parent_id',
-                                'menuordering',
-                            );
-                            if ($this->item->type != 'component')
-                            {
-                                $this->fields = array_diff($this->fields, array('home'));
-                            }
-                            ?>
-                            <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-                        </div>
-                    </fieldset>
-                    <fieldset class="k-form-block">
-                        <div class="k-form-block__header">Publishing / access</div>
-                        <div class="k-form-block__content">
-                            <?php
-                            // Set main fields.
-                            $this->fields = array(
-                                'published',
-                                'home',
-                                'access',
-                                'language',
-                            );
-                            if ($this->item->type != 'component')
-                            {
-                                $this->fields = array_diff($this->fields, array('home'));
-                            }
-                            ?>
-                            <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-                        </div>
-                    </fieldset>
-                    <fieldset class="k-form-block">
-                        <div class="k-form-block__header">Extra</div>
-                        <div class="k-form-block__content">
-                            <?php
-                            // Set main fields.
-                            $this->fields = array(
-                                'note'
-                            );
-                            if ($this->item->type != 'component')
-                            {
-                                $this->fields = array_diff($this->fields, array('home'));
-                            }
-                            ?>
-                            <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-                        </div>
-                    </fieldset>
+                    <?php
+                    // Set main fields.
+                    $this->fields = array(
+                        'parent_id',
+                        'menuordering',
+                    );
+                    $this->title = 'Global';
+                    if ($this->item->type != 'component')
+                    {
+                        $this->fields = array_diff($this->fields, array('home'));
+                    }
+                    ?>
+                    <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                    <?php
+                    // Set main fields.
+                    $this->fields = array(
+                        'published',
+                        'home',
+                        'access',
+                        'language',
+                    );
+                    $this->title = 'Status';
+                    if ($this->item->type != 'component')
+                    {
+                        $this->fields = array_diff($this->fields, array('home'));
+                    }
+                    ?>
+                    <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                    <?php
+                    // Set main fields.
+                    $this->fields = array(
+                        'note'
+                    );
+                    $this->title = 'Note';
+                    if ($this->item->type != 'component')
+                    {
+                        $this->fields = array_diff($this->fields, array('home'));
+                    }
+                    ?>
+                    <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
                 </div>
             </div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
@@ -210,11 +200,18 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 <div class="k-dynamic-content-holder">
     <script>
         kQuery(function($) {
-            // Menu item type layout
-            $('#jform_type').addClass('k-form-control').parent().addClass('k-input-group').removeClass('input-append').children('.btn').addClass('k-button k-button--primary').removeClass('btn btn-primary').wrap('<span class="k-input-group__button">');
-
             // menu item type modal
             $('#menuTypeModal').detach().appendTo('body');
+
+            // Add class and hide edit button
+            var $lastButton = $('#jform_request_id_name ~ .k-input-group__button:last-child .k-button'),
+                href = $lastButton.attr('href');
+            if ($lastButton.length) {
+                $lastButton.magnificPopup({type: 'iframe'}).addClass('k-is-hidden');
+                if (!isNaN(href.substring(href.length-1))) {
+                    $lastButton.removeClass('k-is-hidden');
+                }
+            }
         });
     </script>
 </div>

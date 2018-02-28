@@ -13,8 +13,11 @@ $form = $displayData->getForm();
 
 $title = $form->getField('title') ? 'title' : ($form->getField('name') ? 'name' : '');
 
+// Overrides
+include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
 ?>
 
-<?php
-	echo $title ? $form->renderField($title) : '';
-?>
+<div class="k-input-group k-input-group--large">
+    <?php echo addInputGroupAddonClass($title ? $form->getLabel($title) : ''); ?>
+    <?php echo addFormControlClass($title ? $form->getInput($title) : ''); ?>
+</div>

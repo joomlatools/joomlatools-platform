@@ -67,10 +67,16 @@ function addFormControlClass($input) {
     // If the field is an input-append
     if (strpos($input, 'class="input-append') !== false) {
         $input = str_replace('class="input-append', 'class="k-input-group ', $input);
-        $input = str_replace('<button', '<div class="k-input-group__button"><button', $input);
         $input = str_replace('class="btn', 'class="k-button k-button--default', $input);
+        $input = str_replace('class="modal btn', 'class="k-button k-button--default k-js-iframe-modal', $input);
+        $input = str_replace('<button', '<span class="k-input-group__button"><button', $input);
         $input = str_replace('class="input-medium', 'class="k-form-control', $input);
-        $input = str_replace('</button>', '</button></div>', $input);
+        if (strpos($input, 'class="input-medium') == false) {
+            $input = str_replace('type="text"', 'type="text" class="k-form-control"', $input);
+        }
+        $input = str_replace('</button>', '</button></span>', $input);
+        $input = str_replace('<a', '<span class="k-input-group__button"><a', $input);
+        $input = str_replace('</a>', '</a></span>', $input);
     }
 
     // If the field is surrounded by an empty div
@@ -105,7 +111,6 @@ function addFormControlClass($input) {
     }
 }
 
-
 // Add `k-form-control` class to textfields
 function replaceControlGroup($input) {
     $input = str_replace('<div class="control-group"', '<div class="k-form-group"', $input);
@@ -124,4 +129,12 @@ function setFormInputAttributes($input, $array) {
         }
     }
     return $field;
+}
+
+// Add `k-input-group__addon` class to input group labels
+function addInputGroupAddonClass($input) {
+    $input = str_replace('class="hasTooltip', 'class="k-input-group__addon', $input);
+    $input = str_replace('class="hasPopover', 'class="k-input-group__addon', $input);
+    $input = str_replace('*', '', $input);
+    return $input;
 }

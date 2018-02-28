@@ -29,6 +29,14 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 <script src="templates/elysio/js/kui-initialize.js"></script>
 
+<script>
+    kQuery(function($) {
+        $('.k-table a').on('click', function(event) {
+            $(window.parent.document.querySelector('.mfp-close')).trigger('click');
+        });
+    });
+</script>
+
 <!-- Wrapper -->
 <div class="k-wrapper k-js-wrapper">
 

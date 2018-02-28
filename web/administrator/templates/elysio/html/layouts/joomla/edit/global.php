@@ -43,8 +43,10 @@ if (!$saveHistory)
     $hiddenFields[] = 'version_note';
 }
 
+$title = isset($displayData->title) ? $displayData->title : 'Global';
+
 $html   = array();
-$html[] = '<fieldset class="k-form-block"><div class="k-form-block__header">Global</div><div class="k-form-block__content">';
+$html[] = '<fieldset class="k-form-block"><div class="k-form-block__header">'.$title.'</div><div class="k-form-block__content">';
 
 foreach ($fields as $field)
 {

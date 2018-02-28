@@ -36,11 +36,13 @@ $params = $params->toArray();
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_TAGS_FIELDSET_DETAILS', true)); ?>
-        <div class="k-container">
-            <div class="k-container__main">
-                <?php echo $this->form->getInput('description'); ?>
+        <div class="k-container k-flexbox-from-charlie k-do-flex">
+            <div class="k-container__main k-flexbox-from-charlie k-do-flex k-flexbox-column">
+                <div class="mceditor-container">
+                    <?php echo $this->form->getInput('description'); ?>
+                </div>
 			</div>
-            <div class="k-container__sub">
+            <div class="k-container__sub k-overflow">
 				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
 			</div>
 		</div>

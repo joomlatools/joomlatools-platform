@@ -5,3 +5,11 @@
 .icon-calendar {
   @include icon-after(calendar, true);
 }
+
+.icon-user {
+  @include icon-after(person, true);
+}
+
+.icon-list {
+  @include icon-after(list, true);
+}
