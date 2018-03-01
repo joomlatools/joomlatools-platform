@@ -70,7 +70,8 @@ if ($displayData->get('show_options', 1))
                     echo '<p class="alert alert-info">' . $this->escape(JText::_($fieldSet->description)) . '</p>';
                 }
                 $displayData->fieldset = $name;
-                echo JLayoutHelper::render('joomla.edit.fieldset', $displayData); ?>
+                echo JLayoutHelper::render('joomla.edit.fieldset', $displayData);
+                ?>
             </div>
         </div>
 		<?php echo JHtml::_('bootstrap.endTab');

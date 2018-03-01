@@ -47,11 +47,11 @@ if ($saveOrder)
                             <?php echo JHtml::_('grid.checkall'); ?>
                         </th>
                         <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-                        <th width="1%">
-                            <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
-                        </th>
                         <th>
                             <?php echo JHtml::_('searchtools.sort', 'COM_PLUGINS_NAME_HEADING', 'name', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%">
+                            <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
                         </th>
                         <th width="11%" data-hide="phone">
                             <?php echo JHtml::_('searchtools.sort', 'COM_PLUGINS_FOLDER_HEADING', 'folder', $listDirn, $listOrder); ?>
@@ -75,33 +75,11 @@ if ($saveOrder)
                     $canChange  = $user->authorise('core.edit.state', 'com_plugins') && $canCheckin;
                     ?>
 					<tr>
-						<td>
-							<?php
-							$iconClass = '';
-
-							if (!$canChange)
-							{
-								$iconClass = ' inactive';
-							}
-							elseif (!$saveOrder)
-							{
-								$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-							}
-							?>
-							<span class="sortable-handler<?php echo $iconClass ?>">
-								<span class="k-positioner k-is-active" data-k-tooltip="{&quot;container&quot;:&quot;.k-ui-container&quot;}" data-original-title="Please order by this column first by clicking the column title"></span>
-							</span>
-							<?php if ($canChange && $saveOrder) : ?>
-								<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering;?>" />
-                            <?php endif; ?>
-						</td>
+                        <?php echo JLayoutHelper::render('elysio.ordering', array('canChange' => $canChange, 'saveOrder' => $saveOrder, 'value' => $item->ordering)); ?>
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->extension_id); ?>
 						</td>
                         <td class="k-table-data--toggle"></td>
-						<td>
-							<?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'plugins.', $canChange); ?>
-						</td>
 						<td class="k-table-data--ellipsis">
 							<?php if ($item->checked_out) : ?>
 								<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'plugins.', $canCheckin); ?>
@@ -113,6 +91,9 @@ if ($saveOrder)
 									<?php echo $item->name; ?>
 							<?php endif; ?>
 						</td>
+                        <td>
+                            <?php echo JHtml::_('jgrid.published', $item->enabled, $i, 'plugins.', $canChange); ?>
+                        </td>
 						<td>
 							<?php echo $this->escape($item->folder);?>
 						</td>

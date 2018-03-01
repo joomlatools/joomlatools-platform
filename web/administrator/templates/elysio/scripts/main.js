@@ -6,6 +6,11 @@ kQuery(document).ready(function($) {
         minimumResultsForSearch: Infinity
     });
 
+    $('#jform_params_catid, #jform_params_created_by, #jform_params_created_by_alias').select2({
+        theme: "bootstrap",
+        minimumResultsForSearch: Infinity
+    });
+
     // Chosen for multiple select (tags, modules etc.)
     // Remove single chosen
     setTimeout(function() {

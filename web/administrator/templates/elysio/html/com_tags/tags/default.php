@@ -84,17 +84,17 @@ $sortFields = $this->getSortFields();
 				<thead>
 					<tr>
                         <th width="1%" class="k-table-data--icon">
-							<?php echo JHtml::_('grid.sort', '<i class="k-icon-move"></i>', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
+                            <?php echo JHtml::_('grid.sort', '<span class="k-icon-move"></span>', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
 						</th>
                         <th width="1%" class="k-table-data--form">
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
                         <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-						<th width="1%">
-							<?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
-						</th>
 						<th>
 							<?php echo JHtml::_('grid.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+						</th>
+						<th width="1%">
+							<?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
 						</th>
                         <th width="1%" data-hide="phone">
                             <?php echo JHtml::_('grid.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
@@ -142,32 +142,11 @@ $sortFields = $this->getSortFields();
 					}
 					?>
 						<tr sortable-group-id="<?php echo $item->parent_id;?>" item-id="<?php echo $item->id?>" parents="<?php echo $parentsStr?>" level="<?php echo $item->level?>">
-							<td>
-								<?php
-								$iconClass = '';
-								if (!$canChange)
-								{
-									$iconClass = ' inactive';
-								}
-								elseif (!$saveOrder)
-								{
-									$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-								}
-								?>
-								<span class="sortable-handler<?php echo $iconClass ?>">
-									<i class="icon-menu"></i>
-								</span>
-								<?php if ($canChange && $saveOrder) : ?>
-									<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $orderkey + 1;?>" />
-								<?php endif; ?>
-							</td>
+                            <?php echo JLayoutHelper::render('elysio.ordering', array('canChange' => $canChange, 'saveOrder' => $saveOrder, 'value' => $orderkey + 1)); ?>
 							<td>
 								<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 							</td>
                             <td class="k-table-data--toggle"></td>
-							<td>
-								<?php echo JHtml::_('jgrid.published', $item->published, $i, 'tags.', $canChange);?>
-							</td>
 							<td>
 								<?php if ($item->level > 0): ?>
 								<?php echo str_repeat('<span class="gi">&mdash;</span>', $item->level - 1) ?>
@@ -189,11 +168,14 @@ $sortFields = $this->getSortFields();
 									<?php endif; ?>
 								</span>
 							</td>
-						<td>
-							<?php echo $this->escape($item->access_title); ?>
-						</td>
-						<td>
-						<?php if ($item->language == '*') : ?>
+                            <td>
+                                <?php echo JHtml::_('jgrid.published', $item->published, $i, 'tags.', $canChange);?>
+                            </td>
+                            <td>
+                                <?php echo $this->escape($item->access_title); ?>
+                            </td>
+                            <td>
+                            <?php if ($item->language == '*') : ?>
 							<?php echo JText::alt('JALL', 'language'); ?>
 							<?php else:?>
 								<?php echo $item->language_title ? $this->escape($item->language_title) : JText::_('JUNDEFINED'); ?>

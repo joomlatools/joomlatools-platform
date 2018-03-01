@@ -26,7 +26,7 @@ defined('_JEXEC') or die;
     </div>
     <ul class="k-list">
         <?php foreach ($this->components as $component) : ?>
-            <li<?php echo $this->currentComponent === $component ? ' class="active"' : '' ?>>
+            <li<?php echo $this->currentComponent === $component ? ' class="k-is-active"' : '' ?>>
                 <a href="index.php?option=com_config&view=component&component=<?php echo $component; ?>"><?php echo JText::_($component); ?></a>
             </li>
         <?php endforeach; ?>

@@ -263,7 +263,11 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
         <?php if (isset($long_description) && $long_description != '') : ?>
             <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
-            <?php echo $long_description; ?>
+            <div class="k-container">
+                <div class="k-container__full">
+                    <?php echo $long_description; ?>
+                </div>
+            </div>
             <?php echo JHtml::_('bootstrap.endTab'); ?>
         <?php endif; ?>
 

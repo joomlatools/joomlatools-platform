@@ -118,7 +118,7 @@ if (isset($this->item->attribs['show_urls_images_backend']) && $this->item->attr
                         <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
                         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_CONTENT_ARTICLE_CONTENT', true)); ?>
-                        <div class="k-container k-flexbox-from-charlie k-do-flex">
+                        <div class="k-container k-flexbox-from-charlie k-flex-grow">
                             <div class="k-container__main k-flexbox-from-charlie k-do-flex k-flexbox-column">
                                 <div class="mceditor-container">
                                     <?php echo $this->form->getInput('articletext'); ?>

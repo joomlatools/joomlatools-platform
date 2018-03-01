@@ -15,7 +15,7 @@ $options = array(
 $published = $this->state->get('filter.published');
 $menuType = JFactory::getApplication()->getUserState('com_menus.items.menutype');
 ?>
-<?php // @TODO: Is this file ven being used?; ?>
+<?php // @TODO: Is this file being used?; ?>
 <?php if (strlen($menuType) && $menuType != '*') : ?>
 	<div class="k-form-group">
         <?php echo JHtml::_('batch.language'); ?>

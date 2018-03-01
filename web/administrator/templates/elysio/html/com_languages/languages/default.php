@@ -41,15 +41,17 @@ if ($saveOrder)
 				<thead>
 					<tr>
 						<th width="1%" class="k-table-data--icon">
-							<?php echo JHtml::_('grid.sort', '<span class="k-icon-move"></span>', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING'); ?>
+                            <?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'k-icon-move'); ?>
 						</th>
 						<th width="1%" class="k-table-data--form">
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
                         <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-                        <th width="1%"></th>
                         <th>
                             <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%">
+                            <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
                         </th>
                         <th data-hide="phone">
                             <?php echo JHtml::_('searchtools.sort', 'COM_LANGUAGES_HEADING_TITLE_NATIVE', 'a.title_native', $listDirn, $listOrder); ?>
@@ -83,31 +85,11 @@ if ($saveOrder)
 					$canChange = $user->authorise('core.edit.state', 'com_languages');
 				?>
 					<tr>
-                        <td>
-                            <?php if ($canChange) : ?>
-                                <?php
-                                $disableClassName = '';
-                                $disabledLabel	  = '';
-
-                                if (!$saveOrder) :
-                                    $disabledLabel    = JText::_('JORDERINGDISABLED');
-                                    $disableClassName = 'inactive tip-top';
-                                endif; ?>
-                                <span class="sortable-handler hasTooltip <?php echo $disableClassName; ?>" title="<?php echo $disabledLabel; ?>">
-                                    <span class="k-positioner k-is-active" data-k-tooltip="{&quot;container&quot;:&quot;.k-ui-container&quot;}" data-original-title="Please order by this column first by clicking the column title"></span>
-                                </span>
-                                <input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
-                            <?php else: ?>
-                                <span class="k-positioner"></span>
-                            <?php endif; ?>
-						</td>
+                        <?php echo JLayoutHelper::render('elysio.ordering', array('canChange' => $canChange, 'saveOrder' => $saveOrder, 'value' => $item->ordering)); ?>
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->lang_id); ?>
 						</td>
                         <td class="k-table-data--toggle"></td>
-                        <td>
-                            <?php echo JHtml::_('jgrid.published', $item->published, $i, 'languages.', $canChange); ?>
-                        </td>
                         <td>
 							<span class="editlinktip hasTooltip" title="<?php echo JHtml::tooltipText(JText::_('JGLOBAL_EDIT_ITEM'), $item->title, 0); ?>">
                                 <?php if ($canEdit) : ?>
@@ -116,6 +98,9 @@ if ($saveOrder)
                                     <?php echo $this->escape($item->title); ?>
                                 <?php endif; ?>
 							</span>
+                        </td>
+                        <td>
+                            <?php echo JHtml::_('jgrid.published', $item->published, $i, 'languages.', $canChange); ?>
                         </td>
                         <td>
                             <?php echo $this->escape($item->title_native); ?>

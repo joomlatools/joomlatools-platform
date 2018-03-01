@@ -64,15 +64,20 @@ function classOverride($input) {
 // Add `k-form-control` class to textfields
 function addFormControlClass($input) {
 
+    if (strpos($input, 'class="spacer') !== false) {
+        return false;
+    }
+
     // If the field is an input-append
     if (strpos($input, 'class="input-append') !== false) {
         $input = str_replace('class="input-append', 'class="k-input-group ', $input);
         $input = str_replace('class="btn', 'class="k-button k-button--default', $input);
         $input = str_replace('class="modal btn', 'class="k-button k-button--default k-js-iframe-modal', $input);
         $input = str_replace('<button', '<span class="k-input-group__button"><button', $input);
-        $input = str_replace('class="input-medium', 'class="k-form-control', $input);
         if (strpos($input, 'class="input-medium') == false) {
             $input = str_replace('type="text"', 'type="text" class="k-form-control"', $input);
+        } else {
+            $input = str_replace('class="input-medium', 'class="k-form-control', $input);
         }
         $input = str_replace('</button>', '</button></span>', $input);
         $input = str_replace('<a', '<span class="k-input-group__button"><a', $input);
@@ -86,7 +91,7 @@ function addFormControlClass($input) {
     }
 
     // If the field is not a text field or textarea; return original
-    if (strpos($input, 'type="text') === false && strpos($input, 'type="password') === false && strpos($input, 'type="email') === false && strpos($input, '<textarea') === false) {
+    if (strpos($input, 'type="text') === false && strpos($input, 'type="password') === false && strpos($input, 'type="email') === false && strpos($input, 'type="url') === false && strpos($input, '<textarea') === false) {
         return $input;
     }
 

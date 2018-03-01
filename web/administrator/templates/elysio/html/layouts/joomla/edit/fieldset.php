@@ -12,6 +12,7 @@ defined('JPATH_BASE') or die;
 // Overrides
 include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
 
+
 $app = JFactory::getApplication();
 $form = $displayData->getForm();
 
@@ -45,12 +46,13 @@ if ($displayData->get('show_options', 1))
 
 	$html = array();
 
+
 	foreach ($fieldSet as $field)
 	{
 		$html[] = addFormControlClass($field->renderField());
 	}
 
-	echo implode('', $html);
+    echo implode('', $html);
 }
 else
 {
@@ -58,7 +60,7 @@ else
 	$html[] = '<div style="display:none;">';
 	foreach ($fieldSet as $field)
 	{
-		$html[] = $field->input;
+		$html[] = addFormControlClass($field->input);
 	}
 	$html[] = '</div>';
 

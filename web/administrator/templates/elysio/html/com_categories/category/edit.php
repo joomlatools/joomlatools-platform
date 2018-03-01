@@ -47,7 +47,7 @@ $assoc = JLanguageAssociations::isEnabled();
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('JCATEGORY', true)); ?>
-        <div class="k-container k-flexbox-from-charlie k-do-flex">
+        <div class="k-container k-flexbox-from-charlie k-flex-grow">
             <div class="k-container__main k-flexbox-from-charlie k-do-flex k-flexbox-column">
                 <div class="mceditor-container">
                     <?php echo $this->form->getInput('description'); ?>

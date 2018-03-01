@@ -22,6 +22,9 @@ JFactory::getDocument()->addScriptDeclaration("
 		}
 	};
 ");
+
+// Overrides
+include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
 ?>
 
 <!-- Component -->
@@ -98,25 +101,35 @@ JFactory::getDocument()->addScriptDeclaration("
                 </div>
                 <div class="k-container__sub">
                     <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-                    <div class="k-form-group">
-                        <?php echo $this->form->getLabel('ordering'); ?>
-                        <?php echo $this->form->getInput('ordering'); ?>
-                    </div>
-                    <div class="k-form-group">
-                        <?php echo $this->form->getLabel('folder'); ?>
-                        <?php echo $this->form->getInput('folder'); ?>
-                    </div>
-                    <div class="k-form-group">
-                        <?php echo $this->form->getLabel('element'); ?>
-                        <?php echo $this->form->getInput('element'); ?>
-                    </div>
+
+                    <fieldset class="k-form-block">
+                        <div class="k-form-block__header">Plugin</div>
+                        <div class="k-form-block__content">
+                            <div class="k-form-group">
+                                <?php echo $this->form->getLabel('ordering'); ?>
+                                <?php echo addFormControlClass($this->form->getInput('ordering')); ?>
+                            </div>
+                            <div class="k-form-group">
+                                <?php echo $this->form->getLabel('folder'); ?>
+                                <?php echo addFormControlClass($this->form->getInput('folder')); ?>
+                            </div>
+                            <div class="k-form-group">
+                                <?php echo $this->form->getLabel('element'); ?>
+                                <?php echo addFormControlClass($this->form->getInput('element')); ?>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
             </div>
             <?php echo JHtml::_('bootstrap.endTab'); ?>
 
             <?php if (isset($long_description) && $long_description != '') : ?>
                 <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION', true)); ?>
-                <?php echo $long_description; ?>
+            <div class="k-container">
+                <div class="k-container__full">
+                    <?php echo $long_description; ?>
+                </div>
+            </div>
                 <?php echo JHtml::_('bootstrap.endTab'); ?>
             <?php endif; ?>
 

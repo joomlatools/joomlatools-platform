@@ -43,7 +43,7 @@ $sortFields = $this->getSortFields();
 				<thead>
 					<tr>
 						<th width="1%" class="k-table-data--icon">
-							<?php echo JHtml::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+							<?php echo JHtml::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'k-icon-move'); ?>
 						</th>
                         <th width="1%" class="k-table-data--form">
                             <?php echo JHtml::_('grid.checkall'); ?>
@@ -107,25 +107,7 @@ $sortFields = $this->getSortFields();
 						}
 						?>
 						<tr sortable-group-id="<?php echo $item->parent_id; ?>" item-id="<?php echo $item->id ?>" parents="<?php echo $parentsStr ?>" level="<?php echo $item->level ?>">
-							<td>
-								<?php
-								$iconClass = '';
-								if (!$canChange)
-								{
-									$iconClass = ' inactive';
-								}
-								elseif (!$saveOrder)
-								{
-									$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-								}
-								?>
-								<span class="sortable-handler<?php echo $iconClass ?>">
-									<i class="icon-menu"></i>
-								</span>
-								<?php if ($canChange && $saveOrder) : ?>
-									<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $orderkey + 1; ?>" />
-								<?php endif; ?>
-							</td>
+                            <?php echo JLayoutHelper::render('elysio.ordering', array('canChange' => $canChange, 'saveOrder' => $saveOrder, 'value' => $orderkey + 1)); ?>
 							<td>
 								<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 							</td>

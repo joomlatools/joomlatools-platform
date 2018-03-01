@@ -41,15 +41,15 @@ $saveOrder	= $listOrder == 'fp.ordering';
             <table class="k-js-responsive-table" id="articleList">
 				<thead>
 					<tr>
-                        <th width="1%" class="k-table-data--icon">
-							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
-						</th>
                         <th width="1%" class="k-table-data--form">
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
                         <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+						</th>
+                        <th width="1%" class="k-table-data--icon">
+							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
 						<th width="1%" data-hide="phone">
 							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ORDERING', 'fp.ordering', $listDirn, $listOrder); ?>
@@ -87,23 +87,6 @@ $saveOrder	= $listOrder == 'fp.ordering';
 					?>
 					<tr sortable-group-id="<?php echo $item->catid; ?>">
 						<td>
-							<div class="btn-group">
-								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'articles.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
-								<?php echo JHtml::_('contentadministrator.featured', $item->featured, $i, $canChange); ?>
-								<?php
-								// Create dropdown items
-								$action = $archived ? 'unarchive' : 'archive';
-								JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
-
-								$action = $trashed ? 'untrash' : 'trash';
-								JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
-
-								// Render dropdown list
-								echo JHtml::_('actionsdropdown.render', $this->escape($item->title));
-								?>
-							</div>
-						</td>
-						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 						</td>
                         <td class="k-table-data--toggle"></td>
@@ -126,6 +109,23 @@ $saveOrder	= $listOrder == 'fp.ordering';
                                 <?php echo JText::_('JCATEGORY') . ": " . $this->escape($item->category_title); ?>
                             </div>
 						</td>
+                        <td>
+                            <div class="btn-group">
+                                <?php echo JHtml::_('jgrid.published', $item->state, $i, 'articles.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+                                <?php echo JHtml::_('contentadministrator.featured', $item->featured, $i, $canChange); ?>
+                                <?php
+                                // Create dropdown items
+                                $action = $archived ? 'unarchive' : 'archive';
+                                JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
+
+                                $action = $trashed ? 'untrash' : 'trash';
+                                JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
+
+                                // Render dropdown list
+                                echo JHtml::_('actionsdropdown.render', $this->escape($item->title));
+                                ?>
+                            </div>
+                        </td>
 						<td>
 							<?php if ($canChange && $saveOrder) : ?>
 								<div class="input-prepend">

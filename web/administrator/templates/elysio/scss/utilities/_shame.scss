@@ -85,6 +85,10 @@
     display: none;
   }
 
+  .dropdown-backdrop {
+    display: none !important;
+  }
+
   // Remove styling from default dropdown styles
   .dropdown-menu {
     font-size: inherit;
@@ -92,11 +96,28 @@
     border-radius: 0;
     border: none;
 
+    @include breakpoint(0, range, $k-top-container-breakpoint) {
+      position: static;
+      width: 100%;
+
+      > li > a {
+        color: inherit;
+      }
+
+      .divider {
+        opacity: 0.25;
+      }
+    }
+
     a {
       display: block;
       padding: 0 16px;
       font-weight: inherit;
       white-space: nowrap;
+
+      &:after {
+        display: inline-block !important;
+      }
     }
   }
 }
@@ -269,4 +290,55 @@ span.star {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
+}
+
+
+// Align icons in buttons
+
+.k-input-group {
+  .k-button {
+    [class*='icon'] {
+      vertical-align: middle;
+      margin: 0;
+      margin-bottom: 2px;
+
+      &:first-child {
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+
+// Port back to KUI: span in ellipsis table (when icon)
+// Add it to KUI using :not([class*='icon']
+.k-table-container {
+  .k-table-data--ellipsis.k-table-data--ellipsis {
+    span[class*='icon'] {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+// Port back to KUI
+.k-flex-grow {
+  flex-grow: 1;
+}
+
+
+// Navigation
+.k-top-container__navigation {
+  li.disabled {
+    a {
+      opacity: 0.5;
+      cursor: no-drop;
+      pointer-events: none;
+    }
+  }
+}
+
+
+.k-positioner.k-is-active {
+  cursor: move;
 }

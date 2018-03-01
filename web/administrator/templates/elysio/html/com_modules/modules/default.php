@@ -41,11 +41,11 @@ $colSpan = $clientId === 1 ? 9 : 10;
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
                         <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-                        <th width="1%">
-                            <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
-                        </th>
                         <th>
                             <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%">
+                            <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
                         </th>
                         <th width="1%" data-hide="phone">
                             <?php echo JHtml::_('searchtools.sort', 'COM_MODULES_HEADING_POSITION', 'a.position', $listDirn, $listOrder); ?>
@@ -83,6 +83,23 @@ $colSpan = $clientId === 1 ? 9 : 10;
 						</td>
                         <td class="k-table-data--toggle"></td>
                         <td>
+                            <?php if (JHtml::_('grid.ischeckedout', $item)) : ?>
+                                <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'modules.', $canCheckin); ?>
+                            <?php endif; ?>
+                            <?php if ($canEdit) : ?>
+                                <a class="hasTooltip" href="<?php echo JRoute::_('index.php?option=com_modules&task=module.edit&id=' . (int) $item->id); ?>" title="<?php echo JText::_('JACTION_EDIT'); ?>">
+                                    <?php echo $this->escape($item->title); ?></a>
+                            <?php else : ?>
+                                <?php echo $this->escape($item->title); ?>
+                            <?php endif; ?>
+
+                            <?php if (!empty($item->note)) : ?>
+                                <div class="small">
+                                    <?php echo JText::sprintf('JGLOBAL_LIST_NOTE', $this->escape($item->note)); ?>
+                                </div>
+                            <?php endif; ?>
+                        </td>
+                        <td>
                             <div class="btn-group">
                                 <?php // Check if extension is enabled ?>
                                 <?php if ($item->enabled > 0) : ?>
@@ -108,23 +125,6 @@ $colSpan = $clientId === 1 ? 9 : 10;
                             </div>
                         </td>
                         <td>
-                            <?php if (JHtml::_('grid.ischeckedout', $item)) : ?>
-                                <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'modules.', $canCheckin); ?>
-                            <?php endif; ?>
-                            <?php if ($canEdit) : ?>
-                                <a class="hasTooltip" href="<?php echo JRoute::_('index.php?option=com_modules&task=module.edit&id=' . (int) $item->id); ?>" title="<?php echo JText::_('JACTION_EDIT'); ?>">
-                                    <?php echo $this->escape($item->title); ?></a>
-                            <?php else : ?>
-                                <?php echo $this->escape($item->title); ?>
-                            <?php endif; ?>
-
-                            <?php if (!empty($item->note)) : ?>
-                                <div class="small">
-                                    <?php echo JText::sprintf('JGLOBAL_LIST_NOTE', $this->escape($item->note)); ?>
-                                </div>
-                            <?php endif; ?>
-                        </td>
-                        <td>
                             <?php if ($item->position) : ?>
                                 <span class="label label-info">
 									<?php echo $item->position; ?>
@@ -135,7 +135,7 @@ $colSpan = $clientId === 1 ? 9 : 10;
 								</span>
                             <?php endif; ?>
                         </td>
-                        <td>
+                        <td class="k-table-data--nowrap">
                             <?php echo $item->name;?>
                         </td>
                         <?php if ($clientId === 0) : ?>

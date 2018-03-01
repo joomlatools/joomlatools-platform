@@ -15,6 +15,9 @@ $options = array(
 	JHtml::_('select.option', 'c', JText::_('JLIB_HTML_BATCH_COPY')),
 	JHtml::_('select.option', 'm', JText::_('JLIB_HTML_BATCH_MOVE'))
 );
+$attribs = array(
+    'class' => 'k-optionlist-trigger'
+);
 $published = $this->state->get('filter.published');
 ?>
 
@@ -42,24 +45,7 @@ $published = $this->state->get('filter.published');
                 </select>
             </div>
             <div id="batch-copy-move" class="k-form-group radio">
-
-                <?php // @TODO: Change radiolist below into a list like this; (layouts>joomla.form.field.radio); ?>
-                <fieldset class="k-optionlist">
-                    <div class="k-optionlist__content">
-                        <input type="radio" id="example1" name="example" value="1" checked="checked">
-                        <label for="example1">
-                            <span>Copy</span>
-                        </label>
-                        <input type="radio" id="example2" name="example" value="0">
-                        <label for="example2">
-                            <span>Move</span>
-                        </label>
-                        <div class="k-optionlist__focus"></div>
-                    </div>
-                </fieldset>
-                <?php echo JHtml::_('select.radiolist', $options, 'batch[move_copy]', '', 'value', 'text', 'm'); ?>
-                <?php // @TODO; END ?>
-
+                <?php echo JHtml::_('select.radiolist', $options, 'batch[move_copy]', $attribs, 'value', 'text', 'm'); ?>
             </div>
         <?php endif; ?>
 	</div>

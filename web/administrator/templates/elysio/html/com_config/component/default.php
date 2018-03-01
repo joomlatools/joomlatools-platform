@@ -51,10 +51,10 @@ include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
 
     <div class="k-tabs-container">
 
+        <?php $fieldSets = $this->fieldsets; ?>
+        <?php if(count($fieldSets) > 1) : ?>
         <div class="k-tabs-wrapper k-js-tabs-wrapper">
             <div class="k-tabs-scroller k-js-tabs-scroller">
-                <?php $fieldSets = $this->fieldsets; ?>
-                <?php if(count($fieldSets) > 1) : ?>
                 <ul class="nav nav-tabs k-tabs k-js-tabs" id="configTabs">
                     <?php foreach ($fieldSets as $name => $fieldSet) : ?>
                         <?php $rel = ''; ?>
@@ -76,9 +76,9 @@ include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
                         <li<?php echo $rel; ?>><a data-toggle="tab" href="#<?php echo $name; ?>"><?php echo JText::_($label); ?></a></li>
                     <?php endforeach; ?>
                 </ul><!-- /configTabs -->
-                <?php endif ?>
             </div>
         </div>
+        <?php endif ?>
 
         <?php echo count($fieldSets) > 1 ? '<div class="tab-content k-tabs-content" id="configContent">' : '';?>
             <?php foreach ($this->fieldsets as $name => $fieldSet) : ?>

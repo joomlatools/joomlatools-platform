@@ -199,7 +199,6 @@ JFactory::getDocument()->addScriptDeclaration($script);
                             </div>
                         </div>
                     </div>
-                    <?php // @TODO: END; ?>
                 </div>
                 <?php endif; ?>
             </div>

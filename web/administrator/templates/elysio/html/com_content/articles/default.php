@@ -32,7 +32,6 @@ if ($saveOrder && $menuType)
 	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 
-$sortFields = $this->getSortFields();
 $assoc		= JLanguageAssociations::isEnabled();
 ?>
 
@@ -50,7 +49,7 @@ $assoc		= JLanguageAssociations::isEnabled();
     <!-- Table -->
     <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
         <div class="k-table">
-            <table class="k-js-responsive-table" id="itemList">
+            <table class="k-js-responsive-table" id="articleList">
 				<thead>
 					<tr>
 						<th width="1%" class="k-table-data--icon">
@@ -60,11 +59,11 @@ $assoc		= JLanguageAssociations::isEnabled();
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
                         <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-						<th width="1%">
-							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
-						</th>
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+						</th>
+						<th width="1%">
+							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
 						<th data-hide="phone">
 							<?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
@@ -102,46 +101,11 @@ $assoc		= JLanguageAssociations::isEnabled();
 					$canChange  = $user->authorise('core.edit.state', 'com_content.article.'.$item->id) && $canCheckin;
 					?>
 					<tr sortable-group-id="<?php echo $item->catid; ?>">
-						<td>
-							<?php
-							$iconClass = '';
-							if (!$canChange)
-							{
-								$iconClass = ' inactive';
-							}
-							elseif (!$saveOrder)
-							{
-								$iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::tooltipText('JORDERINGDISABLED');
-							}
-							?>
-							<span class="sortable-handler<?php echo $iconClass ?>">
-								<span class="k-positioner k-is-active" data-k-tooltip="{&quot;container&quot;:&quot;.k-ui-container&quot;}" data-original-title="Please order by this column first by clicking the column title"></span>
-							</span>
-							<?php if ($canChange && $saveOrder) : ?>
-                                <input type="text" style="display:none" name="order[]" size="5" value="<?php echo $orderkey + 1;?>" />
-							<?php endif; ?>
-						</td>
+                        <?php echo JLayoutHelper::render('elysio.ordering', array('canChange' => $canChange, 'saveOrder' => $saveOrder, 'value' => $item->ordering)); ?>
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 						</td>
                         <td class="k-table-data--toggle"></td>
-						<td>
-							<div class="btn-group">
-								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'articles.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
-								<?php echo JHtml::_('contentadministrator.featured', $item->featured, $i, $canChange); ?>
-								<?php
-								// Create dropdown items
-								$action = $archived ? 'unarchive' : 'archive';
-								JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
-
-								$action = $trashed ? 'untrash' : 'trash';
-								JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
-
-								// Render dropdown list
-								echo JHtml::_('actionsdropdown.render', $this->escape($item->title));
-								?>
-							</div>
-						</td>
 						<td>
                             <?php if ($item->checked_out) : ?>
                                 <?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'articles.', $canCheckin); ?>
@@ -164,6 +128,23 @@ $assoc		= JLanguageAssociations::isEnabled();
                                 <?php echo JText::_('JCATEGORY') . ": " . $this->escape($item->category_title); ?>
                             </div>
 						</td>
+                        <td>
+                            <div class="btn-group">
+                                <?php echo JHtml::_('jgrid.published', $item->state, $i, 'articles.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+                                <?php echo JHtml::_('contentadministrator.featured', $item->featured, $i, $canChange); ?>
+                                <?php
+                                // Create dropdown items
+                                $action = $archived ? 'unarchive' : 'archive';
+                                JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
+
+                                $action = $trashed ? 'untrash' : 'trash';
+                                JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
+
+                                // Render dropdown list
+                                echo JHtml::_('actionsdropdown.render', $this->escape($item->title));
+                                ?>
+                            </div>
+                        </td>
 						<td>
 							<?php echo $this->escape($item->access_level); ?>
 						</td>
