@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+    <name>plg_system_404</name>
+    <author>Joomlatools</author>
+    <creationDate>March 2018</creationDate>
+    <copyright>Copyright (C) 2018 Timble CVBA (http://www.timble.net)</copyright>
+    <license>GNU GPLv3 - http://www.gnu.org/licenses/gpl.html</license>
+    <authorEmail>support@joomlatools.com</authorEmail>
+    <authorUrl>www.joomlatools.com</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_SYSTEM_404_DESCRIPTION</description>
+    <files>
+        <filename plugin="404">404.php</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.plg_system_404.ini</language>
+        <language tag="en-GB">en-GB.plg_system_404.sys.ini</language>
+    </languages>
+</extension>
