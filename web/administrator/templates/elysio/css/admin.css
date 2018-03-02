@@ -14661,6 +14661,11 @@ html {
     pointer-events: none; }
   .k-ui-namespace .k-positioner.k-is-active {
     cursor: move; }
+  @media screen and (min-width: 600px) {
+    .k-ui-namespace .k-scopebar__item--filters {
+      max-width: calc(100% - 40px); } }
+  .k-ui-namespace .k-scopebar__item--filter.k-scopebar__item--filter {
+    margin-bottom: 0; }
 
 .popover.popover {
   margin: 0;

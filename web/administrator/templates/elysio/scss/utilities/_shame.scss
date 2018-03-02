@@ -339,6 +339,21 @@ span.star {
 }
 
 
+// Set correct cursor for draggable items
 .k-positioner.k-is-active {
   cursor: move;
+}
+
+
+// Back to KUI?
+.k-scopebar__item--filters {
+  @include breakpoint($k-beta) {
+    max-width: calc(100% - 40px);
+  }
+}
+
+
+// Back to KUI?
+.k-scopebar__item--filter.k-scopebar__item--filter {
+  margin-bottom: 0;
 }

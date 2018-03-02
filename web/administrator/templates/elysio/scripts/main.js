@@ -6,7 +6,7 @@ kQuery(document).ready(function($) {
         minimumResultsForSearch: Infinity
     });
 
-    $('#jform_params_catid, #jform_params_created_by, #jform_params_created_by_alias').select2({
+    $('#jform_params_catid, #jform_params_created_by, #jform_params_created_by_alias, #jform_params_featured_categories').select2({
         theme: "bootstrap",
         minimumResultsForSearch: Infinity
     });
