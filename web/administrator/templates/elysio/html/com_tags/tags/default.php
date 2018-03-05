@@ -31,7 +31,9 @@ if ($saveOrder)
 $sortFields = $this->getSortFields();
 ?>
 
-<?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu'); ?>
+<?php if (!empty($this->sidebar)): ?>
+    <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'submenu'); ?>
+<?php endif; ?>
 
 <!-- Component -->
 <form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_tags&view=tags');?>" method="post" name="adminForm" id="adminForm">
