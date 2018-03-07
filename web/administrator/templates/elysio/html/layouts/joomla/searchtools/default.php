@@ -16,7 +16,6 @@ $data['options'] = !empty($data['options']) ? $data['options'] : array();
 
 // Set some basic options
 $customOptions = array(
-	'filtersHidden'       => isset($data['options']['filtersHidden']) ? $data['options']['filtersHidden'] : empty($data['view']->activeFilters),
 	'defaultLimit'        => isset($data['options']['defaultLimit']) ? $data['options']['defaultLimit'] : JFactory::getApplication()->get('list_limit', 20),
 	'searchFieldSelector' => '#filter_search',
 	'orderFieldSelector'  => '#list_fullordering'
@@ -29,22 +28,36 @@ $formSelector = !empty($data['options']['formSelector']) ? $data['options']['for
 // Load search tools
 JHtml::_('searchtools.form', $formSelector, $data['options']);
 
+// Show filter toggle button?
+$showFilterToggle = (count($data['view']->filterForm->getGroup('filter')) > 1) ? true : false;
+
 ?>
 
-<div class="k-scopebar__item k-scopebar__item--fluid">
-	<div class="k-scopebar__item--title">
-		Filter:
-	</div>
-	<div class="k-scopebar__item--filters">
-		<ul>
-			<li>
-				<button type="button" class="k-filter-button" data-filter-toggle="tools">
-					<?php echo JText::_('JSEARCH_TOOLS');?>
-				</button>
-			</li>
-		</ul>
-	</div>
-	<button type="button" class="k-toggle-search"><span class="k-icon-magnifying-glass"></span><span class="visually-hidden">Search</span></button>
-</div>
+<!-- Scopebar -->
+<div class="k-scopebar k-js-scopebar" id="filter-bar">
 
-<?php echo JLayoutHelper::render('joomla.searchtools.default.bar', $data); ?>
+    <!-- Toggle buttons -->
+    <div class="k-scopebar__item k-scopebar__item--toggle-buttons">
+        <button type="button" class="k-scopebar__button k-toggle-scopebar-search k-js-toggle-search">
+            <span class="k-icon-magnifying-glass" aria-hidden="true">
+                <span class="k-visually-hidden">Search toggle</span>
+                <div class="k-js-search-count k-scopebar__item-label k-scopebar__item-label--numberless" style="display: none"></div>
+            </span>
+        </button>
+        <?php if ($showFilterToggle): ?>
+        <button type="button" class="k-scopebar__button k-toggle-scopebar-filters k-js-toggle-filters">
+            <span class="k-icon-filter" aria-hidden="true">
+                <span class="k-visually-hidden">Filters toggle</span>
+                <div class="k-js-filter-count k-scopebar__item-label k-scopebar__item-label--numberless"></div>
+            </span>
+        </button>
+        <?php endif; ?>
+    </div>
+
+    <!-- Filters -->
+    <?php echo JLayoutHelper::render('joomla.searchtools.default.filters', $data); ?>
+
+    <!-- search -->
+    <?php echo JLayoutHelper::render('joomla.searchtools.default.bar', $data); ?>
+
+</div><!-- .k-scopebar -->

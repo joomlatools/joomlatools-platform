@@ -24,22 +24,28 @@ $filterButton = $data['options']->get('filterButton', true);
 $searchButton = $data['options']->get('searchButton', true);
 
 $filters = $data['view']->filterForm->getGroup('filter');
+
+// Add class to input field
+$filters['filter_search']->class = 'k-search__field';
 ?>
 
+<?php if (!empty($filters['filter_search'])) : ?>
 <!-- Search -->
-<div class="k-scopebar__item k-scopebar__search">
-	<?php if (!empty($filters['filter_search'])) : ?>
-		<?php if ($searchButton) : ?>
-		<div class="k-search__container k-search__container--has-both-buttons">
-			<label for="filter_search" class="visually-hidden"><?php echo JText::_('JSEARCH_FILTER'); ?></label>
-			<?php echo $filters['filter_search']->input; ?>
-			<button type="submit" class="k-search__button-search">
-				<span class="k-icon-magnifying-glass"></span>
-			</button>
-			<button type="button" class="k-search__button-empty" onclick="document.id('filter_search').value='';this.form.submit();">
-				<span>X</span>
-			</button>
-		</div>
-		<?php endif; ?>
-	<?php endif; ?>
-</div><!-- .k-scopebar__search -->
+<div class="k-scopebar__item k-scopebar__item--search">
+    <div class="k-search k-search--has-both-buttons">
+        <label for="k-search-input"><?php echo JText::_('JSEARCH_FILTER'); ?></label>
+        <?php echo $filters['filter_search']->input; ?>
+        <button type="submit" class="k-search__submit" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
+            <span class="k-icon-magnifying-glass" aria-hidden="true"></span>
+            <span class="k-visually-hidden">Search</span>
+        </button>
+        <button type="button" class="k-search__empty" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
+            <span class="k-search__empty-area">
+                <span class="k-icon-x" aria-hidden="true"></span>
+                <span class="k-visually-hidden">Clear search</span>
+            </span>
+        </button>
+    </div>
+</div>
+<?php endif; ?>
+

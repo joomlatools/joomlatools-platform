@@ -16,7 +16,7 @@ defined('JPATH_BASE') or die;
 	<ul id="submenu" class="k-navigation">
 		<?php foreach ($displayData->list as $item) :
 		if (isset ($item[2]) && $item[2] == 1) : ?>
-			<li class="active">
+			<li class="k-is-active">
 		<?php else : ?>
 			<li>
 		<?php endif;
@@ -36,22 +36,20 @@ defined('JPATH_BASE') or die;
 <?php endif; ?>
 
 <?php if ($displayData->displayFilters) : ?>
-<div class="k-sidebar__item k-sidebar__item--flex">
-	<div class="k-sidebar__header"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></div>
-	<div class="k-sidebar__content">
-		<form action="<?php echo JRoute::_($action); ?>" method="post">
-			<?php foreach ($displayData->filters as $filter) : ?>
-				<div class="form-group">
-					<label for="<?php echo $filter['name']; ?>" class="element-invisible"><?php echo $filter['label']; ?></label>
-					<select name="<?php echo $filter['name']; ?>" id="<?php echo $filter['name']; ?>" class="form-control" onchange="this.form.submit()">
-						<?php if (!$filter['noDefault']) : ?>
-							<option value=""><?php echo $filter['label']; ?></option>
-						<?php endif; ?>
-						<?php echo $filter['options']; ?>
-					</select>
-				</div>
-			<?php endforeach; ?>
-		</form>
-	</div>
+<div class="k-sidebar-item k-sidebar-item--flex">
+	<div class="k-sidebar-item__header"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></div>
+    <form class="k-sidebar-item__content" action="<?php echo JRoute::_($action); ?>" method="post">
+        <?php foreach ($displayData->filters as $filter) : ?>
+            <div class="form-group">
+                <label for="<?php echo $filter['name']; ?>" class="element-invisible"><?php echo $filter['label']; ?></label>
+                <select name="<?php echo $filter['name']; ?>" id="<?php echo $filter['name']; ?>" class="form-control" onchange="this.form.submit()">
+                    <?php if (!$filter['noDefault']) : ?>
+                        <option value=""><?php echo $filter['label']; ?></option>
+                    <?php endif; ?>
+                    <?php echo $filter['options']; ?>
+                </select>
+            </div>
+        <?php endforeach; ?>
+    </form>
 </div><!-- .k-sidebar__item -->
 <?php endif; ?>

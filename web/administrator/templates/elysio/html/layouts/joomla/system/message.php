@@ -11,20 +11,26 @@ defined('_JEXEC') or die;
 
 $msgList = $displayData['msgList'];
 
-$alert = array('error' => 'alert-error', 'warning' => '', 'notice' => 'alert-info', 'message' => 'alert-success');
+$alert = array('error' => 'k-alert--danger', 'warning' => 'k-alert--warning', 'notice' => 'k-alert--info', 'message' => 'k-alert--success');
+
 ?>
-<div id="system-message-container">
-	<?php if (is_array($msgList) && $msgList) : ?>
-		<button type="button" class="close" data-dismiss="alert">&times;</button>
-		<?php foreach ($msgList as $type => $msgs) : ?>
-			<div class="alert <?php echo $alert[$type]; ?>">
-				<h4 class="alert-heading"><?php echo JText::_($type); ?></h4>
-				<?php if ($msgs) : ?>
-					<?php foreach ($msgs as $msg) : ?>
-						<p><?php echo $msg; ?></p>
-					<?php endforeach; ?>
-				<?php endif; ?>
-			</div>
-		<?php endforeach; ?>
-	<?php endif; ?>
-</div>
+
+<?php if (is_array($msgList) && $msgList) : ?>
+    <?php foreach ($msgList as $type => $msgs) : ?>
+        <div class="k-alert <?php echo $alert[$type]; ?>">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <?php if ($msgs) : ?>
+                <p>
+                <?php foreach ($msgs as $msg) : ?>
+                    <?php if ($msgs[0] == $msg) : ?>
+                        <strong><?php echo JText::_($type); ?></strong>
+                    <?php else: ?>
+                        -<br/>
+                    <?php endif; ?>
+                    <?php echo $msg; ?><br />
+                <?php endforeach; ?>
+                </p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

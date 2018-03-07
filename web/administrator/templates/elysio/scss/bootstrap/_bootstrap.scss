@@ -1,21 +1,23 @@
 // Bootstrap 3
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/panels";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/theme";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/forms";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navs";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navbar";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/grid";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/type";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/buttons";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/media";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/close";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/tooltip";
-@import "../../../../../../../../../joomlatools-projects/nooku-framework/bower_components/bootstrap-sass/assets/stylesheets/bootstrap/labels";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/panels";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/theme";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/forms";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/navs";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/type";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/media";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/close";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/labels";
 
-// Overrides / additions
+//// Overrides / additions
 @import "overrides";
-@import "modal-bs2";
+@import "accordion";
+@import "tabs";
+
+

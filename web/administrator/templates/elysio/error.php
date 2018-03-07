@@ -72,17 +72,18 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 </head>
 
 <body class="koowa admin <?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
-<script type="text/javascript">function hasClass(e,t){return e.className.match(new RegExp("(\\s|^)"+t+"(\\s|$)"))}var el=document.body;var cl="no-js";if(hasClass(el,cl)){var reg=new RegExp("(\\s|^)"+cl+"(\\s|$)");el.className=el.className.replace(reg," k-js-enabled")}</script>
+<script src="templates/elysio/js/kui-initialize.js"></script>
 
-<div id="koowa" class="koowa">
+<!-- Koowa -->
+<div class="k-ui-namespace k-ui-container">
 
     <?php
     $layout = 'error';
     include_once('navigation.php');
     ?>
 
-    <!-- Koowa container -->
-    <section class="koowa-container">
+    <!-- Wrapper -->
+    <div class="k-wrapper k-js-wrapper">
 
         <!-- Content wrapper -->
         <div class="k-content-wrapper">
@@ -90,23 +91,33 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
             <!-- Content -->
             <div class="k-content">
 
-                <!-- Component -->
-                <div class="k-component">
+                <!-- Component wrapper -->
+                <div class="k-component-wrapper">
 
-                    <!-- Container -->
-                    <div class="k-container">
+                    <!-- Component -->
+                    <div class="k-component">
 
-                        <h1><?php echo JText::_('JERROR_AN_ERROR_HAS_OCCURRED'); ?></h1>
+                        <!-- Container -->
+                        <div class="k-container">
 
-                        <blockquote>
-                            <span class="label label-info"><?php echo $this->code; ?></span> <?php echo htmlspecialchars($this->message, ENT_QUOTES, 'UTF-8');?>
-                        </blockquote>
+                            <div class="k-container__full">
 
-                        <p><a href="<?php echo $this->baseurl; ?>" class="btn btn-default"><?php echo JText::_('JGLOBAL_TPL_CPANEL_LINK_TEXT'); ?></a></p>
+                                <h1><?php echo JText::_('JERROR_AN_ERROR_HAS_OCCURRED'); ?></h1>
 
-                    </div>
+                                <blockquote>
+                                    <span class="k-label k-label--info"><?php echo $this->code; ?></span>
+                                    <?php echo htmlspecialchars($this->message, ENT_QUOTES, 'UTF-8');?>
+                                </blockquote>
 
-                </div><!-- .k-component -->
+                                <p><a href="<?php echo $this->baseurl; ?>" class="k-button k-button--default"><?php echo JText::_('JGLOBAL_TPL_CPANEL_LINK_TEXT'); ?></a></p>
+
+                            </div>
+
+                        </div>
+
+                    </div><!-- .k-component -->
+
+                </div><!-- .k-component-wrapper -->
 
             </div><!-- k-content -->
 

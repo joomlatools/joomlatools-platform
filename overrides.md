@@ -1,0 +1,62 @@
+- [ x ] com_config / application / default.php
+- [ x ] com_config / application / default_navigation.php
+- [ - ] com_config / application / default_permissions.php
+- [ x ] com_config / component / default.php
+- [ x ] com_config / component / default_navigation.php
+- [ x ] com_cpanel / cpanel / default.php
+- [ x ] com_languages / installed / default.php
+- [ x ] com_languages / language / edit.php
+- [ x ] com_languages / languages / default.php
+- [ ? ] com_languages / multilangstatus / default.php
+- [ x ] com_menus / item / edit.php
+- [ - ] com_menus / item / edit_associations.php
+- [ x ] com_menus / item / edit_modules.php
+- [ ? ] com_menus / item / edit_options.php
+- [ x ] com_menus / items / default.php
+- [ x ] com_menus / items / default_batch.php
+- [ x ] com_menus / items / default_batch_body.php
+- [ x ] com_menus / items / default_batch_footer.php
+- [ x ] com_menus / menu / edit.php
+- [ x ] com_menus / menus / default.php
+- [ - ] com_menus / menutypes / default.php
+- [ x ] com_modules / module / edit.php
+- [ x ] com_modules / module / edit_assignment.php
+- [ x ] com_modules / module / edit_options.php
+- [ - ] com_modules / module / edit_positions.php
+- [ x ] com_modules / module / modal.php
+- [ x ] com_modules / modules / default.php
+- [ x ] com_modules / modules / default_batch.php
+- [ x ] com_modules / modules / default_batch_body.php
+- [ x ] com_modules / modules / default_batch_footer.php
+- [ ? ] com_modules / positions / modal.php
+- [ ? ] com_modules / preview / default.php
+- [ x ] com_modules / select / default.php
+- [ x ] com_plugins / plugin / edit.php
+- [ x ] com_plugins / plugin / edit_options.php
+- [ x ] com_plugins / plugins / default.php
+- [ x ] com_templates / style / edit.php
+- [ x ] com_templates / style / edit_assignment.php
+- [ x ] com_templates / style / edit_options.php
+- [ x ] com_templates / styles / default.php
+- [ x ] com_templates / templates / default.php
+- [ x ] com_users / debuggroup / default.php
+- [ x ] com_users / debuguser / default.php
+- [ x ] com_users / group / edit.php
+- [ x ] com_users / groups / default.php
+- [ x ] com_users / level / edit.php
+- [ x ] com_users / levels / default.php
+- [ x ] com_users / login / default.php
+- [ x ] com_users / profile / edit.php
+- [ x ] com_users / user / edit.php
+- [ - ] com_users / user / edit_groups.php
+- [ x ] com_users / users / default.php
+- [ x ] com_users / users / default_batch.php
+- [ x ] com_users / users / default_batch_body.php
+- [ x ] com_users / users / default_batch_footer.php
+- [ ? ] com_users / users / modal.php
+
+Legend:
+x: done
+-: not needed
+?: not sure if we need it
+ : old

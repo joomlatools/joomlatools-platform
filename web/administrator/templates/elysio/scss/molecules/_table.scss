@@ -1,116 +1,124 @@
 /**
  * Table overrides
- *
- * 1. Never wrap headings
  */
 
-th {
-  white-space: nowrap; /* 1 */
-}
+/* Default inline display for links and small inside small */
 
-
-/* Override default Joomla buttons in tabels to flat icons (no button style) */
-
-.k-table__data-button--override {
-  .btn.btn {
-    &,&:hover,&:active,&:focus {
-      @include reset;
-      box-shadow: none;
-    }
-  }
-
-  .disabled.disabled {
-    background: transparent;
-    opacity: 1;
-  }
-
-  .icon-unfeatured {
-    color: palette(Grey, 400);
-
-    &:hover {
-      color: palette(Blue Grey);
-    }
-  }
-
-  .icon-featured {
-    color: palette(Blue Grey, 700);
+.k-table-container .k-table small {
+  a,
+  span {
+    display: inline;
+    vertical-align: baseline;
   }
 }
 
 
+/* Select2 alignment and width */
 
-/* Selected rows */
-
-table {
-  tr.selected {
-    td {
-      .label {
-        &,&:hover,&:focus,&:active {
-          background: $table-cell-accent-color;
-          color: $table-cell-accent-background;
-        }
-
-        a {
-          &,&:hover,&:focus,&:active {
-            background: $table-cell-accent-color;
-            color: $table-cell-accent-background;
-          }
-        }
-      }
-
-      [class^="icon-"] {
-        &:before {
-          color: white;
-        }
-      }
-
-      .koowa_icon--enabled,
-      .koowa_icon--disabled {
-        &:before {
-          color: white;
-        }
-      }
-
-      .icon-unpublish,
-      .icon-unfeatured,
-      .koowa_icon--disabled {
-        &:before {
-          opacity: .5;
-        }
-      }
-
-      .dropdown-menu {
-        &, a, button, span, span:before {
-          color: $table-cell-color;
-          text-decoration: none;
-        }
-      }
-
-      .dropdown-toggle.btn {
-        &, &:hover, &:focus, &:active {
-          color: $table-cell-accent-background;
-        }
-      }
+.k-table-container {
+  td {
+    .select2 {
+      display: inline-block;
+      vertical-align: top;
+      max-width: 90% !important;
     }
   }
 }
 
 
-
-/* Put some spacing between the icon and toggle button in tables */
+/* Styling fix joomla button groups */
 
 .k-table {
-  .btn-group > .btn + .dropdown-toggle {
-    &, &:focus, &:hover, &:active {
-      margin-left: .5em;
+  .btn-group {
+    white-space: nowrap;
+    font-size: 0;
+
+    .btn {
+      display: inline-block;
+      float: none;
+      margin-right: 0;
     }
   }
 }
 
 
+/* Bold headers */
 
-/* Placeholder for when tables are empty */
+.k-table th {
+  font-weight: $k-bold-font-weight;
+}
 
-.k-placeholder {
-  padding: 1em;
+
+/* Styling arrow icons */
+
+.k-table {
+  .icon-arrow-up-3,
+  .icon-arrow-down-3 {
+    position: relative;
+    display: inline-block;
+    width: 6px;
+    height: 3px;
+    background: transparent;
+
+    &:before,
+    &:after {
+      display: block;
+      content: " ";
+      position: absolute;
+      opacity: 0.33;
+    }
+
+    &:before {
+      @include caret(top, 4px);
+      bottom: 100%;
+    }
+
+    &:after {
+      @include caret(bottom, 4px);
+      top: 100%;
+    }
+  }
+
+  .icon-arrow-up-3 {
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  .icon-arrow-down-3 {
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  th {
+    .icon-arrow-up-3,
+    .icon-arrow-down-3 {
+      margin-left: 0.66em;
+      vertical-align: middle;
+    }
+
+    @include rtl {
+      .icon-arrow-up-3,
+      .icon-arrow-down-3 {
+        margin-left: 0;
+        margin-right: 0.66em;
+      }
+    }
+
+    a:focus,
+    a:hover {
+      .icon-arrow-up-3 {
+        &:after {
+          opacity: 0.66;
+        }
+      }
+
+      .icon-arrow-down-3 {
+        &:before {
+          opacity: 0.66;
+        }
+      }
+    }
+  }
 }

@@ -14,7 +14,6 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
 
 $user      = JFactory::getUser();
 $listOrder = $this->escape($this->state->get('list.ordering'));
@@ -23,58 +22,39 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<!-- Form -->
-<form class="k-form-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_templates&view=styles'); ?>" method="post" name="adminForm" id="adminForm">
+<!-- Component -->
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_templates&view=styles'); ?>" method="post" name="adminForm" id="adminForm">
 
-    <!-- Scopebar -->
-    <div class="k-scopebar" id="filter-bar">
-
-        <!-- Filters -->
-        <div class="k-scopebar__item k-scopebar__item--fluid">
-
-            <!-- Search button -->
-            <button type="button" class="k-toggle-search"><span class="k-icon-magnifying-glass"></span><span class="visually-hidden">Search</span></button>
-
-        </div><!-- .k-scopebar__item--fluid -->
-
-        <!-- Search -->
-        <div class="k-scopebar__item k-scopebar__search">
-            <div class="k-search__container k-search__container--has-both-buttons">
-                <input class="k-search__field" type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('JSEARCH_FILTER'); ?>" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" />
-                <button type="submit" class="k-search__button-search" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
-                    <span class="k-icon-magnifying-glass"></span>
-                </button>
-                <button type="button" class="k-search__button-empty" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
-                    <span>X</span>
-                </button>
-            </div>
-        </div><!-- .k-scopebar__search -->
-
-    </div><!-- .k-scopebar -->
+    <?php // Scopebar ?>
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 
     <!-- Table -->
     <div class="k-table-container">
         <div class="k-table">
-            <table class="table--fixed footable select-rows">
+            <table class="k-js-responsive-table">
                 <thead>
                     <tr>
-                        <th width="5">
-                            &#160;
+                        <th width="1%" class="k-table-data--form">
+                            <?php echo JHtml::_('grid.checkall'); ?>
                         </th>
+                        <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
                         <th>
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_STYLE', 'a.title', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%" class="nowrap center">
+                        <th width="1%" data-hide="phone">
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_DEFAULT', 'a.home', $listDirn, $listOrder); ?>
                         </th>
-                        <th width="5%" class="nowrap center hidden-phone">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JText::_('COM_TEMPLATES_HEADING_ASSIGNED'); ?>
                         </th>
-                        <th width="10%" class="nowrap center">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('grid.sort', 'JCLIENT', 'a.client_id', $listDirn, $listOrder); ?>
                         </th>
-                        <th class="center hidden-phone">
+                        <th width="1%" data-hide="phone,tablet">
                             <?php echo JHtml::_('grid.sort', 'COM_TEMPLATES_HEADING_TEMPLATE', 'a.template', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                         </th>
                     </tr>
                 </thead>
@@ -85,9 +65,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                         $canChange = $user->authorise('core.edit.state', 'com_templates');
                     ?>
                     <tr>
-                        <td width="1%">
+                        <td>
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>
+                        <td class="k-table-data--toggle"></td>
                         <td>
                             <?php if ($this->preview && $item->client_id == '0') : ?>
                                 <a target="_blank" href="<?php echo JUri::root() . 'index.php?tp=1&templateStyle='.(int) $item->id ?>" class="jgrid">
@@ -104,7 +85,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                                 <?php echo $this->escape($item->title);?>
                             <?php endif; ?>
                         </td>
-                        <td class="k-table__data-button--override k-table-data--center">
+                        <td class="k-table-data-icon k-table-data--center">
                             <?php if ($item->home == '0' || $item->home == '1'):?>
                                 <?php echo JHtml::_('jgrid.isdefault', $item->home != '0', $i, 'styles.', $canChange && $item->home != '1');?>
                             <?php elseif ($canChange):?>
@@ -117,7 +98,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                         </td>
                         <td>
                             <?php if ($item->assigned > 0) : ?>
-                                <i class="icon-ok tip hasTooltip" title="<?php echo JHtml::tooltipText(JText::plural('COM_TEMPLATES_ASSIGNED', $item->assigned), '', 0); ?>"></i>
+                                <i class="k-icon-check tip hasTooltip" title="<?php echo JHtml::tooltipText(JText::plural('COM_TEMPLATES_ASSIGNED', $item->assigned), '', 0); ?>"></i>
                             <?php else : ?>
                                 &#160;
                             <?php endif; ?>
@@ -130,6 +111,9 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                                 <?php echo ucfirst($this->escape($item->template));?>
                             </a>
                         </td>
+                        <td>
+                            <?php echo (int) $item->id; ?>
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -137,16 +121,13 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
             <input type="hidden" name="task" value="" />
             <input type="hidden" name="boxchecked" value="0" />
-            <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-            <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
             <?php echo JHtml::_('form.token'); ?>
+
         </div><!-- .k-table -->
 
         <!-- Pagination -->
-        <div class="k-table-pagination">
-            <?php echo $this->pagination->getListFooter(); ?>
-        </div><!-- .k-table-pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
     </div><!-- .k-table-container -->
 
-</form><!-- .k-list-layout -->
+</form><!-- .k-component -->

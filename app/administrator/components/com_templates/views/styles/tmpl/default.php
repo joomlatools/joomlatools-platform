@@ -31,6 +31,7 @@ $colSpan = $clientId === 1 ? 5 : 6;
 <?php else : ?>
 	<div id="j-main-container">
 <?php endif;?>
+        test
 		<?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		<div class="clear"> </div>
 		<?php if (empty($this->items)) : ?>

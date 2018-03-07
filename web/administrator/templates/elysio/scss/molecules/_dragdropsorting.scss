@@ -1,0 +1,16 @@
+/**
+ * Fix sortable styling coming out of Joomla
+ */
+
+.dndlist-place-holder {
+  height: 48px;
+}
+
+.dndlist-dragged-row {
+  background: $k-table-cell-even-hover-background !important;
+  border: none !important;
+  height: 48px !important;
+  border-top: 1px solid $k-table-cell-border !important;
+  border-bottom: 1px solid $k-table-cell-border !important;
+  opacity: 0.9;
+}

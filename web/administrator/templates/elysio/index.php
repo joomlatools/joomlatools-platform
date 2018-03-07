@@ -13,6 +13,9 @@ $doc = JFactory::getDocument();
 $user = JFactory::getUser();
 $menu = $app->getMenu();
 
+// Output as HTML5
+$doc->setHtml5(true);
+
 // Getting params from template
 $params = JFactory::getApplication()->getTemplate(true)->params;
 
@@ -26,6 +29,7 @@ $sitename = $app->getCfg('sitename');
 $menuactive = $menu->getActive();
 $debug = $app->getCfg('debug', 0);
 $cpanel = ($option === 'com_cpanel');
+$debugUsers = ($option === 'com_users' && $view === 'debuggroup');
 
 $showSubmenu = JFactory::getDocument()->getBuffer('modules', 'submenu') && !JFactory::getApplication()->input->getBool('hidemainmenu');
 $showSidebar = JFactory::getDocument()->getBuffer('modules', 'sidebar');
@@ -41,16 +45,21 @@ $doc->setMetaData('apple-mobile-web-app-status-bar-style', 'black');
 $doc->setMetaData('apple-mobile-web-app-title', 'Elysio');
 $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
 
-// Set links
-$doc->addHeadLink($params->get('logo').'.ico', 'shortcut icon', 'rel', array('type' => 'image/ico'));
-$doc->addHeadLink($params->get('logo').'.png', 'shortcut icon', 'rel', array('type' => 'image/png', "sizes" => "192x192"));
+// Unset CSS
+unset($this->_stylesheets[JURI::root(true).'/media/jui/css/jquery.searchtools.css']);
+unset($this->_stylesheets[JURI::root(true).'/media/jui/css/chosen.css']);
 
-// Add Stylesheets
+// Add Stylesheet
 $doc->addStyleSheet('templates/' . $this->template . '/css/admin.css');
 
-// Add Script
-JHtml::_('bootstrap.framework');
+// Add Modernizr
 $doc->addScript('templates/'.$this->template.'/js/modernizr.js', 'text/javascript');
+
+// Add JavaScript Frameworks
+JHtml::_('bootstrap.framework');
+
+// Add KUI scripts
+$doc->addScript('templates/'.$this->template.'/js/koowa.kquery.js', 'text/javascript');
 $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 ?>
 <!DOCTYPE html>
@@ -58,10 +67,13 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 <head>
 	<jdoc:include type="head" />
 </head>
-<body class="koowa admin <?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
-<script type="text/javascript">function hasClass(e,t){return e.className.match(new RegExp("(\\s|^)"+t+"(\\s|$)"))}var el=document.body;var cl="no-js";if(hasClass(el,cl)){var reg=new RegExp("(\\s|^)"+cl+"(\\s|$)");el.className=el.className.replace(reg," k-js-enabled")}</script>
+<body class="<?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
+<script src="templates/elysio/js/kui-initialize.js"></script>
 
-<div id="koowa" class="koowa">
+<!-- Koowa -->
+<div class="k-ui-namespace k-ui-container">
+
+    <!-- navigation -->
     <?php include_once('navigation.php'); ?>
 
     <!-- Message container -->
@@ -69,15 +81,25 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
         <jdoc:include type="message" />
     </div>
 
-    <!-- Koowa container -->
-    <section class="koowa-container">
+    <!-- Wrapper -->
+    <div class="k-wrapper k-js-wrapper">
+
+        <div class="k-title-bar k-js-title-bar k-title-bar--mobile">
+            <div class="k-title-bar__heading">
+                <?php if ($this->countModules('title')) : ?>
+                    <jdoc:include type="modules" name="title" style="none" />
+                <?php else : ?>
+                    <?php $option = explode("_", $option); echo $option[1];?>
+                <?php endif; ?>
+            </div>
+        </div>
 
         <!-- Content wrapper -->
         <div class="k-content-wrapper">
 
             <?php if (($showSidebar || $showSubmenu || $showIcons) && $option != 'com_docman') : ?>
             <!-- Sidebar -->
-            <div id="k-sidebar" class="k-sidebar">
+            <div class="k-sidebar-left k-js-sidebar-left">
                 <?php if($showSubmenu) : ?>
                 <jdoc:include type="modules" name="submenu" style="none" />
                 <?php endif ?>
@@ -91,17 +113,15 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
             <?php endif; ?>
 
             <!-- Content -->
-            <div class="k-content">
+            <div class="k-content k-js-content">
 
-                <?php if ($this->countModules('toolbar')) : ?>
-                <!-- Toolbar -->
-                <div class="k-toolbar">
+                <?php if ((!$cpanel && !$debugUsers)): ?>
+                    <!-- Toolbar -->
                     <jdoc:include type="modules" name="toolbar" style="none" />
-                </div>
                 <?php endif; ?>
 
-                <!-- Component -->
-                <div class="k-component">
+                <!-- Component wrapper -->
+                <div class="k-component-wrapper">
 
                     <?php if ($this->countModules('top')) : ?>
                         <jdoc:include type="modules" name="top" style="xhtml" />
@@ -113,24 +133,39 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
                         <jdoc:include type="modules" name="bottom" style="xhtml" />
                     <?php endif; ?>
 
-                </div><!-- .k-component -->
+                </div><!-- .k-component-wrapper -->
 
             </div><!-- k-content -->
 
         </div><!-- .k-content-wrapper -->
 
-    </section><!-- .koowa-container -->
+    </div><!-- .k-wrapper -->
 
-    <jdoc:include type="modules" name="debug" style="none" />
+    <?php if ($this->countModules('debug')) : ?>
+    <div class="k-debug-container">
+        <jdoc:include type="modules" name="debug" style="none" />
+    </div>
+    <?php endif; ?>
 
+    <div id="modal-holder"></div>
     <script>
-        jQuery(document).ready(function($) {
-            var modal = $('#collapseModal');
+        kQuery(document).ready(function($) {
+            var modal = $('.modal');
             if (modal.length) {
-                modal.appendTo('body');
+                modal.appendTo('#modal-holder');
             }
         });
     </script>
 </div>
+
+<script>
+    // Open select wehn clicking filters
+    kQuery(document).ready(function($) {
+        $('.k-js-dropdown-button').on('click', function() {
+            $(this).next().children('.k-js-dropdown-content').children('select').select2('open');
+        });
+    });
+</script>
+
 </body>
 </html>

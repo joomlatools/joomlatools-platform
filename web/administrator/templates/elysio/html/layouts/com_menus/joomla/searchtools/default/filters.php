@@ -1,0 +1,77 @@
+<?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  Layout
+ *
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('JPATH_BASE') or die;
+
+$data = $displayData;
+
+// Check for show on fields.
+$filters = $data['view']->filterForm->getGroup('filter');
+foreach ($filters as $field)
+{
+    if ($showonstring = $field->getAttribute('showon'))
+    {
+        $showonarr = array();
+        foreach (preg_split('%\[AND\]|\[OR\]%', $showonstring) as $showonfield)
+        {
+            $showon   = explode(':', $showonfield, 2);
+            $showonarr[] = array(
+                'field'  => $showon[0],
+                'values' => explode(',', $showon[1]),
+                'op'     => (preg_match('%\[(AND|OR)\]' . $showonfield . '%', $showonstring, $matches)) ? $matches[1] : ''
+            );
+        }
+        $data['view']->filterForm->setFieldAttribute($field->fieldname, 'dataShowOn', json_encode($showonarr), $field->group);
+    }
+}
+
+// Load the form filters
+$filters = $data['view']->filterForm->getGroup('filter');
+?>
+
+<?php if (count($filters) > 1) : ?>
+    <div class="k-dynamic-content-holder">
+        <div class="k-js-filters">
+            <?php if ($data['view'] instanceof MenusViewItems) : ?>
+                <?php $menuTypeField = $data['view']->filterForm->getField('menutype'); ?>
+                <div data-filter data-title="<?php echo (string) $menuTypeField->title; ?>">
+                    <?php echo $menuTypeField->input; ?>
+                </div>
+            <?php endif; ?>
+            <?php foreach ($filters as $fieldName => $field) : ?>
+                <?php if ($fieldName != 'filter_search') : ?>
+                    <div data-filter data-title="<?php echo (string) $field->title; ?>">
+                        <?php echo $field->input; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="k-scopebar__item--filters">
+        <div class="k-scopebar__filters-content">
+            <div class="k-scopebar__filters k-js-filter-container">
+                <div style="display: none;" class="k-scopebar__item--filter k-scopebar-dropdown k-js-filter-prototype k-js-dropdown">
+                    <button type="button" class="k-scopebar-dropdown__button k-js-dropdown-button">
+                        <span class="k-scopebar__item--filter__title k-js-dropdown-title"></span>
+                        <span class="k-scopebar__item--filter__icon k-icon-chevron-bottom" aria-hidden="true"></span>
+                        <div class="k-scopebar__item__label k-js-dropdown-label"></div>
+                    </button>
+                    <div class="k-scopebar-dropdown__body k-js-dropdown-body">
+                        <div class="k-scopebar-dropdown__body__buttons">
+                            <button type="button" class="k-button k-button--default k-js-clear-filter">Clear</button>
+                            <button type="button" class="k-button k-button--primary k-js-apply-filter">Apply</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .k-scopebar__filters -->
+        </div>
+    </div>
+<?php else : ?>
+    <div class="k-scopebar__item"></div>
+<?php endif; ?>

@@ -1,0 +1,44 @@
+<?php
+/**
+ * @package     Joomla.Administrator
+ * @subpackage  mod_logged
+ *
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+
+JHtml::_('bootstrap.tooltip');
+?>
+
+<?php $i = 0; ?>
+<?php foreach ($users as $user) : ?>
+    <?php echo ($i != 0) ? '<hr/>' : ''; ?>
+    <?php if ($user->client_id == 0) : ?>
+        <p>
+            <a title="<?php echo JHtml::tooltipText('MOD_LOGGED_LOGOUT'); ?>" href="<?php echo $user->logoutLink; ?>" class="btn btn-danger btn-mini hasTooltip">
+                <span class="icon-remove icon-white" title="<?php echo JText::_('JLOGOUT'); ?>"></span>
+            </a>
+        </p>
+    <?php endif; ?>
+    <p>
+        <strong>
+        <?php if (isset($user->editLink)) : ?>
+            <a href="<?php echo $user->editLink; ?>" class="hasTooltip" title="<?php echo JHtml::tooltipText('JGRID_HEADING_ID'); ?> : <?php echo $user->id; ?>">
+                <?php echo $user->name; ?></a>
+        <?php else : ?>
+            <?php echo $user->name; ?>
+        <?php endif; ?>
+        </strong>
+        <small>
+            <?php if ($user->client_id) : ?>
+                <?php echo JText::_('JADMINISTRATION'); ?>
+            <?php else : ?>
+                <?php echo JText::_('JSITE'); ?>
+            <?php endif; ?>
+        </small><br />
+        <span class="k-icon-calendar"></span> <?php echo JHtml::_('date', $user->time, JText::_('DATE_FORMAT_LC5')); ?>
+    </p>
+    <?php $i++; ?>
+<?php endforeach; ?>

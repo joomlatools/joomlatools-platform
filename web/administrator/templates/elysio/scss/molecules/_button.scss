@@ -1,0 +1,61 @@
+/**
+ * Styling Joomla micro button
+ */
+
+.k-table .btn-micro {
+  @include button-default('.active', '.disabled');
+  @include button-variant($k-button-default-color, $k-button-default-background, $k-button-default-border);
+
+
+  /* Smaller size */
+
+  border-radius: $k-button-small-border-radius;
+  font-size: $k-button-small-font-size;
+  line-height: $k-button-small-line-height;
+  padding: $k-button-small-vertical-spacing $k-button-small-horizontal-spacing;
+
+
+  /* Disabled style */
+
+  &.disabled {
+    opacity: 1;
+
+    [class*="icon"]:after {
+      opacity: 1;
+      color: $k-type-light-color;
+    }
+  }
+
+
+  /* Styling icons */
+
+  .icon-publish.icon-publish {
+    @include icon-after(check, true) {
+      color: $k-accent-color;
+    }
+  }
+
+  .icon-unpublish {
+    @include icon-after(x, true);
+  }
+
+  .icon-featured.icon-featured {
+    @include icon-after(star, true) {
+      color: $k-accent-color;
+    }
+  }
+
+  .icon-unfeatured {
+    @include icon-after(star, true) {
+      color: $k-type-light-color;
+    }
+  }
+
+  .icon-checkedout {
+    @include icon-after(lock-locked, true);
+  }
+
+  .icon-trash {
+    @include icon-after(trash, true);
+  }
+}

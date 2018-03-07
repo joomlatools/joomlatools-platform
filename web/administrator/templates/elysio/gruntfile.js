@@ -35,7 +35,10 @@ module.exports = function(grunt) {
         // Compile sass files
         sass: {
             options: {
-                outputStyle: 'compact'
+                includePaths: [
+                    'bower_components', // bower
+                    'node_modules' // npm
+                ]
             },
             dist: {
                 files: {
@@ -68,10 +71,17 @@ module.exports = function(grunt) {
             build: {
                 files: {
                     'js/admin.js': [
-                        'bower_components/footable/dist/footable.min.js',
-                        'scripts/jquery.floatThead.js',
-                        'scripts/off-canvas-menu.js',
+                        'node_modules/kodekit-ui/dist/js/admin.min.js',
                         'scripts/main.js'
+                    ],
+                    'js/jquery.js': [
+                        'node_modules/kodekit-ui/dist/js/jquery.min.js'
+                    ],
+                    'js/modernizr.js': [
+                        'node_modules/kodekit-ui/dist/js/modernizr.min.js'
+                    ],
+                    'js/kui-initialize.js': [
+                        'node_modules/kodekit-ui/dist/js/kui-initialize.min.js'
                     ]
                 }
             }
@@ -86,7 +96,7 @@ module.exports = function(grunt) {
                     ]
                 },
                 options: {
-                    proxy: "http://joomla.box/joomla-platform/web/administrator/",
+                    proxy: "http://joomla.box/joomlatools-platform/web/administrator/",
                     port: bsport,
                     open: true,
                     notify: false,
@@ -132,8 +142,7 @@ module.exports = function(grunt) {
             },
             javascript: {
                 files: [
-                    'scripts/*.js',
-                    'js/*.js'
+                    'scripts/*.js'
                 ],
                 tasks: ['uglify'],
                 options: {

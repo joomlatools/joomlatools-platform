@@ -3,48 +3,54 @@
  * @package     Joomla.Administrator
  * @subpackage  com_config
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @copyright   Copyright (C) 2015 Johan Janssens and Timble CVBA. (http://www.timble.net)
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
+use Joomla\Registry\Registry;
+
 // Load tooltips behavior
-JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.formvalidator');
 JHtml::_('bootstrap.tooltip');
-JHtml::_('formbehavior.chosen', 'select');
-?>
-<script type="text/javascript">
+
+// Load JS message titles
+JText::script('ERROR');
+JText::script('WARNING');
+JText::script('NOTICE');
+JText::script('MESSAGE');
+
+JFactory::getDocument()->addScriptDeclaration('
 	Joomla.submitbutton = function(task)
 	{
-		if (task == 'application.cancel' || document.formvalidator.isValid(document.id('application-form')))
+		if (task === "config.cancel.application" || document.formvalidator.isValid(document.getElementById("application-form")))
 		{
-			Joomla.submitform(task, document.getElementById('application-form'));
+			jQuery("#permissions-sliders select").attr("disabled", "disabled");
+			Joomla.submitform(task, document.getElementById("application-form"));
 		}
-	}
-</script>
+	};
+');
+?>
 
 <?php JFactory::getDocument()->setBuffer($this->loadTemplate('navigation'), 'modules', 'sidebar'); ?>
 
-<div class="k-container">
+<!-- Component -->
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
 
-	<form action="<?php echo JRoute::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm">
+    <!-- Container -->
+    <div class="k-container">
 
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#page-permissions" data-toggle="tab"><?php echo JText::_('COM_CONFIG_PERMISSIONS'); ?></a></li>
-		</ul>
+	    <div class="k-container__full">
 
-		<div id="config-document" class="tab-content">
-			<div id="page-permissions" class="tab-pane active">
-				<div class="row-fluid">
-					<?php echo $this->loadTemplate('permissions'); ?>
-				</div>
-			</div>
-			<input type="hidden" name="task" value="" />
-			<?php echo JHtml::_('form.token'); ?>
-		</div>
+            <?php echo $this->loadTemplate('permissions'); ?>
 
-	</form>
+            <input type="hidden" name="task" value="" />
+            <?php echo JHtml::_('form.token'); ?>
 
-</div>
+        </div>
+
+    </div><!-- .k-container -->
+
+</form><!-- .k-component -->

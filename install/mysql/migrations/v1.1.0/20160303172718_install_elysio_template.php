@@ -17,7 +17,7 @@ class InstallElysioTemplate extends AbstractMigration
             'client_id' => 1,
             'home'      => 1,
             'title'     => 'elysio - Default',
-            'params'    => '{"logo":"templates/elysio/images/joomla-logo"}'
+            'params'    => '{}'
         );
 
         $table = $this->table('templates');

@@ -9,10 +9,8 @@
 
 defined('_JEXEC') or die;
 
-// Load chosen.css
-JHtml::_('formbehavior.chosen', 'select');
-
 ?>
+
 <?php
 	echo JHtml::_('bootstrap.startAccordion', 'templatestyleOptions', array('active' => 'collapse0'));
 	$fieldSets = $this->form->getFieldsets('params');
@@ -26,13 +24,9 @@ JHtml::_('formbehavior.chosen', 'select');
 			endif;
 			?>
 				<?php foreach ($this->form->getFieldset($name) as $field) : ?>
-					<div class="control-group">
-						<div class="control-label">
-							<?php echo $field->label; ?>
-						</div>
-						<div class="controls">
-							<?php echo $field->input; ?>
-						</div>
+					<div class="k-form-group">
+                        <?php echo $field->label; ?>
+                        <?php echo $field->input; ?>
 					</div>
 				<?php endforeach;
 		echo JHtml::_('bootstrap.endSlide');

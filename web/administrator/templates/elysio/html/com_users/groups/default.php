@@ -3,113 +3,76 @@
  * @package     Joomla.Administrator
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
 // Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
 
-$user		= JFactory::getUser();
-$listOrder	= $this->escape($this->state->get('list.ordering'));
-$listDirn	= $this->escape($this->state->get('list.direction'));
-$sortFields = $this->getSortFields();
+$user       = JFactory::getUser();
+$listOrder  = $this->escape($this->state->get('list.ordering'));
+$listDirn   = $this->escape($this->state->get('list.direction'));
 
 JText::script('COM_USERS_GROUPS_CONFIRM_DELETE');
-?>
-<script type="text/javascript">
-	Joomla.submitbutton = function(task)
-	{
-		if (task == 'groups.delete')
-		{
-			var f = document.adminForm;
-			var cb='';
-<?php foreach ($this->items as $i => $item):?>
-<?php if ($item->user_count > 0):?>
-			cb = f['cb'+<?php echo $i;?>];
-			if (cb && cb.checked)
-			{
-				if (confirm(Joomla.JText._('COM_USERS_GROUPS_CONFIRM_DELETE')))
-				{
-					Joomla.submitform(task);
+
+JFactory::getDocument()->addScriptDeclaration('
+		Joomla.submitbutton = function(task) {
+			if (task == "groups.delete") {
+				var i, cids = document.getElementsByName("cid[]");
+				for (i = 0; i < cids.length; i++) {
+					if (cids[i].checked && cids[i].parentNode.getAttribute("data-usercount") != 0) {
+						if (confirm(Joomla.JText._("COM_USERS_GROUPS_CONFIRM_DELETE"))) {
+							Joomla.submitform(task);
+						}
+						return false;
+					}
 				}
-				return;
 			}
-<?php endif;?>
-<?php endforeach;?>
-		}
-		Joomla.submitform(task);
-	}
-</script>
-<script type="text/javascript">
-	Joomla.orderTable = function()
-	{
-		table = document.getElementById("sortTable");
-		direction = document.getElementById("directionTable");
-		order = table.options[table.selectedIndex].value;
-		if (order != '<?php echo $listOrder; ?>')
-		{
-			dirn = 'asc';
-		}
-		else
-		{
-			dirn = direction.options[direction.selectedIndex].value;
-		}
-		Joomla.tableOrdering(order, dirn, '');
-	}
-</script>
+
+			Joomla.submitform(task);
+			return false;
+		};
+');
+?>
 
 <?php JFactory::getDocument()->setBuffer($this->sidebar, 'modules', 'sidebar'); ?>
 
-<form class="k-list-layout -koowa-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=groups');?>" method="post" name="adminForm" id="adminForm">
+<!-- Component -->
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_users&view=groups');?>" method="post" name="adminForm" id="adminForm">
 
-	<!-- Scopebar -->
-	<div class="k-scopebar" id="filter-bar">
-
-		<!-- Filters -->
-		<div class="k-scopebar__item k-scopebar__item--fluid">
-
-			<!-- Search toggle button -->
-			<button type="button" class="k-toggle-search"><span class="k-icon-magnifying-glass"></span><span class="visually-hidden">Search</span></button>
-
-		</div><!-- .k-scopebar__item--fluid -->
-
-		<!-- Search -->
-		<div class="k-scopebar__item k-scopebar__search">
-			<div class="k-search__container k-search__container--has-both-buttons">
-				<input class="k-search__field" type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('JSEARCH_FILTER'); ?>" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" />
-				<button type="submit" class="k-search__button-search" title="Search">
-					<span class="k-icon-magnifying-glass"></span>
-				</button>
-				<button type="button" class="k-search__button-empty" title="Clear" onclick="document.id('filter_search').value='';this.form.submit();">
-					<span>X</span>
-				</button>
-			</div>
-		</div><!-- .k-scopebar__search -->
-
-	</div><!-- .k-scopebar -->
+    <!-- Scopebar -->
+    <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('filterButton' => false))); ?>
 
 	<!-- Table -->
 	<div class="k-table-container">
 		<div class="k-table">
-			<table class="table--fixed footable select-rows">
+            <table class="k-js-responsive-table">
 				<thead>
 					<tr>
-						<th width="1%">
+						<th width="1%" class="k-table-data--form">
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
-						<th>
-							<?php echo JHtml::_('grid.sort', 'COM_USERS_HEADING_GROUP_TITLE', 'a.title', $listDirn, $listOrder); ?>
-						</th>
-						<th width="1%" class="k-table-data--center">
-							<?php echo JText::_('COM_USERS_HEADING_USERS_IN_GROUP'); ?>
-						</th>
+                        <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
+                        <th>
+                            <?php echo JHtml::_('searchtools.sort', 'COM_USERS_HEADING_GROUP_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <i class="icon-publish hasTooltip" title="<?php echo JText::_('COM_USERS_COUNT_ENABLED_USERS'); ?>"></i>
+                            <span class="hidden-phone"><?php echo JText::_('COM_USERS_COUNT_ENABLED_USERS'); ?></span>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <i class="icon-unpublish hasTooltip" title="<?php echo JText::_('COM_USERS_COUNT_DISABLED_USERS'); ?>"></i>
+                            <span class="hidden-phone"><?php echo JText::_('COM_USERS_COUNT_DISABLED_USERS'); ?></span>
+                        </th>
+                        <th width="1%" data-hide="phone,tablet">
+                            <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+                        </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -125,43 +88,55 @@ JText::script('COM_USERS_GROUPS_CONFIRM_DELETE');
 					$canChange	= $user->authorise('core.edit.state',	'com_users');
 				?>
 					<tr>
-						<td>
+						<td class="k-table-data--form">
 							<?php if ($canEdit) : ?>
 								<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 							<?php endif; ?>
 						</td>
-						<td>
-							<?php echo str_repeat('<span class="gi">|&mdash;</span>', $item->level) ?>
-							<?php if ($canEdit) : ?>
-							<a href="<?php echo JRoute::_('index.php?option=com_users&task=group.edit&id='.$item->id);?>">
-								<?php echo $this->escape($item->title); ?></a>
-							<?php else : ?>
-								<?php echo $this->escape($item->title); ?>
-							<?php endif; ?>
-							<?php if (JDEBUG) : ?>
-								<div class="small"><a href="<?php echo JRoute::_('index.php?option=com_users&view=debuggroup&group_id='.(int) $item->id);?>">
-								<?php echo JText::_('COM_USERS_DEBUG_GROUP');?></a></div>
-							<?php endif; ?>
-						</td>
-						<td class="k-table-data--center">
-							<?php echo $item->user_count ? $item->user_count : ''; ?>
-						</td>
+                        <td class="k-table-data--toggle"></td>
+                        <td>
+                            <?php echo JLayoutHelper::render('joomla.html.treeprefix', array('level' => $item->level + 1)); ?>
+                            <?php if ($canEdit) : ?>
+                                <a href="<?php echo JRoute::_('index.php?option=com_users&task=group.edit&id=' . $item->id); ?>">
+                                    <?php echo $this->escape($item->title); ?></a>
+                            <?php else : ?>
+                                <?php echo $this->escape($item->title); ?>
+                            <?php endif; ?>
+                            <?php if (JDEBUG) : ?>
+                                <small>
+                                    <a href="<?php echo JRoute::_('index.php?option=com_users&view=debuggroup&group_id=' . (int) $item->id); ?>">
+                                        <?php echo JText::_('COM_USERS_DEBUG_GROUP'); ?>
+                                    </a>
+                                </small>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a class="label <?php if ($item->count_enabled > 0) echo "label-success"; ?>" href="<?php echo JRoute::_('index.php?option=com_users&view=users&filter[group_id]=' . (int) $item->id . '&filter[state]=0'); ?>">
+                                <?php echo $item->count_enabled; ?>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="label <?php if ($item->count_disabled > 0) echo "label-important"; ?>" href="<?php echo JRoute::_('index.php?option=com_users&view=users&filter[group_id]=' . (int) $item->id . '&filter[state]=1'); ?>">
+                                <?php echo $item->count_disabled; ?>
+                            </a>
+                        </td>
+                        <td>
+                            <?php echo (int) $item->id; ?>
+                        </td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-			<input type="hidden" name="task" value="" />
-			<input type="hidden" name="boxchecked" value="0" />
-			<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-			<?php echo JHtml::_('form.token'); ?>
+
+            <input type="hidden" name="task" value="" />
+            <input type="hidden" name="boxchecked" value="0" />
+            <?php echo JHtml::_('form.token'); ?>
+
 		</div><!-- .k-table -->
 
-		<!-- Pagination -->
-		<div class="k-table-pagination">
-			<?php echo $this->pagination->getListFooter(); ?>
-		</div><!-- .k-table-pagination -->
+        <!-- Pagination -->
+        <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
 	</div><!-- .k-table-container -->
 
-</form><!-- .k-list-layout -->
+</form><!-- .k-component -->

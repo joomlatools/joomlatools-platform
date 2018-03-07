@@ -1,46 +1,91 @@
-.k-container__no-tabs,
-.tab-pane {
-  @include clearfix;
-  background: white;
-  padding: 20px;
+/**
+ * Tabs overrides for Joomla
+ */
 
-  input[type="text"],
-  input[type="password"],
-  input[type="email"] {
-    @extend .form-control;
+/**
+ * Tabbable tabs
+ *
+ * Hide tabbable panes to start, show them when `.k-is-active`
+ */
+
+.k-tabs-content {
+  > .active {
+    display: block;
   }
 }
 
-.tab-pane {
-  border: 1px solid #ddd;
-  border-top: none;
+
+/**
+ * Tabs wrapper
+ *
+ * 1. For proper offset calculation in JS
+ */
+
+.k-tabs {
+  > li.active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: inherit;
+      background-color: $k-tabs-link-active-hover-background;
+      border: 1px solid $k-tabs-link-active-hover-border;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
+  }
 }
 
-.k-container__no-tabs {
-  border-top: 1px solid #ddd;
+.nav-tabs > li {
+  float: none;
+  display: inline-block;
 }
+
+.nav > li > a {
+  color: inherit;
+  padding: 7px 13px;
+  line-height: 20px;
+}
+
+
+/**
+ * Tabs scroller
+ */
+
+.k-tabs-scroller {
+  > .k-tabs > li.active > a {
+    background: $k-component-background;
+    color: $k-type-color;
+  }
+}
+
+
+
 
 .tabs-left {
-  .nav-tabs {
-    float: left;
-    border-bottom: 0 none;
+  display: flex;
 
-    li {
-      float: none;
+  .nav-tabs,
+  .tab-content {
+    display: block;
+  }
 
-      a {
-        border-radius: 4px 0 0 4px;
-        margin-right: -1px;
-        margin-bottom: 3px;
-      }
+  .nav-tabs.nav-tabs {
+    border: none;
+    margin-right: 0;
 
-      &.active a {
-        border-color: #ddd transparent #ddd #ddd;
-      }
+    > li {
+      display: block;
+      margin-bottom: 0;
     }
   }
 
-  .tab-pane {
-    border-top: 1px solid #ddd;
+  .tab-content {
+    overflow: auto;
   }
+}
+
+
+// Override :not(.k-is-active) display: none important
+.k-tabs-content > .k-tab.active {
+  display: flex !important;
 }

@@ -1,43 +1,50 @@
-// Tools and variables
-@import "utilities/material-colors-custom";
-@import "utilities/variables";
+// Set icon path
+$k-icon-path: '../fonts';
 
-// Import default Joomla styling (Joomlatools framework)
-@import "nooku/admin";
+// Import kodekit UI
+@import "../node_modules/kodekit-ui/src/scss/admin-ui";
 
-// Basic html and body setup
-@import "utilities/setup";
+// Override variables
+@import "tools/variables";
+
+// Bootstrap outside the kui namespace
+@import "bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/popovers";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/tooltip";
 
 // Koowa namespaced styling
-.koowa {
+.k-ui-namespace {
 
   // Bootstrap
   @import "bootstrap/bootstrap";
 
-  // Utilities
-  @import "utilities/icons";
-  @import "utilities/mapping";
-
   // Molecules
-  @import "molecules/colors";
-  @import "molecules/indentation";
-  @import "molecules/media";
-  @import "molecules/message";
-  @import "molecules/navigation";
-  @import "molecules/scopebar";
+  @import "molecules/button";
+  @import "molecules/colorpicker";
+  @import "molecules/dragdropsorting";
+  @import "molecules/form";
+  @import "molecules/grid";
+  @import "molecules/heading";
+  @import "molecules/icon";
+  @import "molecules/label";
+  @import "molecules/modal";
+  @import "molecules/pagination";
   @import "molecules/table";
   @import "molecules/tabs";
-  @import "molecules/toolbar";
-  @import "molecules/treeselect";
-
-  // Organisms
-  @import "organisms/login";
-  @import "organisms/flexbox";
+  @import "molecules/utilities";
 
   // Shame...
-  @import "shame";
-
-  // Hacks
-  @import "utilities/hacks";
+  @import "utilities/shame";
 
 }
+
+// Modified Bootstrap outside the kui namespace
+@import "bootstrap/popover";
+@import "bootstrap/modal";
+@import "bootstrap/animation";
+@import "bootstrap/close";
+
+// Styling outside the kui namespace
+@import "utilities/select2";
+

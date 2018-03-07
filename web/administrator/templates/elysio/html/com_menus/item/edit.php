@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_menus
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,150 +12,156 @@ defined('_JEXEC') or die;
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-JHtml::_('behavior.framework');
-JHtml::_('behavior.formvalidation');
-JHtml::_('behavior.modal');
-JHtml::_('formbehavior.chosen', 'select');
+JHtml::_('behavior.core');
+JHtml::_('behavior.tabstate');
+JHtml::_('behavior.formvalidator');
+JHtml::_('behavior.keepalive');
 
 JText::script('ERROR');
 JText::script('JGLOBAL_VALIDATION_FORM_FAILED');
 
-$app = JFactory::getApplication();
 $assoc = JLanguageAssociations::isEnabled();
 
-//Ajax for parent items
-$script = "jQuery(document).ready(function ($){
-				$('#jform_menutype').change(function(){
-					var menutype = $(this).val();
-					$.ajax({
-						url: 'index.php?option=com_menus&task=item.getParentItem&menutype=' + menutype,
-						dataType: 'json'
-					}).done(function(data) {
-						$('#jform_parent_id option').each(function() {
-							if ($(this).val() != '1') {
-								$(this).remove();
-							}
-						});
+// Ajax for parent items
+$script = "
+jQuery(document).ready(function ($){
+	$('#jform_menutype').change(function(){
+		var menutype = $(this).val();
+		$.ajax({
+			url: 'index.php?option=com_menus&task=item.getParentItem&menutype=' + menutype,
+			dataType: 'json'
+		}).done(function(data) {
+			$('#jform_parent_id option').each(function() {
+				if ($(this).val() != '1') {
+					$(this).remove();
+				}
+			});
 
-						$.each(data, function (i, val) {
-							var option = $('<option>');
-							option.text(val.title).val(val.id);
-							$('#jform_parent_id').append(option);
-						});
-						$('#jform_parent_id').trigger('liszt:updated');
-					});
-				});
-			});";
+			$.each(data, function (i, val) {
+				var option = $('<option>');
+				option.text(val.title).val(val.id);
+				$('#jform_parent_id').append(option);
+			});
+			$('#jform_parent_id').trigger('liszt:updated');
+		});
+	});
+});
+Joomla.submitbutton = function(task, type){
+	if (task == 'item.setType' || task == 'item.setMenuType')
+	{
+		if (task == 'item.setType')
+		{
+			jQuery('#item-form input[name=\"jform[type]\"]').val(type);
+			jQuery('#fieldtype').val('type');
+		} else {
+			jQuery('#item-form input[name=\"jform[menutype]\"]').val(type);
+		}
+		Joomla.submitform('item.setType', document.getElementById('item-form'));
+	} else if (task == 'item.cancel' || document.formvalidator.isValid(document.getElementById('item-form')))
+	{
+		Joomla.submitform(task, document.getElementById('item-form'));
+	}
+	else
+	{
+		// special case for modal popups validation response
+		jQuery('#item-form .modal-value.invalid').each(function(){
+			var field = jQuery(this),
+				idReversed = field.attr('id').split('').reverse().join(''),
+				separatorLocation = idReversed.indexOf('_'),
+				nameId = '#' + idReversed.substr(separatorLocation).split('').reverse().join('') + 'name';
+			jQuery(nameId).addClass('invalid');
+		});
+	}
+};
+";
+
+$input = JFactory::getApplication()->input;
 
 // Add the script to the document head.
 JFactory::getDocument()->addScriptDeclaration($script);
-
+$tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 ?>
 
-<script type="text/javascript">
-	Joomla.submitbutton = function(task, type)
-	{
-		if (task == 'item.setType' || task == 'item.setMenuType')
-		{
-			if (task == 'item.setType')
-			{
-				document.id('item-form').elements['jform[type]'].value = type;
-				document.id('fieldtype').value = 'type';
-			} else {
-				document.id('item-form').elements['jform[menutype]'].value = type;
-			}
-			Joomla.submitform('item.setType', document.id('item-form'));
-		} else if (task == 'item.cancel' || document.formvalidator.isValid(document.id('item-form')))
-		{
-			Joomla.submitform(task, document.id('item-form'));
-		}
-		else
-		{
-			// special case for modal popups validation response
-			$$('#item-form .modal-value.invalid').each(function(field)
-			{
-				var idReversed = field.id.split("").reverse().join("");
-				var separatorLocation = idReversed.indexOf('_');
-				var name = idReversed.substr(separatorLocation).split("").reverse().join("") + 'name';
-				document.id(name).addClass('invalid');
-			});
-
-			$('system-message').getElement('h4').innerHTML  = Joomla.JText._('ERROR');
-			$('system-message').getElement('div').innerHTML = Joomla.JText._('JGLOBAL_VALIDATION_FORM_FAILED');
-		}
-	}
-</script>
-
-<!-- Form -->
-<form class="k-form-layout form-validate" action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form">
+<!-- Component -->
+<form class="k-component k-js-component k-js-grid-controller k-js-grid" action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form">
 
 	<!-- Container -->
 	<div class="k-container">
+        <div class="k-container__main">
+            <?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
+        </div>
+    </div>
 
-		<?php
-		if ($this->item->type == 'url')
-		{
-			$this->form->setFieldAttribute('alias', 'type', 'hidden');
-		}
-		?>
-
-		<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
-
+    <!-- Tabs container -->
+    <div class="k-tabs-container">
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
 
-        <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_ITEM_DETAILS', true)); ?>
-        <div class="k-container__content">
-            <!-- Main information -->
-            <div class="k-container__main">
-				<?php
-				if ($this->item->type == 'alias')
-				{
-					echo $this->form->getControlGroup('aliastip');
-				}
+        <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_ITEM_DETAILS')); ?>
+            <div class="k-container">
+                <div class="k-container__main">
+                    <?php
+                    echo $this->form->renderField('type');
+                    echo $this->form->renderField('menutype');
+                    if ($this->item->type == 'alias')
+                    {
+                        echo $this->form->renderFieldset('aliasoptions');
+                    }
+                    echo $this->form->renderFieldset('request');
+                    if ($this->item->type == 'url')
+                    {
+                        $this->form->setFieldAttribute('link', 'readonly', 'false');
+                    }
+                    echo $this->form->renderField('link');
+                    echo $this->form->renderField('alias');
+                    echo $this->form->renderField('browserNav');
+                    echo $this->form->renderField('template_style_id');
+                    ?>
 
-				echo $this->form->getControlGroup('type');
 
-				if ($this->item->type == 'alias')
-				{
-					echo $this->form->getControlGroups('aliasoptions');
-				}
-
-				echo $this->form->getControlGroups('request');
-
-				if ($this->item->type == 'url')
-				{
-					$this->form->setFieldAttribute('link', 'readonly', 'false');
-				}
-				echo $this->form->getControlGroup('link');
-
-				echo $this->form->getControlGroup('browserNav');
-				echo $this->form->getControlGroup('template_style_id');
-				?>
-			</div><!-- .k-container__main -->
-
-            <!-- Sub information -->
-            <div class="k-container__sub">
-				<?php
-				// Set main fields.
-				$this->fields = array(
-					'menutype',
-					'parent_id',
-					'menuordering',
-					'published',
-					'home',
-					'access',
-					'language',
-					'note'
-
-				);
-				if ($this->item->type != 'component')
-				{
-					$this->fields = array_diff($this->fields, array('home'));
-				}
-				?>
-				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
-			</div><!-- .k-container__sub -->
-		</div><!-- .k-container__content -->
+                </div>
+                <div class="k-container__sub">
+                    <?php
+                    // Set main fields.
+                    $this->fields = array(
+                        'parent_id',
+                        'menuordering',
+                    );
+                    $this->title = 'Global';
+                    if ($this->item->type != 'component')
+                    {
+                        $this->fields = array_diff($this->fields, array('home'));
+                    }
+                    ?>
+                    <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                    <?php
+                    // Set main fields.
+                    $this->fields = array(
+                        'published',
+                        'home',
+                        'access',
+                        'language',
+                    );
+                    $this->title = 'Status';
+                    if ($this->item->type != 'component')
+                    {
+                        $this->fields = array_diff($this->fields, array('home'));
+                    }
+                    ?>
+                    <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                    <?php
+                    // Set main fields.
+                    $this->fields = array(
+                        'note'
+                    );
+                    $this->title = 'Note';
+                    if ($this->item->type != 'component')
+                    {
+                        $this->fields = array_diff($this->fields, array('home'));
+                    }
+                    ?>
+                    <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+                </div>
+            </div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
 		<?php
@@ -165,22 +171,47 @@ JFactory::getDocument()->addScriptDeclaration($script);
 		?>
 
 		<?php if ($assoc) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'associations', JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS', true)); ?>
-			<?php echo $this->loadTemplate('associations'); ?>
+			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'associations', JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
+                <div class="k-container">
+                    <div class="k-container__main">
+                        <?php echo $this->loadTemplate('associations'); ?>
+                    </div>
+                </div>
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
 
 		<?php if (!empty($this->modules)) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'modules', JText::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT', true)); ?>
-			<?php echo $this->loadTemplate('modules'); ?>
-			<?php echo JHtml::_('bootstrap.endTab'); ?>
+			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'modules', JText::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT')); ?>
+                <?php echo $this->loadTemplate('modules'); ?>
+            <?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
 
 		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
-	</div>
+
+	</div><!-- .k-tabs-container -->
 
 	<input type="hidden" name="task" value="" />
 	<?php echo $this->form->getInput('component_id'); ?>
 	<?php echo JHtml::_('form.token'); ?>
 	<input type="hidden" id="fieldtype" name="fieldtype" value="" />
-</form>
+
+</form><!-- .k-component -->
+
+<div class="k-dynamic-content-holder">
+    <script>
+        kQuery(function($) {
+            // menu item type modal
+            $('#menuTypeModal').detach().appendTo('body');
+
+            // Add class and hide edit button
+            var $lastButton = $('#jform_request_id_name ~ .k-input-group__button:last-child .k-button'),
+                href = $lastButton.attr('href');
+            if ($lastButton.length) {
+                $lastButton.magnificPopup({type: 'iframe'}).addClass('k-is-hidden');
+                if (!isNaN(href.substring(href.length-1))) {
+                    $lastButton.removeClass('k-is-hidden');
+                }
+            }
+        });
+    </script>
+</div>

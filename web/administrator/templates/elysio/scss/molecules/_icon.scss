@@ -1,0 +1,23 @@
+/**
+ * Map icons
+ */
+
+.icon-calendar {
+  @include icon-after(calendar, true);
+}
+
+.icon-user {
+  @include icon-after(person, true);
+}
+
+.icon-list {
+  @include icon-after(list, true);
+}
+
+.icon-file {
+  @include icon-after(file, true);
+}
+
+.icon-edit {
+  @include icon-after(pencil, true);
+}

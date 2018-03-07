@@ -25,24 +25,38 @@
     text-shadow: none; /* 5 */
   }
 
-  .dropdown-menu a {
-    &:focus,
-    &:hover {
-      background: palette(Blue Grey, 600);
-      color: white;
-    }
+  .navbar-header {
+    position: relative;
+    z-index: 9;
   }
 
   .navbar-brand {
+    max-width: 100%;
+    max-height: $navbar-height;
     height: auto; /* 6 */
-    padding: $navbar-padding-vertical $navbar-padding-horizontal $navbar-padding-vertical ($navbar-padding-horizontal / 2);
+    padding: 12px;
 
-    @include breakpoint($charlie) {
+    @include breakpoint($k-charlie) {
       padding-left: 0;
     }
 
     img {
+      height: $navbar-height - 24px;
       vertical-align: middle; /* 7 */
+    }
+  }
+
+  .navbar-nav.navbar-nav {
+    > li > a {
+      &:focus,
+      &:hover {
+        color: $navbar-default-link-hover-color;
+        background: darken($navbar-default-link-active-bg, 5%);
+      }
+    }
+    > .open > a {
+      color: $navbar-default-link-hover-color;
+      background: darken($navbar-default-link-active-bg, 5%);
     }
   }
 
@@ -72,11 +86,11 @@ form {
     @include reset;
     display: block;
     margin-top: 0;
-    margin-bottom: $spacing;
-    border-bottom: 1px solid darker($form-background);
-    padding-top: $spacing;
+    margin-bottom: $k-spacing;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-top: $k-spacing;
     padding-bottom: .2em;
-    font-size: $font-size * 1.65;
+    font-size: $k-font-size * 1.65;
     font-weight: normal;
 
     /* No margin top for the first legend */
@@ -104,7 +118,7 @@ form {
 /* Setting some spacing on Bootstrap rows */
 
 .row-fluid {
-  margin-bottom: $spacing;
+  margin-bottom: $k-spacing;
 
   &:last-child {
     margin-bottom: 0;
@@ -140,3 +154,4 @@ form {
   height: auto;
   display: block !important;
 }
+
