@@ -160,7 +160,7 @@ INSERT INTO `modules_menu` (`moduleid`, `menuid`) VALUES
 INSERT INTO `templates` (`id`, `template`, `client_id`, `home`, `title`, `params`) VALUES
 (7, 'protostar', 0, '1', 'protostar - Default', '{"templateColor":"","logoFile":"","googleFont":"1","googleFontName":"Open+Sans","fluidContainer":"0"}'),
 (8, 'isis', 1, '0', 'isis - Default', '{"templateColor":"","logoFile":""}'),
-(9, 'elysio', 1, '1', 'elysio - Default', '{"logo":"templates/elysio/images/joomla-logo"}');
+(9, 'elysio', 1, '1', 'elysio - Default', '{}');
 
 -- --------------------------------------------------------
 
