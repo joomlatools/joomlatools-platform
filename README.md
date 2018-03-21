@@ -18,7 +18,7 @@ structure.
 Much of the philosophy behind the platform is inspired by the [Twelve-Factor App](http://12factor.net/) methodology
 including the [Joomla specific version](https://www.joomlatools.com/developer/platform/).
 
-> Forked from [Joomla CMS v3.3.6](https://github.com/joomla/joomla-cms/releases/tag/3.3.6)
+> Forked from [Joomla CMS v3.6.5](https://github.com/joomla/joomla-cms/releases/tag/3.6.5)
 
 ## Features
 
@@ -38,7 +38,7 @@ Use the [Joomlatools Vagrant](https://github.com/joomlatools/joomlatools-vagrant
 
 ## Requirements
 
-* PHP >= 5.5
+* PHP >= 7
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 * Mbstring PHP Extension
 
