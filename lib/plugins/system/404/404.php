@@ -27,14 +27,21 @@ class PlgSystem404 extends JPlugin
 
         if ($app->get('sef') && (int) $error->getCode() == 404)
         {
+            $menu        = $app->getMenu()->getActive();
+            $menu_prefix = JRoute::_($menu->link, false);
+            $subpath     = preg_replace('#'.preg_quote(JURI::base(true)).'#', '', $menu_prefix, 1);
+            $path        = JUri::base() . ltrim($subpath, '/');
+            $path        = '/'. ltrim(preg_replace('#'.preg_quote($path).'#', '', JUri::current(), 1), '/');
+
             $regex   = '/\/[\d]+\-/';
-            $current = JUri::current();
 
             // Match url having "/xxx-" format, where xxx is a number.
-            if (preg_match($regex, $current))
+            if (preg_match($regex, $path))
             {
                 // Redirect with-id to no-id url
-                $redirect = preg_replace($regex, '/', $current);
+                $redirect = preg_replace($regex, '/', $path);
+                $redirect = '/' . ltrim($menu_prefix . $redirect, '/');
+
                 $app->redirect($redirect);
             }
         }
