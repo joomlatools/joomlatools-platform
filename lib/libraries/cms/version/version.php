@@ -29,7 +29,7 @@ final class JVersion
 	 *
 	 * @var    string
 	 */
-	const RELEASE = '3.3';
+	const RELEASE = '3.6';
 
 	/**
 	 * Maintenance version.
