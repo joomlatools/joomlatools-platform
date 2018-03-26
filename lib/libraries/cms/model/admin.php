@@ -1307,10 +1307,17 @@ abstract class JModelAdmin extends JModelForm
 	{
 		$table = $this->getTable();
 		$tableClassName = get_class($table);
-		$contentType = new ContentTableUcmType;
-		$type = $contentType->getTypeByTable($tableClassName);
-		$tagsObserver = $table->getObserverOfClass('TagsTableObserverTags');
 		$conditions = array();
+
+		$isContentEnabled = JComponentHelper::isEnabled('com_content');
+
+		// Dont apply the tags management if com_content is not installed. It will require ContentTableUcmType class that only included once platform-content is installed.
+		if($isContentEnabled)
+		{
+			$contentType  = new ContentTableUcmType;
+			$type         = $contentType->getTypeByTable($tableClassName);
+			$tagsObserver = $table->getObserverOfClass('TagsTableObserverTags');
+		}
 
 		if (empty($pks))
 		{
@@ -1336,9 +1343,12 @@ abstract class JModelAdmin extends JModelForm
 			{
 				$table->ordering = $order[$i];
 
-				if ($type)
+				if ($isContentEnabled)
 				{
-					$this->createTagsHelper($tagsObserver, $type, $pk, $type->type_alias, $table);
+					if ($type)
+					{
+						$this->createTagsHelper($tagsObserver, $type, $pk, $type->type_alias, $table);
+					}
 				}
 
 				if (!$table->store())
