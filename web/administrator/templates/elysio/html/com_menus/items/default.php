@@ -213,35 +213,32 @@ $assoc = JLanguageAssociations::isEnabled();
         <!-- Pagination -->
         <?php echo JLayoutHelper::render('elysio.pagination', array('view' => $this, 'pages' => $this->pagination->getListFooter())); ?>
 
-        <input type="hidden" name="task" value="" />
-        <input type="hidden" name="boxchecked" value="0" />
-        <?php echo JHtml::_('form.token'); ?>
-
     </div><!-- .k-table-container -->
 
-</form><!-- .k-component -->
-
-<div class="k-dynamic-content-holder">
     <?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
         <?php echo $this->loadTemplate('batch'); ?>
     <?php endif;?>
 
-    <script type="text/javascript">
-        Joomla.orderTable = function()
-        {
-            table = document.getElementById("sortTable");
-            direction = document.getElementById("directionTable");
-            order = table.options[table.selectedIndex].value;
-            if (order != '<?php echo $listOrder; ?>')
-            {
-                dirn = 'asc';
-            }
-            else
-            {
-                dirn = direction.options[direction.selectedIndex].value;
-            }
-            Joomla.tableOrdering(order, dirn, '');
-        }
-    </script>
-</div>
+    <input type="hidden" name="task" value="" />
+    <input type="hidden" name="boxchecked" value="0" />
+    <?php echo JHtml::_('form.token'); ?>
 
+</form><!-- .k-component -->
+
+<script type="text/javascript">
+    Joomla.orderTable = function()
+    {
+        table = document.getElementById("sortTable");
+        direction = document.getElementById("directionTable");
+        order = table.options[table.selectedIndex].value;
+        if (order != '<?php echo $listOrder; ?>')
+        {
+            dirn = 'asc';
+        }
+        else
+        {
+            dirn = direction.options[direction.selectedIndex].value;
+        }
+        Joomla.tableOrdering(order, dirn, '');
+    }
+</script>
