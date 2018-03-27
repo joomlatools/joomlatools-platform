@@ -44,6 +44,15 @@ $doc->setMetaData('apple-mobile-web-app-capable', 'yes');
 $doc->setMetaData('apple-mobile-web-app-status-bar-style', 'black');
 $doc->setMetaData('apple-mobile-web-app-title', 'Elysio');
 $doc->setMetaData('X-UA-Compatible', 'IE=edge', true);
+$doc->setMetaData('msapplication-TileColor', '#ffffff');
+$doc->setMetaData('msapplication-config', 'templates/' . $this->template . '/images/browserconfig.xml');
+$doc->setMetaData('theme-color', '#ffffff');
+$doc->addCustomTag('<link rel="apple-touch-icon" sizes="180x180" href="templates/' . $this->template . '/images/apple-touch-icon.png">');
+$doc->addCustomTag('<link rel="icon" type="image/png" sizes="32x32" href="templates/' . $this->template . '/images/favicon-32x32.png">');
+$doc->addCustomTag('<link rel="icon" type="image/png" sizes="16x16" href="templates/' . $this->template . '/images/favicon-16x16.png">');
+$doc->addCustomTag('<link rel="manifest" href="templates/' . $this->template . '/images/site.webmanifest">');
+$doc->addCustomTag('<link rel="mask-icon" href="templates/' . $this->template . '/images/safari-pinned-tab.svg" color="#00aff0">');
+$doc->addCustomTag('<link rel="shortcut icon" href="templates/' . $this->template . '/images/favicon.ico">');
 
 // Unset CSS
 unset($this->_stylesheets[JURI::root(true).'/media/jui/css/jquery.searchtools.css']);
@@ -65,7 +74,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
-	<jdoc:include type="head" />
+<jdoc:include type="head" />
 </head>
 <body class="<?php echo $option . ' view-' . $view . ' layout-' . $layout . ' task-' . $task . ' itemid-' . $itemid; ?> no-js">
 <script src="templates/elysio/js/kui-initialize.js"></script>
