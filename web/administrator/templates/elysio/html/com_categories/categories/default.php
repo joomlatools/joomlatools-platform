@@ -171,27 +171,25 @@ $sortFields = $this->getSortFields();
 
 	</div><!-- .k-table-container -->
 
-</form><!-- .k-component -->
-
-<div class="k-dynamic-content-holder">
     <?php //Load the batch processing form. ?>
     <?php echo $this->loadTemplate('batch'); ?>
 
-    <script type="text/javascript">
-        Joomla.orderTable = function()
+</form><!-- .k-component -->
+
+<script type="text/javascript">
+    Joomla.orderTable = function()
+    {
+        table = document.getElementById("sortTable");
+        direction = document.getElementById("directionTable");
+        order = table.options[table.selectedIndex].value;
+        if (order != '<?php echo $listOrder; ?>')
         {
-            table = document.getElementById("sortTable");
-            direction = document.getElementById("directionTable");
-            order = table.options[table.selectedIndex].value;
-            if (order != '<?php echo $listOrder; ?>')
-            {
-                dirn = 'asc';
-            }
-            else
-            {
-                dirn = direction.options[direction.selectedIndex].value;
-            }
-            Joomla.tableOrdering(order, dirn, '');
+            dirn = 'asc';
         }
-    </script>
-</div>
+        else
+        {
+            dirn = direction.options[direction.selectedIndex].value;
+        }
+        Joomla.tableOrdering(order, dirn, '');
+    }
+</script>

@@ -58,24 +58,22 @@ $attribs = array(
     </div>
 <?php endif; ?>
 
-<div class="k-dynamic-content-holder">
-    <script>
-        kQuery(function($) {
-            var input = $('.k-optionlist-trigger'),
-                controls = $('#batch-copy-move .controls')[0];
+<script>
+    kQuery(function($) {
+        var input = $('.k-optionlist-trigger'),
+            controls = $('#batch-copy-move .controls')[0];
 
-            // Rename and add markup
-            $(controls).removeClass('controls').addClass('k-optionlist__content').append('<div class="k-optionlist__focus"></div>').wrap('<div class="k-optionlist" style="margin-top: 8px;"></div>');
+        // Rename and add markup
+        $(controls).removeClass('controls').addClass('k-optionlist__content').append('<div class="k-optionlist__focus"></div>').wrap('<div class="k-optionlist" style="margin-top: 8px;"></div>');
 
-            // Run for each option
-            input.each(function() {
-                // Variables
-                var item = $(this),
-                    label = item.parent();
+        // Run for each option
+        input.each(function() {
+            // Variables
+            var item = $(this),
+                label = item.parent();
 
-                // Move the input outside of the label
-                label.before(item);
-            });
+            // Move the input outside of the label
+            label.before(item);
         });
-    </script>
-</div>
+    });
+</script>

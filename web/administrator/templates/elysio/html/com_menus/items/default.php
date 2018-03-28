@@ -215,13 +215,13 @@ $assoc = JLanguageAssociations::isEnabled();
 
     </div><!-- .k-table-container -->
 
-    <?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
-        <?php echo $this->loadTemplate('batch'); ?>
-    <?php endif;?>
-
     <input type="hidden" name="task" value="" />
     <input type="hidden" name="boxchecked" value="0" />
     <?php echo JHtml::_('form.token'); ?>
+
+    <?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
+        <?php echo $this->loadTemplate('batch'); ?>
+    <?php endif;?>
 
 </form><!-- .k-component -->
 

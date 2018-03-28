@@ -174,10 +174,6 @@ $colSpan = $clientId === 1 ? 9 : 10;
 
 	</div><!-- .k-table-container -->
 
-</form><!-- .k-component -->
-
-<div class="k-dynamic-content-holder">
-    <?php //Load the batch processing form. ?>
     <?php // Load the batch processing form. ?>
     <?php if ($user->authorise('core.create', 'com_modules')
         && $user->authorise('core.edit', 'com_modules')
@@ -192,4 +188,5 @@ $colSpan = $clientId === 1 ? 9 : 10;
             $this->loadTemplate('batch_body')
         ); ?>
     <?php endif; ?>
-</div>
+
+</form><!-- .k-component -->

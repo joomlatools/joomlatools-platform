@@ -146,16 +146,6 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
         <jdoc:include type="modules" name="debug" style="none" />
     </div>
     <?php endif; ?>
-
-    <div id="modal-holder"></div>
-    <script>
-        kQuery(document).ready(function($) {
-            var modal = $('.modal');
-            if (modal.length) {
-                modal.appendTo('#modal-holder');
-            }
-        });
-    </script>
 </div>
 
 <script>

@@ -68,14 +68,12 @@ $params = $params->toArray();
 
 </form><!-- .k-component -->
 
-<div class="k-dynamic-content-holder">
-    <script type="text/javascript">
-        Joomla.submitbutton = function(task)
-        {
-            if (task == 'tag.cancel' || document.formvalidator.isValid(document.id('item-form'))) {
-                <?php echo $this->form->getField('description')->save(); ?>
-                Joomla.submitform(task, document.getElementById('item-form'));
-            }
+<script type="text/javascript">
+    Joomla.submitbutton = function(task)
+    {
+        if (task == 'tag.cancel' || document.formvalidator.isValid(document.id('item-form'))) {
+            <?php echo $this->form->getField('description')->save(); ?>
+            Joomla.submitform(task, document.getElementById('item-form'));
         }
-    </script>
-</div>
+    }
+</script>

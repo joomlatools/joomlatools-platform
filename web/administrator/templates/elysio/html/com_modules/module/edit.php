@@ -302,13 +302,11 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
     </div>
 </form>
 
-<div class="k-dynamic-content-holder">
-    <script>
-        kQuery(document).ready(function() {
-             kQuery('.chzn-custom-value').select2({
-                 theme: "bootstrap",
-                 tags: true
-             });
-        });
-    </script>
-</div>
+<script>
+    kQuery(document).ready(function() {
+         kQuery('.chzn-custom-value').select2({
+             theme: "bootstrap",
+             tags: true
+         });
+    });
+</script>

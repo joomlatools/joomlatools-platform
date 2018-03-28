@@ -197,21 +197,19 @@ $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 
 </form><!-- .k-component -->
 
-<div class="k-dynamic-content-holder">
-    <script>
-        kQuery(function($) {
-            // menu item type modal
-            $('#menuTypeModal').detach().appendTo('body');
+<script>
+    kQuery(function($) {
+        // menu item type modal
+        $('#menuTypeModal').detach().appendTo('body');
 
-            // Add class and hide edit button
-            var $lastButton = $('#jform_request_id_name ~ .k-input-group__button:last-child .k-button'),
-                href = $lastButton.attr('href');
-            if ($lastButton.length) {
-                $lastButton.magnificPopup({type: 'iframe'}).addClass('k-is-hidden');
-                if (!isNaN(href.substring(href.length-1))) {
-                    $lastButton.removeClass('k-is-hidden');
-                }
+        // Add class and hide edit button
+        var $lastButton = $('#jform_request_id_name ~ .k-input-group__button:last-child .k-button'),
+            href = $lastButton.attr('href');
+        if ($lastButton.length) {
+            $lastButton.magnificPopup({type: 'iframe'}).addClass('k-is-hidden');
+            if (!isNaN(href.substring(href.length-1))) {
+                $lastButton.removeClass('k-is-hidden');
             }
-        });
-    </script>
-</div>
+        }
+    });
+</script>

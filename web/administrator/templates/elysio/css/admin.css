@@ -2386,8 +2386,6 @@ body {
   .k-ui-namespace .k-component {
     position: relative;
     /* 1 */
-    z-index: 2;
-    /* 1 */
     background: #fbfafa;
     margin: 0;
     /* 2 */
@@ -2412,6 +2410,8 @@ body {
     /* 3 */ }
     .k-is-resizing .k-ui-namespace .k-component {
       overflow: hidden; }
+    .k-is-transitioning .k-ui-namespace .k-component {
+      z-index: 2; }
   .k-ui-namespace .k-show-right-menu {
     /**
      * Set opacity
@@ -2466,8 +2466,6 @@ body {
   .k-ui-namespace .k-content {
     position: relative;
     /* 1 */
-    z-index: 2;
-    /* 1 */
     background: white;
     /* 2 */
     display: -webkit-box;
@@ -2489,6 +2487,8 @@ body {
     transition: transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83);
     -webkit-backface-visibility: hidden;
     /* 3 */ }
+    .k-is-transitioning .k-ui-namespace .k-content {
+      z-index: 2; }
   .k-ui-namespace .k-content-area {
     /**
      * When content has a sub content sibling
@@ -2620,7 +2620,6 @@ body {
           z-index: -1; } }
   .k-ui-namespace .k-content-area {
     position: relative;
-    z-index: 3;
     overflow: hidden;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2635,6 +2634,8 @@ body {
     transition: -webkit-transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83);
     transition: transform 180ms cubic-bezier(0.2, 0.57, 0.44, 0.83);
     -webkit-backface-visibility: hidden; }
+    .k-is-transitioning .k-ui-namespace .k-content-area {
+      z-index: 3; }
   .k-ui-namespace .k-show-subcontent-area .k-button.k-subcontent-toggle {
     opacity: 1; }
   .k-ui-namespace .k-show-subcontent-area .k-content-area__child {
@@ -2656,6 +2657,8 @@ body {
     @media screen and (min-width: 1024px) {
       .k-ui-namespace .k-show-subcontent-area .k-off-canvas-overlay-subcontent {
         opacity: 0; } }
+  .k-ui-namespace .k-is-opened-subcontent .k-content-area {
+    z-index: 3; }
   .k-ui-namespace .k-is-opened-subcontent .k-button.k-subcontent-toggle {
     visibility: visible;
     z-index: 10; }
