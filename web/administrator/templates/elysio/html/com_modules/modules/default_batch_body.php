@@ -36,8 +36,28 @@ $options = array(
 );
 $attribs = array(
     'class' => 'k-optionlist-trigger'
-)
+);
 ?>
+
+<script>
+    kQuery(function($) {
+        var input = $('.k-optionlist-trigger input'),
+            controls = $('#batch-copy-move .controls')[0];
+
+        // Rename and add markup
+        $(controls).removeClass('controls').addClass('k-optionlist__content').append('<div class="k-optionlist__focus"></div>').wrap('<div class="k-optionlist" style="margin-top: 8px;"></div>');
+
+        // Run for each option
+        input.each(function() {
+            // Variables
+            var item = $(this),
+                label = item.parent();
+
+            // Move the input outside of the label
+            label.before(item);
+        });
+    });
+</script>
 
 <p><?php echo JText::_('COM_MODULES_BATCH_TIP'); ?></p>
 <div class="k-form-group">
@@ -57,23 +77,3 @@ $attribs = array(
         </div>
     </div>
 <?php endif; ?>
-
-<script>
-    kQuery(function($) {
-        var input = $('.k-optionlist-trigger'),
-            controls = $('#batch-copy-move .controls')[0];
-
-        // Rename and add markup
-        $(controls).removeClass('controls').addClass('k-optionlist__content').append('<div class="k-optionlist__focus"></div>').wrap('<div class="k-optionlist" style="margin-top: 8px;"></div>');
-
-        // Run for each option
-        input.each(function() {
-            // Variables
-            var item = $(this),
-                label = item.parent();
-
-            // Move the input outside of the label
-            label.before(item);
-        });
-    });
-</script>
