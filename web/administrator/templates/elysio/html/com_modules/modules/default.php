@@ -34,9 +34,12 @@ $colSpan = $clientId === 1 ? 9 : 10;
 	<!-- Table -->
 	<div class="k-table-container">
 		<div class="k-table">
-            <table class="k-js-responsive-table">
+            <table class="k-js-responsive-table" id="moduleList">
 				<thead>
 					<tr>
+                        <th width="1%" class="nowrap center hidden-phone">
+                            <?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'k-icon-move'); ?>
+                        </th>
 						<th width="1%" class="k-table-data--form">
 							<?php echo JHtml::_('grid.checkall'); ?>
 						</th>
@@ -77,7 +80,8 @@ $colSpan = $clientId === 1 ? 9 : 10;
 					$canCheckin = $item->checked_out == $user->get('id')|| $item->checked_out == 0;
 					$canChange  = $user->authorise('core.edit.state', 'com_modules.module.'.$item->id) && $canCheckin;
 				?>
-					<tr>
+					<tr sortable-group-id="<?php echo $item->position ? $item->position : 'none'; ?>">
+                        <?php echo JLayoutHelper::render('elysio.ordering', array('canChange' => $canChange, 'saveOrder' => $saveOrder, 'value' => $item->ordering)); ?>
 						<td class="k-table-data--form">
 							<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 						</td>
