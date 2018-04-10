@@ -224,23 +224,21 @@ $sortFields = $this->getSortFields();
 
 	</div><!-- .k-table-container -->
 
-</form><!-- .k-component -->
-
-<div class="k-dynamic-content-holder">
     <?php echo $this->loadTemplate('batch'); ?>
 
-    <script type="text/javascript">
-        Joomla.orderTable = function() {
-            table = document.getElementById("sortTable");
-            direction = document.getElementById("directionTable");
-            order = table.options[table.selectedIndex].value;
-            if (order != '<?php echo $listOrder; ?>')
-            {
-                dirn = 'asc';
-            } else {
-                dirn = direction.options[direction.selectedIndex].value;
-            }
-            Joomla.tableOrdering(order, dirn, '');
+</form><!-- .k-component -->
+
+<script type="text/javascript">
+    Joomla.orderTable = function() {
+        table = document.getElementById("sortTable");
+        direction = document.getElementById("directionTable");
+        order = table.options[table.selectedIndex].value;
+        if (order != '<?php echo $listOrder; ?>')
+        {
+            dirn = 'asc';
+        } else {
+            dirn = direction.options[direction.selectedIndex].value;
         }
-    </script>
-</div>
+        Joomla.tableOrdering(order, dirn, '');
+    }
+</script>

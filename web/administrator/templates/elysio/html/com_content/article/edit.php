@@ -166,22 +166,20 @@ if (isset($this->item->attribs['show_urls_images_backend']) && $this->item->attr
 
 </form><!-- .k-component -->
 
-<div class="k-dynamic-content-holder">
-    <script>
-        kQuery(function($) {
-            // Menu item type layout
-            $('#jform_type').addClass('k-form-control').parent().addClass('k-input-group').removeClass('input-append').children('.btn').addClass('k-button k-button--primary').removeClass('btn btn-primary').wrap('<span class="k-input-group__button">');
+<script>
+    kQuery(function($) {
+        // Menu item type layout
+        $('#jform_type').addClass('k-form-control').parent().addClass('k-input-group').removeClass('input-append').children('.btn').addClass('k-button k-button--primary').removeClass('btn btn-primary').wrap('<span class="k-input-group__button">');
 
-            // menu item type modal
-            $('#menuTypeModal').detach().appendTo('body');
-        });
-        Joomla.submitbutton = function(task)
+        // menu item type modal
+        $('#menuTypeModal').detach().appendTo('body');
+    });
+    Joomla.submitbutton = function(task)
+    {
+        if (task == 'article.cancel' || document.formvalidator.isValid(document.id('item-form')))
         {
-            if (task == 'article.cancel' || document.formvalidator.isValid(document.id('item-form')))
-            {
-                <?php echo $this->form->getField('articletext')->save(); ?>
-                Joomla.submitform(task, document.getElementById('item-form'));
-            }
+            <?php echo $this->form->getField('articletext')->save(); ?>
+            Joomla.submitform(task, document.getElementById('item-form'));
         }
-    </script>
-</div>
+    }
+</script>
