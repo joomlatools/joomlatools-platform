@@ -105,8 +105,8 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
                                 <h1><?php echo JText::_('JERROR_AN_ERROR_HAS_OCCURRED'); ?></h1>
 
                                 <blockquote>
-                                    <span class="k-label k-label--info"><?php echo $this->code; ?></span>
-                                    <?php echo htmlspecialchars($this->message, ENT_QUOTES, 'UTF-8');?>
+                                    <span class="k-label k-label--info"><?php echo $this->error->getCode(); ?></span>
+                                    <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8');?>
                                 </blockquote>
 
                                 <p><a href="<?php echo $this->baseurl; ?>" class="k-button k-button--default"><?php echo JText::_('JGLOBAL_TPL_CPANEL_LINK_TEXT'); ?></a></p>
