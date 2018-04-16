@@ -27,14 +27,31 @@ class PlgSystem404 extends JPlugin
 
         if ($app->get('sef') && (int) $error->getCode() == 404)
         {
-            $regex   = '/\/[\d]+\-/';
-            $current = JUri::current();
+            $menu        = $app->getMenu()->getActive();
+            $menu_prefix = JRoute::_($menu->link, false);
+            $subpath     = $menu_prefix;
 
-            // Match url having "/xxx-" format, where xxx is a number.
-            if (preg_match($regex, $current))
+            if ($base = JURI::base(true)) {
+                $subpath = preg_replace('#^'.preg_quote($base).'#', '', $menu_prefix, 1);
+            }
+
+            $path = JUri::base() . ltrim($subpath, '/');
+            $path = ltrim(preg_replace('#^'.preg_quote($path).'#', '', JUri::current(), 1), '/');
+
+            $redirect = false;
+            // category redirect, redirect to path-without-leading-id
+            if (preg_match('#^([0-9]+)\-(.+)$#i', $path, $matches)) {
+                $redirect = $matches[2];
+            }
+            // article redirect, redirect to path-until-article/article-alias-without-id
+            elseif (preg_match('#(.*\/)+([0-9]+)\-(.+)$#i', $path, $matches))
             {
-                // Redirect with-id to no-id url
-                $redirect = preg_replace($regex, '/', $current);
+                $redirect = $matches[1] . $matches[3];
+            }
+
+            if ($redirect)
+            {
+                $redirect = $menu_prefix . '/' . $redirect;
                 $app->redirect($redirect);
             }
         }
