@@ -64,6 +64,7 @@ $doc->addScript('templates/'.$this->template.'/js/admin.js', 'text/javascript');
 	<jdoc:include type="head" />
 </head>
 <body class="contentpane component">
+<script src="templates/elysio/js/kui-initialize.js"></script>
     <div class="k-ui-namespace k-ui-container">
 		<jdoc:include type="message" />
 		<jdoc:include type="component" />

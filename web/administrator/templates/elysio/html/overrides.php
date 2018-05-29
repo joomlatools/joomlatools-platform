@@ -54,6 +54,9 @@ function classOverride($input) {
         case strpos($input, 'archive');
             $class = "k-icon-box";
             break;
+        case strpos($input, 'bars');
+            $class = "k-icon-bar-chart";
+            break;
         case strpos($input, 'remove');
             $class = "k-icon-star";
             break;
