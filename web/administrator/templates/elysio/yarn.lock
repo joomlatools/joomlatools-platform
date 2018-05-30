@@ -1578,9 +1578,9 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
-"kodekit-ui@https://github.com/timble/kodekit-ui.git#1.0.1":
-  version "1.0.0"
-  resolved "https://github.com/timble/kodekit-ui.git#bd97e6e81a0d29f8bc1f74c35b175d507a4dd33a"
+"kodekit-ui@https://github.com/timble/kodekit-ui.git#1.0.2":
+  version "1.0.2"
+  resolved "https://github.com/timble/kodekit-ui.git#90a17176648c33aa928c3080c897efcf3a88ed32"
 
 lazy-cache@^1.0.3:
   version "1.0.4"

@@ -45,7 +45,7 @@ if ($lang->isRtl())
 
 
 <!-- Sidebar -->
-<div class="k-sidebar-left k-js-sidebar-left" id="k-js-move-sidebar">
+<div class="k-sidebar-left k-js-sidebar-left k-hidden" id="k-js-move-sidebar">
     <div class="k-sidebar-item">
         <div class="k-sidebar-item__header">
             <?php echo JText::_('COM_MEDIA_FOLDERS');?>
@@ -82,7 +82,7 @@ if ($lang->isRtl())
 </div>
 <script>
     kQuery(function($) {
-        $('#k-js-move-sidebar').detach().prependTo('.k-content-wrapper');
+        $('#k-js-move-sidebar').detach().prependTo('.k-content-wrapper').removeClass('k-hidden');
     });
 </script>
 
@@ -101,69 +101,89 @@ if ($lang->isRtl())
 
 
 
+
 <div class="k-component k-js-component">
 
-	<!-- Begin Content -->
-	<div id="j-main-container" class="span10">
-		<?php echo $this->loadTemplate('navigation'); ?>
+	<div class="k-container">
+        <div class="k-container__full">
+            <?php echo $this->loadTemplate('navigation'); ?>
+        </div>
+    </div>
+	<div class="k-container k-flexbox-from-charlie k-do-flex k-flexbox-column">
 
-		<?php if (($user->authorise('core.create', 'com_media')) and $this->require_ftp) : ?>
-			<form action="index.php?option=com_media&amp;task=ftpValidate" name="ftpForm" id="ftpForm" method="post">
-				<fieldset title="<?php echo JText::_('COM_MEDIA_DESCFTPTITLE'); ?>">
-					<legend><?php echo JText::_('COM_MEDIA_DESCFTPTITLE'); ?></legend>
-					<?php echo JText::_('COM_MEDIA_DESCFTP'); ?>
-					<label for="username"><?php echo JText::_('JGLOBAL_USERNAME'); ?></label>
-					<input type="text" id="username" name="username" size="70" value="" />
+        <?php if (($user->authorise('core.create', 'com_media')) and $this->require_ftp) : ?>
+            <form action="index.php?option=com_media&amp;task=ftpValidate" name="ftpForm" id="ftpForm" method="post">
+                <fieldset title="<?php echo JText::_('COM_MEDIA_DESCFTPTITLE'); ?>">
+                    <legend><?php echo JText::_('COM_MEDIA_DESCFTPTITLE'); ?></legend>
+                    <?php echo JText::_('COM_MEDIA_DESCFTP'); ?>
+                    <label for="username"><?php echo JText::_('JGLOBAL_USERNAME'); ?></label>
+                    <input type="text" id="username" name="username" size="70" value="" />
 
-					<label for="password"><?php echo JText::_('JGLOBAL_PASSWORD'); ?></label>
-					<input type="password" id="password" name="password" size="70" value="" />
-				</fieldset>
-			</form>
-		<?php endif; ?>
+                    <label for="password"><?php echo JText::_('JGLOBAL_PASSWORD'); ?></label>
+                    <input type="password" id="password" name="password" size="70" value="" />
+                </fieldset>
+            </form>
+        <?php endif; ?>
 
-		<form class="k-js-grid-controller k-js-grid" action="index.php?option=com_media" name="adminForm" id="mediamanager-form" method="post" enctype="multipart/form-data" >
-			<input type="hidden" name="task" value="" />
-			<input type="hidden" name="cb1" id="cb1" value="0" />
-			<input class="update-folder" type="hidden" name="folder" id="folder" value="<?php echo $this->state->folder; ?>" />
-		</form>
+        <form class="k-js-grid-controller k-js-grid" action="index.php?option=com_media" name="adminForm" id="mediamanager-form" method="post" enctype="multipart/form-data" >
+            <input type="hidden" name="task" value="" />
+            <input type="hidden" name="cb1" id="cb1" value="0" />
+            <input class="update-folder" type="hidden" name="folder" id="folder" value="<?php echo $this->state->folder; ?>" />
+        </form>
 
-		<?php if ($user->authorise('core.create', 'com_media')):?>
-		<!-- File Upload Form -->
-		<div id="collapseUpload" class="collapse">
-			<form action="<?php echo JUri::base(); ?>index.php?option=com_media&amp;task=file.upload&amp;tmpl=component&amp;<?php echo $this->session->getName() . '=' . $this->session->getId(); ?>&amp;<?php echo JSession::getFormToken();?>=1&amp;format=html" id="uploadForm" class="form-inline" name="uploadForm" method="post" enctype="multipart/form-data">
-				<div id="uploadform">
-					<fieldset id="upload-noflash" class="actions">
-							<label for="upload-file" class="control-label"><?php echo JText::_('COM_MEDIA_UPLOAD_FILE'); ?></label>
-								<input required type="file" id="upload-file" name="Filedata[]" multiple /> <button class="btn btn-primary" id="upload-submit"><span class="icon-upload icon-white"></span> <?php echo JText::_('COM_MEDIA_START_UPLOAD'); ?></button>
-								<p class="help-block"><?php echo $this->config->get('upload_maxsize') == '0' ? JText::_('COM_MEDIA_UPLOAD_FILES_NOLIMIT') : JText::sprintf('COM_MEDIA_UPLOAD_FILES', $this->config->get('upload_maxsize')); ?></p>
-					</fieldset>
-					<input class="update-folder" type="hidden" name="folder" id="folder" value="<?php echo $this->state->folder; ?>" />
-					<?php JFactory::getSession()->set('com_media.return_url', 'index.php?option=com_media'); ?>
-				</div>
-			</form>
-		</div>
-		<div id="collapseFolder" class="collapse">
-			<form action="index.php?option=com_media&amp;task=folder.create&amp;tmpl=<?php echo $input->getCmd('tmpl', 'index');?>" name="folderForm" id="folderForm" class="form-inline" method="post">
-					<div class="path">
-						<input type="text" id="folderpath" readonly="readonly" class="update-folder" />
-						<input required type="text" id="foldername" name="foldername" />
-						<input class="update-folder" type="hidden" name="folderbase" id="folderbase" value="<?php echo $this->state->folder; ?>" />
-						<button type="submit" class="btn"><span class="icon-folder-open"></span> <?php echo JText::_('COM_MEDIA_CREATE_FOLDER'); ?></button>
-					</div>
-					<?php echo JHtml::_('form.token'); ?>
-			</form>
-		</div>
-		<?php endif;?>
+        <?php if ($user->authorise('core.create', 'com_media')):?>
+            <!-- File Upload Form -->
+            <div id="collapseUpload" class="collapse">
+                <form action="<?php echo JUri::base(); ?>index.php?option=com_media&amp;task=file.upload&amp;tmpl=component&amp;<?php echo $this->session->getName() . '=' . $this->session->getId(); ?>&amp;<?php echo JSession::getFormToken();?>=1&amp;format=html" id="uploadForm" class="k-container__full" name="uploadForm" method="post" enctype="multipart/form-data">
+                    <div id="uploadform">
+                        <fieldset id="upload-noflash" class="k-file-input-container">
+                            <div class="k-file-input">
+                                <input required class="k-js-file-input" type="file" id="upload-file" name="Filedata[]" data-multiple-caption="{count} files selected" multiple />
+                                <label for="upload-file">
+                                    <span class="k-file-input__button">
+                                        <span class="k-icon-data-transfer-upload" aria-hidden="true"></span>
+                                        Choose a file&hellip;
+                                    </span>
+                                    <span class="k-file-input__files"></span>
+                                </label>
+                            </div>
+                            <input class="update-folder" type="hidden" name="folder" id="folder" value="<?php echo $this->state->folder; ?>" />
+                            <?php JFactory::getSession()->set('com_media.return_url', 'index.php?option=com_media'); ?>
+                        </fieldset>
+                        <p class="help-block">
+                            <?php echo $this->config->get('upload_maxsize') == '0' ? JText::_('COM_MEDIA_UPLOAD_FILES_NOLIMIT') : JText::sprintf('COM_MEDIA_UPLOAD_FILES', $this->config->get('upload_maxsize')); ?>
+                        </p>
+                        <p>
+                            <button class="btn btn-primary" id="upload-submit"><span class="icon-upload icon-white"></span> <?php echo JText::_('COM_MEDIA_START_UPLOAD'); ?></button>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div id="collapseFolder" class="collapse">
+                <form action="index.php?option=com_media&amp;task=folder.create&amp;tmpl=<?php echo $input->getCmd('tmpl', 'index');?>" name="folderForm" id="folderForm" class="k-container__full" method="post">
+                    <div class="k-input-group">
+                        <input class="k-form-control" type="text" id="folderpath" readonly="readonly" />
+                        <input class="update-folder" type="hidden" name="folderbase" id="folderbase" value="<?php echo $this->state->folder; ?>" />
+                        <input class="k-form-control" type="text" id="foldername" name="foldername" required />
+                        <div class="k-input-group__button">
+                            <button type="submit" class="k-button k-button--default">
+                                <span class="k-icon-data-transfer-upload"></span>
+                                <?php echo JText::_('COM_MEDIA_CREATE_FOLDER'); ?>
+                            </button>
+                        </div>
+                    </div>
+                    <?php echo JHtml::_('form.token'); ?>
+                </form>
+            </div>
+        <?php endif;?>
 
-		<form action="index.php?option=com_media&amp;task=folder.create&amp;tmpl=<?php echo $input->getCmd('tmpl', 'index');?>" name="folderForm" id="folderForm" method="post">
-			<div id="folderview">
-				<div class="view">
-					<iframe class="thumbnail" src="index.php?option=com_media&amp;view=mediaList&amp;tmpl=component&amp;folder=<?php echo $this->state->folder;?>" id="folderframe" name="folderframe" width="100%" height="500px" marginwidth="0" marginheight="0" scrolling="auto" onLoad="iframeChangeScript(this.contentWindow.location);"></iframe>
-				</div>
-				<?php echo JHtml::_('form.token'); ?>
-			</div>
-		</form>
-	</div>
+        <form class="k-flexbox-from-charlie k-do-flex" action="index.php?option=com_media&amp;task=folder.create&amp;tmpl=<?php echo $input->getCmd('tmpl', 'index');?>" name="folderForm" id="folderForm" method="post">
+            <iframe class="k-do-flex" src="index.php?option=com_media&amp;view=mediaList&amp;tmpl=component&amp;folder=<?php echo $this->state->folder;?>" id="folderframe" name="folderframe" width="100%" marginwidth="0" marginheight="0" scrolling="auto" onLoad="iframeChangeScript(this.contentWindow.location);" style="border:none;"></iframe>
+            <?php echo JHtml::_('form.token'); ?>
+        </form>
+
+    </div>
+
     <?php // Pre render all the bootstrap modals on the parent window
 
     echo JHtml::_(
@@ -188,5 +208,5 @@ if ($lang->isRtl())
         '<div id="videoPlayer" style="z-index: -100;"><video id="mejsPlayer" style="height: 250px;"/></div>'
     );
     ?>
-	<!-- End Content -->
+
 </div>
