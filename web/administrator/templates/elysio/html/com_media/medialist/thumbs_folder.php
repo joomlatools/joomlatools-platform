@@ -17,16 +17,30 @@ $user = JFactory::getUser();
         <a href="index.php?option=com_media&amp;view=mediaList&amp;tmpl=component&amp;folder=<?php echo $this->_tmp_folder->path_relative; ?>" class="k-card__body">
             <div class="k-ratio-block k-ratio-block--4-to-3">
                 <div class="k-ratio-block__body k-flexbox-column">
-                    <span class="k-icon-folder-closed k-icon--size-xlarge"></span><br />
-                    <?php echo JHtml::_('string.truncate', $this->_tmp_folder->name, 10, false); ?>
+                    <span class="k-icon-folder-closed k-icon--size-xlarge"></span>
                 </div>
             </div>
         </a>
-	    <?php if ($user->authorise('core.delete', 'com_media')):?>
         <div class="k-card__caption">
-            <a class="close delete-item" target="_top" href="index.php?option=com_media&amp;task=folder.delete&amp;tmpl=index&amp;<?php echo JSession::getFormToken(); ?>=1&amp;folder=<?php echo $this->state->folder; ?>&amp;rm[]=<?php echo $this->_tmp_folder->name; ?>" rel="<?php echo $this->_tmp_folder->name; ?> :: <?php echo $this->_tmp_folder->files + $this->_tmp_folder->folders; ?>" title="<?php echo JText::_('JACTION_DELETE');?>">&#215;</a>
-            <input class="pull-left" type="checkbox" name="rm[]" value="<?php echo $this->_tmp_folder->name; ?>" />
+            <div class="k-flag-object">
+                <div class="k-flag-object__aside">
+                    <input class="pull-left" type="checkbox" name="rm[]" value="<?php echo $this->_tmp_folder->name; ?>" />
+                </div>
+                <div class="k-flag-object__body k-overflow-hidden" style="padding-left: 4px;">
+                    <div class="k-ellipsis">
+                        <div class="k-ellipsis__item">
+                            <?php echo JHtml::_('string.truncate', $this->_tmp_folder->name, 20, false); ?>
+                        </div>
+                    </div>
+                </div>
+                <?php if ($user->authorise('core.delete', 'com_media')):?>
+                    <div class="k-flag-object__aside" style="padding-left: 4px;">
+                        <a target="_top" href="index.php?option=com_media&amp;task=folder.delete&amp;tmpl=index&amp;<?php echo JSession::getFormToken(); ?>=1&amp;folder=<?php echo $this->state->folder; ?>&amp;rm[]=<?php echo $this->_tmp_folder->name; ?>" rel="<?php echo $this->_tmp_folder->name; ?> :: <?php echo $this->_tmp_folder->files + $this->_tmp_folder->folders; ?>" title="<?php echo JText::_('JACTION_DELETE');?>">
+                            <span class="k-icon-trash"></span>
+                        </a>
+                    </div>
+                <?php endif;?>
+            </div>
         </div>
-	    <?php endif;?>
     </div>
 </div>

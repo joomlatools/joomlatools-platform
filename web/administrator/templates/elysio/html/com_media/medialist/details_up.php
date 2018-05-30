@@ -14,9 +14,10 @@ $user = JFactory::getUser();
 <?php if ($this->state->folder != '') : ?>
 <tr>
     <td class="k-table-data--toggle"></td>
+    <td></td>
 	<td class="imgTotal">
 		<a href="index.php?option=com_media&amp;view=mediaList&amp;tmpl=component&amp;folder=<?php echo $this->state->parent; ?>" target="folderframe">
-			<span class="k-icon-arrow-thick-top"></span>
+			<span class="k-icon-chevron-top"></span>
         </a>
 	</td>
 	<td class="description">

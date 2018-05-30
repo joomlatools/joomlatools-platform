@@ -92,7 +92,8 @@ JFactory::getDocument()->addScriptDeclaration(
                             <thead>
                                 <tr>
                                     <th width="1%" class="k-table-data--toggle" data-toggle="true"></th>
-                                    <th width="1%"><?php echo JText::_('JGLOBAL_PREVIEW'); ?></th>
+                                    <th width="1%" class="k-table-data--form"></th>
+                                    <th width="1%"></th>
                                     <th><?php echo JText::_('COM_MEDIA_NAME'); ?></th>
                                     <th width="15%" data-hide="phone,tablet"><?php echo JText::_('COM_MEDIA_PIXEL_DIMENSIONS'); ?></th>
                                     <th width="8%" data-hide="phone,tablet"><?php echo JText::_('COM_MEDIA_FILESIZE'); ?></th>
@@ -126,14 +127,15 @@ JFactory::getDocument()->addScriptDeclaration(
 
                             </tbody>
                             </table>
-                        </div>
+
+                        </div><!-- .k-table -->
 
                         <input type="hidden" name="task" value="list" />
                         <input type="hidden" name="username" value="" />
                         <input type="hidden" name="password" value="" />
                         <?php echo JHtml::_('form.token'); ?>
 
-                    </div>
+                    </div><!-- .k-table-container-->
 
                 </form><!-- .k-component -->
 

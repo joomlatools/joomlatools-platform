@@ -86,22 +86,6 @@ if ($lang->isRtl())
     });
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="k-component k-js-component">
 
 	<div class="k-container">
@@ -159,6 +143,7 @@ if ($lang->isRtl())
                     </div>
                 </form>
             </div>
+            <!-- Folder Form -->
             <div id="collapseFolder" class="collapse">
                 <form action="index.php?option=com_media&amp;task=folder.create&amp;tmpl=<?php echo $input->getCmd('tmpl', 'index');?>" name="folderForm" id="folderForm" class="k-container__full" method="post">
                     <div class="k-input-group">
@@ -191,7 +176,7 @@ if ($lang->isRtl())
         'imagePreview',
         array(
             'title' => JText::_('COM_MEDIA_PREVIEW'),
-            'footer' => '<a type="button" class="btn" data-dismiss="modal" aria-hidden="true">'
+            'footer' => '<a type="button" class="k-button k-button--default" data-dismiss="modal" aria-hidden="true">'
                 . JText::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</a>'
         ),
         '<div id="image" style="text-align:center;"><img id="imagePreviewSrc" src="../media/jui/img/alpha.png" alt="preview" style="max-width:100%; max-height:300px;"/></div>'
@@ -202,7 +187,7 @@ if ($lang->isRtl())
         'videoPreview',
         array(
             'title' => JText::_('COM_MEDIA_PREVIEW'),
-            'footer' => '<a type="button" class="btn" data-dismiss="modal" aria-hidden="true">'
+            'footer' => '<a type="button" class="k-button k-button--default" data-dismiss="modal" aria-hidden="true">'
                 . JText::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</a>'
         ),
         '<div id="videoPlayer" style="z-index: -100;"><video id="mejsPlayer" style="height: 250px;"/></div>'

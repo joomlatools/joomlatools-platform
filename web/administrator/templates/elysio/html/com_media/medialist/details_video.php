@@ -29,14 +29,17 @@ jQuery(document).ready(function($){
 
 <tr>
     <td class="k-table-data--toggle"></td>
+    <td>
+        <input type="checkbox" name="rm[]" value="<?php echo $this->_tmp_video->name; ?>" />
+    </td>
 	<td>
 		<a class="video-preview" href="<?php echo COM_MEDIA_BASEURL . '/' . $this->_tmp_video->name; ?>" title="<?php echo $this->_tmp_video->title; ?>">
-            <?php JHtml::_('image', $this->_tmp_video->icon_16, $this->_tmp_video->title, null, true); ?>
+            <span class="k-icon-document-video"></span>
         </a>
 	</td>
 	<td class="description">
 		<a class="video-preview" href="<?php echo COM_MEDIA_BASEURL . '/' . $this->_tmp_video->name; ?>" title="<?php echo $this->_tmp_video->name; ?>">
-			<?php echo JHtml::_('string.truncate', $this->_tmp_video->name, 10, false); ?>
+            <?php echo $this->escape($this->_tmp_video->title); ?>
 		</a>
 	</td>
 	<td class="dimensions">
@@ -46,11 +49,10 @@ jQuery(document).ready(function($){
 		<?php echo JHtml::_('number.bytes', $this->_tmp_video->size); ?>
 	</td>
 	<?php if ($user->authorise('core.delete', 'com_media')):?>
-    <td>
+    <td class="k-table-data--center">
         <a class="delete-item" target="_top" href="index.php?option=com_media&amp;task=file.delete&amp;tmpl=index&amp;<?php echo JSession::getFormToken(); ?>=1&amp;folder=<?php echo $this->state->folder; ?>&amp;rm[]=<?php echo $this->_tmp_video->name; ?>" rel="<?php echo $this->_tmp_video->name; ?>">
             <span class="k-icon-trash hasTooltip" title="<?php echo JHtml::tooltipText('JACTION_DELETE');?>"></span>
         </a>
-        <input type="checkbox" name="rm[]" value="<?php echo $this->_tmp_video->name; ?>" />
     </td>
 	<?php endif;?>
 </tr>

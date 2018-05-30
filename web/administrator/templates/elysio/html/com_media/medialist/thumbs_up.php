@@ -16,11 +16,17 @@ defined('_JEXEC') or die;
             <a href="index.php?option=com_media&amp;view=mediaList&amp;tmpl=component&amp;folder=<?php echo $this->state->parent; ?>" class="k-card__body">
                 <div class="k-ratio-block k-ratio-block--4-to-3">
                     <div class="k-ratio-block__body k-flexbox-column">
-                        <span class="k-icon-arrow-thick-top k-icon--size-xlarge"></span><br />
-                        ..
+                        <span class="k-icon-chevron-left k-icon--size-large"></span>
                     </div>
                 </div>
             </a>
+            <div class="k-card__caption">
+                <div class="k-flag-object">
+                    <div class="k-flag-object__body">
+                        ..
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
