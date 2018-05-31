@@ -12,6 +12,9 @@ defined('_JEXEC') or die;
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
+// Overrides
+include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
+
 JHtml::_('behavior.core');
 JHtml::_('behavior.tabstate');
 JHtml::_('behavior.formvalidation');
@@ -113,10 +116,10 @@ if (isset($this->item->attribs['show_urls_images_backend']) && $this->item->attr
                 <div class="k-container__main">
 					<?php echo $this->form->getControlGroup('images'); ?>
 					<?php foreach ($this->form->getGroup('images') as $field) : ?>
-						<?php echo $field->getControlGroup(); ?>
+						<?php echo imagesInputGroup($field->getControlGroup()); ?>
 					<?php endforeach; ?>
 					<?php foreach ($this->form->getGroup('urls') as $field) : ?>
-						<?php echo $field->getControlGroup(); ?>
+						<?php echo imagesInputGroup($field->getControlGroup()); ?>
 					<?php endforeach; ?>
 				</div>
 			</div>
