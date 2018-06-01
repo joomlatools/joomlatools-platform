@@ -50,11 +50,13 @@ div.modal {
     outline: 0;
     margin: 0;
     padding: 0;
+    /* This breaks the modals for com:search
     position: absolute;
     top: 15px;
     right: 15px;
     bottom: 15px;
     left: 15px;
+    */
     width: calc(100% - 30px);
     max-height: calc(100% - 30px) !important;
   }
