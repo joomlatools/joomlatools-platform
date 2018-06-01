@@ -48,6 +48,18 @@ JFactory::getDocument()->addScriptDeclaration(
 );
 ?>
 
+<script>
+    kQuery(function($) {
+        $('.k-card__caption').on('click', function() {
+            if ( $(this).closest('.k-card').hasClass('k-is-selected') ) {
+                $(this).closest('.k-card').removeClass('k-is-selected').find('input[type="checkbox"]').prop( "checked", false );
+            } else {
+                $(this).closest('.k-card').addClass('k-is-selected').find('input[type="checkbox"]').prop( "checked", true );
+            }
+        })
+    });
+</script>
+
 <!-- Wrapper -->
 <div class="k-wrapper k-js-wrapper">
 

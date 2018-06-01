@@ -21,3 +21,7 @@
 .icon-edit {
   @include icon-after(pencil, true);
 }
+
+.icon-pictures {
+  @include icon-after(document-image, true);
+}

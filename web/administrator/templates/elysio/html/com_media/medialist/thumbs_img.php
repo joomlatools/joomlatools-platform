@@ -21,7 +21,7 @@ $dispatcher->trigger('onContentBeforeDisplay', array('com_media.file', &$this->_
     <div class="k-card">
         <a href="<?php echo COM_MEDIA_BASEURL . '/' . $this->_tmp_img->path_relative; ?>" class="k-card__body img-preview">
             <div class="k-ratio-block k-ratio-block--4-to-3">
-                <div class="k-ratio-block__body">
+                <div class="k-ratio-block__body k-overflow-hidden">
                     <?php echo JHtml::_('image', COM_MEDIA_BASEURL . '/' . $this->_tmp_img->path_relative, JText::sprintf('COM_MEDIA_IMAGE_TITLE', $this->_tmp_img->title, JHtml::_('number.bytes', $this->_tmp_img->size))); ?>
                 </div>
             </div>
@@ -40,7 +40,7 @@ $dispatcher->trigger('onContentBeforeDisplay', array('com_media.file', &$this->_
                 </div>
                 <?php if ($user->authorise('core.delete', 'com_media')):?>
                 <div class="k-flag-object__aside" style="padding-left: 4px;">
-                    <a target="_top"
+                    <a style="color: inherit;" target="_top"
                        href="index.php?option=com_media&amp;task=file.delete&amp;tmpl=index&amp;<?php echo JSession::getFormToken(); ?>=1&amp;folder=<?php echo $this->state->folder; ?>&amp;rm[]=<?php echo $this->_tmp_img->name; ?>"
                        rel="<?php echo $this->_tmp_img->name; ?>" title="<?php echo JText::_('JACTION_DELETE'); ?>">
                         <span class="k-icon-trash"></span>

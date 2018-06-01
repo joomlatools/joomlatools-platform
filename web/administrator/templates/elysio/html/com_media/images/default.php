@@ -51,9 +51,23 @@ JFactory::getDocument()->addScriptDeclaration(
     }
 </style>
 
+<script>
+    function openSidebar() {
+        kQuery(function($) {
+            // Click the toggle button to display selected image info
+            $('.k-off-canvas-toggle--right').trigger('click');
+        });
+    }
+</script>
+
 
 <!-- Wrapper -->
 <div class="k-wrapper k-js-wrapper">
+
+    <!-- Mobile title bar -->
+    <div class="k-title-bar k-title-bar--mobile k-js-title-bar">
+        <div class="k-title-bar__heading">Insert / Upload file</div>
+    </div>
 
     <!-- Content wrapper -->
     <div class="k-content-wrapper">
@@ -62,12 +76,12 @@ JFactory::getDocument()->addScriptDeclaration(
         <div class="k-content k-js-content">
 
             <!-- Component wrapper -->
-            <div class="k-component-wrapper">
+            <form class="k-component-wrapper" action="index.php?option=com_media&amp;asset=<?php echo $input->getCmd('asset');?>&amp;author=<?php echo $input->getCmd('author'); ?>" id="imageForm" method="post" enctype="multipart/form-data">
 
                 <!-- Component -->
-                <div class="k-component">
+                <div class="k-component k-js-component">
 
-                    <form class="k-container k-flexbox k-flexbox-column k-do-flex" action="index.php?option=com_media&amp;asset=<?php echo $input->getCmd('asset');?>&amp;author=<?php echo $input->getCmd('author'); ?>" id="imageForm" method="post" enctype="multipart/form-data">
+                    <div class="k-container k-flexbox k-flexbox-column k-do-flex">
 
                         <div class="k-container__full k-dont-flex messages" style="display: none;">
                             <span id="message"></span><?php echo JHtml::_('image', 'com_media/dots.gif', '...', array('width' => 22, 'height' => 12), true) ?>
@@ -89,110 +103,100 @@ JFactory::getDocument()->addScriptDeclaration(
                             <iframe class="k-do-flex k-no-margin" id="imageframe" name="imageframe" src="index.php?option=com_media&amp;view=imagesList&amp;tmpl=component&amp;folder=<?php echo $this->state->folder?>&amp;asset=<?php echo $input->getCmd('asset');?>&amp;author=<?php echo $input->getCmd('author');?>" style="height: auto"></iframe>
                         </div>
 
-                        <div class="k-container__full k-dont-flex">
-                            <div class="k-input-group">
-                                <label class="k-input-group__addon" for="f_url"><?php echo JText::_('COM_MEDIA_IMAGE_URL') ?></label>
-                                <input class="k-form-control" type="text" id="f_url" value="" />
-                                <div class="k-input-group__button">
-                                    <button class="k-button k-button--success button-save-selected" type="button" onclick="<?php if ($this->state->get('field.id')):?>window.parent.jInsertFieldValue(document.getElementById('f_url').value,'<?php echo $this->state->get('field.id');?>');<?php else:?>ImageManager.onok();<?php endif;?>window.parent.jQuery('.modal.in').modal('hide');window.parent.jModalClose();" data-dismiss="modal"><?php echo JText::_('COM_MEDIA_INSERT') ?></button>
+                    </div>
+                </div><!-- .k-component -->
+
+                <div class="k-sidebar-right k-js-sidebar-right">
+
+                    <div class="k-sidebar-item">
+                        <div class="k-sidebar-item__header">
+                            Selected file info
+                        </div>
+                        <div class="k-sidebar-item__content">
+                            <div class="k-content-block">
+                                <div class="k-form-group">
+                                    <label for="f_url"><?php echo JText::_('COM_MEDIA_IMAGE_URL') ?></label>
+                                    <input class="k-form-control" type="text" id="f_url" value="" />
                                 </div>
-                            </div>
-                            <?php if (1==2): ?>
-                            <?php if (!$this->state->get('field.id')):?>
-                                <div class="span6 control-group">
-                                    <div class="control-label">
+                                <div class="k-form-group">
+                                    <button class="k-button k-button--success k-button--block button-save-selected" type="button" onclick="<?php if ($this->state->get('field.id')):?>window.parent.jInsertFieldValue(document.getElementById('f_url').value,'<?php echo $this->state->get('field.id');?>');<?php else:?>ImageManager.onok();<?php endif;?>window.parent.jQuery('.modal.in').modal('hide');window.parent.jModalClose();" data-dismiss="modal"><?php echo JText::_('COM_MEDIA_INSERT') ?></button>
+                                </div>
+                                <?php if (!$this->state->get('field.id')):?>
+                                    <div class="k-form-group">
                                         <label title="<?php echo JText::_('COM_MEDIA_ALIGN_DESC'); ?>" class="noHtmlTip" for="f_align"><?php echo JText::_('COM_MEDIA_ALIGN') ?></label>
-                                    </div>
-                                    <div class="controls">
-                                        <select size="1" id="f_align">
+                                        <select size="1" id="f_align" class="k-form-control">
                                             <option value="" selected="selected"><?php echo JText::_('COM_MEDIA_NOT_SET') ?></option>
                                             <option value="left"><?php echo JText::_('JGLOBAL_LEFT') ?></option>
                                             <option value="center"><?php echo JText::_('JGLOBAL_CENTER') ?></option>
                                             <option value="right"><?php echo JText::_('JGLOBAL_RIGHT') ?></option>
                                         </select>
                                     </div>
-                                </div>
-                            <?php endif;?>
-                            <?php if (!$this->state->get('field.id')):?>
-                                <div class="span6 control-group">
-                                    <div class="control-label">
+                                <?php endif;?>
+                                <?php if (!$this->state->get('field.id')):?>
+                                    <div class="k-form-group">
                                         <label for="f_alt"><?php echo JText::_('COM_MEDIA_IMAGE_DESCRIPTION') ?></label>
+                                        <input class="k-form-control" type="text" id="f_alt" value="" />
                                     </div>
-                                    <div class="controls">
-                                        <input type="text" id="f_alt" value="" />
-                                    </div>
-                                </div>
-                                <div class="span6 control-group">
-                                    <div class="control-label">
+                                    <div class="k-form-group">
                                         <label for="f_title"><?php echo JText::_('COM_MEDIA_TITLE') ?></label>
+                                        <input class="k-form-control" type="text" id="f_title" value="" />
                                     </div>
-                                    <div class="controls">
-                                        <input type="text" id="f_title" value="" />
-                                    </div>
-                                </div>
-                                <div class="span6 control-group">
-                                    <div class="control-label">
+                                    <div class="k-form-group">
                                         <label for="f_caption"><?php echo JText::_('COM_MEDIA_CAPTION') ?></label>
+                                        <input class="k-form-control" type="text" id="f_caption" value="" />
                                     </div>
-                                    <div class="controls">
-                                        <input type="text" id="f_caption" value="" />
-                                    </div>
-                                </div>
-                                <div class="span6 control-group">
-                                    <div class="control-label">
+                                    <div class="k-form-group">
                                         <label title="<?php echo JText::_('COM_MEDIA_CAPTION_CLASS_DESC'); ?>" class="noHtmlTip" for="f_caption_class"><?php echo JText::_('COM_MEDIA_CAPTION_CLASS_LABEL') ?></label>
-                                    </div>
-                                    <div class="controls">
-                                        <input type="text" list="d_caption_class" id="f_caption_class" value="" />
+                                        <input class="k-form-control" type="text" list="d_caption_class" id="f_caption_class" value="" />
                                         <datalist id="d_caption_class">
                                             <option value="text-left">
                                             <option value="text-center">
                                             <option value="text-right">
                                         </datalist>
                                     </div>
-                                </div>
-                            <?php endif;?>
-                            <?php endif;?>
-
-                            <input type="hidden" id="dirPath" name="dirPath" />
-                            <input type="hidden" id="f_file" name="f_file" />
-                            <input type="hidden" id="tmpl" name="component" />
-
-                        </div>
-                    </form>
-
-                    <?php if ($user->authorise('core.create', 'com_media')) : ?>
-                        <form class="k-container k-dont-flex" action="<?php echo JUri::base(); ?>index.php?option=com_media&amp;task=file.upload&amp;tmpl=component&amp;<?php echo $this->session->getName() . '=' . $this->session->getId(); ?>&amp;<?php echo JSession::getFormToken();?>=1&amp;asset=<?php echo $input->getCmd('asset'); ?>&amp;author=<?php echo $input->getCmd('author'); ?>&amp;view=images" id="uploadForm" name="uploadForm" method="post" enctype="multipart/form-data">
-                            <div class="k-container__full" id="uploadform">
-                                <div class="k-flexbox-from-beta k-popup-styling">
-                                    <div class="k-do-flex">
-                                        <fieldset id="upload-noflash" class="k-file-input-container">
-                                            <div class="k-file-input">
-                                                <input required class="k-js-file-input" type="file" id="upload-file" name="Filedata[]" data-multiple-caption="{count} files selected" multiple />
-                                                <label for="upload-file">
-                                                    <span class="k-file-input__button">
-                                                        <span class="k-icon-data-transfer-upload" aria-hidden="true"></span>
-                                                        Choose file(s) <?php echo $this->config->get('upload_maxsize') == '0' ? '' : '<small>(' . $this->config->get('upload_maxsize') . 'MB)</small>'; ?>
-                                                    </span>
-                                                    <span class="k-file-input__files"></span>
-                                                </label>
-                                            </div>
-                                            <input class="update-folder" type="hidden" name="folder" id="folder" value="<?php echo $this->state->folder; ?>" />
-                                            <?php JFactory::getSession()->set('com_media.return_url', 'index.php?option=com_media&view=images&tmpl=component&fieldid=' . $input->getCmd('fieldid', '') . '&e_name=' . $input->getCmd('e_name') . '&asset=' . $input->getCmd('asset') . '&author=' . $input->getCmd('author')); ?>
-                                        </fieldset>
-                                    </div>
-                                    <div class="k-dont-flex">
-                                        <button class="k-button k-button--primary" id="upload-submit">
-                                            <?php echo JText::_('COM_MEDIA_START_UPLOAD'); ?>
-                                        </button>
-                                    </div>
-                                </div>
+                                <?php endif;?>
                             </div>
-                        </form>
-                    <?php endif; ?>
-                </div><!-- .k-component -->
+                            <div id="insert-button-container"></div>
+                        </div>
+                    </div>
 
-            </div><!-- .k-component-wrapper -->
+                    <input type="hidden" id="dirPath" name="dirPath" />
+                    <input type="hidden" id="f_file" name="f_file" />
+                    <input type="hidden" id="tmpl" name="component" />
+
+                </div>
+
+            </form><!-- .k-component-wrapper -->
+
+            <?php if ($user->authorise('core.create', 'com_media')) : ?>
+                <form class="k-container k-dont-flex" style="border-top: 1px solid #cfcfcf;" action="<?php echo JUri::base(); ?>index.php?option=com_media&amp;task=file.upload&amp;tmpl=component&amp;<?php echo $this->session->getName() . '=' . $this->session->getId(); ?>&amp;<?php echo JSession::getFormToken();?>=1&amp;asset=<?php echo $input->getCmd('asset'); ?>&amp;author=<?php echo $input->getCmd('author'); ?>&amp;view=images" id="uploadForm" name="uploadForm" method="post" enctype="multipart/form-data">
+                    <div class="k-container__full" id="uploadform">
+                        <div class="k-flexbox-from-beta k-popup-styling">
+                            <div class="k-do-flex">
+                                <fieldset id="upload-noflash" class="k-file-input-container">
+                                    <div class="k-file-input">
+                                        <input required class="k-js-file-input" type="file" id="upload-file" name="Filedata[]" data-multiple-caption="{count} files selected" multiple />
+                                        <label for="upload-file">
+                                            <span class="k-file-input__button">
+                                                <span class="k-icon-data-transfer-upload" aria-hidden="true"></span>
+                                                Choose file(s) <?php echo $this->config->get('upload_maxsize') == '0' ? '' : '<small>(' . $this->config->get('upload_maxsize') . 'MB)</small>'; ?>
+                                            </span>
+                                            <span class="k-file-input__files"></span>
+                                        </label>
+                                    </div>
+                                    <input class="update-folder" type="hidden" name="folder" id="folder" value="<?php echo $this->state->folder; ?>" />
+                                    <?php JFactory::getSession()->set('com_media.return_url', 'index.php?option=com_media&view=images&tmpl=component&fieldid=' . $input->getCmd('fieldid', '') . '&e_name=' . $input->getCmd('e_name') . '&asset=' . $input->getCmd('asset') . '&author=' . $input->getCmd('author')); ?>
+                                </fieldset>
+                            </div>
+                            <div class="k-dont-flex">
+                                <button class="k-button k-button--primary" id="upload-submit">
+                                    <?php echo JText::_('COM_MEDIA_START_UPLOAD'); ?>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            <?php endif; ?>
 
         </div><!-- .k-content -->
 

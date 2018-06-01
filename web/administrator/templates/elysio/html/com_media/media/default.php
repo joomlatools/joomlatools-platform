@@ -167,7 +167,7 @@ if ($lang->isRtl())
             </div>
         <?php endif;?>
 
-        <form class="k-flexbox-from-charlie k-do-flex" action="index.php?option=com_media&amp;task=folder.create&amp;tmpl=<?php echo $input->getCmd('tmpl', 'index');?>" name="folderForm" id="folderForm" method="post">
+        <form class="k-flexbox-from-charlie k-do-flex" style="border-top: 1px solid #d4d4d4;" action="index.php?option=com_media&amp;task=folder.create&amp;tmpl=<?php echo $input->getCmd('tmpl', 'index');?>" name="folderForm" id="folderForm" method="post">
             <iframe class="k-do-flex" src="index.php?option=com_media&amp;view=mediaList&amp;tmpl=component&amp;folder=<?php echo $this->state->folder;?>" id="folderframe" name="folderframe" width="100%" marginwidth="0" marginheight="0" scrolling="auto" onLoad="iframeChangeScript(this.contentWindow.location);" style="border:none;"></iframe>
             <?php echo JHtml::_('form.token'); ?>
         </form>
