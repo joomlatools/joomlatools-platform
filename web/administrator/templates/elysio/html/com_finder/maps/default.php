@@ -47,7 +47,7 @@ JFactory::getDocument()->addScriptDeclaration('
     <?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this), null, array('debug' => false)); ?>
 
     <!-- Onboarding -->
-    <?php echo JLayoutHelper::render('elysio.onboarding', array('text' => JText::_('COM_FINDER_MAPS_NO_CONTENT'), 'displayButton' => false)); ?>
+    <?php echo JLayoutHelper::render('elysio.onboarding', array('items' => $this->items, 'text' => JText::_('COM_FINDER_MAPS_NO_CONTENT'), 'displayButton' => false)); ?>
 
     <!-- Table -->
     <div class="k-table-container<?php echo (!$this->items) ? ' k-hidden' : '' ?>">
