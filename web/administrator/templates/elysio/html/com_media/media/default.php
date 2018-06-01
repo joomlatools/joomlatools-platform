@@ -9,6 +9,11 @@
 
 defined('_JEXEC') or die;
 
+// Overrides
+include_once(JPATH_WEB.'/administrator/templates/elysio/html/overrides.php');
+
+$tree = mediaPrepareTree($this->folders);
+
 $user  = JFactory::getUser();
 $input = JFactory::getApplication()->input;
 $lang  = JFactory::getLanguage();
@@ -51,15 +56,12 @@ if ($lang->isRtl())
             <?php echo JText::_('COM_MEDIA_FOLDERS');?>
         </div>
 
-        <?php $GLOBALS['mediaTreeId'] = 0; ?>
-        <?php $GLOBALS['mediaTreeParentID'] = false; ?>
-
         <div class="k-tree" id="k-jqtree"></div>
         <script type="text/javascript" defer>
             kQuery(function($) {
                 $(document).ready(function () {
                     new Koowa.Tree('#k-jqtree', {
-                        "data": [<?php echo preg_replace('/\s+/', '', $this->loadTemplate('folders')); ?>],
+                        "data": <?php echo json_encode($tree); ?>,
                         "autoOpen": true
                     });
                 });

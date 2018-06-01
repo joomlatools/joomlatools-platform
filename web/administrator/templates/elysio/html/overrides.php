@@ -161,3 +161,35 @@ function imagesInputGroup($input) {
     $input = str_replace('</a>', '</a></div>', $input);
     return $input;
 }
+
+function mediaPrepareTree($folder, $parent = null)
+{
+    $tree = array();
+
+    if (isset($folder['children']))
+    {
+        foreach ($folder['children'] as $subfolder)
+        {
+            $item_id = uniqid();
+
+            $item = array(
+                'id'     => $item_id,
+                'label'  => $subfolder['data']->name,
+                'url'    => 'index.php?option=com_media&view=mediaList&tmpl=component&folder=' . $subfolder['data']->relative,
+                'parent' => $parent
+            );
+
+            $tree[] = $item;
+
+            if (isset($subfolder['children']) && count($subfolder['children']) > 0)
+            {
+                $subfolder_parent = count($subfolder['children']) > 0 ? $item_id : 0;
+                $items = mediaPrepareTree($subfolder, $subfolder_parent);
+                $tree  = array_merge($tree, $items);
+            }
+
+        }
+    }
+
+    return $tree;
+}
