@@ -73,8 +73,13 @@ if ($lang->isRtl())
             });
             // might be usable for changing the tree selected item on iframe change
             var iframeChangeScript = function(location) {
-                console.log(location.href.substr(location.href.lastIndexOf('=') + 1));
-                // kQuery('#k-jqtree').tree('selectNode', 2);
+                var url  = location.href.substr(location.href.indexOf('administrator/') + 14);
+                var node = kQuery('#k-jqtree').tree('getNodeByCallback', function(node) {
+                    if (node.url == url) {
+                        return true;
+                    }
+                });
+                kQuery('#k-jqtree').tree('selectNode', node)
             }
         </script>
 
