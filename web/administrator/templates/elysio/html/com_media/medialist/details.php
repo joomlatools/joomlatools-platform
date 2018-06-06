@@ -75,11 +75,11 @@ JFactory::getDocument()->addScriptDeclaration(
                             </li>
                             <?php if ($this->state->folder != '') : ?>
                             <li class="k-breadcrumb__active">
-                                <span class="k-breadcrumb__content"><?php echo JText::_('JGLOBAL_ROOT') . ': ' . $params->get($path, 'images'); ?></span>
+                                <span class="k-breadcrumb__content"><?php echo JText::_('JGLOBAL_ROOT') . ': ' . $params->get($path, 'images') . '/' . $this->state->folder; ?></span>
                             </li>
                             <?php else : ?>
                             <li>
-                                <span class="k-breadcrumb__content"><?php echo JText::_('JGLOBAL_ROOT') . ': ' . $params->get($path, 'images') . '/' . $this->state->folder; ?></span>
+                                <span class="k-breadcrumb__content"><?php echo JText::_('JGLOBAL_ROOT') . ': ' . $params->get($path, 'images'); ?></span>
                             </li>
                             <?php endif; ?>
                         </ul>
