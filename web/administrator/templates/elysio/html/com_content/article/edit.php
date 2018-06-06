@@ -116,10 +116,10 @@ if (isset($this->item->attribs['show_urls_images_backend']) && $this->item->attr
                 <div class="k-container__main">
 					<?php echo $this->form->getControlGroup('images'); ?>
 					<?php foreach ($this->form->getGroup('images') as $field) : ?>
-						<?php echo imagesInputGroup($field->getControlGroup()); ?>
+						<?php echo $field->getControlGroup(); ?>
 					<?php endforeach; ?>
 					<?php foreach ($this->form->getGroup('urls') as $field) : ?>
-						<?php echo imagesInputGroup($field->getControlGroup()); ?>
+						<?php echo $field->getControlGroup(); ?>
 					<?php endforeach; ?>
 				</div>
 			</div>

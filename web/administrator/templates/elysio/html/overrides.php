@@ -148,20 +148,6 @@ function addInputGroupAddonClass($input) {
 }
 
 
-// Add `k-input-group__addon` class to input group labels
-function imagesInputGroup($input) {
-    $input = str_replace('class="input-prepend input-append', 'class="k-input-group', $input);
-    $input = str_replace('class="media-preview add-on', 'class="k-input-group__addon', $input);
-    $input = str_replace('class="icon-eye', 'class="k-icon-eye', $input);
-    $input = str_replace('class="input-small', 'class="k-form-control', $input);
-    $input = str_replace('<a class', '<div class="k-input-group__button"><a class', $input);
-    $input = str_replace('modal btn', 'modal k-button k-button--default', $input);
-    $input = str_replace('btn hasTooltip', 'k-button k-button--default hasTooltip', $input);
-    $input = str_replace('icon-remove', 'k-icon-x', $input);
-    $input = str_replace('</a>', '</a></div>', $input);
-    return $input;
-}
-
 function mediaPrepareTree($folder, $parent = null)
 {
     $tree = array();
