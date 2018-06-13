@@ -58,6 +58,23 @@ JFactory::getDocument()->addScriptDeclaration(
             $('.k-off-canvas-toggle--right').trigger('click');
         });
     }
+
+    // Sync select2 with default select
+    kQuery(function($) {
+        var checkSelect = setInterval(selectCheck, 500);
+        var selectEl = $('#folderlist');
+        var selectElVal;
+        function selectCheck() {
+            if ( selectElVal != selectEl.val() ) {
+                selectElVal = selectEl.val();
+                selectEl.select2('destroy'); // destroying is the only way to synch without triggering iframe reload
+                selectEl.select2({ // re-set select2 with new selected option in default select
+                    theme: "bootstrap",
+                    minimumResultsForSearch: -1
+                });
+            }
+        }
+    });
 </script>
 
 
