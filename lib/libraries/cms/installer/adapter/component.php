@@ -803,7 +803,7 @@ class JInstallerAdapterComponent extends JInstallerAdapter
 
 		// Remove the schema version
 		$query = $db->getQuery(true)
-					->delete('#__schemas')
+					->delete($db->quoteName('#__schemas'))
 					->where('extension_id = ' . $id);
 		$db->setQuery($query);
 		$db->execute();
@@ -829,7 +829,10 @@ class JInstallerAdapterComponent extends JInstallerAdapter
 
 		// Rebuild the categories for correct lft/rgt
 		$category = JTable::getInstance('category');
-		$category->rebuild();
+
+        if ($category) {
+            $category->rebuild();
+        }
 
 		// Clobber any possible pending updates
 		// $update = JTable::getInstance('update');
