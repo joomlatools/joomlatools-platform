@@ -6,15 +6,59 @@ This changelog references the relevant changes (bug and security fixes) done in 
 To get the diff for a specific change, go to https://github.com/joomlatools/joomlatools-platform/commit/xxx where xxx is the change hash.
 To view the diff between two versions, go to https://github.com/joomlatools/joomlatools-platform/compare/v1.0.0...v1.0.1
 
-## 1.0.4 (2016-03-08)
+## 2.0.1 (2018-10-03)
 
 ## Fixed
+
+* Fix uninstall method for components [#362](https://github.com/joomlatools/joomlatools-platform/issues/362)
+
+## 2.0.0 (2018-05-08)
+
+### Added
+
+* New administrator template [#260](https://github.com/joomlatools/joomlatools-platform/issues/260)
+* Include Phinx migrations from extensions [#318](https://github.com/joomlatools/joomlatools-platform/issues/318)
+* Make chosen look like Bootstrap input [#286](https://github.com/joomlatools/joomlatools-platform/issues/286)
+* Enable sef_advance_link by default [#344](https://github.com/joomlatools/joomlatools-platform/issues/344)
+* Create 404 re-direct plugin [#346](https://github.com/joomlatools/joomlatools-platform/issues/346)
+
+### Removed
+
+* Remove the default logo in elysio template parameter [#350](https://github.com/joomlatools/joomlatools-platform/issues/350)
+
+### Changed
+
+* Upgrade to Joomla 3.6.5 [#315](https://github.com/joomlatools/joomlatools-platform/issues/315)
+* Disable frontend editing by default [#339](https://github.com/joomlatools/joomlatools-platform/issues/339)
+* Redesign administrator template to Joomlatools UI [#319](https://github.com/joomlatools/joomlatools-platform/issues/319)
+* Improve 404 redirect plugin [#353](https://github.com/joomlatools/joomlatools-platform/issues/353)
+* Set PHP7 as minimal requirement [#322](https://github.com/joomlatools/joomlatools-platform/issues/322)
+* Prepare 2.0.0 Release [#242](https://github.com/joomlatools/joomlatools-platform/issues/342)
+
+### Fixed
+
+* Users cannot login to administrator [#320](https://github.com/joomlatools/joomlatools-platform/issues/320)
+* Fix the session creation in enqueueMessage() [#317](https://github.com/joomlatools/joomlatools-platform/issues/317)
+* Fix "Require Password Reset" [#314](https://github.com/joomlatools/joomlatools-platform/issues/314)
+* Checkbox / toolbar issue [#285](https://github.com/joomlatools/joomlatools-platform/issues/285)
+* Fix tinymce editor media path [#327](https://github.com/joomlatools/joomlatools-platform/issues/327)
+* Fix time-out error [#329](https://github.com/joomlatools/joomlatools-platform/issues/329)
+* Changing author name not working in articles [#332](https://github.com/joomlatools/joomlatools-platform/issues/332)
+* Fix language override filename [#334](https://github.com/joomlatools/joomlatools-platform/issues/334)
+* JOOMLA_CACHE requires integer value [#336](https://github.com/joomlatools/joomlatools-platform/issues/336)
+* Batch process failed [#348](https://github.com/joomlatools/joomlatools-platform/issues/348)
+* Fix error page in backend template [#357](https://github.com/joomlatools/joomlatools-platform/issues/357)
+* Fix sortable behaviour [#287](https://github.com/joomlatools/joomlatools-platform/issues/287)
+
+## 1.0.4 (2016-03-08)
+
+### Fixed
 
 * Ported security fixes from Joomla v3.4.6 - v3.4.8 [#297](https://github.com/joomlatools/joomlatools-platform/issues/297)
 * Fixed PHP7 compatibility [#247](https://github.com/joomlatools/joomlatools-platform/issues/247)
 * Fixed language cookie path [#303](https://github.com/joomlatools/joomlatools-platform/issues/303)
 
-## Changed
+### Changed
 
 * Refactored error handling [#165](https://github.com/joomlatools/joomlatools-platform/issues/165)
 
