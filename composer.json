@@ -24,7 +24,7 @@
     "joomla/registry": "1.5.2",
     "joomla/string": "1.4.1",
     "joomla/uri": "~1.1",
-    "phpmailer/phpmailer": "5.2.16",
+    "phpmailer/phpmailer": "5.2.27",
     "vlucas/phpdotenv": "^2.1.0",
     "joomlatools/console": "^1.5.0",
     "paragonie/random_compat": "~1.0",
