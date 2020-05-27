@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "4304b4a77df9242dd165692f7c29249d",
-    "content-hash": "f33bda9eaf90ef3ffdaba19d10da2172",
+    "content-hash": "2aa76e1b3b25b00bdb4070e6a08a1569",
     "packages": [
         {
             "name": "ircmaxell/password-compat",
@@ -47,7 +46,7 @@
                 "hashing",
                 "password"
             ],
-            "time": "2014-11-20 16:49:30"
+            "time": "2014-11-20T16:49:30+00:00"
         },
         {
             "name": "joomla/application",
@@ -102,7 +101,7 @@
                 "framework",
                 "joomla"
             ],
-            "time": "2016-12-10 17:26:50"
+            "time": "2016-12-10T17:26:50+00:00"
         },
         {
             "name": "joomla/compat",
@@ -139,7 +138,7 @@
                 "framework",
                 "joomla"
             ],
-            "time": "2015-02-24 00:21:06"
+            "time": "2015-02-24T00:21:06+00:00"
         },
         {
             "name": "joomla/filter",
@@ -189,7 +188,7 @@
                 "framework",
                 "joomla"
             ],
-            "time": "2017-07-04 15:07:30"
+            "time": "2017-07-04T15:07:30+00:00"
         },
         {
             "name": "joomla/input",
@@ -236,7 +235,7 @@
                 "input",
                 "joomla"
             ],
-            "time": "2018-03-15 00:08:30"
+            "time": "2018-03-15T00:08:30+00:00"
         },
         {
             "name": "joomla/registry",
@@ -289,7 +288,7 @@
                 "joomla",
                 "registry"
             ],
-            "time": "2016-05-14 20:42:05"
+            "time": "2016-05-14T20:42:05+00:00"
         },
         {
             "name": "joomla/string",
@@ -355,7 +354,7 @@
                 "joomla",
                 "string"
             ],
-            "time": "2016-12-10 18:13:42"
+            "time": "2016-12-10T18:13:42+00:00"
         },
         {
             "name": "joomla/uri",
@@ -392,7 +391,7 @@
                 "joomla",
                 "uri"
             ],
-            "time": "2014-02-09 02:57:17"
+            "time": "2014-02-09T02:57:17+00:00"
         },
         {
             "name": "joomla/utilities",
@@ -438,7 +437,7 @@
                 "joomla",
                 "utilities"
             ],
-            "time": "2018-03-15 00:42:47"
+            "time": "2018-03-15T00:42:47+00:00"
         },
         {
             "name": "joomlatools/console",
@@ -486,7 +485,7 @@
                 "joomla",
                 "tools"
             ],
-            "time": "2018-01-11 14:57:18"
+            "time": "2018-01-11T14:57:18+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -534,56 +533,58 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13 16:22:52"
+            "time": "2017-03-13T16:22:52+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v5.2.16",
+            "version": "v6.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a"
+                "reference": "c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a",
-                "reference": "1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3",
+                "reference": "c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.0.0"
+                "ext-ctype": "*",
+                "ext-filter": "*",
+                "php": ">=5.5.0"
             },
             "require-dev": {
-                "phpdocumentor/phpdocumentor": "*",
-                "phpunit/phpunit": "4.7.*"
+                "doctrine/annotations": "^1.2",
+                "friendsofphp/php-cs-fixer": "^2.2",
+                "phpunit/phpunit": "^4.8 || ^5.7"
             },
             "suggest": {
-                "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
+                "ext-mbstring": "Needed to send email in multibyte encoding charset",
+                "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
+                "psr/log": "For optional PSR-3 debug logging",
+                "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
+                "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "class.phpmailer.php",
-                    "class.phpmaileroauth.php",
-                    "class.phpmaileroauthgoogle.php",
-                    "class.smtp.php",
-                    "class.pop3.php",
-                    "extras/EasyPeasyICS.php",
-                    "extras/ntlm_sasl_client.php"
-                ]
+                "psr-4": {
+                    "PHPMailer\\PHPMailer\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-2.1"
+                "LGPL-2.1-only"
             ],
             "authors": [
                 {
-                    "name": "Jim Jagielski",
-                    "email": "jimjag@gmail.com"
-                },
-                {
                     "name": "Marcus Bointon",
                     "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
                 },
                 {
                     "name": "Andy Prevost",
@@ -594,7 +595,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2016-06-06 09:09:37"
+            "time": "2020-05-27T12:24:03+00:00"
         },
         {
             "name": "psr/log",
@@ -641,7 +642,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "robmorgan/phinx",
@@ -707,7 +708,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2017-06-05 13:30:19"
+            "time": "2017-06-05T13:30:19+00:00"
         },
         {
             "name": "symfony/config",
@@ -770,7 +771,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2018-02-14 10:03:57"
+            "time": "2018-02-14T10:03:57+00:00"
         },
         {
             "name": "symfony/console",
@@ -831,7 +832,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-02-26 15:33:21"
+            "time": "2018-02-26T15:33:21+00:00"
         },
         {
             "name": "symfony/debug",
@@ -888,7 +889,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-30 07:22:48"
+            "time": "2016-07-30T07:22:48+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -937,7 +938,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-02-22 10:50:29"
+            "time": "2018-02-22T10:50:29+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -996,7 +997,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-01-30 19:27:44"
+            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "symfony/polyfill-php55",
@@ -1052,7 +1053,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-01-30 19:27:44"
+            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -1107,7 +1108,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-20 15:04:53"
+            "time": "2018-01-20T15:04:53+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1157,7 +1158,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-09-01 10:05:43"
+            "time": "2016-09-01T10:05:43+00:00"
         }
     ],
     "packages-dev": [],
